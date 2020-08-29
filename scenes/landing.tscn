@@ -11,19 +11,19 @@
 [ext_resource path="res://gfx/menu_select.png" type="Texture" id=9]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=10]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 8, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -93,14 +93,13 @@ margin_right = 110.0
 margin_bottom = 9.0
 focus_neighbour_bottom = NodePath("../new_game")
 focus_next = NodePath("../new_game")
-custom_styles/focus = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
 text = "Continue"
 align = 0
 
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/continue"]
 visible = false
-frames = SubResource( 5 )
-frame = 1
+frames = SubResource( 4 )
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -113,13 +112,14 @@ focus_neighbour_top = NodePath("../continue")
 focus_neighbour_bottom = NodePath("../credits")
 focus_next = NodePath("../credits")
 focus_previous = NodePath("../continue")
-custom_styles/focus = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
 text = "New Game"
 align = 0
 
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/new_game"]
 visible = false
-frames = SubResource( 5 )
+frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -133,14 +133,13 @@ focus_neighbour_top = NodePath("../new_game")
 focus_neighbour_bottom = NodePath("../quit")
 focus_next = NodePath("../quit")
 focus_previous = NodePath("../new_game")
-custom_styles/focus = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
 text = "Credits"
 align = 0
 
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/credits"]
 visible = false
-frames = SubResource( 5 )
-frame = 1
+frames = SubResource( 4 )
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -152,14 +151,13 @@ margin_right = 110.0
 margin_bottom = 31.0
 focus_neighbour_top = NodePath("../credits")
 focus_previous = NodePath("../credits")
-custom_styles/focus = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
 text = "Quit"
 align = 0
 
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/quit"]
 visible = false
-frames = SubResource( 5 )
-frame = 1
+frames = SubResource( 4 )
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
