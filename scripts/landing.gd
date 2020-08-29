@@ -2,6 +2,8 @@ extends Node2D
 
 var is_web = OS.get_name() == "HTML5"
 
+#test comment
+
 func _ready():
 	$music/theme.play()
 	$menu/margin/vbox/new_game.grab_focus()
