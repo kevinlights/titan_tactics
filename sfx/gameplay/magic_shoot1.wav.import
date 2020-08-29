@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/magic_shoot1.wav-128119d7035f729f0209c0ee39a24d2e.sample"
+
+[deps]
+
+source_file="res://sfx/gameplay/magic_shoot1.wav"
+dest_files=[ "res://.import/magic_shoot1.wav-128119d7035f729f0209c0ee39a24d2e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

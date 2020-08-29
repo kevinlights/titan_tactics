@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/landing.gd" type="Script" id=1]
+[ext_resource path="res://Music/menu_theme.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sfx/UI/click_open.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=5]
+[ext_resource path="res://gfx/pocket_tactics.png" type="Texture" id=6]
+[ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=7]
+[ext_resource path="res://scenes/gui/credits.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="landing" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="music" type="Node" parent="."]
+
+[node name="theme" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource( 2 )
+volume_db = -5.3
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="open" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 3 )
+volume_db = -3.5
+
+[node name="close" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 4 )
+
+[node name="select" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 5 )
+volume_db = -3.5
+
+[node name="menu" type="TextureRect" parent="."]
+margin_right = 160.0
+margin_bottom = 144.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="margin" type="MarginContainer" parent="menu"]
+margin_right = 160.0
+margin_bottom = 144.0
+custom_constants/margin_top = 85
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="menu/margin"]
+margin_top = 85.0
+margin_right = 160.0
+margin_bottom = 144.0
+theme = ExtResource( 7 )
+
+[node name="new_game" type="ToolButton" parent="menu/margin/vbox"]
+margin_right = 160.0
+margin_bottom = 9.0
+focus_neighbour_bottom = NodePath("../continue")
+focus_next = NodePath("../continue")
+custom_styles/focus = SubResource( 1 )
+text = "New Game"
+
+[node name="continue" type="ToolButton" parent="menu/margin/vbox"]
+margin_top = 11.0
+margin_right = 160.0
+margin_bottom = 20.0
+focus_neighbour_top = NodePath("../new_game")
+focus_neighbour_bottom = NodePath("../credits")
+focus_next = NodePath("../credits")
+focus_previous = NodePath("../new_game")
+custom_styles/focus = SubResource( 1 )
+text = "Continue"
+
+[node name="credits" type="ToolButton" parent="menu/margin/vbox"]
+margin_top = 22.0
+margin_right = 160.0
+margin_bottom = 31.0
+focus_neighbour_top = NodePath("../continue")
+focus_neighbour_bottom = NodePath("../quit")
+focus_next = NodePath("../quit")
+focus_previous = NodePath("../continue")
+custom_styles/focus = SubResource( 1 )
+text = "Credits"
+
+[node name="quit" type="ToolButton" parent="menu/margin/vbox"]
+margin_top = 33.0
+margin_right = 160.0
+margin_bottom = 42.0
+focus_neighbour_top = NodePath("../credits")
+focus_previous = NodePath("../credits")
+custom_styles/focus = SubResource( 1 )
+text = "Quit"
+
+[node name="credits" parent="menu" instance=ExtResource( 8 )]
+visible = false
+script = null
+[connection signal="pressed" from="menu/margin/vbox/new_game" to="." method="_on_new_game"]
+[connection signal="pressed" from="menu/margin/vbox/continue" to="." method="_on_continue"]
+[connection signal="pressed" from="menu/margin/vbox/credits" to="." method="_on_credits"]
+[connection signal="pressed" from="menu/margin/vbox/quit" to="." method="_on_quit"]

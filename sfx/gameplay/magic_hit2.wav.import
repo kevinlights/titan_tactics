@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/magic_hit2.wav-bf942562e6384936c1ce360f139bb1e6.sample"
+
+[deps]
+
+source_file="res://sfx/gameplay/magic_hit2.wav"
+dest_files=[ "res://.import/magic_hit2.wav-bf942562e6384936c1ce360f139bb1e6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

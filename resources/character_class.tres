@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/character_class.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+hp = 0
+atk = 0
+def = 0
+atk_range = 0

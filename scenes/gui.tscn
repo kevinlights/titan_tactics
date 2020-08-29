@@ -1,0 +1,1181 @@
+[gd_scene load_steps=54 format=2]
+
+[ext_resource path="res://scripts/gui.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gui/pause.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/pico-8 mono.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/gui/intro.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gui/credits.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sfx/gameplay/cant_do.wav" type="AudioStream" id=7]
+[ext_resource path="res://scripts/gui/stats.gd" type="Script" id=8]
+[ext_resource path="res://gfx/UI.png" type="Texture" id=9]
+[ext_resource path="res://gfx/littlearrows.png" type="Texture" id=10]
+[ext_resource path="res://scripts/gui/healthpage.gd" type="Script" id=11]
+[ext_resource path="res://mockups/healthmockup.png" type="Texture" id=12]
+[ext_resource path="res://fonts/PICO-8 mono.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://scripts/gui/menuhealthbar.gd" type="Script" id=14]
+[ext_resource path="res://scripts/gui/nextturn.gd" type="Script" id=15]
+[ext_resource path="res://scripts/gui/weaponswap.gd" type="Script" id=17]
+[ext_resource path="res://scripts/gui/teamselect.gd" type="Script" id=18]
+[ext_resource path="res://mockups/teamselectmockup.png" type="Texture" id=19]
+[ext_resource path="res://gfx/player.png" type="Texture" id=20]
+[ext_resource path="res://scenes/gui/teamconfirm.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scripts/gui/levelclear.gd" type="Script" id=25]
+[ext_resource path="res://mockups/winmockup.png" type="Texture" id=26]
+[ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
+[ext_resource path="res://mockups/defeatmockup.png" type="Texture" id=28]
+[ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
+[ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=32]
+[ext_resource path="res://sfx/UI/char_select2.wav" type="AudioStream" id=33]
+[ext_resource path="res://sfx/UI/turn_alert1.wav" type="AudioStream" id=34]
+[ext_resource path="res://sfx/UI/turn_alert2.wav" type="AudioStream" id=35]
+[ext_resource path="res://sfx/UI/click_open.wav" type="AudioStream" id=36]
+[ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 9 )
+region = Rect2( 24, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 9 )
+region = Rect2( 24, 8, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 9 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 9 )
+region = Rect2( 16, 8, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "up",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
+"speed": 3.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 9 )
+region = Rect2( 24, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 9 )
+region = Rect2( 24, 8, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 9 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 9 )
+region = Rect2( 16, 8, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "up",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
+"speed": 3.0
+} ]
+
+[sub_resource type="DynamicFont" id=11]
+size = 4
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 4
+extra_spacing_bottom = -2
+font_data = ExtResource( 13 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 24, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 32, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 20 )
+region = Rect2( 54, 0, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 20 )
+region = Rect2( 54, 18, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 18, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 20 )
+region = Rect2( 90, 0, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 20 )
+region = Rect2( 90, 18, 18, 18 )
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "mage",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "fighter",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "archer",
+"speed": 3.0
+} ]
+
+[node name="gui" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="pause" parent="." instance=ExtResource( 3 )]
+
+[node name="teamconfirm" parent="." instance=ExtResource( 21 )]
+visible = false
+
+[node name="action_menu" parent="." instance=ExtResource( 2 )]
+
+[node name="intro" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="credits" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="stats" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="ColorRect" parent="stats"]
+margin_left = 1.0
+margin_top = 3.0
+margin_right = 32.0
+margin_bottom = 16.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="front" type="ColorRect" parent="stats"]
+margin_right = 31.0
+margin_bottom = 15.0
+color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playeratk" type="Label" parent="stats"]
+margin_left = 9.0
+margin_top = 2.0
+margin_right = 49.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "ATK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playeratklevel" type="Label" parent="stats"]
+margin_left = 22.0
+margin_top = 2.0
+margin_right = 62.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerdef" type="Label" parent="stats"]
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 49.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "DEF"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerdeflevel" type="Label" parent="stats"]
+margin_left = 22.0
+margin_top = 8.0
+margin_right = 62.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerType" type="Sprite" parent="stats"]
+position = Vector2( 4, 5 )
+texture = ExtResource( 9 )
+vframes = 16
+hframes = 16
+frame = 32
+
+[node name="PlayerAdvantage" type="AnimatedSprite" parent="stats"]
+position = Vector2( 4, 12 )
+frames = SubResource( 5 )
+animation = "neutral"
+
+[node name="blueedge" type="Sprite" parent="stats"]
+position = Vector2( 33, 2 )
+texture = ExtResource( 10 )
+hframes = 2
+
+[node name="shadow2" type="ColorRect" parent="stats"]
+margin_left = 32.0
+margin_top = 48.0
+margin_right = 63.0
+margin_bottom = 61.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="front2" type="ColorRect" parent="stats"]
+margin_left = 33.0
+margin_top = 49.0
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 1, 0, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemyatk" type="Label" parent="stats"]
+margin_left = 42.0
+margin_top = 51.0
+margin_right = 82.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "ATK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemyatklevel" type="Label" parent="stats"]
+margin_left = 55.0
+margin_top = 51.0
+margin_right = 95.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemydef" type="Label" parent="stats"]
+margin_left = 42.0
+margin_top = 57.0
+margin_right = 82.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "DEF"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemydeflevel" type="Label" parent="stats"]
+margin_left = 55.0
+margin_top = 57.0
+margin_right = 95.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyType" type="Sprite" parent="stats"]
+position = Vector2( 37, 54 )
+texture = ExtResource( 9 )
+vframes = 16
+hframes = 16
+frame = 32
+
+[node name="EnemyAdvantage" type="AnimatedSprite" parent="stats"]
+position = Vector2( 37, 61 )
+frames = SubResource( 10 )
+animation = "neutral"
+
+[node name="rededge" type="Sprite" parent="stats"]
+position = Vector2( 31, 62 )
+texture = ExtResource( 10 )
+hframes = 2
+frame = 1
+
+[node name="healthpage" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="healthmockup" type="Sprite" parent="healthpage"]
+visible = false
+position = Vector2( 32, 32 )
+scale = Vector2( 0.249027, 0.25 )
+texture = ExtResource( 12 )
+
+[node name="shadow" type="ColorRect" parent="healthpage"]
+margin_left = 1.0
+margin_top = 3.0
+margin_right = 32.0
+margin_bottom = 12.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="front" type="ColorRect" parent="healthpage"]
+margin_right = 31.0
+margin_bottom = 11.0
+color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerhealth" type="Label" parent="healthpage"]
+margin_left = 9.0
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pslash" type="Label" parent="healthpage"]
+margin_left = 17.0
+margin_top = 2.0
+margin_right = 38.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playermaxhealth" type="Label" parent="healthpage"]
+margin_left = 21.0
+margin_top = 2.0
+margin_right = 42.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerhealthbar" type="Node2D" parent="healthpage"]
+position = Vector2( 8, 7 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="frame" type="ColorRect" parent="healthpage/playerhealthbar"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 20.0
+margin_bottom = 2.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="ColorRect" parent="healthpage/playerhealthbar"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 20.0
+margin_bottom = 2.0
+color = Color( 1, 0.945098, 0.909804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerType" type="Sprite" parent="healthpage"]
+position = Vector2( 4, 5 )
+texture = ExtResource( 9 )
+vframes = 16
+hframes = 16
+frame = 32
+
+[node name="blueedge" type="Sprite" parent="healthpage"]
+position = Vector2( 33, 2 )
+texture = ExtResource( 10 )
+hframes = 2
+
+[node name="shadow2" type="ColorRect" parent="healthpage"]
+margin_left = 32.0
+margin_top = 52.0
+margin_right = 63.0
+margin_bottom = 61.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="front2" type="ColorRect" parent="healthpage"]
+margin_left = 33.0
+margin_top = 53.0
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 1, 0, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemyhealth" type="Label" parent="healthpage"]
+margin_left = 43.0
+margin_top = 55.0
+margin_right = 64.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="eslash" type="Label" parent="healthpage"]
+margin_left = 51.0
+margin_top = 55.0
+margin_right = 72.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemymaxhealth" type="Label" parent="healthpage"]
+margin_left = 55.0
+margin_top = 55.0
+margin_right = 76.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemyhealthbar" type="Node2D" parent="healthpage"]
+position = Vector2( 42, 60 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="frame" type="ColorRect" parent="healthpage/enemyhealthbar"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 20.0
+margin_bottom = 2.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="ColorRect" parent="healthpage/enemyhealthbar"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 20.0
+margin_bottom = 2.0
+color = Color( 1, 0.945098, 0.909804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyType" type="Sprite" parent="healthpage"]
+position = Vector2( 37, 58 )
+texture = ExtResource( 9 )
+vframes = 16
+hframes = 16
+frame = 32
+
+[node name="rededge" type="Sprite" parent="healthpage"]
+position = Vector2( 31, 62 )
+texture = ExtResource( 10 )
+hframes = 2
+frame = 1
+
+[node name="playerturn" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="positioner" type="Node2D" parent="playerturn"]
+position = Vector2( -64, 22 )
+z_index = 10
+
+[node name="front" type="ColorRect" parent="playerturn/positioner"]
+margin_right = 64.0
+margin_bottom = 19.0
+color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line" type="ColorRect" parent="playerturn/positioner/front"]
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 17.0
+color = Color( 0.160784, 0.678431, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line2" type="ColorRect" parent="playerturn/positioner/front"]
+margin_top = 2.0
+margin_right = 64.0
+margin_bottom = 3.0
+color = Color( 0.160784, 0.678431, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player turn" type="Label" parent="playerturn/positioner/front"]
+margin_left = -2.0
+margin_top = 4.0
+margin_right = 38.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "YOUR
+ TURN"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemyturn" type="Control" parent="."]
+visible = false
+margin_top = 1.0
+margin_right = 40.0
+margin_bottom = 41.0
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="positioner" type="Node2D" parent="enemyturn"]
+position = Vector2( -64, 22 )
+z_index = 10
+
+[node name="front" type="ColorRect" parent="enemyturn/positioner"]
+margin_top = -1.0
+margin_right = 64.0
+margin_bottom = 18.0
+color = Color( 1, 0, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line" type="ColorRect" parent="enemyturn/positioner/front"]
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 17.0
+color = Color( 1, 0.466667, 0.658824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line2" type="ColorRect" parent="enemyturn/positioner/front"]
+margin_top = 2.0
+margin_right = 64.0
+margin_bottom = 3.0
+color = Color( 1, 0.466667, 0.658824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player turn" type="Label" parent="enemyturn/positioner/front"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 42.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "ENEMY
+TURN"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weaponswap" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="ColorRect" parent="weaponswap"]
+margin_left = 3.0
+margin_top = 11.0
+margin_right = 62.0
+margin_bottom = 56.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="front" type="ColorRect" parent="weaponswap"]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 61.0
+margin_bottom = 55.0
+color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line" type="ColorRect" parent="weaponswap"]
+margin_left = 4.0
+margin_top = 19.0
+margin_right = 59.0
+margin_bottom = 20.0
+color = Color( 0.160784, 0.678431, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weapon_sprite1" type="Sprite" parent="weaponswap"]
+position = Vector2( 9, 27 )
+texture = ExtResource( 9 )
+vframes = 16
+hframes = 16
+frame = 32
+
+[node name="weapon_sprite2" type="Sprite" parent="weaponswap"]
+position = Vector2( 38, 27 )
+texture = ExtResource( 9 )
+vframes = 16
+hframes = 16
+frame = 32
+
+[node name="text" type="Label" parent="weaponswap"]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 61.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "SWITCH WEAPON?"
+align = 1
+valign = 1
+clip_text = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="atk_text1" type="Label" parent="weaponswap"]
+margin_left = 14.0
+margin_top = 24.0
+margin_right = 70.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "ATK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="current_atk" type="Label" parent="weaponswap"]
+margin_left = 13.0
+margin_top = 30.0
+margin_right = 69.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "+0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="atk_text2" type="Label" parent="weaponswap"]
+margin_left = 43.0
+margin_top = 24.0
+margin_right = 99.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "ATK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_atk" type="Label" parent="weaponswap"]
+margin_left = 43.0
+margin_top = 30.0
+margin_right = 99.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "+0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="no" type="Label" parent="weaponswap"]
+margin_left = 16.0
+margin_top = 47.0
+margin_right = 61.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.160784, 0.678431, 1, 1 )
+text = " CANCEL"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="yes" type="Label" parent="weaponswap"]
+margin_left = 16.0
+margin_top = 40.0
+margin_right = 75.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = ">SWITCH"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow" type="AnimatedSprite" parent="weaponswap"]
+position = Vector2( 32, 32 )
+frames = SubResource( 15 )
+playing = true
+
+[node name="characterselect" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="teamselectmockup" type="Sprite" parent="characterselect"]
+visible = false
+position = Vector2( 32, 32 )
+scale = Vector2( 0.251969, 0.251969 )
+texture = ExtResource( 19 )
+
+[node name="shadow" type="ColorRect" parent="characterselect"]
+margin_top = 50.0
+margin_right = 64.0
+margin_bottom = 63.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="front" type="ColorRect" parent="characterselect"]
+margin_top = 51.0
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leftarrow" type="Sprite" parent="characterselect"]
+position = Vector2( 2, 57 )
+texture = ExtResource( 9 )
+vframes = 16
+hframes = 16
+frame = 1
+
+[node name="rightarrow" type="Sprite" parent="characterselect"]
+position = Vector2( 62, 57 )
+texture = ExtResource( 9 )
+vframes = 16
+hframes = 16
+
+[node name="type_static" type="Sprite" parent="characterselect"]
+visible = false
+position = Vector2( 11, 55 )
+texture = ExtResource( 20 )
+vframes = 10
+hframes = 6
+frame = 5
+
+[node name="name" type="Label" parent="characterselect"]
+margin_left = 20.0
+margin_top = 52.0
+margin_right = 60.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 4 )
+text = "TIMMY"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="atk" type="Label" parent="characterselect"]
+margin_left = 41.0
+margin_top = 52.0
+margin_right = 81.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 4 )
+text = "ATK00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="Label" parent="characterselect"]
+margin_left = 20.0
+margin_top = 58.0
+margin_right = 60.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 4 )
+text = "HP00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="def" type="Label" parent="characterselect"]
+margin_left = 41.0
+margin_top = 58.0
+margin_right = 81.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 4 )
+text = "DEF00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="type" type="AnimatedSprite" parent="characterselect"]
+position = Vector2( 11, 55 )
+frames = SubResource( 22 )
+animation = "fighter"
+frame = 1
+playing = true
+
+[node name="win" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="winmockup" type="Sprite" parent="win"]
+visible = false
+position = Vector2( 32, 32 )
+scale = Vector2( 0.249027, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="shadow2" type="ColorRect" parent="win"]
+margin_left = 33.0
+margin_top = 49.0
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 0.121569, 0.0941176, 0.0941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog2" type="ColorRect" parent="win"]
+margin_left = 32.0
+margin_top = 48.0
+margin_right = 63.0
+margin_bottom = 63.0
+color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="Label" parent="win"]
+margin_left = 14.0
+margin_top = 50.0
+margin_right = 54.0
+margin_bottom = 61.71
+rect_pivot_offset = Vector2( 13.4933, 1.83694 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = ">NEXT"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="retry" type="Label" parent="win"]
+margin_left = 18.0
+margin_top = 56.0
+margin_right = 58.0
+margin_bottom = 65.3161
+rect_pivot_offset = Vector2( 13.4933, 1.83694 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.160784, 0.678431, 1, 1 )
+text = "RETRY"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="positioner" type="Node2D" parent="win"]
+position = Vector2( -64, 22 )
+z_index = 10
+
+[node name="front" type="ColorRect" parent="win/positioner"]
+margin_right = 64.0
+margin_bottom = 19.0
+color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line" type="ColorRect" parent="win/positioner/front"]
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 17.0
+color = Color( 0.160784, 0.678431, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line2" type="ColorRect" parent="win/positioner/front"]
+margin_top = 2.0
+margin_right = 64.0
+margin_bottom = 3.0
+color = Color( 0.160784, 0.678431, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player turn" type="Label" parent="win/positioner/front"]
+margin_left = -2.0
+margin_top = 4.0
+margin_right = 38.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "LEVEL
+  CLEAR!"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lose" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="winmockup" type="Sprite" parent="lose"]
+visible = false
+position = Vector2( 32, 32 )
+scale = Vector2( 0.249027, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="shadow2" type="ColorRect" parent="lose"]
+margin_left = 33.0
+margin_top = 49.0
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 0.121569, 0.0941176, 0.0941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog2" type="ColorRect" parent="lose"]
+margin_left = 32.0
+margin_top = 48.0
+margin_right = 63.0
+margin_bottom = 63.0
+color = Color( 1, 0, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="retry" type="Label" parent="lose"]
+margin_left = 33.8579
+margin_top = 50.2558
+margin_right = 73.8579
+margin_bottom = 61.9658
+rect_pivot_offset = Vector2( 13.4933, 1.83694 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = ">RETRY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit" type="Label" parent="lose"]
+margin_left = 33.5311
+margin_top = 56.4263
+margin_right = 73.5311
+margin_bottom = 65.7424
+rect_pivot_offset = Vector2( 13.4933, 1.83694 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.466667, 0.658824, 1 )
+text = " QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="positioner" type="Node2D" parent="lose"]
+position = Vector2( -64, 22 )
+z_index = 10
+
+[node name="defeatmockup" type="Sprite" parent="lose/positioner"]
+visible = false
+position = Vector2( 21, 2 )
+scale = Vector2( 0.248062, 0.25 )
+texture = ExtResource( 28 )
+
+[node name="front" type="ColorRect" parent="lose/positioner"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 19.0
+color = Color( 1, 0, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line" type="ColorRect" parent="lose/positioner/front"]
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 17.0
+color = Color( 1, 0.466667, 0.658824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line2" type="ColorRect" parent="lose/positioner/front"]
+margin_top = 2.0
+margin_right = 64.0
+margin_bottom = 3.0
+color = Color( 1, 0.466667, 0.658824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defeat" type="Label" parent="lose/positioner/front"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 46.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "YOU WERE
+ DEFEATED"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="char_select" type="Node" parent="sfx"]
+
+[node name="select 1" type="AudioStreamPlayer" parent="sfx/char_select"]
+stream = ExtResource( 32 )
+
+[node name="select 2" type="AudioStreamPlayer" parent="sfx/char_select"]
+stream = ExtResource( 33 )
+
+[node name="turn_alert" type="Node" parent="sfx"]
+
+[node name="alert 1" type="AudioStreamPlayer" parent="sfx/turn_alert"]
+stream = ExtResource( 34 )
+volume_db = -3.0
+
+[node name="alert 2" type="AudioStreamPlayer" parent="sfx/turn_alert"]
+stream = ExtResource( 35 )
+volume_db = -3.0
+
+[node name="open" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 36 )
+volume_db = -3.5
+
+[node name="close" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 37 )
+
+[node name="select" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 31 )
+volume_db = -6.0
+
+[node name="denied" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 7 )
+volume_db = 3.0

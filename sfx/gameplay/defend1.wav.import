@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/defend1.wav-dc7d2539a1f2ba6375fce39cfdbda1cb.sample"
+
+[deps]
+
+source_file="res://sfx/gameplay/defend1.wav"
+dest_files=[ "res://.import/defend1.wav-dc7d2539a1f2ba6375fce39cfdbda1cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

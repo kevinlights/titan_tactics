@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gfx/title.png" type="Texture" id=1]
+
+[node name="Map" type="Node"]
+
+[node name="blackground_test" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+texture = ExtResource( 1 )

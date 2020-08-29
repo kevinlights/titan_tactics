@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/arrow_shoot3.wav-badd3ebc46f1245d1228de99b5a90c35.sample"
+
+[deps]
+
+source_file="res://sfx/gameplay/arrow_shoot3.wav"
+dest_files=[ "res://.import/arrow_shoot3.wav-badd3ebc46f1245d1228de99b5a90c35.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

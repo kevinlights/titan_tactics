@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/pico-8 mono.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/damage_feedback.gd" type="Script" id=2]
+
+[node name="damage_feedback" type="Node2D"]
+modulate = Color( 1, 1, 1, 0.5 )
+position = Vector2( 40, 40 )
+script = ExtResource( 2 )
+
+[node name="damage" type="Label" parent="."]
+margin_right = 16.0
+margin_bottom = 5.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "-99"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

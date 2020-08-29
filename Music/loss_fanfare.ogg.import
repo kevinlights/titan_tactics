@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/loss_fanfare.ogg-c182fd6f36cae80a3b940817f5532c14.oggstr"
+
+[deps]
+
+source_file="res://Music/loss_fanfare.ogg"
+dest_files=[ "res://.import/loss_fanfare.ogg-c182fd6f36cae80a3b940817f5532c14.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

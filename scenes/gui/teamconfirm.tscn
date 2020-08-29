@@ -1,0 +1,155 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/gui/teamconfirm.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
+[ext_resource path="res://gfx/panel.png" type="Texture" id=3]
+[ext_resource path="res://scripts/focus.gd" type="Script" id=4]
+[ext_resource path="res://gfx/menu_select.png" type="Texture" id=5]
+
+
+[sub_resource type="ImageTexture" id=1]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 8, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ImageTexture" id=5]
+
+[sub_resource type="ImageTexture" id=6]
+
+[node name="teamconfirm" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="PanelContainer" parent="."]
+margin_left = 41.0
+margin_top = 45.0
+margin_right = 118.0
+margin_bottom = 99.0
+theme = ExtResource( 2 )
+
+[node name="background" type="NinePatchRect" parent="panel"]
+margin_right = 77.0
+margin_bottom = 54.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="margin" type="MarginContainer" parent="panel"]
+margin_right = 77.0
+margin_bottom = 54.0
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+
+[node name="vbox" type="VBoxContainer" parent="panel/margin"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 74.0
+margin_bottom = 51.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="panel/margin/vbox"]
+margin_right = 71.0
+margin_bottom = 9.0
+custom_constants/margin_top = 4
+custom_constants/margin_bottom = 4
+
+[node name="title" type="Label" parent="panel/margin/vbox/MarginContainer"]
+margin_top = 4.0
+margin_right = 71.0
+margin_bottom = 5.0
+theme = ExtResource( 2 )
+text = "Team OK?"
+align = 1
+valign = 1
+percent_visible = -0.142857
+
+[node name="HSeparator" type="HSeparator" parent="panel/margin/vbox"]
+margin_top = 11.0
+margin_right = 71.0
+margin_bottom = 15.0
+
+[node name="check_map" type="ToolButton" parent="panel/margin/vbox"]
+margin_top = 17.0
+margin_right = 71.0
+margin_bottom = 26.0
+focus_neighbour_bottom = NodePath("../edit_team")
+focus_next = NodePath("../edit_team")
+theme = ExtResource( 2 )
+text = "Check map"
+icon = SubResource( 1 )
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/check_map"]
+visible = false
+frames = SubResource( 4 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( 0, 2 )
+script = ExtResource( 4 )
+
+[node name="edit_team" type="ToolButton" parent="panel/margin/vbox"]
+margin_top = 28.0
+margin_right = 71.0
+margin_bottom = 37.0
+focus_neighbour_top = NodePath("../check_map")
+focus_neighbour_bottom = NodePath("../start_level")
+focus_next = NodePath("../start_level")
+focus_previous = NodePath("../check_map")
+theme = ExtResource( 2 )
+text = "Edit team"
+icon = SubResource( 5 )
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/edit_team"]
+visible = false
+frames = SubResource( 4 )
+playing = true
+centered = false
+offset = Vector2( 0, 2 )
+script = ExtResource( 4 )
+
+[node name="start_level" type="ToolButton" parent="panel/margin/vbox"]
+margin_top = 39.0
+margin_right = 71.0
+margin_bottom = 48.0
+focus_neighbour_top = NodePath("../edit_team")
+focus_previous = NodePath("../edit_team")
+theme = ExtResource( 2 )
+text = "Start level"
+icon = SubResource( 6 )
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/start_level"]
+visible = false
+frames = SubResource( 4 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( 0, 2 )
+script = ExtResource( 4 )

@@ -1,0 +1,191 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/options.gd" type="Script" id=1]
+[ext_resource path="res://fonts/PICO-8 mono.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://gfx/UI.png" type="Texture" id=3]
+[ext_resource path="res://fonts/pico-8 mono.tres" type="DynamicFont" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 4
+outline_color = Color( 1, 0.945098, 0.909804, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Label" parent="Control"]
+margin_left = 12.0
+margin_top = 30.0
+margin_right = 52.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.635294, 0.533333, 0.47451, 1 )
+text = "MUSIC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX" type="Label" parent="Control"]
+margin_left = 12.0
+margin_top = 40.0
+margin_right = 52.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.635294, 0.533333, 0.47451, 1 )
+text = "SFX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="Label" parent="Control"]
+margin_left = 10.0
+margin_top = 54.0
+margin_right = 50.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.635294, 0.533333, 0.47451, 1 )
+text = "SAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Label" parent="Control"]
+margin_left = 34.0
+margin_top = 54.0
+margin_right = 74.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.635294, 0.533333, 0.47451, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectArrow" type="Sprite" parent="."]
+position = Vector2( 31, 56 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 16
+
+[node name="Optionslabel" type="Label" parent="."]
+margin_left = 18.0
+margin_top = 6.0
+margin_right = 74.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "OPTIONS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicBars" type="Control" parent="."]
+margin_left = 34.0
+margin_top = 28.0
+margin_right = 74.0
+margin_bottom = 68.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bar1" type="Sprite" parent="MusicBars"]
+position = Vector2( 2, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 168
+
+[node name="bar2" type="Sprite" parent="MusicBars"]
+position = Vector2( 6, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 137
+
+[node name="bar3" type="Sprite" parent="MusicBars"]
+position = Vector2( 10, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 138
+
+[node name="bar4" type="Sprite" parent="MusicBars"]
+position = Vector2( 14, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 139
+
+[node name="bar5" type="Sprite" parent="MusicBars"]
+position = Vector2( 18, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 140
+
+[node name="SFXBars" type="Control" parent="."]
+margin_left = 34.0
+margin_top = 38.0
+margin_right = 74.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bar1" type="Sprite" parent="SFXBars"]
+position = Vector2( 2, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 136
+
+[node name="bar2" type="Sprite" parent="SFXBars"]
+position = Vector2( 6, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 137
+
+[node name="bar3" type="Sprite" parent="SFXBars"]
+position = Vector2( 10, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 138
+
+[node name="bar4" type="Sprite" parent="SFXBars"]
+position = Vector2( 14, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 139
+
+[node name="bar5" type="Sprite" parent="SFXBars"]
+position = Vector2( 18, 4 )
+texture = ExtResource( 3 )
+vframes = 16
+hframes = 32
+frame = 140
