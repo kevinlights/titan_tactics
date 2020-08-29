@@ -168,7 +168,8 @@ func get_theme():
 
 func _ready():
 	var default_stats = load("res://resources/class_stats.tres")
-	var character = CharacterStats.new(TYPE.FIGHTER, CONTROL.PLAYER)
+	var character = CharacterStats.new()
+#	character.from_defaults(TYPE.FIGHTER, CONTROL.PLAYER)
 	character.generate(default_stats, TYPE.FIGHTER, CONTROL.PLAYER)
 	team.append(character)
 	

@@ -1,3 +1,4 @@
+tool
 class_name CharacterController
 extends Node2D
 
@@ -98,7 +99,7 @@ func end_turn():
 	$guard.hide()
 
 func can_attack(target):
-	var atk_range = character.atk_range + character.items.atk.attack_range
+	var atk_range = character.atk_range + character.item_atk.attack_range
 	print(atk_range, " > ", target.tile.distance_to(tile), " : ", !(target.tile.distance_to(tile) > atk_range));
 	return !(target.tile.distance_to(tile) > atk_range)
 
@@ -107,15 +108,15 @@ func attack(target):
 	if character.turn_limits.actions < 1:
 		return 0
 	character.turn_limits.actions -= 1
-	var atk_range = character.atk_range + character.items.atk.attack_range
-	var damage = float(character.atk + character.items.atk.attack)
+	var atk_range = character.atk_range + character.item_atk.attack_range
+	var damage = float(character.atk + character.item_atk.attack)
 	if target.character.character_class == character.weakness:
 		damage = damage * 0.7
 	if target.character.character_class == character.strength:
 		damage = damage * 1.3
 	if target.guarding:
 		damage = damage * 0.5
-	damage -= ((target.character.def + target.character.items.def.defense) * 1.5)
+	damage -= ((target.character.def + target.character.item_def.defense) * 1.5)
 	damage = floor(damage)
 	target.character.hp -= damage
 
@@ -206,14 +207,14 @@ func copy_stats(spawner):
 func from_spawner(character_spawner):
 #	print(character_spawner["Members/stats"])
 	print(character_spawner.stats)
-	character = character_spawner.stats.duplicate()
+	character = character_spawner.stats #.duplicate()
 	print(character)
 	# CharacterStats.new(character_spawner.stats.character_class, character_spawner.stats.control)
 #	character_spawner.stats
 	# reset to max hp when deploying
 	character.hp = character.max_hp
 	select_type()
-	init_common(character_spawner.control)
+	init_common(character_spawner.stats.control)
 	
 func from_library(team_member):
 	character = team_member
@@ -259,7 +260,8 @@ func init_common(control):
 	
 func init(char_type, control = Game.CONTROL.PLAYER):	
 	var default_stats = load("res://resources/class_stats.tres") # [class_map[char_type]]
-	character = CharacterStats.new(char_type, control)
+	character = CharacterStats.new()
+#	character.from_defaults(char_type, control)
 #	var class_map = {
 #		Game.TYPE.FIGHTER: "swordsman",
 #		Game.TYPE.ARCHER: "archer",

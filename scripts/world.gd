@@ -175,32 +175,20 @@ func _ready():
 			var tile_id = tile_meta.get_cell(x, y)
 			if tile_id == TILEID.PLAYER_SPAWN:
 				player_spawns.append(Vector2(x, y))
-			if tile_id == TILEID.ENEMY_SPAWN_MAGE:
-				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.MAGE, Game.CONTROL.AI))
-				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
-				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")
-			if tile_id == TILEID.ENEMY_SPAWN_FIGHTER:
-				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.FIGHTER, Game.CONTROL.AI))
-				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
-				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")				
-			if tile_id == TILEID.ENEMY_SPAWN_ARCHER:
-				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.ARCHER, Game.CONTROL.AI))
-				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
-				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")				
+#			if tile_id == TILEID.ENEMY_SPAWN_MAGE:
+#				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.MAGE, Game.CONTROL.AI))
+#				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
+#				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")
+#			if tile_id == TILEID.ENEMY_SPAWN_FIGHTER:
+#				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.FIGHTER, Game.CONTROL.AI))
+#				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
+#				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")				
+#			if tile_id == TILEID.ENEMY_SPAWN_ARCHER:
+#				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.ARCHER, Game.CONTROL.AI))
+#				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
+#				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")				
 			if tile_id == TILEID.CHEST:
 				var chest = spawn_chest(x, y)
-	var ai_spawns = get_tree().get_nodes_in_group ("ai_spawns")
-	for ai_spawn in ai_spawns:
-		var character:Node = load("res://scenes/character_controller.tscn").instance()
-		character.from_spawner(ai_spawn)
-		character.teleport(floor(ai_spawn.position.x / Game.cell_size), floor(ai_spawn.position.y / Game.cell_size))
-		current[Game.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / Game.cell_size), floor(ai_spawn.position.y / Game.cell_size), ai_spawn.stats.character_class, Game.CONTROL.AI))
-		current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
-		current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")				
-		ai_spawn.hide()
-		
-	print(ai_spawns)
-	ai = NaiveAI.new(self)
 	gui.get_node("action_menu").connect("attack", self, "_on_attack")
 	gui.get_node("action_menu").connect("recruit", self, "_on_recruit")
 	gui.get_node("action_menu").connect("guard", self, "_on_guard")
@@ -226,7 +214,24 @@ func _ready():
 	else:
 		select_team()
 	$music.get_node(Game.get_theme()).play()
+	call_deferred("spawn_ai_team")
 
+func spawn_ai_team():
+	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
+	for ai_spawn in ai_spawns:
+		var character:Node = load("res://scenes/character_controller.tscn").instance()
+		character.from_spawner(ai_spawn)
+		character.teleport(floor(ai_spawn.position.x / Game.cell_size), floor(ai_spawn.position.y / Game.cell_size))
+		character.character.control = Game.CONTROL.AI
+		character.add_to_group("characters")
+		current[Game.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / Game.cell_size), floor(ai_spawn.position.y / Game.cell_size), ai_spawn.stats.character_class, Game.CONTROL.AI))
+		current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
+		current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")
+		world_map.add_child(character)
+		ai_spawn.hide()
+#	print(ai_spawns)
+	ai = NaiveAI.new(self)
+	
 func select_team():
 	for member in Game.team:
 		member.hp = member.max_hp
@@ -444,8 +449,9 @@ func get_current_context(tile):
 	return Game.CONTEXT.MOVE
 
 # DEBUG INPUT
-#func _input(event):
-#	if event.is_action("ui_focus_next") && !event.is_echo() && event.is_pressed():
-#		_on_next_level()
-#	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
-#		_on_replay()
+func _input(event):
+	if event.is_action("ui_focus_next") && !event.is_echo() && event.is_pressed():
+		_on_next_level()
+#		spawn_ai_team()
+	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
+		_on_replay()

@@ -30,9 +30,9 @@ func update_view():
 		Game.TYPE.MAGE:
 			animation = "mage"
 	$name.text = characters[selected].name
-	$atk.text = "ATK" + "%02d" % (characters[selected].atk + characters[selected].items.atk.attack)
+	$atk.text = "ATK" + "%02d" % (characters[selected].atk + characters[selected].item_atk.attack)
 	$hp.text = "HP" + "%02d" % characters[selected].hp
-	$def.text = "DEF" +  "%02d" % (characters[selected].def + characters[selected].items.def.defense)
+	$def.text = "DEF" +  "%02d" % (characters[selected].def + characters[selected].item_def.defense)
 	$type.play(animation)
 #	var current = characters[selected]
 	

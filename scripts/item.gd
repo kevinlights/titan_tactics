@@ -1,14 +1,28 @@
-extends Object
+tool
+extends Resource
 class_name Item
 
-var attack = 0
-var attack_range = 0
-var accuracy = 0
-var defense = 0
-var heal = 0
-var name = "unknown item"
-var level = 0
-var type
+export(int, "Swordsman", "Archer", "Mage") var character_class setget set_class, get_class
+export(int) var level = 0 setget set_level,get_level
+export(String) var name = "unknown item"
+export(int) var attack = 0
+export(int) var attack_range = 0
+export(int) var defense = 0
+export(int) var heal = 0
+
+func set_level(item_level):
+	level = item_level
+	generate(level, character_class)
+
+func get_level():
+	return level
+
+func set_class(item_class):
+	character_class = item_class
+	generate(level, character_class)
+
+func get_class():
+	return character_class
 
 var item_prefix = {
 	0: [ "lesser", "small", "rusted", "broken", "weak", "puny", "light" ],
@@ -24,23 +38,24 @@ var item_names = {
 	Game.TYPE.ARCHER: [ "bow", "longbow" ],
 	Game.TYPE.MAGE: [ "wand", "staff", "scepter" ]
 }
-func _init(item_name = 0, attack_buff = 0, range_buff = 0, accuracy_buff = 0, heal_buff = 0):
+
+func create(item_name = 0, attack_buff = 0, range_buff = 0, accuracy_buff = 0, heal_buff = 0):
 	name = item_name
 	attack = attack_buff
-	accuracy = accuracy_buff
 	attack_range = range_buff
 	heal = heal_buff
 
-func generate(level, item_type):
-	type = item_type
+func generate(level, item_class):
+	character_class = item_class
 	level = clamp(level, 0, 5)
 	var prefix = item_prefix[level][rand_range(0, item_prefix[level].size() - 1)]
-	var suffix = item_names[type][rand_range(0, item_names[type].size() - 1)]
+	var suffix = item_names[character_class][rand_range(0, item_names[character_class].size() - 1)]
 	name = prefix + " " + suffix
 	attack = floor(level * rand_range(level, level * 1.5))
 	attack_range = floor(level * rand_range(level, level * 1.5))
-	accuracy = level
 	heal = 0
-	if type == Game.TYPE.MAGE:
+	if character_class == Game.TYPE.MAGE:
 		heal = floor(1 + level * rand_range(0, level * 2))
+	if Engine.editor_hint:
+		property_list_changed_notify()
 	

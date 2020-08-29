@@ -12,8 +12,9 @@ export(int) var atk
 export(int) var def
 export(int) var atk_range
 export(int) var mov_range
+export(Resource) var item_atk
+export(Resource) var item_def
 
-var is_stats = true
 var abilities
 var control
 var weakness
@@ -21,6 +22,9 @@ var strength
 
 func set_character_class(new_character_class):
 	character_class = new_character_class
+	if item_atk and item_def:
+		item_atk.character_class = new_character_class
+		item_def.character_class = new_character_class
 	emit_signal("class_changed")
 
 func get_character_class():
@@ -41,9 +45,13 @@ func reset_turn():
 	turn_limits.actions = 1
 
 func _ready():
-	pass # Replace with function body.
+	pass
+#	item_atk = Item.new()
+#	item_def = Item.new()
+#	item_atk.generate(Game.level, character_class)
+#	item_def.generate(Game.level, character_class)
 
-func _init(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_range = 1, hp = 10):
+func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_range = 1, hp = 10):
 	character_class = request_class
 	control = request_control
 	self.hp = hp
@@ -52,8 +60,10 @@ func _init(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_
 	self.def = def
 	self.mov_range = mov_range
 	self.atk_range = atk_range
-	items.atk = Item.new()
-	items.def = Item.new()
+	item_atk = Item.new()
+	item_def = Item.new()
+	item_atk.generate(Game.level, character_class)
+	item_def.generate(Game.level, character_class)
 
 func generate(class_stats, request_class, request_control):
 	var default_stats = class_stats.archer
@@ -62,11 +72,11 @@ func generate(class_stats, request_class, request_control):
 		default_stats = class_stats.swordsman
 	elif request_class == Game.TYPE.MAGE:
 		default_stats = class_stats.mage 
-#
-#	items.atk = Item.new()
-#	items.def = Item.new()
 	character_class = default_stats.character_class
-	items.atk.generate(Game.level, character_class)
+	item_atk = Item.new()
+	item_def = Item.new()
+	item_atk.generate(Game.level, character_class)
+	item_def.generate(Game.level, character_class)
 	control = request_control
 	level = Game.level
 	abilities = Game.class_stats.abilities[character_class]
@@ -76,29 +86,8 @@ func generate(class_stats, request_class, request_control):
 	turn_limits.move_distance = default_stats.mov_range
 	turn_limits.actions = 1 # Game.class_stats.actions[type]
 	atk_range = default_stats.atk_range
-	#attack_damage = Game.class_stats.damage[type]	
-	
-#	if control == Game.CONTROL.AI:
-#		match Game.level:
-#			0:
-#				attack_damage = default_stats.atk
-#			1:
-#				attack_damage = default_stats.atk
-#			2:
-#				attack_damage = default_stats.atk
-#			3:
-#				attack_damage = default_stats.atk * 0.8
-#			4:
-#				attack_damage = default_stats.atk * 0.6
-#			5:
-#				attack_damage = default_stats.atk * 0.4
-#			6:
-#				attack_damage = default_stats.atk * 0.3
-#	else: 
 	atk = default_stats.atk
-				
 	def = default_stats.def
-#	heal = default_stats.atk
 	weakness = Game.class_stats.weakness[character_class]
 	strength = Game.class_stats.strength[character_class]
 	name = Game.character_names[rand_range(0, Game.character_names.size() - 1)]
