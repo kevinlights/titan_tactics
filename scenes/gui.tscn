@@ -819,6 +819,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 32, 32 )
 frames = SubResource( 15 )
+frame = 1
 playing = true
 
 [node name="characterselect" type="Control" parent="."]
@@ -924,7 +925,6 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 22 )
 animation = "fighter"
-frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]

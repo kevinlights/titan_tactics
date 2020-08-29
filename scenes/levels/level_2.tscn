@@ -1,13 +1,139 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://gfx/Maps/lv2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://scripts/item.gd" type="Script" id=3]
+[ext_resource path="res://scripts/character_stats.gd" type="Script" id=4]
+[ext_resource path="res://scripts/characterspawner.gd" type="Script" id=5]
+[ext_resource path="res://gfx/mage.png" type="Texture" id=6]
+[ext_resource path="res://gfx/swordsman.png" type="Texture" id=7]
+[ext_resource path="res://gfx/archer.png" type="Texture" id=8]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+character_class = 2
+level = 0
+name = "deadly staff"
+attack = 34.0
+attack_range = 35.0
+defense = 0
+heal = 11.0
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+character_class = 2
+level = 0
+name = "epic wand"
+attack = 26.0
+attack_range = 25.0
+defense = 0
+heal = 16.0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 4 )
+character_class = 2
+name = "Flo"
+level = 7
+hp = 40.0
+max_hp = 38.0
+atk = 3
+def = 1
+atk_range = 4
+mov_range = 3
+item_atk = SubResource( 1 )
+item_def = SubResource( 2 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 3 )
+character_class = 1
+level = 0
+name = "minor bow"
+attack = 1.0
+attack_range = 1.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 3 )
+character_class = 1
+level = 0
+name = "minor bow"
+attack = 1.0
+attack_range = 1.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 4 )
+character_class = 1
+name = "Momo"
+level = 1
+hp = 14.0
+max_hp = 14.0
+atk = 4
+def = 1
+atk_range = 5
+mov_range = 6
+item_atk = SubResource( 4 )
+item_def = SubResource( 5 )
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 3 )
+character_class = 0
+level = 0
+name = "minor cleaver"
+attack = 1.0
+attack_range = 1.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 3 )
+character_class = 0
+level = 0
+name = "minor sword"
+attack = 1.0
+attack_range = 1.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 4 )
+character_class = 0
+name = "Flan"
+level = 1
+hp = 17.0
+max_hp = 16.0
+atk = 4
+def = 1
+atk_range = 1
+mov_range = 7
+item_atk = SubResource( 7 )
+item_def = SubResource( 8 )
 
 [node name="level" type="Node2D"]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
+
+[node name="CharacterSpawner" type="Sprite" parent="map"]
+position = Vector2( 153.032, 104.948 )
+texture = ExtResource( 6 )
+script = ExtResource( 5 )
+stats = SubResource( 3 )
+
+[node name="CharacterSpawner2" type="Sprite" parent="map"]
+position = Vector2( 151.777, 56.4461 )
+texture = ExtResource( 8 )
+script = ExtResource( 5 )
+stats = SubResource( 6 )
+
+[node name="CharacterSpawner3" type="Sprite" parent="map"]
+position = Vector2( 90.3137, 56.8642 )
+texture = ExtResource( 7 )
+script = ExtResource( 5 )
+stats = SubResource( 9 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
