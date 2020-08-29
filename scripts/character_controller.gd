@@ -204,8 +204,11 @@ func copy_stats(spawner):
 
 	
 func from_spawner(character_spawner):
+#	print(character_spawner["Members/stats"])
 	print(character_spawner.stats)
-	character = CharacterStats.new(character_spawner.character_class, character_spawner.control)
+	character = character_spawner.stats.duplicate()
+	print(character)
+	# CharacterStats.new(character_spawner.stats.character_class, character_spawner.stats.control)
 #	character_spawner.stats
 	# reset to max hp when deploying
 	character.hp = character.max_hp
