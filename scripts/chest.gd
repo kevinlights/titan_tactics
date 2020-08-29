@@ -13,6 +13,8 @@ var start
 var start_y = 0
 var ttl = 400
 
+var item_spawner
+
 var item_types = {
 	Game.TYPE.ARCHER: "bow",
 	Game.TYPE.MAGE: "wand",
@@ -34,7 +36,7 @@ func open(type):
 	start = OS.get_ticks_msec()
 	start_y = $drop.position.y
 	empty = true
-	loot.generate(Game.level + 1, type)
+	loot.generate(item_spawner.level, item_spawner.equipment_slot, type)
 	play("open")
 	$open.play()
 	$drop.play(item_types[type])

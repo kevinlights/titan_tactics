@@ -73,11 +73,12 @@ func is_cover_between(start, end):
 			return true
 	return false
 	
-func spawn_chest(x, y, level = 0):
+func spawn_chest(x, y, item_spawner):
 	var chest = load("res://scenes/chest.tscn").instance()
 #	character.init(type, control)
 	chest.teleport(x, y)
 #	chest.level = Game.level + 1
+	chest.item_spawner = item_spawner
 	chest.add_to_group("characters")
 	world_map.add_child(chest)
 	print("Spawned chest")
@@ -142,7 +143,7 @@ func action():
 				if loot:
 					print(loot.name)
 					yield(get_tree().create_timer(1.0), "timeout")
-					gui.loot(get_current().character.items.atk, loot)
+					gui.loot(get_current().character.item_atk, loot)
 		Game.CONTEXT.MOVE:
 			get_current().move(to_world_path(current_path))
 			$path_preview.hide_path()
@@ -187,8 +188,8 @@ func _ready():
 #				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.ARCHER, Game.CONTROL.AI))
 #				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
 #				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")				
-			if tile_id == TILEID.CHEST:
-				var chest = spawn_chest(x, y)
+#			if tile_id == TILEID.CHEST:
+#				var chest = spawn_chest(x, y)
 	gui.get_node("action_menu").connect("attack", self, "_on_attack")
 	gui.get_node("action_menu").connect("recruit", self, "_on_recruit")
 	gui.get_node("action_menu").connect("guard", self, "_on_guard")
@@ -215,7 +216,17 @@ func _ready():
 		select_team()
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
+	call_deferred("spawn_chests")
 
+func spawn_chests():
+	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
+	for chest_spawn in chest_spawns:
+		var chest = spawn_chest(
+			floor(chest_spawn.position.x / Game.cell_size), 
+			floor(chest_spawn.position.y / Game.cell_size),
+			chest_spawn.item_spawner)
+		chest_spawn.hide()
+	
 func spawn_ai_team():
 	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
 	for ai_spawn in ai_spawns:
@@ -406,7 +417,10 @@ func _on_end():
 	advance_turn()
 
 func _accept_loot(item):
-	get_current().character.items.atk = item
+	if item.equipment_slot == Item.SLOT.ATK:
+		get_current().character.item_atk = item
+	else:
+		get_current().character.item_def = item
 	gui.back()
 
 func _destroy_loot():

@@ -11,7 +11,6 @@ var selected = 0
 var current_weapon
 var new_weapon
 
-var weapon_type
 var current_attack
 var new_attack
 
@@ -36,13 +35,12 @@ func set_weapons(current, new):
 func _process(delta):
 	if visible == false:
 		return
-	weapon_type = "sword"
 	current_attack = 1
 	new_attack = 2
 	$current_atk.text = str("+", current_weapon.attack)
 	$new_atk.text = str("+", new_weapon.attack)
-	$weapon_sprite1.frame = atlas[current_weapon.type]
-	$weapon_sprite2.frame = atlas[new_weapon.type]
+	$weapon_sprite1.frame = atlas[current_weapon.character_class]
+	$weapon_sprite2.frame = atlas[new_weapon.character_class]
 	if selected == 0:
 		$yes.text = ">SWITCH"
 		$no.text = " CANCEL"

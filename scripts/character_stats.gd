@@ -54,13 +54,6 @@ func reset_turn():
 	turn_limits.move_distance = mov_range
 	turn_limits.actions = 1
 
-func _ready():
-	pass
-#	item_atk = Item.new()
-#	item_def = Item.new()
-#	item_atk.generate(level, character_class)
-#	item_def.generate(level, character_class)
-
 func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_range = 1, hp = 10):
 	character_class = request_class
 	control = request_control
@@ -72,8 +65,8 @@ func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range =
 	self.atk_range = atk_range
 	item_atk = Item.new()
 	item_def = Item.new()
-	item_atk.generate(level, character_class)
-	item_def.generate(level, character_class)
+	item_atk.generate(level, Item.SLOT.ATK, character_class)
+	item_def.generate(level, Item.SLOT.DEF, character_class)
 
 func generate(class_stats, request_class, request_control, level = 1):
 	var default_stats = class_stats.archer
@@ -85,8 +78,8 @@ func generate(class_stats, request_class, request_control, level = 1):
 	character_class = default_stats.character_class
 	item_atk = Item.new()
 	item_def = Item.new()
-	item_atk.generate(level, character_class)
-	item_def.generate(level, character_class)
+	item_atk.generate(level, Item.SLOT.ATK, character_class)
+	item_def.generate(level, Item.SLOT.DEF, character_class)
 	control = request_control
 	abilities = Game.class_stats.abilities[character_class]
 	max_hp = floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
