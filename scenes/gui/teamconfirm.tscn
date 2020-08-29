@@ -6,7 +6,6 @@
 [ext_resource path="res://scripts/focus.gd" type="Script" id=4]
 [ext_resource path="res://gfx/menu_select.png" type="Texture" id=5]
 
-
 [sub_resource type="ImageTexture" id=1]
 
 [sub_resource type="AtlasTexture" id=2]
@@ -86,7 +85,6 @@ theme = ExtResource( 2 )
 text = "Team OK?"
 align = 1
 valign = 1
-percent_visible = -0.142857
 
 [node name="HSeparator" type="HSeparator" parent="panel/margin/vbox"]
 margin_top = 11.0
@@ -107,7 +105,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/check_map"]
 visible = false
 frames = SubResource( 4 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -129,6 +126,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/edit_team"]
 visible = false
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -148,7 +146,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/start_level"]
 visible = false
 frames = SubResource( 4 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )

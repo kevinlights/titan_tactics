@@ -1,15 +1,33 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/landing.gd" type="Script" id=1]
 [ext_resource path="res://Music/menu_theme.ogg" type="AudioStream" id=2]
 [ext_resource path="res://sfx/UI/click_open.wav" type="AudioStream" id=3]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=4]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=5]
-[ext_resource path="res://gfx/pocket_tactics.png" type="Texture" id=6]
+[ext_resource path="res://gfx/title.png" type="Texture" id=6]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=7]
 [ext_resource path="res://scenes/gui/credits.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gfx/menu_select.png" type="Texture" id=9]
+[ext_resource path="res://scripts/focus.gd" type="Script" id=10]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 8, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="landing" type="Node2D"]
 script = ExtResource( 1 )
@@ -36,12 +54,26 @@ volume_db = -3.5
 [node name="menu" type="TextureRect" parent="."]
 margin_right = 160.0
 margin_bottom = 144.0
-texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="menu"]
+margin_right = 160.0
+margin_bottom = 144.0
+color = Color( 0.0627451, 0.203922, 0.262745, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Sprite" parent="menu/ColorRect"]
+position = Vector2( 80, 40 )
+texture = ExtResource( 6 )
+
 [node name="margin" type="MarginContainer" parent="menu"]
+margin_left = 50.0
 margin_right = 160.0
 margin_bottom = 144.0
 custom_constants/margin_top = 85
@@ -51,53 +83,92 @@ __meta__ = {
 
 [node name="vbox" type="VBoxContainer" parent="menu/margin"]
 margin_top = 85.0
-margin_right = 160.0
+margin_right = 110.0
 margin_bottom = 144.0
 theme = ExtResource( 7 )
 
-[node name="new_game" type="ToolButton" parent="menu/margin/vbox"]
-margin_right = 160.0
-margin_bottom = 9.0
-focus_neighbour_bottom = NodePath("../continue")
-focus_next = NodePath("../continue")
-custom_styles/focus = SubResource( 1 )
-text = "New Game"
-
 [node name="continue" type="ToolButton" parent="menu/margin/vbox"]
-margin_top = 11.0
-margin_right = 160.0
-margin_bottom = 20.0
-focus_neighbour_top = NodePath("../new_game")
+visible = false
+margin_right = 110.0
+margin_bottom = 9.0
+focus_neighbour_bottom = NodePath("../new_game")
+focus_next = NodePath("../new_game")
+custom_styles/focus = SubResource( 2 )
+text = "Continue"
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/continue"]
+visible = false
+frames = SubResource( 5 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( -1, 2 )
+script = ExtResource( 10 )
+
+[node name="new_game" type="ToolButton" parent="menu/margin/vbox"]
+margin_right = 110.0
+margin_bottom = 9.0
+focus_neighbour_top = NodePath("../continue")
 focus_neighbour_bottom = NodePath("../credits")
 focus_next = NodePath("../credits")
-focus_previous = NodePath("../new_game")
-custom_styles/focus = SubResource( 1 )
-text = "Continue"
+focus_previous = NodePath("../continue")
+custom_styles/focus = SubResource( 2 )
+text = "New Game"
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/new_game"]
+visible = false
+frames = SubResource( 5 )
+playing = true
+centered = false
+offset = Vector2( -1, 2 )
+script = ExtResource( 10 )
 
 [node name="credits" type="ToolButton" parent="menu/margin/vbox"]
-margin_top = 22.0
-margin_right = 160.0
-margin_bottom = 31.0
-focus_neighbour_top = NodePath("../continue")
+margin_top = 11.0
+margin_right = 110.0
+margin_bottom = 20.0
+focus_neighbour_top = NodePath("../new_game")
 focus_neighbour_bottom = NodePath("../quit")
 focus_next = NodePath("../quit")
-focus_previous = NodePath("../continue")
-custom_styles/focus = SubResource( 1 )
+focus_previous = NodePath("../new_game")
+custom_styles/focus = SubResource( 2 )
 text = "Credits"
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/credits"]
+visible = false
+frames = SubResource( 5 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( -1, 2 )
+script = ExtResource( 10 )
 
 [node name="quit" type="ToolButton" parent="menu/margin/vbox"]
-margin_top = 33.0
-margin_right = 160.0
-margin_bottom = 42.0
+margin_top = 22.0
+margin_right = 110.0
+margin_bottom = 31.0
 focus_neighbour_top = NodePath("../credits")
 focus_previous = NodePath("../credits")
-custom_styles/focus = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
 text = "Quit"
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/quit"]
+visible = false
+frames = SubResource( 5 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( -1, 2 )
+script = ExtResource( 10 )
 
 [node name="credits" parent="menu" instance=ExtResource( 8 )]
 visible = false
 script = null
-[connection signal="pressed" from="menu/margin/vbox/new_game" to="." method="_on_new_game"]
 [connection signal="pressed" from="menu/margin/vbox/continue" to="." method="_on_continue"]
+[connection signal="pressed" from="menu/margin/vbox/new_game" to="." method="_on_new_game"]
 [connection signal="pressed" from="menu/margin/vbox/credits" to="." method="_on_credits"]
 [connection signal="pressed" from="menu/margin/vbox/quit" to="." method="_on_quit"]
