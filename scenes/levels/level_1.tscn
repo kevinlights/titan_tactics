@@ -42,8 +42,8 @@ hp = 12
 max_hp = 12
 atk = 1
 def = 1
-atk_range = 1
-mov_range = 1
+atk_range = 2
+mov_range = 5
 item_atk = SubResource( 1 )
 item_def = SubResource( 2 )
 
