@@ -110,3 +110,9 @@ func back():
 	for dialog in get_children():
 		if not exempt.has(dialog.name):
 			dialog.hide()
+
+func dialogue(content):
+	active = true
+
+	$dialogue/background/body.set_text(content.text)
+	$dialogue.show()

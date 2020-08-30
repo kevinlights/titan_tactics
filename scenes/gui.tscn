@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -15,15 +15,20 @@
 [ext_resource path="res://fonts/PICO-8 mono.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://scripts/gui/menuhealthbar.gd" type="Script" id=14]
 [ext_resource path="res://scripts/gui/nextturn.gd" type="Script" id=15]
+[ext_resource path="res://gfx/dialogue.png" type="Texture" id=16]
 [ext_resource path="res://scripts/gui/weaponswap.gd" type="Script" id=17]
 [ext_resource path="res://scripts/gui/teamselect.gd" type="Script" id=18]
 [ext_resource path="res://mockups/teamselectmockup.png" type="Texture" id=19]
 [ext_resource path="res://gfx/player.png" type="Texture" id=20]
 [ext_resource path="res://scenes/gui/teamconfirm.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=22]
+[ext_resource path="res://gfx/menu_select.png" type="Texture" id=23]
+[ext_resource path="res://scripts/focus.gd" type="Script" id=24]
 [ext_resource path="res://scripts/gui/levelclear.gd" type="Script" id=25]
 [ext_resource path="res://mockups/winmockup.png" type="Texture" id=26]
 [ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
 [ext_resource path="res://mockups/defeatmockup.png" type="Texture" id=28]
+[ext_resource path="res://scripts/dialogue_body.gd" type="Script" id=29]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=32]
 [ext_resource path="res://sfx/UI/char_select2.wav" type="AudioStream" id=33]
@@ -164,6 +169,22 @@ animations = [ {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
 "name": "fighter",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 8, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=25]
+animations = [ {
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "default",
 "speed": 5.0
 } ]
 
@@ -819,7 +840,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 32, 32 )
 frames = SubResource( 15 )
-frame = 1
 playing = true
 
 [node name="characterselect" type="Control" parent="."]
@@ -925,6 +945,7 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 22 )
 animation = "fighter"
+frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1144,6 +1165,88 @@ text = "YOU WERE
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="dialogue" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="NinePatchRect" parent="dialogue"]
+margin_top = 100.0
+margin_right = 160.0
+margin_bottom = 144.0
+texture = ExtResource( 16 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body" type="Label" parent="dialogue/background"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 155.0
+margin_bottom = 65.0
+text = "Ferme-toé un peu le mâche-patate"
+autowrap = true
+max_lines_visible = 6
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="options" type="VBoxContainer" parent="dialogue/background"]
+visible = false
+margin_left = 6.0
+margin_top = 42.0
+margin_right = 156.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trigger_1" type="ToolButton" parent="dialogue/background/options"]
+margin_right = 150.0
+margin_bottom = 9.0
+text = "trigger 1"
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_1"]
+visible = false
+frames = SubResource( 25 )
+playing = true
+centered = false
+offset = Vector2( -2, 2 )
+script = ExtResource( 24 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="trigger_2" type="ToolButton" parent="dialogue/background/options"]
+margin_top = 11.0
+margin_right = 150.0
+margin_bottom = 20.0
+text = "trigger 2"
+align = 0
+
+[node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_2"]
+visible = false
+frames = SubResource( 25 )
+playing = true
+centered = false
+offset = Vector2( -2, 2 )
+script = ExtResource( 24 )
+__meta__ = {
+"_editor_description_": ""
 }
 
 [node name="sfx" type="Node" parent="."]

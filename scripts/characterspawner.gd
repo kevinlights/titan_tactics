@@ -3,6 +3,8 @@ extends Sprite
 tool
 
 export(Resource) var stats
+export(Resource) var dialogue
+export(Resource) var recruit_dialogue
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
@@ -12,6 +14,10 @@ func _enter_tree():
 			print("create stats object")
 			stats = CharacterStats.new()
 			stats.from_defaults(default_stats, Game.TYPE.ARCHER, Game.CONTROL.AI)
+		if !dialogue:
+			dialogue = Dialogue.new()
+		if !recruit_dialogue:
+			recruit_dialogue = Dialogue.new()
 		stats.connect("class_changed", self, "set_sprite")
 		print(stats.character_class)
 		stats.character_class = Game.TYPE.ARCHER

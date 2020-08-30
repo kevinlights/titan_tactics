@@ -6,29 +6,29 @@
 [ext_resource path="res://gfx/panel.png" type="Texture" id=5]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=6]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id=26]
 
-[sub_resource type="ImageTexture" id=2]
+[sub_resource type="ImageTexture" id=27]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 8, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=25]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=28]
 
-[sub_resource type="ImageTexture" id=7]
+[sub_resource type="ImageTexture" id=29]
 
 [node name="attack" type="Control"]
 anchor_left = 1.0
@@ -83,14 +83,14 @@ margin_bottom = 9.0
 focus_neighbour_bottom = NodePath("../action_2")
 focus_next = NodePath("../action_2")
 theme = ExtResource( 6 )
-custom_styles/focus = SubResource( 1 )
+custom_styles/focus = SubResource( 26 )
 text = "Attack"
-icon = SubResource( 2 )
+icon = SubResource( 27 )
 align = 0
 
 [node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/action_1"]
 visible = false
-frames = SubResource( 5 )
+frames = SubResource( 25 )
 frame = 1
 playing = true
 centered = false
@@ -107,14 +107,14 @@ rect_pivot_offset = Vector2( 13.4933, 1.83694 )
 focus_neighbour_top = NodePath("../action_1")
 focus_previous = NodePath("../action_1")
 theme = ExtResource( 6 )
-custom_styles/focus = SubResource( 6 )
+custom_styles/focus = SubResource( 28 )
 text = "Speak !"
-icon = SubResource( 7 )
+icon = SubResource( 29 )
 align = 0
 
 [node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/action_2"]
 visible = false
-frames = SubResource( 5 )
+frames = SubResource( 25 )
 frame = 1
 playing = true
 centered = false

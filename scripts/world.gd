@@ -238,6 +238,7 @@ func spawn_ai_team():
 		current[Game.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / Game.cell_size), floor(ai_spawn.position.y / Game.cell_size), ai_spawn.stats.character_class, Game.CONTROL.AI))
 		current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
 		current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")
+		current[Game.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
 		world_map.add_child(character)
 		ai_spawn.hide()
 #	print(ai_spawns)
@@ -249,6 +250,9 @@ func select_team():
 		member.reset_turn() # reset actions and moves
 	gui.team_select(Game.team)
 	$select.tile = player_spawns[0]
+
+func _on_dialogue(content):
+	gui.dialogue(content)
 
 func _on_team_select_done():
 	gui.back()

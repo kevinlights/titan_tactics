@@ -8,6 +8,7 @@ signal death
 signal recruited
 signal recruit_failed
 signal done
+signal dialogue
 
 var cell_size = Game.cell_size
 var guarding = false
@@ -20,6 +21,9 @@ var is_loot = false
 var is_dead = false
 var healthbar
 var last_target
+
+var dialogue
+var recruit_dialogue
 
 var movement = {
 	"start_position": Vector2(0, 0),
@@ -55,6 +59,11 @@ func hit(type):
 		healthbar.show()
 	if character.hp <= 0:
 		die()
+	else:
+		if dialogue and dialogue.trigger == Dialogue.TRIGGER.ATTACK:
+			print(dialogue.text)
+			emit_signal("dialogue", dialogue)
+#			gui.dialogue(dialogue)
 
 func pick_random_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -205,17 +214,20 @@ func copy_stats(spawner):
 
 	
 func from_spawner(character_spawner):
-#	print(character_spawner["Members/stats"])
-	print(character_spawner.stats)
 	character = character_spawner.stats #.duplicate()
-	print(character)
-	# CharacterStats.new(character_spawner.stats.character_class, character_spawner.stats.control)
-#	character_spawner.stats
 	# reset to max hp when deploying
 	character.hp = character.max_hp
+	if character_spawner.dialogue and character_spawner.dialogue.trigger != Dialogue.TRIGGER.DISABLED:
+		dialogue = character_spawner.dialogue
+		dialogue.connect("completed", self, "_on_dialogue_compelted")
+	if character_spawner.recruit_dialogue and character_spawner.recruit_dialogue.trigger != Dialogue.TRIGGER.DISABLED:
+		recruit_dialogue = character_spawner.recruit_dialogue
 	select_type()
 	init_common(character_spawner.stats.control)
-	
+
+func _on_dialogue_completed(result):
+	pass
+
 func from_library(team_member):
 	character = team_member
 	# reset to max hp when deploying
