@@ -21,13 +21,17 @@ func play():
 	print("AI taking turn")
 	var enemy = get_nearest_enemy(character.position)
 	if enemy:
+		if enemies_are_stronger(character.position, character):
+			print("AI (" + character.character.name + ") says guard")
+			character.guard()
+			return
 		var distance = character.tile.distance_to(enemy.tile)
 		if distance < character.character.atk_range and character.character.turn_limits.actions > 0 and not world.is_cover_between(character.tile, enemy.tile):
 			print("AI (" + character.character.name + ") says attack")
 			character.attack(enemy)
 			return
 		if character.character.turn_limits.move_distance > 1 and distance > character.character.atk_range:
-			var path = get_path_to(character.tile, enemy.tile, character.character.turn_limits.move_distance)
+			var path = get_path_to(character.tile, enemy.tile, character.character.turn_limits.move_distance, character)
 			if path and path.size() > 1:
 				print("AI (" + character.character.name + ") says move")
 				character.move(path)
@@ -43,8 +47,9 @@ func play():
 		world.advance_turn()
 
 
-func get_path_to(start, end, max_length):
+func get_path_to(start, end, max_length, character):
 	var path = world.pathfinder.find_path(start, end)
+	path = shorten_to_atk_range(path, character)
 	var fixed_path = normalize_path(path, max_length)
 	# prevent landing on a tile that has someone on it
 	while fixed_path.size() > 1 and world.entity_at(fixed_path[fixed_path.size() - 1] / Vector2(Game.cell_size, Game.cell_size)):
@@ -54,7 +59,8 @@ func get_path_to(start, end, max_length):
 func normalize_path(path, max_length):
 	if path.size() == 0:
 		return path
-	path.resize(max_length)
+	if path.size() > max_length:
+		path.resize(max_length)
 	return world.to_world_path(path)
 
 func get_nearest_enemy(position):
@@ -67,4 +73,25 @@ func get_nearest_enemy(position):
 			shortest = distance
 			closest = enemy
 	return closest
-		
+	
+
+func enemies_are_stronger(position, character):
+	var enemies_in_range = 0
+	var stronger_in_range = 0
+	if character.can_recruit():
+		var enemies = world.current[Game.CONTROL.PLAYER]
+		for enemy in enemies:
+			var distance = character.tile.distance_to(enemy.tile)
+			if distance <= enemy.character.atk_range:
+				enemies_in_range += 1
+				if enemy.character.character_class == character.character.weakness:
+					stronger_in_range += 1 
+	return enemies_in_range == stronger_in_range and enemies_in_range > 0
+
+func shorten_to_atk_range(path, character):
+	for pos in range(path.size()):
+		var distance = (path[-1] - path[pos]).length()
+		if distance < character.character.atk_range:
+			path.resize(pos)
+			break
+	return path

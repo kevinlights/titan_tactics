@@ -133,6 +133,8 @@ const character_names = [
 	"Kurt"
 ]
 
+# mage > fighter > archer
+
 const class_stats = {
 	"weakness": {
 		TYPE.FIGHTER: TYPE.MAGE,
