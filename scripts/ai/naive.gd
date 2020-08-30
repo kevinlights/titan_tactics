@@ -21,6 +21,10 @@ func play():
 	print("AI taking turn")
 	var enemy = get_nearest_enemy(character.position)
 	if enemy:
+		if enemies_are_stronger(character.position, character):
+			print("AI (" + character.character.name + ") says guard")
+			character.guard()
+			return
 		var distance = character.tile.distance_to(enemy.tile)
 		if distance < character.character.atk_range and character.character.turn_limits.actions > 0 and not world.is_cover_between(character.tile, enemy.tile):
 			print("AI (" + character.character.name + ") says attack")
@@ -67,4 +71,18 @@ func get_nearest_enemy(position):
 			shortest = distance
 			closest = enemy
 	return closest
-		
+	
+
+func enemies_are_stronger(position, character):
+	var enemies_in_range = 0
+	var stronger_in_range = 0
+	if character.can_recruit():
+		var enemies = world.current[Game.CONTROL.PLAYER]
+		for enemy in enemies:
+			var distance = character.tile.distance_to(enemy.tile)
+			if distance <= enemy.character.atk_range:
+				enemies_in_range += 1
+				if enemy.character.character_class == character.character.weakness:
+					stronger_in_range += 1 
+	return enemies_in_range == stronger_in_range and enemies_in_range > 0
+
