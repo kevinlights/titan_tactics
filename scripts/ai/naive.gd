@@ -42,15 +42,6 @@ func play():
 		print("AI (" + character.character.name + ") says wait (nothing to do)")
 		world.advance_turn()
 
-func get_path_length(points):
-	if points.empty():
-		return 0
-	var last = points[0]
-	var length = 0
-	for point in points:
-		length += point.distance_to(last)
-		last = point
-	return length
 
 func get_path_to(start, end, max_length):
 	var path = world.pathfinder.find_path(start, end)
@@ -63,7 +54,7 @@ func get_path_to(start, end, max_length):
 func normalize_path(path, max_length):
 	if path.size() == 0:
 		return path
-	path.resize(path.size() - 1)
+	path.resize(max_length)
 	return world.to_world_path(path)
 
 func get_nearest_enemy(position):
