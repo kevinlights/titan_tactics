@@ -21,6 +21,11 @@ func play():
 	print("AI taking turn")
 	var enemy = get_nearest_enemy(character.position)
 	if enemy:
+		print("does it have heal? : " + str(character.character.has_ability(Game.ABILITY.HEAL)))
+		if character.can_recruit() and character.character.has_ability(Game.ABILITY.HEAL):
+			print("AI (" + character.character.name + ") says heal")
+			character.heal()
+			return
 		if enemies_are_stronger(character.position, character):
 			print("AI (" + character.character.name + ") says guard")
 			character.guard()
