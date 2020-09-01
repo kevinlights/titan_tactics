@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
 [ext_resource path="res://mockups/defeatmockup.png" type="Texture" id=28]
 [ext_resource path="res://scripts/dialogue_body.gd" type="Script" id=29]
+[ext_resource path="res://scripts/gui/dialogue.gd" type="Script" id=30]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=32]
 [ext_resource path="res://sfx/UI/char_select2.wav" type="AudioStream" id=33]
@@ -840,6 +841,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 32, 32 )
 frames = SubResource( 15 )
+frame = 1
 playing = true
 
 [node name="characterselect" type="Control" parent="."]
@@ -945,7 +947,6 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 22 )
 animation = "fighter"
-frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1174,6 +1175,7 @@ anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 22 )
+script = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1223,6 +1225,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_1"]
 visible = false
 frames = SubResource( 25 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1241,6 +1244,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_2"]
 visible = false
 frames = SubResource( 25 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )

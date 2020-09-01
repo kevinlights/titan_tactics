@@ -22,19 +22,19 @@ region = Rect2( 0, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
-region = Rect2( 40, 0, 20, 20 )
+region = Rect2( 80, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 40, 20, 20, 20 )
+region = Rect2( 80, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 80, 0, 20, 20 )
+region = Rect2( 40, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 80, 20, 20, 20 )
+region = Rect2( 40, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
@@ -61,12 +61,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "attack",
+"name": "heal",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "heal",
+"name": "attack",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ) ],
@@ -88,7 +88,7 @@ script = ExtResource( 2 )
 [node name="path_preview" type="Node2D" parent="."]
 position = Vector2( 8, 8 )
 script = ExtResource( 11 )
-good_color = Color( 0.623529, 0.870588, 0.576471, 1 )
+good_color = Color( 0.917647, 1, 0.866667, 1 )
 bad_color = Color( 0.0627451, 0.203922, 0.262745, 1 )
 
 [node name="path" type="Line2D" parent="path_preview"]

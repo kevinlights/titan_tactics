@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -24,19 +24,19 @@ heal = 0
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 6 )
-character_class = 2
-equipment_slot = 0
+character_class = 1
+equipment_slot = 1
 level = 1
-name = "minor staff"
+name = "minor bow"
 attack = 0
 attack_range = 0
-defense = 0
+defense = 1.0
 heal = 0
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 5 )
 character_class = 1
-name = ""
+name = "Pino"
 level = 1
 hp = 12
 max_hp = 12
@@ -68,6 +68,58 @@ script = ExtResource( 8 )
 equipment_slot = 0
 level = 2
 
+[sub_resource type="Resource" id=7]
+script = ExtResource( 6 )
+character_class = 1
+equipment_slot = 0
+level = 1
+name = "minor bow"
+attack = 1.0
+attack_range = 1.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 6 )
+character_class = 1
+equipment_slot = 1
+level = 1
+name = "minor bow"
+attack = 0
+attack_range = 0
+defense = 1.0
+heal = 0
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 5 )
+character_class = 1
+name = "Petr"
+level = 1
+hp = 13.0
+max_hp = 13.0
+atk = 4
+def = 1
+atk_range = 5
+mov_range = 6
+item_atk = SubResource( 7 )
+item_def = SubResource( 8 )
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 10 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 10 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
 [node name="level" type="Node2D"]
 __meta__ = {
 "_editor_description_": "A LUSH FOREST
@@ -93,19 +145,19 @@ stats = SubResource( 3 )
 dialogue = SubResource( 4 )
 recruit_dialogue = SubResource( 5 )
 
-[node name="CharacterSpawner2" type="Sprite" parent="map"]
-position = Vector2( 136, 184 )
-texture = ExtResource( 4 )
-script = ExtResource( 3 )
-stats = SubResource( 3 )
-dialogue = SubResource( 4 )
-recruit_dialogue = SubResource( 5 )
-
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 184, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 6 )
+
+[node name="CharacterSpawner2" type="Sprite" parent="map"]
+position = Vector2( 134.791, 181.753 )
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+stats = SubResource( 9 )
+dialogue = SubResource( 10 )
+recruit_dialogue = SubResource( 11 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 65.502, 42.1491 )

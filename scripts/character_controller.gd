@@ -24,6 +24,7 @@ var last_target
 
 var dialogue
 var recruit_dialogue
+var dialogue_used = false
 
 var movement = {
 	"start_position": Vector2(0, 0),
@@ -60,7 +61,8 @@ func hit(type):
 	if character.hp <= 0:
 		die()
 	else:
-		if dialogue and dialogue.trigger == Dialogue.TRIGGER.ATTACK:
+		if dialogue and dialogue.trigger == Dialogue.TRIGGER.ATTACK and not dialogue_used:
+			dialogue_used = true
 			print(dialogue.text)
 			emit_signal("dialogue", dialogue)
 #			gui.dialogue(dialogue)
@@ -160,7 +162,7 @@ func attack_complete():
 	emit_signal("idle")
 
 func move(target_path:PoolVector2Array):
-	if movement.moving:
+	if movement.moving or target_path.size() == 0:
 		return
 	path = target_path
 	movement.start_time = OS.get_ticks_msec()
@@ -265,8 +267,8 @@ func init_common(control):
 	healthbar.position.x = 0
 	healthbar.position.y = -5
 	healthbar.set_value(character.hp, character.max_hp)
-	if control == Game.CONTROL.PLAYER:
-		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
+#	if control == Game.CONTROL.PLAYER:
+#		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
 	healthbar.hide()
 	add_child(healthbar)
 	

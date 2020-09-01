@@ -251,7 +251,13 @@ func select_team():
 	gui.team_select(Game.team)
 	$select.tile = player_spawns[0]
 
+func _on_dialogue_complete(content):
+	gui.back()
+	$select.enable()
+
 func _on_dialogue(content):
+	$select.disable()
+	content.connect("completed", self, "_on_dialogue_complete")
 	gui.dialogue(content)
 
 func _on_team_select_done():

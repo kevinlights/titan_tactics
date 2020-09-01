@@ -60,7 +60,7 @@ func error(message):
 	$sfx/denied.play()
 
 func stats(friendly, enemy):
-	if $healthpage.visible:
+	if $healthpage.visible or modal:
 		return
 	$stats.set_entities(friendly, enemy)
 	$stats.show()
@@ -71,10 +71,11 @@ func loot(current, new):
 	$weaponswap.show()
 
 func health(friendly, enemy):
-	print(enemy.character.hp)
-	print(enemy.character.max_hp)
-	$healthpage.set_entities(friendly.character, enemy.character)
-	$healthpage.show()
+	if !modal:
+		print(enemy.character.hp)
+		print(enemy.character.max_hp)
+		$healthpage.set_entities(friendly.character, enemy.character)
+		$healthpage.show()
 
 func team_confirm():
 	active = true
@@ -112,7 +113,8 @@ func back():
 			dialog.hide()
 
 func dialogue(content):
+	back()
+	modal = true
 	active = true
-
-	$dialogue/background/body.set_text(content.text)
+	$dialogue.set_text(content)
 	$dialogue.show()
