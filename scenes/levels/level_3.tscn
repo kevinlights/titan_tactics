@@ -1,41 +1,259 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=1]
 [ext_resource path="res://gfx/Maps/lv3.png" type="Texture" id=2]
 [ext_resource path="res://scripts/item_spawner.gd" type="Script" id=3]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=4]
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=5]
+[ext_resource path="res://scripts/characterspawner.gd" type="Script" id=6]
+[ext_resource path="res://scripts/item.gd" type="Script" id=7]
+[ext_resource path="res://scripts/character_stats.gd" type="Script" id=8]
+[ext_resource path="res://scripts/dialogue.gd" type="Script" id=9]
+[ext_resource path="res://gfx/archer.png" type="Texture" id=10]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
 equipment_slot = 0
+level = 4
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 4
+name = "strong bow"
+attack = 16.0
+attack_range = 19.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 4
+name = "strong bow"
+attack = 0
+attack_range = 0
+defense = 17.0
+heal = 0
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 8 )
+character_class = 1
+name = "Ani"
+level = 4
+hp = 26.0
+max_hp = 26.0
+atk = 4
+def = 1
+atk_range = 5
+mov_range = 6
+item_atk = SubResource( 2 )
+item_def = SubResource( 3 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 9 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 9 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
 level = 3
+name = "sharp bow"
+attack = 12.0
+attack_range = 13.0
+defense = 0
+heal = 0
 
-[sub_resource type="NavigationPolygon" id=2]
+[sub_resource type="Resource" id=8]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 3
+name = "sharp bow"
+attack = 0
+attack_range = 0
+defense = 12.0
+heal = 0
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 8 )
+character_class = 1
+name = "Alf"
+level = 3
+hp = 22.0
+max_hp = 23.0
+atk = 4
+def = 1
+atk_range = 5
+mov_range = 6
+item_atk = SubResource( 7 )
+item_def = SubResource( 8 )
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 9 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 9 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 3 )
+equipment_slot = 1
+level = 4
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 4
+name = "shiny bow"
+attack = 16.0
+attack_range = 23.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 4
+name = "strong bow"
+attack = 0
+attack_range = 0
+defense = 19.0
+heal = 0
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 8 )
+character_class = 1
+name = "Mikk"
+level = 4
+hp = 27.0
+max_hp = 29.0
+atk = 4
+def = 1
+atk_range = 5
+mov_range = 6
+item_atk = SubResource( 13 )
+item_def = SubResource( 14 )
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 9 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 9 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 1
+name = "minor bow"
+attack = 1.0
+attack_range = 1.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 1
+name = "minor bow"
+attack = 0
+attack_range = 0
+defense = 1.0
+heal = 0
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 8 )
+character_class = 1
+name = "Kit"
+level = 1
+hp = 13.0
+max_hp = 13.0
+atk = 4
+def = 1
+atk_range = 5
+mov_range = 6
+item_atk = SubResource( 18 )
+item_def = SubResource( 19 )
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 9 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 9 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="NavigationPolygon" id=23]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=3]
+[sub_resource type="NavigationPolygon" id=24]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=4]
+[sub_resource type="NavigationPolygon" id=25]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=5]
+[sub_resource type="NavigationPolygon" id=26]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=6]
+[sub_resource type="NavigationPolygon" id=27]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=7]
+[sub_resource type="NavigationPolygon" id=28]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=8]
+[sub_resource type="TileSet" id=29]
 0/name = "not passable"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -44,6 +262,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
 1/name = "cover"
@@ -54,6 +276,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
 2/name = "player spawn"
@@ -64,7 +290,11 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 2 )
+2/navigation = SubResource( 23 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
 3/name = "enemy spawn"
@@ -75,7 +305,11 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 3 )
+3/navigation = SubResource( 24 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
 3/shapes = [  ]
 3/z_index = 0
 4/name = "enemy spawn"
@@ -86,7 +320,11 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 4 )
+4/navigation = SubResource( 25 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
 5/name = "enemy spawn"
@@ -97,7 +335,11 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 5 )
+5/navigation = SubResource( 26 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
 5/shapes = [  ]
 5/z_index = 0
 6/name = "destructible"
@@ -108,6 +350,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
 7/name = "passable"
@@ -118,7 +364,11 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 6 )
+7/navigation = SubResource( 27 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
 7/shapes = [  ]
 7/z_index = 0
 8/name = "chest"
@@ -129,7 +379,11 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 7 )
+8/navigation = SubResource( 28 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
 8/shapes = [  ]
 8/z_index = 0
 
@@ -140,16 +394,55 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
-position = Vector2( 136.905, 135.543 )
+position = Vector2( 168.905, 167.543 )
 texture = ExtResource( 5 )
 script = ExtResource( 4 )
 item_spawner = SubResource( 1 )
 
+[node name="CharacterSpawner" type="Sprite" parent="map"]
+position = Vector2( 136, 200 )
+texture = ExtResource( 10 )
+script = ExtResource( 6 )
+stats = SubResource( 4 )
+dialogue = SubResource( 5 )
+recruit_dialogue = SubResource( 6 )
+
+[node name="CharacterSpawner2" type="Sprite" parent="map"]
+position = Vector2( 184, 136 )
+texture = ExtResource( 10 )
+script = ExtResource( 6 )
+stats = SubResource( 9 )
+dialogue = SubResource( 10 )
+recruit_dialogue = SubResource( 11 )
+
+[node name="ChestSpawner2" type="Sprite" parent="map"]
+position = Vector2( 88, 72 )
+texture = ExtResource( 5 )
+script = ExtResource( 4 )
+item_spawner = SubResource( 12 )
+
+[node name="CharacterSpawner3" type="Sprite" parent="map"]
+position = Vector2( 72, 136 )
+texture = ExtResource( 10 )
+script = ExtResource( 6 )
+stats = SubResource( 15 )
+dialogue = SubResource( 16 )
+recruit_dialogue = SubResource( 17 )
+
+[node name="CharacterSpawner4" type="Sprite" parent="map"]
+position = Vector2( 200, 40 )
+texture = ExtResource( 10 )
+script = ExtResource( 6 )
+stats = SubResource( 20 )
+dialogue = SubResource( 21 )
+recruit_dialogue = SubResource( 22 )
+
 [node name="navigation" type="Navigation2D" parent="."]
+position = Vector2( 0, 0.5 )
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
-tile_set = SubResource( 8 )
+tile_set = SubResource( 29 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1
-tile_data = PoolIntArray( 0, 7, 0, 1, 7, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 6, 7, 0, 7, 7, 0, 8, 7, 0, 9, 7, 0, 10, 7, 0, 11, 7, 0, 65536, 7, 0, 65537, 7, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 8, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 2, 0, 65546, 2, 0, 65547, 7, 0, 131072, 7, 0, 131073, 7, 0, 131074, 1, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131078, 7, 0, 131079, 7, 0, 131080, 7, 0, 131081, 2, 0, 131082, 2, 0, 131083, 7, 0, 196608, 7, 0, 196609, 7, 0, 196610, 1, 0, 196611, 1, 0, 196612, 7, 0, 196613, 1, 0, 196614, 7, 0, 196615, 1, 0, 196616, 1, 0, 196617, 7, 0, 196618, 7, 0, 196619, 7, 0, 262144, 7, 0, 262145, 7, 0, 262146, 7, 0, 262147, 1, 0, 262148, 7, 0, 262149, 7, 0, 262150, 7, 0, 262151, 1, 0, 262152, 7, 0, 262153, 7, 0, 262154, 1, 0, 262155, 7, 0, 327680, 7, 0, 327681, 1, 0, 327682, 7, 0, 327683, 1, 0, 327684, 1, 0, 327685, 7, 0, 327686, 1, 0, 327687, 1, 0, 327688, 7, 0, 327689, 7, 0, 327690, 1, 0, 327691, 7, 0, 393216, 7, 0, 393217, 1, 0, 393218, 7, 0, 393219, 7, 0, 393220, 7, 0, 393221, 5, 0, 393222, 7, 0, 393223, 7, 0, 393224, 7, 0, 393225, 7, 0, 393226, 1, 0, 393227, 7, 0, 458752, 7, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 7, 0, 458757, 7, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 7, 0, 524288, 7, 0, 524289, 7, 0, 524290, 7, 0, 524291, 1, 0, 524292, 7, 0, 524293, 7, 0, 524294, 4, 0, 524295, 7, 0, 524296, 8, 0, 524297, 1, 0, 524298, 1, 0, 524299, 7, 0, 589824, 7, 0, 589825, 7, 0, 589826, 0, 0, 589827, 1, 0, 589828, 7, 0, 589829, 7, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 7, 0, 589835, 7, 0, 655360, 7, 0, 655361, 7, 0, 655362, 7, 0, 655363, 7, 0, 655364, 5, 0, 655365, 7, 0, 655366, 7, 0, 655367, 3, 0, 655368, 7, 0, 655369, 7, 0, 655370, 7, 0, 655371, 7, 0, 720896, 7, 0, 720897, 0, 0, 720898, 7, 0, 720899, 1, 0, 720900, 7, 0, 720901, 7, 0, 720902, 7, 0, 720903, 0, 0, 720904, 1, 0, 720905, 7, 0, 720906, 1, 0, 720907, 1, 0 )
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 65549, 1, 0, 65550, 1, 0, 65551, 1, 0, 131072, 7, 0, 131073, 7, 0, 131074, 1, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131078, 2, 0, 131079, 2, 0, 131080, 2, 0, 131081, 1, 0, 131082, 1, 0, 131083, 7, 0, 131084, 7, 0, 131085, 1, 0, 131086, 7, 0, 131087, 1, 0, 196608, 7, 0, 196609, 1, 0, 196610, 7, 0, 196611, 7, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 2, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 7, 0, 196620, 7, 0, 196621, 7, 0, 196622, 1, 0, 196623, 7, 0, 262144, 1, 0, 262145, 7, 0, 262146, 1, 0, 262147, 7, 0, 262148, 1, 0, 262149, 7, 0, 262150, 7, 0, 262151, 7, 0, 262152, 7, 0, 262153, 7, 0, 262154, 7, 0, 262155, 7, 0, 262156, 7, 0, 262157, 7, 0, 262158, 0, 0, 262159, 7, 0, 327680, 7, 0, 327681, 7, 0, 327682, 1, 0, 327683, 7, 0, 327684, 1, 0, 327685, 1, 0, 327686, 7, 0, 327687, 1, 0, 327688, 7, 0, 327689, 1, 0, 327690, 1, 0, 327691, 7, 0, 327692, 7, 0, 327693, 1, 0, 327694, 7, 0, 327695, 7, 0, 393216, 7, 0, 393217, 1, 0, 393218, 1, 0, 393219, 7, 0, 393220, 7, 0, 393221, 1, 0, 393222, 7, 0, 393223, 7, 0, 393224, 7, 0, 393225, 1, 0, 393226, 7, 0, 393227, 7, 0, 393228, 1, 0, 393229, 1, 0, 393230, 7, 0, 393231, 1, 0, 458752, 7, 0, 458753, 7, 0, 458754, 7, 0, 458755, 1, 0, 458756, 7, 0, 458757, 1, 0, 458758, 1, 0, 458759, 7, 0, 458760, 1, 0, 458761, 1, 0, 458762, 7, 0, 458763, 7, 0, 458764, 1, 0, 458765, 7, 0, 458766, 1, 0, 458767, 7, 0, 524288, 7, 0, 524289, 7, 0, 524290, 7, 0, 524291, 1, 0, 524292, 7, 0, 524293, 7, 0, 524294, 7, 0, 524295, 7, 0, 524296, 7, 0, 524297, 7, 0, 524298, 7, 0, 524299, 7, 0, 524300, 1, 0, 524301, 7, 0, 524302, 7, 0, 524303, 7, 0, 589824, 7, 0, 589825, 7, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 7, 0, 589831, 7, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 7, 0, 589838, 7, 0, 589839, 7, 0, 655360, 7, 0, 655361, 1, 0, 655362, 7, 0, 655363, 7, 0, 655364, 7, 0, 655365, 1, 0, 655366, 7, 0, 655367, 7, 0, 655368, 7, 0, 655369, 7, 0, 655370, 7, 0, 655371, 1, 0, 655372, 7, 0, 655373, 1, 0, 655374, 7, 0, 655375, 7, 0, 720896, 7, 0, 720897, 0, 0, 720898, 7, 0, 720899, 0, 0, 720900, 7, 0, 720901, 1, 0, 720902, 7, 0, 720903, 7, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 7, 0, 720910, 7, 0, 720911, 7, 0, 786432, 7, 0, 786433, 1, 0, 786434, 7, 0, 786435, 7, 0, 786436, 7, 0, 786437, 7, 0, 786438, 7, 0, 786439, 7, 0, 786440, 7, 0, 786441, 7, 0, 786442, 7, 0, 786443, 7, 0, 786444, 7, 0, 786445, 1, 0, 786446, 7, 0, 786447, 1, 0, 851968, 1, 0, 851969, 1, 0, 851970, 7, 0, 851971, 7, 0, 851972, 7, 0, 851973, 7, 0, 851974, 0, 0, 851975, 7, 0, 851976, 7, 0, 851977, 7, 0, 851978, 7, 0, 851979, 7, 0, 851980, 1, 0, 851981, 7, 0, 851982, 7, 0, 851983, 7, 0, 917504, 1, 0, 917505, 1, 0, 917506, 1, 0, 917507, 1, 0, 917508, 7, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 7, 0, 917517, 7, 0, 917518, 1, 0, 917519, 7, 0, 983040, 1, 0, 983041, 1, 0, 983042, 1, 0, 983043, 1, 0, 983044, 1, 0, 983045, 7, 0, 983046, 7, 0, 983047, 7, 0, 983048, 7, 0, 983049, 7, 0, 983050, 7, 0, 983051, 7, 0, 983052, 7, 0, 983053, 7, 0, 983054, 7, 0, 983055, 7, 0 )
