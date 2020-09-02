@@ -85,6 +85,8 @@ __meta__ = {
 margin_top = 102.0
 margin_right = 130.0
 margin_bottom = 111.0
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
 text = "ok!"
 
 [node name="Node2D" type="Node2D" parent="."]

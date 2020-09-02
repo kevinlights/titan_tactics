@@ -100,3 +100,10 @@ func shorten_to_atk_range(path, character):
 			path.resize(pos)
 			break
 	return path
+	
+func get_weakest_ally(i_am):
+	for ally in characters:
+		if ally != i_am:
+			var distance = i_am.tile.distance_to(ally.tile)
+			print(distance)
+
