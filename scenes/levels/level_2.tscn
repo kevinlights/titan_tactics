@@ -95,8 +95,8 @@ script = ExtResource( 4 )
 character_class = 2
 name = "Cyrus"
 level = 2
-hp = 15.0
-max_hp = 14.0
+hp = 0
+max_hp = 0
 atk = 3
 def = 1
 atk_range = 4
@@ -217,19 +217,15 @@ item_spawner = SubResource( 16 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 192, 144 )
-frame = 0
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 96, 144 )
-frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 144, 144 )
-frame = 0
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 32, 144 )
-frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
