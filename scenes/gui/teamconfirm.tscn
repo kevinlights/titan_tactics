@@ -48,9 +48,9 @@ __meta__ = {
 }
 
 [node name="background" type="NinePatchRect" parent="panel"]
-margin_left = 1.0
+margin_left = 2.0
 margin_top = -1.0
-margin_right = 77.0
+margin_right = 75.0
 margin_bottom = 55.0
 texture = ExtResource( 3 )
 patch_margin_left = 5
@@ -76,7 +76,7 @@ __meta__ = {
 [node name="HSeparator" type="HSeparator" parent="panel"]
 margin_left = 3.0
 margin_top = 14.0
-margin_right = 77.0
+margin_right = 76.0
 margin_bottom = 18.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -101,7 +101,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, 1 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -128,6 +127,7 @@ __meta__ = {
 visible = false
 position = Vector2( 1, 1 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -152,7 +152,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, 1 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
