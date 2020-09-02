@@ -25,10 +25,12 @@ func _on_new_game():
 	_on_continue()
 
 func _on_close_credits():
+	$sfx/select.play()	
 	$menu/credits.hide()
 	$menu/margin/vbox/credits.grab_focus()
 
 func _on_credits():
+	$sfx/select.play()
 	$menu/credits.show() # ("show")
 	$menu/credits/margin/vbox/ok.grab_focus()
 
@@ -36,5 +38,7 @@ func _on_credits():
 #		$menu/credits.call_deferred("hide")
 
 func _on_quit():
-	pass
+	$sfx/select.play()
+	yield(get_tree().create_timer(0.25), "timeout")
+	get_tree().quit()
 

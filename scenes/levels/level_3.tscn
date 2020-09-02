@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=1]
 [ext_resource path="res://gfx/Maps/lv3.png" type="Texture" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://scripts/dialogue.gd" type="Script" id=9]
 [ext_resource path="res://gfx/archer.png" type="Texture" id=10]
 [ext_resource path="res://gfx/mage.png" type="Texture" id=11]
+[ext_resource path="res://gfx/swordsman.png" type="Texture" id=12]
+[ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
@@ -23,33 +26,34 @@ character_class = 2
 equipment_slot = 0
 level = 4
 name = "shiny staff"
-attack = 17.0
-attack_range = 16.0
+attack = 20.0
+attack_range = 18.0
 defense = 0
-heal = 10.0
+heal = 23.0
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 7 )
 character_class = 2
 equipment_slot = 0
 level = 4
-name = "strong wand"
+name = "strong staff"
 attack = 0
 attack_range = 0
-defense = 21.0
-heal = 10.0
+defense = 16.0
+heal = 13.0
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 8 )
 character_class = 2
-name = "Petr"
+name = "Malik"
 level = 4
-hp = 0
-max_hp = 0
+hp = 14
+max_hp = 14
 atk = 3
 def = 1
 atk_range = 4
 mov_range = 3
+heal = 4
 item_atk = SubResource( 2 )
 item_def = SubResource( 3 )
 
@@ -74,9 +78,9 @@ script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
 level = 3
-name = "sharp bow"
-attack = 12.0
-attack_range = 13.0
+name = "steel bow"
+attack = 11.0
+attack_range = 11.0
 defense = 0
 heal = 0
 
@@ -85,7 +89,7 @@ script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
 level = 3
-name = "sharp bow"
+name = "steel bow"
 attack = 0
 attack_range = 0
 defense = 12.0
@@ -94,14 +98,15 @@ heal = 0
 [sub_resource type="Resource" id=9]
 script = ExtResource( 8 )
 character_class = 1
-name = "Alf"
+name = "Flan"
 level = 3
-hp = 0
-max_hp = 0
+hp = 15
+max_hp = 16
 atk = 4
 def = 1
 atk_range = 5
 mov_range = 6
+heal = 0
 item_atk = SubResource( 7 )
 item_def = SubResource( 8 )
 
@@ -128,37 +133,38 @@ level = 4
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 7 )
-character_class = 1
+character_class = 0
 equipment_slot = 0
 level = 4
-name = "shiny bow"
-attack = 16.0
+name = "strong sword"
+attack = 20.0
 attack_range = 23.0
 defense = 0
 heal = 0
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 7 )
-character_class = 1
+character_class = 0
 equipment_slot = 0
 level = 4
-name = "strong bow"
+name = "shiny cleaver"
 attack = 0
 attack_range = 0
-defense = 19.0
+defense = 23.0
 heal = 0
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 8 )
-character_class = 1
-name = "Mikk"
+character_class = 0
+name = "Jason"
 level = 4
-hp = 22
-max_hp = 22
+hp = 11
+max_hp = 10
 atk = 4
 def = 1
-atk_range = 5
-mov_range = 6
+atk_range = 1
+mov_range = 7
+heal = 0
 item_atk = SubResource( 13 )
 item_def = SubResource( 14 )
 
@@ -180,37 +186,38 @@ result = 0
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 7 )
-character_class = 1
+character_class = 0
 equipment_slot = 0
-level = 1
-name = "minor bow"
-attack = 1.0
-attack_range = 1.0
+level = 3
+name = "steel cleaver"
+attack = 13.0
+attack_range = 9.0
 defense = 0
 heal = 0
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 7 )
-character_class = 1
+character_class = 0
 equipment_slot = 0
-level = 1
-name = "minor bow"
+level = 3
+name = "steel cleaver"
 attack = 0
 attack_range = 0
-defense = 1.0
+defense = 11.0
 heal = 0
 
 [sub_resource type="Resource" id=20]
 script = ExtResource( 8 )
-character_class = 1
-name = "Kit"
-level = 1
-hp = 0
-max_hp = 0
+character_class = 0
+name = "Tim"
+level = 3
+hp = 27.0
+max_hp = 27.0
 atk = 4
 def = 1
-atk_range = 5
-mov_range = 6
+atk_range = 1
+mov_range = 7
+heal = 0
 item_atk = SubResource( 18 )
 item_def = SubResource( 19 )
 
@@ -263,6 +270,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
 1/name = "cover"
@@ -273,6 +284,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
 2/name = "player spawn"
@@ -284,6 +299,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
 2/navigation = SubResource( 23 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
 3/name = "enemy spawn"
@@ -295,6 +314,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
 3/navigation = SubResource( 24 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
 3/shapes = [  ]
 3/z_index = 0
 4/name = "enemy spawn"
@@ -306,6 +329,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
 4/navigation = SubResource( 25 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
 5/name = "enemy spawn"
@@ -317,6 +344,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
 5/navigation = SubResource( 26 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
 5/shapes = [  ]
 5/z_index = 0
 6/name = "destructible"
@@ -327,6 +358,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
 7/name = "passable"
@@ -338,6 +373,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
 7/navigation = SubResource( 27 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
 7/shapes = [  ]
 7/z_index = 0
 8/name = "chest"
@@ -349,6 +388,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
 8/navigation = SubResource( 28 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
 8/shapes = [  ]
 8/z_index = 0
 
@@ -388,19 +431,27 @@ item_spawner = SubResource( 12 )
 
 [node name="CharacterSpawner3" type="Sprite" parent="map"]
 position = Vector2( 72, 136 )
-texture = ExtResource( 10 )
+texture = ExtResource( 12 )
 script = ExtResource( 6 )
 stats = SubResource( 15 )
 dialogue = SubResource( 16 )
 recruit_dialogue = SubResource( 17 )
 
 [node name="CharacterSpawner4" type="Sprite" parent="map"]
-position = Vector2( 200, 40 )
-texture = ExtResource( 10 )
+position = Vector2( 136, 168 )
+texture = ExtResource( 12 )
 script = ExtResource( 6 )
 stats = SubResource( 20 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
+
+[node name="Water2" parent="map" instance=ExtResource( 13 )]
+position = Vector2( 48, 176 )
+frame = 1
+
+[node name="Water 1" parent="map" instance=ExtResource( 14 )]
+position = Vector2( 16, 176 )
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 0, 0.5 )
