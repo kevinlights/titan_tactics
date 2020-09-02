@@ -100,6 +100,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/continue"]
 visible = false
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -119,7 +120,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/new_game"]
 visible = false
 frames = SubResource( 4 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -140,6 +140,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/credits"]
 visible = false
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -158,6 +159,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/quit"]
 visible = false
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
