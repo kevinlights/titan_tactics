@@ -75,28 +75,28 @@ equipment_slot = 0
 level = 2
 name = "iron wand"
 attack = 5.0
-attack_range = 4.0
+attack_range = 5.0
 defense = 0
-heal = 6.0
+heal = 7.0
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 3 )
 character_class = 2
 equipment_slot = 0
 level = 2
-name = "forged wand"
+name = "iron wand"
 attack = 0
 attack_range = 0
 defense = 5.0
-heal = 6.0
+heal = 8.0
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 4 )
 character_class = 2
-name = "Yava"
+name = "Cyrus"
 level = 2
-hp = 16.0
-max_hp = 15.0
+hp = 15.0
+max_hp = 14.0
 atk = 3
 def = 1
 atk_range = 4
@@ -217,15 +217,19 @@ item_spawner = SubResource( 16 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 192, 144 )
+frame = 0
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 96, 144 )
+frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 144, 144 )
+frame = 0
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 32, 144 )
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 

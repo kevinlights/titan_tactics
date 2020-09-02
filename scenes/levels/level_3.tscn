@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=1]
 [ext_resource path="res://gfx/Maps/lv3.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://gfx/archer.png" type="Texture" id=10]
 [ext_resource path="res://gfx/mage.png" type="Texture" id=11]
 [ext_resource path="res://gfx/swordsman.png" type="Texture" id=12]
+[ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
@@ -25,28 +27,28 @@ equipment_slot = 0
 level = 4
 name = "shiny staff"
 attack = 20.0
-attack_range = 23.0
+attack_range = 18.0
 defense = 0
-heal = 3.0
+heal = 23.0
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 7 )
 character_class = 2
 equipment_slot = 0
 level = 4
-name = "strong wand"
+name = "strong staff"
 attack = 0
 attack_range = 0
 defense = 16.0
-heal = 12.0
+heal = 13.0
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 8 )
 character_class = 2
-name = "Nugat"
+name = "Malik"
 level = 4
-hp = 26.0
-max_hp = 23.0
+hp = 22.0
+max_hp = 26.0
 atk = 3
 def = 1
 atk_range = 4
@@ -76,7 +78,7 @@ script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
 level = 3
-name = "steel bow"
+name = "sharp bow"
 attack = 12.0
 attack_range = 11.0
 defense = 0
@@ -87,7 +89,7 @@ script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
 level = 3
-name = "steel bow"
+name = "sharp bow"
 attack = 0
 attack_range = 0
 defense = 10.0
@@ -96,10 +98,10 @@ heal = 0
 [sub_resource type="Resource" id=9]
 script = ExtResource( 8 )
 character_class = 1
-name = "Alf"
+name = "Edd"
 level = 3
 hp = 21.0
-max_hp = 23.0
+max_hp = 24.0
 atk = 4
 def = 1
 atk_range = 5
@@ -134,9 +136,9 @@ script = ExtResource( 7 )
 character_class = 0
 equipment_slot = 0
 level = 4
-name = "strong knife"
-attack = 23.0
-attack_range = 20.0
+name = "strong sword"
+attack = 20.0
+attack_range = 23.0
 defense = 0
 heal = 0
 
@@ -148,15 +150,15 @@ level = 4
 name = "shiny cleaver"
 attack = 0
 attack_range = 0
-defense = 18.0
+defense = 23.0
 heal = 0
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 8 )
 character_class = 0
-name = "Sid"
+name = "Jason"
 level = 4
-hp = 31.0
+hp = 32.0
 max_hp = 31.0
 atk = 4
 def = 1
@@ -442,6 +444,13 @@ script = ExtResource( 6 )
 stats = SubResource( 20 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
+
+[node name="Water2" parent="map" instance=ExtResource( 13 )]
+position = Vector2( 48, 176 )
+
+[node name="Water 1" parent="map" instance=ExtResource( 14 )]
+position = Vector2( 16, 176 )
+frame = 0
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 0, 0.5 )
