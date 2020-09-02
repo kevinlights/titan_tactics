@@ -19,6 +19,12 @@ func play():
 		print("Not my turn, skipping")
 		return
 	print("AI taking turn")
+	if character.character.has_ability(Game.ABILITY.HEAL):
+		var weakest = get_weakest_ally(character)
+		if weakest:
+			print("AI (" + character.character.name + ") says heal " + weakest.character.name)
+			weakest.heal(weakest)
+			return
 	var enemy = get_nearest_enemy(character.position)
 	if enemy:
 		print("does it have heal? : " + str(character.character.has_ability(Game.ABILITY.HEAL)))
@@ -102,8 +108,15 @@ func shorten_to_atk_range(path, character):
 	return path
 	
 func get_weakest_ally(i_am):
+	var weakest
+	var lowest_hp = 999
 	for ally in characters:
 		if ally != i_am:
 			var distance = i_am.tile.distance_to(ally.tile)
-			print(distance)
+			if distance < i_am.character.atk_range:
+				if ally.can_recruit():
+					if ally.character.hp < lowest_hp:
+						lowest_hp = ally.character.hp
+						weakest = ally
+	return weakest
 

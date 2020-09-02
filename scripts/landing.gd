@@ -39,6 +39,6 @@ func _on_credits():
 
 func _on_quit():
 	$sfx/select.play()
-	yield(get_tree().create_timer(0.4), "timeout")
+	yield(get_tree().create_timer(0.25), "timeout")
 	get_tree().quit()
 

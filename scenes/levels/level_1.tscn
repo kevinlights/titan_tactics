@@ -178,7 +178,6 @@ item_spawner = SubResource( 12 )
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
-frame = 0
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
