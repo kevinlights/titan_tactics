@@ -38,5 +38,5 @@ func _on_credits():
 #		$menu/credits.call_deferred("hide")
 
 func _on_quit():
-	pass
+	get_tree().quit()
 
