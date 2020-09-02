@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://gfx/Maps/lv2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://gfx/archer.png" type="Texture" id=8]
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=9]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=10]
+[ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://gfx/mage.png" type="Texture" id=13]
+[ext_resource path="res://gfx/swordsman.png" type="Texture" id=14]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
@@ -44,6 +48,7 @@ atk = 3
 def = 1
 atk_range = 4
 mov_range = 3
+heal = 0
 item_atk = SubResource( 1 )
 item_def = SubResource( 2 )
 
@@ -65,37 +70,38 @@ result = 0
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 3 )
-character_class = 1
+character_class = 2
 equipment_slot = 0
-level = 3
-name = "steel bow"
-attack = 12.0
-attack_range = 9.0
+level = 2
+name = "iron wand"
+attack = 5.0
+attack_range = 4.0
 defense = 0
-heal = 0
+heal = 6.0
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 3 )
-character_class = 1
+character_class = 2
 equipment_slot = 0
-level = 3
-name = "steel bow"
+level = 2
+name = "forged wand"
 attack = 0
 attack_range = 0
-defense = 12.0
-heal = 0
+defense = 5.0
+heal = 6.0
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 4 )
-character_class = 1
-name = "Dario"
-level = 3
-hp = 11
-max_hp = 11
-atk = 4
+character_class = 2
+name = "Yava"
+level = 2
+hp = 16.0
+max_hp = 15.0
+atk = 3
 def = 1
-atk_range = 5
-mov_range = 6
+atk_range = 4
+mov_range = 3
+heal = 2
 item_atk = SubResource( 6 )
 item_def = SubResource( 7 )
 
@@ -121,7 +127,7 @@ character_class = 0
 equipment_slot = 0
 level = 2
 name = "forged knife"
-attack = 4.0
+attack = 5.0
 attack_range = 4.0
 defense = 0
 heal = 0
@@ -131,23 +137,24 @@ script = ExtResource( 3 )
 character_class = 0
 equipment_slot = 0
 level = 2
-name = "forged cleaver"
+name = "forged knife"
 attack = 0
 attack_range = 0
-defense = 4.0
+defense = 5.0
 heal = 0
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 4 )
-character_class = 1
-name = "Lokum"
+character_class = 0
+name = "Horm"
 level = 2
-hp = 11
-max_hp = 11
+hp = 22.0
+max_hp = 22.0
 atk = 4
 def = 1
 atk_range = 1
 mov_range = 7
+heal = 0
 item_atk = SubResource( 11 )
 item_def = SubResource( 12 )
 
@@ -188,7 +195,7 @@ recruit_dialogue = SubResource( 5 )
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
 position = Vector2( 88, 168 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 script = ExtResource( 5 )
 stats = SubResource( 8 )
 dialogue = SubResource( 9 )
@@ -196,7 +203,7 @@ recruit_dialogue = SubResource( 10 )
 
 [node name="CharacterSpawner3" type="Sprite" parent="map"]
 position = Vector2( 184, 104 )
-texture = ExtResource( 8 )
+texture = ExtResource( 14 )
 script = ExtResource( 5 )
 stats = SubResource( 13 )
 dialogue = SubResource( 14 )
@@ -207,6 +214,18 @@ position = Vector2( 40, 24 )
 texture = ExtResource( 9 )
 script = ExtResource( 10 )
 item_spawner = SubResource( 16 )
+
+[node name="Water 1" parent="map" instance=ExtResource( 11 )]
+position = Vector2( 192, 144 )
+
+[node name="Water2" parent="map" instance=ExtResource( 12 )]
+position = Vector2( 96, 144 )
+
+[node name="Water 2" parent="map" instance=ExtResource( 11 )]
+position = Vector2( 144, 144 )
+
+[node name="Water3" parent="map" instance=ExtResource( 12 )]
+position = Vector2( 32, 144 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 

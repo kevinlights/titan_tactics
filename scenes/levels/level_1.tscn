@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://scripts/item_spawner.gd" type="Script" id=8]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=9]
 [ext_resource path="res://scripts/dialogue.gd" type="Script" id=10]
-[ext_resource path="res://gfx/mage.png" type="Texture" id=11]
+[ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -19,38 +20,38 @@ level = 2
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 6 )
-character_class = 2
+character_class = 1
 equipment_slot = 0
 level = 1
-name = "minor wand"
+name = "minor bow"
 attack = 1.0
 attack_range = 1.0
 defense = 0
-heal = 1.0
+heal = 0
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 6 )
-character_class = 2
+character_class = 1
 equipment_slot = 0
 level = 1
-name = "minor wand"
+name = "minor bow"
 attack = 0
 attack_range = 0
 defense = 1.0
-heal = 2.0
+heal = 0
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 5 )
-character_class = 2
-name = "Momo"
+character_class = 1
+name = "Malik"
 level = 1
-hp = 0
-max_hp = 0
-atk = 3
+hp = 13.0
+max_hp = 14.0
+atk = 4
 def = 1
-atk_range = 4
-mov_range = 3
-heal = 0
+atk_range = 5
+mov_range = 6
+heal = 1
 item_atk = SubResource( 2 )
 item_def = SubResource( 3 )
 
@@ -74,10 +75,10 @@ result = 0
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 0
-level = 2
-name = "forged bow"
-attack = 4.0
-attack_range = 5.0
+level = 1
+name = "minor bow"
+attack = 1.0
+attack_range = 1.0
 defense = 0
 heal = 0
 
@@ -85,20 +86,20 @@ heal = 0
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 0
-level = 2
-name = "iron bow"
+level = 1
+name = "minor bow"
 attack = 0
 attack_range = 0
-defense = 5.0
+defense = 1.0
 heal = 0
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 5 )
 character_class = 1
-name = "Arev"
-level = 2
-hp = 11
-max_hp = 11
+name = "Amy"
+level = 1
+hp = 14.0
+max_hp = 14.0
 atk = 4
 def = 1
 atk_range = 5
@@ -153,7 +154,7 @@ item_spawner = SubResource( 1 )
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 152, 152 )
-texture = ExtResource( 11 )
+texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 4 )
 dialogue = SubResource( 5 )
@@ -172,6 +173,19 @@ position = Vector2( 56, 88 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 12 )
+
+[node name="Water1" parent="map" instance=ExtResource( 13 )]
+
+[node name="Water4" parent="map" instance=ExtResource( 13 )]
+position = Vector2( 160, 144 )
+frame = 0
+
+[node name="Water2" parent="map" instance=ExtResource( 12 )]
+position = Vector2( 192, 144 )
+
+[node name="Water3" parent="map" instance=ExtResource( 12 )]
+position = Vector2( 128, 192 )
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 65.502, 42.1491 )
