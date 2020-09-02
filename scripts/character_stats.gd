@@ -12,6 +12,7 @@ export(int) var atk
 export(int) var def
 export(int) var atk_range
 export(int) var mov_range
+export(int) var heal
 export(Resource) var item_atk
 export(Resource) var item_def
 
@@ -69,6 +70,7 @@ func from_other(other_stats):
 	mov_range = other_stats.mov_range
 	item_atk = other_stats.item_atk
 	item_def = other_stats.item_def
+	heal = other_stats.heal
 
 func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_range = 1, hp = 10):
 	character_class = request_class
@@ -79,6 +81,7 @@ func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range =
 	self.def = def
 	self.mov_range = mov_range
 	self.atk_range = atk_range
+	self.heal = 0
 	item_atk = Item.new()
 	item_def = Item.new()
 	item_atk.generate(level, Item.SLOT.ATK, character_class)
@@ -92,6 +95,7 @@ func generate(class_stats, request_class, request_control, level = 1):
 		default_stats = class_stats.swordsman
 	elif request_class == Game.TYPE.MAGE:
 		default_stats = class_stats.mage 
+		heal = level
 	character_class = default_stats.character_class
 	item_atk = Item.new()
 	item_def = Item.new()

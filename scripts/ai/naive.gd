@@ -24,7 +24,7 @@ func play():
 		print("does it have heal? : " + str(character.character.has_ability(Game.ABILITY.HEAL)))
 		if character.can_recruit() and character.character.has_ability(Game.ABILITY.HEAL):
 			print("AI (" + character.character.name + ") says heal")
-			character.heal()
+			character.heal(character)
 			return
 		if enemies_are_stronger(character.position, character):
 			print("AI (" + character.character.name + ") says guard")
