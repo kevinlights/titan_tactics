@@ -47,8 +47,8 @@ script = ExtResource( 8 )
 character_class = 2
 name = "Malik"
 level = 4
-hp = 0
-max_hp = 0
+hp = 14
+max_hp = 14
 atk = 3
 def = 1
 atk_range = 4
@@ -100,8 +100,8 @@ script = ExtResource( 8 )
 character_class = 1
 name = "Edd"
 level = 3
-hp = 0
-max_hp = 0
+hp = 15
+max_hp = 16
 atk = 4
 def = 1
 atk_range = 5
@@ -158,8 +158,8 @@ script = ExtResource( 8 )
 character_class = 0
 name = "Jason"
 level = 4
-hp = 0
-max_hp = 0
+hp = 11
+max_hp = 10
 atk = 4
 def = 1
 atk_range = 1
@@ -450,7 +450,6 @@ position = Vector2( 48, 176 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 14 )]
 position = Vector2( 16, 176 )
-frame = 0
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 0, 0.5 )
