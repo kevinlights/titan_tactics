@@ -62,9 +62,9 @@ __meta__ = {
 }
 
 [node name="title" type="Label" parent="panel"]
-margin_top = 2.0
+margin_top = 3.0
 margin_right = 77.0
-margin_bottom = 14.0
+margin_bottom = 15.0
 theme = ExtResource( 2 )
 text = "Team OK?"
 align = 1
