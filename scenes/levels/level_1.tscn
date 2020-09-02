@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scripts/item_spawner.gd" type="Script" id=8]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=9]
 [ext_resource path="res://scripts/dialogue.gd" type="Script" id=10]
+[ext_resource path="res://gfx/swordsman.png" type="Texture" id=11]
 [ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=13]
 
@@ -68,10 +69,10 @@ result = 0
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 6 )
-character_class = 1
+character_class = 0
 equipment_slot = 0
 level = 1
-name = "minor bow"
+name = "minor cleaver"
 attack = 1.0
 attack_range = 1.0
 defense = 0
@@ -79,10 +80,10 @@ heal = 0
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 6 )
-character_class = 1
+character_class = 0
 equipment_slot = 0
 level = 1
-name = "minor bow"
+name = "minor knife"
 attack = 0
 attack_range = 0
 defense = 1.0
@@ -90,15 +91,15 @@ heal = 0
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 5 )
-character_class = 1
-name = "Nugat"
+character_class = 0
+name = "Cyndi"
 level = 1
-hp = 13.0
-max_hp = 13.0
+hp = 17.0
+max_hp = 16.0
 atk = 4
 def = 1
-atk_range = 5
-mov_range = 6
+atk_range = 1
+mov_range = 7
 heal = 0
 item_atk = SubResource( 6 )
 item_def = SubResource( 7 )
@@ -156,7 +157,7 @@ recruit_dialogue = SubResource( 5 )
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 152, 152 )
-texture = ExtResource( 4 )
+texture = ExtResource( 11 )
 script = ExtResource( 3 )
 stats = SubResource( 8 )
 dialogue = SubResource( 9 )
