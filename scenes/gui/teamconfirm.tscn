@@ -28,7 +28,7 @@ animations = [ {
 
 [sub_resource type="ImageTexture" id=6]
 
-[node name="teamconfirm" type="CenterContainer"]
+[node name="teamconfirm" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
@@ -37,7 +37,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="panel" type="PanelContainer" parent="."]
+[node name="panel" type="Control" parent="."]
 margin_left = 41.0
 margin_top = 45.0
 margin_right = 118.0
@@ -53,48 +53,24 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="margin" type="MarginContainer" parent="panel"]
+[node name="title" type="Label" parent="panel"]
+margin_top = 2.0
 margin_right = 77.0
-margin_bottom = 54.0
-custom_constants/margin_right = 3
-custom_constants/margin_top = 3
-custom_constants/margin_left = 3
-custom_constants/margin_bottom = 3
-
-[node name="vbox" type="VBoxContainer" parent="panel/margin"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 74.0
-margin_bottom = 51.0
-theme = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="panel/margin/vbox"]
-margin_right = 71.0
-margin_bottom = 9.0
-custom_constants/margin_top = 4
-custom_constants/margin_bottom = 4
-
-[node name="title" type="Label" parent="panel/margin/vbox/MarginContainer"]
-margin_top = 4.0
-margin_right = 71.0
-margin_bottom = 5.0
+margin_bottom = 14.0
 theme = ExtResource( 2 )
 text = "Team OK?"
 align = 1
 valign = 1
 
-[node name="HSeparator" type="HSeparator" parent="panel/margin/vbox"]
-margin_top = 11.0
-margin_right = 71.0
-margin_bottom = 15.0
+[node name="HSeparator" type="HSeparator" parent="panel"]
+margin_top = 14.0
+margin_right = 77.0
+margin_bottom = 18.0
 
-[node name="check_map" type="ToolButton" parent="panel/margin/vbox"]
-margin_top = 17.0
-margin_right = 71.0
-margin_bottom = 26.0
+[node name="check_map" type="ToolButton" parent="panel"]
+margin_top = 16.0
+margin_right = 77.0
+margin_bottom = 28.0
 focus_neighbour_bottom = NodePath("../edit_team")
 focus_next = NodePath("../edit_team")
 theme = ExtResource( 2 )
@@ -102,7 +78,7 @@ text = "Check map"
 icon = SubResource( 1 )
 align = 0
 
-[node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/check_map"]
+[node name="focus" type="AnimatedSprite" parent="panel/check_map"]
 visible = false
 frames = SubResource( 4 )
 playing = true
@@ -110,10 +86,10 @@ centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 4 )
 
-[node name="edit_team" type="ToolButton" parent="panel/margin/vbox"]
+[node name="edit_team" type="ToolButton" parent="panel"]
 margin_top = 28.0
-margin_right = 71.0
-margin_bottom = 37.0
+margin_right = 77.0
+margin_bottom = 40.0
 focus_neighbour_top = NodePath("../check_map")
 focus_neighbour_bottom = NodePath("../start_level")
 focus_next = NodePath("../start_level")
@@ -123,7 +99,7 @@ text = "Edit team"
 icon = SubResource( 5 )
 align = 0
 
-[node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/edit_team"]
+[node name="focus" type="AnimatedSprite" parent="panel/edit_team"]
 visible = false
 frames = SubResource( 4 )
 frame = 1
@@ -132,10 +108,10 @@ centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 4 )
 
-[node name="start_level" type="ToolButton" parent="panel/margin/vbox"]
-margin_top = 39.0
-margin_right = 71.0
-margin_bottom = 48.0
+[node name="start_level" type="ToolButton" parent="panel"]
+margin_top = 40.0
+margin_right = 77.0
+margin_bottom = 52.0
 focus_neighbour_top = NodePath("../edit_team")
 focus_previous = NodePath("../edit_team")
 theme = ExtResource( 2 )
@@ -143,7 +119,7 @@ text = "Start level"
 icon = SubResource( 6 )
 align = 0
 
-[node name="focus" type="AnimatedSprite" parent="panel/margin/vbox/start_level"]
+[node name="focus" type="AnimatedSprite" parent="panel/start_level"]
 visible = false
 frames = SubResource( 4 )
 playing = true

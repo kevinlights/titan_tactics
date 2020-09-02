@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=9]
 [ext_resource path="res://scripts/dialogue.gd" type="Script" id=10]
 [ext_resource path="res://gfx/mage.png" type="Texture" id=11]
+[ext_resource path="res://scenes/funky arrow.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -173,10 +174,14 @@ texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 12 )
 
+[node name="funky arrow" parent="map" instance=ExtResource( 12 )]
+frame = 1
+
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 65.502, 42.1491 )
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
+visible = false
 position = Vector2( -66, -42 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
