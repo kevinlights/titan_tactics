@@ -38,5 +38,7 @@ func _on_credits():
 #		$menu/credits.call_deferred("hide")
 
 func _on_quit():
+	$sfx/select.play()
+	yield(get_tree().create_timer(0.4), "timeout")
 	get_tree().quit()
 
