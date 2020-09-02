@@ -1,36 +1,307 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://gfx/Maps/lv5.png" type="Texture" id=1]
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
 [ext_resource path="res://scenes/animated/torchtop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/animated/torchbottom.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/item.gd" type="Script" id=5]
+[ext_resource path="res://scripts/character_stats.gd" type="Script" id=6]
+[ext_resource path="res://scripts/dialogue.gd" type="Script" id=7]
+[ext_resource path="res://gfx/archer.png" type="Texture" id=8]
+[ext_resource path="res://gfx/mage.png" type="Texture" id=9]
+[ext_resource path="res://scripts/characterspawner.gd" type="Script" id=10]
+[ext_resource path="res://gfx/swordsman.png" type="Texture" id=11]
 
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+character_class = 1
+equipment_slot = 0
+level = 5
+name = "rare bow"
+attack = 28.0
+attack_range = 28.0
+defense = 0
+heal = 0
 
-[sub_resource type="NavigationPolygon" id=1]
+[sub_resource type="Resource" id=2]
+script = ExtResource( 5 )
+character_class = 1
+equipment_slot = 0
+level = 5
+name = "epic bow"
+attack = 0
+attack_range = 0
+defense = 31.0
+heal = 0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 6 )
+character_class = 1
+name = "Mikk"
+level = 8
+hp = 48.0
+max_hp = 46.0
+atk = 4
+def = 1
+atk_range = 5
+mov_range = 6
+heal = 0
+item_atk = SubResource( 1 )
+item_def = SubResource( 2 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 5 )
+character_class = 2
+equipment_slot = 0
+level = 5
+name = "epic wand"
+attack = 31.0
+attack_range = 37.0
+defense = 0
+heal = 27.0
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 5 )
+character_class = 2
+equipment_slot = 0
+level = 5
+name = "epic staff"
+attack = 0
+attack_range = 0
+defense = 33.0
+heal = 49.0
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 6 )
+character_class = 2
+name = "Kit"
+level = 8
+hp = 45.0
+max_hp = 40.0
+atk = 3
+def = 1
+atk_range = 4
+mov_range = 3
+heal = 8
+item_atk = SubResource( 6 )
+item_def = SubResource( 7 )
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 5 )
+character_class = 0
+equipment_slot = 0
+level = 5
+name = "rare knife"
+attack = 28.0
+attack_range = 35.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 5 )
+character_class = 0
+equipment_slot = 0
+level = 5
+name = "epic knife"
+attack = 0
+attack_range = 0
+defense = 34.0
+heal = 0
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 6 )
+character_class = 0
+name = "Izzy"
+level = 7
+hp = 46.0
+max_hp = 47.0
+atk = 4
+def = 1
+atk_range = 1
+mov_range = 7
+heal = 0
+item_atk = SubResource( 11 )
+item_def = SubResource( 12 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 5 )
+character_class = 2
+equipment_slot = 0
+level = 5
+name = "deadly wand"
+attack = 33.0
+attack_range = 30.0
+defense = 0
+heal = 34.0
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 5 )
+character_class = 2
+equipment_slot = 0
+level = 5
+name = "epic wand"
+attack = 0
+attack_range = 0
+defense = 37.0
+heal = 12.0
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 6 )
+character_class = 2
+name = "Liz"
+level = 8
+hp = 39.0
+max_hp = 38.0
+atk = 3
+def = 1
+atk_range = 4
+mov_range = 3
+heal = 8
+item_atk = SubResource( 16 )
+item_def = SubResource( 17 )
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 5 )
+character_class = 1
+equipment_slot = 0
+level = 5
+name = "rare bow"
+attack = 27.0
+attack_range = 27.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 5 )
+character_class = 1
+equipment_slot = 0
+level = 5
+name = "deadly bow"
+attack = 0
+attack_range = 0
+defense = 36.0
+heal = 0
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 6 )
+character_class = 1
+name = "Nikk"
+level = 7
+hp = 42.0
+max_hp = 43.0
+atk = 4
+def = 1
+atk_range = 5
+mov_range = 6
+heal = 0
+item_atk = SubResource( 21 )
+item_def = SubResource( 22 )
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 7 )
+trigger = 0
+trigger_text = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="NavigationPolygon" id=26]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=2]
+[sub_resource type="NavigationPolygon" id=27]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=3]
+[sub_resource type="NavigationPolygon" id=28]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=4]
+[sub_resource type="NavigationPolygon" id=29]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=5]
+[sub_resource type="NavigationPolygon" id=30]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=6]
+[sub_resource type="NavigationPolygon" id=31]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=7]
+[sub_resource type="TileSet" id=32]
 0/name = "not passable"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -67,7 +338,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 1 )
+2/navigation = SubResource( 26 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 2/shape_one_way = false
@@ -82,7 +353,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 2 )
+3/navigation = SubResource( 27 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 3/shape_one_way = false
@@ -97,7 +368,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 3 )
+4/navigation = SubResource( 28 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 4/shape_one_way = false
@@ -112,7 +383,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 4 )
+5/navigation = SubResource( 29 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 5/shape_one_way = false
@@ -141,7 +412,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 5 )
+7/navigation = SubResource( 30 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -156,7 +427,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 6 )
+8/navigation = SubResource( 31 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 8/shape_one_way = false
@@ -175,27 +446,66 @@ centered = false
 
 [node name="torchbottom" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 232, 232 )
-frame = 1
 
 [node name="torchbottom2" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 184, 152 )
-frame = 1
 
 [node name="torchbottom3" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 184, 72 )
+frame = 1
 
 [node name="torchbottom4" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 88, 216 )
+frame = 1
 
 [node name="torchbottom5" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 104, 56 )
-frame = 1
+
+[node name="CharacterSpawner" type="Sprite" parent="map"]
+position = Vector2( 72, 152 )
+texture = ExtResource( 8 )
+script = ExtResource( 10 )
+stats = SubResource( 3 )
+dialogue = SubResource( 4 )
+recruit_dialogue = SubResource( 5 )
+
+[node name="CharacterSpawner2" type="Sprite" parent="map"]
+position = Vector2( 72, 168 )
+texture = ExtResource( 9 )
+script = ExtResource( 10 )
+stats = SubResource( 8 )
+dialogue = SubResource( 9 )
+recruit_dialogue = SubResource( 10 )
+
+[node name="CharacterSpawner3" type="Sprite" parent="map"]
+position = Vector2( 88, 152 )
+texture = ExtResource( 11 )
+script = ExtResource( 10 )
+stats = SubResource( 13 )
+dialogue = SubResource( 14 )
+recruit_dialogue = SubResource( 15 )
+
+[node name="CharacterSpawner4" type="Sprite" parent="map"]
+position = Vector2( 88, 168 )
+texture = ExtResource( 9 )
+script = ExtResource( 10 )
+stats = SubResource( 18 )
+dialogue = SubResource( 19 )
+recruit_dialogue = SubResource( 20 )
+
+[node name="CharacterSpawner5" type="Sprite" parent="map"]
+position = Vector2( 216, 56 )
+texture = ExtResource( 8 )
+script = ExtResource( 10 )
+stats = SubResource( 23 )
+dialogue = SubResource( 24 )
+recruit_dialogue = SubResource( 25 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
 rotation = -0.000220277
-tile_set = SubResource( 7 )
+tile_set = SubResource( 32 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1
@@ -205,17 +515,18 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 0, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 232, 216 )
+frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 88, 200 )
+frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 184, 136 )
+frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 184, 56 )
-frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
-frame = 1
