@@ -35,6 +35,7 @@ func set_character_class(new_character_class):
 		item_def.character_class = new_character_class
 	var default_stats = load("res://resources/class_stats.tres")
 	generate(default_stats, character_class, control, level)
+	print("class changed emit singal")
 	emit_signal("class_changed")
 
 func get_character_class():
@@ -54,6 +55,21 @@ func reset_turn():
 	turn_limits.move_distance = mov_range
 	turn_limits.actions = 1
 
+func from_other(other_stats):
+	print("Setting stats from other stats")
+	character_class = other_stats.character_class
+	level = other_stats.level
+	name = other_stats.name
+	print("hp ", other_stats.hp)
+	hp = other_stats.hp
+	max_hp = other_stats.hp
+	atk = other_stats.atk
+	def = other_stats.def
+	atk_range = other_stats.atk_range
+	mov_range = other_stats.mov_range
+	item_atk = other_stats.item_atk
+	item_def = other_stats.item_def
+
 func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_range = 1, hp = 10):
 	character_class = request_class
 	control = request_control
@@ -69,6 +85,7 @@ func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range =
 	item_def.generate(level, Item.SLOT.DEF, character_class)
 
 func generate(class_stats, request_class, request_control, level = 1):
+	print("Regenerate stats")
 	var default_stats = class_stats.archer
 	default_stats = class_stats.archer
 	if request_class == Game.TYPE.FIGHTER:

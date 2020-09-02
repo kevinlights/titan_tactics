@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -10,47 +10,48 @@
 [ext_resource path="res://scripts/item_spawner.gd" type="Script" id=8]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=9]
 [ext_resource path="res://scripts/dialogue.gd" type="Script" id=10]
+[ext_resource path="res://gfx/mage.png" type="Texture" id=11]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
 equipment_slot = 0
 level = 2
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 6 )
-character_class = 1
+character_class = 2
 equipment_slot = 0
 level = 1
-name = "minor bow"
+name = "minor wand"
 attack = 1.0
 attack_range = 1.0
 defense = 0
-heal = 0
+heal = 1.0
 
-[sub_resource type="Resource" id=3]
+[sub_resource type="Resource" id=14]
 script = ExtResource( 6 )
-character_class = 1
+character_class = 2
 equipment_slot = 0
 level = 1
-name = "minor bow"
+name = "minor wand"
 attack = 0
 attack_range = 0
 defense = 1.0
-heal = 0
+heal = 2.0
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 5 )
-character_class = 1
-name = "Firas"
+character_class = 2
+name = "Momo"
 level = 1
-hp = 13.0
-max_hp = 14.0
-atk = 4
+hp = 10.0
+max_hp = 11.0
+atk = 3
 def = 1
-atk_range = 5
-mov_range = 6
-item_atk = SubResource( 2 )
-item_def = SubResource( 3 )
+atk_range = 4
+mov_range = 3
+item_atk = SubResource( 13 )
+item_def = SubResource( 14 )
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 10 )
@@ -95,8 +96,8 @@ script = ExtResource( 5 )
 character_class = 1
 name = "Arev"
 level = 2
-hp = 17.0
-max_hp = 17.0
+hp = 11
+max_hp = 11
 atk = 4
 def = 1
 atk_range = 5
@@ -150,7 +151,7 @@ item_spawner = SubResource( 1 )
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 152, 152 )
-texture = ExtResource( 4 )
+texture = ExtResource( 11 )
 script = ExtResource( 3 )
 stats = SubResource( 4 )
 dialogue = SubResource( 5 )
