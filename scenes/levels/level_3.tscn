@@ -78,8 +78,8 @@ script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
 level = 3
-name = "sharp bow"
-attack = 12.0
+name = "steel bow"
+attack = 11.0
 attack_range = 11.0
 defense = 0
 heal = 0
@@ -89,19 +89,24 @@ script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
 level = 3
-name = "sharp bow"
+name = "steel bow"
 attack = 0
 attack_range = 0
-defense = 10.0
+defense = 12.0
 heal = 0
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 8 )
 character_class = 1
-name = "Edd"
+name = "Flan"
 level = 3
+<<<<<<< HEAD
 hp = 15
 max_hp = 16
+=======
+hp = 24.0
+max_hp = 24.0
+>>>>>>> 5228b0dc1d0f0fefdddf2f4e662c8ffe943ee883
 atk = 4
 def = 1
 atk_range = 5
@@ -447,9 +452,14 @@ recruit_dialogue = SubResource( 22 )
 
 [node name="Water2" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 48, 176 )
+frame = 1
 
 [node name="Water 1" parent="map" instance=ExtResource( 14 )]
 position = Vector2( 16, 176 )
+<<<<<<< HEAD
+=======
+frame = 1
+>>>>>>> 5228b0dc1d0f0fefdddf2f4e662c8ffe943ee883
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 0, 0.5 )
