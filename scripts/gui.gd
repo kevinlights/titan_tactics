@@ -59,6 +59,11 @@ func intro(description):
 func error(message):
 	$sfx/denied.play()
 
+func level_up(diff, new_stats):
+	active = true
+	$lvlup.on_level_up(diff, new_stats)
+	$lvlup.call_deferred("show")
+
 func stats(friendly, enemy):
 	if $healthpage.visible or modal:
 		return

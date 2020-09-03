@@ -2,6 +2,7 @@ extends Resource
 class_name CharacterStats
 
 signal class_changed
+signal level_up
 
 export(int, "Swordsman", "Archer", "Mage") var character_class setget set_character_class, get_character_class
 export(String) var name
@@ -51,14 +52,20 @@ func add_xp(more_xp):
 		level_up()
 
 func level_up():
+	var stats_diff = {
+		"atk": atk_up[level + 1],
+		"def": def_up[level + 1],
+		"hp": hp_up[level + 1]
+	}
 	level += 1
-	max_hp = (max_hp + (level + 1) * 2)
+	atk += stats_diff.atk
+	def += stats_diff.def
+	max_hp += stats_diff.hp
 	hp = max_hp
-	atk += level * rand_range(0, 2)
-	def += level * rand_range(0, 2)
 	current_to_next = current_to_next - xp_to_next
 	xp_to_next = pow(level, 2)
 	print("Level up")
+	emit_signal("level_up", stats_diff, self)
 
 #func set_xp(more_xp):
 #	xp = more_xp

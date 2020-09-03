@@ -63,14 +63,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -97,14 +97,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -800,6 +800,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 15 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -821,6 +822,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 15 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -829,10 +831,10 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 18 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
-visible = false
 margin_left = 33.0
 margin_top = 20.0
 margin_right = 73.0
@@ -853,26 +855,26 @@ texture = ExtResource( 41 )
 vframes = 4
 hframes = 2
 
-[node name="new_lvl" type="Label" parent="lvlup"]
+[node name="new_atk" type="Label" parent="lvlup"]
 margin_left = 71.0
 margin_top = 42.0
 margin_right = 93.0
 margin_bottom = 56.0
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
-text = "00"
+text = "11"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="new_atk" type="Label" parent="lvlup"]
+[node name="new_lvl" type="Label" parent="lvlup"]
 margin_left = 71.0
 margin_top = 24.0
 margin_right = 92.0
 margin_bottom = 38.0
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.623529, 0.870588, 0.576471, 1 )
-text = "00"
+text = "1	"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -941,7 +943,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 18 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -967,6 +968,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 15 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1074,6 +1076,7 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 25 )
 animation = "fighter"
+frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1352,7 +1355,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_1"]
 visible = false
 frames = SubResource( 28 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1371,7 +1373,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_2"]
 visible = false
 frames = SubResource( 28 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )

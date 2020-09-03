@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -55,86 +55,100 @@ branches = [ SubResource( 2 ), SubResource( 3 ) ]
 result = 2
 
 [sub_resource type="Resource" id=5]
-script = ExtResource( 5 )
-character_class = 0
-name = ""
-level = 1
-hp = 0
-max_hp = 0
-atk = 0
-def = 0
-atk_range = 0
-mov_range = 0
-heal = 0
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=8]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
-level = 2
-name = "forged knife"
-attack = 4.0
-attack_range = 4.0
+level = 1
+name = "minor knife"
+attack = 1.0
+attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
-level = 2
-name = "iron cleaver"
+level = 1
+name = "minor cleaver"
 attack = 0
 attack_range = 0
-defense = 4.0
+defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 5 )
 character_class = 0
-name = "Dario"
-level = 2
-hp = 24
-max_hp = 24
+name = "Stik"
+level = 1
+hp = 1
+max_hp = 1
 atk = 4
 def = 1
 atk_range = 1
 mov_range = 7
 heal = 0
-item_atk = SubResource( 8 )
-item_def = SubResource( 9 )
+item_atk = SubResource( 5 )
+item_def = SubResource( 6 )
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 10 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 10 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 6 )
+character_class = 0
+equipment_slot = 0
+level = 1
+name = "minor sword"
+attack = 1.0
+attack_range = 1.0
+defense = 0
+heal = 0
 
 [sub_resource type="Resource" id=11]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-text = ""
-branches = [  ]
-result = 0
+script = ExtResource( 6 )
+character_class = 0
+equipment_slot = 0
+level = 1
+name = "minor cleaver"
+attack = 0
+attack_range = 0
+defense = 1.0
+heal = 0
 
 [sub_resource type="Resource" id=12]
+script = ExtResource( 5 )
+character_class = 0
+name = "Cari"
+level = 1
+hp = 4
+max_hp = 4
+atk = 4
+def = 1
+atk_range = 1
+mov_range = 7
+heal = 0
+item_atk = SubResource( 10 )
+item_def = SubResource( 11 )
+
+[sub_resource type="Resource" id=13]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -144,12 +158,22 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=13]
+[sub_resource type="Resource" id=14]
+script = ExtResource( 10 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=15]
 script = ExtResource( 8 )
 equipment_slot = 0
 level = 2
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 8 )
 equipment_slot = 1
 level = 2
@@ -177,43 +201,41 @@ centered = false
 position = Vector2( 168, 136 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 5 )
-dialogue = SubResource( 6 )
-recruit_dialogue = SubResource( 7 )
+stats = SubResource( 7 )
+dialogue = SubResource( 8 )
+recruit_dialogue = SubResource( 9 )
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 152, 152 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 10 )
-dialogue = SubResource( 11 )
-recruit_dialogue = SubResource( 12 )
+stats = SubResource( 12 )
+dialogue = SubResource( 13 )
+recruit_dialogue = SubResource( 14 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 184, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 13 )
+item_spawner = SubResource( 15 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
 position = Vector2( 56, 88 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 14 )
+item_spawner = SubResource( 16 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
-frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 65.502, 42.1491 )
