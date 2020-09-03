@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://gfx/Maps/lv7.png" type="Texture" id=1]
+[ext_resource path="res://gfx/Maps/lv6.png" type="Texture" id=1]
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
 [ext_resource path="res://scenes/animated/torchbottom.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/animated/torchtop.tscn" type="PackedScene" id=4]
@@ -182,19 +182,17 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 184, 184 )
-frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 104, 152 )
+frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 88, 56 )
-frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
-visible = false
 rotation = -0.000220277
 tile_set = SubResource( 7 )
 cell_size = Vector2( 16, 16 )
@@ -217,11 +215,10 @@ CREEPING VINES."
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 184, 168 )
+frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 104, 136 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 88, 40 )
-frame = 1
