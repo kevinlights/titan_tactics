@@ -8,11 +8,12 @@ var selected_color = Color(1, .95, .91)
 
 var selected = 0
 
-var current_weapon
-var new_weapon
+var current_gear
+var new_gear
+var gear_type
 
-var current_attack
-var new_attack
+var current_stat
+var new_stat
 
 var atlas = {
 	Game.TYPE.FIGHTER: 32,
@@ -23,32 +24,39 @@ var atlas = {
 func _ready():
 	pass
 
-func set_weapons(current, new):
-	current_weapon = current
-	new_weapon = new
-	print(current_weapon.name)
-	print(current_weapon.attack)
-	print(new_weapon.name)
-	print(new_weapon.attack)
-	$text.text = new_weapon.name
+func set_weapons(current, new, type):
+	#i'm getting type varible to control if item is atk or def
+	current_gear = current
+	new_gear = new
+	gear_type = type
+	print(current_gear.name)
+	print(current_gear.attack)
+	print(new_gear.name)
+	print(new_gear.attack)
+	$text.text = new_gear.name
 
 func _process(delta):
 	if visible == false:
 		return
-	current_attack = 1
-	new_attack = 2
-	$current_atk.text = str("+", current_weapon.attack)
-	$new_atk.text = str("+", new_weapon.attack)
-	$weapon_sprite1.frame = atlas[current_weapon.character_class]
-	$weapon_sprite2.frame = atlas[new_weapon.character_class]
+	current_stat = 1
+	new_stat = 2
+	#based on what type the gear is i assign values in text
+	if gear_type == 0:
+		$current_stat.text = str("+", current_gear.attack)
+		$new_stat.text = str("+", new_gear.attack)
+	else:
+		$current_stat.text = str("+", current_gear.defense)
+		$new_stat.text = str("+", new_gear.defense)
+	$weapon_sprite1.frame = atlas[current_gear.character_class]
+	$weapon_sprite2.frame = atlas[new_gear.character_class]
 	if selected == 0:
-		$yes.text = ">SWITCH"
-		$no.text = " CANCEL"
+		$no/focus.show()
+		$yes/focus.hide()
 		$yes.set("custom_colors/font_color", selected_color)
 		$no.set("custom_colors/font_color", text_color)
 	if selected == 1:
-		$yes.text = " SWITCH"
-		$no.text = ">CANCEL"
+		$yes/focus.show()
+		$no/focus.hide()
 		$yes.set("custom_colors/font_color", text_color)
 		$no.set("custom_colors/font_color", selected_color)
 func _input(event):
@@ -62,6 +70,6 @@ func _input(event):
 		selected = clamp(selected, 0, 1)
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
 		if selected == 0:
-			emit_signal("swap", new_weapon)
+			emit_signal("swap", new_gear)
 		elif selected == 1:
 			emit_signal("dont_swap")

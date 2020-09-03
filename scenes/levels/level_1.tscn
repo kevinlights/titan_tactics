@@ -56,7 +56,7 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
 character_class = 1
 name = "Nugat"
@@ -113,7 +113,7 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 5 )
 character_class = 1
 name = "Nugat"
@@ -181,7 +181,7 @@ centered = false
 position = Vector2( 168, 136 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 5 )
+stats = SubResource( 15 )
 dialogue = SubResource( 6 )
 recruit_dialogue = SubResource( 7 )
 
@@ -189,7 +189,7 @@ recruit_dialogue = SubResource( 7 )
 position = Vector2( 152, 152 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 10 )
+stats = SubResource( 16 )
 dialogue = SubResource( 11 )
 recruit_dialogue = SubResource( 12 )
 
