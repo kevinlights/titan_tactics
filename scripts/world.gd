@@ -141,9 +141,12 @@ func action():
 			if is_adjacent(target, get_current()):
 				var loot = target.open(get_current().character.character_class)
 				if loot:
-					print(loot.name)
 					yield(get_tree().create_timer(1.0), "timeout")
-					gui.loot(get_current().character.item_atk, loot)
+					print("item " + str(loot.name))
+					if target.item_spawner.equipment_slot == 0:
+						gui.loot(get_current().character.item_atk, loot, 0)
+					if target.item_spawner.equipment_slot == 1:
+						gui.loot(get_current().character.item_def, loot, 1)
 		Game.CONTEXT.MOVE:
 			get_current().move(to_world_path(current_path))
 			$path_preview.hide_path()

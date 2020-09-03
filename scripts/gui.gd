@@ -65,9 +65,9 @@ func stats(friendly, enemy):
 	$stats.set_entities(friendly, enemy)
 	$stats.show()
 
-func loot(current, new):
+func loot(current, new, type):
 	active = true
-	$weaponswap.set_weapons(current, new)
+	$weaponswap.set_weapons(current, new, type)
 	$weaponswap.show()
 
 func health(friendly, enemy):

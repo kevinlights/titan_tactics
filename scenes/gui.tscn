@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -35,6 +35,10 @@
 [ext_resource path="res://sfx/UI/turn_alert1.wav" type="AudioStream" id=34]
 [ext_resource path="res://sfx/UI/click_open.wav" type="AudioStream" id=36]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
+[ext_resource path="res://gfx/item_popup.png" type="Texture" id=38]
+[ext_resource path="res://scripts/gui/lvlup.gd" type="Script" id=39]
+[ext_resource path="res://gfx/level_popup.png" type="Texture" id=40]
+[ext_resource path="res://gfx/types.png" type="Texture" id=41]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
@@ -114,12 +118,12 @@ extra_spacing_bottom = -2
 font_data = ExtResource( 13 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 24, 8, 8 )
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 32, 8, 8 )
+atlas = ExtResource( 23 )
+region = Rect2( 0, 8, 8, 8 )
 
 [sub_resource type="SpriteFrames" id=15]
 animations = [ {
@@ -130,58 +134,74 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 20 )
-region = Rect2( 54, 0, 18, 18 )
+atlas = ExtResource( 9 )
+region = Rect2( 0, 24, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+atlas = ExtResource( 9 )
+region = Rect2( 0, 32, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 20 )
-region = Rect2( 90, 18, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 20 )
-region = Rect2( 0, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 20 )
-region = Rect2( 0, 18, 18, 18 )
-
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
 "frames": [ SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
-"name": "mage",
-"speed": 3.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 20 )
+region = Rect2( 90, 0, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 20 )
+region = Rect2( 90, 18, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 20 )
+region = Rect2( 54, 0, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 20 )
+region = Rect2( 54, 18, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 18, 18, 18 )
+
+[sub_resource type="SpriteFrames" id=25]
+animations = [ {
+"frames": [ SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "archer",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "mage",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "fighter",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 23 )
 region = Rect2( 0, 8, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=25]
+[sub_resource type="SpriteFrames" id=28]
 animations = [ {
-"frames": [ SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -696,150 +716,260 @@ __meta__ = {
 
 [node name="weaponswap" type="Control" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 32.0
+margin_top = 39.0
+margin_right = 72.0
+margin_bottom = 79.0
 script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shadow" type="ColorRect" parent="weaponswap"]
-margin_left = 3.0
-margin_top = 11.0
-margin_right = 62.0
-margin_bottom = 56.0
-color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="front" type="ColorRect" parent="weaponswap"]
-margin_left = 2.0
-margin_top = 10.0
-margin_right = 61.0
-margin_bottom = 55.0
-color = Color( 0.0235294, 0.352941, 0.709804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="line" type="ColorRect" parent="weaponswap"]
-margin_left = 4.0
-margin_top = 19.0
-margin_right = 59.0
-margin_bottom = 20.0
-color = Color( 0.160784, 0.678431, 1, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="item_popup" type="Sprite" parent="weaponswap"]
+position = Vector2( 47, 33 )
+texture = ExtResource( 38 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 94, 67 )
 
 [node name="weapon_sprite1" type="Sprite" parent="weaponswap"]
-position = Vector2( 9, 27 )
+position = Vector2( 13.8742, 28.2234 )
 texture = ExtResource( 9 )
 vframes = 16
 hframes = 16
 frame = 32
 
 [node name="weapon_sprite2" type="Sprite" parent="weaponswap"]
-position = Vector2( 38, 27 )
+position = Vector2( 59.7985, 28.4273 )
 texture = ExtResource( 9 )
 vframes = 16
 hframes = 16
 frame = 32
 
 [node name="text" type="Label" parent="weaponswap"]
-margin_left = 2.0
-margin_top = 10.0
-margin_right = 61.0
-margin_bottom = 19.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "SWITCH WEAPON?"
+margin_left = 7.0
+margin_top = -1.0
+margin_right = 89.0
+margin_bottom = 16.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "Switch weapon?"
 align = 1
 valign = 1
 clip_text = true
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="atk_text1" type="Label" parent="weaponswap"]
-margin_left = 14.0
-margin_top = 24.0
-margin_right = 70.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "ATK"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="current_atk" type="Label" parent="weaponswap"]
-margin_left = 13.0
-margin_top = 30.0
-margin_right = 69.0
-margin_bottom = 44.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+[node name="new_stat" type="Label" parent="weaponswap"]
+margin_left = 68.0
+margin_top = 29.0
+margin_right = 86.0
+margin_bottom = 43.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "+0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="atk_text2" type="Label" parent="weaponswap"]
-margin_left = 43.0
-margin_top = 24.0
-margin_right = 99.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "ATK"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="new_atk" type="Label" parent="weaponswap"]
-margin_left = 43.0
-margin_top = 30.0
-margin_right = 99.0
-margin_bottom = 44.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+[node name="current_stat" type="Label" parent="weaponswap"]
+margin_left = 22.0
+margin_top = 29.0
+margin_right = 45.0
+margin_bottom = 43.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "+0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="no" type="Label" parent="weaponswap"]
-margin_left = 16.0
-margin_top = 47.0
-margin_right = 61.0
-margin_bottom = 61.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.160784, 0.678431, 1, 1 )
-text = " CANCEL"
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="yes" type="Label" parent="weaponswap"]
-margin_left = 16.0
-margin_top = 40.0
+margin_left = 30.0
+margin_top = 55.0
 margin_right = 75.0
-margin_bottom = 54.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = ">SWITCH"
+margin_bottom = 69.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.219608, 0.596078, 0.454902, 1 )
+text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow" type="AnimatedSprite" parent="weaponswap"]
-position = Vector2( 32, 32 )
+[node name="focus" type="AnimatedSprite" parent="weaponswap/no"]
+visible = false
+position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 15 )
 playing = true
+centered = false
+offset = Vector2( -8, -2 )
+script = ExtResource( 24 )
+
+[node name="yes" type="Label" parent="weaponswap"]
+margin_left = 30.0
+margin_top = 44.0
+margin_right = 89.0
+margin_bottom = 58.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.219608, 0.596078, 0.454902, 1 )
+text = "Switch"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="weaponswap/yes"]
+visible = false
+position = Vector2( 0, 1 )
+frames = SubResource( 15 )
+playing = true
+centered = false
+offset = Vector2( -8, 8 )
+script = ExtResource( 24 )
+
+[node name="arrow" type="AnimatedSprite" parent="weaponswap"]
+position = Vector2( 44.6813, 29.1062 )
+frames = SubResource( 18 )
+playing = true
+
+[node name="lvlup" type="Control" parent="."]
+visible = false
+margin_left = 33.0
+margin_top = 20.0
+margin_right = 73.0
+margin_bottom = 60.0
+script = ExtResource( 39 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level_popup" type="Sprite" parent="lvlup"]
+position = Vector2( 47, 49 )
+texture = ExtResource( 40 )
+region_rect = Rect2( 0, 0, 94, 67 )
+
+[node name="char_sprite" type="Sprite" parent="lvlup"]
+position = Vector2( 15.5798, 24.1412 )
+texture = ExtResource( 41 )
+vframes = 4
+hframes = 2
+
+[node name="new_lvl" type="Label" parent="lvlup"]
+margin_left = 71.0
+margin_top = 42.0
+margin_right = 93.0
+margin_bottom = 56.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_atk" type="Label" parent="lvlup"]
+margin_left = 71.0
+margin_top = 24.0
+margin_right = 92.0
+margin_bottom = 38.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.623529, 0.870588, 0.576471, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_def" type="Label" parent="lvlup"]
+margin_left = 71.0
+margin_top = 56.0
+margin_right = 94.0
+margin_bottom = 70.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_hp" type="Label" parent="lvlup"]
+margin_left = 71.0
+margin_top = 70.0
+margin_right = 94.0
+margin_bottom = 84.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="current_atk" type="Label" parent="lvlup"]
+margin_left = 28.0
+margin_top = 42.0
+margin_right = 55.0
+margin_bottom = 56.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="current_def" type="Label" parent="lvlup"]
+margin_left = 28.0
+margin_top = 56.0
+margin_right = 55.0
+margin_bottom = 70.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="current_hp" type="Label" parent="lvlup"]
+margin_left = 28.0
+margin_top = 70.0
+margin_right = 56.0
+margin_bottom = 84.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow" type="AnimatedSprite" parent="lvlup"]
+position = Vector2( 48.6813, 58.1062 )
+frames = SubResource( 18 )
+frame = 1
+playing = true
+
+[node name="Control" type="Control" parent="lvlup"]
+margin_left = 1.0
+margin_right = 41.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ok" type="ToolButton" parent="lvlup/Control"]
+margin_left = 35.0
+margin_top = 75.566
+margin_right = 61.0
+margin_bottom = 97.566
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+theme = ExtResource( 22 )
+text = "Ok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
+frames = SubResource( 15 )
+playing = true
+centered = false
+offset = Vector2( -2, 8 )
 
 [node name="characterselect" type="Control" parent="."]
 visible = false
@@ -942,9 +1072,8 @@ __meta__ = {
 
 [node name="type" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 11, 55 )
-frames = SubResource( 22 )
+frames = SubResource( 25 )
 animation = "fighter"
-frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1222,7 +1351,8 @@ align = 0
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_1"]
 visible = false
-frames = SubResource( 25 )
+frames = SubResource( 28 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1240,7 +1370,8 @@ align = 0
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_2"]
 visible = false
-frames = SubResource( 25 )
+frames = SubResource( 28 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1279,3 +1410,4 @@ volume_db = -6.0
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
 volume_db = 3.0
+[connection signal="pressed" from="lvlup/Control/Ok" to="lvlup" method="_on_ok_pressed"]
