@@ -9,6 +9,7 @@ var typing = false
 var typing_cancelled = false
 var text_blocks = []
 var current_block = ""
+var rng = RandomNumberGenerator.new()
 
 var portrait_map = {
 	Dialogue.PORTRAIT.ARCHER: "archer",
@@ -56,7 +57,10 @@ func set_text(text):
 	for i in text:
 		yield(get_tree().create_timer(0.05), "timeout")
 		if not typing_cancelled:
-			$background/body.text += i
+			$background/body.text += i			
+			rng.randomize()
+			var my_random_number = rng.randf_range(5.0, 6.0)
+			$textsfx.set_pitch_scale(my_random_number)
 			$textsfx.play()
 			if $background/body.get_visible_line_count() > 3:
 				typing_cancelled = true
