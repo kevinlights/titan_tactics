@@ -98,7 +98,6 @@ width = 2.0
 z_as_relative = false
 frames = SubResource( 11 )
 animation = "attack"
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, -2 )
