@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/sword_attack3.wav-f38f9dda824790ed7faa8350854d98c4.sample"
+valid=false
 
 [deps]
 
 source_file="res://sfx/gameplay/sword_attack3.wav"
-dest_files=[ "res://.import/sword_attack3.wav-f38f9dda824790ed7faa8350854d98c4.sample" ]
-
 [params]
 
 force/8_bit=false

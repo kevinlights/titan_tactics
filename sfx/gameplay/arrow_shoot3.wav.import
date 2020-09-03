@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/arrow_shoot3.wav-badd3ebc46f1245d1228de99b5a90c35.sample"
+valid=false
 
 [deps]
 
 source_file="res://sfx/gameplay/arrow_shoot3.wav"
-dest_files=[ "res://.import/arrow_shoot3.wav-badd3ebc46f1245d1228de99b5a90c35.sample" ]
-
 [params]
 
 force/8_bit=false

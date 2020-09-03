@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/walking2.wav-894835c4cf3954117926a1536b74ac3b.sample"
+valid=false
 
 [deps]
 
 source_file="res://sfx/gameplay/walking2.wav"
-dest_files=[ "res://.import/walking2.wav-894835c4cf3954117926a1536b74ac3b.sample" ]
-
 [params]
 
 force/8_bit=false
@@ -17,5 +15,5 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=true
+edit/loop=false
 compress/mode=0

@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/magic_hit2.wav-bf942562e6384936c1ce360f139bb1e6.sample"
+valid=false
 
 [deps]
 
 source_file="res://sfx/gameplay/magic_hit2.wav"
-dest_files=[ "res://.import/magic_hit2.wav-bf942562e6384936c1ce360f139bb1e6.sample" ]
-
 [params]
 
 force/8_bit=false

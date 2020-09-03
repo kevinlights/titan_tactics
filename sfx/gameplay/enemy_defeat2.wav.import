@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/enemy_defeat2.wav-cdbf88bea952eeeb573827dbdbb35ac4.sample"
+valid=false
 
 [deps]
 
 source_file="res://sfx/gameplay/enemy_defeat2.wav"
-dest_files=[ "res://.import/enemy_defeat2.wav-cdbf88bea952eeeb573827dbdbb35ac4.sample" ]
-
 [params]
 
 force/8_bit=false

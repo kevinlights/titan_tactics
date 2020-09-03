@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/defend2.wav-9de90c8accfac6db303ce7667cc639db.sample"
+valid=false
 
 [deps]
 
 source_file="res://sfx/gameplay/defend2.wav"
-dest_files=[ "res://.import/defend2.wav-9de90c8accfac6db303ce7667cc639db.sample" ]
-
 [params]
 
 force/8_bit=false

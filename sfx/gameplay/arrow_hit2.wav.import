@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/arrow_hit2.wav-dcf31d7429f3c63963087e40669fb6d1.sample"
+valid=false
 
 [deps]
 
 source_file="res://sfx/gameplay/arrow_hit2.wav"
-dest_files=[ "res://.import/arrow_hit2.wav-dcf31d7429f3c63963087e40669fb6d1.sample" ]
-
 [params]
 
 force/8_bit=false
