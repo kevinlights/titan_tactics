@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ingame_clickOpen3.wav-0bf977f5ac339b9ec59a590b049f6fba.sample"
+
+[deps]
+
+source_file="res://sfx/UI/ingame_clickOpen3.wav"
+dest_files=[ "res://.import/ingame_clickOpen3.wav-0bf977f5ac339b9ec59a590b049f6fba.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
