@@ -104,7 +104,6 @@ focus_neighbour_top = NodePath("../action_1")
 focus_previous = NodePath("../action_1")
 theme = ExtResource( 6 )
 custom_styles/focus = SubResource( 6 )
-text = "Speak !"
 text = "Speak ¥"
 icon = SubResource( 7 )
 align = 0
