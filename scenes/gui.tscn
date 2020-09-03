@@ -716,8 +716,10 @@ __meta__ = {
 
 [node name="weaponswap" type="Control" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 32.0
+margin_top = 39.0
+margin_right = 72.0
+margin_bottom = 79.0
 script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -730,26 +732,26 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 94, 67 )
 
 [node name="weapon_sprite1" type="Sprite" parent="weaponswap"]
-position = Vector2( 12.8742, 28.2234 )
+position = Vector2( 13.8742, 28.2234 )
 texture = ExtResource( 9 )
 vframes = 16
 hframes = 16
 frame = 32
 
 [node name="weapon_sprite2" type="Sprite" parent="weaponswap"]
-position = Vector2( 58.7985, 28.4273 )
+position = Vector2( 59.7985, 28.4273 )
 texture = ExtResource( 9 )
 vframes = 16
 hframes = 16
 frame = 32
 
 [node name="text" type="Label" parent="weaponswap"]
-margin_left = 16.274
-margin_top = 3.0
-margin_right = 75.274
-margin_bottom = 12.0
+margin_left = 7.0
+margin_top = -1.0
+margin_right = 89.0
+margin_bottom = 16.0
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "Switch weapon?"
 align = 1
 valign = 1
@@ -759,36 +761,36 @@ __meta__ = {
 }
 
 [node name="new_stat" type="Label" parent="weaponswap"]
-margin_left = 71.3431
-margin_top = 28.9805
-margin_right = 127.343
-margin_bottom = 42.9805
+margin_left = 68.0
+margin_top = 29.0
+margin_right = 86.0
+margin_bottom = 43.0
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "+0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="current_stat" type="Label" parent="weaponswap"]
-margin_left = 25.343
-margin_top = 28.98
-margin_right = 81.343
-margin_bottom = 42.98
+margin_left = 22.0
+margin_top = 29.0
+margin_right = 45.0
+margin_bottom = 43.0
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "+0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="no" type="Label" parent="weaponswap"]
-margin_left = 25.0
-margin_top = 52.0
-margin_right = 70.0
-margin_bottom = 66.0
+margin_left = 30.0
+margin_top = 55.0
+margin_right = 75.0
+margin_bottom = 69.0
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 0.160784, 0.678431, 1, 1 )
+custom_colors/font_color = Color( 0.219608, 0.596078, 0.454902, 1 )
 text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -796,7 +798,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="weaponswap/no"]
 visible = false
-position = Vector2( -1.5922, -11.0781 )
+position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 15 )
 playing = true
 centered = false
@@ -804,12 +806,12 @@ offset = Vector2( -8, -2 )
 script = ExtResource( 24 )
 
 [node name="yes" type="Label" parent="weaponswap"]
-margin_left = 25.0
-margin_top = 40.0
-margin_right = 84.0
-margin_bottom = 54.0
+margin_left = 30.0
+margin_top = 44.0
+margin_right = 89.0
+margin_bottom = 58.0
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.219608, 0.596078, 0.454902, 1 )
 text = "Switch"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -817,7 +819,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="weaponswap/yes"]
 visible = false
-position = Vector2( -2, 0 )
+position = Vector2( 0, 1 )
 frames = SubResource( 15 )
 playing = true
 centered = false
@@ -825,11 +827,12 @@ offset = Vector2( -8, 8 )
 script = ExtResource( 24 )
 
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
-position = Vector2( 46.6813, 27.1062 )
+position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 18 )
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
+visible = false
 margin_left = 33.0
 margin_top = 20.0
 margin_right = 73.0
