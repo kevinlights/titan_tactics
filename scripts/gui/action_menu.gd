@@ -8,7 +8,7 @@ signal heal
 
 var start
 var native_x = -50
-var ttl = 200
+var ttl = 60
 var done = true
 var menu_type = "attack"
 

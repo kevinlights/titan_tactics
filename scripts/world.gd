@@ -375,14 +375,14 @@ func _on_attack():
 			gui.call_deferred("back")
 			return
 		var damage = get_current().attack(target)
-		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
-		damage_feedback.position.x = target.position.x
-		damage_feedback.position.y = target.position.y - 3
-		if damage == 0:
-			damage_feedback.get_node("damage").text = "miss"
-		else:
-			damage_feedback.get_node("damage").text = str("-", damage)	
-		add_child(damage_feedback)
+#		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
+#		damage_feedback.position.x = target.position.x
+#		damage_feedback.position.y = target.position.y - 3
+#		if damage == 0:
+#			damage_feedback.get_node("damage").text = "miss"
+#		else:
+#			damage_feedback.get_node("damage").text = str("-", damage)	
+#		add_child(damage_feedback)
 		gui.call_deferred("close_attack")
 		gui.health(get_current(), target)
 	else:

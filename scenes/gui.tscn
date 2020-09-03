@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=70 format=2]
+=======
+[gd_scene load_steps=61 format=2]
+>>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -32,9 +36,7 @@
 [ext_resource path="res://scripts/gui/dialogue.gd" type="Script" id=30]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=32]
-[ext_resource path="res://sfx/UI/char_select2.wav" type="AudioStream" id=33]
 [ext_resource path="res://sfx/UI/turn_alert1.wav" type="AudioStream" id=34]
-[ext_resource path="res://sfx/UI/turn_alert2.wav" type="AudioStream" id=35]
 [ext_resource path="res://sfx/UI/click_open.wav" type="AudioStream" id=36]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
 [ext_resource path="res://gfx/item_popup.png" type="Texture" id=38]
@@ -941,7 +943,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 27.1062 )
 frames = SubResource( 15 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1071,6 +1072,7 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 22 )
 animation = "fighter"
+frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1349,7 +1351,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_1"]
 visible = false
 frames = SubResource( 25 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1368,7 +1369,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_2"]
 visible = false
 frames = SubResource( 25 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1377,6 +1377,9 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
+stream = ExtResource( 32 )
+
 [node name="sfx" type="Node" parent="."]
 
 [node name="char_select" type="Node" parent="sfx"]
@@ -1384,17 +1387,10 @@ __meta__ = {
 [node name="select 1" type="AudioStreamPlayer" parent="sfx/char_select"]
 stream = ExtResource( 32 )
 
-[node name="select 2" type="AudioStreamPlayer" parent="sfx/char_select"]
-stream = ExtResource( 33 )
-
 [node name="turn_alert" type="Node" parent="sfx"]
 
 [node name="alert 1" type="AudioStreamPlayer" parent="sfx/turn_alert"]
 stream = ExtResource( 34 )
-volume_db = -3.0
-
-[node name="alert 2" type="AudioStreamPlayer" parent="sfx/turn_alert"]
-stream = ExtResource( 35 )
 volume_db = -3.0
 
 [node name="open" type="AudioStreamPlayer" parent="sfx"]
