@@ -13,17 +13,17 @@
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 8, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=28]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -100,8 +100,12 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/continue"]
 visible = false
 position = Vector2( -2, 0 )
+<<<<<<< HEAD
+frames = SubResource( 28 )
+=======
 frames = SubResource( 4 )
 frame = 1
+>>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -121,7 +125,12 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/new_game"]
 visible = false
 position = Vector2( -2, 0 )
+<<<<<<< HEAD
+frames = SubResource( 28 )
+frame = 1
+=======
 frames = SubResource( 4 )
+>>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -142,8 +151,12 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/credits"]
 visible = false
 position = Vector2( -2, 0 )
+<<<<<<< HEAD
+frames = SubResource( 28 )
+=======
 frames = SubResource( 4 )
 frame = 1
+>>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -162,8 +175,12 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/quit"]
 visible = false
 position = Vector2( -2, 0 )
+<<<<<<< HEAD
+frames = SubResource( 28 )
+=======
 frames = SubResource( 4 )
 frame = 1
+>>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
