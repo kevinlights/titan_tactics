@@ -4,7 +4,7 @@ signal done
 
 var start
 var start_x = -64
-var ttl = 500
+var ttl = 60
 var done = true
 
 func pick_random_sfx(audio_path):
