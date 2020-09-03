@@ -24,6 +24,7 @@ enum PORTRAIT {
 	HERO,
 	ANTAGONIST,
 	OLD_MAN,
+	CYAN,
 	NONE
 }
 

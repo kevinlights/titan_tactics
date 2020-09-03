@@ -112,81 +112,81 @@ animations = [ {
 size = 4
 font_data = ExtResource( 13 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 23 )
 region = Rect2( 0, 8, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=15]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 24, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 32, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="SpriteFrames" id=17]
 animations = [ {
-"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
 region = Rect2( 90, 0, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
 region = Rect2( 90, 18, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
 region = Rect2( 54, 0, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
 region = Rect2( 54, 18, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 18, 18, 18 )
 
-[sub_resource type="SpriteFrames" id=25]
+[sub_resource type="SpriteFrames" id=24]
 animations = [ {
-"frames": [ SubResource( 19 ), SubResource( 20 ) ],
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
 "name": "archer",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
 "name": "mage",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "fighter",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=25]
 size = 4
 extra_spacing_bottom = -2
 font_data = ExtResource( 13 )
@@ -660,6 +660,7 @@ __meta__ = {
 }
 
 [node name="enemyturn" type="Control" parent="."]
+visible = false
 margin_top = 1.0
 margin_right = 40.0
 margin_bottom = 41.0
@@ -798,7 +799,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="weaponswap/no"]
 visible = false
 position = Vector2( 0.407799, -11.0781 )
-frames = SubResource( 15 )
+frames = SubResource( 14 )
 frame = 1
 playing = true
 centered = false
@@ -820,7 +821,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="weaponswap/yes"]
 visible = false
 position = Vector2( 0, 1 )
-frames = SubResource( 15 )
+frames = SubResource( 14 )
 frame = 1
 playing = true
 centered = false
@@ -829,11 +830,12 @@ script = ExtResource( 24 )
 
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
-frames = SubResource( 18 )
+frames = SubResource( 17 )
 frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
+visible = false
 margin_left = 33.0
 margin_top = 20.0
 margin_right = 73.0
@@ -941,7 +943,7 @@ __meta__ = {
 
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
-frames = SubResource( 18 )
+frames = SubResource( 17 )
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -966,7 +968,7 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
-frames = SubResource( 15 )
+frames = SubResource( 14 )
 frame = 1
 playing = true
 centered = false
@@ -1073,7 +1075,7 @@ __meta__ = {
 
 [node name="type" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 11, 55 )
-frames = SubResource( 25 )
+frames = SubResource( 24 )
 animation = "fighter"
 frame = 1
 playing = true
@@ -1176,7 +1178,7 @@ margin_left = -2.0
 margin_top = 4.0
 margin_right = 38.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "LEVEL
   CLEAR!"
@@ -1288,7 +1290,7 @@ margin_left = 6.0
 margin_top = 4.0
 margin_right = 46.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "YOU WERE
  DEFEATED"
