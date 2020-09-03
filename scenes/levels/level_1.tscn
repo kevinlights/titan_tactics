@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=13]
 
-[sub_resource type="Resource" id=13]
+[sub_resource type="Resource" id=1]
 script = ExtResource( 10 )
 dialogue_id = "opening"
 portrait = 5
@@ -24,7 +24,7 @@ text = "Hey, you. You're finally awake."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=2]
 script = ExtResource( 10 )
 dialogue_id = "response"
 portrait = 2
@@ -34,7 +34,7 @@ text = "Where... where am I? My mind is foggy, I can't remember anything.|Did yo
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=1]
+[sub_resource type="Resource" id=3]
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 0
@@ -45,7 +45,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=4]
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 0
@@ -56,7 +56,7 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 5 )
 character_class = 1
 name = "Nugat"
@@ -68,30 +68,30 @@ def = 1
 atk_range = 5
 mov_range = 6
 heal = 0
-item_atk = SubResource( 1 )
-item_def = SubResource( 2 )
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-text = ""
-branches = [  ]
-result = 0
+item_atk = SubResource( 3 )
+item_def = SubResource( 4 )
 
 [sub_resource type="Resource" id=6]
+script = ExtResource( 10 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 10 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=8]
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 0
@@ -102,7 +102,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=7]
+[sub_resource type="Resource" id=9]
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 0
@@ -113,47 +113,47 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=10]
 script = ExtResource( 5 )
 character_class = 1
 name = "Nugat"
 level = 1
-hp = 13.0
-max_hp = 13.0
+hp = 0
+max_hp = 0
 atk = 4
 def = 1
 atk_range = 5
 mov_range = 6
 heal = 0
-item_atk = SubResource( 6 )
-item_def = SubResource( 7 )
-
-[sub_resource type="Resource" id=9]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=10]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-text = ""
-branches = [  ]
-result = 0
+item_atk = SubResource( 8 )
+item_def = SubResource( 9 )
 
 [sub_resource type="Resource" id=11]
+script = ExtResource( 10 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 10 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=13]
 script = ExtResource( 8 )
 equipment_slot = 0
 level = 2
 
-[sub_resource type="Resource" id=12]
+[sub_resource type="Resource" id=14]
 script = ExtResource( 8 )
 equipment_slot = 1
 level = 2
@@ -171,7 +171,7 @@ AN EFFORT NOT
 TO GET STUCK IN
 ANY QUICKWATER."
 }
-dialogue = [ SubResource( 13 ), SubResource( 14 ) ]
+dialogue = [ SubResource( 1 ), SubResource( 2 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -181,29 +181,29 @@ centered = false
 position = Vector2( 168, 136 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 15 )
-dialogue = SubResource( 4 )
-recruit_dialogue = SubResource( 5 )
+stats = SubResource( 5 )
+dialogue = SubResource( 6 )
+recruit_dialogue = SubResource( 7 )
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 152, 152 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 16 )
-dialogue = SubResource( 9 )
-recruit_dialogue = SubResource( 10 )
+stats = SubResource( 10 )
+dialogue = SubResource( 11 )
+recruit_dialogue = SubResource( 12 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 184, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 11 )
+item_spawner = SubResource( 13 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
 position = Vector2( 56, 88 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 12 )
+item_spawner = SubResource( 14 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
 frame = 1

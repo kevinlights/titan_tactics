@@ -20,6 +20,34 @@ var abilities
 var control
 var weakness
 var strength
+var xp = 0 # setget set_xp,get_xp
+var xp_to_next = 1
+var current_to_next = 0
+
+func add_xp(more_xp):
+	xp += more_xp
+	current_to_next += more_xp
+	print("xp gained ", more_xp)
+	print("xp to next level ", xp_to_next)
+	print("progress to next level ", current_to_next)
+	if current_to_next >= xp_to_next:
+		level_up()
+
+func level_up():
+	level += 1
+	max_hp = (max_hp + (level + 1) * 2)
+	hp = max_hp
+	atk += level * rand_range(0, 2)
+	def += level * rand_range(0, 2)
+	current_to_next = current_to_next - xp_to_next
+	xp_to_next = pow(level, 2)
+	print("Level up")
+
+#func set_xp(more_xp):
+#	xp = more_xp
+#
+#func get_xp():
+#	return xp
 
 func set_level(lvl):
 	level = lvl

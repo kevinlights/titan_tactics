@@ -42,8 +42,8 @@ func check_finished():
 func _ready():
 	pass
 
-func hit(type):
-	match(type):
+func hit(attacker):
+	match(attacker.character_class):
 		Game.TYPE.ARCHER:
 			print("arrow hit!")
 			$vfx/arrow_hit.emitting = true
@@ -62,6 +62,7 @@ func hit(type):
 		print("nooooooooooooooooooooooo it can't be")
 	if character.hp <= 0:
 		die()
+		attacker.add_xp(character.level)
 	else:
 		if dialogue and dialogue.trigger == Dialogue.TRIGGER.ATTACK and not dialogue_used:
 			dialogue_used = true
@@ -136,7 +137,7 @@ func attack(target):
 	if character.character_class == Game.TYPE.MAGE:
 		var projectile = load("res://scenes/projectile.tscn").instance()
 		projectile.fire(position + Vector2(8, 8), target.position + Vector2(8, 8))
-		projectile.connect("hit", target, "hit", [character.character_class])
+		projectile.connect("hit", target, "hit", [character])
 		projectile.connect("hit", self, "attack_complete")
 		projectile.get_node("sparkle").play("player" if character.control == Game.CONTROL.PLAYER else "ai")
 		pick_random_sfx($sfx/magic_attack)
@@ -146,7 +147,7 @@ func attack(target):
 		pass
 	else:
 		attack_complete()
-		target.hit(character.character_class)
+		target.hit(character)
 	if target.position.x < position.x:
 		avatar.play("attack-left")
 	if target.position.x > position.x:
@@ -291,7 +292,7 @@ func init(char_type, control = Game.CONTROL.PLAYER):
 func fire_arrow(target):
 		var projectile = load("res://scenes/arrow.tscn").instance()
 		projectile.fire(position + Vector2(8, 8), target.position + Vector2(8, 8))
-		projectile.connect("hit", target, "hit", [character.character_class])
+		projectile.connect("hit", target, "hit", [character])
 		projectile.connect("hit", self, "attack_complete")
 		pick_random_sfx($sfx/arrow_attack)
 		get_parent().add_child(projectile)

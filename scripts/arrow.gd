@@ -26,6 +26,6 @@ func _process(delta):
 	if now - start < ttl:
 		position.x = lerp(start_position.x, end_position.x, float(now - start) / float(ttl))
 		position.y = lerp(start_position.y, end_position.y, float(now - start) / float(ttl))
-	else:		
+	else:
 		emit_signal("hit")
 		get_parent().remove_child(self)

@@ -52,12 +52,15 @@ func set_text(text):
 	call_deferred("resize")
 	current_block = text
 	typing = true
+	typing_cancelled = false
 	for i in text:
 		yield(get_tree().create_timer(0.05), "timeout")
 		if not typing_cancelled:
 			$background/body.text += i
 			if $background/body.get_visible_line_count() > 3:
 				typing_cancelled = true
+		else:
+			break
 	typing = false
 
 func _input(event):
