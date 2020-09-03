@@ -14,10 +14,11 @@ var portrait_map = {
 	Dialogue.PORTRAIT.ARCHER: "archer",
 	Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
 	Dialogue.PORTRAIT.MAGE: "mage",
-	Dialogue.PORTRAIT.AI_ARCHER: "ai_mage",
+	Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
 	Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
 	Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
-	Dialogue.PORTRAIT.HERO_SWORDSMAN: "hero_swordsman",
+	Dialogue.PORTRAIT.HERO: "hero",
+	Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
 	Dialogue.PORTRAIT.OLD_MAN: "old_man"
 }
 

@@ -24,6 +24,23 @@ var xp = 0 # setget set_xp,get_xp
 var xp_to_next = 1
 var current_to_next = 0
 
+var fibonacci = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
+var hp_up = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
+var atk_up = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
+var def_up = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
+
+func sequence_cumulative(sequence, position):
+	var result = 0
+	for x in range(position):
+		result += sequence[x]
+	return result
+
+func fibonacci_cumulative(position):
+	var result = 0
+	for x in range(position):
+		result += fibonacci[x]
+	return result
+
 func add_xp(more_xp):
 	xp += more_xp
 	current_to_next += more_xp
@@ -131,8 +148,10 @@ func generate(class_stats, request_class, request_control, level = 1):
 	item_def.generate(level, Item.SLOT.DEF, character_class)
 	control = request_control
 	abilities = Game.class_stats.abilities[character_class]
-	max_hp = floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
-	hp = floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
+#	max_hp = floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
+#	max_hp = floor(default_stats.hp + (level + 1) * 1.5)
+	max_hp = default_stats.hp + fibonacci_cumulative(level)
+	hp = max_hp # floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
 	mov_range = default_stats.mov_range
 	turn_limits.move_distance = default_stats.mov_range
 	turn_limits.actions = 1 # Game.class_stats.actions[type]

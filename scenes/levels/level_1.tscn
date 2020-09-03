@@ -17,7 +17,7 @@
 [sub_resource type="Resource" id=1]
 script = ExtResource( 10 )
 dialogue_id = "opening"
-portrait = 5
+portrait = 3
 trigger = 4
 trigger_id = ""
 text = "Hey, you. You're finally awake."
@@ -27,7 +27,7 @@ result = 2
 [sub_resource type="Resource" id=2]
 script = ExtResource( 10 )
 dialogue_id = "response"
-portrait = 2
+portrait = 6
 trigger = 5
 trigger_id = "opening"
 text = "Where... where am I? My mind is foggy, I can't remember anything.|Did you do this to me? Have you done something to me?"
@@ -206,18 +206,16 @@ script = ExtResource( 9 )
 item_spawner = SubResource( 14 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
-frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 65.502, 42.1491 )
