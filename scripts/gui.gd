@@ -116,5 +116,5 @@ func dialogue(content):
 	back()
 	modal = true
 	active = true
-	$dialogue.set_text(content)
+	$dialogue.set_content(content)
 	$dialogue.show()

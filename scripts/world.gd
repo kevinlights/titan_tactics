@@ -210,10 +210,10 @@ func _ready():
 	gui.get_node("lose").connect("retry", self, "_on_replay")
 	$select.connect("moved", self, "_on_selector_moved")
 
-	if $level.editor_description and $level.editor_description != "":
-		gui.intro($level.editor_description)
-	else:
-		select_team()
+#	if $level.editor_description and $level.editor_description != "":
+#		gui.intro($level.editor_description)
+#	else:
+	select_team()
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")
