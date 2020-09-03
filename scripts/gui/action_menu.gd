@@ -31,9 +31,9 @@ var label_map = {
 }
 
 func _ready():
-	$panel/margin/vbox/action_1.grab_focus()
-	$panel/margin/vbox/action_1.connect("pressed", self, "_on_action_1")
-	$panel/margin/vbox/action_2.connect("pressed", self, "_on_action_2")
+	$panel/action_1.grab_focus()
+	$panel/action_1.connect("pressed", self, "_on_action_1")
+	$panel/action_2.connect("pressed", self, "_on_action_2")
 
 func _on_action_1():
 	emit_signal(signal_map[menu_type][0])
