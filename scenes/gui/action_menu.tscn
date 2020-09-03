@@ -86,10 +86,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="panel/action_1"]
 visible = false
 frames = SubResource( 5 )
-<<<<<<< HEAD
-=======
 frame = 1
->>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 playing = true
 centered = false
 offset = Vector2( 1, 2 )
@@ -107,11 +104,8 @@ focus_neighbour_top = NodePath("../action_1")
 focus_previous = NodePath("../action_1")
 theme = ExtResource( 6 )
 custom_styles/focus = SubResource( 6 )
-<<<<<<< HEAD
 text = "Speak !"
-=======
 text = "Speak ¥"
->>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 icon = SubResource( 7 )
 align = 0
 __meta__ = {
@@ -121,10 +115,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="panel/action_2"]
 visible = false
 frames = SubResource( 5 )
-<<<<<<< HEAD
-=======
 frame = 1
->>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 playing = true
 centered = false
 offset = Vector2( 1, 2 )

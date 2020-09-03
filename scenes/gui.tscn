@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=70 format=2]
-=======
 [gd_scene load_steps=61 format=2]
->>>>>>> a5f69059dbf248b39c416f47468b64aa1d74d58b
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
