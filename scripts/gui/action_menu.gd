@@ -8,7 +8,7 @@ signal heal
 
 var start
 var native_x = -50
-var ttl = 200
+var ttl = 60
 var done = true
 var menu_type = "attack"
 
@@ -31,9 +31,9 @@ var label_map = {
 }
 
 func _ready():
-	$panel/margin/vbox/action_1.grab_focus()
-	$panel/margin/vbox/action_1.connect("pressed", self, "_on_action_1")
-	$panel/margin/vbox/action_2.connect("pressed", self, "_on_action_2")
+	$panel/action_1.grab_focus()
+	$panel/action_1.connect("pressed", self, "_on_action_1")
+	$panel/action_2.connect("pressed", self, "_on_action_2")
 
 func _on_action_1():
 	emit_signal(signal_map[menu_type][0])
@@ -43,12 +43,12 @@ func _on_action_2():
 	
 func show_dialog(menu_type = "attack"):
 	self.menu_type = menu_type
-	$panel/margin/vbox/action_1.text = label_map[menu_type][0]
-	$panel/margin/vbox/action_2.text = label_map[menu_type][1]
+	$panel/action_1.text = label_map[menu_type][0]
+	$panel/action_2.text = label_map[menu_type][1]
 	start = OS.get_ticks_msec()
 	done = false
 	margin_left = 0
-	$panel/margin/vbox/action_1.grab_focus()
+	$panel/action_1.grab_focus()
 	show()
 
 func _process(delta):
