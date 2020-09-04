@@ -21,7 +21,7 @@ portrait = 6
 trigger = 4
 trigger_id = ""
 title = "Rolf"
-text = "The Hass have sent scouts out this far? |This is very unusual. I must remember my training."
+text = "Hass scouts out this far? This is very unusual. |I must remember my training."
 branches = [  ]
 result = 2
 
@@ -50,7 +50,7 @@ result = 2
 [sub_resource type="Resource" id=4]
 script = ExtResource( 10 )
 dialogue_id = "response"
-portrait = 0
+portrait = 8
 trigger = 5
 trigger_id = "opening"
 title = "Ulrich"
@@ -69,7 +69,7 @@ text = "Cool! Here's what you can do. A, B, D-Pad!"
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=18]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
@@ -80,7 +80,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=19]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
@@ -91,7 +91,7 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=20]
+[sub_resource type="Resource" id=8]
 script = ExtResource( 5 )
 character_class = 0
 name = "Izzy"
@@ -103,8 +103,8 @@ def = 2
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 18 )
-item_def = SubResource( 19 )
+item_atk = SubResource( 6 )
+item_def = SubResource( 7 )
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 10 )
@@ -150,7 +150,7 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 5 )
 character_class = 0
 name = "Nina"
@@ -220,7 +220,7 @@ centered = false
 position = Vector2( 168, 136 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 20 )
+stats = SubResource( 8 )
 dialogue = SubResource( 9 )
 recruit_dialogue = SubResource( 10 )
 
@@ -228,7 +228,7 @@ recruit_dialogue = SubResource( 10 )
 position = Vector2( 152, 152 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 21 )
+stats = SubResource( 13 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
 
@@ -245,16 +245,18 @@ script = ExtResource( 9 )
 item_spawner = SubResource( 17 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
+frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
-frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 65.502, 42.1491 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://gfx/Maps/lv2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -14,8 +14,75 @@
 [ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://gfx/mage.png" type="Texture" id=13]
 [ext_resource path="res://gfx/swordsman.png" type="Texture" id=14]
+[ext_resource path="res://scripts/level.gd" type="Script" id=15]
 
 [sub_resource type="Resource" id=1]
+script = ExtResource( 6 )
+dialogue_id = "opening"
+portrait = 6
+trigger = 4
+trigger_id = ""
+title = "Rolf:"
+text = "(The Hass have been busy. "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 6 )
+dialogue_id = "second"
+portrait = 6
+trigger = 5
+trigger_id = "opening"
+title = ""
+text = "…so many houses looted and destroyed. |They may have left some equipment behind in these chests.)"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 6 )
+dialogue_id = "third"
+portrait = 4
+trigger = 5
+trigger_id = "second"
+title = "Hass Scout:"
+text = "You there! What is your name?"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 6 )
+dialogue_id = "fourth"
+portrait = 4
+trigger = 5
+trigger_id = "third"
+title = ""
+text = "We are searching for a hermit named Ulrich. Do you know of him?"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 6 )
+dialogue_id = "fifth"
+portrait = 6
+trigger = 5
+trigger_id = "fourth"
+title = "Rolf:"
+text = "If you must have answers… my blade will do the talking."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 4
+trigger = 5
+trigger_id = "fifth"
+title = "Hass Scout:"
+text = "Very well, It is your funeral."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=5]
 script = ExtResource( 3 )
 character_class = 1
 equipment_slot = 0
@@ -26,7 +93,7 @@ attack_range = 10.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 3 )
 character_class = 1
 equipment_slot = 0
@@ -37,7 +104,7 @@ attack_range = 0
 defense = 10.0
 heal = 0
 
-[sub_resource type="Resource" id=3]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 4 )
 character_class = 1
 name = "Lily"
@@ -49,67 +116,19 @@ def = 1
 atk_range = 3
 mov_range = 6
 heal = 0
-item_atk = SubResource( 1 )
-item_def = SubResource( 2 )
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 6 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 6 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 3 )
-character_class = 2
-equipment_slot = 0
-level = 1
-name = "minor staff"
-attack = 1.0
-attack_range = 1.0
-defense = 0
-heal = 1.0
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 3 )
-character_class = 2
-equipment_slot = 0
-level = 1
-name = "minor wand"
-attack = 0
-attack_range = 0
-defense = 1.0
-heal = 2.0
+item_atk = SubResource( 5 )
+item_def = SubResource( 6 )
 
 [sub_resource type="Resource" id=8]
-script = ExtResource( 4 )
-character_class = 2
-name = "Steph"
-level = 1
-hp = 18
-max_hp = 18
-atk = 4
-def = 1
-atk_range = 4
-mov_range = 4
-heal = 1
-item_atk = SubResource( 6 )
-item_def = SubResource( 7 )
+script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 6 )
@@ -123,6 +142,43 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=10]
+script = ExtResource( 3 )
+character_class = 2
+equipment_slot = 0
+level = 1
+name = "minor staff"
+attack = 1.0
+attack_range = 1.0
+defense = 0
+heal = 1.0
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 3 )
+character_class = 2
+equipment_slot = 0
+level = 1
+name = "minor wand"
+attack = 0
+attack_range = 0
+defense = 1.0
+heal = 2.0
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 4 )
+character_class = 2
+name = "Steph"
+level = 1
+hp = 18
+max_hp = 18
+atk = 4
+def = 1
+atk_range = 4
+mov_range = 4
+heal = 1
+item_atk = SubResource( 10 )
+item_def = SubResource( 11 )
+
+[sub_resource type="Resource" id=13]
 script = ExtResource( 6 )
 dialogue_id = ""
 portrait = 0
@@ -132,43 +188,6 @@ title = ""
 text = ""
 branches = [  ]
 result = 0
-
-[sub_resource type="Resource" id=11]
-script = ExtResource( 3 )
-character_class = 0
-equipment_slot = 0
-level = 2
-name = "iron knife"
-attack = 4.0
-attack_range = 5.0
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=12]
-script = ExtResource( 3 )
-character_class = 0
-equipment_slot = 0
-level = 2
-name = "forged cleaver"
-attack = 0
-attack_range = 0
-defense = 4.0
-heal = 0
-
-[sub_resource type="Resource" id=13]
-script = ExtResource( 4 )
-character_class = 0
-name = "Eva"
-level = 2
-hp = 24
-max_hp = 24
-atk = 3
-def = 2
-atk_range = 1
-mov_range = 5
-heal = 0
-item_atk = SubResource( 11 )
-item_def = SubResource( 12 )
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 6 )
@@ -182,6 +201,43 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=15]
+script = ExtResource( 3 )
+character_class = 0
+equipment_slot = 0
+level = 2
+name = "iron knife"
+attack = 4.0
+attack_range = 5.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 3 )
+character_class = 0
+equipment_slot = 0
+level = 2
+name = "forged cleaver"
+attack = 0
+attack_range = 0
+defense = 4.0
+heal = 0
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 4 )
+character_class = 0
+name = "Eva"
+level = 2
+hp = 24
+max_hp = 24
+atk = 3
+def = 2
+atk_range = 1
+mov_range = 5
+heal = 0
+item_atk = SubResource( 15 )
+item_def = SubResource( 16 )
+
+[sub_resource type="Resource" id=18]
 script = ExtResource( 6 )
 dialogue_id = ""
 portrait = 0
@@ -192,12 +248,25 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=19]
+script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=20]
 script = ExtResource( 7 )
 equipment_slot = 0
 level = 3
 
 [node name="level" type="Node2D"]
+script = ExtResource( 15 )
+dialogue = [ SubResource( 1 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -207,31 +276,31 @@ centered = false
 position = Vector2( 136, 168 )
 texture = ExtResource( 8 )
 script = ExtResource( 5 )
-stats = SubResource( 3 )
-dialogue = SubResource( 4 )
-recruit_dialogue = SubResource( 5 )
+stats = SubResource( 7 )
+dialogue = SubResource( 8 )
+recruit_dialogue = SubResource( 9 )
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
 position = Vector2( 88, 168 )
 texture = ExtResource( 13 )
 script = ExtResource( 5 )
-stats = SubResource( 8 )
-dialogue = SubResource( 9 )
-recruit_dialogue = SubResource( 10 )
+stats = SubResource( 12 )
+dialogue = SubResource( 13 )
+recruit_dialogue = SubResource( 14 )
 
 [node name="CharacterSpawner3" type="Sprite" parent="map"]
 position = Vector2( 184, 104 )
 texture = ExtResource( 14 )
 script = ExtResource( 5 )
-stats = SubResource( 13 )
-dialogue = SubResource( 14 )
-recruit_dialogue = SubResource( 15 )
+stats = SubResource( 17 )
+dialogue = SubResource( 18 )
+recruit_dialogue = SubResource( 19 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 40, 24 )
 texture = ExtResource( 9 )
 script = ExtResource( 10 )
-item_spawner = SubResource( 16 )
+item_spawner = SubResource( 20 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 192, 144 )

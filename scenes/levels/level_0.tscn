@@ -10,11 +10,11 @@
 [sub_resource type="Resource" id=1]
 script = ExtResource( 10 )
 dialogue_id = "opening"
-portrait = 6
+portrait = 8
 trigger = 4
 trigger_id = ""
-title = "Rolf"
-text = "The Hass have sent scouts out this far? |This is very unusual. I must remember my training."
+title = "Ulrich:"
+text = "“…Rolf *cough cough* You were always more to me than a foster son…| "
 branches = [  ]
 result = 2
 
@@ -116,13 +116,11 @@ centered = false
 [node name="Campfire" type="AnimatedSprite" parent="map"]
 position = Vector2( 112, 120 )
 frames = SubResource( 8 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="map"]
 position = Vector2( 136, 120 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [node name="navigation" type="Navigation2D" parent="."]
