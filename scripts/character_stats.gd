@@ -139,7 +139,19 @@ func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range =
 	item_atk.generate(level, Item.SLOT.ATK, character_class)
 	item_def.generate(level, Item.SLOT.DEF, character_class)
 
-func generate(class_stats, request_class, request_control, level = 1):
+func generate(class_stats, request_class, request_control, level = 1, force = false):
+	if !item_atk or !item_def:
+		item_atk = Item.new()
+		item_def = Item.new()
+		item_atk.generate(level, Item.SLOT.ATK, character_class)
+		item_def.generate(level, Item.SLOT.DEF, character_class)
+	weakness = Game.class_stats.weakness[character_class]
+	strength = Game.class_stats.strength[character_class]
+	abilities = Game.class_stats.abilities[character_class]
+
+	# prevent re-generating character on spawn
+	if not Engine.editor_hint and not force:
+		return
 	print("Regenerate stats")
 	var default_stats = class_stats.archer
 	default_stats = class_stats.archer
@@ -149,14 +161,8 @@ func generate(class_stats, request_class, request_control, level = 1):
 		default_stats = class_stats.mage 
 		heal = level
 	character_class = default_stats.character_class
-	item_atk = Item.new()
-	item_def = Item.new()
-	item_atk.generate(level, Item.SLOT.ATK, character_class)
-	item_def.generate(level, Item.SLOT.DEF, character_class)
 	control = request_control
 	abilities = Game.class_stats.abilities[character_class]
-#	max_hp = floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
-#	max_hp = floor(default_stats.hp + (level + 1) * 1.5)
 	max_hp = default_stats.hp + fibonacci_cumulative(level)
 	hp = max_hp # floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
 	mov_range = default_stats.mov_range
@@ -165,8 +171,6 @@ func generate(class_stats, request_class, request_control, level = 1):
 	atk_range = default_stats.atk_range
 	atk = default_stats.atk + sequence_cumulative(atk_up, level)
 	def = default_stats.def + sequence_cumulative(def_up, level)
-	weakness = Game.class_stats.weakness[character_class]
-	strength = Game.class_stats.strength[character_class]
 	# don't regenerate name if this character already has one
 	if name == "":
 		name = Game.character_names[rand_range(0, Game.character_names.size() - 1)]
