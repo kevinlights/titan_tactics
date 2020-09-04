@@ -35,7 +35,7 @@ func _input(event):
 func attack():
 	active = true
 	$healthpage.call_deferred("hide")
-	$stats.call_deferred("hide")
+	$battle.call_deferred("hide")
 	$action_menu.call_deferred("show_dialog", "attack")
 
 func turn(type):
@@ -75,23 +75,26 @@ func level_up(diff, new_stats):
 	$lvlup.on_level_up(diff, new_stats)
 	$lvlup.call_deferred("show")
 
-func stats(friendly, enemy):
-	if $healthpage.visible or modal:
-		return
-	$stats.set_entities(friendly, enemy)
-	$stats.show()
+func battle(friendly, enemy):
+	$battle.set_entities(friendly, enemy)
+	$battle.show()
+
+func battle_hide():
+	$battle.hide()
+	$battle/box_ally.position.x = $battle.start_x_ally
+	$battle/box_enemy.position.x = $battle.start_x_enemy
 
 func loot(current, new, type):
 	active = true
 	$weaponswap.set_weapons(current, new, type)
 	$weaponswap.show()
 
-func health(friendly, enemy):
-	if !modal:
-		print(enemy.character.hp)
-		print(enemy.character.max_hp)
-		$healthpage.set_entities(friendly.character, enemy.character)
-		$healthpage.show()
+#func health(friendly, enemy):
+#	if !modal:
+#		print(enemy.character.hp)
+#		print(enemy.character.max_hp)
+#		$healthpage.set_entities(friendly.character, enemy.character)
+#		$healthpage.show()
 
 func team_confirm():
 	active = true
