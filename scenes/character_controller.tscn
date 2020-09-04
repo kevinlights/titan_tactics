@@ -1,9 +1,9 @@
-[gd_scene load_steps=279 format=2]
+[gd_scene load_steps=282 format=2]
 
 [ext_resource path="res://gfx/player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/character_controller.gd" type="Script" id=2]
 [ext_resource path="res://gfx/enemy.png" type="Texture" id=3]
-[ext_resource path="res://gfx/select.png" type="Texture" id=4]
+[ext_resource path="res://gfx/tags.png" type="Texture" id=4]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=5]
 [ext_resource path="res://sfx/gameplay/arrow_hit1.wav" type="AudioStream" id=9]
 [ext_resource path="res://sfx/gameplay/walking1.wav" type="AudioStream" id=11]
@@ -1390,20 +1390,36 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=255]
+[sub_resource type="AtlasTexture" id=260]
 atlas = ExtResource( 4 )
-region = Rect2( 102, 0, 18, 18 )
+region = Rect2( 0, 0, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=256]
+[sub_resource type="AtlasTexture" id=261]
 atlas = ExtResource( 4 )
-region = Rect2( 100, 20, 20, 20 )
+region = Rect2( 20, 0, 20, 20 )
+
+[sub_resource type="SpriteFrames" id=262]
+animations = [ {
+"frames": [ SubResource( 260 ), SubResource( 261 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="AtlasTexture" id=263]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 20, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=264]
+atlas = ExtResource( 4 )
+region = Rect2( 20, 20, 20, 20 )
 
 [sub_resource type="SpriteFrames" id=257]
 animations = [ {
-"frames": [ SubResource( 256 ) ],
+"frames": [ SubResource( 263 ), SubResource( 264 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 3.0
 } ]
 
 [sub_resource type="Gradient" id=258]
@@ -1463,14 +1479,17 @@ frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
-[node name="guard" type="Sprite" parent="."]
+[node name="guard" type="AnimatedSprite" parent="."]
 visible = false
-texture = SubResource( 255 )
+position = Vector2( 0, -1 )
+frames = SubResource( 262 )
+playing = true
 offset = Vector2( 8, 0 )
 
 [node name="done" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 257 )
+playing = true
 centered = false
 
 [node name="sfx" type="Node2D" parent="."]
