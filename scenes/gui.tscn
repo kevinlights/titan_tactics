@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -24,7 +24,6 @@
 [ext_resource path="res://scripts/focus.gd" type="Script" id=24]
 [ext_resource path="res://scripts/gui/levelclear.gd" type="Script" id=25]
 [ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
-[ext_resource path="res://mockups/defeatmockup.png" type="Texture" id=28]
 [ext_resource path="res://scripts/dialogue_body.gd" type="Script" id=29]
 [ext_resource path="res://scripts/gui/dialogue.gd" type="Script" id=30]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
@@ -60,14 +59,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -94,14 +93,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -143,19 +142,19 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 0, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 18, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
@@ -169,12 +168,12 @@ region = Rect2( 0, 18, 18, 18 )
 animations = [ {
 "frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ) ],
@@ -182,11 +181,6 @@ animations = [ {
 "name": "fighter",
 "speed": 5.0
 } ]
-
-[sub_resource type="DynamicFont" id=25]
-size = 4
-extra_spacing_bottom = -2
-font_data = ExtResource( 13 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 23 )
@@ -1123,45 +1117,45 @@ __meta__ = {
 }
 
 [node name="positioner" type="Node2D" parent="win"]
-position = Vector2( -64, 22 )
+position = Vector2( -160, 60 )
 z_index = 10
 
 [node name="front" type="ColorRect" parent="win/positioner"]
-margin_right = 64.0
-margin_bottom = 19.0
-color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+margin_top = 1.0
+margin_right = 160.0
+margin_bottom = 20.0
+color = Color( 0.219608, 0.596078, 0.454902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="line" type="ColorRect" parent="win/positioner/front"]
 margin_top = 16.0
-margin_right = 64.0
+margin_right = 160.0
 margin_bottom = 17.0
-color = Color( 0.160784, 0.678431, 1, 1 )
+color = Color( 0.623529, 0.870588, 0.576471, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="line2" type="ColorRect" parent="win/positioner/front"]
 margin_top = 2.0
-margin_right = 64.0
+margin_right = 160.0
 margin_bottom = 3.0
-color = Color( 0.160784, 0.678431, 1, 1 )
+color = Color( 0.623529, 0.870588, 0.576471, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="player turn" type="Label" parent="win/positioner/front"]
 margin_left = -2.0
-margin_top = 4.0
-margin_right = 38.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 25 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "LEVEL
-  CLEAR!"
-align = 2
+margin_top = 7.0
+margin_right = 159.0
+margin_bottom = 21.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "Level Clear!"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1221,53 +1215,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="positioner" type="Node2D" parent="lose"]
-position = Vector2( -64, 22 )
+[node name="positioner2" type="Node2D" parent="lose"]
+position = Vector2( -160, 61 )
 z_index = 10
 
-[node name="defeatmockup" type="Sprite" parent="lose/positioner"]
-visible = false
-position = Vector2( 21, 2 )
-scale = Vector2( 0.248062, 0.25 )
-texture = ExtResource( 28 )
-
-[node name="front" type="ColorRect" parent="lose/positioner"]
-margin_left = 64.0
-margin_right = 128.0
-margin_bottom = 19.0
-color = Color( 1, 0, 0.301961, 1 )
+[node name="front" type="ColorRect" parent="lose/positioner2"]
+margin_top = -0.292892
+margin_right = 160.0
+margin_bottom = 18.7071
+color = Color( 0.0627451, 0.203922, 0.262745, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="line" type="ColorRect" parent="lose/positioner/front"]
-margin_top = 16.0
-margin_right = 64.0
-margin_bottom = 17.0
-color = Color( 1, 0.466667, 0.658824, 1 )
+[node name="line" type="ColorRect" parent="lose/positioner2/front"]
+margin_left = 0.353554
+margin_top = 16.3536
+margin_right = 160.0
+margin_bottom = 17.3536
+color = Color( 0.219608, 0.596078, 0.454902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="line2" type="ColorRect" parent="lose/positioner/front"]
-margin_top = 2.0
-margin_right = 64.0
-margin_bottom = 3.0
-color = Color( 1, 0.466667, 0.658824, 1 )
+[node name="line2" type="ColorRect" parent="lose/positioner2/front"]
+margin_top = 1.64645
+margin_right = 160.0
+margin_bottom = 2.64645
+color = Color( 0.219608, 0.596078, 0.454902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="defeat" type="Label" parent="lose/positioner/front"]
-margin_left = 6.0
-margin_top = 4.0
-margin_right = 46.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 25 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "YOU WERE
- DEFEATED"
-align = 2
+[node name="player turn" type="Label" parent="lose/positioner2/front"]
+margin_left = 1.35355
+margin_top = 7.0
+margin_right = 160.354
+margin_bottom = 16.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "You were defeated..."
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1309,9 +1297,9 @@ __meta__ = {
 
 [node name="body" type="Label" parent="dialogue/background"]
 margin_left = 5.0
-margin_top = 17.0
+margin_top = 16.0
 margin_right = 155.0
-margin_bottom = 65.0
+margin_bottom = 64.0
 text = "Ferme-toé un peu le mâche-patate"
 autowrap = true
 max_lines_visible = 6
