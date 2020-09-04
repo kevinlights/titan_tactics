@@ -142,7 +142,7 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
@@ -150,7 +150,7 @@ region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
@@ -168,12 +168,12 @@ region = Rect2( 0, 18, 18, 18 )
 animations = [ {
 "frames": [ SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 21 ), SubResource( 22 ) ],
@@ -422,6 +422,7 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 5 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -434,7 +435,6 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 10 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1329,7 +1329,6 @@ volume_db = -4.0
 
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
-volume_db = 2.0
 
 [node name="level_up" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 13 )
