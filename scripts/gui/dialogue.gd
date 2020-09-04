@@ -66,6 +66,8 @@ func set_content(dialogue_content):
 		add_child(portrait)
 	if dialogue_content.title and dialogue_content.title != "":
 		set_title(dialogue_content.title)
+	else:
+		set_title("")
 	set_text(text_blocks[0])
 	text_blocks.remove(0)
 	print("follow up texts ", text_blocks.size())

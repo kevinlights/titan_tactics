@@ -19,6 +19,7 @@ var avatar
 var tile = Vector2(0, 0)
 var is_loot = false
 var is_dead = false
+var is_trigger = false
 var healthbar
 var last_target
 

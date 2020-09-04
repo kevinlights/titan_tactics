@@ -7,6 +7,7 @@ var empty = false
 var looted = false
 var is_loot = true
 var is_dead = false
+var is_trigger = false
 
 # to animate loot
 var start

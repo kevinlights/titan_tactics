@@ -143,14 +143,17 @@ func action():
 					_on_attack()
 		Game.CONTEXT.USE:
 			if is_adjacent(target, get_current()):
-				var loot = target.open(get_current().character.character_class)
-				if loot:
-					yield(get_tree().create_timer(1.0), "timeout")
-					print("item " + str(loot.name))
-					if target.item_spawner.equipment_slot == 0:
-						gui.loot(get_current().character.item_atk, loot, 0)
-					if target.item_spawner.equipment_slot == 1:
-						gui.loot(get_current().character.item_def, loot, 1)
+				if target.is_loot:
+					var loot = target.open(get_current().character.character_class)
+					if loot:
+						yield(get_tree().create_timer(1.0), "timeout")
+						print("item " + str(loot.name))
+						if target.item_spawner.equipment_slot == 0:
+							gui.loot(get_current().character.item_atk, loot, 0)
+						if target.item_spawner.equipment_slot == 1:
+							gui.loot(get_current().character.item_def, loot, 1)
+				else:
+					target.use()
 		Game.CONTEXT.MOVE:
 			get_current().move(to_world_path(current_path))
 			$path_preview.hide_path()
@@ -483,7 +486,7 @@ func _on_selector_moved(tile):
 func get_current_context(tile):
 	var unit = entity_at(tile)
 	if unit:
-		if unit.is_loot:
+		if unit.is_loot or unit.is_trigger:
 			return Game.CONTEXT.USE
 		elif unit.character.control == Game.CONTROL.AI:
 			return Game.CONTEXT.ATTACK
