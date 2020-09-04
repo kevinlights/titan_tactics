@@ -81,6 +81,8 @@ func battle(friendly, enemy):
 
 func battle_hide():
 	$battle.hide()
+	$battle/box_ally/levelline.set_point_position(1, Vector2(28, 0))
+	$battle/box_enemy/enemylevelline.set_point_position(1, Vector2(28, 0))
 	$battle/box_ally.position.x = $battle.start_x_ally
 	$battle/box_enemy.position.x = $battle.start_x_enemy
 
