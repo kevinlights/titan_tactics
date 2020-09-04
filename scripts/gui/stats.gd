@@ -32,11 +32,25 @@ var atlas_frames = {
 	Game.TYPE.MAGE: 4
 }
 
-#level width = 28
+#level line width = 28
+
 func _process(delta):
 	if !visible:
 		return
 	var now = OS.get_ticks_msec()
+	
+	if $box_ally/levelline.get_point_position(1).x > (player.character.xp/player.character.xp_to_next)*28:
+		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x - 0.5, 0)
+		$box_ally/levelline.set_point_position(1, new_lvl_pos)
+		
+	#if $box_ally/levelline.get_point_position(1).x > (player.character.xp/player.character.xp_to_next)*28:
+		#var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x - 0.5, 0)
+		#$box_ally/levelline.set_point_position(1, new_lvl_pos)
+		
+	if $box_enemy/enemylevelline.get_point_position(1).x > (enemy.character.xp/enemy.character.xp_to_next)*28:
+		var new_lvl_pos = Vector2($box_enemy/enemylevelline.get_point_position(1).x - 0.5, 0)
+		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
+		
 	if $box_ally.position.x < end_x_ally:
 		$box_ally.position.x = lerp(start_x_ally, end_x_ally, float(now - start) / float(ttl))
 	else:
