@@ -32,31 +32,17 @@ func _process(delta):
 	var now = OS.get_ticks_msec()
 	if now - start < ttl:
 		$positioner.position.x = lerp(start_x, start_x + 160, float(now - start) / float(ttl))
+		$Control.rect_global_position.x = lerp(60, 0, float(now - start) / float(ttl))
 	else:
 		done = true
+		$Control.rect_global_position.x = 0
 		$positioner.position.x = start_x + 160
 
-func _input(event):
-	if !visible:
-		return
-	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
-		if selected == 0: 
-			emit_signal("next")
-		else:
-			emit_signal("retry")
-	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
-		selected += 1
-		selected = clamp(selected, 0, 1)
-	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
-		selected -= 1
-		selected = clamp(selected, 0, 1)
-	if selected == 0:
-		$next.text = ">NEXT"
-		$next.set("custom_colors/font_color", selected_color)
-		$retry.text = "RETRY"
-		$retry.set("custom_colors/font_color", text_color)
-	else:
-		$next.text = "NEXT"
-		$next.set("custom_colors/font_color", text_color)
-		$retry.text = ">RETRY"
-		$retry.set("custom_colors/font_color", selected_color)
+
+
+func _on_Next_pressed():
+	emit_signal("next")
+
+
+func _on_Retry_pressed():
+	emit_signal("retry")

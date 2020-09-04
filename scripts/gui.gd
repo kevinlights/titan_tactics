@@ -11,6 +11,11 @@ func _ready():
 	$lose.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
 	$lvlup.connect("close", self, "_close_level_up")
 
+#for testing purposes
+func _process(delta):
+	if Input.is_action_just_pressed("ui_page_down"):
+		win()
+
 func _close_level_up():
 	print("run turn end ui")
 	modal = false
@@ -72,7 +77,7 @@ func level_up(diff, new_stats):
 	active = true
 	modal = true
 	$lvlup.on_level_up(diff, new_stats)
-#	$lvlup.call_deferred("show")
+	$lvlup.call_deferred("show")
 
 func stats(friendly, enemy):
 	if $healthpage.visible or modal:
@@ -99,6 +104,7 @@ func team_confirm():
 func win():
 	active = true
 	$win.reset()
+	$win/Control/Next.grab_focus()
 	$win.show()
 
 func lose():

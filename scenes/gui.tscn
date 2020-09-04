@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -143,19 +143,19 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 18, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 0, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
@@ -169,12 +169,12 @@ region = Rect2( 0, 18, 18, 18 )
 animations = [ {
 "frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ) ],
@@ -194,6 +194,22 @@ region = Rect2( 0, 8, 8, 8 )
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
 "frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 8, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=30]
+animations = [ {
+"frames": [ SubResource( 28 ), SubResource( 29 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -943,8 +959,9 @@ margin_left = 35.0
 margin_top = 75.566
 margin_right = 61.0
 margin_bottom = 97.566
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 22 )
-action_mode = 0
 text = "Ok"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1056,58 +1073,9 @@ animation = "fighter"
 playing = true
 
 [node name="win" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 25 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="shadow2" type="ColorRect" parent="win"]
-margin_left = 33.0
-margin_top = 49.0
-margin_right = 64.0
-margin_bottom = 64.0
-color = Color( 0.121569, 0.0941176, 0.0941176, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="dialog2" type="ColorRect" parent="win"]
-margin_left = 32.0
-margin_top = 48.0
-margin_right = 63.0
-margin_bottom = 63.0
-color = Color( 0.0235294, 0.352941, 0.709804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="next" type="Label" parent="win"]
-margin_left = 14.0
-margin_top = 50.0
-margin_right = 54.0
-margin_bottom = 61.71
-rect_pivot_offset = Vector2( 13.4933, 1.83694 )
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = ">NEXT"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="retry" type="Label" parent="win"]
-margin_left = 18.0
-margin_top = 56.0
-margin_right = 58.0
-margin_bottom = 65.3161
-rect_pivot_offset = Vector2( 13.4933, 1.83694 )
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.160784, 0.678431, 1, 1 )
-text = "RETRY"
-align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1156,6 +1124,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Control" type="Control" parent="win"]
+margin_left = 60.0
+margin_right = 100.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="Sprite" parent="win/Control"]
+position = Vector2( 130, 130 )
+texture = ExtResource( 33 )
+
+[node name="Next" type="ToolButton" parent="win/Control"]
+margin_left = 110.996
+margin_top = 113.782
+margin_right = 152.996
+margin_bottom = 135.782
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath("../Retry")
+theme = ExtResource( 22 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
+visible = false
+position = Vector2( -2, 0 )
+frames = SubResource( 27 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( -1, 9 )
+script = ExtResource( 24 )
+
+[node name="Retry" type="ToolButton" parent="win/Control"]
+margin_left = 110.996
+margin_top = 125.234
+margin_right = 151.996
+margin_bottom = 147.234
+focus_neighbour_top = NodePath("../Next")
+focus_neighbour_bottom = NodePath(".")
+theme = ExtResource( 22 )
+text = "Retry"
+
+[node name="focus" type="AnimatedSprite" parent="win/Control/Retry"]
+visible = false
+position = Vector2( -2, -11.4519 )
+frames = SubResource( 27 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( -1, 20 )
+script = ExtResource( 24 )
+
 [node name="lose" type="Control" parent="."]
 visible = false
 margin_right = 40.0
@@ -1165,51 +1188,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shadow2" type="ColorRect" parent="lose"]
-margin_left = 33.0
-margin_top = 49.0
-margin_right = 64.0
-margin_bottom = 64.0
-color = Color( 0.121569, 0.0941176, 0.0941176, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="dialog2" type="ColorRect" parent="lose"]
-margin_left = 32.0
-margin_top = 48.0
-margin_right = 63.0
-margin_bottom = 63.0
-color = Color( 1, 0, 0.301961, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="retry" type="Label" parent="lose"]
-margin_left = 33.8579
-margin_top = 50.2558
-margin_right = 73.8579
-margin_bottom = 61.9658
-rect_pivot_offset = Vector2( 13.4933, 1.83694 )
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = ">RETRY"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="quit" type="Label" parent="lose"]
-margin_left = 33.5311
-margin_top = 56.4263
-margin_right = 73.5311
-margin_bottom = 65.7424
-rect_pivot_offset = Vector2( 13.4933, 1.83694 )
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.466667, 0.658824, 1 )
-text = " QUIT"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="panel" type="Sprite" parent="lose"]
+position = Vector2( 130, 130 )
+texture = ExtResource( 33 )
 
 [node name="positioner2" type="Node2D" parent="lose"]
 position = Vector2( -160, 61 )
@@ -1333,7 +1314,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
 visible = false
-frames = SubResource( 27 )
+frames = SubResource( 30 )
 frame = 1
 playing = true
 centered = false
@@ -1368,7 +1349,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
-frames = SubResource( 27 )
+frames = SubResource( 30 )
 frame = 1
 playing = true
 centered = false
@@ -1400,7 +1381,7 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
-frames = SubResource( 27 )
+frames = SubResource( 30 )
 frame = 1
 playing = true
 centered = false
@@ -1448,3 +1429,5 @@ volume_db = -4.0
 stream = ExtResource( 7 )
 volume_db = 2.0
 [connection signal="pressed" from="lvlup/Control/Ok" to="lvlup" method="_on_ok_pressed"]
+[connection signal="pressed" from="win/Control/Next" to="win" method="_on_Next_pressed"]
+[connection signal="pressed" from="win/Control/Retry" to="win" method="_on_Retry_pressed"]
