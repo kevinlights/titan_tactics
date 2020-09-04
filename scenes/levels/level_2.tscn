@@ -17,37 +17,37 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
-character_class = 2
+character_class = 1
 equipment_slot = 0
 level = 3
-name = "steel wand"
-attack = 12.0
-attack_range = 12.0
+name = "steel bow"
+attack = 10.0
+attack_range = 10.0
 defense = 0
-heal = 5.0
+heal = 0
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 3 )
-character_class = 2
+character_class = 1
 equipment_slot = 0
 level = 3
-name = "sharp wand"
+name = "sharp bow"
 attack = 0
 attack_range = 0
-defense = 11.0
-heal = 12.0
+defense = 10.0
+heal = 0
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 4 )
 character_class = 1
-name = "Nora"
+name = "Lily"
 level = 3
-hp = 11
-max_hp = 11
+hp = 22
+max_hp = 22
 atk = 3
 def = 1
-atk_range = 4
-mov_range = 3
+atk_range = 3
+mov_range = 6
 heal = 0
 item_atk = SubResource( 1 )
 item_def = SubResource( 2 )
@@ -78,36 +78,36 @@ result = 0
 script = ExtResource( 3 )
 character_class = 2
 equipment_slot = 0
-level = 2
-name = "iron wand"
-attack = 5.0
-attack_range = 5.0
+level = 1
+name = "minor staff"
+attack = 1.0
+attack_range = 1.0
 defense = 0
-heal = 7.0
+heal = 1.0
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 3 )
 character_class = 2
 equipment_slot = 0
-level = 2
-name = "iron wand"
+level = 1
+name = "minor wand"
 attack = 0
 attack_range = 0
-defense = 5.0
-heal = 8.0
+defense = 1.0
+heal = 2.0
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 4 )
 character_class = 2
-name = "Cyrus"
-level = 2
-hp = 12
-max_hp = 12
-atk = 3
+name = "Steph"
+level = 1
+hp = 18
+max_hp = 18
+atk = 4
 def = 1
 atk_range = 4
-mov_range = 3
-heal = 2
+mov_range = 4
+heal = 1
 item_atk = SubResource( 6 )
 item_def = SubResource( 7 )
 
@@ -138,9 +138,9 @@ script = ExtResource( 3 )
 character_class = 0
 equipment_slot = 0
 level = 2
-name = "forged knife"
-attack = 5.0
-attack_range = 4.0
+name = "iron knife"
+attack = 4.0
+attack_range = 5.0
 defense = 0
 heal = 0
 
@@ -149,23 +149,23 @@ script = ExtResource( 3 )
 character_class = 0
 equipment_slot = 0
 level = 2
-name = "forged knife"
+name = "forged cleaver"
 attack = 0
 attack_range = 0
-defense = 5.0
+defense = 4.0
 heal = 0
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 4 )
 character_class = 0
-name = "Horm"
+name = "Eva"
 level = 2
-hp = 22.0
-max_hp = 22.0
-atk = 4
-def = 1
+hp = 24
+max_hp = 24
+atk = 3
+def = 2
 atk_range = 1
-mov_range = 7
+mov_range = 5
 heal = 0
 item_atk = SubResource( 11 )
 item_def = SubResource( 12 )
