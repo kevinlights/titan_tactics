@@ -143,19 +143,19 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 0, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 18, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
@@ -169,12 +169,12 @@ region = Rect2( 0, 18, 18, 18 )
 animations = [ {
 "frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ) ],
@@ -802,6 +802,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -823,6 +824,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -831,6 +833,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -943,7 +946,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -969,6 +971,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1070,9 +1073,11 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 24 )
 animation = "fighter"
+frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 25 )
@@ -1153,7 +1158,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 27 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1173,7 +1177,6 @@ text = "Retry"
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 27 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1187,10 +1190,6 @@ script = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="panel" type="Sprite" parent="lose"]
-position = Vector2( 130, 130 )
-texture = ExtResource( 33 )
 
 [node name="positioner2" type="Node2D" parent="lose"]
 position = Vector2( -160, 61 )
@@ -1236,6 +1235,59 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Control" type="Control" parent="lose"]
+margin_left = 60.0
+margin_right = 100.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="Sprite" parent="lose/Control"]
+position = Vector2( 130, 130 )
+texture = ExtResource( 33 )
+
+[node name="Retry" type="ToolButton" parent="lose/Control"]
+margin_left = 110.996
+margin_top = 113.782
+margin_right = 152.996
+margin_bottom = 135.782
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath("../Quit")
+theme = ExtResource( 22 )
+text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="lose/Control/Retry"]
+visible = false
+position = Vector2( -2, 0 )
+frames = SubResource( 27 )
+playing = true
+centered = false
+offset = Vector2( -1, 9 )
+script = ExtResource( 24 )
+
+[node name="Quit" type="ToolButton" parent="lose/Control"]
+margin_left = 107.922
+margin_top = 125.849
+margin_right = 148.922
+margin_bottom = 147.849
+focus_neighbour_top = NodePath("../Retry")
+focus_neighbour_bottom = NodePath(".")
+theme = ExtResource( 22 )
+text = "Quit"
+
+[node name="focus" type="AnimatedSprite" parent="lose/Control/Quit"]
+visible = false
+position = Vector2( -2, -11.4519 )
+frames = SubResource( 27 )
+playing = true
+centered = false
+offset = Vector2( -1, 20 )
+script = ExtResource( 24 )
 
 [node name="dialogue" type="Control" parent="."]
 visible = false
@@ -1315,7 +1367,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
 visible = false
 frames = SubResource( 30 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1350,7 +1401,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
 frames = SubResource( 30 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1382,7 +1432,6 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
 frames = SubResource( 30 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1431,3 +1480,5 @@ volume_db = 2.0
 [connection signal="pressed" from="lvlup/Control/Ok" to="lvlup" method="_on_ok_pressed"]
 [connection signal="pressed" from="win/Control/Next" to="win" method="_on_Next_pressed"]
 [connection signal="pressed" from="win/Control/Retry" to="win" method="_on_Retry_pressed"]
+[connection signal="pressed" from="lose/Control/Retry" to="lose" method="_on_Retry_pressed"]
+[connection signal="pressed" from="lose/Control/Quit" to="lose" method="_on_Quit_pressed"]

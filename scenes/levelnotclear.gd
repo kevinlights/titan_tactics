@@ -1,10 +1,5 @@
 extends Control
 
-var text_color = Color(1, .47, .66)
-var selected_color = Color(1, 0.945098, 0.909804)
-
-var selected = 0
-
 signal retry
 signal quit
 
@@ -31,31 +26,18 @@ func _process(delta):
 		return
 	var now = OS.get_ticks_msec()
 	if now - start < ttl:
-		$positioner.position.x = lerp(start_x, start_x + 160, float(now - start) / float(ttl))
+		$positioner2.position.x = lerp(start_x, start_x + 160, float(now - start) / float(ttl))
+		$Control.rect_global_position.x = lerp(60, 0, float(now - start) / float(ttl))
 	else:
 		done = true
-		$positioner.position.x = start_x + 160
+		$Control.rect_global_position.x = 0
+		$positioner2.position.x = start_x + 160
 
-func _input(event):
-	if !visible:
-		return
-	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
-		if selected == 0:
-			emit_signal("retry")
-		else:
-			emit_signal("quit")
-	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
-		selected += 1
-	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
-		selected -= 1
-	selected = clamp(selected, 0, 1)
-	if selected == 0:
-		$quit.text = " QUIT"
-		$quit.set("custom_colors/font_color", text_color)
-		$retry.text = ">RETRY"
-		$retry.set("custom_colors/font_color", selected_color)
-	else:
-		$quit.text = ">QUIT"
-		$quit.set("custom_colors/font_color", selected_color)
-		$retry.text = " RETRY"
-		$retry.set("custom_colors/font_color", text_color)
+
+
+func _on_Retry_pressed():
+	emit_signal("retry")
+
+
+func _on_Quit_pressed():
+	emit_signal("quit")

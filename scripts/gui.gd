@@ -11,10 +11,6 @@ func _ready():
 	$lose.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
 	$lvlup.connect("close", self, "_close_level_up")
 
-#for testing purposes
-func _process(delta):
-	if Input.is_action_just_pressed("ui_page_down"):
-		win()
 
 func _close_level_up():
 	print("run turn end ui")
@@ -109,6 +105,8 @@ func win():
 
 func lose():
 	active = true
+	$lose.reset()
+	$lose/Control/Retry.grab_focus()
 	$lose.show()
 
 func guard(is_healer = false):

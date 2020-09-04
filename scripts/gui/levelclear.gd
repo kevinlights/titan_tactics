@@ -1,10 +1,5 @@
 extends Control
 
-var text_color = Color(0.160784, 0.678431, 1)
-var selected_color = Color(1, 0.945098, 0.909804)
-
-var selected = 0
-
 signal next
 signal retry
 
