@@ -421,7 +421,6 @@ hframes = 2
 position = Vector2( 55.5761, 3.49651 )
 frames = SubResource( 5 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -434,6 +433,7 @@ hframes = 2
 position = Vector2( 112.938, 2.85042 )
 frames = SubResource( 10 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1186,7 +1186,6 @@ __meta__ = {
 visible = false
 position = Vector2( 145, 32 )
 frames = SubResource( 29 )
-frame = 1
 playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]

@@ -34,7 +34,7 @@ func _input(event):
 
 func attack():
 	active = true
-	$healthpage.call_deferred("hide")
+#	$healthpage.call_deferred("hide")
 	$battle.call_deferred("hide")
 	$action_menu.call_deferred("show_dialog", "attack")
 

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal win
+
 enum TILEID {
 	NOT_PASSABLE = 0,
 	COVER,
@@ -301,15 +303,23 @@ func _on_start_level():
 	$select.set_origin(get_current())
 	$select.call_deferred("enable")
 
-func check_end_game():
+func _on_win(ignore_dialogue = false):
+	emit_signal("win")
+	if not gui.get_node("dialogue").visible or ignore_dialogue:
+		print("win, dialogue: ", gui.get_node("dialogue").visible)
+		gui.get_node("dialogue").hide()
+		gui.win()
+		$music/win.play()
+		print("End game: WIN")
+	
+func check_end_game(ignore_dialogue = false):
 	for control in [ Game.CONTROL.AI, Game.CONTROL.PLAYER ]:
 		if current[control].size() == 0:
 			game_over = true
 			$select.disable()
 			if control == Game.CONTROL.AI:
-				gui.win()
-				$music/win.play()
-				print("End game: WIN")
+				call_deferred("_on_win", ignore_dialogue)
+#				_on_win(ignore_dialogue)
 			else:
 				gui.lose()
 				print("End game: LOSE")

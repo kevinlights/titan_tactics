@@ -43,7 +43,10 @@ export(String) var text
 export(Array, Resource) var branches
 export(RESULT) var result
 
+var consumed = false
+
 func complete():
+	consumed = true
 	emit_signal("completed", dialogue_id)
 	if result != RESULT.NOTHING:
 		emit_signal("dialogue_result", result)
