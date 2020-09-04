@@ -61,14 +61,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -95,14 +95,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -144,19 +144,19 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 0, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 18, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
@@ -170,12 +170,12 @@ region = Rect2( 0, 18, 18, 18 )
 animations = [ {
 "frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ) ],
@@ -976,6 +976,17 @@ frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
+
+[node name="name" type="Label" parent="lvlup"]
+margin_left = 25.0
+margin_top = 24.0
+margin_right = 65.0
+margin_bottom = 38.0
+theme = ExtResource( 22 )
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="characterselect" type="Control" parent="."]
 visible = false

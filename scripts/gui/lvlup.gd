@@ -26,6 +26,7 @@ func on_level_up(diff, character):
 	$new_atk.text = "%02d" % (character.atk)
 	$new_def.text = "%02d" % (character.def)
 	$new_hp.text = "%02d" % (character.max_hp)
+	$name.text = character.name
 	show()
 	$Control/Ok.grab_focus()
 

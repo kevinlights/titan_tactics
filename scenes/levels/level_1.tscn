@@ -96,10 +96,10 @@ script = ExtResource( 5 )
 character_class = 0
 name = "Yava"
 level = 1
-hp = 23
-max_hp = 23
+hp = 4
+max_hp = 4
 atk = 3
-def = 2
+def = 0
 atk_range = 1
 mov_range = 5
 heal = 0
@@ -155,10 +155,10 @@ script = ExtResource( 5 )
 character_class = 0
 name = "Nina"
 level = 1
-hp = 23
-max_hp = 23
+hp = 4
+max_hp = 4
 atk = 3
-def = 2
+def = 0
 atk_range = 1
 mov_range = 5
 heal = 0
@@ -245,16 +245,18 @@ script = ExtResource( 9 )
 item_spawner = SubResource( 17 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
+frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
-frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 65.502, 42.1491 )
