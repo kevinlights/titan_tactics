@@ -37,8 +37,11 @@ func _ready():
 	dialogue_height = 6 + 10 * 3 #$background/body.get_visible_line_count()
 	$background.rect_size.y = dialogue_height
 	$background.rect_position.y = 144 - dialogue_height
+# warning-ignore:return_value_discarded
 	$branches/trigger_1.connect("pressed", self, "_on_trigger_1")
+# warning-ignore:return_value_discarded
 	$branches/trigger_2.connect("pressed", self, "_on_trigger_2")
+# warning-ignore:return_value_discarded
 	$branches/trigger_3.connect("pressed", self, "_on_trigger_3")
 
 func resize():
@@ -94,7 +97,7 @@ func set_text(text):
 		if not typing_cancelled:
 			$background/body.text += i			
 			rng.randomize()
-			var my_random_number = rng.randf_range(5.0, 6.0)
+			var my_random_number = rng.randf_range(1.5, 2.0)
 			$textsfx.set_pitch_scale(my_random_number)
 			$textsfx.play()
 			if $background/body.get_visible_line_count() > 3:
