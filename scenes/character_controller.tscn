@@ -1435,6 +1435,7 @@ script = ExtResource( 2 )
 visible = false
 frames = SubResource( 45 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1442,6 +1443,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 90 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1449,6 +1451,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 127 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1456,6 +1459,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 172 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1463,6 +1467,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 217 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1470,6 +1475,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 254 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 

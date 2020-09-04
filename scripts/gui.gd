@@ -6,9 +6,16 @@ var modal = false
 var exempt = [ "sfx", "playerturn", "enemyturn" ]
 
 func _ready():
-	get_node("pause").connect("resume", self, "back")
-	get_node("pause").connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
-	get_node("lose").connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
+	$pause.connect("resume", self, "back")
+	$pause.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
+	$lose.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
+	$lvlup.connect("close", self, "_close_level_up")
+
+func _close_level_up():
+	print("run turn end ui")
+	modal = false
+	var world = get_tree().get_root().get_node("World")
+	turn(world.current_turn)
 
 func _input(event):
 	if not modal and event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
@@ -31,6 +38,8 @@ func attack():
 	$action_menu.call_deferred("show_dialog", "attack")
 
 func turn(type):
+	if $lvlup.visible:
+		return
 	active = true
 	match type:
 		Game.CONTROL.PLAYER:
@@ -61,6 +70,7 @@ func error(message):
 
 func level_up(diff, new_stats):
 	active = true
+	modal = true
 	$lvlup.on_level_up(diff, new_stats)
 	$lvlup.call_deferred("show")
 

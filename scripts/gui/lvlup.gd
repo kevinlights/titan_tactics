@@ -1,5 +1,7 @@
 extends Control
 
+signal close
+
 var current_atk
 var current_def
 var current_hp
@@ -16,8 +18,6 @@ var atlas = {
 
 #should be called after the level and stats are increased
 func on_level_up(diff, character):
-	print(diff)
-	$Control/Ok.grab_focus()
 	$char_sprite.frame = atlas[character.character_class]
 	$new_lvl.text = "%02d" % (character.level)
 	$current_hp.text = "%02d" % (character.max_hp - diff.hp)
@@ -26,9 +26,11 @@ func on_level_up(diff, character):
 	$new_atk.text = "%02d" % (character.atk)
 	$new_def.text = "%02d" % (character.def)
 	$new_hp.text = "%02d" % (character.max_hp)
+	$Control/Ok.grab_focus()
 
 
 func _on_ok_pressed():
 	if !visible:
 		return
 	hide()
+	emit_signal("close")
