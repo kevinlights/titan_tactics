@@ -277,7 +277,7 @@ func _on_team_select_done():
 
 func _on_check_map():
 	gui.back()
-	gui.get_node("sfx/select").play()
+	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.CHECK_MAP
 	$select.call_deferred("enable")
 
@@ -295,13 +295,13 @@ func _on_edit_team():
 	current[Game.CONTROL.PLAYER].resize(0)
 	# and start over
 	gui.back()
-	gui.get_node("sfx/select").play()
+	#gui.get_node("sfx/select").play()
 	call_deferred("select_team")
 
 func _on_start_level():
 	gui.modal = false
 	gui.back()
-	gui.get_node("sfx/select").play()
+	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.PLAY
 	$select.set_origin(get_current())
 	$select.call_deferred("enable")
@@ -456,9 +456,12 @@ func _accept_loot(item):
 		get_current().character.item_atk = item
 	else:
 		get_current().character.item_def = item
+	gui.get_node("sfx/select").play()
 	gui.back()
+	
 
 func _destroy_loot():
+	gui.get_node("sfx/close").play()
 	gui.back()
 
 func _on_selector_moved(tile):
