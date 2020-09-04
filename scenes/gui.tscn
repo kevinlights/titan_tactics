@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -11,21 +11,18 @@
 [ext_resource path="res://gfx/UI.png" type="Texture" id=9]
 [ext_resource path="res://gfx/littlearrows.png" type="Texture" id=10]
 [ext_resource path="res://scripts/gui/healthpage.gd" type="Script" id=11]
-[ext_resource path="res://mockups/healthmockup.png" type="Texture" id=12]
 [ext_resource path="res://fonts/PICO-8 mono.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://scripts/gui/menuhealthbar.gd" type="Script" id=14]
 [ext_resource path="res://scripts/gui/nextturn.gd" type="Script" id=15]
 [ext_resource path="res://gfx/dialogue.png" type="Texture" id=16]
 [ext_resource path="res://scripts/gui/weaponswap.gd" type="Script" id=17]
 [ext_resource path="res://scripts/gui/teamselect.gd" type="Script" id=18]
-[ext_resource path="res://mockups/teamselectmockup.png" type="Texture" id=19]
 [ext_resource path="res://gfx/player.png" type="Texture" id=20]
 [ext_resource path="res://scenes/gui/teamconfirm.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=22]
 [ext_resource path="res://gfx/menu_select.png" type="Texture" id=23]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=24]
 [ext_resource path="res://scripts/gui/levelclear.gd" type="Script" id=25]
-[ext_resource path="res://mockups/winmockup.png" type="Texture" id=26]
 [ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
 [ext_resource path="res://mockups/defeatmockup.png" type="Texture" id=28]
 [ext_resource path="res://scripts/dialogue_body.gd" type="Script" id=29]
@@ -63,14 +60,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -97,14 +94,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -146,19 +143,19 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 18, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 0, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
@@ -172,12 +169,12 @@ region = Rect2( 0, 18, 18, 18 )
 animations = [ {
 "frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ) ],
@@ -410,12 +407,6 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="healthmockup" type="Sprite" parent="healthpage"]
-visible = false
-position = Vector2( 32, 32 )
-scale = Vector2( 0.249027, 0.25 )
-texture = ExtResource( 12 )
 
 [node name="shadow" type="ColorRect" parent="healthpage"]
 margin_left = 1.0
@@ -800,6 +791,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -821,6 +813,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -829,6 +822,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -941,7 +935,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -967,6 +960,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -979,12 +973,6 @@ script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="teamselectmockup" type="Sprite" parent="characterselect"]
-visible = false
-position = Vector2( 32, 32 )
-scale = Vector2( 0.251969, 0.251969 )
-texture = ExtResource( 19 )
 
 [node name="shadow" type="ColorRect" parent="characterselect"]
 margin_top = 50.0
@@ -1074,6 +1062,7 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 24 )
 animation = "fighter"
+frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1084,12 +1073,6 @@ script = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="winmockup" type="Sprite" parent="win"]
-visible = false
-position = Vector2( 32, 32 )
-scale = Vector2( 0.249027, 0.25 )
-texture = ExtResource( 26 )
 
 [node name="shadow2" type="ColorRect" parent="win"]
 margin_left = 33.0
@@ -1191,12 +1174,6 @@ script = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="winmockup" type="Sprite" parent="lose"]
-visible = false
-position = Vector2( 32, 32 )
-scale = Vector2( 0.249027, 0.25 )
-texture = ExtResource( 26 )
 
 [node name="shadow2" type="ColorRect" parent="lose"]
 margin_left = 33.0
@@ -1362,7 +1339,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_1"]
 visible = false
 frames = SubResource( 28 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1381,7 +1357,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_2"]
 visible = false
 frames = SubResource( 28 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
