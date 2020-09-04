@@ -130,6 +130,8 @@ func action():
 	var context = get_current_context($select.tile)
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
 	var target = entity_at($select.tile)
+	
+	#gui.battle()
 	match(context):
 		Game.CONTEXT.ATTACK:
 			if get_current().can_attack(target):
@@ -372,7 +374,7 @@ func _initiate_turn():
 	
 func _on_attack():
 	print("attack option selected in menu")
-	gui.get_node("stats").hide()
+	#get_node("battle").show()
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
 		# block ranged attacks if cover is between attacker and target
@@ -390,7 +392,7 @@ func _on_attack():
 #			damage_feedback.get_node("damage").text = str("-", damage)	
 #		add_child(damage_feedback)
 		gui.call_deferred("close_attack")
-		gui.health(get_current(), target)
+		#gui.health(get_current(), target)
 	else:
 		gui.error("NO MORE ACTIONS")
 		gui.call_deferred("back")
@@ -450,6 +452,12 @@ func _on_selector_moved(tile):
 	print("$select moved to ", tile)
 	var context = get_current_context(tile)
 	print(context)
+	var target = entity_at($select.tile)
+	if target and !target.is_loot:
+		print("you are pointing on " + str(target.character.name))
+		gui.battle(get_current(), target)
+	else:
+		gui.battle_hide()
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
 	if current_path.size() > 0:
 		if context == Game.CONTEXT.MOVE:
