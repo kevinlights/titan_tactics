@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -11,23 +11,19 @@
 [ext_resource path="res://gfx/UI.png" type="Texture" id=9]
 [ext_resource path="res://gfx/littlearrows.png" type="Texture" id=10]
 [ext_resource path="res://scripts/gui/healthpage.gd" type="Script" id=11]
-[ext_resource path="res://mockups/healthmockup.png" type="Texture" id=12]
 [ext_resource path="res://fonts/PICO-8 mono.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://scripts/gui/menuhealthbar.gd" type="Script" id=14]
 [ext_resource path="res://scripts/gui/nextturn.gd" type="Script" id=15]
 [ext_resource path="res://gfx/dialogue.png" type="Texture" id=16]
 [ext_resource path="res://scripts/gui/weaponswap.gd" type="Script" id=17]
 [ext_resource path="res://scripts/gui/teamselect.gd" type="Script" id=18]
-[ext_resource path="res://mockups/teamselectmockup.png" type="Texture" id=19]
 [ext_resource path="res://gfx/player.png" type="Texture" id=20]
 [ext_resource path="res://scenes/gui/teamconfirm.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=22]
 [ext_resource path="res://gfx/menu_select.png" type="Texture" id=23]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=24]
 [ext_resource path="res://scripts/gui/levelclear.gd" type="Script" id=25]
-[ext_resource path="res://mockups/winmockup.png" type="Texture" id=26]
 [ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
-[ext_resource path="res://mockups/defeatmockup.png" type="Texture" id=28]
 [ext_resource path="res://scripts/dialogue_body.gd" type="Script" id=29]
 [ext_resource path="res://scripts/gui/dialogue.gd" type="Script" id=30]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
@@ -186,11 +182,6 @@ animations = [ {
 "name": "fighter",
 "speed": 5.0
 } ]
-
-[sub_resource type="DynamicFont" id=25]
-size = 4
-extra_spacing_bottom = -2
-font_data = ExtResource( 13 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 23 )
@@ -411,12 +402,6 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="healthmockup" type="Sprite" parent="healthpage"]
-visible = false
-position = Vector2( 32, 32 )
-scale = Vector2( 0.249027, 0.25 )
-texture = ExtResource( 12 )
 
 [node name="shadow" type="ColorRect" parent="healthpage"]
 margin_left = 1.0
@@ -984,12 +969,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="teamselectmockup" type="Sprite" parent="characterselect"]
-visible = false
-position = Vector2( 32, 32 )
-scale = Vector2( 0.251969, 0.251969 )
-texture = ExtResource( 19 )
-
 [node name="shadow" type="ColorRect" parent="characterselect"]
 margin_top = 50.0
 margin_right = 64.0
@@ -1090,12 +1069,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="winmockup" type="Sprite" parent="win"]
-visible = false
-position = Vector2( 32, 32 )
-scale = Vector2( 0.249027, 0.25 )
-texture = ExtResource( 26 )
-
 [node name="shadow2" type="ColorRect" parent="win"]
 margin_left = 33.0
 margin_top = 49.0
@@ -1145,45 +1118,45 @@ __meta__ = {
 }
 
 [node name="positioner" type="Node2D" parent="win"]
-position = Vector2( -64, 22 )
+position = Vector2( -160, 60 )
 z_index = 10
 
 [node name="front" type="ColorRect" parent="win/positioner"]
-margin_right = 64.0
-margin_bottom = 19.0
-color = Color( 0.0235294, 0.352941, 0.709804, 1 )
+margin_top = 1.0
+margin_right = 160.0
+margin_bottom = 20.0
+color = Color( 0.219608, 0.596078, 0.454902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="line" type="ColorRect" parent="win/positioner/front"]
 margin_top = 16.0
-margin_right = 64.0
+margin_right = 160.0
 margin_bottom = 17.0
-color = Color( 0.160784, 0.678431, 1, 1 )
+color = Color( 0.623529, 0.870588, 0.576471, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="line2" type="ColorRect" parent="win/positioner/front"]
 margin_top = 2.0
-margin_right = 64.0
+margin_right = 160.0
 margin_bottom = 3.0
-color = Color( 0.160784, 0.678431, 1, 1 )
+color = Color( 0.623529, 0.870588, 0.576471, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="player turn" type="Label" parent="win/positioner/front"]
 margin_left = -2.0
-margin_top = 4.0
-margin_right = 38.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 25 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "LEVEL
-  CLEAR!"
-align = 2
+margin_top = 7.0
+margin_right = 159.0
+margin_bottom = 21.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "Level Clear!"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1196,12 +1169,6 @@ script = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="winmockup" type="Sprite" parent="lose"]
-visible = false
-position = Vector2( 32, 32 )
-scale = Vector2( 0.249027, 0.25 )
-texture = ExtResource( 26 )
 
 [node name="shadow2" type="ColorRect" parent="lose"]
 margin_left = 33.0
@@ -1249,53 +1216,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="positioner" type="Node2D" parent="lose"]
-position = Vector2( -64, 22 )
+[node name="positioner2" type="Node2D" parent="lose"]
+position = Vector2( -160, 61 )
 z_index = 10
 
-[node name="defeatmockup" type="Sprite" parent="lose/positioner"]
-visible = false
-position = Vector2( 21, 2 )
-scale = Vector2( 0.248062, 0.25 )
-texture = ExtResource( 28 )
-
-[node name="front" type="ColorRect" parent="lose/positioner"]
-margin_left = 64.0
-margin_right = 128.0
-margin_bottom = 19.0
-color = Color( 1, 0, 0.301961, 1 )
+[node name="front" type="ColorRect" parent="lose/positioner2"]
+margin_top = -0.292892
+margin_right = 160.0
+margin_bottom = 18.7071
+color = Color( 0.0627451, 0.203922, 0.262745, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="line" type="ColorRect" parent="lose/positioner/front"]
-margin_top = 16.0
-margin_right = 64.0
-margin_bottom = 17.0
-color = Color( 1, 0.466667, 0.658824, 1 )
+[node name="line" type="ColorRect" parent="lose/positioner2/front"]
+margin_left = 0.353554
+margin_top = 16.3536
+margin_right = 160.0
+margin_bottom = 17.3536
+color = Color( 0.219608, 0.596078, 0.454902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="line2" type="ColorRect" parent="lose/positioner/front"]
-margin_top = 2.0
-margin_right = 64.0
-margin_bottom = 3.0
-color = Color( 1, 0.466667, 0.658824, 1 )
+[node name="line2" type="ColorRect" parent="lose/positioner2/front"]
+margin_top = 1.64645
+margin_right = 160.0
+margin_bottom = 2.64645
+color = Color( 0.219608, 0.596078, 0.454902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="defeat" type="Label" parent="lose/positioner/front"]
-margin_left = 6.0
-margin_top = 4.0
-margin_right = 46.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 25 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "YOU WERE
- DEFEATED"
-align = 2
+[node name="player turn" type="Label" parent="lose/positioner2/front"]
+margin_left = 1.35355
+margin_top = 7.0
+margin_right = 160.354
+margin_bottom = 16.0
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "You were defeated..."
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1337,9 +1298,9 @@ __meta__ = {
 
 [node name="body" type="Label" parent="dialogue/background"]
 margin_left = 5.0
-margin_top = 17.0
+margin_top = 16.0
 margin_right = 155.0
-margin_bottom = 65.0
+margin_bottom = 64.0
 text = "Ferme-toé un peu le mâche-patate"
 autowrap = true
 max_lines_visible = 6
@@ -1412,7 +1373,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
 frames = SubResource( 28 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
