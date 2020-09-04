@@ -74,7 +74,8 @@ func level_up(diff, new_stats):
 	modal = true
 	$lvlup.on_level_up(diff, new_stats)
 	$lvlup.call_deferred("show")
-
+	$sfx/level_up.play()
+	
 func battle(friendly, enemy):
 	$battle.set_entities(friendly, enemy)
 	$battle.show()
