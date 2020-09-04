@@ -800,7 +800,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -822,7 +821,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -831,7 +829,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -944,6 +941,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -969,7 +967,6 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1077,7 +1074,6 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 24 )
 animation = "fighter"
-frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1324,9 +1320,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="body" type="Label" parent="dialogue/background"]
+[node name="title" type="Label" parent="dialogue/background"]
 margin_left = 5.0
 margin_top = 7.0
+margin_right = 145.0
+margin_bottom = 15.0
+custom_colors/font_color = Color( 0.623529, 0.870588, 0.576471, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body" type="Label" parent="dialogue/background"]
+margin_left = 5.0
+margin_top = 17.0
 margin_right = 155.0
 margin_bottom = 65.0
 text = "Ferme-toé un peu le mâche-patate"
@@ -1356,6 +1362,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_1"]
 visible = false
 frames = SubResource( 28 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1374,6 +1381,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="dialogue/background/options/trigger_2"]
 visible = false
 frames = SubResource( 28 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )

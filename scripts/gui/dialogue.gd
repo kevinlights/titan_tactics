@@ -45,11 +45,19 @@ func set_content(dialogue_content):
 		portrait.position.y = 144 - dialogue_height + offset.y
 		portrait.play(portrait_map[dialogue_content.portrait])
 		add_child(portrait)
-
+	if dialogue_content.title and dialogue_content.title != "":
+		set_title(dialogue_content.title)
 	set_text(text_blocks[0])
 	text_blocks.remove(0)
+
+func set_title(title):
+	$background/title.text = title
 	
 func set_text(text):
+	if $background/title.text == "":
+		$background/body.margin_top = 7
+	else:
+		$background/body.margin_top = 17
 	$background/body.text = ""
 	call_deferred("resize")
 	current_block = text

@@ -20,7 +20,8 @@ dialogue_id = "opening"
 portrait = 6
 trigger = 4
 trigger_id = ""
-text = "ROLF: (The Hass have sent scouts out this far? |This is very unusual. I must remember my training.)"
+title = "Rolf"
+text = "The Hass have sent scouts out this far? |This is very unusual. I must remember my training."
 branches = [  ]
 result = 2
 
@@ -30,6 +31,7 @@ dialogue_id = ""
 portrait = 0
 trigger = 5
 trigger_id = ""
+title = ""
 text = "Yes"
 branches = [  ]
 result = 2
@@ -40,6 +42,7 @@ dialogue_id = ""
 portrait = 0
 trigger = 5
 trigger_id = ""
+title = ""
 text = "No"
 branches = [  ]
 result = 2
@@ -50,7 +53,8 @@ dialogue_id = "response"
 portrait = 7
 trigger = 5
 trigger_id = "opening"
-text = "ULRICH:  \"Would you like a tutorial?\""
+title = "Ulrich"
+text = "Would you like a tutorial?"
 branches = [ SubResource( 2 ), SubResource( 3 ) ]
 result = 2
 
@@ -76,7 +80,7 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=7]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 5 )
 character_class = 0
 name = "Stik"
@@ -97,6 +101,7 @@ dialogue_id = ""
 portrait = 0
 trigger = 0
 trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
@@ -107,6 +112,7 @@ dialogue_id = ""
 portrait = 0
 trigger = 0
 trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
@@ -133,7 +139,7 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=12]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
 character_class = 0
 name = "Cari"
@@ -154,6 +160,7 @@ dialogue_id = ""
 portrait = 0
 trigger = 0
 trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
@@ -164,6 +171,7 @@ dialogue_id = ""
 portrait = 0
 trigger = 0
 trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
@@ -201,7 +209,7 @@ centered = false
 position = Vector2( 168, 136 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 7 )
+stats = SubResource( 17 )
 dialogue = SubResource( 8 )
 recruit_dialogue = SubResource( 9 )
 
@@ -209,7 +217,7 @@ recruit_dialogue = SubResource( 9 )
 position = Vector2( 152, 152 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 12 )
+stats = SubResource( 18 )
 dialogue = SubResource( 13 )
 recruit_dialogue = SubResource( 14 )
 
@@ -226,16 +234,18 @@ script = ExtResource( 9 )
 item_spawner = SubResource( 16 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
+frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
-frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 65.502, 42.1491 )

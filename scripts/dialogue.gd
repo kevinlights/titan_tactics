@@ -38,6 +38,7 @@ export(String) var dialogue_id
 export(PORTRAIT) var portrait
 export(TRIGGER) var trigger
 export(String) var trigger_id
+export(String) var title
 export(String) var text
 export(Array, Resource) var branches
 export(RESULT) var result
