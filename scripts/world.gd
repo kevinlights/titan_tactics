@@ -96,7 +96,7 @@ func advance_turn():
 	current_character += 1
 	if current_character >= current[current_turn].size():
 		print("End turn")
-		end_turn()		
+		end_turn()
 	else:
 		print("Advance turn")
 		$select.disable()
@@ -431,6 +431,7 @@ func _on_heal():
 func _on_end():
 	gui.call_deferred("back")
 	print("explicit end request, advancing turn")
+	get_current().get_node("done").hide()
 	advance_turn()
 
 func _accept_loot(item):

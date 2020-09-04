@@ -37,7 +37,8 @@ var movement = {
 
 func check_finished():
 	if character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
-		emit_signal("done")
+		$done.show()
+#		emit_signal("done")
 
 func _ready():
 	pass
@@ -111,6 +112,7 @@ func end_turn():
 	guarding = false
 	character.reset_turn()
 	$guard.hide()
+	$done.hide()
 
 func can_attack(target):
 	var atk_range = character.atk_range + character.item_atk.attack_range
@@ -224,7 +226,7 @@ func from_spawner(character_spawner):
 	character.hp = character.max_hp
 	if character_spawner.dialogue and character_spawner.dialogue.trigger != Dialogue.TRIGGER.DISABLED:
 		dialogue = character_spawner.dialogue
-		dialogue.connect("completed", self, "_on_dialogue_compelted")
+		dialogue.connect("completed", self, "_on_dialogue_completed")
 	if character_spawner.recruit_dialogue and character_spawner.recruit_dialogue.trigger != Dialogue.TRIGGER.DISABLED:
 		recruit_dialogue = character_spawner.recruit_dialogue
 	select_type()
@@ -316,7 +318,8 @@ func _on_animation_finished():
 
 func _process(delta):
 	var now = OS.get_ticks_msec()
-	healthbar.set_value(character.hp, character.max_hp)
+	if not character:
+		return
 	if avatar.playing and avatar.animation.begins_with("attack"):
 		return
 	if not path.empty():
