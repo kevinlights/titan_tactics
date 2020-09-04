@@ -163,11 +163,13 @@ func generate(class_stats, request_class, request_control, level = 1):
 	turn_limits.move_distance = default_stats.mov_range
 	turn_limits.actions = 1 # Game.class_stats.actions[type]
 	atk_range = default_stats.atk_range
-	atk = default_stats.atk
-	def = default_stats.def
+	atk = default_stats.atk + sequence_cumulative(atk_up, level)
+	def = default_stats.def + sequence_cumulative(def_up, level)
 	weakness = Game.class_stats.weakness[character_class]
 	strength = Game.class_stats.strength[character_class]
-	name = Game.character_names[rand_range(0, Game.character_names.size() - 1)]
+	# don't regenerate name if this character already has one
+	if name == "":
+		name = Game.character_names[rand_range(0, Game.character_names.size() - 1)]
 	# don't want to take for ever to test death and level progression
 	if Engine.editor_hint:
 		property_list_changed_notify()
