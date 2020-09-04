@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -9,106 +9,102 @@
 [ext_resource path="res://sfx/gameplay/cant_do.wav" type="AudioStream" id=7]
 [ext_resource path="res://scripts/gui/stats.gd" type="Script" id=8]
 [ext_resource path="res://gfx/UI.png" type="Texture" id=9]
-[ext_resource path="res://gfx/littlearrows.png" type="Texture" id=10]
-[ext_resource path="res://scripts/gui/healthpage.gd" type="Script" id=11]
+[ext_resource path="res://gfx/vs.png" type="Texture" id=10]
 [ext_resource path="res://sfx/UI/ingame_clickOpen1.wav" type="AudioStream" id=12]
-[ext_resource path="res://fonts/PICO-8 mono.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://scripts/gui/menuhealthbar.gd" type="Script" id=14]
 [ext_resource path="res://scripts/gui/nextturn.gd" type="Script" id=15]
 [ext_resource path="res://gfx/dialogue.png" type="Texture" id=16]
 [ext_resource path="res://scripts/gui/weaponswap.gd" type="Script" id=17]
 [ext_resource path="res://scripts/gui/teamselect.gd" type="Script" id=18]
-[ext_resource path="res://sfx/UI/text2.wav" type="AudioStream" id=19]
+[ext_resource path="res://sfx/UI/text.wav" type="AudioStream" id=19]
 [ext_resource path="res://gfx/player.png" type="Texture" id=20]
 [ext_resource path="res://scenes/gui/teamconfirm.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=22]
 [ext_resource path="res://gfx/menu_select.png" type="Texture" id=23]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=24]
 [ext_resource path="res://scripts/gui/levelclear.gd" type="Script" id=25]
+[ext_resource path="res://gfx/box_enemy.png" type="Texture" id=26]
 [ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
+[ext_resource path="res://gfx/box_ally.png" type="Texture" id=28]
 [ext_resource path="res://scripts/dialogue_body.gd" type="Script" id=29]
 [ext_resource path="res://scripts/gui/dialogue.gd" type="Script" id=30]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=32]
 [ext_resource path="res://gfx/panel.png" type="Texture" id=33]
 [ext_resource path="res://sfx/UI/turn_alert1.wav" type="AudioStream" id=34]
+[ext_resource path="res://gfx/mage_p.png" type="Texture" id=35]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
 [ext_resource path="res://gfx/item_popup.png" type="Texture" id=38]
 [ext_resource path="res://scripts/gui/lvlup.gd" type="Script" id=39]
 [ext_resource path="res://gfx/level_popup.png" type="Texture" id=40]
 [ext_resource path="res://gfx/types.png" type="Texture" id=41]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 9 )
-region = Rect2( 24, 0, 8, 8 )
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 9 )
-region = Rect2( 24, 8, 8, 8 )
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 9 )
-region = Rect2( 16, 0, 8, 8 )
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 9 )
-region = Rect2( 16, 8, 8, 8 )
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 48, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 31 ), SubResource( 32 ) ],
 "loop": true,
 "name": "up",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 33 ), SubResource( 34 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
 "speed": 3.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
 } ]
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 9 )
-region = Rect2( 24, 0, 8, 8 )
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 9 )
-region = Rect2( 24, 8, 8, 8 )
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 9 )
-region = Rect2( 16, 0, 8, 8 )
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 9 )
-region = Rect2( 16, 8, 8, 8 )
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 48, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 35 ), SubResource( 36 ) ],
 "loop": true,
 "name": "up",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 37 ), SubResource( 38 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
 "speed": 3.0
-}, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
 } ]
-
-[sub_resource type="DynamicFont" id=11]
-size = 4
-font_data = ExtResource( 13 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 23 )
@@ -144,19 +140,19 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 18, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 0, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 20 )
@@ -170,12 +166,12 @@ region = Rect2( 0, 18, 18, 18 )
 animations = [ {
 "frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ) ],
@@ -233,381 +229,201 @@ visible = false
 [node name="credits" parent="." instance=ExtResource( 6 )]
 visible = false
 
-[node name="stats" type="Control" parent="."]
+[node name="battle" type="Control" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -5.54782
+margin_top = 97.6417
+margin_right = 34.4522
+margin_bottom = 137.642
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shadow" type="ColorRect" parent="stats"]
-margin_left = 1.0
-margin_top = 3.0
-margin_right = 32.0
-margin_bottom = 16.0
-color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="box_enemy" type="Sprite" parent="battle"]
+position = Vector2( 202, 29 )
+texture = ExtResource( 26 )
 
-[node name="front" type="ColorRect" parent="stats"]
-margin_right = 31.0
-margin_bottom = 15.0
-color = Color( 0.0235294, 0.352941, 0.709804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="playeratk" type="Label" parent="stats"]
-margin_left = 9.0
-margin_top = 2.0
-margin_right = 49.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 4 )
+[node name="enemyname" type="Label" parent="battle/box_enemy"]
+margin_left = -29.721
+margin_top = -10.5223
+margin_right = 10.279
+margin_bottom = 3.47769
+theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "ATK"
+text = "Marie"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playeratklevel" type="Label" parent="stats"]
-margin_left = 22.0
-margin_top = 2.0
-margin_right = 62.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 4 )
+[node name="enemylevel" type="Label" parent="battle/box_enemy"]
+margin_left = 13.7094
+margin_top = -12.3626
+margin_right = 53.7094
+margin_bottom = 1.63743
+theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "0"
+text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerdef" type="Label" parent="stats"]
-margin_left = 9.0
-margin_top = 8.0
-margin_right = 49.0
-margin_bottom = 22.0
-custom_fonts/font = ExtResource( 4 )
+[node name="enemyatklevel" type="Label" parent="battle/box_enemy"]
+margin_left = -17.0499
+margin_top = -0.258057
+margin_right = 22.9501
+margin_bottom = 13.7419
+theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "DEF"
+text = "00
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerdeflevel" type="Label" parent="stats"]
-margin_left = 22.0
-margin_top = 8.0
-margin_right = 62.0
-margin_bottom = 22.0
-custom_fonts/font = ExtResource( 4 )
+[node name="enemydeflevel" type="Label" parent="battle/box_enemy"]
+margin_left = 15.9093
+margin_top = -0.156128
+margin_right = 55.9093
+margin_bottom = 13.8439
+theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "0"
+text = "00
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerType" type="Sprite" parent="stats"]
-position = Vector2( 4, 5 )
-texture = ExtResource( 9 )
-vframes = 16
-hframes = 16
-frame = 32
+[node name="enemyhp" type="Label" parent="battle/box_enemy"]
+margin_left = -16.6635
+margin_top = 8.8612
+margin_right = 23.3365
+margin_bottom = 22.8612
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="PlayerAdvantage" type="AnimatedSprite" parent="stats"]
-position = Vector2( 4, 12 )
+[node name="Enemy" type="Sprite" parent="battle/box_enemy"]
+position = Vector2( 17, -42 )
+texture = ExtResource( 35 )
+hframes = 2
+frame = 1
+
+[node name="enemylevelline" type="Line2D" parent="battle/box_enemy"]
+position = Vector2( -130, -29 )
+points = PoolVector2Array( 132, 23.5, 160, 23.5 )
+width = 1.0
+default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+
+[node name="box_ally" type="Sprite" parent="battle"]
+position = Vector2( -30, 29.047 )
+texture = ExtResource( 28 )
+
+[node name="Player" type="Sprite" parent="battle/box_ally"]
+position = Vector2( -17.746, -42.047 )
+texture = ExtResource( 35 )
+hframes = 2
+
+[node name="playerlevel" type="Label" parent="battle/box_ally"]
+margin_left = 13.7445
+margin_top = -11.6735
+margin_right = 53.7445
+margin_bottom = 2.32654
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playername" type="Label" parent="battle/box_ally"]
+margin_left = -31.1581
+margin_top = -10.9374
+margin_right = 8.84195
+margin_bottom = 3.06264
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "Marie"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playeratklevel" type="Label" parent="battle/box_ally"]
+margin_left = -16.0678
+margin_top = -0.81588
+margin_right = 23.9322
+margin_bottom = 13.1841
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerdeflevel" type="Label" parent="battle/box_ally"]
+margin_left = 15.6839
+margin_top = -0.0444946
+margin_right = 55.6839
+margin_bottom = 13.9555
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerhp" type="Label" parent="battle/box_ally"]
+margin_left = -16.3368
+margin_top = 7.68463
+margin_right = 23.6632
+margin_bottom = 21.6846
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="levelline" type="Line2D" parent="battle/box_ally"]
+position = Vector2( -42, -29.047 )
+points = PoolVector2Array( 44, 23.536, 72, 23.536 )
+width = 1.0
+default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+
+[node name="PlayerType" type="Sprite" parent="battle"]
+position = Vector2( 66.958, 4.56255 )
+texture = ExtResource( 41 )
+vframes = 4
+hframes = 2
+
+[node name="PlayerAdvantage" type="AnimatedSprite" parent="battle"]
+position = Vector2( 55.5761, 3.49651 )
 frames = SubResource( 5 )
-animation = "neutral"
+animation = "down"
+playing = true
 
-[node name="blueedge" type="Sprite" parent="stats"]
-position = Vector2( 33, 2 )
-texture = ExtResource( 10 )
+[node name="EnemyType" type="Sprite" parent="battle"]
+position = Vector2( 101.683, 4.7991 )
+texture = ExtResource( 41 )
+vframes = 4
 hframes = 2
 
-[node name="shadow2" type="ColorRect" parent="stats"]
-margin_left = 32.0
-margin_top = 48.0
-margin_right = 63.0
-margin_bottom = 61.0
-color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="front2" type="ColorRect" parent="stats"]
-margin_left = 33.0
-margin_top = 49.0
-margin_right = 64.0
-margin_bottom = 64.0
-color = Color( 1, 0, 0.301961, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="enemyatk" type="Label" parent="stats"]
-margin_left = 42.0
-margin_top = 51.0
-margin_right = 82.0
-margin_bottom = 65.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "ATK"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="enemyatklevel" type="Label" parent="stats"]
-margin_left = 55.0
-margin_top = 51.0
-margin_right = 95.0
-margin_bottom = 65.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="enemydef" type="Label" parent="stats"]
-margin_left = 42.0
-margin_top = 57.0
-margin_right = 82.0
-margin_bottom = 71.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "DEF"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="enemydeflevel" type="Label" parent="stats"]
-margin_left = 55.0
-margin_top = 57.0
-margin_right = 95.0
-margin_bottom = 71.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EnemyType" type="Sprite" parent="stats"]
-position = Vector2( 37, 54 )
-texture = ExtResource( 9 )
-vframes = 16
-hframes = 16
-frame = 32
-
-[node name="EnemyAdvantage" type="AnimatedSprite" parent="stats"]
-position = Vector2( 37, 61 )
+[node name="EnemyAdvantage" type="AnimatedSprite" parent="battle"]
+position = Vector2( 112.938, 2.85042 )
 frames = SubResource( 10 )
-animation = "neutral"
-
-[node name="rededge" type="Sprite" parent="stats"]
-position = Vector2( 31, 62 )
-texture = ExtResource( 10 )
-hframes = 2
+animation = "down"
 frame = 1
+playing = true
 
-[node name="healthpage" type="Control" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="shadow" type="ColorRect" parent="healthpage"]
-margin_left = 1.0
-margin_top = 3.0
-margin_right = 32.0
-margin_bottom = 12.0
-color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="front" type="ColorRect" parent="healthpage"]
-margin_right = 31.0
-margin_bottom = 11.0
-color = Color( 0.0235294, 0.352941, 0.709804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="playerhealth" type="Label" parent="healthpage"]
-margin_left = 9.0
-margin_top = 2.0
-margin_right = 30.0
-margin_bottom = 16.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "00"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="pslash" type="Label" parent="healthpage"]
-margin_left = 17.0
-margin_top = 2.0
-margin_right = 38.0
-margin_bottom = 16.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "/"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="playermaxhealth" type="Label" parent="healthpage"]
-margin_left = 21.0
-margin_top = 2.0
-margin_right = 42.0
-margin_bottom = 16.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "00"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="playerhealthbar" type="Node2D" parent="healthpage"]
-position = Vector2( 8, 7 )
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="frame" type="ColorRect" parent="healthpage/playerhealthbar"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 20.0
-margin_bottom = 2.0
-color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="level" type="ColorRect" parent="healthpage/playerhealthbar"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 20.0
-margin_bottom = 2.0
-color = Color( 1, 0.945098, 0.909804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerType" type="Sprite" parent="healthpage"]
-position = Vector2( 4, 5 )
-texture = ExtResource( 9 )
-vframes = 16
-hframes = 16
-frame = 32
-
-[node name="blueedge" type="Sprite" parent="healthpage"]
-position = Vector2( 33, 2 )
+[node name="vs" type="Sprite" parent="battle"]
+position = Vector2( 85.7853, 0.713303 )
 texture = ExtResource( 10 )
-hframes = 2
 
-[node name="shadow2" type="ColorRect" parent="healthpage"]
-margin_left = 32.0
-margin_top = 52.0
-margin_right = 63.0
-margin_bottom = 61.0
-color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="front2" type="ColorRect" parent="healthpage"]
-margin_left = 33.0
-margin_top = 53.0
-margin_right = 64.0
-margin_bottom = 64.0
-color = Color( 1, 0, 0.301961, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="enemyhealth" type="Label" parent="healthpage"]
-margin_left = 43.0
-margin_top = 55.0
-margin_right = 64.0
-margin_bottom = 69.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "00"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="eslash" type="Label" parent="healthpage"]
-margin_left = 51.0
-margin_top = 55.0
-margin_right = 72.0
-margin_bottom = 69.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "/"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="enemymaxhealth" type="Label" parent="healthpage"]
-margin_left = 55.0
-margin_top = 55.0
-margin_right = 76.0
-margin_bottom = 69.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-text = "00"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="enemyhealthbar" type="Node2D" parent="healthpage"]
-position = Vector2( 42, 60 )
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="frame" type="ColorRect" parent="healthpage/enemyhealthbar"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 20.0
-margin_bottom = 2.0
-color = Color( 0.160784, 0.0941176, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="level" type="ColorRect" parent="healthpage/enemyhealthbar"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 20.0
-margin_bottom = 2.0
-color = Color( 1, 0.945098, 0.909804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EnemyType" type="Sprite" parent="healthpage"]
-position = Vector2( 37, 58 )
-texture = ExtResource( 9 )
-vframes = 16
-hframes = 16
-frame = 32
-
-[node name="rededge" type="Sprite" parent="healthpage"]
-position = Vector2( 31, 62 )
-texture = ExtResource( 10 )
-hframes = 2
-frame = 1
+[node name="LvlupSfx" type="AudioStreamPlayer2D" parent="battle"]
 
 [node name="playerturn" type="Control" parent="."]
 visible = false
@@ -1351,7 +1167,7 @@ __meta__ = {
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
 stream = ExtResource( 19 )
-volume_db = -4.0
+volume_db = -5.0
 
 [node name="branches" type="NinePatchRect" parent="dialogue"]
 margin_left = 8.0
