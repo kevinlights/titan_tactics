@@ -50,6 +50,7 @@ func resize():
 	$background.rect_position.y = 144 - dialogue_height
 
 func set_content(dialogue_content):
+	$background/more.hide()
 	for item in $branches.get_children():
 		item.hide()
 	$branches.hide()
@@ -67,6 +68,10 @@ func set_content(dialogue_content):
 		set_title(dialogue_content.title)
 	set_text(text_blocks[0])
 	text_blocks.remove(0)
+	print("follow up texts ", text_blocks.size())
+	if text_blocks.size() > 0:
+		print("show more arrow")
+		$background/more.show()
 	if content.branches.size() > 0:
 		$branches.show()
 		$branches/trigger_1/option_text.text = content.branches[0].text
@@ -119,6 +124,10 @@ func _input(event):
 		elif text_blocks.size() > 0:
 			set_text(text_blocks[0])
 			text_blocks.remove(0)
+			if text_blocks.size() > 0:
+				$background/more.show()
+			else:
+				$background/more.hide()
 		else:
 			print("dialogue completed")
 			content.complete()
