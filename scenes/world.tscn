@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
@@ -11,8 +11,6 @@
 [ext_resource path="res://Music/city_theme.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Music/cave_theme.ogg" type="AudioStream" id=10]
 [ext_resource path="res://scripts/path_preview.gd" type="Script" id=11]
-[ext_resource path="res://music/end_theme.ogg" type="AudioStream" id=12]
-[ext_resource path="res://music/oldman_theme.ogg" type="AudioStream" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -24,19 +22,19 @@ region = Rect2( 0, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
-region = Rect2( 40, 0, 20, 20 )
+region = Rect2( 80, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 40, 20, 20, 20 )
+region = Rect2( 80, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 80, 0, 20, 20 )
+region = Rect2( 40, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 80, 20, 20, 20 )
+region = Rect2( 40, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
@@ -63,12 +61,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "attack",
+"name": "heal",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "heal",
+"name": "attack",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ) ],
@@ -122,10 +120,6 @@ visible = false
 
 [node name="music" type="Node" parent="."]
 
-[node name="intro" type="AudioStreamPlayer" parent="music"]
-stream = ExtResource( 13 )
-volume_db = -1.0
-
 [node name="forest" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 7 )
 volume_db = -5.8
@@ -145,7 +139,3 @@ volume_db = -6.0
 [node name="lose" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 5 )
 volume_db = -4.0
-
-[node name="ending" type="AudioStreamPlayer" parent="music"]
-stream = ExtResource( 12 )
-volume_db = -3.0
