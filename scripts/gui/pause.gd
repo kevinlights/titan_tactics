@@ -8,5 +8,5 @@ func _ready():
 	$panel/quit.connect("pressed", self, "emit_signal", ["quit"])
 
 func show_dialog():
-	$panel/margin/vbox/resume.grab_focus()
+	$panel/resume.grab_focus()
 	show()

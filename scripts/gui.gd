@@ -72,7 +72,7 @@ func level_up(diff, new_stats):
 	active = true
 	modal = true
 	$lvlup.on_level_up(diff, new_stats)
-	$lvlup.call_deferred("show")
+#	$lvlup.call_deferred("show")
 
 func stats(friendly, enemy):
 	if $healthpage.visible or modal:

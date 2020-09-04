@@ -90,7 +90,6 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="panel/resume"]
 visible = false
 frames = SubResource( 4 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -111,6 +110,7 @@ align = 0
 [node name="focus" type="AnimatedSprite" parent="panel/quit"]
 visible = false
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )

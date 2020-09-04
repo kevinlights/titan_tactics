@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -183,17 +183,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 23 )
 region = Rect2( 0, 8, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=28]
+[sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -786,7 +786,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -808,7 +807,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -817,7 +815,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -930,6 +927,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -945,9 +943,8 @@ margin_left = 35.0
 margin_top = 75.566
 margin_right = 61.0
 margin_bottom = 97.566
-focus_neighbour_top = NodePath(".")
-focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 22 )
+action_mode = 0
 text = "Ok"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -955,7 +952,6 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1057,7 +1053,6 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 24 )
 animation = "fighter"
-frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1338,7 +1333,8 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
 visible = false
-frames = SubResource( 28 )
+frames = SubResource( 27 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1372,7 +1368,8 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
-frames = SubResource( 28 )
+frames = SubResource( 27 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1403,7 +1400,8 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
-frames = SubResource( 28 )
+frames = SubResource( 27 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )

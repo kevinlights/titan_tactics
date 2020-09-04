@@ -354,7 +354,8 @@ func _on_select_team_member(team_member):
 		_on_team_select_done()
 
 func _on_level_up(diff, character):
-	gui.level_up(diff, character)
+	gui.call_deferred("level_up", diff, character)
+#	gui.level_up(diff, character)
 
 func _initiate_turn():
 	# in case a signal triggers this after the level is won/lost
