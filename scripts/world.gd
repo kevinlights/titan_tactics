@@ -256,6 +256,7 @@ func select_team():
 
 func _on_dialogue_complete(content):
 	gui.back()
+	print("character triggered dialogue complete")
 	$select.enable()
 
 func _on_dialogue(content):

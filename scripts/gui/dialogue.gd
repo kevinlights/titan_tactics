@@ -23,18 +23,33 @@ var portrait_map = {
 	Dialogue.PORTRAIT.OLD_MAN: "old_man"
 }
 
+func _on_trigger_1():
+	content.call_deferred("branch", content.branches[0].dialogue_id)
+
+func _on_trigger_2():
+	content.call_deferred("branch", content.branches[1].dialogue_id)
+
+func _on_trigger_3():
+	content.call_deferred("branch", content.branches[2].dialogue_id)
+
 func _ready():
 	portrait = load("res://scenes/portraits.tscn").instance()
 	dialogue_height = 6 + 10 * 3 #$background/body.get_visible_line_count()
 	$background.rect_size.y = dialogue_height
 	$background.rect_position.y = 144 - dialogue_height
-#
+	$branches/trigger_1.connect("pressed", self, "_on_trigger_1")
+	$branches/trigger_2.connect("pressed", self, "_on_trigger_2")
+	$branches/trigger_3.connect("pressed", self, "_on_trigger_3")
+
 func resize():
 	dialogue_height = 6 + 10 * 3 # $background/body.get_visible_line_count()
 	$background.rect_size.y = dialogue_height
 	$background.rect_position.y = 144 - dialogue_height
 
 func set_content(dialogue_content):
+	for item in $branches.get_children():
+		item.hide()
+	$branches.hide()
 	content = dialogue_content
 	text_blocks = content.text.split("|")
 	if dialogue_content.portrait != Dialogue.PORTRAIT.NONE:
@@ -49,6 +64,17 @@ func set_content(dialogue_content):
 		set_title(dialogue_content.title)
 	set_text(text_blocks[0])
 	text_blocks.remove(0)
+	if content.branches.size() > 0:
+		$branches.show()
+		$branches/trigger_1/option_text.text = content.branches[0].text
+		$branches/trigger_1.show()
+		$branches/trigger_1.grab_focus()
+		if content.branches.size() > 1:
+			$branches/trigger_2/option_text.text = content.branches[1].text
+			$branches/trigger_2.show()
+		if content.branches.size() > 2:
+			$branches/trigger_3/option_text.text = content.branches[2].text
+			$branches/trigger_3.show()
 
 func set_title(title):
 	$background/title.text = title
@@ -79,6 +105,8 @@ func set_text(text):
 
 func _input(event):
 	if not visible:
+		return
+	if content.branches.size() > 0:
 		return
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
 		if typing:

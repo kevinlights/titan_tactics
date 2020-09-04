@@ -23,7 +23,7 @@ func play():
 		var weakest = get_weakest_ally(character)
 		if weakest:
 			print("AI (" + character.character.name + ") says heal " + weakest.character.name)
-			weakest.heal(weakest)
+			character.heal(weakest)
 			return
 	var enemy = get_nearest_enemy(character.position)
 	if enemy:
@@ -43,7 +43,7 @@ func play():
 			return
 		if character.character.turn_limits.move_distance > 1 and distance > character.character.atk_range:
 			var path = get_path_to(character.tile, enemy.tile, character.character.turn_limits.move_distance, character)
-			if path and path.size() > 1:
+			if path and path.size() > 0:
 				print("AI (" + character.character.name + ") says move")
 				character.move(path)
 				world.get_node("select").tile = path[path.size() - 1] / Vector2(Game.cell_size, Game.cell_size)
@@ -52,7 +52,7 @@ func play():
 				world.advance_turn()
 		else:
 			print("AI (" + character.character.name + ") says wait (out of moves)")
-			world.advance_turn()			
+			world.advance_turn()
 	else:
 		print("AI (" + character.character.name + ") says wait (nothing to do)")
 		world.advance_turn()

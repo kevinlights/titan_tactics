@@ -54,16 +54,22 @@ item_def = SubResource( 2 )
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 0
 trigger = 0
-trigger_text = ""
+trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 0
 trigger = 0
-trigger_text = ""
+trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
@@ -107,16 +113,22 @@ item_def = SubResource( 7 )
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 0
 trigger = 0
-trigger_text = ""
+trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 0
 trigger = 0
-trigger_text = ""
+trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
@@ -160,16 +172,22 @@ item_def = SubResource( 12 )
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 0
 trigger = 0
-trigger_text = ""
+trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 0
 trigger = 0
-trigger_text = ""
+trigger_id = ""
+title = ""
 text = ""
 branches = [  ]
 result = 0
@@ -217,15 +235,19 @@ item_spawner = SubResource( 16 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 192, 144 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 96, 144 )
+frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 144, 144 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 32, 144 )
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 

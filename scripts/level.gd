@@ -15,14 +15,17 @@ func _on_start_level():
 	
 func _on_dialogue_complete(id):
 	print("completed ", id)
+	var followup = false
 	for content in dialogue:
 		if content.trigger == Dialogue.TRIGGER.DIALOGUE and content.trigger_id == id:
 			print("dialogue trigger content")
 			gui.call_deferred("dialogue", content)
+			followup = true
 #			gui.dialogue(content)
-		else:
-			call_deferred("return_control")
+	if !followup:
+		call_deferred("return_control")
 
 func return_control():
+	print("return control")
 	gui.back()
 	selector.enable()

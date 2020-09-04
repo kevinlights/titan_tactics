@@ -48,5 +48,5 @@ func complete():
 	if result != RESULT.NOTHING:
 		emit_signal("dialogue_result", result)
 	
-func branch(text):
-	emit_signal("branch", text)
+func branch(id):
+	emit_signal("completed", id)
