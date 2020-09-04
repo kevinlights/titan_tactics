@@ -262,10 +262,10 @@ position = Vector2( 202, 29 )
 texture = ExtResource( 26 )
 
 [node name="enemyname" type="Label" parent="battle/box_enemy"]
-margin_left = -29.721
-margin_top = -10.5223
-margin_right = 10.279
-margin_bottom = 3.47769
+margin_left = -30.721
+margin_top = -11.5223
+margin_right = 9.279
+margin_bottom = 2.47769
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "Marie"
@@ -274,9 +274,9 @@ __meta__ = {
 }
 
 [node name="enemylevel" type="Label" parent="battle/box_enemy"]
-margin_left = 13.7094
+margin_left = 15.7094
 margin_top = -12.3626
-margin_right = 53.7094
+margin_right = 55.7094
 margin_bottom = 1.63743
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
@@ -287,9 +287,9 @@ __meta__ = {
 
 [node name="enemyatklevel" type="Label" parent="battle/box_enemy"]
 margin_left = -17.0499
-margin_top = -0.258057
+margin_top = -1.25806
 margin_right = 22.9501
-margin_bottom = 13.7419
+margin_bottom = 12.7419
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "00
@@ -300,9 +300,9 @@ __meta__ = {
 
 [node name="enemydeflevel" type="Label" parent="battle/box_enemy"]
 margin_left = 15.9093
-margin_top = -0.156128
+margin_top = -1.15613
 margin_right = 55.9093
-margin_bottom = 13.8439
+margin_bottom = 12.8439
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "00
@@ -313,9 +313,9 @@ __meta__ = {
 
 [node name="enemyhp" type="Label" parent="battle/box_enemy"]
 margin_left = -16.6635
-margin_top = 8.8612
+margin_top = 6.8612
 margin_right = 23.3365
-margin_bottom = 22.8612
+margin_bottom = 20.8612
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "00
@@ -325,7 +325,7 @@ __meta__ = {
 }
 
 [node name="Enemy" type="Sprite" parent="battle/box_enemy"]
-position = Vector2( 17, -42 )
+position = Vector2( 17, -43 )
 texture = ExtResource( 35 )
 hframes = 2
 frame = 1
@@ -341,14 +341,14 @@ position = Vector2( -30, 29.047 )
 texture = ExtResource( 28 )
 
 [node name="Player" type="Sprite" parent="battle/box_ally"]
-position = Vector2( -17.746, -42.047 )
+position = Vector2( -17.746, -43.047 )
 texture = ExtResource( 35 )
 hframes = 2
 
 [node name="playerlevel" type="Label" parent="battle/box_ally"]
-margin_left = 13.7445
+margin_left = 15.7445
 margin_top = -11.6735
-margin_right = 53.7445
+margin_right = 55.7445
 margin_bottom = 2.32654
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
@@ -359,9 +359,9 @@ __meta__ = {
 
 [node name="playername" type="Label" parent="battle/box_ally"]
 margin_left = -31.1581
-margin_top = -10.9374
+margin_top = -11.9374
 margin_right = 8.84195
-margin_bottom = 3.06264
+margin_bottom = 2.06264
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "Marie"
@@ -370,9 +370,9 @@ __meta__ = {
 }
 
 [node name="playeratklevel" type="Label" parent="battle/box_ally"]
-margin_left = -16.0678
+margin_left = -17.0678
 margin_top = -0.81588
-margin_right = 23.9322
+margin_right = 22.9322
 margin_bottom = 13.1841
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
@@ -383,9 +383,9 @@ __meta__ = {
 
 [node name="playerdeflevel" type="Label" parent="battle/box_ally"]
 margin_left = 15.6839
-margin_top = -0.0444946
+margin_top = -1.04449
 margin_right = 55.6839
-margin_bottom = 13.9555
+margin_bottom = 12.9555
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "00"
@@ -394,10 +394,10 @@ __meta__ = {
 }
 
 [node name="playerhp" type="Label" parent="battle/box_ally"]
-margin_left = -16.3368
-margin_top = 7.68463
-margin_right = 23.6632
-margin_bottom = 21.6846
+margin_left = -17.3368
+margin_top = 6.68463
+margin_right = 22.6632
+margin_bottom = 20.6846
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "00"
@@ -412,28 +412,28 @@ width = 1.0
 default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
 
 [node name="PlayerType" type="Sprite" parent="battle"]
-position = Vector2( 66.958, 4.56255 )
+position = Vector2( 59.958, 0.56255 )
 texture = ExtResource( 41 )
 vframes = 4
 hframes = 2
 
 [node name="PlayerAdvantage" type="AnimatedSprite" parent="battle"]
-position = Vector2( 55.5761, 3.49651 )
+position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 5 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
-position = Vector2( 101.683, 4.7991 )
+position = Vector2( 107.683, 0.7991 )
 texture = ExtResource( 41 )
 vframes = 4
 hframes = 2
 
 [node name="EnemyAdvantage" type="AnimatedSprite" parent="battle"]
-position = Vector2( 112.938, 2.85042 )
+position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 10 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
