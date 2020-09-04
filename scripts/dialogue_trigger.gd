@@ -1,3 +1,5 @@
+tool
+class_name DialogueTrigger
 extends Sprite
 
 signal trigger
@@ -12,10 +14,14 @@ var is_dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("characters") # so world can find it
+	add_to_group("dialogue_triggers") # so level can find it
 	tile.x = floor(position.x / Game.cell_size)
 	tile.y = floor(position.y / Game.cell_size)
-#	print(tile)
-	hide()
+	if Engine.editor_hint:
+		texture = load("res://gfx/speak_map.png")
+	else:
+		hide()
 
 func use():
 	print("use trigger ", dialogue_id)
