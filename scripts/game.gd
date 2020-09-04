@@ -176,6 +176,6 @@ func _ready():
 	var default_stats = load("res://resources/class_stats.tres")
 	var character = CharacterStats.new()
 #	character.from_defaults(TYPE.FIGHTER, CONTROL.PLAYER)
-	character.generate(default_stats, TYPE.FIGHTER, CONTROL.PLAYER)
+	character.generate(default_stats, TYPE.FIGHTER, CONTROL.PLAYER, 1, true)
 	team.append(character)
 	
