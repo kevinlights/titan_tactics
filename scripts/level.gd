@@ -11,6 +11,10 @@ func _ready():
 	world.connect("win", self, "_on_end_level")
 	for content in dialogue:
 		content.connect("completed", self, "_on_dialogue_complete")
+	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
+	print("level dialogue triggers: ", triggers.size())
+	for trigger in triggers:
+		trigger.connect("trigger", self, "_on_dialogue_complete")
 
 func _on_start_level():
 	if dialogue.size() > 0 and dialogue[0].trigger == Dialogue.TRIGGER.LEVEL:
