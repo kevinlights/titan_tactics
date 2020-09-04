@@ -46,6 +46,7 @@ volume_db = -3.5
 
 [node name="close" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 4 )
+volume_db = -2.0
 
 [node name="select" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 5 )

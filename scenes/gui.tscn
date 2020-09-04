@@ -1399,12 +1399,13 @@ stream = ExtResource( 32 )
 
 [node name="select 1" type="AudioStreamPlayer" parent="sfx/char_select"]
 stream = ExtResource( 32 )
+volume_db = -4.0
 
 [node name="turn_alert" type="Node" parent="sfx"]
 
 [node name="alert 1" type="AudioStreamPlayer" parent="sfx/turn_alert"]
 stream = ExtResource( 34 )
-volume_db = -3.0
+volume_db = -4.0
 
 [node name="open" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 36 )
@@ -1412,12 +1413,13 @@ volume_db = -3.5
 
 [node name="close" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 37 )
+volume_db = -2.0
 
 [node name="select" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 31 )
-volume_db = -6.0
+volume_db = -4.0
 
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
-volume_db = 3.0
+volume_db = 2.0
 [connection signal="pressed" from="lvlup/Control/Ok" to="lvlup" method="_on_ok_pressed"]
