@@ -132,8 +132,11 @@ func attack(target):
 		damage = damage * 1.3
 	if target.guarding:
 		damage = damage * 0.5
-	damage -= ((target.character.def + target.character.item_def.defense) * 1.5)
+	print("atk ", damage)
+	damage -= ((target.character.def + target.character.item_def.defense))
+	print("def ", ((target.character.def + target.character.item_def.defense)))
 	damage = floor(damage)
+	print("actual damage ", damage)
 	target.character.hp -= damage
 
 	if character.character_class == Game.TYPE.MAGE:
