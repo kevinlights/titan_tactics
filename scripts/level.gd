@@ -32,7 +32,8 @@ func _on_dialogue_complete(id):
 	print("completed ", id)
 	var followup = false
 	for content in dialogue:
-		if content.trigger == Dialogue.TRIGGER.DIALOGUE and content.trigger_id == id:
+		var trigger_list = content.trigger_id.split(",")
+		if content.trigger == Dialogue.TRIGGER.DIALOGUE and id in trigger_list: # content.trigger_id == id:
 			print("dialogue trigger content")
 			gui.call_deferred("dialogue", content)
 			followup = true
