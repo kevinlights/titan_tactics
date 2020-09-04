@@ -21,8 +21,10 @@ const levels = {
 	"level_3": "forest",
 	"level_4": "cave",
 	"level_5": "cave",
-	"level_6": "city",
+	"level_6": "cave",
 	"level_7": "city",
+	"level_8": "city",
+	"level_9": "city",
 }
 
 const character_names = [
@@ -76,6 +78,7 @@ const character_names = [
 	"Marie",
 	"Marv",
 	"Max",
+	"Minfu",
 	"Momo",
 	"Morg",
 	"Nell",
