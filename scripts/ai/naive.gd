@@ -43,10 +43,11 @@ func play():
 			return
 		if character.character.turn_limits.move_distance > 1 and distance > character.character.atk_range:
 			var path = get_path_to(character.tile, enemy.tile, character.character.turn_limits.move_distance, character)
-			if path and path.size() > 0:
+			if path and path.size() > 1:
 				print("AI (" + character.character.name + ") says move")
 				character.move(path)
 				world.get_node("select").tile = path[path.size() - 1] / Vector2(Game.cell_size, Game.cell_size)
+				return
 			else:
 				print("AI (" + character.character.name + ") says wait (path too short)")
 				world.advance_turn()
