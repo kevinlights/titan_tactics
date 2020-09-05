@@ -12,6 +12,7 @@ var enemyhp
 var enemyname
 var player
 var enemy
+export(Array, String) var special_names
 
 var ttl = 100
 
@@ -111,7 +112,12 @@ func _ready():
 	$box_ally/playerhp.text = str(playerhp)
 	$PlayerType.frame = atlas_frames[player.character.character_class]
 	$EnemyType.frame = atlas_frames[enemy.character.character_class]
-	$box_ally/Player.frame = atlas_frames[player.character.character_class]
+	if playername in special_names:
+		$box_ally/Player.play(playername)
+	else:
+		$box_ally/Player.play("portraits")
+		$box_ally/Player.playing = false
+		$box_ally/Player.frame = atlas_frames[player.character.character_class]
 	$box_enemy/Enemy.frame = enemy.character.character_class
 	print (enemy.character.character_class)
 	$PlayerAdvantage.play("neutral")
