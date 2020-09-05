@@ -637,7 +637,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 13 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -659,7 +658,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 13 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -668,7 +666,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 16 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -781,6 +778,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 16 )
+frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -806,7 +804,6 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 13 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -919,7 +916,6 @@ __meta__ = {
 position = Vector2( 11, 55 )
 frames = SubResource( 23 )
 animation = "fighter"
-frame = 1
 playing = true
 
 [node name="win" type="Control" parent="."]
@@ -1004,6 +1000,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 26 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1023,6 +1020,7 @@ text = "Retry"
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 26 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1111,6 +1109,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 26 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1130,6 +1129,7 @@ text = "Quit"
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 26 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1187,6 +1187,7 @@ __meta__ = {
 visible = false
 position = Vector2( 145, 32 )
 frames = SubResource( 29 )
+frame = 1
 playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
@@ -1220,6 +1221,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
 visible = false
 frames = SubResource( 32 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1254,6 +1256,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
 frames = SubResource( 32 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1284,7 +1287,9 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
+visible = false
 frames = SubResource( 32 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1296,7 +1301,7 @@ __meta__ = {
 [node name="option_text" type="Label" parent="dialogue/branches/trigger_3"]
 margin_left = 12.0
 margin_top = 4.0
-margin_right = 140.0
+margin_right = 111.0
 margin_bottom = 24.0
 text = "Something Really cool I can do"
 autowrap = true

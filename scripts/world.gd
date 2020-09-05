@@ -410,22 +410,32 @@ func _on_attack():
 		gui.error("NO MORE ACTIONS")
 		gui.call_deferred("back")
 
+func _on_recruit_completed(id):
+	gui.back()
+	var target = entity_at($select.tile)
+	if id == "accepted":
+		target.recruit(get_current())
+		target.character.control = Game.CONTROL.PLAYER
+		Game.team.append(target.character)
+		current[Game.CONTROL.AI].erase(target)
+	else:
+		target.recruit_failed(get_current())
+		gui.error("FAILED TO RECRUIT")
+	$select.go_home()
+	$select.call_deferred("enable")
+
+func _on_recruit_response(response):
+	gui.dialogue(response)
+	response.connect("completed", self, "_on_recruit_completed")
 
 func _on_recruit():
 	print("recruit option selected in menu")
 	var target = entity_at($select.tile)
+	$select.disable()
 	if get_current().character.turn_limits.actions != 0 and is_adjacent(get_current(), target):
-		get_current().character.turn_limits.actions -= 1
-		if target.recruit(get_current()):
-			target.character.control = Game.CONTROL.PLAYER
-			Game.team.append(target.character)
-			current[Game.CONTROL.AI].erase(target)
-		else:
-			gui.error("FAILED TO RECRUIT")
-		$select.go_home()
-	else:
-		print("not recruited, no actions (" + str(get_current().character.turn_limits.actions) + ") or out of range")
-	gui.call_deferred("back")
+		var recruitment = Recruitment.new(target.character)
+		gui.dialogue(recruitment.intro)
+		recruitment.connect("response", self, "_on_recruit_response")
 
 func _on_guard():
 	if get_current().character.turn_limits.actions != 0:

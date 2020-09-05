@@ -68,6 +68,11 @@ _global_script_classes=[ {
 "class": "PathFinder",
 "language": "GDScript",
 "path": "res://scripts/pathfinder.gd"
+}, {
+"base": "Object",
+"class": "Recruitment",
+"language": "GDScript",
+"path": "res://scripts/recruitment.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -81,7 +86,8 @@ _global_script_class_icons={
 "Item": "",
 "ItemSpawner": "",
 "NaiveAI": "",
-"PathFinder": ""
+"PathFinder": "",
+"Recruitment": ""
 }
 
 [application]

@@ -252,19 +252,23 @@ func can_recruit():
 	else:
 		return character.hp <= character.max_hp / 3
 
+func recruit_failed(source):
+	attack(source)
+	$sfx/recruit/fail.play()
+	emit_signal("recruit_failed")
+	
 func recruit(source):
-	var chance_to_recruit = 0.5
-	check_finished()
-	if randf() < chance_to_recruit:
-		attack(source)
-		emit_signal("recruit_failed")
-		$sfx/recruit/fail.play()
-		return false
-	else:
-		emit_signal("recruited")
-		$sfx/recruit/success.play()
-		die()
-		return true
+#	var chance_to_recruit = 0.5
+#	check_finished()
+#	if randf() < chance_to_recruit:
+#		attack(source)
+#		emit_signal("recruit_failed")
+#		$sfx/recruit/fail.play()
+#		return false
+#	else:
+	emit_signal("recruited")
+	$sfx/recruit/success.play()
+	die()
 
 func die():
 	is_dead = true
