@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://gfx/Maps/lv2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -82,6 +82,28 @@ text = "Very well, It is your funeral."
 branches = [  ]
 result = 2
 
+[sub_resource type="Resource" id=23]
+script = ExtResource( 6 )
+dialogue_id = "end"
+portrait = 6
+trigger = 6
+trigger_id = ""
+title = "Rolf:"
+text = "(That's odd. Why would they be after Ulrich"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 6 )
+dialogue_id = ""
+portrait = 6
+trigger = 5
+trigger_id = "end"
+title = ""
+text = "and how would they know him by name?"
+branches = [  ]
+result = 2
+
 [sub_resource type="Resource" id=7]
 script = ExtResource( 3 )
 character_class = 1
@@ -104,7 +126,7 @@ attack_range = 0
 defense = 10.0
 heal = 0
 
-[sub_resource type="Resource" id=23]
+[sub_resource type="Resource" id=25]
 script = ExtResource( 4 )
 character_class = 1
 name = "Lily"
@@ -163,7 +185,7 @@ attack_range = 0
 defense = 1.0
 heal = 2.0
 
-[sub_resource type="Resource" id=24]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 4 )
 character_class = 2
 name = "Steph"
@@ -222,15 +244,15 @@ attack_range = 0
 defense = 4.0
 heal = 0
 
-[sub_resource type="Resource" id=25]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 4 )
 character_class = 0
 name = "Eva"
 level = 2
 hp = 24
 max_hp = 24
-atk = 3
-def = 2
+atk = 4
+def = 1
 atk_range = 1
 mov_range = 5
 heal = 0
@@ -266,7 +288,7 @@ level = 3
 
 [node name="level" type="Node2D"]
 script = ExtResource( 15 )
-dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ]
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 23 ), SubResource( 24 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -276,7 +298,7 @@ centered = false
 position = Vector2( 136, 168 )
 texture = ExtResource( 8 )
 script = ExtResource( 5 )
-stats = SubResource( 23 )
+stats = SubResource( 25 )
 dialogue = SubResource( 10 )
 recruit_dialogue = SubResource( 11 )
 
@@ -284,7 +306,7 @@ recruit_dialogue = SubResource( 11 )
 position = Vector2( 88, 168 )
 texture = ExtResource( 13 )
 script = ExtResource( 5 )
-stats = SubResource( 24 )
+stats = SubResource( 26 )
 dialogue = SubResource( 15 )
 recruit_dialogue = SubResource( 16 )
 
@@ -292,7 +314,7 @@ recruit_dialogue = SubResource( 16 )
 position = Vector2( 184, 104 )
 texture = ExtResource( 14 )
 script = ExtResource( 5 )
-stats = SubResource( 25 )
+stats = SubResource( 27 )
 dialogue = SubResource( 20 )
 recruit_dialogue = SubResource( 21 )
 
@@ -304,15 +326,19 @@ item_spawner = SubResource( 22 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 192, 144 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 96, 144 )
+frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 144, 144 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 32, 144 )
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
