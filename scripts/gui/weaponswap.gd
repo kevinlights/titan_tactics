@@ -3,8 +3,8 @@ extends Control
 signal swap
 signal dont_swap
 
-var text_color = Color(0.22, 0.6, 0.45)
-var selected_color = Color(0.62, 0.87, 0.58)
+var text_color = Color(0.219608, 0.596078, 0.454902)
+var selected_color = Color(0.917647, 1, 0.866667)
 
 var selected = 0
 

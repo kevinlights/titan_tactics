@@ -2,6 +2,11 @@ extends Node2D
 
 var is_web = OS.get_name() == "HTML5"
 
+func _input(event):	
+	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
+		$sfx/open.play()
+	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
+		$sfx/open.play()
 
 func _ready():
 	$music/theme.play()

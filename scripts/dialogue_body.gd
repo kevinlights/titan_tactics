@@ -3,7 +3,7 @@ extends Label
 #var content
 #
 #func _ready():
-#	var dialogue_height = 6 + 10 * get_visible_line_count()
+#	var dialogue_height = 10 + 10 * get_visible_line_count()
 #	get_parent().rect_size.y = dialogue_height
 #	get_parent().rect_position.y = 144 - dialogue_height
 #

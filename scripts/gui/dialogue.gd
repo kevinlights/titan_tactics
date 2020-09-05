@@ -45,7 +45,7 @@ func _on_trigger_3():
 
 func _ready():
 	portrait = load("res://scenes/portraits.tscn").instance()
-	dialogue_height = 6 + 10 * 3 #$background/body.get_visible_line_count()
+	dialogue_height = 10 + 10 * 3 #$background/body.get_visible_line_count()
 	$background.rect_size.y = dialogue_height
 	$background.rect_position.y = 144 - dialogue_height
 # warning-ignore:return_value_discarded
@@ -56,7 +56,7 @@ func _ready():
 	$branches/trigger_3.connect("pressed", self, "_on_trigger_3")
 
 func resize():
-	dialogue_height = 6 + 10 * 3 # $background/body.get_visible_line_count()
+	dialogue_height = 10 + 10 * 3 # $background/body.get_visible_line_count()
 	$background.rect_size.y = dialogue_height
 	$background.rect_position.y = 144 - dialogue_height
 

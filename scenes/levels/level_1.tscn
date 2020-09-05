@@ -263,7 +263,7 @@ script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
 level = 1
-name = "minor sword"
+name = "minor cleaver"
 attack = 1.0
 attack_range = 1.0
 defense = 0
@@ -274,9 +274,9 @@ script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
 level = 1
-name = "minor cleaver"
-attack = 0
-attack_range = 0
+name = "minor knife"
+attack = 1.0
+attack_range = 1.0
 defense = 1.0
 heal = 0
 
@@ -285,8 +285,8 @@ script = ExtResource( 5 )
 character_class = 0
 name = "Izzy"
 level = 1
-hp = 4
-max_hp = 4
+hp = 23
+max_hp = 23
 atk = 3
 def = 2
 atk_range = 1
@@ -344,10 +344,10 @@ script = ExtResource( 5 )
 character_class = 0
 name = "Nina"
 level = 1
-hp = 4
-max_hp = 4
+hp = 23
+max_hp = 23
 atk = 3
-def = 0
+def = 2
 atk_range = 1
 mov_range = 5
 heal = 0
@@ -378,12 +378,12 @@ result = 0
 
 [sub_resource type="Resource" id=33]
 script = ExtResource( 8 )
-equipment_slot = 0
-level = 2
+equipment_slot = 1
+level = 1
 
 [sub_resource type="Resource" id=34]
 script = ExtResource( 8 )
-equipment_slot = 1
+equipment_slot = 0
 level = 2
 
 [node name="level" type="Node2D"]
@@ -422,13 +422,14 @@ dialogue = SubResource( 31 )
 recruit_dialogue = SubResource( 32 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
+visible = false
 position = Vector2( 184, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 33 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
-position = Vector2( 56, 88 )
+position = Vector2( 56, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 34 )
