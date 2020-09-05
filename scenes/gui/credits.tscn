@@ -3,95 +3,123 @@
 [ext_resource path="res://gfx/panel.png" type="Texture" id=1]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
 [ext_resource path="res://scripts/gui/intro.gd" type="Script" id=3]
-[ext_resource path="res://gfx/credits.png" type="Texture" id=4]
+[ext_resource path="res://gfx/menu_select.png" type="Texture" id=4]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 160, 144 )
+region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 144, 160, 144 )
+region = Rect2( 0, 8, 8, 8 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
 } ]
 
-[node name="credits" type="MarginContainer"]
+[node name="credits" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
-custom_constants/margin_bottom = 5
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="background" type="NinePatchRect" parent="."]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 155.0
-margin_bottom = 139.0
+margin_left = -6.0
+margin_top = -5.0
+margin_right = 165.0
+margin_bottom = 149.0
 theme = ExtResource( 2 )
 texture = ExtResource( 1 )
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
-
-[node name="margin" type="MarginContainer" parent="."]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 155.0
-margin_bottom = 139.0
-theme = ExtResource( 2 )
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-
-[node name="vbox" type="VBoxContainer" parent="margin"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 140.0
-margin_bottom = 124.0
-
-[node name="description" type="Label" parent="margin/vbox"]
-margin_right = 130.0
-margin_bottom = 100.0
-text = "Development:
-  Armen138
-  FroggyChair
-Pixel Art:
-  Romaselli
-  Maowling
-music and SFX:
-  Ondjon
-  Kssio
-Writing:
-  Cami Dee
-  Henzoid"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ok" type="ToolButton" parent="margin/vbox"]
-margin_top = 102.0
-margin_right = 130.0
-margin_bottom = 111.0
+[node name="role" type="Label" parent="."]
+margin_left = 26.5
+margin_top = 25.0
+margin_right = 64.5
+margin_bottom = 136.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.623529, 0.870588, 0.576471, 1 )
+custom_constants/line_spacing = 9
+text = "Dev:
+
+
+Art:
+
+
+Sound:
+
+
+Script:
+
+"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="."]
+margin_left = 72.5
+margin_top = 25.0
+margin_right = 135.5
+margin_bottom = 136.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.623529, 0.870588, 0.576471, 1 )
+custom_constants/line_spacing = 9
+text = "Armen138
+FroggyChair
+
+Romaselli
+Moawling
+
+Ondjon
+Kssio
+
+Cami Dee"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name2" type="Label" parent="."]
+margin_left = 39.0
+margin_top = 7.5
+margin_right = 120.0
+margin_bottom = 21.5
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+custom_constants/line_spacing = 9
+text = "CREDITS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ok" type="ToolButton" parent="."]
+margin_left = 15.0
+margin_top = 121.75
+margin_right = 145.0
+margin_bottom = 143.75
 focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
-text = "ok!"
+theme = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0.917647, 1, 0.866667, 1 )
+text = "OK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D"]
+position = Vector2( 63.7475, 129.947 )
 frames = SubResource( 3 )
 frame = 1
 playing = true

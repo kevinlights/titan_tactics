@@ -15,7 +15,7 @@ func _ready():
 		$menu/margin/vbox/continue.grab_focus()
 	else:
 		$menu/margin/vbox/new_game.grab_focus()
-	$menu/credits/margin/vbox/ok.connect("pressed", self, "_on_close_credits")
+	$menu/credits/ok.connect("pressed", self, "_on_close_credits")
 	if is_web and $menu/margin/vbox/quit:
 		$menu/margin/vbox/quit.hide()
 
@@ -37,7 +37,7 @@ func _on_close_credits():
 func _on_credits():
 	$sfx/select.play()
 	$menu/credits.show() # ("show")
-	$menu/credits/margin/vbox/ok.grab_focus()
+	$menu/credits/ok.grab_focus()
 
 #	else:
 #		$menu/credits.call_deferred("hide")
