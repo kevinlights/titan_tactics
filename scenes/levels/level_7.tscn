@@ -412,27 +412,29 @@ item_spawner = SubResource( 5 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 128, 160 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 160, 160 )
-frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 272, 192 )
 rotation = 1.5708
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 272, 160 )
 rotation = 1.5708
+frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 272, 64 )
 rotation = 1.5708
+frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 272, 32 )
 rotation = 1.5708
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 

@@ -21,7 +21,8 @@ var portrait_map = {
 	Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
 	Dialogue.PORTRAIT.HERO: "hero",
 	Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
-	Dialogue.PORTRAIT.OLD_MAN: "old_man"
+	Dialogue.PORTRAIT.OLD_MAN: "old_man",
+	Dialogue.PORTRAIT.CYAN: "cyan"
 }
 
 func cancel_typing():
