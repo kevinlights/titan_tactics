@@ -130,13 +130,13 @@ func attack(target):
 		return 0
 	character.turn_limits.actions -= 1
 	var atk_range = character.atk_range + character.item_atk.attack_range
-	var damage = float(character.atk + character.item_atk.attack)
+	var damage = float((character.atk + character.item_atk.attack) * 3)
 	if target.character.character_class == character.weakness:
 		damage = damage * 0.7
 	if target.character.character_class == character.strength:
 		damage = damage * 1.3
 	if target.guarding:
-		damage = damage * 0.5
+		damage = damage * 0.65
 	print("atk ", damage)
 	var target_defense = target.character.def + target.character.item_def.defense
 	var def_multiplier = get_def_buff(target_defense) #1.0 - (target_defense + tanh(target_defense)) / 100

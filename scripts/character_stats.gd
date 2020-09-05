@@ -25,10 +25,12 @@ var xp = 0 # setget set_xp,get_xp
 var xp_to_next = 1
 var current_to_next = 0
 
-var fibonacci = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
-var hp_up = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
-var atk_up = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
-var def_up = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
+# fibronacci influences hp
+# hp_up does nothing?
+var fibonacci = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
+var hp_up = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
+var atk_up = [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 ]
+var def_up = [ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ]
 
 func sequence_cumulative(sequence, position):
 	var result = 0
