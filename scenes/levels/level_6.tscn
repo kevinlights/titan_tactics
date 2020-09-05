@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://gfx/Maps/lv6.png" type="Texture" id=1]
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://scripts/level.gd" type="Script" id=6]
 [ext_resource path="res://gfx/speak_map.png" type="Texture" id=7]
 [ext_resource path="res://scripts/dialogue_trigger.gd" type="Script" id=8]
+[ext_resource path="res://scripts/characterspawner.gd" type="Script" id=9]
+[ext_resource path="res://gfx/archer.png" type="Texture" id=10]
+[ext_resource path="res://scripts/character_stats.gd" type="Script" id=11]
+[ext_resource path="res://scripts/item.gd" type="Script" id=12]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -372,6 +376,65 @@ text = "further. Lead the way, Alex!"
 branches = [  ]
 result = 2
 
+[sub_resource type="Resource" id=41]
+script = ExtResource( 12 )
+character_class = 1
+equipment_slot = 0
+level = 1
+name = "minor bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=42]
+script = ExtResource( 12 )
+character_class = 1
+equipment_slot = 1
+level = 1
+name = "minor mail"
+attack = 0
+attack_range = 0
+defense = 1
+heal = 0
+
+[sub_resource type="Resource" id=46]
+script = ExtResource( 11 )
+character_class = 1
+name = ""
+level = 1
+hp = 60
+max_hp = 60
+atk = 5
+def = 1
+atk_range = 3
+mov_range = 6
+heal = 0
+item_atk = SubResource( 41 )
+item_def = SubResource( 42 )
+
+[sub_resource type="Resource" id=44]
+script = ExtResource( 5 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=45]
+script = ExtResource( 5 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
 [sub_resource type="NavigationPolygon" id=34]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
@@ -565,6 +628,14 @@ position = Vector2( 88.535, 70.5439 )
 texture = ExtResource( 7 )
 script = ExtResource( 8 )
 dialogue_id = "well"
+
+[node name="CharacterSpawner" type="Sprite" parent="map"]
+position = Vector2( 96.268, 180.068 )
+texture = ExtResource( 10 )
+script = ExtResource( 9 )
+stats = SubResource( 46 )
+dialogue = SubResource( 44 )
+recruit_dialogue = SubResource( 45 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
