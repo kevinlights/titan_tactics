@@ -484,7 +484,7 @@ func _on_selector_moved(tile):
 	var context = get_current_context(tile)
 	print(context)
 	var target = entity_at($select.tile)
-	if target and !target.is_loot and !target.is_trigger: #and target.character.control == Game.CONTROL.AI:
+	if context == Game.CONTEXT.ATTACK and target and !target.is_loot and !target.is_trigger: #and target.character.control == Game.CONTROL.AI:
 		print("you are pointing on " + str(target.character.name))
 		gui.battle(get_current(), target)
 	else:
@@ -502,6 +502,8 @@ func _on_selector_moved(tile):
 	$select.set_context(context)
 
 func get_current_context(tile):
+	if $select.mode == $select.MODE.CHECK_MAP:
+		return Game.CONTEXT.NEUTRAL
 	var unit = entity_at(tile)
 	if unit:
 		if unit.is_loot or unit.is_trigger:
