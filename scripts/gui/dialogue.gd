@@ -67,6 +67,7 @@ func set_content(dialogue_content):
 	$branches.hide()
 	content = dialogue_content
 	text_blocks = content.text.split("|")
+	portrait.hide()
 	if dialogue_content.portrait != Dialogue.PORTRAIT.NONE:
 		var offset = portrait_offset_friendly
 		if "ai" in portrait_map[dialogue_content.portrait]:
@@ -74,7 +75,9 @@ func set_content(dialogue_content):
 		portrait.position.x = offset.x
 		portrait.position.y = 144 - dialogue_height + offset.y
 		portrait.play(portrait_map[dialogue_content.portrait])
-		add_child(portrait)
+		if not has_node("portrait"):
+			add_child(portrait)
+		portrait.show()
 	if dialogue_content.title and dialogue_content.title != "":
 		set_title(dialogue_content.title)
 	else:
