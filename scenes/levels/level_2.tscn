@@ -104,7 +104,7 @@ attack_range = 0
 defense = 10.0
 heal = 0
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=23]
 script = ExtResource( 4 )
 character_class = 1
 name = "Lily"
@@ -163,7 +163,7 @@ attack_range = 0
 defense = 1.0
 heal = 2.0
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=24]
 script = ExtResource( 4 )
 character_class = 2
 name = "Steph"
@@ -222,7 +222,7 @@ attack_range = 0
 defense = 4.0
 heal = 0
 
-[sub_resource type="Resource" id=19]
+[sub_resource type="Resource" id=25]
 script = ExtResource( 4 )
 character_class = 0
 name = "Eva"
@@ -276,7 +276,7 @@ centered = false
 position = Vector2( 136, 168 )
 texture = ExtResource( 8 )
 script = ExtResource( 5 )
-stats = SubResource( 9 )
+stats = SubResource( 23 )
 dialogue = SubResource( 10 )
 recruit_dialogue = SubResource( 11 )
 
@@ -284,7 +284,7 @@ recruit_dialogue = SubResource( 11 )
 position = Vector2( 88, 168 )
 texture = ExtResource( 13 )
 script = ExtResource( 5 )
-stats = SubResource( 14 )
+stats = SubResource( 24 )
 dialogue = SubResource( 15 )
 recruit_dialogue = SubResource( 16 )
 
@@ -292,7 +292,7 @@ recruit_dialogue = SubResource( 16 )
 position = Vector2( 184, 104 )
 texture = ExtResource( 14 )
 script = ExtResource( 5 )
-stats = SubResource( 19 )
+stats = SubResource( 25 )
 dialogue = SubResource( 20 )
 recruit_dialogue = SubResource( 21 )
 
