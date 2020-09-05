@@ -49,7 +49,7 @@ text = "I see you haven’t lost your edge in battle."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=33]
+[sub_resource type="Resource" id=4]
 script = ExtResource( 9 )
 dialogue_id = "next"
 portrait = 9
@@ -60,7 +60,7 @@ text = "I watched you handle that last one pretty efficiently. Good work"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=34]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 9 )
 dialogue_id = "andthen"
 portrait = 6
@@ -71,7 +71,7 @@ text = "Gods! I was beginning to worry about you."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=35]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 9 )
 dialogue_id = "also"
 portrait = 6
@@ -82,7 +82,7 @@ text = "Has the Oaken God given us his blessings?"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 9 )
 dialogue_id = "andtoo"
 portrait = 9
@@ -93,7 +93,7 @@ text = "The leaves rustle with ill tidings. I fear for Ulrich."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=37]
+[sub_resource type="Resource" id=8]
 script = ExtResource( 9 )
 dialogue_id = "but"
 portrait = 9
@@ -104,7 +104,7 @@ text = "The Hass are searching for him."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=38]
+[sub_resource type="Resource" id=9]
 script = ExtResource( 9 )
 dialogue_id = "then"
 portrait = 10
@@ -115,7 +115,7 @@ text = "(Rolf spots smoke clouds on the horizon)"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=39]
+[sub_resource type="Resource" id=10]
 script = ExtResource( 9 )
 dialogue_id = "taco"
 portrait = 6
@@ -126,7 +126,7 @@ text = "Fires in the north. The forest settlement is burning."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=40]
+[sub_resource type="Resource" id=11]
 script = ExtResource( 9 )
 dialogue_id = "stuff"
 portrait = 6
@@ -137,7 +137,7 @@ text = "We must make haste if we are to make it back before Ulrich is found!"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=12]
 script = ExtResource( 9 )
 dialogue_id = "things"
 portrait = 9
@@ -148,17 +148,17 @@ text = "Hurry and follow me to the well. I have not forgotten the way."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=4]
+[sub_resource type="Resource" id=13]
+script = ExtResource( 3 )
+equipment_slot = 1
+level = 3
+
+[sub_resource type="Resource" id=14]
 script = ExtResource( 3 )
 equipment_slot = 0
-level = 4
+level = 3
 
-[sub_resource type="Resource" id=5]
-script = ExtResource( 3 )
-equipment_slot = 0
-level = 1
-
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=15]
 script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
@@ -169,7 +169,7 @@ attack_range = 17.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=7]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
@@ -180,22 +180,22 @@ attack_range = 0
 defense = 22.0
 heal = 0
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 8 )
 character_class = 1
 name = "Seth"
 level = 4
 hp = 24
 max_hp = 24
-atk = 3
-def = 1
+atk = 7
+def = 4
 atk_range = 3
 mov_range = 6
 heal = 0
-item_atk = SubResource( 6 )
-item_def = SubResource( 7 )
+item_atk = SubResource( 15 )
+item_def = SubResource( 16 )
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 9 )
 dialogue_id = ""
 portrait = 0
@@ -205,113 +205,6 @@ title = ""
 text = ""
 branches = [  ]
 result = 0
-
-[sub_resource type="Resource" id=10]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=11]
-script = ExtResource( 7 )
-character_class = 1
-equipment_slot = 0
-level = 4
-name = "strong bow"
-attack = 21.0
-attack_range = 17.0
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=12]
-script = ExtResource( 7 )
-character_class = 1
-equipment_slot = 0
-level = 4
-name = "shiny bow"
-attack = 0
-attack_range = 0
-defense = 17.0
-heal = 0
-
-[sub_resource type="Resource" id=43]
-script = ExtResource( 8 )
-character_class = 1
-name = "Alf"
-level = 4
-hp = 24
-max_hp = 24
-atk = 3
-def = 1
-atk_range = 3
-mov_range = 6
-heal = 0
-item_atk = SubResource( 11 )
-item_def = SubResource( 12 )
-
-[sub_resource type="Resource" id=14]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=15]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 7 )
-character_class = 2
-equipment_slot = 0
-level = 4
-name = "strong staff"
-attack = 21.0
-attack_range = 20.0
-defense = 0
-heal = 7.0
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 7 )
-character_class = 2
-equipment_slot = 0
-level = 4
-name = "shiny wand"
-attack = 0
-attack_range = 0
-defense = 16.0
-heal = 30.0
-
-[sub_resource type="Resource" id=44]
-script = ExtResource( 8 )
-character_class = 2
-name = "Lokum"
-level = 4
-hp = 22
-max_hp = 22
-atk = 4
-def = 1
-atk_range = 4
-mov_range = 4
-heal = 4
-item_atk = SubResource( 16 )
-item_def = SubResource( 17 )
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 9 )
@@ -325,6 +218,43 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=20]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 4
+name = "strong bow"
+attack = 21.0
+attack_range = 17.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 4
+name = "shiny bow"
+attack = 0
+attack_range = 0
+defense = 17.0
+heal = 0
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 8 )
+character_class = 1
+name = "Alf"
+level = 4
+hp = 24
+max_hp = 24
+atk = 7
+def = 4
+atk_range = 3
+mov_range = 6
+heal = 0
+item_atk = SubResource( 20 )
+item_def = SubResource( 21 )
+
+[sub_resource type="Resource" id=23]
 script = ExtResource( 9 )
 dialogue_id = ""
 portrait = 0
@@ -334,43 +264,6 @@ title = ""
 text = ""
 branches = [  ]
 result = 0
-
-[sub_resource type="Resource" id=21]
-script = ExtResource( 7 )
-character_class = 0
-equipment_slot = 0
-level = 4
-name = "strong knife"
-attack = 21.0
-attack_range = 16.0
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=22]
-script = ExtResource( 7 )
-character_class = 0
-equipment_slot = 0
-level = 4
-name = "shiny cleaver"
-attack = 0
-attack_range = 0
-defense = 20.0
-heal = 0
-
-[sub_resource type="Resource" id=45]
-script = ExtResource( 8 )
-character_class = 0
-name = "Firas"
-level = 4
-hp = 27
-max_hp = 27
-atk = 3
-def = 2
-atk_range = 1
-mov_range = 5
-heal = 0
-item_atk = SubResource( 21 )
-item_def = SubResource( 22 )
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 9 )
@@ -384,6 +277,43 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=25]
+script = ExtResource( 7 )
+character_class = 2
+equipment_slot = 0
+level = 4
+name = "strong staff"
+attack = 21.0
+attack_range = 20.0
+defense = 0
+heal = 7.0
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 7 )
+character_class = 2
+equipment_slot = 0
+level = 4
+name = "shiny wand"
+attack = 0
+attack_range = 0
+defense = 16.0
+heal = 30.0
+
+[sub_resource type="Resource" id=27]
+script = ExtResource( 8 )
+character_class = 2
+name = "Lokum"
+level = 4
+hp = 22
+max_hp = 22
+atk = 8
+def = 4
+atk_range = 4
+mov_range = 4
+heal = 4
+item_atk = SubResource( 25 )
+item_def = SubResource( 26 )
+
+[sub_resource type="Resource" id=28]
 script = ExtResource( 9 )
 dialogue_id = ""
 portrait = 0
@@ -394,31 +324,101 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="NavigationPolygon" id=26]
+[sub_resource type="Resource" id=29]
+script = ExtResource( 9 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=30]
+script = ExtResource( 7 )
+character_class = 0
+equipment_slot = 0
+level = 4
+name = "strong knife"
+attack = 21.0
+attack_range = 16.0
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=31]
+script = ExtResource( 7 )
+character_class = 0
+equipment_slot = 0
+level = 4
+name = "shiny cleaver"
+attack = 0
+attack_range = 0
+defense = 20.0
+heal = 0
+
+[sub_resource type="Resource" id=32]
+script = ExtResource( 8 )
+character_class = 0
+name = "Firas"
+level = 4
+hp = 27
+max_hp = 27
+atk = 7
+def = 6
+atk_range = 1
+mov_range = 5
+heal = 0
+item_atk = SubResource( 30 )
+item_def = SubResource( 31 )
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 9 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=34]
+script = ExtResource( 9 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="NavigationPolygon" id=35]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=27]
+[sub_resource type="NavigationPolygon" id=36]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=28]
+[sub_resource type="NavigationPolygon" id=37]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=29]
+[sub_resource type="NavigationPolygon" id=38]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=30]
+[sub_resource type="NavigationPolygon" id=39]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=31]
+[sub_resource type="NavigationPolygon" id=40]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=32]
+[sub_resource type="TileSet" id=41]
 0/name = "not passable"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -455,7 +455,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 26 )
+2/navigation = SubResource( 35 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 2/shape_one_way = false
@@ -470,7 +470,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 27 )
+3/navigation = SubResource( 36 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 3/shape_one_way = false
@@ -485,7 +485,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 28 )
+4/navigation = SubResource( 37 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 4/shape_one_way = false
@@ -500,7 +500,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 29 )
+5/navigation = SubResource( 38 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 5/shape_one_way = false
@@ -529,7 +529,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 30 )
+7/navigation = SubResource( 39 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -544,7 +544,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 31 )
+8/navigation = SubResource( 40 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 8/shape_one_way = false
@@ -554,7 +554,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [node name="level" type="Node2D"]
 script = ExtResource( 15 )
-dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ]
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -564,13 +564,13 @@ centered = false
 position = Vector2( 168.905, 167.543 )
 texture = ExtResource( 5 )
 script = ExtResource( 4 )
-item_spawner = SubResource( 4 )
+item_spawner = SubResource( 13 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
 position = Vector2( 88, 72 )
 texture = ExtResource( 5 )
 script = ExtResource( 4 )
-item_spawner = SubResource( 5 )
+item_spawner = SubResource( 14 )
 
 [node name="Water2" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 48, 176 )
@@ -582,40 +582,40 @@ position = Vector2( 16, 176 )
 position = Vector2( 104, 136 )
 texture = ExtResource( 10 )
 script = ExtResource( 6 )
-stats = SubResource( 42 )
-dialogue = SubResource( 9 )
-recruit_dialogue = SubResource( 10 )
+stats = SubResource( 17 )
+dialogue = SubResource( 18 )
+recruit_dialogue = SubResource( 19 )
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
 position = Vector2( 136, 168 )
 texture = ExtResource( 10 )
 script = ExtResource( 6 )
-stats = SubResource( 43 )
-dialogue = SubResource( 14 )
-recruit_dialogue = SubResource( 15 )
+stats = SubResource( 22 )
+dialogue = SubResource( 23 )
+recruit_dialogue = SubResource( 24 )
 
 [node name="CharacterSpawner3" type="Sprite" parent="map"]
 position = Vector2( 168, 104 )
 texture = ExtResource( 11 )
 script = ExtResource( 6 )
-stats = SubResource( 44 )
-dialogue = SubResource( 19 )
-recruit_dialogue = SubResource( 20 )
+stats = SubResource( 27 )
+dialogue = SubResource( 28 )
+recruit_dialogue = SubResource( 29 )
 
 [node name="CharacterSpawner4" type="Sprite" parent="map"]
 position = Vector2( 72, 168 )
 texture = ExtResource( 12 )
 script = ExtResource( 6 )
-stats = SubResource( 45 )
-dialogue = SubResource( 24 )
-recruit_dialogue = SubResource( 25 )
+stats = SubResource( 32 )
+dialogue = SubResource( 33 )
+recruit_dialogue = SubResource( 34 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 position = Vector2( 0, 0.5 )
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
 visible = false
-tile_set = SubResource( 32 )
+tile_set = SubResource( 41 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1
