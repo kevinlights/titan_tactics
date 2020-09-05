@@ -3,7 +3,7 @@
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=3]
-[ext_resource path="res://gfx/swordsman.png" type="Texture" id=4]
+[ext_resource path="res://gfx/archer.png" type="Texture" id=4]
 [ext_resource path="res://scripts/character_stats.gd" type="Script" id=5]
 [ext_resource path="res://scripts/item.gd" type="Script" id=6]
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=7]
@@ -183,10 +183,10 @@ result = 2
 
 [sub_resource type="Resource" id=16]
 script = ExtResource( 6 )
-character_class = 0
+character_class = 1
 equipment_slot = 0
 level = 1
-name = "minor cleaver"
+name = "minor bow"
 attack = 1.0
 attack_range = 1.0
 defense = 0
@@ -194,10 +194,10 @@ heal = 0
 
 [sub_resource type="Resource" id=17]
 script = ExtResource( 6 )
-character_class = 0
+character_class = 1
 equipment_slot = 0
 level = 1
-name = "minor knife"
+name = "minor bow"
 attack = 1.0
 attack_range = 1.0
 defense = 1.0
@@ -205,15 +205,15 @@ heal = 0
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
-character_class = 0
+character_class = 1
 name = "Izzy"
 level = 1
-hp = 23
-max_hp = 23
+hp = 5
+max_hp = 5
 atk = 3
-def = 2
-atk_range = 1
-mov_range = 5
+def = 0
+atk_range = 3
+mov_range = 6
 heal = 0
 item_atk = SubResource( 16 )
 item_def = SubResource( 17 )
@@ -242,10 +242,10 @@ result = 0
 
 [sub_resource type="Resource" id=21]
 script = ExtResource( 6 )
-character_class = 0
+character_class = 1
 equipment_slot = 0
 level = 1
-name = "minor cleaver"
+name = "minor bow"
 attack = 1.0
 attack_range = 1.0
 defense = 0
@@ -253,26 +253,26 @@ heal = 0
 
 [sub_resource type="Resource" id=22]
 script = ExtResource( 6 )
-character_class = 0
+character_class = 1
 equipment_slot = 0
 level = 1
-name = "minor cleaver"
-attack = 0
-attack_range = 0
+name = "minor bow"
+attack = 1.0
+attack_range = 1.0
 defense = 1.0
 heal = 0
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 5 )
-character_class = 0
+character_class = 1
 name = "Nina"
 level = 1
-hp = 23
-max_hp = 23
+hp = 5
+max_hp = 5
 atk = 3
-def = 2
-atk_range = 1
-mov_range = 5
+def = 0
+atk_range = 3
+mov_range = 6
 heal = 0
 item_atk = SubResource( 21 )
 item_def = SubResource( 22 )
@@ -329,7 +329,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
-position = Vector2( 168, 136 )
+position = Vector2( 72, 72 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 18 )
@@ -337,7 +337,7 @@ dialogue = SubResource( 19 )
 recruit_dialogue = SubResource( 20 )
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
-position = Vector2( 152, 152 )
+position = Vector2( 72, 56 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 23 )
@@ -358,16 +358,18 @@ script = ExtResource( 9 )
 item_spawner = SubResource( 27 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
+frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
-frame = 1
 
 [node name="DialogueTrigger" type="Sprite" parent="map"]
 position = Vector2( 120, 104 )
