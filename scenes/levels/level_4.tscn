@@ -131,10 +131,10 @@ script = ExtResource( 6 )
 character_class = 1
 name = "Trina"
 level = 4
-hp = 24
-max_hp = 24
+hp = 69
+max_hp = 69
 atk = 7
-def = 4
+def = 2
 atk_range = 3
 mov_range = 6
 heal = 0
@@ -190,8 +190,8 @@ script = ExtResource( 6 )
 character_class = 2
 name = "Mags"
 level = 3
-hp = 20
-max_hp = 20
+hp = 65
+max_hp = 65
 atk = 6
 def = 2
 atk_range = 4
@@ -249,10 +249,10 @@ script = ExtResource( 6 )
 character_class = 0
 name = "Nord"
 level = 4
-hp = 27
-max_hp = 27
+hp = 69
+max_hp = 69
 atk = 7
-def = 6
+def = 2
 atk_range = 1
 mov_range = 5
 heal = 0
@@ -308,8 +308,8 @@ script = ExtResource( 6 )
 character_class = 2
 name = "Firas"
 level = 3
-hp = 20
-max_hp = 20
+hp = 65
+max_hp = 65
 atk = 6
 def = 2
 atk_range = 4
@@ -367,10 +367,10 @@ script = ExtResource( 6 )
 character_class = 1
 name = "Gwen"
 level = 4
-hp = 24
-max_hp = 24
+hp = 69
+max_hp = 69
 atk = 7
-def = 4
+def = 2
 atk_range = 3
 mov_range = 6
 heal = 0
@@ -402,7 +402,7 @@ result = 0
 [sub_resource type="Resource" id=34]
 script = ExtResource( 14 )
 equipment_slot = 1
-level = 4
+level = 2
 
 [sub_resource type="NavigationPolygon" id=35]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -583,17 +583,17 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 56, 56 )
-frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 248, 56 )
-frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 216, 136 )
+frame = 1
 
 [node name="Torch bottom4" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 40, 152 )
+frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 104, 104 )
@@ -628,7 +628,7 @@ dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
 
 [node name="CharacterSpawner5" type="Sprite" parent="map"]
-position = Vector2( 208, 168 )
+position = Vector2( 200, 168 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
 stats = SubResource( 31 )
@@ -655,15 +655,13 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 7, 0, 2, 1, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 40, 136 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 248, 40 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 216, 120 )
-frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 56, 40 )
+frame = 1
