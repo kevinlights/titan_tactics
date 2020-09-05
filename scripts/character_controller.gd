@@ -122,7 +122,7 @@ func can_attack(target):
 
 func get_def_buff(def_value):
 	print(log(def_value))
-	return 1.0 - (log(def_value) / log(10)) * 0.5
+	return 1.0 - (log(def_value) / log(10)) * 0.3
 
 func attack(target):
 	last_target = target

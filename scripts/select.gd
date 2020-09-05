@@ -58,7 +58,7 @@ func _input(event):
 	if gui.active or disabled or world.current_turn == Game.CONTROL.AI:
 		play("attack")
 		return
-	if event.is_action("ui_page_down")&& !event.is_echo() && event.is_pressed():
+	if event.is_action("ui_cancel")&& !event.is_echo() && event.is_pressed():
 		get_parent().advance_turn(0)
 		return
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():

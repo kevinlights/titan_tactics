@@ -29,7 +29,7 @@ var current_to_next = 0
 # hp_up does nothing?
 var fibonacci = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
 var hp_up = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
-var atk_up = [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 ]
+var atk_up = [ 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1 ]
 var def_up = [ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ]
 
 func sequence_cumulative(sequence, position):

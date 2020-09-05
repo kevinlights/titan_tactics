@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -195,23 +195,23 @@ heal = 0
 [sub_resource type="Resource" id=17]
 script = ExtResource( 6 )
 character_class = 1
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "minor bow"
+name = "minor plate"
 attack = 1.0
 attack_range = 1.0
-defense = 1.0
+defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=28]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
 character_class = 1
-name = "Izzy"
+name = "Nina"
 level = 1
-hp = 5
-max_hp = 5
-atk = 3
-def = 0
+hp = 60
+max_hp = 60
+atk = 5
+def = 1
 atk_range = 3
 mov_range = 6
 heal = 0
@@ -241,73 +241,14 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=21]
-script = ExtResource( 6 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "minor bow"
-attack = 1.0
-attack_range = 1.0
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=22]
-script = ExtResource( 6 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "minor bow"
-attack = 1.0
-attack_range = 1.0
-defense = 1.0
-heal = 0
-
-[sub_resource type="Resource" id=29]
-script = ExtResource( 5 )
-character_class = 1
-name = "Nina"
-level = 1
-hp = 4
-max_hp = 4
-atk = 3
-def = 0
-atk_range = 3
-mov_range = 6
-heal = 0
-item_atk = SubResource( 21 )
-item_def = SubResource( 22 )
-
-[sub_resource type="Resource" id=24]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=25]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=26]
 script = ExtResource( 8 )
 equipment_slot = 1
 level = 1
 
-[sub_resource type="Resource" id=27]
+[sub_resource type="Resource" id=22]
 script = ExtResource( 8 )
 equipment_slot = 0
-level = 2
+level = 1
 
 [node name="level" type="Node2D"]
 script = ExtResource( 11 )
@@ -328,34 +269,26 @@ dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 5 ), SubResource( 
 texture = ExtResource( 1 )
 centered = false
 
-[node name="CharacterSpawner2" type="Sprite" parent="map"]
-position = Vector2( 72, 72 )
-texture = ExtResource( 4 )
-script = ExtResource( 3 )
-stats = SubResource( 28 )
-dialogue = SubResource( 19 )
-recruit_dialogue = SubResource( 20 )
-
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 72, 56 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 29 )
-dialogue = SubResource( 24 )
-recruit_dialogue = SubResource( 25 )
+stats = SubResource( 18 )
+dialogue = SubResource( 19 )
+recruit_dialogue = SubResource( 20 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 visible = false
 position = Vector2( 184, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 26 )
+item_spawner = SubResource( 21 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
 position = Vector2( 56, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 27 )
+item_spawner = SubResource( 22 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
 frame = 1
