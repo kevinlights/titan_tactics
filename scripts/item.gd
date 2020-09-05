@@ -58,7 +58,7 @@ var item_names = {
 	Game.TYPE.FIGHTER: [ "sword", "cleaver", "knife", "dagger" ],
 	Game.TYPE.ARCHER: [ "bow", "longbow" ],
 	Game.TYPE.MAGE: [ "wand", "staff", "scepter" ],
-	Game.TYPE.OTHER: [ "shield", "buckler", "plate", "helm", "tunic", "jacket", "chain", "mail" ]
+	Game.TYPE.OTHER: [ "plate", "helm", "tunic", "jacket", "chain", "mail", "boots"]
 }
 
 func sequence_cumulative(sequence, position):
