@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://gfx/Maps/lv1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -40,23 +40,23 @@ result = 2
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 10 )
-dialogue_id = "yesplease"
-portrait = 8
+dialogue_id = "yes"
+portrait = 0
 trigger = 5
-trigger_id = ""
+trigger_id = "tut"
 title = ""
-text = "Yes"
+text = "Yes, I would like to learn the basics."
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 10 )
-dialogue_id = "nope"
-portrait = 8
+dialogue_id = "no"
+portrait = 0
 trigger = 5
-trigger_id = ""
+trigger_id = "tut"
 title = ""
-text = "No"
+text = "No, I don't have the time."
 branches = [  ]
 result = 2
 
@@ -65,200 +65,123 @@ script = ExtResource( 10 )
 dialogue_id = "tut"
 portrait = 10
 trigger = 5
-trigger_id = "positive"
-title = "Tutorial:"
-text = "Do you want to learn about team placement?"
+trigger_id = "second"
+title = ""
+text = "Would you like a tutorial?"
 branches = [ SubResource( 3 ), SubResource( 4 ) ]
 result = 2
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 10 )
-dialogue_id = "tutorial"
+dialogue_id = "tuts"
 portrait = 10
 trigger = 5
-trigger_id = "yesplease"
-title = "Tutorial:"
-text = "Start by choosing your characters. First you only"
+trigger_id = "yes"
+title = "Character Placement:"
+text = "Start by choosing and placing your characters. "
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 10 )
-dialogue_id = "one"
+dialogue_id = "cont"
 portrait = 10
 trigger = 5
-trigger_id = "tutorial"
+trigger_id = "tuts"
 title = ""
-text = "have yourself, but later your party will grow. Place characters to your |advantage given the level you face. |You may preview the map by selecting CHECK MAP in the menu in order to plan |your approach. |If you have placed your team but want to make a change, select EDIT TEAM. |When you are ready, select START LEVEL."
+text = "Place characters to your advantage given the level you face.|You may preview the map by selecting CHECK MAP in the menu in order to plan|your approach.|If you have placed your team but want to make a change, select EDIT TEAM.|When you are ready, select START LEVEL."
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 10 )
-dialogue_id = "yes"
-portrait = 0
+dialogue_id = "moves"
+portrait = 10
 trigger = 5
-trigger_id = ""
-title = ""
-text = "Yes"
+trigger_id = "cont"
+title = "Character Movement:"
+text = "Each character has a fixed movement range that can "
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 10 )
-dialogue_id = "no"
-portrait = 0
+dialogue_id = "units"
+portrait = 10
 trigger = 5
-trigger_id = ""
+trigger_id = "moves"
 title = ""
-text = "No"
+text = "split into multiple actions. An action consists of either attacking an enemy, walking |or guarding. A character cannot both attack and guard during the same turn"
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 10 )
-dialogue_id = "two"
+dialogue_id = "class"
 portrait = 10
 trigger = 5
-trigger_id = "one"
-title = "Tutorial:"
-text = "Would you like to learn about character movement?"
-branches = [ SubResource( 8 ), SubResource( 9 ) ]
+trigger_id = "units"
+title = "Character Classes:"
+text = "There are 3 classes, each has advantage over another"
+branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 10 )
-dialogue_id = "movement"
+dialogue_id = "andthen"
 portrait = 10
 trigger = 5
-trigger_id = "yes"
-title = "Tutorial:"
-text = "Each character has a fixed movement range that can"
+trigger_id = "class"
+title = ""
+text = "Sword ¢ beats bow }|Bow } beats staff §|Staff § beats sword ¢."
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 10 )
-dialogue_id = "movement2"
+dialogue_id = "stuff"
 portrait = 10
 trigger = 5
-trigger_id = "movement"
-title = ""
-text = "split into multiple actions. An action consists of either attacking an enemy, walking|or guarding. A character cannot both attack and guard during the same turn."
+trigger_id = "andthen"
+title = "Unit Recruitment:"
+text = "Recruitment is important in order to build a team"
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 10 )
-dialogue_id = "ya"
-portrait = 0
-trigger = 0
-trigger_id = ""
+dialogue_id = "things"
+portrait = 10
+trigger = 5
+trigger_id = "stuff"
 title = ""
-text = "Yes"
+text = "with diverse units.|Start by wearing an opponent down to a low enough health.|A ¥ icon will appear when they want to talk. Walk up to them and select Speak ¥|You will need to persuade them. Each enemy is different, so choose your|answers wisely!"
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 10 )
-dialogue_id = "nah"
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = "No"
+dialogue_id = "change"
+portrait = 10
+trigger = 5
+trigger_id = "things"
+title = "Changing Characters:"
+text = "During your turn, you can press £ and change which"
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 10 )
-dialogue_id = "prs"
+dialogue_id = ""
 portrait = 10
 trigger = 5
-trigger_id = "movement2"
-title = "Tutorial:"
-text = "Would you like to learn about unit advantages?"
-branches = [ SubResource( 13 ), SubResource( 14 ) ]
+trigger_id = "change"
+title = ""
+text = "character to control by pressing < and >. When a character has used up all|their actions for that turn, they will not be selectable."
+branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=16]
-script = ExtResource( 10 )
-dialogue_id = "positive"
-portrait = 0
-trigger = 5
-trigger_id = ""
-title = ""
-text = "Yes"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 10 )
-dialogue_id = "negative"
-portrait = 0
-trigger = 5
-trigger_id = ""
-title = ""
-text = "No"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=18]
-script = ExtResource( 10 )
-dialogue_id = "maintut"
-portrait = 10
-trigger = 5
-trigger_id = "second"
-title = "Tutorial:"
-text = "Would you like a tutorial?"
-branches = [ SubResource( 16 ), SubResource( 17 ) ]
-result = 2
-
-[sub_resource type="Resource" id=19]
-script = ExtResource( 10 )
-dialogue_id = "advantage"
-portrait = 10
-trigger = 5
-trigger_id = "ya"
-title = ""
-text = "You will encounter 3 unit types, each one has an advantage over another:|Sword ¢ beats bow }|Bow } beats staff § and|Staff § beats sword ¢."
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=20]
-script = ExtResource( 10 )
-dialogue_id = "yay"
-portrait = 10
-trigger = 5
-trigger_id = ""
-title = ""
-text = "Yes"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=21]
-script = ExtResource( 10 )
-dialogue_id = "nay"
-portrait = 0
-trigger = 5
-trigger_id = ""
-title = ""
-text = "No"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=22]
-script = ExtResource( 10 )
-dialogue_id = "recruit"
-portrait = 10
-trigger = 5
-trigger_id = "advantage"
-title = "Tutorial:"
-text = "Would you like a tutorial on recruiting units?"
-branches = [ SubResource( 20 ), SubResource( 21 ) ]
-result = 2
-
-[sub_resource type="Resource" id=23]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
@@ -269,7 +192,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=24]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
@@ -280,7 +203,7 @@ attack_range = 1.0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=25]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
 character_class = 0
 name = "Izzy"
@@ -292,10 +215,10 @@ def = 2
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 23 )
-item_def = SubResource( 24 )
+item_atk = SubResource( 16 )
+item_def = SubResource( 17 )
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=19]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -306,7 +229,7 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=27]
+[sub_resource type="Resource" id=20]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -317,7 +240,7 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=28]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
@@ -328,7 +251,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=29]
+[sub_resource type="Resource" id=22]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
@@ -339,7 +262,7 @@ attack_range = 0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=30]
+[sub_resource type="Resource" id=23]
 script = ExtResource( 5 )
 character_class = 0
 name = "Nina"
@@ -351,10 +274,10 @@ def = 2
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 28 )
-item_def = SubResource( 29 )
+item_atk = SubResource( 21 )
+item_def = SubResource( 22 )
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=24]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -365,7 +288,7 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=32]
+[sub_resource type="Resource" id=25]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -376,12 +299,12 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=33]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 8 )
 equipment_slot = 1
 level = 1
 
-[sub_resource type="Resource" id=34]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 8 )
 equipment_slot = 0
 level = 2
@@ -399,7 +322,7 @@ AN EFFORT NOT
 TO GET STUCK IN
 ANY QUICKWATER."
 }
-dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 15 ), SubResource( 18 ), SubResource( 19 ), SubResource( 22 ) ]
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -409,44 +332,42 @@ centered = false
 position = Vector2( 168, 136 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 25 )
-dialogue = SubResource( 26 )
-recruit_dialogue = SubResource( 27 )
+stats = SubResource( 18 )
+dialogue = SubResource( 19 )
+recruit_dialogue = SubResource( 20 )
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 152, 152 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 30 )
-dialogue = SubResource( 31 )
-recruit_dialogue = SubResource( 32 )
+stats = SubResource( 23 )
+dialogue = SubResource( 24 )
+recruit_dialogue = SubResource( 25 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 visible = false
 position = Vector2( 184, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 33 )
+item_spawner = SubResource( 26 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
 position = Vector2( 56, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 34 )
+item_spawner = SubResource( 27 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
-frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
+frame = 1
 
 [node name="DialogueTrigger" type="Sprite" parent="map"]
 position = Vector2( 120, 104 )
