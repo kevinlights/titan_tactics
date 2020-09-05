@@ -126,7 +126,7 @@ attack_range = 0
 defense = 28.0
 heal = 0
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
 character_class = 1
 name = "Trina"
@@ -185,7 +185,7 @@ attack_range = 0
 defense = 36.0
 heal = 1.0
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 6 )
 character_class = 2
 name = "Mags"
@@ -244,7 +244,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=44]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 6 )
 character_class = 0
 name = "Nord"
@@ -303,7 +303,7 @@ attack_range = 1.0
 defense = 0
 heal = 2.0
 
-[sub_resource type="Resource" id=45]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 6 )
 character_class = 2
 name = "Firas"
@@ -362,7 +362,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=46]
+[sub_resource type="Resource" id=31]
 script = ExtResource( 6 )
 character_class = 1
 name = "Gwen"
@@ -583,23 +583,23 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 56, 56 )
-frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 248, 56 )
-frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 216, 136 )
+frame = 1
 
 [node name="Torch bottom4" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 40, 152 )
+frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 104, 104 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 42 )
+stats = SubResource( 11 )
 dialogue = SubResource( 12 )
 recruit_dialogue = SubResource( 13 )
 
@@ -607,7 +607,7 @@ recruit_dialogue = SubResource( 13 )
 position = Vector2( 120, 120 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 43 )
+stats = SubResource( 16 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
@@ -615,7 +615,7 @@ recruit_dialogue = SubResource( 18 )
 position = Vector2( 184, 72 )
 texture = ExtResource( 15 )
 script = ExtResource( 9 )
-stats = SubResource( 44 )
+stats = SubResource( 21 )
 dialogue = SubResource( 22 )
 recruit_dialogue = SubResource( 23 )
 
@@ -623,7 +623,7 @@ recruit_dialogue = SubResource( 23 )
 position = Vector2( 72, 136 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 45 )
+stats = SubResource( 26 )
 dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
 
@@ -631,7 +631,7 @@ recruit_dialogue = SubResource( 28 )
 position = Vector2( 208, 168 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 46 )
+stats = SubResource( 31 )
 dialogue = SubResource( 32 )
 recruit_dialogue = SubResource( 33 )
 
@@ -655,15 +655,13 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 7, 0, 2, 1, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 40, 136 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 248, 40 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 216, 120 )
-frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 56, 40 )
+frame = 1
