@@ -33,7 +33,8 @@ func update_view():
 	$name.text = characters[selected].name
 	$atk.text = "%02d" % (characters[selected].atk + characters[selected].item_atk.attack)
 	$hp.text =  "%02d" % characters[selected].hp
-	$def.text =   "%02d" % (characters[selected].def + characters[selected].item_def.defense)
+	$lvl.text =  "%02d" % characters[selected].level
+	$def.text =  "%02d" % (characters[selected].def + characters[selected].item_def.defense)
 #	var current = characters[selected]
 	
 func _input(event):

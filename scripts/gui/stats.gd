@@ -137,10 +137,12 @@ func set_entities(player_entity, enemy_entity):
 		$box_enemy.hide()
 		$vs.hide()
 		$EnemyType.hide()
+		$PlayerType.hide()
 	else:
 		$box_enemy.show()
 		$vs.show()
 		$EnemyType.show()
+		$PlayerType.show()
 	update_stats()
 	_ready()
 

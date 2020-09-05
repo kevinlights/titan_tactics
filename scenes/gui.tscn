@@ -134,14 +134,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -168,14 +168,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -277,7 +277,6 @@ visible = false
 visible = false
 
 [node name="characterselect" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 18 )
@@ -297,7 +296,6 @@ texture = ExtResource( 28 )
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 103.551, 130.424 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -343,6 +341,29 @@ text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="lvl" type="Label" parent="characterselect"]
+margin_left = 49.368
+margin_top = 115.476
+margin_right = 89.368
+margin_bottom = 129.476
+theme = ExtResource( 22 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="levelline2" type="Line2D" parent="characterselect"]
+position = Vector2( 38, 121.5 )
+points = PoolVector2Array( 0, 0, 28, 0 )
+width = 1.0
+default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+
+[node name="hpline2" type="Line2D" parent="characterselect"]
+position = Vector2( 5, 141.497 )
+points = PoolVector2Array( 0, 0, 61, 0 )
+width = 1.0
+default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
 
 [node name="battle" type="Control" parent="."]
 visible = false
@@ -530,6 +551,7 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 19 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -542,7 +564,6 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 24 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -745,6 +766,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 27 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -766,6 +788,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 27 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -774,6 +797,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 30 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -886,7 +910,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 30 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -912,6 +935,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 27 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1009,7 +1033,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 33 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1029,7 +1052,6 @@ text = "Retry"
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 33 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1118,7 +1140,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 33 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1138,7 +1159,6 @@ text = "Quit"
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 33 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1196,7 +1216,6 @@ __meta__ = {
 [node name="more" type="AnimatedSprite" parent="dialogue/background"]
 position = Vector2( 145, 36 )
 frames = SubResource( 36 )
-frame = 1
 playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
@@ -1230,7 +1249,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
 visible = false
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1265,7 +1283,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1298,7 +1315,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
 visible = false
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
