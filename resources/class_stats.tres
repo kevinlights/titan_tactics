@@ -26,7 +26,7 @@ script = ExtResource( 2 )
 character_class = 0
 hp = 23
 atk = 3
-def = 0
+def = 2
 atk_range = 1
 mov_range = 5
 
