@@ -113,6 +113,8 @@ func advance_turn():
 
 func end_turn():
 #	current[current_turn][current_character]
+	for character in current[Game.CONTROL.PLAYER]:
+		character.get_node("done").hide()
 	current_turn = Game.CONTROL.AI if current_turn == Game.CONTROL.PLAYER else Game.CONTROL.PLAYER
 	for character in current[current_turn]:
 		character.end_turn()
@@ -458,7 +460,7 @@ func _on_heal():
 func _on_end():
 	gui.call_deferred("back")
 	print("explicit end request, advancing turn")
-	get_current().get_node("done").hide()
+#	get_current().get_node("done").hide()
 	advance_turn()
 
 func _accept_loot(item):

@@ -39,7 +39,7 @@ var movement = {
 func check_finished():
 	if character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
 		$done.show()
-#		emit_signal("done")
+		emit_signal("done")
 
 func _ready():
 	pass
