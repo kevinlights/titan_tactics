@@ -16,7 +16,10 @@ func _ready():
 	pass
 
 func _process(delta):
-	pass
+	if !visible:
+		return
+	$levelline2.set_point_position(1, Vector2(characters[selected].xp/characters[selected].xp_to_next*28, 0))
+	$hpline2.set_point_position(1, Vector2(characters[selected].hp/characters[selected].max_hp * 61, 0))
 
 func pick_random_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -33,7 +36,8 @@ func update_view():
 	$name.text = characters[selected].name
 	$atk.text = "%02d" % (characters[selected].atk + characters[selected].item_atk.attack)
 	$hp.text =  "%02d" % characters[selected].hp
-	$def.text =   "%02d" % (characters[selected].def + characters[selected].item_def.defense)
+	$lvl.text =  "%02d" % characters[selected].level
+	$def.text =  "%02d" % (characters[selected].def + characters[selected].item_def.defense)
 #	var current = characters[selected]
 	
 func _input(event):
@@ -50,7 +54,7 @@ func _input(event):
 		if characters.size() == 0:
 			emit_signal("library_exhausted")
 			return
-
+	
 	selected = clamp(selected, 0, characters.size() - 1)
 	if selected == 0:
 		$Arrows.hide()

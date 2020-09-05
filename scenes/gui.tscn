@@ -134,14 +134,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -168,14 +168,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -277,7 +277,6 @@ visible = false
 visible = false
 
 [node name="characterselect" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 18 )
@@ -343,6 +342,29 @@ text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="lvl" type="Label" parent="characterselect"]
+margin_left = 49.368
+margin_top = 115.476
+margin_right = 89.368
+margin_bottom = 129.476
+theme = ExtResource( 22 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="levelline2" type="Line2D" parent="characterselect"]
+position = Vector2( 38, 121.5 )
+points = PoolVector2Array( 0, 0, 28, 0 )
+width = 1.0
+default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+
+[node name="hpline2" type="Line2D" parent="characterselect"]
+position = Vector2( 5, 141.497 )
+points = PoolVector2Array( 0, 0, 61, 0 )
+width = 1.0
+default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
 
 [node name="battle" type="Control" parent="."]
 visible = false
