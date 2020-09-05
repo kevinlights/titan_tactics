@@ -50,7 +50,7 @@ var item_names = {
 	Game.TYPE.FIGHTER: [ "sword", "cleaver", "knife", "dagger" ],
 	Game.TYPE.ARCHER: [ "bow", "longbow" ],
 	Game.TYPE.MAGE: [ "wand", "staff", "scepter" ],
-	Game.TYPE.OTHER: [ "plate", "helm", "tunic", "jacket", "chain", "mail", "boots"]
+	Game.TYPE.OTHER: [ "plate", "helm", "tunic", "jacket", "chain", "mail", "boots", "vest", "suit", "shirt"]
 }
 
 func create(item_name = 0, attack_buff = 0, range_buff = 0, accuracy_buff = 0, heal_buff = 0):
