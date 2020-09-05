@@ -29,7 +29,7 @@ var introductions = {
 
 var persuasion = {
 	PERSONALITY.AGGRESSIVE: [
-		"Either join us or I will gut you like a sturgeon!",
+		"Join us or I'll gut you like a sturgeon!",
 		"Your life is forfeit, join us or die!",
 		"Join us or I'll eat your lunch, pal!"
 	],
@@ -40,8 +40,8 @@ var persuasion = {
 	],
 	PERSONALITY.GREEDY: [
 		"So, how about a raise?",
-		"I can pay double what you're getting!",
-		"Stick with me, the rewards will be many!"
+		"I can pay double, if you join.",
+		"Stick with me, I will reward you!"
 	]
 }
 
