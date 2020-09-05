@@ -7,6 +7,7 @@ var portrait_offset_enemy = Vector2(140, -25)
 var portrait
 var typing = false
 var typing_cancelled = false
+var typing_timer
 var text_blocks = []
 var current_block = ""
 var rng = RandomNumberGenerator.new()
@@ -23,13 +24,23 @@ var portrait_map = {
 	Dialogue.PORTRAIT.OLD_MAN: "old_man"
 }
 
+func cancel_typing():
+	typing_cancelled = true
+	typing = false
+
 func _on_trigger_1():
+	cancel_typing()
+	yield(get_tree().create_timer(0.05), "timeout")
 	content.call_deferred("branch", content.branches[0].dialogue_id)
 
 func _on_trigger_2():
+	cancel_typing()
+	yield(get_tree().create_timer(0.05), "timeout")
 	content.call_deferred("branch", content.branches[1].dialogue_id)
 
 func _on_trigger_3():
+	cancel_typing()
+	yield(get_tree().create_timer(0.05), "timeout")
 	content.call_deferred("branch", content.branches[2].dialogue_id)
 
 func _ready():
@@ -90,6 +101,7 @@ func set_title(title):
 	$background/title.text = title
 	
 func set_text(text):
+	cancel_typing()
 	if $background/title.text == "":
 		$background/body.margin_top = 7
 	else:
@@ -100,9 +112,9 @@ func set_text(text):
 	typing = true
 	typing_cancelled = false
 	for i in text:
-		yield(get_tree().create_timer(0.05), "timeout")
+		typing_timer = yield(get_tree().create_timer(0.05), "timeout")
 		if not typing_cancelled:
-			$background/body.text += i			
+			$background/body.text += i
 			rng.randomize()
 			var my_random_number = rng.randf_range(1.5, 2.0)
 			$textsfx.set_pitch_scale(my_random_number)
