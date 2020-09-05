@@ -344,8 +344,8 @@ script = ExtResource( 5 )
 character_class = 0
 name = "Nina"
 level = 1
-hp = 4
-max_hp = 4
+hp = 23
+max_hp = 23
 atk = 3
 def = 2
 atk_range = 1
@@ -429,7 +429,7 @@ script = ExtResource( 9 )
 item_spawner = SubResource( 33 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
-position = Vector2( 56, 88 )
+position = Vector2( 56, 184 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 34 )
