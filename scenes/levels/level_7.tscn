@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
@@ -8,29 +8,220 @@
 [ext_resource path="res://gfx/Maps/lv7.png" type="Texture" id=6]
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=7]
 [ext_resource path="res://scripts/level.gd" type="Script" id=8]
+[ext_resource path="res://scripts/dialogue.gd" type="Script" id=9]
 
 [sub_resource type="Resource" id=1]
-script = ExtResource( 3 )
-equipment_slot = 0
-level = 1
+script = ExtResource( 9 )
+dialogue_id = "opening"
+portrait = 7
+trigger = 4
+trigger_id = ""
+title = "Alex:"
+text = "Here we are… Looks like we’ve got trouble ahead."
+branches = [  ]
+result = 2
 
 [sub_resource type="Resource" id=2]
-script = ExtResource( 3 )
-equipment_slot = 0
-level = 1
+script = ExtResource( 9 )
+dialogue_id = "two"
+portrait = 9
+trigger = 5
+trigger_id = "opening"
+title = "Cyan:"
+text = "Nothing Rolf can’t handle. Let’s just set our gear"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 9 )
+dialogue_id = "three"
+portrait = 9
+trigger = 5
+trigger_id = "two"
+title = ""
+text = "down and let him do all the work! @"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 9 )
+dialogue_id = "four"
+portrait = 6
+trigger = 5
+trigger_id = "three"
+title = "Rolf:"
+text = "¤blushes¤ You give me way too much credit."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 9 )
+dialogue_id = "five"
+portrait = 7
+trigger = 5
+trigger_id = "four"
+title = "Alex:"
+text = "….right… The well is just a few more buildings ahead,"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 9 )
+dialogue_id = "six"
+portrait = 7
+trigger = 5
+trigger_id = "five"
+title = ""
+text = "but it is contained in a compound. I will have to split from the team and|distract the guards."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 9 )
+dialogue_id = "seven"
+portrait = 6
+trigger = 5
+trigger_id = "six"
+title = "Rolf:"
+text = "You know Destra well, Alex…"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 9 )
+dialogue_id = "eight"
+portrait = 7
+trigger = 5
+trigger_id = "seven"
+title = "Alex:"
+text = "Before the Hass took control of this ruined city;"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 9 )
+dialogue_id = "nine"
+portrait = 7
+trigger = 5
+trigger_id = "eight"
+title = ""
+text = "I came here a lot to explore. I know Destra like the back of my hand."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 9 )
+dialogue_id = "ten"
+portrait = 9
+trigger = 5
+trigger_id = "nine"
+title = "Cyan:"
+text = "All kinds of bad energy in these ruins. The Gods ended"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 9 )
+dialogue_id = "eleven"
+portrait = 9
+trigger = 5
+trigger_id = "ten"
+title = ""
+text = "people’s craving for power and progress with the war. This place is cursed!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 9 )
+dialogue_id = "twelve"
+portrait = 6
+trigger = 5
+trigger_id = "eleven"
+title = "Rolf:"
+text = "I don’t like this cesspit either, but we have to"
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 9 )
+dialogue_id = "thirteen"
+portrait = 6
+trigger = 5
+trigger_id = "twelve"
+title = ""
+text = "press on to this well. Go on ahead of us Alex and do what you must."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 9 )
+dialogue_id = "fourteen"
+portrait = 7
+trigger = 5
+trigger_id = "thirteen"
+title = "Alex:"
+text = "OK! Just ahead beside those buildings in the"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 9 )
+dialogue_id = "fifteen"
+portrait = 7
+trigger = 5
+trigger_id = "fourteen"
+title = ""
+text = "distance is the well. If you wait behind those buildings I will give the call of the|crow to signal the coast is clear. Once we have the healing water, I know a|way we can escape the city undetected."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 9 )
+dialogue_id = "sixteen"
+portrait = 9
+trigger = 5
+trigger_id = "fifteen"
+title = "Cyan:"
+text = "Sounds like a plan! Good luck to you, Alex. Please be"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=27]
+script = ExtResource( 9 )
+dialogue_id = "seventeen"
+portrait = 9
+trigger = 5
+trigger_id = "sixteen"
+title = ""
+text = "careful out there!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=28]
+script = ExtResource( 9 )
+dialogue_id = "eighteen"
+portrait = 6
+trigger = 5
+trigger_id = "seventeen"
+title = "Rolf:"
+text = "Alright everyone, let’s move!"
+branches = [  ]
+result = 2
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 3 )
 equipment_slot = 0
 level = 1
 
-[sub_resource type="NavigationPolygon" id=4]
-vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+[sub_resource type="Resource" id=4]
+script = ExtResource( 3 )
+equipment_slot = 0
+level = 1
 
-[sub_resource type="NavigationPolygon" id=5]
-vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+[sub_resource type="Resource" id=5]
+script = ExtResource( 3 )
+equipment_slot = 0
+level = 1
 
 [sub_resource type="NavigationPolygon" id=6]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -48,7 +239,15 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=10]
+[sub_resource type="NavigationPolygon" id=10]
+vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=11]
+vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="TileSet" id=12]
 0/name = "not passable"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -85,7 +284,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 4 )
+2/navigation = SubResource( 6 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 2/shape_one_way = false
@@ -100,7 +299,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 5 )
+3/navigation = SubResource( 7 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 3/shape_one_way = false
@@ -115,7 +314,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 6 )
+4/navigation = SubResource( 8 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 4/shape_one_way = false
@@ -130,7 +329,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 7 )
+5/navigation = SubResource( 9 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 5/shape_one_way = false
@@ -159,7 +358,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 8 )
+7/navigation = SubResource( 10 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -174,7 +373,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 9 )
+8/navigation = SubResource( 11 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 8/shape_one_way = false
@@ -187,7 +386,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
-dialogue = [ null, null ]
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -197,51 +396,49 @@ centered = false
 position = Vector2( 56, 120 )
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
-item_spawner = SubResource( 1 )
+item_spawner = SubResource( 3 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
 position = Vector2( 248, 40 )
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
-item_spawner = SubResource( 2 )
+item_spawner = SubResource( 4 )
 
 [node name="ChestSpawner3" type="Sprite" parent="map"]
 position = Vector2( 248, 136 )
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
-item_spawner = SubResource( 3 )
+item_spawner = SubResource( 5 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 128, 160 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 160, 160 )
+frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 272, 192 )
 rotation = 1.5708
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 272, 160 )
 rotation = 1.5708
-frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 272, 64 )
 rotation = 1.5708
-frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 272, 32 )
 rotation = 1.5708
-frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
 rotation = -0.000220277
-tile_set = SubResource( 10 )
+tile_set = SubResource( 12 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1

@@ -11,9 +11,9 @@ enum PERSONALITY {
 
 var introductions = {
 	PERSONALITY.AGGRESSIVE: [
-		"You won't take me alive!",
-		"I... I'll kill you!",
-		"Hold still, I'll finish this real quick!"
+		"Have at thee!!",
+		"I'll... I'll kill you!",
+		"The Black Knight always triumphs!"
 	],
 	PERSONALITY.NARCISSIST: [
 		"No... I am unbeatable!",
@@ -22,7 +22,7 @@ var introductions = {
 	],
 	PERSONALITY.GREEDY: [
 		"I don't get paid enough for this!",
-		"If I got a gold bar for every fool I've killed...",
+		"If I had a gold bar for every fool I've killed...",
 		"I need to ask for a raise!"
 	]
 }
@@ -31,7 +31,7 @@ var persuasion = {
 	PERSONALITY.AGGRESSIVE: [
 		"Either join us or I will gut you like a sturgeon!",
 		"Your life is forfeit, join us or die!",
-		"You will not live to tell this tale, unless..."
+		"Join us or I'll eat your lunch, pal!"
 	],
 	PERSONALITY.NARCISSIST: [
 		"We could use your skill! Lend us your sword!",
@@ -47,18 +47,18 @@ var persuasion = {
 
 var accept = {
 	PERSONALITY.AGGRESSIVE: [
-		"I didn't feel like killing anyone today anyway.",
-		"My sword is yours!",
-		"Don't kill me! I will join your party."
+		"You've got the right attitude. I'm in!.",
+		"Alright, let's split some skulls!",
+		"I like your style! I'll join you."
 	],
 	PERSONALITY.NARCISSIST: [
-		"Let's raise your average strength a bit, shall we?",
-		"Thank you for noticing! I will be happy to lend a hand.",
-		"Well if you put it like that..."
+		"You really don't stand a chance without me.",
+		"Just don't make me look bad out there.",
+		"Yeah, but don't expect me to do all the work."
 	],
 	PERSONALITY.GREEDY: [
 		"Now that's an offer I won't refuse!",
-		"Onwards, to treasure!",
+		"OK, but as long as I'm killing, I'm billing.",
 		"Sounds profitable, I'm in!"
 	]
 }
@@ -71,13 +71,13 @@ var deny = {
 	],
 	PERSONALITY.NARCISSIST: [
 		"I don't think you fully appreciate what I have to offer.",
-		"This technique is called 'stabby stabby', look!",
+		"Taste of my steel, you insolent mortal!",
 		"You are not worthy."
 	],
 	PERSONALITY.GREEDY: [
 		"Did you really think that would work?",
 		"Your pretty words won't work on me!",
-		"You can't intimidate me!"
+		"You couldn't afford to pay me enough."
 	]
 }
 
