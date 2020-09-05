@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://gfx/Maps/lv6.png" type="Texture" id=1]
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://scenes/animated/torchtop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/dialogue.gd" type="Script" id=5]
 [ext_resource path="res://scripts/level.gd" type="Script" id=6]
+[ext_resource path="res://gfx/speak_map.png" type="Texture" id=7]
+[ext_resource path="res://scripts/dialogue_trigger.gd" type="Script" id=8]
 
-[sub_resource type="Resource" id=8]
+[sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
 dialogue_id = "yet"
 portrait = 9
@@ -18,7 +20,7 @@ text = "The well is up ahead!"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=2]
 script = ExtResource( 5 )
 dialogue_id = "you"
 portrait = 6
@@ -29,7 +31,7 @@ text = "Looks like we have a few obstacles to manage…"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=3]
 script = ExtResource( 5 )
 dialogue_id = "still"
 portrait = 9
@@ -40,7 +42,7 @@ text = "Oh no! The Hass discovered it’s location!"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=4]
 script = ExtResource( 5 )
 dialogue_id = "get"
 portrait = 6
@@ -51,7 +53,7 @@ text = "Don’t worry! We’ll handle these louts and get what "
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=12]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 5 )
 dialogue_id = "these"
 portrait = 6
@@ -62,7 +64,7 @@ text = "we came for."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=13]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
 dialogue_id = "shirts"
 portrait = 6
@@ -73,7 +75,7 @@ text = "Looks like there is still a bucket in the well… "
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 5 )
 dialogue_id = "so"
 portrait = 6
@@ -84,9 +86,9 @@ text = "The Hass have clearly used this well."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=8]
 script = ExtResource( 5 )
-dialogue_id = "fresh"
+dialogue_id = ""
 portrait = 9
 trigger = 5
 trigger_id = "so"
@@ -95,31 +97,306 @@ text = "Let’s pull up some healing water…"
 branches = [  ]
 result = 2
 
-[sub_resource type="NavigationPolygon" id=1]
+[sub_resource type="Resource" id=16]
+script = ExtResource( 5 )
+dialogue_id = "empty"
+portrait = 6
+trigger = 5
+trigger_id = "well"
+title = "Rolf:"
+text = "… I just can’t believe it… The well is dry Cyan…"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 5 )
+dialogue_id = "taco"
+portrait = 9
+trigger = 0
+trigger_id = "empty"
+title = "Cyan:"
+text = "You can’t be serious!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 5 )
+dialogue_id = "borger"
+portrait = 6
+trigger = 5
+trigger_id = "taco"
+title = "Rolf:"
+text = "e’ve failed Ulrich! He doesn’t stand a chance now…"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 5 )
+dialogue_id = "sword"
+portrait = 10
+trigger = 5
+trigger_id = "borger"
+title = ""
+text = "¤A Swordswoman steps out from the shadows¤"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 5 )
+dialogue_id = "alex"
+portrait = 7
+trigger = 5
+trigger_id = "sword"
+title = "Alex:"
+text = "Rolf! Cyan! What brings you so far into the caves here?"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 5 )
+dialogue_id = "next"
+portrait = 9
+trigger = 5
+trigger_id = "alex"
+title = "Cyan:"
+text = "Alex?…. I haven’t seen you since I was a child!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 5 )
+dialogue_id = "andalso"
+portrait = 6
+trigger = 5
+trigger_id = "next"
+title = "Rolf:"
+text = "Alex, we could ask you the very same question. What"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 5 )
+dialogue_id = "yoddlers"
+portrait = 6
+trigger = 5
+trigger_id = "andalso"
+title = ""
+text = "are YOU doing down here?"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 5 )
+dialogue_id = "badness"
+portrait = 7
+trigger = 5
+trigger_id = "yoddlers"
+title = "Alex:"
+text = "I came in search of mushrooms before the"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 5 )
+dialogue_id = "darkness"
+portrait = 7
+trigger = 5
+trigger_id = "badness"
+title = ""
+text = "season’s end. I managed to slip by the Hass. They are thick lately… I fear there|may be something afoot…"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 5 )
+dialogue_id = "lightness"
+portrait = 9
+trigger = 5
+trigger_id = "darkness"
+title = "Cyan:"
+text = "They… They’ve  already found the settlement in"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=27]
+script = ExtResource( 5 )
+dialogue_id = "goodness"
+portrait = 9
+trigger = 5
+trigger_id = "lightness"
+title = ""
+text = "the forest and destroyed it…. I am sorry. It must have happened after you|left the settlement."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=28]
+script = ExtResource( 5 )
+dialogue_id = "wellness"
+portrait = 7
+trigger = 5
+trigger_id = "goodness"
+title = "Alex:"
+text = "…Mother..! My father! my family! I have to go back!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=29]
+script = ExtResource( 5 )
+dialogue_id = "tide"
+portrait = 7
+trigger = 5
+trigger_id = "wellness"
+title = ""
+text = "I have to see if anyone survived!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=30]
+script = ExtResource( 5 )
+dialogue_id = "bleach"
+portrait = 6
+trigger = 5
+trigger_id = "tide"
+title = "Rolf:"
+text = "You should stay with us if you value your life."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=31]
+script = ExtResource( 5 )
+dialogue_id = "nevermind"
+portrait = 6
+trigger = 5
+trigger_id = "bleach"
+title = ""
+text = "The Hass have saturated the forest with troops."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=32]
+script = ExtResource( 5 )
+dialogue_id = "nirvana"
+portrait = 7
+trigger = 5
+trigger_id = "nevermind"
+title = "Alex:"
+text = "You’re right, I cannot return. What am I to do"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 5 )
+dialogue_id = "teenspirit"
+portrait = 7
+trigger = 5
+trigger_id = "nirvana"
+title = ""
+text = "now, though? I am destitute… I have no home!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=34]
+script = ExtResource( 5 )
+dialogue_id = "foo"
+portrait = 9
+trigger = 5
+trigger_id = "teenspirit"
+title = "Cyan:"
+text = "You are not the only one without the Gods' favor…"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 5 )
+dialogue_id = "fighters"
+portrait = 6
+trigger = 5
+trigger_id = "foo"
+title = "Rolf:"
+text = "My foster father Ulrich has fallen ill… We have come to"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=36]
+script = ExtResource( 5 )
+dialogue_id = "big"
+portrait = 6
+trigger = 5
+trigger_id = "fighters"
+title = ""
+text = "this well to gather its healing waters for him. He has no hope of survival|now, for the well is dry."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=37]
+script = ExtResource( 5 )
+dialogue_id = "me"
+portrait = 7
+trigger = 5
+trigger_id = "big"
+title = "Alex:"
+text = "…Wait… If I remember correctly there is another"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=38]
+script = ExtResource( 5 )
+dialogue_id = "mentos"
+portrait = 7
+trigger = 0
+trigger_id = "me"
+title = ""
+text = "of these wells in the city of Destra. It is a bit further, but I can come|with you. I don’t know if you realize this, but long ago when Ulrich acted as|the village healer he saved my mother from the Hass when they attacked… I feel|this moment is fated! I will help you save your foster father, Rolf!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=39]
+script = ExtResource( 5 )
+dialogue_id = "freshmaker"
+portrait = 6
+trigger = 5
+trigger_id = "mentos"
+title = "Rolf:"
+text = "Then we must hurry to Destra! We cannot delay"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=40]
+script = ExtResource( 5 )
+dialogue_id = ""
+portrait = 6
+trigger = 5
+trigger_id = "freshmaker"
+title = ""
+text = "further. Lead the way, Alex!"
+branches = [  ]
+result = 2
+
+[sub_resource type="NavigationPolygon" id=9]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=2]
+[sub_resource type="NavigationPolygon" id=10]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=3]
+[sub_resource type="NavigationPolygon" id=11]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=4]
+[sub_resource type="NavigationPolygon" id=12]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=5]
+[sub_resource type="NavigationPolygon" id=13]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=6]
+[sub_resource type="NavigationPolygon" id=14]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=7]
+[sub_resource type="TileSet" id=15]
 0/name = "not passable"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -156,7 +433,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 1 )
+2/navigation = SubResource( 9 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 2/shape_one_way = false
@@ -171,7 +448,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 2 )
+3/navigation = SubResource( 10 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 3/shape_one_way = false
@@ -186,7 +463,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 3 )
+4/navigation = SubResource( 11 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 4/shape_one_way = false
@@ -201,7 +478,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 4 )
+5/navigation = SubResource( 12 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 5/shape_one_way = false
@@ -230,7 +507,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 5 )
+7/navigation = SubResource( 13 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -245,7 +522,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 6 )
+8/navigation = SubResource( 14 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 8/shape_one_way = false
@@ -266,7 +543,7 @@ STRUCTURES
 COVERED IN
 CREEPING VINES."
 }
-dialogue = [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ]
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -283,12 +560,18 @@ position = Vector2( 104, 152 )
 position = Vector2( 88, 56 )
 frame = 1
 
+[node name="DialogueTrigger" type="Sprite" parent="map"]
+position = Vector2( 88.535, 70.5439 )
+texture = ExtResource( 7 )
+script = ExtResource( 8 )
+dialogue_id = "well"
+
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
 visible = false
 rotation = -0.000220277
-tile_set = SubResource( 7 )
+tile_set = SubResource( 15 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1
