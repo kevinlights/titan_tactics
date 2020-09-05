@@ -24,16 +24,16 @@ func pick_random_sfx(audio_path):
 	
 func update_view():
 	var animation = "fighter"
-	match characters[selected].character_class:
-		Game.TYPE.ARCHER:
-			animation = "archer"
-		Game.TYPE.MAGE:
-			animation = "mage"
+	#match characters[selected].character_class:
+	#	Game.TYPE.ARCHER:
+	#		animation = "archer"
+	#	Game.TYPE.MAGE:
+	#		animation = "mage"
+	$Portrait.frame = characters[selected].character_class
 	$name.text = characters[selected].name
-	$atk.text = "ATK" + "%02d" % (characters[selected].atk + characters[selected].item_atk.attack)
-	$hp.text = "HP" + "%02d" % characters[selected].hp
-	$def.text = "DEF" +  "%02d" % (characters[selected].def + characters[selected].item_def.defense)
-	$type.play(animation)
+	$atk.text = "%02d" % (characters[selected].atk + characters[selected].item_atk.attack)
+	$hp.text =  "%02d" % characters[selected].hp
+	$def.text =   "%02d" % (characters[selected].def + characters[selected].item_def.defense)
 #	var current = characters[selected]
 	
 func _input(event):
@@ -53,12 +53,8 @@ func _input(event):
 
 	selected = clamp(selected, 0, characters.size() - 1)
 	if selected == 0:
-		$leftarrow.hide()
+		$Arrows.hide()
 	else:
-		$leftarrow.show()
-	if selected == characters.size() - 1:
-		$rightarrow.hide()
-	else:
-		$rightarrow.show()
+		$Arrows.show()
 	update_view()
 	

@@ -406,8 +406,11 @@ func _on_attack():
 #		else:
 #			damage_feedback.get_node("damage").text = str("-", damage)	
 #		add_child(damage_feedback)
-		gui.call_deferred("close_attack")
 		#gui.health(get_current(), target)
+		gui.call_deferred("close_attack")
+		yield(get_tree().create_timer(1), "timeout")
+		gui.battle_hide(get_current())
+		
 	else:
 		gui.error("NO MORE ACTIONS")
 		gui.call_deferred("back")
@@ -481,11 +484,11 @@ func _on_selector_moved(tile):
 	var context = get_current_context(tile)
 	print(context)
 	var target = entity_at($select.tile)
-	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI:
+	if target and !target.is_loot and !target.is_trigger: #and target.character.control == Game.CONTROL.AI:
 		print("you are pointing on " + str(target.character.name))
 		gui.battle(get_current(), target)
 	else:
-		gui.battle_hide()
+		gui.battle_hide(get_current())
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
 	if current_path.size() > 0:
 		if context == Game.CONTEXT.MOVE:
