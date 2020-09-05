@@ -3,8 +3,8 @@ extends Control
 signal swap
 signal dont_swap
 
-var text_color = Color(0.16, 0.68, 1)
-var selected_color = Color(1, .95, .91)
+var text_color = Color(0.22, 0.6, 0.45)
+var selected_color = Color(0.62, 0.87, 0.58)
 
 var selected = 0
 
@@ -16,6 +16,7 @@ var current_stat
 var new_stat
 
 var atlas = {
+	Game.TYPE.OTHER: 17,
 	Game.TYPE.FIGHTER: 32,
 	Game.TYPE.ARCHER: 33,
 	Game.TYPE.MAGE: 34
@@ -34,6 +35,10 @@ func set_weapons(current, new, type):
 	print(new_gear.name)
 	print(new_gear.attack)
 	$text.text = new_gear.name
+	if type == Item.SLOT.ATK:
+		$item_popup.region_rect.position.y = 67
+	else:
+		$item_popup.region_rect.position.y = 0
 
 func _process(delta):
 	if visible == false:
@@ -41,7 +46,7 @@ func _process(delta):
 	current_stat = 1
 	new_stat = 2
 	#based on what type the gear is i assign values in text
-	if gear_type == 0:
+	if gear_type == Item.SLOT.ATK:
 		$current_stat.text = str("+", current_gear.attack)
 		$new_stat.text = str("+", new_gear.attack)
 	else:
@@ -49,6 +54,9 @@ func _process(delta):
 		$new_stat.text = str("+", new_gear.defense)
 	$weapon_sprite1.frame = atlas[current_gear.character_class]
 	$weapon_sprite2.frame = atlas[new_gear.character_class]
+	if gear_type == Item.SLOT.DEF:
+		$weapon_sprite1.frame = atlas[Game.TYPE.OTHER]
+		$weapon_sprite2.frame = atlas[Game.TYPE.OTHER]
 	if selected == 0:
 		$no/focus.show()
 		$yes/focus.hide()
@@ -59,6 +67,7 @@ func _process(delta):
 		$no/focus.hide()
 		$yes.set("custom_colors/font_color", text_color)
 		$no.set("custom_colors/font_color", selected_color)
+
 func _input(event):
 	if !visible:
 		return

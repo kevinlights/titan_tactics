@@ -63,14 +63,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -97,14 +97,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -142,7 +142,7 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 20 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 20 )
@@ -150,7 +150,7 @@ region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 20 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 20 )
@@ -168,12 +168,12 @@ region = Rect2( 0, 18, 18, 18 )
 animations = [ {
 "frames": [ SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 21 ), SubResource( 22 ) ],
@@ -422,7 +422,6 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 5 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -435,6 +434,7 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 10 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -627,7 +627,7 @@ margin_top = 55.0
 margin_right = 75.0
 margin_bottom = 69.0
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 0.219608, 0.596078, 0.454902, 1 )
+custom_colors/font_color = Color( 0.623529, 0.870588, 0.576471, 1 )
 text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false

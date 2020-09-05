@@ -49,7 +49,8 @@ var item_prefix = {
 var item_names = {
 	Game.TYPE.FIGHTER: [ "sword", "cleaver", "knife", "dagger" ],
 	Game.TYPE.ARCHER: [ "bow", "longbow" ],
-	Game.TYPE.MAGE: [ "wand", "staff", "scepter" ]
+	Game.TYPE.MAGE: [ "wand", "staff", "scepter" ],
+	Game.TYPE.OTHER: [ "shield", "buckler", "plate", "helm", "tunic", "jacket", "chain", "mail" ]
 }
 
 func create(item_name = 0, attack_buff = 0, range_buff = 0, accuracy_buff = 0, heal_buff = 0):
@@ -64,6 +65,9 @@ func generate(item_level, equipment_slot, item_class):
 #	self.equipment_slot = equipment_slot
 	var prefix = item_prefix[level][rand_range(0, item_prefix[level].size() - 1)]
 	var suffix = item_names[character_class][rand_range(0, item_names[character_class].size() - 1)]
+	if equipment_slot == SLOT.DEF:
+		suffix = item_names[Game.TYPE.OTHER][rand_range(0, item_names[Game.TYPE.OTHER].size() - 1)]
+		
 	name = prefix + " " + suffix
 	if equipment_slot == SLOT.ATK:
 		attack = floor(level * rand_range(level, level * 1.5))

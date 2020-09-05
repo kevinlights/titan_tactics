@@ -1,6 +1,6 @@
 extends Node
 
-enum TYPE { FIGHTER, ARCHER, MAGE }
+enum TYPE { FIGHTER, ARCHER, MAGE, OTHER }
 #enum TYPE { ARCHER, MAGE, FIGHTER }
 enum ABILITY { MOVE, ATTACK, GUARD, HEAL }
 enum CONTROL { PLAYER, AI }
@@ -177,5 +177,6 @@ func _ready():
 	var character = CharacterStats.new()
 #	character.from_defaults(TYPE.FIGHTER, CONTROL.PLAYER)
 	character.generate(default_stats, TYPE.FIGHTER, CONTROL.PLAYER, 1, true)
+	character.name = "Rolf"
 	team.append(character)
 	
