@@ -120,6 +120,10 @@ func can_attack(target):
 	print(atk_range, " > ", target.tile.distance_to(tile), " : ", !(target.tile.distance_to(tile) > atk_range));
 	return !(target.tile.distance_to(tile) > atk_range)
 
+func get_def_buff(def_value):
+	print(log(def_value))
+	return 1.0 - (log(def_value) / log(10)) * 0.5
+
 func attack(target):
 	last_target = target
 	if character.turn_limits.actions < 1:
@@ -134,9 +138,12 @@ func attack(target):
 	if target.guarding:
 		damage = damage * 0.5
 	print("atk ", damage)
-	damage -= ((target.character.def + target.character.item_def.defense))
-	print("def ", ((target.character.def + target.character.item_def.defense)))
-	damage = floor(damage)
+	var target_defense = target.character.def + target.character.item_def.defense
+	var def_multiplier = get_def_buff(target_defense) #1.0 - (target_defense + tanh(target_defense)) / 100
+	damage *= def_multiplier
+	print("def ", target_defense)
+	print("def penalty ", (def_multiplier) * 100.0, "%")
+	damage = clamp(floor(damage), 0, 99)
 	print("actual damage ", damage)
 	target.character.hp -= damage
 

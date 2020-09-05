@@ -26,6 +26,7 @@ const levels = {
 	"level_7": "city",
 	"level_8": "city",
 	"level_9": "city",
+	"level_10": "city"
 }
 
 const character_names = [

@@ -203,7 +203,7 @@ attack_range = 1.0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=18]
+[sub_resource type="Resource" id=28]
 script = ExtResource( 5 )
 character_class = 1
 name = "Izzy"
@@ -262,13 +262,13 @@ attack_range = 1.0
 defense = 1.0
 heal = 0
 
-[sub_resource type="Resource" id=23]
+[sub_resource type="Resource" id=29]
 script = ExtResource( 5 )
 character_class = 1
 name = "Nina"
 level = 1
-hp = 5
-max_hp = 5
+hp = 4
+max_hp = 4
 atk = 3
 def = 0
 atk_range = 3
@@ -332,7 +332,7 @@ centered = false
 position = Vector2( 72, 72 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 18 )
+stats = SubResource( 28 )
 dialogue = SubResource( 19 )
 recruit_dialogue = SubResource( 20 )
 
@@ -340,7 +340,7 @@ recruit_dialogue = SubResource( 20 )
 position = Vector2( 72, 56 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 23 )
+stats = SubResource( 29 )
 dialogue = SubResource( 24 )
 recruit_dialogue = SubResource( 25 )
 
