@@ -113,6 +113,7 @@ func _ready():
 	$PlayerType.frame = atlas_frames[player.character.character_class]
 	$EnemyType.frame = atlas_frames[enemy.character.character_class]
 	if playername in special_names:
+		print(playername)
 		$box_ally/Player.play(playername)
 	else:
 		$box_ally/Player.play("portraits")

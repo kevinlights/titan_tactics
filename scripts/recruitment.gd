@@ -95,7 +95,8 @@ func _init(character, personality = null):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if personality == null:
-		personality = rng.randi_range(0, 3)
+		personality = rng.randi_range(0, 2)
+	#it's 3 for some reason
 	self.personality = personality
 	self.character = character
 	var num_intros = introductions[personality].size()
