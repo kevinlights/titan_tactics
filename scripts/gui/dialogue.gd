@@ -2,7 +2,7 @@ extends Control
 
 var content
 var dialogue_height
-var portrait_offset_friendly = Vector2(20, -25)
+var portrait_offset_friendly = Vector2(18, -25)
 var portrait_offset_enemy = Vector2(140, -25)
 var portrait
 var typing = false
