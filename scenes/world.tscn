@@ -4,10 +4,10 @@
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
 [ext_resource path="res://gfx/select.png" type="Texture" id=3]
 [ext_resource path="res://scripts/select.gd" type="Script" id=4]
-[ext_resource path="res://Music/loss_fanfare.ogg" type="AudioStream" id=5]
+[ext_resource path="res://music/loss_fanfare.wav" type="AudioStream" id=5]
 [ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Music/forest_theme.ogg" type="AudioStream" id=7]
-[ext_resource path="res://Music/win_fanfare.ogg" type="AudioStream" id=8]
+[ext_resource path="res://music/win_fanfare.wav" type="AudioStream" id=8]
 [ext_resource path="res://Music/city_theme.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Music/cave_theme.ogg" type="AudioStream" id=10]
 [ext_resource path="res://scripts/path_preview.gd" type="Script" id=11]
@@ -24,31 +24,31 @@ region = Rect2( 0, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
-region = Rect2( 100, 0, 20, 20 )
+region = Rect2( 80, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 20, 0, 20, 20 )
+region = Rect2( 80, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 20, 20, 20, 20 )
+region = Rect2( 40, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 80, 0, 20, 20 )
+region = Rect2( 40, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
-region = Rect2( 80, 20, 20, 20 )
+region = Rect2( 20, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
-region = Rect2( 40, 0, 20, 20 )
+region = Rect2( 20, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
-region = Rect2( 40, 20, 20, 20 )
+region = Rect2( 100, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
@@ -65,24 +65,24 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ) ],
-"loop": true,
-"name": "blank",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "cantmove",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "heal",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "attack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "cantmove",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "blank",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 10 ), SubResource( 11 ) ],

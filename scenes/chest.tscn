@@ -28,40 +28,40 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 16, 16, 8, 8 )
+region = Rect2( 0, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 16, 8, 8 )
+region = Rect2( 24, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 24, 16, 8, 8 )
+region = Rect2( 8, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
-region = Rect2( 8, 16, 8, 8 )
+region = Rect2( 16, 16, 8, 8 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "wand",
+"name": "sword",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "sword",
+"name": "battery",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
-"name": "battery",
+"name": "bow",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ) ],
 "loop": true,
-"name": "bow",
+"name": "wand",
 "speed": 5.0
 } ]
 
@@ -80,4 +80,4 @@ offset = Vector2( 4, 2 )
 
 [node name="open" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -2.3
+volume_db = -4.0
