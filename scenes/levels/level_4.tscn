@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://gfx/Maps/lv4.png" type="Texture" id=1]
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
@@ -10,8 +10,97 @@
 [ext_resource path="res://gfx/mage.png" type="Texture" id=8]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=9]
 [ext_resource path="res://gfx/archer.png" type="Texture" id=10]
+[ext_resource path="res://scripts/level.gd" type="Script" id=11]
 
 [sub_resource type="Resource" id=1]
+script = ExtResource( 7 )
+dialogue_id = "start"
+portrait = 9
+trigger = 4
+trigger_id = ""
+title = "Cyan:"
+text = "This cave reeks like a fish in the sun with wet"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 7 )
+dialogue_id = "next"
+portrait = 9
+trigger = 5
+trigger_id = "start"
+title = ""
+text = "bloat rot! Blech!!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 7 )
+dialogue_id = "stuff"
+portrait = 6
+trigger = 5
+trigger_id = "next"
+title = "Rolf:"
+text = "The Hass must be around, then. Evil has a particular "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 7 )
+dialogue_id = "things"
+portrait = 6
+trigger = 5
+trigger_id = "stuff"
+title = ""
+text = "smell…"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 7 )
+dialogue_id = "andthen"
+portrait = 9
+trigger = 5
+trigger_id = "things"
+title = "Cyan:"
+text = "The entrance to this cave is popular for mushroom "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 7 )
+dialogue_id = "but"
+portrait = 9
+trigger = 5
+trigger_id = "andthen"
+title = ""
+text = "hunting, but those from the forest village dare not venture further inside.|The mushrooms only grow at  the mouth of the cave. It is rumoured there are|hauntings deeper below."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 7 )
+dialogue_id = "still"
+portrait = 6
+trigger = 5
+trigger_id = "but"
+title = "Rolf:"
+text = "I have no doubt there are spirits here from the "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 7 )
+dialogue_id = "you"
+portrait = 6
+trigger = 5
+trigger_id = "still"
+title = ""
+text = "settlement that was destroyed by the Hass. I was not old enough to|remember, but you and Ulrich have told me enough. There are bound to be|tortured souls still lurking. Lead the way, but stay close to me. "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=9]
 script = ExtResource( 5 )
 character_class = 1
 equipment_slot = 0
@@ -22,7 +111,7 @@ attack_range = 33.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=10]
 script = ExtResource( 5 )
 character_class = 1
 equipment_slot = 0
@@ -33,7 +122,7 @@ attack_range = 0
 defense = 28.0
 heal = 0
 
-[sub_resource type="Resource" id=3]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 6 )
 character_class = 1
 name = "Trina"
@@ -45,10 +134,10 @@ def = 1
 atk_range = 3
 mov_range = 6
 heal = 0
-item_atk = SubResource( 1 )
-item_def = SubResource( 2 )
+item_atk = SubResource( 9 )
+item_def = SubResource( 10 )
 
-[sub_resource type="Resource" id=4]
+[sub_resource type="Resource" id=12]
 script = ExtResource( 7 )
 dialogue_id = ""
 portrait = 0
@@ -59,7 +148,7 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 7 )
 dialogue_id = ""
 portrait = 0
@@ -70,7 +159,7 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=14]
 script = ExtResource( 5 )
 character_class = 2
 equipment_slot = 0
@@ -81,7 +170,7 @@ attack_range = 32.0
 defense = 0
 heal = 48.0
 
-[sub_resource type="Resource" id=7]
+[sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
 character_class = 2
 equipment_slot = 0
@@ -92,7 +181,7 @@ attack_range = 0
 defense = 36.0
 heal = 1.0
 
-[sub_resource type="Resource" id=8]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 6 )
 character_class = 2
 name = "Mags"
@@ -104,10 +193,10 @@ def = 1
 atk_range = 4
 mov_range = 4
 heal = 5
-item_atk = SubResource( 6 )
-item_def = SubResource( 7 )
+item_atk = SubResource( 14 )
+item_def = SubResource( 15 )
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 7 )
 dialogue_id = ""
 portrait = 0
@@ -118,7 +207,7 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 7 )
 dialogue_id = ""
 portrait = 0
@@ -129,31 +218,31 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="NavigationPolygon" id=11]
+[sub_resource type="NavigationPolygon" id=19]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=12]
+[sub_resource type="NavigationPolygon" id=20]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=13]
+[sub_resource type="NavigationPolygon" id=21]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=14]
+[sub_resource type="NavigationPolygon" id=22]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=15]
+[sub_resource type="NavigationPolygon" id=23]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=16]
+[sub_resource type="NavigationPolygon" id=24]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=17]
+[sub_resource type="TileSet" id=25]
 0/name = "not passable"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -190,7 +279,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 11 )
+2/navigation = SubResource( 19 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 2/shape_one_way = false
@@ -205,7 +294,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 12 )
+3/navigation = SubResource( 20 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 3/shape_one_way = false
@@ -220,7 +309,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 13 )
+4/navigation = SubResource( 21 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 4/shape_one_way = false
@@ -235,7 +324,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 14 )
+5/navigation = SubResource( 22 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 5/shape_one_way = false
@@ -264,7 +353,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 15 )
+7/navigation = SubResource( 23 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -279,7 +368,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 16 )
+8/navigation = SubResource( 24 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 8/shape_one_way = false
@@ -288,6 +377,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/z_index = 0
 
 [node name="level" type="Node2D"]
+script = ExtResource( 11 )
 __meta__ = {
 "_editor_description_": "AS A GEL CLOUD 
 LOOMS IN THE
@@ -299,6 +389,7 @@ INHABITED CAVES
 BELOW, SEEKING
 SHELTER."
 }
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -322,22 +413,22 @@ frame = 1
 position = Vector2( 104, 104 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 3 )
-dialogue = SubResource( 4 )
-recruit_dialogue = SubResource( 5 )
+stats = SubResource( 26 )
+dialogue = SubResource( 12 )
+recruit_dialogue = SubResource( 13 )
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
 position = Vector2( 120, 120 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 8 )
-dialogue = SubResource( 9 )
-recruit_dialogue = SubResource( 10 )
+stats = SubResource( 27 )
+dialogue = SubResource( 17 )
+recruit_dialogue = SubResource( 18 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
-tile_set = SubResource( 17 )
+tile_set = SubResource( 25 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1
