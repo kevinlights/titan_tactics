@@ -545,21 +545,20 @@ centered = false
 
 [node name="torchbottom" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 232, 232 )
-frame = 1
 
 [node name="torchbottom2" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 184, 152 )
-frame = 1
 
 [node name="torchbottom3" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 184, 72 )
+frame = 1
 
 [node name="torchbottom4" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 88, 216 )
+frame = 1
 
 [node name="torchbottom5" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 104, 56 )
-frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 88, 88 )
@@ -615,17 +614,18 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 0, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 232, 216 )
+frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 88, 200 )
+frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 184, 136 )
+frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 184, 56 )
-frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
-frame = 1
