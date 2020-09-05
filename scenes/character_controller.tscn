@@ -1,4 +1,4 @@
-[gd_scene load_steps=286 format=2]
+[gd_scene load_steps=290 format=2]
 
 [ext_resource path="res://gfx/player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/character_controller.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://gfx/tags.png" type="Texture" id=4]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=5]
 [ext_resource path="res://gfx/menu_select.png" type="Texture" id=6]
+[ext_resource path="res://gfx/speak.png" type="Texture" id=7]
 [ext_resource path="res://sfx/gameplay/arrow_hit1.wav" type="AudioStream" id=9]
 [ext_resource path="res://sfx/gameplay/walking1.wav" type="AudioStream" id=11]
 [ext_resource path="res://sfx/gameplay/magic_hit1.wav" type="AudioStream" id=13]
@@ -1439,10 +1440,26 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="Gradient" id=264]
+[sub_resource type="AtlasTexture" id=264]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=265]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 9, 9, 9 )
+
+[sub_resource type="SpriteFrames" id=266]
+animations = [ {
+"frames": [ SubResource( 264 ), SubResource( 265 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.5
+} ]
+
+[sub_resource type="Gradient" id=267]
 colors = PoolColorArray( 0.917647, 1, 0.866667, 0, 0.917647, 1, 0.866667, 0 )
 
-[sub_resource type="Gradient" id=265]
+[sub_resource type="Gradient" id=268]
 colors = PoolColorArray( 0.917647, 1, 0.866667, 1, 0.917647, 1, 0.866667, 1 )
 
 [node name="character_controller" type="Node2D"]
@@ -1452,7 +1469,6 @@ script = ExtResource( 2 )
 visible = false
 frames = SubResource( 45 )
 animation = "idle-right"
-frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1460,7 +1476,6 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 90 )
 animation = "idle-right"
-frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1468,7 +1483,6 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 127 )
 animation = "idle-right"
-frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1476,7 +1490,6 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 172 )
 animation = "idle-right"
-frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1484,7 +1497,6 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 217 )
 animation = "idle-right"
-frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1492,7 +1504,6 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 254 )
 animation = "idle-right"
-frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1517,6 +1528,11 @@ frames = SubResource( 263 )
 frame = 1
 playing = true
 flip_v = true
+
+[node name="speak" type="AnimatedSprite" parent="."]
+position = Vector2( 7, -9 )
+frames = SubResource( 266 )
+playing = true
 
 [node name="sfx" type="Node2D" parent="."]
 visible = false
@@ -1610,7 +1626,7 @@ gravity = Vector2( 0, 0 )
 initial_velocity_random = 1.0
 radial_accel = 32.0
 radial_accel_random = 1.0
-color_ramp = SubResource( 264 )
+color_ramp = SubResource( 267 )
 
 [node name="heal" type="CPUParticles2D" parent="vfx"]
 position = Vector2( 8, 8 )
@@ -1621,7 +1637,7 @@ emission_shape = 2
 emission_rect_extents = Vector2( 8, 8 )
 direction = Vector2( 1, 1 )
 gravity = Vector2( 0, -50 )
-color_ramp = SubResource( 265 )
+color_ramp = SubResource( 268 )
 
 [node name="magic_hit" type="CPUParticles2D" parent="vfx"]
 position = Vector2( 8, 8 )
@@ -1632,4 +1648,4 @@ emission_shape = 2
 emission_rect_extents = Vector2( 8, 8 )
 direction = Vector2( 1, 1 )
 gravity = Vector2( 0, -50 )
-color_ramp = SubResource( 265 )
+color_ramp = SubResource( 268 )
