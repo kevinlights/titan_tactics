@@ -94,20 +94,24 @@ func spawn_character(x, y, type = Game.TYPE.MAGE, control = Game.CONTROL.PLAYER)
 	world_map.add_child(character)
 	return character
 
-func advance_turn():
+func advance_turn(explicit = 1):
 	current_character += 1
 	if current_character >= current[current_turn].size():
-		print("End turn")
-		end_turn()
-	else:
-		print("Advance turn")
-		$select.disable()
-		yield(get_tree().create_timer(1.0), "timeout")
-		$select.set_origin(get_current())
-		if current_turn  == Game.CONTROL.AI:
-			ai.play()
+		if explicit:
+			print("End turn")
+			end_turn()
+			return
 		else:
-			$select.enable()
+			current_character = 0
+	print("Advance turn")
+	$select.disable()
+	yield(get_tree().create_timer(1.0), "timeout")
+	$select.set_origin(get_current())
+	$path_preview/path.clear_points()
+	if current_turn  == Game.CONTROL.AI:
+		ai.play()
+	else:
+		$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
 
@@ -162,11 +166,15 @@ func action():
 		Game.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
 		Game.CONTEXT.GUARD:
+			if $gui/battle/box_enemy.visible:
+				return
 			if get_current().character.turn_limits.actions == 0:
 				_on_end()
 			else:
 				gui.guard()
 		Game.CONTEXT.HEAL:
+			if $gui/battle/box_enemy.visible:
+				return
 			if get_current().character.turn_limits.actions == 0:
 				_on_end()
 			else:
