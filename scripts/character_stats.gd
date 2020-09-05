@@ -143,8 +143,8 @@ func generate(class_stats, request_class, request_control, level = 1, force = fa
 	if !item_atk or !item_def:
 		item_atk = Item.new()
 		item_def = Item.new()
-		item_atk.generate(level, Item.SLOT.ATK, character_class)
-		item_def.generate(level, Item.SLOT.DEF, character_class)
+		item_atk.create() #generate(level, Item.SLOT.ATK, character_class)
+		item_def.create() #generate(level, Item.SLOT.DEF, character_class)
 	weakness = Game.class_stats.weakness[character_class]
 	strength = Game.class_stats.strength[character_class]
 	abilities = Game.class_stats.abilities[character_class]
