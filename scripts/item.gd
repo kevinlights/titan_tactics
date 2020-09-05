@@ -16,6 +16,14 @@ enum SLOT {
 	DEF
 }
 
+var up = {
+	SLOT.ATK: 	 [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ],
+	SLOT.DEF: 	 [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ],
+	"atk_range": [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ],
+	"heal": 	 [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987 ]
+}
+
+
 func set_equipment_slot(slot):
 	equipment_slot = slot
 	generate(level, slot, character_class)
@@ -53,16 +61,24 @@ var item_names = {
 	Game.TYPE.OTHER: [ "plate", "helm", "tunic", "jacket", "chain", "mail", "boots", "vest", "suit", "shirt"]
 }
 
-func create(item_name = 0, attack_buff = 0, range_buff = 0, accuracy_buff = 0, heal_buff = 0):
-	name = item_name
-	attack = attack_buff
-	attack_range = range_buff
-	heal = heal_buff
+func sequence_cumulative(sequence, position):
+	var result = 0
+	for x in range(position):
+		result += sequence[x]
+	return result
 
-func generate(item_level, equipment_slot, item_class):
+func create():
+	name = "empty hand"
+	character_class = 0
+	attack = 0
+	attack_range = 0
+	defense = 0
+	heal = 0
+
+func generate(item_level, slot, item_class):
 	character_class = item_class
 	level = clamp(item_level, 0, 5)
-#	self.equipment_slot = equipment_slot
+	equipment_slot = slot
 	var prefix = item_prefix[level][rand_range(0, item_prefix[level].size() - 1)]
 	var suffix = item_names[character_class][rand_range(0, item_names[character_class].size() - 1)]
 	if equipment_slot == SLOT.DEF:
@@ -70,13 +86,14 @@ func generate(item_level, equipment_slot, item_class):
 		
 	name = prefix + " " + suffix
 	if equipment_slot == SLOT.ATK:
-		attack = floor(level * rand_range(level, level * 1.5))
-		attack_range = floor(level * rand_range(level, level * 1.5))
+		attack = 1 + sequence_cumulative(up[equipment_slot], level)
+		attack_range = 1 + sequence_cumulative(up.atk_range, level)
 	if equipment_slot == SLOT.DEF:
-		defense = floor(level * rand_range(level, level * 1.5))
+		defense = 1 + sequence_cumulative(up[equipment_slot], level)
+#		defense = floor(level * rand_range(level, level * 1.5))
 	heal = 0
 	if character_class == Game.TYPE.MAGE:
-		heal = floor(1 + level * rand_range(0, level * 2))
+		heal = 1 + sequence_cumulative(up["heal"], level)		
 	if Engine.editor_hint:
 		property_list_changed_notify()
 	
