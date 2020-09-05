@@ -15,8 +15,8 @@ var sfx
 var music
 var input_type
 
-onready var music_bars = get_node("MusicBars").get_children()
-onready var sfx_bars = get_node("MusicBars").get_children()
+onready var music_bars = get_node("musicBars").get_children()
+onready var sfx_bars = get_node("musicBars").get_children()
 
 func _save():
 	file.open(save_path, File.WRITE)
@@ -35,7 +35,7 @@ func _ready():
 	# select_menu_item(0)
 
 func action(name):
-	if name == "Music":
+	if name == "music":
 		player_data.music += 1
 	if name == "SFX":
 		player_data.sfx += 1
@@ -77,35 +77,35 @@ func _process(delta):
 	if player_data.music > 5:
 		player_data.music = 1
 	if player_data.music == 5:
-		get_node("MusicBars/bar1").frame = 168
-		get_node("MusicBars/bar2").frame = 169
-		get_node("MusicBars/bar3").frame = 170
-		get_node("MusicBars/bar4").frame = 171
-		get_node("MusicBars/bar5").frame = 172
+		get_node("musicBars/bar1").frame = 168
+		get_node("musicBars/bar2").frame = 169
+		get_node("musicBars/bar3").frame = 170
+		get_node("musicBars/bar4").frame = 171
+		get_node("musicBars/bar5").frame = 172
 	elif player_data.music == 4:
-		get_node("MusicBars/bar1").frame = 168
-		get_node("MusicBars/bar2").frame = 169
-		get_node("MusicBars/bar3").frame = 170
-		get_node("MusicBars/bar4").frame = 171
-		get_node("MusicBars/bar5").frame = 140
+		get_node("musicBars/bar1").frame = 168
+		get_node("musicBars/bar2").frame = 169
+		get_node("musicBars/bar3").frame = 170
+		get_node("musicBars/bar4").frame = 171
+		get_node("musicBars/bar5").frame = 140
 	elif player_data.music == 3:
-		get_node("MusicBars/bar1").frame = 168
-		get_node("MusicBars/bar2").frame = 169
-		get_node("MusicBars/bar3").frame = 170
-		get_node("MusicBars/bar4").frame = 139
-		get_node("MusicBars/bar5").frame = 140
+		get_node("musicBars/bar1").frame = 168
+		get_node("musicBars/bar2").frame = 169
+		get_node("musicBars/bar3").frame = 170
+		get_node("musicBars/bar4").frame = 139
+		get_node("musicBars/bar5").frame = 140
 	elif player_data.music == 2:
-		get_node("MusicBars/bar1").frame = 168
-		get_node("MusicBars/bar2").frame = 169
-		get_node("MusicBars/bar3").frame = 138
-		get_node("MusicBars/bar4").frame = 139
-		get_node("MusicBars/bar5").frame = 140
+		get_node("musicBars/bar1").frame = 168
+		get_node("musicBars/bar2").frame = 169
+		get_node("musicBars/bar3").frame = 138
+		get_node("musicBars/bar4").frame = 139
+		get_node("musicBars/bar5").frame = 140
 	elif player_data.music == 1:
-		get_node("MusicBars/bar1").frame = 168
-		get_node("MusicBars/bar2").frame = 137
-		get_node("MusicBars/bar3").frame = 138
-		get_node("MusicBars/bar4").frame = 139
-		get_node("MusicBars/bar5").frame = 140
+		get_node("musicBars/bar1").frame = 168
+		get_node("musicBars/bar2").frame = 137
+		get_node("musicBars/bar3").frame = 138
+		get_node("musicBars/bar4").frame = 139
+		get_node("musicBars/bar5").frame = 140
 	if player_data.sfx > 5:
 		player_data.sfx = 1
 	if player_data.sfx == 5:
