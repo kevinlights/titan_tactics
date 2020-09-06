@@ -21,7 +21,7 @@ result = 2
 [sub_resource type="Resource" id=2]
 script = ExtResource( 5 )
 dialogue_id = "1"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "opening"
 title = "Alex:"
@@ -32,7 +32,7 @@ result = 2
 [sub_resource type="Resource" id=3]
 script = ExtResource( 5 )
 dialogue_id = "2"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "1"
 title = ""
@@ -65,7 +65,7 @@ result = 2
 [sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
 dialogue_id = "5"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "4"
 title = "Alex:"
@@ -76,7 +76,7 @@ result = 2
 [sub_resource type="Resource" id=7]
 script = ExtResource( 5 )
 dialogue_id = "6"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "5"
 title = ""
@@ -88,7 +88,7 @@ result = 2
 script = ExtResource( 5 )
 dialogue_id = "7"
 portrait = 6
-trigger = 0
+trigger = 5
 trigger_id = "6"
 title = "Rolf:"
 text = "Alex… I will rip you apart for what you’ve done!"
@@ -109,18 +109,18 @@ result = 2
 [sub_resource type="Resource" id=10]
 script = ExtResource( 5 )
 dialogue_id = "9"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "8"
 title = "Alex:"
-text = "¤dodges Rolf’s advance¤ “Your foster father"
+text = "¤dodges Rolf’s advance¤ Your foster father"
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 5 )
 dialogue_id = "10"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "9"
 title = ""
@@ -142,7 +142,7 @@ result = 2
 [sub_resource type="Resource" id=13]
 script = ExtResource( 5 )
 dialogue_id = "12"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "11"
 title = "Alex:"
@@ -153,7 +153,7 @@ result = 2
 [sub_resource type="Resource" id=14]
 script = ExtResource( 5 )
 dialogue_id = "13"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "12"
 title = ""
@@ -176,7 +176,7 @@ result = 2
 script = ExtResource( 5 )
 dialogue_id = "15"
 portrait = 6
-trigger = 0
+trigger = 5
 trigger_id = "14"
 title = ""
 text = " is this? You are insane!"
@@ -186,7 +186,7 @@ result = 2
 [sub_resource type="Resource" id=17]
 script = ExtResource( 5 )
 dialogue_id = "16"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "15"
 title = "Alex:"
@@ -197,8 +197,8 @@ result = 2
 [sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
 dialogue_id = "17"
-portrait = 7
-trigger = 0
+portrait = 11
+trigger = 5
 trigger_id = "16"
 title = ""
 text = "Will you join us or is this your final hour?"
@@ -230,7 +230,7 @@ result = 2
 [sub_resource type="Resource" id=21]
 script = ExtResource( 5 )
 dialogue_id = "20"
-portrait = 7
+portrait = 11
 trigger = 5
 trigger_id = "19"
 title = "Alex:"
@@ -256,7 +256,7 @@ portrait = 6
 trigger = 5
 trigger_id = "21"
 title = "Rolf:"
-text = "¤runs to Cyan¤ “You’ll be fine!"
+text = "¤runs to Cyan¤ You’ll be fine!"
 branches = [  ]
 result = 2
 
@@ -366,7 +366,7 @@ portrait = 6
 trigger = 5
 trigger_id = "31"
 title = "Rolf:"
-text = "If all this is true, then we have we been"
+text = "If all this is true, then have we been"
 branches = [  ]
 result = 2
 
@@ -407,7 +407,7 @@ result = 2
 script = ExtResource( 5 )
 dialogue_id = "36"
 portrait = 10
-trigger = 0
+trigger = 5
 trigger_id = "35"
 title = ""
 text = "…To Be Continued…"
@@ -435,20 +435,21 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 248 )
+frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 296 )
-frame = 1
 
 [node name="Torch bottom4" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 296 )
+frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 248 )
+frame = 1
 
 [node name="Torch bottom5" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
-frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
@@ -475,17 +476,18 @@ CREEPING VINES."
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 232 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 280 )
+frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 280 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 232 )
+frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 104, 24 )
+frame = 1
