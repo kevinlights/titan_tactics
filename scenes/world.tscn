@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+    [gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scenes/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
@@ -24,38 +24,6 @@ atlas = ExtResource( 3 )
 region = Rect2( 0, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=3]
-<<<<<<< HEAD
-atlas = ExtResource( 3 )
-region = Rect2( 20, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 3 )
-region = Rect2( 20, 20, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 3 )
-region = Rect2( 100, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 3 )
-region = Rect2( 80, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 3 )
-region = Rect2( 80, 20, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 14 )
-region = Rect2( 90, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 14 )
-region = Rect2( 90, 18, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 3 )
-region = Rect2( 40, 0, 20, 20 )
-=======
 atlas = ExtResource( 14 )
 region = Rect2( 54, 0, 18, 18 )
 
@@ -86,7 +54,6 @@ region = Rect2( 90, 0, 18, 18 )
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 14 )
 region = Rect2( 90, 18, 18, 18 )
->>>>>>> 8a00d6664d3e28dccce2d591b5d7260eb4190862
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
@@ -106,17 +73,6 @@ region = Rect2( 60, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 3 )
-<<<<<<< HEAD
-region = Rect2( 60, 20, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 14 )
-region = Rect2( 18, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 14 )
-region = Rect2( 18, 18, 18, 18 )
-=======
 region = Rect2( 100, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=16]
@@ -126,7 +82,6 @@ region = Rect2( 20, 0, 20, 20 )
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 3 )
 region = Rect2( 20, 20, 20, 20 )
->>>>>>> 8a00d6664d3e28dccce2d591b5d7260eb4190862
 
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
@@ -137,29 +92,17 @@ animations = [ {
 }, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-<<<<<<< HEAD
-"name": "cantmove",
-=======
 "name": "mage",
->>>>>>> 8a00d6664d3e28dccce2d591b5d7260eb4190862
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-<<<<<<< HEAD
-"name": "blank",
-=======
 "name": "heal",
->>>>>>> 8a00d6664d3e28dccce2d591b5d7260eb4190862
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
-<<<<<<< HEAD
-"name": "heal",
-=======
 "name": "attack",
->>>>>>> 8a00d6664d3e28dccce2d591b5d7260eb4190862
 "speed": 5.0
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ) ],
@@ -177,16 +120,6 @@ animations = [ {
 "name": "mage",
 "speed": 5.0
 }, {
-<<<<<<< HEAD
-"frames": [ SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "guard",
-"speed": 3.0
-}, {
-"frames": [ SubResource( 16 ), SubResource( 17 ) ],
-"loop": true,
-"name": "fighter",
-=======
 "frames": [ SubResource( 15 ) ],
 "loop": true,
 "name": "blank",
@@ -195,7 +128,6 @@ animations = [ {
 "frames": [ SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "cantmove",
->>>>>>> 8a00d6664d3e28dccce2d591b5d7260eb4190862
 "speed": 5.0
 } ]
 
