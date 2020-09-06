@@ -127,6 +127,7 @@ func from_other(other_stats):
 	item_atk = other_stats.item_atk
 	item_def = other_stats.item_def
 	heal = other_stats.heal
+	xp_to_next = level * level
 
 func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_range = 1, hp = 10):
 	character_class = request_class
@@ -152,6 +153,8 @@ func generate(class_stats, request_class, request_control, level = 1, force = fa
 	weakness = Game.class_stats.weakness[character_class]
 	strength = Game.class_stats.strength[character_class]
 	abilities = Game.class_stats.abilities[character_class]
+	self.level = level
+	xp_to_next = level * level
 
 	# prevent re-generating character on spawn
 	if not Engine.editor_hint and not force:
