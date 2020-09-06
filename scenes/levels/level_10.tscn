@@ -122,16 +122,12 @@ portrait = 11
 trigger = 5
 trigger_id = "8"
 title = "Alex:"
-<<<<<<< HEAD
 text = "¤dodges Rolf’s advance¤ Your foster father"
-=======
 text = "¤dodges Rolf’s advance¤ “Your foster father helped"
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 branches = [  ]
 result = 2
 
 [sub_resource type="Resource" id=11]
-<<<<<<< HEAD
 script = ExtResource( 5 )
 dialogue_id = "10"
 portrait = 11
@@ -141,7 +137,6 @@ title = ""
 text = "helped form The Hass. The village found him out and thus he became| a hermit to hide from their wrath. I bet you didn’t know any of that,|did you? He isn’t really ill, it was all a ruse to get you to join us."
 branches = [  ]
 result = 2
-=======
 script = ExtResource( 8 )
 character_class = 0
 equipment_slot = 0
@@ -151,7 +146,6 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 8 )
@@ -165,7 +159,6 @@ defense = 1
 heal = 0
 
 [sub_resource type="Resource" id=13]
-<<<<<<< HEAD
 script = ExtResource( 5 )
 dialogue_id = "12"
 portrait = 11
@@ -182,7 +175,6 @@ dialogue_id = "13"
 portrait = 11
 trigger = 5
 trigger_id = "12"
-=======
 script = ExtResource( 7 )
 character_class = 0
 name = "Kadif"
@@ -204,7 +196,6 @@ dialogue_id = ""
 portrait = 0
 trigger = 0
 trigger_id = ""
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 title = ""
 text = ""
 branches = [  ]
@@ -212,7 +203,6 @@ result = 0
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
-<<<<<<< HEAD
 dialogue_id = "14"
 portrait = 6
 trigger = 5
@@ -228,12 +218,10 @@ dialogue_id = "15"
 portrait = 6
 trigger = 5
 trigger_id = "14"
-=======
 dialogue_id = ""
 portrait = 0
 trigger = 0
 trigger_id = ""
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 title = ""
 text = ""
 branches = [  ]
@@ -251,7 +239,6 @@ defense = 0
 heal = 0
 
 [sub_resource type="Resource" id=17]
-<<<<<<< HEAD
 script = ExtResource( 5 )
 dialogue_id = "16"
 portrait = 11
@@ -272,7 +259,6 @@ title = ""
 text = "Will you join us or is this your final hour?"
 branches = [  ]
 result = 2
-=======
 script = ExtResource( 8 )
 character_class = 0
 equipment_slot = 1
@@ -298,7 +284,6 @@ heal = 0
 item_atk = SubResource( 16 )
 item_def = SubResource( 17 )
 portrait_override = ""
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 5 )
@@ -323,7 +308,6 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=21]
-<<<<<<< HEAD
 script = ExtResource( 5 )
 dialogue_id = "20"
 portrait = 11
@@ -333,7 +317,6 @@ title = "Alex:"
 text = "As you wish."
 branches = [  ]
 result = 2
-=======
 script = ExtResource( 8 )
 character_class = 1
 equipment_slot = 0
@@ -343,7 +326,6 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 
 [sub_resource type="Resource" id=22]
 script = ExtResource( 8 )
@@ -357,7 +339,6 @@ defense = 1
 heal = 0
 
 [sub_resource type="Resource" id=23]
-<<<<<<< HEAD
 script = ExtResource( 5 )
 dialogue_id = "22"
 portrait = 6
@@ -367,7 +348,6 @@ title = "Rolf:"
 text = "¤runs to Cyan¤ You’ll be fine!"
 branches = [  ]
 result = 2
-=======
 script = ExtResource( 7 )
 character_class = 1
 name = "Rolf"
@@ -382,7 +362,6 @@ heal = 0
 item_atk = SubResource( 21 )
 item_def = SubResource( 22 )
 portrait_override = ""
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 5 )
@@ -489,7 +468,6 @@ defense = 1
 heal = 1
 
 [sub_resource type="Resource" id=33]
-<<<<<<< HEAD
 script = ExtResource( 5 )
 dialogue_id = "32"
 portrait = 6
@@ -499,7 +477,6 @@ title = "Rolf:"
 text = "If all this is true, then have we been"
 branches = [  ]
 result = 2
-=======
 script = ExtResource( 7 )
 character_class = 2
 name = "Sid"
@@ -514,7 +491,6 @@ heal = 10
 item_atk = SubResource( 31 )
 item_def = SubResource( 32 )
 portrait_override = ""
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 
 [sub_resource type="Resource" id=34]
 script = ExtResource( 5 )
@@ -649,17 +625,14 @@ result = 0
 
 [sub_resource type="Resource" id=45]
 script = ExtResource( 5 )
-<<<<<<< HEAD
 dialogue_id = "36"
 portrait = 10
 trigger = 5
 trigger_id = "35"
-=======
 dialogue_id = ""
 portrait = 0
 trigger = 0
 trigger_id = ""
->>>>>>> 1f647dc5e498ac2c61242075619a6503c7b27775
 title = ""
 text = ""
 branches = [  ]
