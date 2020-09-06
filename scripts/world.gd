@@ -112,8 +112,7 @@ func advance_turn(explicit = 1, direction = 1):
 		print("End turn")
 		end_turn()
 		return
-	print("nd " + str(num_done))
-	print("Advance turn " + current[current_turn][current_character].character.name + "is done? : " + str(num_done == current[current_turn].size()))
+	print("Advance turn")
 	$select.disable()
 	yield(get_tree().create_timer(1.0), "timeout")
 	$select.set_origin(get_current())
