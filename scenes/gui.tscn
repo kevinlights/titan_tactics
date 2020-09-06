@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://scripts/gui/characterswap.gd" type="Script" id=44]
 [ext_resource path="res://gfx/change.png" type="Texture" id=45]
 [ext_resource path="res://scripts/tip.gd" type="Script" id=46]
+[ext_resource path="res://scripts/option_text_focus.gd" type="Script" id=47]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 42 )
@@ -1463,6 +1464,7 @@ margin_right = 140.0
 margin_bottom = 24.0
 text = "Something Really cool I can do"
 autowrap = true
+script = ExtResource( 47 )
 
 [node name="trigger_2" type="Button" parent="dialogue/branches"]
 margin_left = 4.0
@@ -1498,6 +1500,7 @@ margin_right = 140.0
 margin_bottom = 24.0
 text = "Something Really cool I can do better than you and companou"
 autowrap = true
+script = ExtResource( 47 )
 
 [node name="trigger_3" type="Button" parent="dialogue/branches"]
 visible = false
@@ -1532,6 +1535,7 @@ margin_right = 111.0
 margin_bottom = 24.0
 text = "Something Really cool I can do better than you"
 autowrap = true
+script = ExtResource( 47 )
 
 [node name="sfx" type="Node" parent="."]
 
