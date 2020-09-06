@@ -208,7 +208,7 @@ text = "Alright everyone, let’s move!"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=29]
+[sub_resource type="Resource" id=19]
 script = ExtResource( 9 )
 dialogue_id = "nineteen"
 portrait = 6
@@ -219,7 +219,7 @@ text = "These Hass are elite troops… The further we go"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=30]
+[sub_resource type="Resource" id=20]
 script = ExtResource( 9 )
 dialogue_id = "twenty"
 portrait = 6
@@ -230,7 +230,7 @@ text = "into the city the more dangerous this will become. Are you doing OK Cyan
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 9 )
 dialogue_id = "21"
 portrait = 9
@@ -241,7 +241,7 @@ text = "I am fine… The only thing I can think of is Ulrich. He"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=32]
+[sub_resource type="Resource" id=22]
 script = ExtResource( 9 )
 dialogue_id = "22"
 portrait = 9
@@ -252,7 +252,7 @@ text = "has waited so long at this point. The Hass may have found him by now. He
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=33]
+[sub_resource type="Resource" id=23]
 script = ExtResource( 9 )
 dialogue_id = "23"
 portrait = 6
@@ -263,7 +263,7 @@ text = "…When the darkness closes in on us, Cyan… It amplifies"
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=34]
+[sub_resource type="Resource" id=24]
 script = ExtResource( 9 )
 dialogue_id = "24"
 portrait = 6
@@ -274,7 +274,7 @@ text = "the things that matter most. He may not be our father by blood, but he h
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=35]
+[sub_resource type="Resource" id=25]
 script = ExtResource( 9 )
 dialogue_id = "25"
 portrait = 9
@@ -285,46 +285,46 @@ text = "You’re right… We both must count our blessings."
 branches = [  ]
 result = 2
 
-[sub_resource type="Resource" id=19]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 3 )
 equipment_slot = 0
 level = 1
 
-[sub_resource type="Resource" id=20]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 3 )
 equipment_slot = 0
 level = 1
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=28]
 script = ExtResource( 3 )
 equipment_slot = 0
 level = 1
 
-[sub_resource type="NavigationPolygon" id=22]
+[sub_resource type="NavigationPolygon" id=29]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=23]
+[sub_resource type="NavigationPolygon" id=30]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=24]
+[sub_resource type="NavigationPolygon" id=31]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=25]
+[sub_resource type="NavigationPolygon" id=32]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=26]
+[sub_resource type="NavigationPolygon" id=33]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=27]
+[sub_resource type="NavigationPolygon" id=34]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=28]
+[sub_resource type="TileSet" id=35]
 0/name = "not passable"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -361,7 +361,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 22 )
+2/navigation = SubResource( 29 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 2/shape_one_way = false
@@ -376,7 +376,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 23 )
+3/navigation = SubResource( 30 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 3/shape_one_way = false
@@ -391,7 +391,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 24 )
+4/navigation = SubResource( 31 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 4/shape_one_way = false
@@ -406,7 +406,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 25 )
+5/navigation = SubResource( 32 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 5/shape_one_way = false
@@ -435,7 +435,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 26 )
+7/navigation = SubResource( 33 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -450,7 +450,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 27 )
+8/navigation = SubResource( 34 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 8/shape_one_way = false
@@ -463,7 +463,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
-dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ]
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -473,49 +473,51 @@ centered = false
 position = Vector2( 56, 120 )
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
-item_spawner = SubResource( 19 )
+item_spawner = SubResource( 26 )
 
 [node name="ChestSpawner2" type="Sprite" parent="map"]
 position = Vector2( 248, 40 )
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
-item_spawner = SubResource( 20 )
+item_spawner = SubResource( 27 )
 
 [node name="ChestSpawner3" type="Sprite" parent="map"]
 position = Vector2( 248, 136 )
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
-item_spawner = SubResource( 21 )
+item_spawner = SubResource( 28 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 128, 160 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 160, 160 )
-frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 272, 192 )
 rotation = 1.5708
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 272, 160 )
 rotation = 1.5708
+frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 272, 64 )
 rotation = 1.5708
+frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 272, 32 )
 rotation = 1.5708
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
 rotation = -0.000220277
-tile_set = SubResource( 28 )
+tile_set = SubResource( 35 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1
