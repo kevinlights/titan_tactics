@@ -322,22 +322,20 @@ texture = ExtResource( 28 )
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 103.551, 130.424 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 141.551, 130.424 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
-margin_left = 2.66079
-margin_top = 116.042
-margin_right = 42.6608
-margin_bottom = 130.042
+margin_left = 4.66079
+margin_top = 115.042
+margin_right = 44.6608
+margin_bottom = 129.042
 theme = ExtResource( 22 )
-text = "Timmy"
+text = "Rolf"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -355,9 +353,9 @@ __meta__ = {
 
 [node name="hp" type="Label" parent="characterselect"]
 margin_left = 18.7793
-margin_top = 135.03
+margin_top = 134.03
 margin_right = 58.7793
-margin_bottom = 149.03
+margin_bottom = 148.03
 theme = ExtResource( 22 )
 text = "00"
 __meta__ = {
@@ -366,9 +364,9 @@ __meta__ = {
 
 [node name="def" type="Label" parent="characterselect"]
 margin_left = 51.6211
-margin_top = 126.742
+margin_top = 125.742
 margin_right = 91.6211
-margin_bottom = 140.742
+margin_bottom = 139.742
 theme = ExtResource( 22 )
 text = "00"
 __meta__ = {
@@ -376,9 +374,9 @@ __meta__ = {
 }
 
 [node name="lvl" type="Label" parent="characterselect"]
-margin_left = 49.368
+margin_left = 52.368
 margin_top = 115.476
-margin_right = 89.368
+margin_right = 92.368
 margin_bottom = 129.476
 theme = ExtResource( 22 )
 text = "00"
@@ -390,13 +388,13 @@ __meta__ = {
 position = Vector2( 38, 121.5 )
 points = PoolVector2Array( 0, 0, 28, 0 )
 width = 1.0
-default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="hpline2" type="Line2D" parent="characterselect"]
 position = Vector2( 5, 141.497 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
-default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="battle" type="Control" parent="."]
 visible = false
@@ -420,7 +418,7 @@ margin_top = -11.5223
 margin_right = 9.279
 margin_bottom = 2.47769
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "Marie"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -432,7 +430,7 @@ margin_top = -12.3626
 margin_right = 55.7094
 margin_bottom = 1.63743
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -444,7 +442,7 @@ margin_top = -1.25806
 margin_right = 22.9501
 margin_bottom = 12.7419
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00
 "
 __meta__ = {
@@ -457,7 +455,7 @@ margin_top = -1.15613
 margin_right = 55.9093
 margin_bottom = 12.8439
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00
 "
 __meta__ = {
@@ -470,7 +468,7 @@ margin_top = 6.8612
 margin_right = 23.3365
 margin_bottom = 20.8612
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00
 "
 __meta__ = {
@@ -492,7 +490,7 @@ default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
 position = Vector2( -31, 14.547 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
-default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="box_ally" type="Sprite" parent="battle"]
 position = Vector2( -30, 29.047 )
@@ -511,7 +509,7 @@ margin_top = -11.6735
 margin_right = 55.7445
 margin_bottom = 2.32654
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -523,7 +521,7 @@ margin_top = -11.9374
 margin_right = 8.84195
 margin_bottom = 2.06264
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "Marie"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -535,7 +533,7 @@ margin_top = -0.81588
 margin_right = 22.9322
 margin_bottom = 13.1841
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -547,7 +545,7 @@ margin_top = -1.04449
 margin_right = 55.6839
 margin_bottom = 12.9555
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -559,7 +557,7 @@ margin_top = 6.68463
 margin_right = 22.6632
 margin_bottom = 20.6846
 theme = ExtResource( 22 )
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -575,7 +573,7 @@ default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
 position = Vector2( -31, 14.5 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
-default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="PlayerType" type="Sprite" parent="battle"]
 position = Vector2( 59.958, 0.56255 )
@@ -802,6 +800,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 31 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -823,6 +822,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 31 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -831,6 +831,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 34 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -943,7 +944,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 34 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -969,6 +969,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 31 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1066,7 +1067,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 37 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1089,7 +1089,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 37 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1178,7 +1177,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 37 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1201,7 +1199,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 37 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1259,7 +1256,6 @@ __meta__ = {
 [node name="more" type="AnimatedSprite" parent="dialogue/background"]
 position = Vector2( 145, 36 )
 frames = SubResource( 40 )
-frame = 1
 playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
@@ -1293,7 +1289,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
 visible = false
 frames = SubResource( 43 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1328,7 +1323,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
 frames = SubResource( 43 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1361,7 +1355,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
 visible = false
 frames = SubResource( 43 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
