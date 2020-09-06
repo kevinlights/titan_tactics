@@ -49,11 +49,11 @@ func update_view():
 		$box_ally/Portrait.frame = current_character.character_class
 		$box_ally/Portrait.playing = false
 	
-	$box_ally/atk.text = "%02d" % (current_character.atk + current_character.item_atk.attack)
+	$box_ally/atk.text = "%02d" % int(round(current_character.atk + current_character.item_atk.attack))
 	$box_ally/hp.text =  "%02d" % current_character.hp
 	$box_ally/hp.text += "/" + str(current_character.max_hp)
 	$box_ally/lvl.text =  "%02d" % current_character.level
-	$box_ally/def.text =  "%02d" % (current_character.def + current_character.item_def.defense)
+	$box_ally/def.text =  "%02d" % int(round(current_character.def + current_character.item_def.defense))
 #	var current = characters[selected]
 	
 func _input(event):
