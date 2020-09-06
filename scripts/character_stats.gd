@@ -55,10 +55,11 @@ func add_xp(more_xp):
 		level_up()
 
 func level_up():
+	var lvl_up = clamp(level, 0, atk_up.size() - 2)
 	var stats_diff = {
-		"atk": atk_up[level + 1],
-		"def": def_up[level + 1],
-		"hp": hp_up[level + 1]
+		"atk": atk_up[lvl_up + 1],
+		"def": def_up[lvl_up + 1],
+		"hp": hp_up[lvl_up + 1]
 	}
 	level += 1
 	atk += stats_diff.atk
