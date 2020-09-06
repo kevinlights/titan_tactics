@@ -1,6 +1,8 @@
 extends Node2D
 
 export(Array, Resource) var dialogue
+export(String) var add_character
+export(String) var remove_character
 
 onready var world = get_tree().get_root().get_node("World")
 onready var gui = get_tree().get_root().get_node("World/gui")
@@ -15,6 +17,17 @@ func _ready():
 	print("level dialogue triggers: ", triggers.size())
 	for trigger in triggers:
 		trigger.connect("trigger", self, "_on_dialogue_complete")
+	if add_character and add_character != "":
+		var additional_character = load("res://resources/" + add_character + ".tres")
+		Game.team.append(additional_character)
+	if remove_character and remove_character != "":
+		var found = null
+		for character in Game.team:
+			if character.name.lower() == remove_character:
+				found = character
+				break
+		if found:
+			Game.team.erase(found)
 
 func _on_start_level():
 	if dialogue.size() > 0 and dialogue[0].trigger == Dialogue.TRIGGER.LEVEL:

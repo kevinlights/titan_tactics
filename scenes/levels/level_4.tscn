@@ -126,7 +126,7 @@ attack_range = 0
 defense = 28.0
 heal = 0
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
 character_class = 1
 name = "Trina"
@@ -140,6 +140,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 9 )
 item_def = SubResource( 10 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 7 )
@@ -185,7 +186,7 @@ attack_range = 0
 defense = 36.0
 heal = 1.0
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 6 )
 character_class = 2
 name = "Mags"
@@ -199,6 +200,7 @@ mov_range = 4
 heal = 3
 item_atk = SubResource( 14 )
 item_def = SubResource( 15 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=17]
 script = ExtResource( 7 )
@@ -244,7 +246,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=44]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 6 )
 character_class = 0
 name = "Nord"
@@ -258,6 +260,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 19 )
 item_def = SubResource( 20 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=22]
 script = ExtResource( 7 )
@@ -303,7 +306,7 @@ attack_range = 1.0
 defense = 0
 heal = 2.0
 
-[sub_resource type="Resource" id=45]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 6 )
 character_class = 2
 name = "Firas"
@@ -317,6 +320,7 @@ mov_range = 4
 heal = 3
 item_atk = SubResource( 24 )
 item_def = SubResource( 25 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=27]
 script = ExtResource( 7 )
@@ -362,7 +366,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=46]
+[sub_resource type="Resource" id=31]
 script = ExtResource( 6 )
 character_class = 1
 name = "Gwen"
@@ -376,6 +380,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 29 )
 item_def = SubResource( 30 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=32]
 script = ExtResource( 7 )
@@ -437,10 +442,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
 1/name = "cover"
@@ -451,10 +452,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
 2/name = "player spawn"
@@ -466,10 +463,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
 2/navigation = SubResource( 35 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
 3/name = "enemy spawn"
@@ -481,10 +474,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
 3/navigation = SubResource( 36 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
 3/shapes = [  ]
 3/z_index = 0
 4/name = "enemy spawn"
@@ -496,10 +485,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
 4/navigation = SubResource( 37 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape_one_way = false
-4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
 5/name = "enemy spawn"
@@ -511,10 +496,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
 5/navigation = SubResource( 38 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape_one_way = false
-5/shape_one_way_margin = 0.0
 5/shapes = [  ]
 5/z_index = 0
 6/name = "destructible"
@@ -525,10 +506,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape_one_way = false
-6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
 7/name = "passable"
@@ -540,10 +517,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
 7/navigation = SubResource( 39 )
-7/shape_offset = Vector2( 0, 0 )
-7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape_one_way = false
-7/shape_one_way_margin = 0.0
 7/shapes = [  ]
 7/z_index = 0
 8/name = "chest"
@@ -555,10 +528,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
 8/navigation = SubResource( 40 )
-8/shape_offset = Vector2( 0, 0 )
-8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape_one_way = false
-8/shape_one_way_margin = 0.0
 8/shapes = [  ]
 8/z_index = 0
 
@@ -576,6 +545,7 @@ BELOW, SEEKING
 SHELTER."
 }
 dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ]
+add_character = "cyan"
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -599,7 +569,7 @@ frame = 1
 position = Vector2( 104, 104 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 42 )
+stats = SubResource( 11 )
 dialogue = SubResource( 12 )
 recruit_dialogue = SubResource( 13 )
 
@@ -607,7 +577,7 @@ recruit_dialogue = SubResource( 13 )
 position = Vector2( 120, 120 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 43 )
+stats = SubResource( 16 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
@@ -615,7 +585,7 @@ recruit_dialogue = SubResource( 18 )
 position = Vector2( 184, 72 )
 texture = ExtResource( 15 )
 script = ExtResource( 9 )
-stats = SubResource( 44 )
+stats = SubResource( 21 )
 dialogue = SubResource( 22 )
 recruit_dialogue = SubResource( 23 )
 
@@ -623,7 +593,7 @@ recruit_dialogue = SubResource( 23 )
 position = Vector2( 72, 136 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 45 )
+stats = SubResource( 26 )
 dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
 
@@ -631,7 +601,7 @@ recruit_dialogue = SubResource( 28 )
 position = Vector2( 200, 168 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 46 )
+stats = SubResource( 31 )
 dialogue = SubResource( 32 )
 recruit_dialogue = SubResource( 33 )
 
