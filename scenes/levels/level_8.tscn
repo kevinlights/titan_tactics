@@ -161,7 +161,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=39]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 9 )
 character_class = 1
 name = "Toni"
@@ -221,7 +221,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=40]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 9 )
 character_class = 0
 name = "Vince"
@@ -281,7 +281,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 9 )
 character_class = 2
 name = "Jake"
@@ -341,7 +341,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=31]
 script = ExtResource( 9 )
 character_class = 2
 name = "Rina"
@@ -401,7 +401,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=36]
 script = ExtResource( 9 )
 character_class = 1
 name = "Hayk"
@@ -439,7 +439,7 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=44]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 10 )
 character_class = 2
 equipment_slot = 0
@@ -450,7 +450,7 @@ attack_range = 1
 defense = 0
 heal = 1
 
-[sub_resource type="Resource" id=45]
+[sub_resource type="Resource" id=40]
 script = ExtResource( 10 )
 character_class = 2
 equipment_slot = 1
@@ -461,7 +461,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=46]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 9 )
 character_class = 2
 name = "Toni"
@@ -473,11 +473,11 @@ def = 4
 atk_range = 4
 mov_range = 4
 heal = 8
-item_atk = SubResource( 44 )
-item_def = SubResource( 45 )
+item_atk = SubResource( 39 )
+item_def = SubResource( 40 )
 portrait_override = ""
 
-[sub_resource type="Resource" id=47]
+[sub_resource type="Resource" id=42]
 script = ExtResource( 5 )
 dialogue_id = ""
 portrait = 0
@@ -488,7 +488,7 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=48]
+[sub_resource type="Resource" id=43]
 script = ExtResource( 5 )
 dialogue_id = ""
 portrait = 0
@@ -532,7 +532,7 @@ item_spawner = SubResource( 13 )
 position = Vector2( 72, 216 )
 texture = ExtResource( 12 )
 script = ExtResource( 8 )
-stats = SubResource( 39 )
+stats = SubResource( 16 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
@@ -540,7 +540,7 @@ recruit_dialogue = SubResource( 18 )
 position = Vector2( 88, 232 )
 texture = ExtResource( 13 )
 script = ExtResource( 8 )
-stats = SubResource( 40 )
+stats = SubResource( 21 )
 dialogue = SubResource( 22 )
 recruit_dialogue = SubResource( 23 )
 
@@ -548,7 +548,7 @@ recruit_dialogue = SubResource( 23 )
 position = Vector2( 232, 152 )
 texture = ExtResource( 11 )
 script = ExtResource( 8 )
-stats = SubResource( 41 )
+stats = SubResource( 26 )
 dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
 
@@ -556,7 +556,7 @@ recruit_dialogue = SubResource( 28 )
 position = Vector2( 248, 232 )
 texture = ExtResource( 11 )
 script = ExtResource( 8 )
-stats = SubResource( 42 )
+stats = SubResource( 31 )
 dialogue = SubResource( 32 )
 recruit_dialogue = SubResource( 33 )
 
@@ -564,7 +564,7 @@ recruit_dialogue = SubResource( 33 )
 position = Vector2( 104, 104 )
 texture = ExtResource( 12 )
 script = ExtResource( 8 )
-stats = SubResource( 43 )
+stats = SubResource( 36 )
 dialogue = SubResource( 37 )
 recruit_dialogue = SubResource( 38 )
 
@@ -572,9 +572,9 @@ recruit_dialogue = SubResource( 38 )
 position = Vector2( 200, 88 )
 texture = ExtResource( 11 )
 script = ExtResource( 8 )
-stats = SubResource( 46 )
-dialogue = SubResource( 47 )
-recruit_dialogue = SubResource( 48 )
+stats = SubResource( 41 )
+dialogue = SubResource( 42 )
+recruit_dialogue = SubResource( 43 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
