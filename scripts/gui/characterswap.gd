@@ -50,6 +50,7 @@ func update_view():
 	
 	$box_ally/atk.text = "%02d" % (current_character.atk + current_character.item_atk.attack)
 	$box_ally/hp.text =  "%02d" % current_character.hp
+	$box_ally/hp.text += "/" + str(current_character.max_hp)
 	$box_ally/lvl.text =  "%02d" % current_character.level
 	$box_ally/def.text =  "%02d" % (current_character.def + current_character.item_def.defense)
 #	var current = characters[selected]

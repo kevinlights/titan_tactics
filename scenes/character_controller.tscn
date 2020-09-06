@@ -1511,12 +1511,14 @@ offset = Vector2( 8, 8 )
 visible = false
 position = Vector2( 0, -3 )
 frames = SubResource( 257 )
+frame = 1
 playing = true
 offset = Vector2( 8, 0 )
 
 [node name="done" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 260 )
+frame = 1
 playing = true
 centered = false
 
@@ -1525,7 +1527,6 @@ visible = false
 position = Vector2( 8, -7 )
 rotation = 1.5708
 frames = SubResource( 263 )
-frame = 1
 playing = true
 flip_v = true
 
@@ -1533,6 +1534,7 @@ flip_v = true
 visible = false
 position = Vector2( 7, -9 )
 frames = SubResource( 266 )
+frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]

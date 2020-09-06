@@ -28,6 +28,8 @@ var dialogue
 var recruit_dialogue
 var dialogue_used = false
 
+onready var world = get_parent().get_parent().get_parent()
+
 var movement = {
 	"start_position": Vector2(0, 0),
 	"end_position": Vector2(0, 0),
@@ -143,6 +145,7 @@ func get_def_buff(def_value):
 	return 1.0 - (log(def_value) / log(10)) * 0.3
 
 func attack(target):
+	
 	last_target = target
 	if character.turn_limits.actions < 1:
 		return 0
@@ -187,6 +190,7 @@ func attack(target):
 		avatar.play("attack-up")
 	if target.position.y > position.y:
 		avatar.play("attack-down")
+	world.check_battle()
 	check_finished()
 	return damage
 

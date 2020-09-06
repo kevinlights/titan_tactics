@@ -527,6 +527,9 @@ func _accept_loot(item):
 func _destroy_loot():
 	gui.get_node("sfx/close").play()
 	gui.back()
+	
+func check_battle():
+	$gui/battle.update_stats()
 
 func _on_selector_moved(tile):
 	print("$select moved to ", tile)
