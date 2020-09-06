@@ -1469,6 +1469,7 @@ script = ExtResource( 2 )
 visible = false
 frames = SubResource( 45 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1476,6 +1477,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 90 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1483,6 +1485,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 127 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1490,6 +1493,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 172 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1497,6 +1501,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 217 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1504,6 +1509,7 @@ offset = Vector2( 8, 8 )
 visible = false
 frames = SubResource( 254 )
 animation = "idle-right"
+frame = 1
 playing = true
 offset = Vector2( 8, 8 )
 
@@ -1511,14 +1517,12 @@ offset = Vector2( 8, 8 )
 visible = false
 position = Vector2( 0, -3 )
 frames = SubResource( 257 )
-frame = 1
 playing = true
 offset = Vector2( 8, 0 )
 
 [node name="done" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 260 )
-frame = 1
 playing = true
 centered = false
 
@@ -1527,6 +1531,7 @@ visible = false
 position = Vector2( 8, -7 )
 rotation = 1.5708
 frames = SubResource( 263 )
+frame = 1
 playing = true
 flip_v = true
 

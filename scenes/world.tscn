@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://music/end_theme.ogg" type="AudioStream" id=12]
 [ext_resource path="res://music/oldman_theme.ogg" type="AudioStream" id=13]
 [ext_resource path="res://gfx/player.png" type="Texture" id=14]
+[ext_resource path="res://gfx/menu_select.png" type="Texture" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -127,6 +128,22 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="AtlasTexture" id=261]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=262]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 8, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=263]
+animations = [ {
+"frames": [ SubResource( 261 ), SubResource( 262 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -145,7 +162,6 @@ width = 2.0
 z_as_relative = false
 frames = SubResource( 17 )
 animation = "attack"
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, -2 )
@@ -159,6 +175,15 @@ limit_right = 160
 limit_bottom = 160
 limit_smoothed = true
 smoothing_enabled = true
+
+[node name="select" type="AnimatedSprite" parent="select"]
+visible = false
+position = Vector2( 8, -7 )
+rotation = 1.5708
+frames = SubResource( 263 )
+frame = 1
+playing = true
+flip_v = true
 
 [node name="gui" parent="." instance=ExtResource( 6 )]
 

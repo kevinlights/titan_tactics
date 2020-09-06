@@ -74,6 +74,7 @@ func _input(event):
 		characters.remove(selected)
 		if characters.size() == 0:
 			emit_signal("library_exhausted")
+			get_parent().arrow_hide()
 			return
 	selected = clamp(selected, 0, characters.size() - 1)
 	update_view()

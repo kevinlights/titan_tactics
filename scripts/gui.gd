@@ -63,8 +63,12 @@ func close_attack():
 	active = false
 	$action_menu.hide()
 
+func arrow_hide():
+	get_parent().get_node("select/select").hide()
+
 func team_select(characters):
 	modal = true
+	get_parent().get_node("select/select").show()
 	$characterselect.set_characters(characters)
 	$characterselect.show()
 
@@ -108,6 +112,7 @@ func team_confirm():
 
 func swap():
 	active = true
+	get_parent().get_node("select/select").show()
 	$characterswap.start = OS.get_ticks_msec()
 	$characterswap._input(null)
 	$characterswap.show()
