@@ -49,7 +49,7 @@ func load_level(level_name):
 	$select.disable()
 
 func get_current():
-	current_character = clamp(current_character, 0, current[current_turn].size() - 1)
+	current_character = clamp(current_character, 0, abs(current[current_turn].size()-1))
 	return current[current_turn][current_character]
 
 func entity_at(position_vector):
@@ -69,16 +69,23 @@ func make_tile(tile_id):
 	}
 
 func is_cover_between(character, end):
-	character.get_node("detect_cover").cast_to = (end) - character.position
-	var found_cover = character.get_node("detect_cover").is_colliding()
-	print("Found cover: ", found_cover)
-	return found_cover
-#	var current_position = start
-#	while not current_position.is_equal_approx(end):
-#		current_position = current_position.move_toward(end, 1)
-#		if tile_meta.get_cellv(current_position) == TILEID.COVER: 
-#			return true
-#	return false
+	var space = get_world_2d().get_space()
+	var space_state = Physics2DServer.space_get_direct_state(space)
+	print(space_state)
+	var mid_point = Vector2(8, 8)
+	var intersects = space_state.intersect_ray(character.position + mid_point, end + mid_point)
+	print(intersects)
+#	character.get_node("detect_cover").cast_to = (end) - character.position
+#	var found_cover = character.get_node("detect_cover").is_colliding()
+#	print("Found cover: ", found_cover)
+	return !intersects.empty()
+
+func spawn_cover(tile):
+	var cover = load("res://scenes/cover_tile.tscn").instance()
+	cover.position = tile * Vector2(Game.cell_size, Game.cell_size)
+	world_map.add_child(cover)
+	print("Spawned cover")
+	return cover
 	
 func spawn_chest(x, y, item_spawner):
 	var chest = load("res://scenes/chest.tscn").instance()
@@ -210,6 +217,8 @@ func _ready():
 			var tile_id = tile_meta.get_cell(x, y)
 			if tile_id == TILEID.PLAYER_SPAWN:
 				player_spawns.append(Vector2(x, y))
+			if tile_id == TILEID.COVER:
+				spawn_cover(Vector2(x, y))
 	gui.get_node("action_menu").connect("attack", self, "_on_attack")
 	gui.get_node("action_menu").connect("recruit", self, "_on_recruit")
 	gui.get_node("action_menu").connect("guard", self, "_on_guard")
@@ -549,11 +558,15 @@ func get_current_context(tile):
 			return Game.CONTEXT.GUARD
 		else:
 			return Game.CONTEXT.NEUTRAL
-	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
-	if current_path.size() > 0:
-		var allowed = current_path.size() <= get_current().character.turn_limits.move_distance
-		if not allowed:
-			return Game.CONTEXT.NOT_ALLOWED
+	if not current[current_turn].empty():
+		print(current_character)
+		var current_path = pathfinder.find_path(get_current().tile, $select.tile)
+		if current_path.size() > 0:
+			var allowed = current_path.size() <= get_current().character.turn_limits.move_distance
+			if not allowed:
+				return Game.CONTEXT.NOT_ALLOWED
+	else:
+		return Game.CONTEXT.NOT_PLAYABLE
 	return Game.CONTEXT.MOVE
 
 # DEBUG INPUT

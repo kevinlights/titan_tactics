@@ -401,7 +401,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=61]
+[sub_resource type="Resource" id=36]
 script = ExtResource( 11 )
 character_class = 0
 name = "Nora"
@@ -461,7 +461,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=62]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 11 )
 character_class = 0
 name = "Rolf"
@@ -521,7 +521,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=63]
+[sub_resource type="Resource" id=46]
 script = ExtResource( 11 )
 character_class = 0
 name = "Dara"
@@ -581,7 +581,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=64]
+[sub_resource type="Resource" id=51]
 script = ExtResource( 11 )
 character_class = 0
 name = "Eva"
@@ -641,7 +641,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=65]
+[sub_resource type="Resource" id=56]
 script = ExtResource( 11 )
 character_class = 0
 name = "Jason"
@@ -710,13 +710,14 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 184, 184 )
+frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 104, 152 )
-frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 88, 56 )
+frame = 1
 
 [node name="DialogueTrigger" type="Sprite" parent="map"]
 position = Vector2( 88.535, 70.5439 )
@@ -728,7 +729,7 @@ dialogue_id = "well"
 position = Vector2( 104, 72 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 61 )
+stats = SubResource( 36 )
 dialogue = SubResource( 37 )
 recruit_dialogue = SubResource( 38 )
 
@@ -736,7 +737,7 @@ recruit_dialogue = SubResource( 38 )
 position = Vector2( 232, 232 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 62 )
+stats = SubResource( 41 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
 
@@ -744,7 +745,7 @@ recruit_dialogue = SubResource( 43 )
 position = Vector2( 168, 136 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 63 )
+stats = SubResource( 46 )
 dialogue = SubResource( 47 )
 recruit_dialogue = SubResource( 48 )
 
@@ -752,7 +753,7 @@ recruit_dialogue = SubResource( 48 )
 position = Vector2( 224, 72 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 64 )
+stats = SubResource( 51 )
 dialogue = SubResource( 52 )
 recruit_dialogue = SubResource( 53 )
 
@@ -760,7 +761,7 @@ recruit_dialogue = SubResource( 53 )
 position = Vector2( 152, 40 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 65 )
+stats = SubResource( 56 )
 dialogue = SubResource( 57 )
 recruit_dialogue = SubResource( 58 )
 
@@ -801,10 +802,11 @@ CREEPING VINES."
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 184, 168 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 104, 136 )
+frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 88, 40 )
+frame = 1

@@ -126,7 +126,7 @@ attack_range = 0
 defense = 28.0
 heal = 0
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=31]
 script = ExtResource( 6 )
 character_class = 1
 name = "Trina"
@@ -186,7 +186,7 @@ attack_range = 0
 defense = 36.0
 heal = 1.0
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=32]
 script = ExtResource( 6 )
 character_class = 2
 name = "Mags"
@@ -246,7 +246,7 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=33]
 script = ExtResource( 6 )
 character_class = 0
 name = "Nord"
@@ -306,7 +306,7 @@ attack_range = 1.0
 defense = 0
 heal = 2.0
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=34]
 script = ExtResource( 6 )
 character_class = 2
 name = "Firas"
@@ -391,7 +391,7 @@ position = Vector2( 40, 152 )
 position = Vector2( 200, 152 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 11 )
+stats = SubResource( 31 )
 dialogue = SubResource( 12 )
 recruit_dialogue = SubResource( 13 )
 
@@ -399,7 +399,7 @@ recruit_dialogue = SubResource( 13 )
 position = Vector2( 56, 168 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 16 )
+stats = SubResource( 32 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
@@ -407,7 +407,7 @@ recruit_dialogue = SubResource( 18 )
 position = Vector2( 88, 136 )
 texture = ExtResource( 15 )
 script = ExtResource( 9 )
-stats = SubResource( 21 )
+stats = SubResource( 33 )
 dialogue = SubResource( 22 )
 recruit_dialogue = SubResource( 23 )
 
@@ -415,7 +415,7 @@ recruit_dialogue = SubResource( 23 )
 position = Vector2( 56, 136 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 26 )
+stats = SubResource( 34 )
 dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
 
