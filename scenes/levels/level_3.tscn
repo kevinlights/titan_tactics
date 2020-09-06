@@ -24,7 +24,7 @@ trigger_id = ""
 title = "Rolf:"
 text = "(Cyan should be around here somewhere."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 9 )
@@ -35,7 +35,7 @@ trigger_id = "opening"
 title = ""
 text = "Hopefully she hasn't run into this Hass rabble.)"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 9 )
@@ -46,7 +46,7 @@ trigger_id = ""
 title = "Cyan:"
 text = "I see you haven’t lost your edge in battle."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 9 )
@@ -57,7 +57,7 @@ trigger_id = "end"
 title = ""
 text = "I watched you handle that last one pretty efficiently. Good work"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 9 )
@@ -68,7 +68,7 @@ trigger_id = "next"
 title = "Rolf:"
 text = "Gods! I was beginning to worry about you."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 9 )
@@ -79,7 +79,7 @@ trigger_id = "andthen"
 title = ""
 text = "Has the Oaken God given us his blessings?"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 9 )
@@ -90,7 +90,7 @@ trigger_id = "also"
 title = "Cyan:"
 text = "The leaves rustle with ill tidings. I fear for Ulrich."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 9 )
@@ -101,7 +101,7 @@ trigger_id = "andtoo"
 title = ""
 text = "The Hass are searching for him."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 9 )
@@ -112,7 +112,7 @@ trigger_id = "but"
 title = ""
 text = "¤Rolf spots smoke clouds on the horizon¤"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 9 )
@@ -123,7 +123,7 @@ trigger_id = "then"
 title = "Rolf:"
 text = "Fires in the north. The forest settlement "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 9 )
@@ -134,7 +134,7 @@ trigger_id = "taco"
 title = ""
 text = "is burning. We must make haste if we are to make it back before Ulrich is found!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 9 )
@@ -145,7 +145,7 @@ trigger_id = "stuff"
 title = "Cyan:"
 text = "Hurry and follow me to the well. I haven't forgotten the way."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 3 )
@@ -171,11 +171,11 @@ heal = 0
 [sub_resource type="Resource" id=16]
 script = ExtResource( 7 )
 character_class = 1
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "minor bow"
-attack = 1
-attack_range = 1
+name = "Minor Vest"
+attack = 0
+attack_range = 0
 defense = 1
 heal = 0
 
@@ -204,7 +204,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 9 )
@@ -215,7 +215,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=20]
 script = ExtResource( 7 )
@@ -231,10 +231,10 @@ heal = 0
 [sub_resource type="Resource" id=21]
 script = ExtResource( 7 )
 character_class = 1
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "minor bow"
-attack = 1
+name = "Minor Tunic"
+attack = 0
 attack_range = 1
 defense = 1
 heal = 0
@@ -264,7 +264,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 9 )
@@ -275,7 +275,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=25]
 script = ExtResource( 7 )
@@ -291,11 +291,11 @@ heal = 0
 [sub_resource type="Resource" id=26]
 script = ExtResource( 7 )
 character_class = 0
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "minor knife"
-attack = 1
-attack_range = 1
+name = "Minor Tunic"
+attack = 0
+attack_range = 0
 defense = 1
 heal = 0
 
@@ -324,7 +324,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=29]
 script = ExtResource( 9 )
@@ -335,7 +335,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [node name="level" type="Node2D"]
 script = ExtResource( 15 )
@@ -359,9 +359,11 @@ item_spawner = SubResource( 14 )
 
 [node name="Water2" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 48, 176 )
+frame = 1
 
 [node name="Water 1" parent="map" instance=ExtResource( 14 )]
 position = Vector2( 16, 176 )
+frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 120, 184 )

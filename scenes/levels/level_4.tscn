@@ -25,7 +25,7 @@ trigger_id = ""
 title = "Cyan:"
 text = "This cave reeks like a fish in the sun with wet"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 7 )
@@ -36,7 +36,7 @@ trigger_id = "start"
 title = ""
 text = "bloat rot! Blech!!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 7 )
@@ -47,7 +47,7 @@ trigger_id = "next"
 title = "Rolf:"
 text = "The Hass must be around, then. Evil has a particular "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 7 )
@@ -58,7 +58,7 @@ trigger_id = "stuff"
 title = ""
 text = "smell…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 7 )
@@ -69,7 +69,7 @@ trigger_id = "things"
 title = "Cyan:"
 text = "The entrance to this cave is popular for mushroom "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 7 )
@@ -80,7 +80,7 @@ trigger_id = "andthen"
 title = ""
 text = "hunting, but those from the forest village dare not venture further inside.|The mushrooms only grow at  the mouth of the cave. It is rumoured there are|hauntings deeper below."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 7 )
@@ -91,7 +91,7 @@ trigger_id = "but"
 title = "Rolf:"
 text = "I have no doubt there are spirits here from the "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 7 )
@@ -102,7 +102,7 @@ trigger_id = "still"
 title = ""
 text = "settlement that was destroyed by the Hass. I was not old enough to|remember, but you and Ulrich have told me enough. There are bound to be|tortured souls still lurking. Lead the way, but stay close to me. "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 5 )
@@ -118,15 +118,15 @@ heal = 0
 [sub_resource type="Resource" id=10]
 script = ExtResource( 5 )
 character_class = 1
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "Minor Bow"
+name = "Minor Jacket"
 attack = 1
 attack_range = 1
-defense = 28.0
+defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
 character_class = 1
 name = "Trina"
@@ -151,7 +151,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 7 )
@@ -162,7 +162,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 5 )
@@ -178,15 +178,15 @@ heal = 1
 [sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
 character_class = 2
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "Minor Wand"
-attack = 1
+name = "Minor Mail"
+attack = 0
 attack_range = 1
-defense = 36.0
+defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=32]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 6 )
 character_class = 2
 name = "Mags"
@@ -211,7 +211,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 7 )
@@ -222,7 +222,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 5 )
@@ -238,15 +238,15 @@ heal = 0
 [sub_resource type="Resource" id=20]
 script = ExtResource( 5 )
 character_class = 0
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "minor knife"
-attack = 1.0
-attack_range = 1.0
-defense = 0
+name = "Minor Tunic"
+attack = 0
+attack_range = 0
+defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=33]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 6 )
 character_class = 0
 name = "Nord"
@@ -271,7 +271,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 7 )
@@ -282,7 +282,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 5 )
@@ -298,15 +298,15 @@ heal = 1.0
 [sub_resource type="Resource" id=25]
 script = ExtResource( 5 )
 character_class = 2
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "minor staff"
-attack = 1.0
-attack_range = 1.0
-defense = 0
-heal = 2.0
+name = "Minor Tunic"
+attack = 0
+attack_range = 0
+defense = 1
+heal = 1
 
-[sub_resource type="Resource" id=34]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 6 )
 character_class = 2
 name = "Firas"
@@ -331,7 +331,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=28]
 script = ExtResource( 7 )
@@ -342,7 +342,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=29]
 script = ExtResource( 14 )
@@ -375,23 +375,23 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 56, 56 )
-frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 248, 56 )
-frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 216, 136 )
+frame = 1
 
 [node name="Torch bottom4" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 40, 152 )
+frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 200, 152 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 31 )
+stats = SubResource( 11 )
 dialogue = SubResource( 12 )
 recruit_dialogue = SubResource( 13 )
 
@@ -399,7 +399,7 @@ recruit_dialogue = SubResource( 13 )
 position = Vector2( 56, 168 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 32 )
+stats = SubResource( 16 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
@@ -407,7 +407,7 @@ recruit_dialogue = SubResource( 18 )
 position = Vector2( 88, 136 )
 texture = ExtResource( 15 )
 script = ExtResource( 9 )
-stats = SubResource( 33 )
+stats = SubResource( 21 )
 dialogue = SubResource( 22 )
 recruit_dialogue = SubResource( 23 )
 
@@ -415,7 +415,7 @@ recruit_dialogue = SubResource( 23 )
 position = Vector2( 56, 136 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 34 )
+stats = SubResource( 26 )
 dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
 
@@ -445,15 +445,13 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 7, 0, 2, 1, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 40, 136 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 248, 40 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 216, 120 )
-frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 56, 40 )
+frame = 1
