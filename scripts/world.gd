@@ -107,11 +107,6 @@ func spawn_character(x, y, type = Game.TYPE.MAGE, control = Game.CONTROL.PLAYER)
 	return character
 
 func advance_turn(explicit = 1, direction = 1):
-	current_character += direction
-	if current_character >= current[current_turn].size():
-		current_character = 0
-	if current_character < 0:
-		current_character = current[current_turn].size() - 1
 	var num_done = 0
 	for character_check in current[current_turn]:
 		if character_check.is_done:
@@ -120,6 +115,10 @@ func advance_turn(explicit = 1, direction = 1):
 		print("End turn")
 		end_turn()
 		return
+	next_character(direction)
+	while current[current_turn][current_character].is_done:
+		next_character(direction)
+		
 	print("Advance turn")
 	$select.disable()
 	yield(get_tree().create_timer(1.0), "timeout")
@@ -131,6 +130,13 @@ func advance_turn(explicit = 1, direction = 1):
 		$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
+func next_character(direction):
+	current_character += direction
+	if current_character >= current[current_turn].size():
+		current_character = 0
+	if current_character < 0:
+		current_character = current[current_turn].size() - 1
+
 func change_character():
 	$gui.swap()
 
@@ -138,7 +144,9 @@ func end_turn():
 	#yield(get_tree().create_timer(2.0), "timeout")
 #	current[current_turn][current_character]
 	for character in current[Game.CONTROL.PLAYER]:
+		character.is_done = false
 		character.get_node("done").hide()
+		
 	current_turn = Game.CONTROL.AI if current_turn == Game.CONTROL.PLAYER else Game.CONTROL.PLAYER
 	for character in current[current_turn]:
 		character.end_turn()

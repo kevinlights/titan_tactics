@@ -25,51 +25,51 @@ region = Rect2( 0, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
-region = Rect2( 20, 0, 20, 20 )
+region = Rect2( 80, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 20, 20, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 3 )
-region = Rect2( 80, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 3 )
 region = Rect2( 80, 20, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 14 )
 region = Rect2( 90, 0, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 14 )
 region = Rect2( 90, 18, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
 region = Rect2( 40, 20, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
 region = Rect2( 40, 0, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 14 )
 region = Rect2( 54, 0, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 14 )
 region = Rect2( 54, 18, 18, 18 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
 region = Rect2( 60, 0, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 3 )
 region = Rect2( 60, 20, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 20, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 20, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 14 )
@@ -88,7 +88,22 @@ animations = [ {
 }, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "cantmove",
+"name": "heal",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -96,30 +111,15 @@ animations = [ {
 "name": "blank",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "heal",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "archer",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
-"name": "mage",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "guard",
 "speed": 3.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "cantmove",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,

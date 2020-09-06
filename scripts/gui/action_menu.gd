@@ -62,5 +62,7 @@ func _process(delta):
 		margin_left = native_x
 
 func _input(event):
+	if !visible:
+		return
 	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
 		emit_signal(signal_map[menu_type][1])
