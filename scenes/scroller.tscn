@@ -17,9 +17,10 @@ custom_styles/panel = SubResource( 1 )
 
 [node name="text" type="Label" parent="panel"]
 margin_left = 10.0
-margin_top = 120.0
+margin_top = 148.0
 margin_right = 150.0
-margin_bottom = 616.0
+margin_bottom = 767.0
+custom_constants/line_spacing = 10
 text = "Bon, câlisse, tu vas-tu me crisser patience ? Ferme-toé un peu le mâche-patate là, va prendre une marche ou quelque chose. Mâ t'en faire moé des patentes de même, tu vas m'entendre baptinse. T'es de bonne heure sul piton toé à matin, quessé qui t'arrive ? Quessé tu veux j'te dise sacrament, fouille-moé bout d'viarge, je le sais-tu moé. Osti qui fa frette.Je m'en crisse, mais câlicement. Lâche pas la patate, enwoye, tu rentres la gogosse dans la slot pis ça va le faire. Sa blonde m'en a sacré toute une au parcheesi, mais elle a été mardeuse. Bon, câlisse, tu vas-tu me crisser patience ? Je crisse mon camp d'icite anyway, je déguedine au plus sacrant, ça sent la cibole de marde. Ça a fessé dans le dash en esti hier, j'étais paqueté en tabarnak, je suis crissement lendemain de veille.Quessé tu veux j'te dise sacrament, fouille-moé bout d'viarge, je le sais-tu moé. Baptême de crisse de cibole de viande à chien, j'en ai plein mon casse d'être toute décalissé de la vie, avec le windshier de mon char toute déviargé par l'autre esti de cave. Bon, câlisse, tu vas-tu me crisser patience ? Yé un peu niaiseux le niochon de voisin, il crisse eu'rien avec sa vie. T'es de bonne heure sul piton toé à matin, quessé qui t'arrive ? Mâ t'en faire moé des patentes de même, tu vas m'entendre baptinse."
 autowrap = true
 __meta__ = {
