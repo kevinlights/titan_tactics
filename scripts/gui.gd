@@ -44,6 +44,7 @@ func turn(type):
 	active = true
 	match type:
 		Game.CONTROL.PLAYER:
+			battle_hide($battle.player)
 			yield(get_tree().create_timer(2.0), "timeout")
 			print("show turn for player")
 			$playerturn.reset()
