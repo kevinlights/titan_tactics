@@ -29,6 +29,10 @@ func _process(delta):
 	current_character = world.get_current().character
 	$box_ally/levelline2.set_point_position(1, Vector2(current_character.xp/current_character.xp_to_next*28, 0))
 	$box_ally/hpline2.set_point_position(1, Vector2(current_character.hp/current_character.max_hp * 61, 0))
+	if world.current[world.current_turn].size() == 1:
+		$Arrows.hide()
+	else:
+		$Arrows.show()
 
 func pick_random_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -72,10 +76,6 @@ func _input(event):
 		#	return
 	#selected = clamp(selected, 0, characters.size() - 1)
 	
-	#if selected == characters.size() - 1:
-	#	$Arrows.hide()
-	#else:
-	#	$Arrows.show()
 	
 func check_exhausted(direction):
 	get_parent().get_parent().advance_turn(0, direction)
