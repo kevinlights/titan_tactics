@@ -6,31 +6,31 @@
 [ext_resource path="res://scenes/animated/torchtop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/level.gd" type="Script" id=6]
 
-[sub_resource type="NavigationPolygon" id=34]
+[sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=35]
+[sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=36]
+[sub_resource type="NavigationPolygon" id=3]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=37]
+[sub_resource type="NavigationPolygon" id=4]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=38]
+[sub_resource type="NavigationPolygon" id=5]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=39]
+[sub_resource type="NavigationPolygon" id=6]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=40]
+[sub_resource type="TileSet" id=7]
 0/name = "not passable"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -67,7 +67,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 34 )
+2/navigation = SubResource( 1 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 2/shape_one_way = false
@@ -82,7 +82,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 35 )
+3/navigation = SubResource( 2 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 3/shape_one_way = false
@@ -97,7 +97,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 36 )
+4/navigation = SubResource( 3 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 4/shape_one_way = false
@@ -112,7 +112,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 37 )
+5/navigation = SubResource( 4 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 5/shape_one_way = false
@@ -141,7 +141,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 38 )
+7/navigation = SubResource( 5 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -156,7 +156,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 39 )
+8/navigation = SubResource( 6 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 8/shape_one_way = false
@@ -177,6 +177,7 @@ STRUCTURES
 COVERED IN
 CREEPING VINES."
 }
+remove_character = "cyan"
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -204,7 +205,7 @@ frame = 1
 [node name="tile_meta" type="TileMap" parent="navigation"]
 visible = false
 rotation = -0.000220277
-tile_set = SubResource( 40 )
+tile_set = SubResource( 7 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1
