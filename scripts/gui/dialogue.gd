@@ -107,9 +107,9 @@ func set_title(title):
 func set_text(text):
 	cancel_typing()
 	if $background/title.text == "":
-		$background/body.margin_top = 7
+		$background/body.margin_top = 8
 	else:
-		$background/body.margin_top = 17
+		$background/body.margin_top = 18
 	$background/body.text = ""
 	call_deferred("resize")
 	current_block = text
