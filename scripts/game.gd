@@ -180,5 +180,6 @@ func _ready():
 #	character.from_defaults(TYPE.FIGHTER, CONTROL.PLAYER)
 	character.generate(default_stats, TYPE.FIGHTER, CONTROL.PLAYER, 1, true)
 	character.name = "Rolf"
+	character.portrait_override = "hero"
 	team.append(character)
 	

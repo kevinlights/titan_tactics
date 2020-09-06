@@ -16,8 +16,8 @@ export(int) var mov_range
 export(int) var heal
 export(Resource) var item_atk
 export(Resource) var item_def
-export(String, "default", "archer", "swordsman", "mage", "ai_archer", "ai_swordsman", "ai_mage", "hero", "antagonist", "old_man", "cyan") var portrait_override
-
+#export(String, "default", "archer", "swordsman", "mage", "ai_archer", "ai_swordsman", "ai_mage", "hero", "antagonist", "antagonist_revealed", "old_man", "cyan") var portrait_override
+export(Dialogue.PORTRAIT) var portrait_override
 var abilities
 var control
 var weakness

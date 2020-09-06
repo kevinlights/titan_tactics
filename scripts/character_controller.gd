@@ -259,6 +259,8 @@ func from_spawner(character_spawner):
 	character.hp = character.max_hp
 	if character_spawner.dialogue and character_spawner.dialogue.trigger != Dialogue.TRIGGER.DISABLED:
 		dialogue = character_spawner.dialogue
+		if character.portrait_override and character.portrait_override != "":
+			dialogue.portrait = character.portrait_override
 		dialogue.connect("completed", self, "_on_dialogue_completed")
 	if character_spawner.recruit_dialogue and character_spawner.recruit_dialogue.trigger != Dialogue.TRIGGER.DISABLED:
 		recruit_dialogue = character_spawner.recruit_dialogue

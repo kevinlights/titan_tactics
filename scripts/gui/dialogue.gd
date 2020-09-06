@@ -97,10 +97,12 @@ func set_content(dialogue_content):
 		$branches/trigger_1.grab_focus()
 		if content.branches.size() > 1:
 			$branches/trigger_2/option_text.text = content.branches[1].text
+			$branches.margin_bottom = 74
 			$branches/trigger_2.show()
 		if content.branches.size() > 2:
 			$branches/trigger_3/option_text.text = content.branches[2].text
 			$branches/trigger_3.show()
+			$branches.margin_bottom = 96
 
 func set_title(title):
 	$background/title.text = title
