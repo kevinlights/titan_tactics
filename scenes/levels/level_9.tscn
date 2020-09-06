@@ -265,7 +265,7 @@ mov_range = 4
 heal = 9
 item_atk = SubResource( 22 )
 item_def = SubResource( 23 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=25]
 script = ExtResource( 9 )
@@ -325,7 +325,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 27 )
 item_def = SubResource( 28 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=30]
 script = ExtResource( 9 )
@@ -385,7 +385,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 32 )
 item_def = SubResource( 33 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=35]
 script = ExtResource( 9 )
@@ -445,7 +445,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 37 )
 item_def = SubResource( 38 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=40]
 script = ExtResource( 9 )
@@ -505,7 +505,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 42 )
 item_def = SubResource( 43 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=45]
 script = ExtResource( 9 )
@@ -565,7 +565,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 47 )
 item_def = SubResource( 48 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=50]
 script = ExtResource( 9 )
@@ -625,7 +625,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 52 )
 item_def = SubResource( 53 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=55]
 script = ExtResource( 9 )
@@ -662,26 +662,29 @@ centered = false
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 176, 256 )
-frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 224, 256 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 256, 256 )
-frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 72, 128 )
+frame = 1
 
 [node name="Water 4" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 120, 128 )
+frame = 1
 
 [node name="Water 5" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 216, 48 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 184, 48 )
+frame = 1
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 264, 280 )
