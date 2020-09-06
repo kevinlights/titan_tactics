@@ -97,6 +97,7 @@ func _input(event):
 
 func go_home():
 	self.tile = current_entity.tile
+	emit_signal("moved", self.tile)
 
 func set_origin(entity):
 	if current_entity:
