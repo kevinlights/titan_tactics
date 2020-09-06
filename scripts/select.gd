@@ -66,11 +66,12 @@ func _input(event):
 	if world.current_turn == Game.CONTROL.AI:
 		play("blank")
 		return
-	if event.is_action("ui_cancel")&& !event.is_echo() && event.is_pressed():
-		get_parent().advance_turn(0)
+	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+		get_parent().change_character()
 		return
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
 		advance.y = 1
+		print("hmmm")
 	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
 		advance.y = -1
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():

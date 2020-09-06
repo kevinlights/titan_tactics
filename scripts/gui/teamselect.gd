@@ -33,17 +33,16 @@ func update_view():
 	#	Game.TYPE.MAGE:
 	#		animation = "mage"
 	$name.text = characters[selected].name
-	print($name.text in get_parent().get_node("battle").special_names)
 	if $name.text in get_parent().get_node("battle").special_names:
 		$Portrait.play($name.text)
 	if !$name.text in get_parent().get_node("battle").special_names:
-		print("wha the hell?")
 		$Portrait.play("portraits")
 		$Portrait.frame = characters[selected].character_class
 		$Portrait.playing = false
 	
 	$atk.text = "%02d" % (characters[selected].atk + characters[selected].item_atk.attack)
 	$hp.text =  "%02d" % characters[selected].hp
+	$hp.text += "/" + str(characters[selected].max_hp)
 	$lvl.text =  "%02d" % characters[selected].level
 	$def.text =  "%02d" % (characters[selected].def + characters[selected].item_def.defense)
 #	var current = characters[selected]

@@ -103,6 +103,11 @@ func team_confirm():
 	active = true
 	$teamconfirm.call_deferred("show_dialog")
 
+func swap():
+	active = true
+	$characterswap.start = OS.get_ticks_msec()
+	$characterswap.show()
+
 func win():
 	active = true
 	$win.reset()

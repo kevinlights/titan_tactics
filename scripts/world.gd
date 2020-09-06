@@ -98,15 +98,21 @@ func spawn_character(x, y, type = Game.TYPE.MAGE, control = Game.CONTROL.PLAYER)
 	world_map.add_child(character)
 	return character
 
-func advance_turn(explicit = 1):
-	current_character += 1
+func advance_turn(explicit = 1, direction = 1):
+	current_character += direction
 	if current_character >= current[current_turn].size():
-		if explicit:
-			print("End turn")
-			end_turn()
-			return
-		else:
-			current_character = 0
+		current_character = 0
+	var num_done = 0
+	for character_check in current[current_turn]:
+		if character_check.is_done:
+			num_done += 1
+	if num_done == current[current_turn].size():
+		print("End turn")
+		end_turn()
+		return
+		
+	if current_character < 0:
+		current_character = current[current_turn].size() - 1
 	print("Advance turn")
 	$select.disable()
 	yield(get_tree().create_timer(1.0), "timeout")
@@ -118,6 +124,8 @@ func advance_turn(explicit = 1):
 		$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
+func change_character():
+	$gui.swap()
 
 func end_turn():
 #	current[current_turn][current_character]

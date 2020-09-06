@@ -58,17 +58,17 @@ func _process(delta):
 		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
 		
 	#move hp line
-	if $box_ally/hpline.get_point_position(1).x > (playerhp/player.character.max_hp)*61:
+	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*61:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x - 0.5, 0)
 		$box_ally/hpline.set_point_position(1, new_hp_pos)
-	if $box_ally/hpline.get_point_position(1).x < (playerhp/player.character.max_hp)*61:
+	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*61:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x + 0.5, 0)
 		$box_ally/hpline.set_point_position(1, new_hp_pos)
 	
-	if $box_enemy/hpline.get_point_position(1).x > (enemyhp/enemy.character.max_hp)*61:
+	if $box_enemy/hpline.get_point_position(1).x > (enemy.character.hp/enemy.character.max_hp)*61:
 		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x - 0.5, 0)
 		$box_enemy/hpline.set_point_position(1, new_hp_pos)
-	if $box_enemy/hpline.get_point_position(1).x < (enemyhp/enemy.character.max_hp)*61:
+	if $box_enemy/hpline.get_point_position(1).x < (enemy.character.hp/enemy.character.max_hp)*61:
 		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x + 0.5, 0)
 		$box_enemy/hpline.set_point_position(1, new_hp_pos)
 	
@@ -108,8 +108,8 @@ func _ready():
 	$box_enemy/enemyatklevel.text = str(enemyatk)
 	$box_enemy/enemydeflevel.text = str(enemydef)
 	$box_enemy/enemylevel.text = str(enemylvl)
-	$box_enemy/enemyhp.text = str(enemyhp)
-	$box_ally/playerhp.text = str(playerhp)
+	$box_enemy/enemyhp.text = (enemyhp)
+	$box_ally/playerhp.text = (playerhp)
 	$PlayerType.frame = atlas_frames[player.character.character_class]
 	$EnemyType.frame = atlas_frames[enemy.character.character_class]
 	if playername in special_names:
@@ -154,15 +154,17 @@ func set_entities(player_entity, enemy_entity):
 	_ready()
 
 func update_stats():
+	enemyhp = enemy.character.hp
 	playerhp = player.character.hp
+	if enemyhp < 0:
+		enemyhp = 0
 	if playerhp < 0:
 		playerhp = 0
+	enemyhp = str(enemyhp)  + "/" + str(enemy.character.max_hp)
+	playerhp = str(playerhp)  + "/" + str(player.character.max_hp)
 	playerlvl = player.character.level
 	playeratk = floor(player.character.atk+ player.character.item_atk.attack)
 	playerdef = floor(player.character.def + player.character.item_def.defense)
-	enemyhp = enemy.character.hp
-	if enemyhp < 0:
-		enemyhp = 0
 	enemylvl = enemy.character.level
 	enemyatk = floor(enemy.character.atk + enemy.character.item_atk.attack)
 	enemydef = floor(enemy.character.def + enemy.character.item_def.defense)
@@ -172,8 +174,8 @@ func update_stats():
 	$box_enemy/enemyatklevel.text = str(enemyatk)
 	$box_enemy/enemydeflevel.text = str(enemydef)
 	$box_enemy/enemylevel.text = str(enemylvl)
-	$box_enemy/enemyhp.text = str(enemyhp)
-	$box_ally/playerhp.text = str(playerhp)
+	$box_enemy/enemyhp.text = (enemyhp)
+	$box_ally/playerhp.text = (playerhp)
 
 func start_hiding(player):
 	var lvl_pos = (player.character.xp)/(player.character.xp_to_next)*28
