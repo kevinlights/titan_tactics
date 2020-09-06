@@ -203,7 +203,7 @@ attack_range = 1.0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=23]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
 character_class = 1
 name = "Nina"
@@ -274,7 +274,7 @@ centered = false
 position = Vector2( 72, 56 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 23 )
+stats = SubResource( 18 )
 dialogue = SubResource( 19 )
 recruit_dialogue = SubResource( 20 )
 
@@ -292,16 +292,18 @@ script = ExtResource( 9 )
 item_spawner = SubResource( 22 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
+frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
-frame = 1
 
 [node name="DialogueTrigger" type="Sprite" parent="map"]
 position = Vector2( 120, 104 )

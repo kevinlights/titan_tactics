@@ -128,6 +128,7 @@ func change_character():
 	$gui.swap()
 
 func end_turn():
+	#yield(get_tree().create_timer(2.0), "timeout")
 #	current[current_turn][current_character]
 	for character in current[Game.CONTROL.PLAYER]:
 		character.get_node("done").hide()
@@ -208,20 +209,6 @@ func _ready():
 			var tile_id = tile_meta.get_cell(x, y)
 			if tile_id == TILEID.PLAYER_SPAWN:
 				player_spawns.append(Vector2(x, y))
-#			if tile_id == TILEID.ENEMY_SPAWN_MAGE:
-#				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.MAGE, Game.CONTROL.AI))
-#				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
-#				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")
-#			if tile_id == TILEID.ENEMY_SPAWN_FIGHTER:
-#				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.FIGHTER, Game.CONTROL.AI))
-#				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
-#				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")				
-#			if tile_id == TILEID.ENEMY_SPAWN_ARCHER:
-#				current[Game.CONTROL.AI].append(spawn_character(x, y, Game.TYPE.ARCHER, Game.CONTROL.AI))
-#				current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
-#				current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")				
-#			if tile_id == TILEID.CHEST:
-#				var chest = spawn_chest(x, y)
 	gui.get_node("action_menu").connect("attack", self, "_on_attack")
 	gui.get_node("action_menu").connect("recruit", self, "_on_recruit")
 	gui.get_node("action_menu").connect("guard", self, "_on_guard")
@@ -237,14 +224,12 @@ func _ready():
 	gui.get_node("teamconfirm").connect("start_level", self, "_on_start_level")
 	gui.get_node("teamconfirm").connect("check_map", self, "_on_check_map")
 	gui.get_node("teamconfirm").connect("edit_team", self, "_on_edit_team")
+	gui.get_node("lvlup").connect("close", self, "check_end_game")
 	gui.get_node("win").connect("next", self, "_on_next_level")
 	gui.get_node("win").connect("retry", self, "_on_replay")
 	gui.get_node("lose").connect("retry", self, "_on_replay")
 	$select.connect("moved", self, "_on_selector_moved")
 
-#	if $level.editor_description and $level.editor_description != "":
-#		gui.intro($level.editor_description)
-#	else:
 	select_team()
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
@@ -334,12 +319,12 @@ func _on_start_level():
 
 
 func _on_win(ignore_dialogue = false):
-	emit_signal("win")
-	if not gui.get_node("dialogue").visible or ignore_dialogue:
+	if not (gui.get_node("dialogue").visible or gui.get_node("lvlup").visible) or ignore_dialogue:
 		print("win, dialogue: ", gui.get_node("dialogue").visible)
 		gui.get_node("dialogue").hide()
 		gui.win()
 		$music/win.play()
+		emit_signal("win")
 		print("End game: WIN")
 	
 func check_end_game(ignore_dialogue = false):
