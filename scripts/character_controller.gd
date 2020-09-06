@@ -292,8 +292,9 @@ func recruit(source):
 #		return false
 #	else:
 	emit_signal("recruited")
-	$sfx/recruit/success.play()
 	die()
+	source.character.add_xp(character.level)
+	$sfx/recruit/success.play()
 
 func die():
 	is_dead = true
