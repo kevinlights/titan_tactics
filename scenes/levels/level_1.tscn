@@ -292,18 +292,16 @@ script = ExtResource( 9 )
 item_spawner = SubResource( 22 )
 
 [node name="Water1" parent="map" instance=ExtResource( 13 )]
-frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
+frame = 1
 
 [node name="DialogueTrigger" type="Sprite" parent="map"]
 position = Vector2( 120, 104 )
