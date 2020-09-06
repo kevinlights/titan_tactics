@@ -469,6 +469,7 @@ func _on_attack():
 func _on_recruit_completed(id):
 	gui.back()
 	var target = entity_at($select.tile)
+	get_current().character.turn_limits.actions -= 1
 	if id == "accepted":
 		target.recruit(get_current())
 		target.character.control = Game.CONTROL.PLAYER
