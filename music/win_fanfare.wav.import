@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/win_fanfare.wav-e0cc01801384cdac4a25ccc8d5ac29c0.sample"
+path="res://.import/win_fanfare.wav-b1f887e6ce0f5fbf4b7e86fe6615b930.sample"
 
 [deps]
 
-source_file="res://music/win_fanfare.wav"
-dest_files=[ "res://.import/win_fanfare.wav-e0cc01801384cdac4a25ccc8d5ac29c0.sample" ]
+source_file="res://Music/win_fanfare.wav"
+dest_files=[ "res://.import/win_fanfare.wav-b1f887e6ce0f5fbf4b7e86fe6615b930.sample" ]
 
 [params]
 

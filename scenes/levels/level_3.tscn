@@ -110,7 +110,7 @@ portrait = 10
 trigger = 5
 trigger_id = "but"
 title = ""
-text = "(Rolf spots smoke clouds on the horizon)"
+text = "¤Rolf spots smoke clouds on the horizon¤"
 branches = [  ]
 result = 2
 
@@ -121,7 +121,7 @@ portrait = 6
 trigger = 5
 trigger_id = "then"
 title = "Rolf:"
-text = "Fires in the north. The forest settlement is burning."
+text = "Fires in the north. The forest settlement "
 branches = [  ]
 result = 2
 
@@ -132,7 +132,7 @@ portrait = 6
 trigger = 5
 trigger_id = "taco"
 title = ""
-text = "We must make haste if we are to make it back before Ulrich is found!"
+text = "is burning. We must make haste if we are to make it back before Ulrich is found!"
 branches = [  ]
 result = 2
 
@@ -143,7 +143,7 @@ portrait = 9
 trigger = 5
 trigger_id = "stuff"
 title = "Cyan:"
-text = "Hurry and follow me to the well. I have not forgotten the way."
+text = "Hurry and follow me to the well. I haven't forgotten the way."
 branches = [  ]
 result = 2
 
@@ -517,11 +517,9 @@ item_spawner = SubResource( 14 )
 
 [node name="Water2" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 48, 176 )
-frame = 1
 
 [node name="Water 1" parent="map" instance=ExtResource( 14 )]
 position = Vector2( 16, 176 )
-frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 120, 184 )

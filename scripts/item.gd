@@ -46,19 +46,19 @@ func get_class():
 	return character_class
 
 var item_prefix = {
-	0: [ "lesser", "small", "rusted", "broken", "weak", "puny", "light" ],
-	1: [ "minor", "common" ],
-	2: [ "iron", "forged", "hard" ],
-	3: [ "steel", "sharp", "elven" ],
-	4: [ "strong", "shiny", "silver" ],
-	5: [ "rare", "epic", "deadly", "great" ]
+	0: [ "Lesser", "Small", "Rusted", "Broken", "Weak", "Puny", "Light" ],
+	1: [ "Minor", "Common" ],
+	2: [ "Iron", "Forged", "Hard" ],
+	3: [ "Steel", "Sharp", "Elven" ],
+	4: [ "Strong", "Shiny", "Silver" ],
+	5: [ "Rare", "Epic", "Deadly", "Great" ]
 }
 
 var item_names = {
-	Game.TYPE.FIGHTER: [ "sword", "cleaver", "knife", "dagger" ],
-	Game.TYPE.ARCHER: [ "bow", "longbow" ],
-	Game.TYPE.MAGE: [ "wand", "staff", "scepter" ],
-	Game.TYPE.OTHER: [ "plate", "helm", "tunic", "jacket", "chain", "mail", "boots", "vest", "suit", "shirt"]
+	Game.TYPE.FIGHTER: [ "Sword", "Cleaver", "Knife", "Dagger" ],
+	Game.TYPE.ARCHER: [ "Bow", "Longbow" ],
+	Game.TYPE.MAGE: [ "Wand", "Staff", "Scepter" ],
+	Game.TYPE.OTHER: [ "Plate", "Helm", "Tunic", "Jacket", "Chain", "Mail", "Boots", "Vest", "Suit", "Shirt"]
 }
 
 func sequence_cumulative(sequence, position):

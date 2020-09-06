@@ -1,376 +1,10 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gfx/Maps/lv10.png" type="Texture" id=1]
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
 [ext_resource path="res://scenes/animated/torchbottom.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/animated/torchtop.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/dialogue.gd" type="Script" id=5]
 [ext_resource path="res://scripts/level.gd" type="Script" id=6]
-[ext_resource path="res://gfx/speak_map.png" type="Texture" id=7]
-[ext_resource path="res://scripts/dialogue_trigger.gd" type="Script" id=8]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 5 )
-dialogue_id = "yet"
-portrait = 9
-trigger = 4
-trigger_id = ""
-title = "Cyan:"
-text = "The well is up ahead!"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 5 )
-dialogue_id = "you"
-portrait = 6
-trigger = 5
-trigger_id = "yet"
-title = "Rolf:"
-text = "Looks like we have a few obstacles to manage…"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=3]
-script = ExtResource( 5 )
-dialogue_id = "still"
-portrait = 9
-trigger = 5
-trigger_id = "you"
-title = "Cyan:"
-text = "Oh no! The Hass discovered it’s location!"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 5 )
-dialogue_id = "get"
-portrait = 6
-trigger = 5
-trigger_id = "still"
-title = "Rolf:"
-text = "Don’t worry! We’ll handle these louts and get what "
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 5 )
-dialogue_id = "these"
-portrait = 6
-trigger = 5
-trigger_id = "get"
-title = ""
-text = "we came for."
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 5 )
-dialogue_id = "shirts"
-portrait = 6
-trigger = 6
-trigger_id = "these"
-title = "Rolf:"
-text = "Looks like there is still a bucket in the well… "
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 5 )
-dialogue_id = "so"
-portrait = 6
-trigger = 5
-trigger_id = "shirts"
-title = ""
-text = "The Hass have clearly used this well."
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=8]
-script = ExtResource( 5 )
-dialogue_id = ""
-portrait = 9
-trigger = 5
-trigger_id = "so"
-title = "Cyan:"
-text = "Let’s pull up some healing water…"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=9]
-script = ExtResource( 5 )
-dialogue_id = "empty"
-portrait = 6
-trigger = 5
-trigger_id = "well"
-title = "Rolf:"
-text = "… I just can’t believe it… The well is dry Cyan…"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=10]
-script = ExtResource( 5 )
-dialogue_id = "taco"
-portrait = 9
-trigger = 0
-trigger_id = "empty"
-title = "Cyan:"
-text = "You can’t be serious!"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=11]
-script = ExtResource( 5 )
-dialogue_id = "borger"
-portrait = 6
-trigger = 5
-trigger_id = "taco"
-title = "Rolf:"
-text = "e’ve failed Ulrich! He doesn’t stand a chance now…"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=12]
-script = ExtResource( 5 )
-dialogue_id = "sword"
-portrait = 10
-trigger = 5
-trigger_id = "borger"
-title = ""
-text = "¤A Swordswoman steps out from the shadows¤"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=13]
-script = ExtResource( 5 )
-dialogue_id = "alex"
-portrait = 7
-trigger = 5
-trigger_id = "sword"
-title = "Alex:"
-text = "Rolf! Cyan! What brings you so far into the caves here?"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=14]
-script = ExtResource( 5 )
-dialogue_id = "next"
-portrait = 9
-trigger = 5
-trigger_id = "alex"
-title = "Cyan:"
-text = "Alex?…. I haven’t seen you since I was a child!"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=15]
-script = ExtResource( 5 )
-dialogue_id = "andalso"
-portrait = 6
-trigger = 5
-trigger_id = "next"
-title = "Rolf:"
-text = "Alex, we could ask you the very same question. What"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 5 )
-dialogue_id = "yoddlers"
-portrait = 6
-trigger = 5
-trigger_id = "andalso"
-title = ""
-text = "are YOU doing down here?"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 5 )
-dialogue_id = "badness"
-portrait = 7
-trigger = 5
-trigger_id = "yoddlers"
-title = "Alex:"
-text = "I came in search of mushrooms before the"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=18]
-script = ExtResource( 5 )
-dialogue_id = "darkness"
-portrait = 7
-trigger = 5
-trigger_id = "badness"
-title = ""
-text = "season’s end. I managed to slip by the Hass. They are thick lately… I fear there|may be something afoot…"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=19]
-script = ExtResource( 5 )
-dialogue_id = "lightness"
-portrait = 9
-trigger = 5
-trigger_id = "darkness"
-title = "Cyan:"
-text = "They… They’ve  already found the settlement in"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=20]
-script = ExtResource( 5 )
-dialogue_id = "goodness"
-portrait = 9
-trigger = 5
-trigger_id = "lightness"
-title = ""
-text = "the forest and destroyed it…. I am sorry. It must have happened after you|left the settlement."
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=21]
-script = ExtResource( 5 )
-dialogue_id = "wellness"
-portrait = 7
-trigger = 5
-trigger_id = "goodness"
-title = "Alex:"
-text = "…Mother..! My father! my family! I have to go back!"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=22]
-script = ExtResource( 5 )
-dialogue_id = "tide"
-portrait = 7
-trigger = 5
-trigger_id = "wellness"
-title = ""
-text = "I have to see if anyone survived!"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=23]
-script = ExtResource( 5 )
-dialogue_id = "bleach"
-portrait = 6
-trigger = 5
-trigger_id = "tide"
-title = "Rolf:"
-text = "You should stay with us if you value your life."
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=24]
-script = ExtResource( 5 )
-dialogue_id = "nevermind"
-portrait = 6
-trigger = 5
-trigger_id = "bleach"
-title = ""
-text = "The Hass have saturated the forest with troops."
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=25]
-script = ExtResource( 5 )
-dialogue_id = "nirvana"
-portrait = 7
-trigger = 5
-trigger_id = "nevermind"
-title = "Alex:"
-text = "You’re right, I cannot return. What am I to do"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=26]
-script = ExtResource( 5 )
-dialogue_id = "teenspirit"
-portrait = 7
-trigger = 5
-trigger_id = "nirvana"
-title = ""
-text = "now, though? I am destitute… I have no home!"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=27]
-script = ExtResource( 5 )
-dialogue_id = "foo"
-portrait = 9
-trigger = 5
-trigger_id = "teenspirit"
-title = "Cyan:"
-text = "You are not the only one without the Gods' favor…"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=28]
-script = ExtResource( 5 )
-dialogue_id = "fighters"
-portrait = 6
-trigger = 5
-trigger_id = "foo"
-title = "Rolf:"
-text = "My foster father Ulrich has fallen ill… We have come to"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=29]
-script = ExtResource( 5 )
-dialogue_id = "big"
-portrait = 6
-trigger = 5
-trigger_id = "fighters"
-title = ""
-text = "this well to gather its healing waters for him. He has no hope of survival|now, for the well is dry."
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=30]
-script = ExtResource( 5 )
-dialogue_id = "me"
-portrait = 7
-trigger = 5
-trigger_id = "big"
-title = "Alex:"
-text = "…Wait… If I remember correctly there is another"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=31]
-script = ExtResource( 5 )
-dialogue_id = "mentos"
-portrait = 7
-trigger = 0
-trigger_id = "me"
-title = ""
-text = "of these wells in the city of Destra. It is a bit further, but I can come|with you. I don’t know if you realize this, but long ago when Ulrich acted as|the village healer he saved my mother from the Hass when they attacked… I feel|this moment is fated! I will help you save your foster father, Rolf!"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=32]
-script = ExtResource( 5 )
-dialogue_id = "freshmaker"
-portrait = 6
-trigger = 5
-trigger_id = "mentos"
-title = "Rolf:"
-text = "Then we must hurry to Destra! We cannot delay"
-branches = [  ]
-result = 2
-
-[sub_resource type="Resource" id=33]
-script = ExtResource( 5 )
-dialogue_id = ""
-portrait = 6
-trigger = 5
-trigger_id = "freshmaker"
-title = ""
-text = "further. Lead the way, Alex!"
-branches = [  ]
-result = 2
 
 [sub_resource type="NavigationPolygon" id=34]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -405,6 +39,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
 1/name = "cover"
@@ -415,6 +53,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
 2/name = "player spawn"
@@ -426,6 +68,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
 2/navigation = SubResource( 34 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
 3/name = "enemy spawn"
@@ -437,6 +83,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
 3/navigation = SubResource( 35 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
 3/shapes = [  ]
 3/z_index = 0
 4/name = "enemy spawn"
@@ -448,6 +98,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
 4/navigation = SubResource( 36 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
 5/name = "enemy spawn"
@@ -459,6 +113,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
 5/navigation = SubResource( 37 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
 5/shapes = [  ]
 5/z_index = 0
 6/name = "destructible"
@@ -469,6 +127,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
 7/name = "passable"
@@ -480,6 +142,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
 7/navigation = SubResource( 38 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
 7/shapes = [  ]
 7/z_index = 0
 8/name = "chest"
@@ -491,6 +157,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
 8/navigation = SubResource( 39 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
 8/shapes = [  ]
 8/z_index = 0
 
@@ -507,8 +177,6 @@ STRUCTURES
 COVERED IN
 CREEPING VINES."
 }
-dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ]
-remove_character = "cyan"
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -516,31 +184,25 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 248 )
-frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 296 )
+frame = 1
 
 [node name="Torch bottom4" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 296 )
-frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 248 )
-frame = 1
 
 [node name="Torch bottom5" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
-
-[node name="DialogueTrigger" type="Sprite" parent="map"]
-position = Vector2( 104, 56 )
-texture = ExtResource( 7 )
-script = ExtResource( 8 )
-dialogue_id = "well"
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
+visible = false
 rotation = -0.000220277
 tile_set = SubResource( 40 )
 cell_size = Vector2( 16, 16 )
@@ -563,18 +225,17 @@ CREEPING VINES."
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 232 )
+frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 280 )
-frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 280 )
+frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 232 )
-frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 104, 24 )
-frame = 1

@@ -19,9 +19,21 @@ custom_styles/panel = SubResource( 1 )
 margin_left = 10.0
 margin_top = 148.0
 margin_right = 150.0
+<<<<<<< HEAD
+margin_bottom = 616.0
+text = "	It is a time of dissonance and regression… Many years after the apocalyptic war, humanity has managed to survive, but science and reason have not. Superstition and struggle in a new dark age is the current reality. A powerful and ruthless tribe named The Hass have formed and constantly exert force to gain dominion of the free people.
+
+	You, Rolf, were orphaned as an infant. Ulrich, a hermit, found and raised you. In your early years, Ulrich acted as a healer for a settlement of free people who lived in caves. This settlement was found and destroyed by Hass forces. Those few survivors who were not captured or killed fled out into the forest to form a new hidden settlement. After helping establish the new settlement, Ulrich took you and another orphan, named Cyan, away into seclusion, hiding from both the free people and the Hass. Ulrich has done all he can to shelter both you and Cyan from any contact with anyone else since splitting from the free people. He insists this is for your safety, but will not elaborate further.
+
+	You are now grown and have been taught by Ulrich how to handle a sword. You have formed a tight bond with Cyan. Many things remain a mystery to you. Your foster father does not know your parents and will not reveal the reason he hides from the free people. You trust Ulrich and do not question his motives openly, but still wonder in the small hours. You have lived a secluded life at the insistence of your foster father since leaving the free people. Now, however, things are about to change… 
+
+	Ulrich has taken ill and is near death… He speaks of a well with healing water located in the caves near the former settlement of free people. To save your foster father, both you and Cyan must venture into the caves to find the well and return with the healing water."
+align = 1
+=======
 margin_bottom = 767.0
 custom_constants/line_spacing = 10
 text = "Bon, câlisse, tu vas-tu me crisser patience ? Ferme-toé un peu le mâche-patate là, va prendre une marche ou quelque chose. Mâ t'en faire moé des patentes de même, tu vas m'entendre baptinse. T'es de bonne heure sul piton toé à matin, quessé qui t'arrive ? Quessé tu veux j'te dise sacrament, fouille-moé bout d'viarge, je le sais-tu moé. Osti qui fa frette.Je m'en crisse, mais câlicement. Lâche pas la patate, enwoye, tu rentres la gogosse dans la slot pis ça va le faire. Sa blonde m'en a sacré toute une au parcheesi, mais elle a été mardeuse. Bon, câlisse, tu vas-tu me crisser patience ? Je crisse mon camp d'icite anyway, je déguedine au plus sacrant, ça sent la cibole de marde. Ça a fessé dans le dash en esti hier, j'étais paqueté en tabarnak, je suis crissement lendemain de veille.Quessé tu veux j'te dise sacrament, fouille-moé bout d'viarge, je le sais-tu moé. Baptême de crisse de cibole de viande à chien, j'en ai plein mon casse d'être toute décalissé de la vie, avec le windshier de mon char toute déviargé par l'autre esti de cave. Bon, câlisse, tu vas-tu me crisser patience ? Yé un peu niaiseux le niochon de voisin, il crisse eu'rien avec sa vie. T'es de bonne heure sul piton toé à matin, quessé qui t'arrive ? Mâ t'en faire moé des patentes de même, tu vas m'entendre baptinse."
+>>>>>>> 6799ebb17da483c1db7b9e38fd0ddd406fcb0787
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
