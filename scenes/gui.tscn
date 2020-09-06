@@ -45,43 +45,43 @@
 [ext_resource path="res://gfx/place.png" type="Texture" id=43]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 42 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 36 )
 region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 36 )
-region = Rect2( 0, 0, 36, 50 )
+region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 36 )
-region = Rect2( 36, 0, 36, 50 )
+atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Rolf",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "portraits",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "Rolf",
 "speed": 5.0
 } ]
 
@@ -294,7 +294,6 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="action_menu" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="intro" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -588,7 +587,6 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 23 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -601,6 +599,7 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 28 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1051,10 +1050,10 @@ position = Vector2( 130, 130 )
 texture = ExtResource( 33 )
 
 [node name="Next" type="ToolButton" parent="win/Control"]
-margin_left = 110.996
-margin_top = 113.782
-margin_right = 152.996
-margin_bottom = 135.782
+margin_left = 108.996
+margin_top = 112.782
+margin_right = 150.996
+margin_bottom = 134.782
 focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath("../Retry")
 theme = ExtResource( 22 )
@@ -1065,7 +1064,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 visible = false
-position = Vector2( -2, 0 )
+position = Vector2( 0, -1 )
 frames = SubResource( 37 )
 frame = 1
 playing = true
@@ -1075,13 +1074,16 @@ script = ExtResource( 24 )
 
 [node name="Retry" type="ToolButton" parent="win/Control"]
 margin_left = 110.996
-margin_top = 125.234
+margin_top = 124.234
 margin_right = 151.996
-margin_bottom = 147.234
+margin_bottom = 146.234
 focus_neighbour_top = NodePath("../Next")
 focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 22 )
 text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="focus" type="AnimatedSprite" parent="win/Control/Retry"]
 visible = false
@@ -1161,9 +1163,9 @@ texture = ExtResource( 33 )
 
 [node name="Retry" type="ToolButton" parent="lose/Control"]
 margin_left = 110.996
-margin_top = 113.782
+margin_top = 112.782
 margin_right = 152.996
-margin_bottom = 135.782
+margin_bottom = 134.782
 focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath("../Quit")
 theme = ExtResource( 22 )
@@ -1174,7 +1176,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Retry"]
 visible = false
-position = Vector2( -2, 0 )
+position = Vector2( -2, -1 )
 frames = SubResource( 37 )
 frame = 1
 playing = true
@@ -1184,17 +1186,20 @@ script = ExtResource( 24 )
 
 [node name="Quit" type="ToolButton" parent="lose/Control"]
 margin_left = 107.922
-margin_top = 125.849
+margin_top = 123.849
 margin_right = 148.922
-margin_bottom = 147.849
+margin_bottom = 145.849
 focus_neighbour_top = NodePath("../Retry")
 focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 22 )
 text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Quit"]
 visible = false
-position = Vector2( -2, -11.4519 )
+position = Vector2( 1, -11.4519 )
 frames = SubResource( 37 )
 frame = 1
 playing = true
