@@ -31,6 +31,7 @@ animations = [ {
 [sub_resource type="ImageTexture" id=7]
 
 [node name="attack" type="Control"]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -53,6 +54,7 @@ __meta__ = {
 }
 
 [node name="NinePatchRect" type="NinePatchRect" parent="panel"]
+margin_left = -10.0
 margin_top = -1.0
 margin_right = 57.0
 margin_bottom = 28.0
@@ -68,9 +70,9 @@ __meta__ = {
 [node name="action_1" type="ToolButton" parent="panel" groups=[
 "button",
 ]]
-margin_left = 2.0
+margin_left = -7.0
 margin_top = 3.0
-margin_right = 59.0
+margin_right = 50.0
 margin_bottom = 12.0
 focus_neighbour_bottom = NodePath("../action_2")
 focus_next = NodePath("../action_2")
@@ -84,8 +86,8 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="panel/action_1"]
-visible = false
 frames = SubResource( 5 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 1, 2 )
@@ -94,9 +96,9 @@ script = ExtResource( 4 )
 [node name="action_2" type="ToolButton" parent="panel" groups=[
 "button",
 ]]
-margin_left = 2.0
+margin_left = -7.0
 margin_top = 13.0
-margin_right = 59.0
+margin_right = 51.0
 margin_bottom = 22.0
 rect_pivot_offset = Vector2( 13.4933, 1.83694 )
 focus_neighbour_top = NodePath("../action_1")
@@ -113,6 +115,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="panel/action_2"]
 visible = false
 frames = SubResource( 5 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 1, 2 )
