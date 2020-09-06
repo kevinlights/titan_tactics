@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://gfx/Maps/lv10.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -113,7 +113,304 @@ portrait = 7
 trigger = 5
 trigger_id = "8"
 title = "Alex:"
-text = "¤dodges Rolf’s advance¤ “Your foster father helped"
+text = "¤dodges Rolf’s advance¤ “Your foster father"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 5 )
+dialogue_id = "10"
+portrait = 7
+trigger = 5
+trigger_id = "9"
+title = ""
+text = "helped form The Hass. The village found him out and thus he became| a hermit to hide from their wrath. I bet you didn’t know any of that,|did you? He isn’t really ill, it was all a ruse to get you to join us."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 5 )
+dialogue_id = "11"
+portrait = 6
+trigger = 5
+trigger_id = "10"
+title = "Rolf:"
+text = "You are full of lies!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 5 )
+dialogue_id = "12"
+portrait = 7
+trigger = 5
+trigger_id = "11"
+title = "Alex:"
+text = "…I really had to give it time to study your"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 5 )
+dialogue_id = "13"
+portrait = 7
+trigger = 5
+trigger_id = "12"
+title = ""
+text = " abilities and see if you were worthy. Your mother asked me to|kill you if you could not hold your own against some of our elite.|Cyan was weak and had to be returned to the earth. You have an obligation|to your mother, Rolf. She wants you for her right hand as The Hass|expands into the territories beyond."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 5 )
+dialogue_id = "14"
+portrait = 6
+trigger = 5
+trigger_id = "13"
+title = "Rolf:"
+text = "My… My mother is Hass? What kind of fabrication"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 5 )
+dialogue_id = "15"
+portrait = 6
+trigger = 0
+trigger_id = "14"
+title = ""
+text = " is this? You are insane!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 5 )
+dialogue_id = "16"
+portrait = 7
+trigger = 5
+trigger_id = "15"
+title = "Alex:"
+text = "Hardly… What will it be, Rolf?"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 5 )
+dialogue_id = "17"
+portrait = 7
+trigger = 0
+trigger_id = "16"
+title = ""
+text = "Will you join us or is this your final hour?"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 5 )
+dialogue_id = "18"
+portrait = 6
+trigger = 5
+trigger_id = "17"
+title = "Rolf:"
+text = "You will pay for your betrayal and what you’ve"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 5 )
+dialogue_id = "19"
+portrait = 6
+trigger = 5
+trigger_id = "18"
+title = ""
+text = "done to Cyan. Fight me now!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 5 )
+dialogue_id = "20"
+portrait = 7
+trigger = 5
+trigger_id = "19"
+title = "Alex:"
+text = "As you wish."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 5 )
+dialogue_id = "21"
+portrait = 9
+trigger = 6
+trigger_id = ""
+title = "Cyan:"
+text = "¤lying in a pool of blood¤ I… I won’t make it Rolf."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 5 )
+dialogue_id = "22"
+portrait = 6
+trigger = 5
+trigger_id = "21"
+title = "Rolf:"
+text = "¤runs to Cyan¤ “You’ll be fine!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 5 )
+dialogue_id = "23"
+portrait = 6
+trigger = 5
+trigger_id = "22"
+title = ""
+text = "There’s no need to say such things"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 5 )
+dialogue_id = "24"
+portrait = 9
+trigger = 5
+trigger_id = "23"
+title = "Cyan:"
+text = "…Alex is right. When I think back… "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 5 )
+dialogue_id = "25"
+portrait = 9
+trigger = 5
+trigger_id = "24"
+title = ""
+text = "it makes sense. Ulrich was involved with the Hass."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=27]
+script = ExtResource( 5 )
+dialogue_id = "26"
+portrait = 6
+trigger = 5
+trigger_id = "25"
+title = "Rolf:"
+text = "Don’t think of those lies, just try to relax."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=28]
+script = ExtResource( 5 )
+dialogue_id = "27"
+portrait = 9
+trigger = 5
+trigger_id = "26"
+title = "Cyan:"
+text = "No… I was just old enough to remember… "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=29]
+script = ExtResource( 5 )
+dialogue_id = "28"
+portrait = 9
+trigger = 5
+trigger_id = "27"
+title = ""
+text = "You were still too young to know it. Just before the settlement...|in the cave was destroyed by the Hass your mother came to visit Ulrich|Ulrich wouldn’t allow me around them. It was all very secretive,| but I was close enough to them at times that...I could hear. ¤gasp¤"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=30]
+script = ExtResource( 5 )
+dialogue_id = "29"
+portrait = 6
+trigger = 5
+trigger_id = "28"
+title = "Rolf:"
+text = "Wait… How could you know it was my mother?"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=31]
+script = ExtResource( 5 )
+dialogue_id = "30"
+portrait = 9
+trigger = 5
+trigger_id = "29"
+title = "Cyan:"
+text = "She had the Hass insignia on her cloak… ¤cough¤"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=32]
+script = ExtResource( 5 )
+dialogue_id = "31"
+portrait = 9
+trigger = 5
+trigger_id = "30"
+title = ""
+text = " …and I just had the sense she was there because of you."
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 5 )
+dialogue_id = "32"
+portrait = 6
+trigger = 5
+trigger_id = "31"
+title = "Rolf:"
+text = "If all this is true, then we have we been"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=34]
+script = ExtResource( 5 )
+dialogue_id = "33"
+portrait = 6
+trigger = 5
+trigger_id = "32"
+title = ""
+text = "deceived by our foster father?… Have we come all this way and risked|our lives for a traitor? He may have raised us, but he helped|form the Hass? …and my mother… this is all too much…"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 5 )
+dialogue_id = "34"
+portrait = 9
+trigger = 5
+trigger_id = "33"
+title = "Cyan:"
+text = "Rolf… I… ¤takes her last breath¤"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=36]
+script = ExtResource( 5 )
+dialogue_id = "35"
+portrait = 6
+trigger = 5
+trigger_id = "34"
+title = "Rolf:"
+text = "No!… Cyan! ¤embraces Cyan and begins to weep¤ "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=37]
+script = ExtResource( 5 )
+dialogue_id = "36"
+portrait = 10
+trigger = 0
+trigger_id = "35"
+title = ""
+text = "…To Be Continued…"
 branches = [  ]
 result = 2
 
@@ -130,7 +427,7 @@ STRUCTURES
 COVERED IN
 CREEPING VINES."
 }
-dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ]
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -138,21 +435,20 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 248 )
-frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 296 )
+frame = 1
 
 [node name="Torch bottom4" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 296 )
-frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 248 )
-frame = 1
 
 [node name="Torch bottom5" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
+frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
@@ -179,18 +475,17 @@ CREEPING VINES."
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 232 )
+frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 280 )
-frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 280 )
+frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 232 )
-frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 104, 24 )
-frame = 1
