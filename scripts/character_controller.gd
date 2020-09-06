@@ -22,6 +22,7 @@ var is_dead = false
 var is_trigger = false
 var healthbar
 var last_target
+var is_done = false
 
 var dialogue
 var recruit_dialogue
@@ -37,7 +38,8 @@ var movement = {
 }
 
 func check_finished():
-	if character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
+	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
+		is_done = true
 		if character.control != Game.CONTROL.AI:
 			$done.show()
 		emit_signal("done")
@@ -69,6 +71,7 @@ func hit(attacker):
 		pick_random_sfx($sfx/defend)
 	if character.hp != character.max_hp:
 		healthbar.show()
+		healthbar.set_value(character.hp, character.max_hp)
 	if character.max_hp <= 0:
 		print("nooooooooooooooooooooooo it can't be")
 	if character.hp <= 0:
@@ -111,6 +114,7 @@ func heal(target):
 	pick_random_sfx($sfx/heal)
 	if target.character.hp == target.character.max_hp:
 		healthbar.hide()
+	check_finished()
 	return healed_hp
 
 func guard():
@@ -124,6 +128,7 @@ func guard():
 
 func end_turn():
 	guarding = false
+	is_done = false
 	character.reset_turn()
 	$guard.hide()
 	$done.hide()

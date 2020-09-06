@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -43,45 +43,46 @@
 [ext_resource path="res://gfx/types.png" type="Texture" id=41]
 [ext_resource path="res://gfx/hero_antagonist_p.png" type="Texture" id=42]
 [ext_resource path="res://gfx/place.png" type="Texture" id=43]
+[ext_resource path="res://scripts/gui/characterswap.gd" type="Script" id=44]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 42 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 36 )
 region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 36 )
-region = Rect2( 0, 0, 36, 50 )
+region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 36 )
-region = Rect2( 36, 0, 36, 50 )
+atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Rolf",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "portraits",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "Rolf",
 "speed": 5.0
 } ]
 
@@ -101,13 +102,29 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 43 )
 region = Rect2( 0, 0, 36, 24 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=46]
 atlas = ExtResource( 43 )
 region = Rect2( 0, 24, 36, 24 )
+
+[sub_resource type="SpriteFrames" id=44]
+animations = [ {
+"frames": [ SubResource( 45 ), SubResource( 46 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 20 )
+region = Rect2( 36, 0, 36, 24 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 20 )
+region = Rect2( 36, 24, 36, 24 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -160,14 +177,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 21 ), SubResource( 22 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -194,14 +211,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 26 ), SubResource( 27 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -326,7 +343,7 @@ playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 141.551, 130.424 )
-frames = SubResource( 14 )
+frames = SubResource( 44 )
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -395,6 +412,101 @@ position = Vector2( 5, 141.497 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
 default_color = Color( 0.917647, 1, 0.866667, 1 )
+
+[node name="characterswap" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 44 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="box_ally" type="Sprite" parent="characterswap"]
+position = Vector2( -36, 127 )
+texture = ExtResource( 28 )
+
+[node name="name" type="Label" parent="characterswap/box_ally"]
+margin_left = -31.3392
+margin_top = -11.958
+margin_right = 8.6608
+margin_bottom = 2.04201
+theme = ExtResource( 22 )
+text = "Rolf"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="atk" type="Label" parent="characterswap/box_ally"]
+margin_left = -17.1473
+margin_top = -0.594002
+margin_right = 22.8527
+margin_bottom = 13.406
+theme = ExtResource( 22 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="Label" parent="characterswap/box_ally"]
+margin_left = -17.2207
+margin_top = 7.03
+margin_right = 22.7793
+margin_bottom = 21.03
+theme = ExtResource( 22 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="def" type="Label" parent="characterswap/box_ally"]
+margin_left = 15.6211
+margin_top = -1.258
+margin_right = 55.6211
+margin_bottom = 12.742
+theme = ExtResource( 22 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lvl" type="Label" parent="characterswap/box_ally"]
+margin_left = 16.368
+margin_top = -11.524
+margin_right = 56.368
+margin_bottom = 2.476
+theme = ExtResource( 22 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="levelline2" type="Line2D" parent="characterswap/box_ally"]
+position = Vector2( 2, -5.5 )
+points = PoolVector2Array( 0, 0, 28, 0 )
+width = 1.0
+default_color = Color( 0.917647, 1, 0.866667, 1 )
+
+[node name="hpline2" type="Line2D" parent="characterswap/box_ally"]
+position = Vector2( -31, 14.497 )
+points = PoolVector2Array( 0, 0, 61, 0 )
+width = 1.0
+default_color = Color( 0.917647, 1, 0.866667, 1 )
+
+[node name="Portrait" type="AnimatedSprite" parent="characterswap/box_ally"]
+position = Vector2( -18, -43 )
+frames = SubResource( 8 )
+animation = "Rolf"
+
+[node name="Arrows" type="AnimatedSprite" parent="characterswap"]
+position = Vector2( 103.551, 130.424 )
+frames = SubResource( 11 )
+playing = true
+
+[node name="Bbutton" type="AnimatedSprite" parent="characterswap"]
+position = Vector2( 141.551, 130.424 )
+frames = SubResource( 14 )
+playing = true
 
 [node name="battle" type="Control" parent="."]
 visible = false
@@ -800,7 +912,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 31 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -822,7 +933,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 31 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -831,7 +941,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 34 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -944,6 +1053,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 34 )
+frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -969,7 +1079,6 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 31 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1067,6 +1176,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 37 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1089,6 +1199,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 37 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1177,6 +1288,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 37 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1199,6 +1311,7 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 37 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1256,6 +1369,7 @@ __meta__ = {
 [node name="more" type="AnimatedSprite" parent="dialogue/background"]
 position = Vector2( 145, 36 )
 frames = SubResource( 40 )
+frame = 1
 playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
@@ -1289,6 +1403,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
 visible = false
 frames = SubResource( 43 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1323,6 +1438,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
 frames = SubResource( 43 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1355,6 +1471,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
 visible = false
 frames = SubResource( 43 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )

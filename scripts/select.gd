@@ -37,8 +37,12 @@ func disable():
 func enable():
 	print("enable selector")
 	disabled = false
+	set_context(world.get_current_context(tile))
 
 func set_context(context):
+	if world.current_turn == Game.CONTROL.AI:
+		play("blank")
+		return
 	match(context):
 		Game.CONTEXT.USE:
 			play("attack")
@@ -55,11 +59,17 @@ func set_context(context):
 
 func _input(event):
 	var advance = Vector2(0, 0)
-	if gui.active or disabled or world.current_turn == Game.CONTROL.AI:
-		play("attack")
+	if gui.active or disabled:
+		if not world.current_turn == Game.CONTROL.AI:
+			play("attack")
+			return
+	if world.current_turn == Game.CONTROL.AI:
+		play("blank")
 		return
-	if event.is_action("ui_cancel")&& !event.is_echo() && event.is_pressed():
-		get_parent().advance_turn(0)
+	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+		set_origin(get_parent().get_current())
+		get_parent().get_node("path_preview/path").clear_points()
+		get_parent().change_character()
 		return
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
 		advance.y = 1

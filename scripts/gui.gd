@@ -44,9 +44,11 @@ func turn(type):
 	active = true
 	match type:
 		Game.CONTROL.PLAYER:
+			print("show turn for player")
 			$playerturn.reset()
 			$playerturn.show()
 		Game.CONTROL.AI:
+			print("show turn for AI")
 			$enemyturn.reset()
 			$enemyturn.show()
 
@@ -100,6 +102,11 @@ func loot(current, new, type):
 func team_confirm():
 	active = true
 	$teamconfirm.call_deferred("show_dialog")
+
+func swap():
+	active = true
+	$characterswap.start = OS.get_ticks_msec()
+	$characterswap.show()
 
 func win():
 	active = true

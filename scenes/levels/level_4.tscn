@@ -1,7 +1,7 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://gfx/Maps/lv4.png" type="Texture" id=1]
-[ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
+[ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/animated/torchtop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/animated/torchbottom.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/item.gd" type="Script" id=5]
@@ -126,7 +126,7 @@ attack_range = 0
 defense = 28.0
 heal = 0
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=36]
 script = ExtResource( 6 )
 character_class = 1
 name = "Trina"
@@ -186,7 +186,7 @@ attack_range = 0
 defense = 36.0
 heal = 1.0
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=37]
 script = ExtResource( 6 )
 character_class = 2
 name = "Mags"
@@ -246,13 +246,13 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=38]
 script = ExtResource( 6 )
 character_class = 0
 name = "Nord"
 level = 4
-hp = 69
-max_hp = 69
+hp = 74
+max_hp = 74
 atk = 7
 def = 2
 atk_range = 1
@@ -306,13 +306,13 @@ attack_range = 1.0
 defense = 0
 heal = 2.0
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 6 )
 character_class = 2
 name = "Firas"
 level = 3
-hp = 65
-max_hp = 65
+hp = 60
+max_hp = 60
 atk = 6
 def = 2
 atk_range = 4
@@ -344,228 +344,15 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=29]
-script = ExtResource( 5 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "minor bow"
-attack = 1.0
-attack_range = 1.0
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=30]
-script = ExtResource( 5 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "minor bow"
-attack = 1.0
-attack_range = 1.0
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=31]
-script = ExtResource( 6 )
-character_class = 1
-name = "Gwen"
-level = 4
-hp = 69
-max_hp = 69
-atk = 7
-def = 2
-atk_range = 3
-mov_range = 6
-heal = 0
-item_atk = SubResource( 29 )
-item_def = SubResource( 30 )
-portrait_override = ""
-
-[sub_resource type="Resource" id=32]
-script = ExtResource( 7 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=33]
-script = ExtResource( 7 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
 [sub_resource type="Resource" id=34]
 script = ExtResource( 14 )
 equipment_slot = 1
 level = 2
 
-[sub_resource type="NavigationPolygon" id=35]
-vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="NavigationPolygon" id=36]
-vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="NavigationPolygon" id=37]
-vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="NavigationPolygon" id=38]
-vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="NavigationPolygon" id=39]
-vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="NavigationPolygon" id=40]
-vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="TileSet" id=41]
-0/name = "not passable"
-0/texture = ExtResource( 2 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 16, 16 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-1/name = "cover"
-1/texture = ExtResource( 2 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 16, 0, 16, 16 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
-2/name = "player spawn"
-2/texture = ExtResource( 2 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 32, 0, 16, 16 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/navigation = SubResource( 35 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
-3/name = "enemy spawn"
-3/texture = ExtResource( 2 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 32, 16, 16, 16 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/navigation = SubResource( 36 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
-3/shapes = [  ]
-3/z_index = 0
-4/name = "enemy spawn"
-4/texture = ExtResource( 2 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 48, 16, 16, 16 )
-4/tile_mode = 0
-4/occluder_offset = Vector2( 0, 0 )
-4/navigation_offset = Vector2( 0, 0 )
-4/navigation = SubResource( 37 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape_one_way = false
-4/shape_one_way_margin = 0.0
-4/shapes = [  ]
-4/z_index = 0
-5/name = "enemy spawn"
-5/texture = ExtResource( 2 )
-5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 0, 32, 16, 16 )
-5/tile_mode = 0
-5/occluder_offset = Vector2( 0, 0 )
-5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 38 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape_one_way = false
-5/shape_one_way_margin = 0.0
-5/shapes = [  ]
-5/z_index = 0
-6/name = "destructible"
-6/texture = ExtResource( 2 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 48, 0, 16, 16 )
-6/tile_mode = 0
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape_one_way = false
-6/shape_one_way_margin = 0.0
-6/shapes = [  ]
-6/z_index = 0
-7/name = "passable"
-7/texture = ExtResource( 2 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 16, 16, 16, 16 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 0, 0 )
-7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 39 )
-7/shape_offset = Vector2( 0, 0 )
-7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape_one_way = false
-7/shape_one_way_margin = 0.0
-7/shapes = [  ]
-7/z_index = 0
-8/name = "chest"
-8/texture = ExtResource( 2 )
-8/tex_offset = Vector2( 0, 0 )
-8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 0, 16, 16, 16 )
-8/tile_mode = 0
-8/occluder_offset = Vector2( 0, 0 )
-8/navigation_offset = Vector2( 0, 0 )
-8/navigation = SubResource( 40 )
-8/shape_offset = Vector2( 0, 0 )
-8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape_one_way = false
-8/shape_one_way_margin = 0.0
-8/shapes = [  ]
-8/z_index = 0
+[sub_resource type="Resource" id=35]
+script = ExtResource( 14 )
+equipment_slot = 0
+level = 2
 
 [node name="level" type="Node2D"]
 script = ExtResource( 11 )
@@ -602,44 +389,36 @@ position = Vector2( 216, 136 )
 position = Vector2( 40, 152 )
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
-position = Vector2( 104, 104 )
+position = Vector2( 200, 152 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 11 )
+stats = SubResource( 36 )
 dialogue = SubResource( 12 )
 recruit_dialogue = SubResource( 13 )
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
-position = Vector2( 120, 120 )
+position = Vector2( 56, 168 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 16 )
+stats = SubResource( 37 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
 [node name="CharacterSpawner3" type="Sprite" parent="map"]
-position = Vector2( 184, 72 )
+position = Vector2( 72, 136 )
 texture = ExtResource( 15 )
 script = ExtResource( 9 )
-stats = SubResource( 21 )
+stats = SubResource( 38 )
 dialogue = SubResource( 22 )
 recruit_dialogue = SubResource( 23 )
 
 [node name="CharacterSpawner4" type="Sprite" parent="map"]
-position = Vector2( 72, 136 )
+position = Vector2( 56, 136 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 26 )
+stats = SubResource( 39 )
 dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
-
-[node name="CharacterSpawner5" type="Sprite" parent="map"]
-position = Vector2( 200, 168 )
-texture = ExtResource( 10 )
-script = ExtResource( 9 )
-stats = SubResource( 31 )
-dialogue = SubResource( 32 )
-recruit_dialogue = SubResource( 33 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 152, 168 )
@@ -647,11 +426,16 @@ texture = ExtResource( 12 )
 script = ExtResource( 13 )
 item_spawner = SubResource( 34 )
 
+[node name="ChestSpawner2" type="Sprite" parent="map"]
+position = Vector2( 168, 120 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
+item_spawner = SubResource( 35 )
+
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
-visible = false
-tile_set = SubResource( 41 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 format = 1

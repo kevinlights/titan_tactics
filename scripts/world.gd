@@ -67,13 +67,17 @@ func make_tile(tile_id):
 		"passable": tile_id != TILEID.NOT_PASSABLE and tile_id != TILEID.COVER
 	}
 
-func is_cover_between(start, end):
-	var current_position = start
-	while not current_position.is_equal_approx(end):
-		current_position = current_position.move_toward(end, 1)
-		if tile_meta.get_cellv(current_position) == TILEID.COVER: 
-			return true
-	return false
+func is_cover_between(character, end):
+	character.get_node("detect_cover").cast_to = (end) - character.position
+	var found_cover = character.get_node("detect_cover").is_colliding()
+	print("Found cover: ", found_cover)
+	return found_cover
+#	var current_position = start
+#	while not current_position.is_equal_approx(end):
+#		current_position = current_position.move_toward(end, 1)
+#		if tile_meta.get_cellv(current_position) == TILEID.COVER: 
+#			return true
+#	return false
 	
 func spawn_chest(x, y, item_spawner):
 	var chest = load("res://scenes/chest.tscn").instance()
@@ -94,15 +98,20 @@ func spawn_character(x, y, type = Game.TYPE.MAGE, control = Game.CONTROL.PLAYER)
 	world_map.add_child(character)
 	return character
 
-func advance_turn(explicit = 1):
-	current_character += 1
+func advance_turn(explicit = 1, direction = 1):
+	current_character += direction
 	if current_character >= current[current_turn].size():
-		if explicit:
-			print("End turn")
-			end_turn()
-			return
-		else:
-			current_character = 0
+		current_character = 0
+	if current_character < 0:
+		current_character = current[current_turn].size() - 1
+	var num_done = 0
+	for character_check in current[current_turn]:
+		if character_check.is_done:
+			num_done += 1
+	if num_done == current[current_turn].size():
+		print("End turn")
+		end_turn()
+		return
 	print("Advance turn")
 	$select.disable()
 	yield(get_tree().create_timer(1.0), "timeout")
@@ -114,6 +123,8 @@ func advance_turn(explicit = 1):
 		$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
+func change_character():
+	$gui.swap()
 
 func end_turn():
 #	current[current_turn][current_character]
@@ -142,11 +153,12 @@ func action():
 	#gui.battle()
 	match(context):
 		Game.CONTEXT.ATTACK:
-			if get_current().can_attack(target):
-				if target.can_recruit() and is_adjacent(get_current(), target):
-					gui.attack()
-				else:
-					_on_attack()
+			if get_current().character.turn_limits.actions > 0:
+				if get_current().can_attack(target):
+					if target.can_recruit() and is_adjacent(get_current(), target):
+						gui.attack()
+					else:
+						_on_attack()
 		Game.CONTEXT.USE:
 			if is_adjacent(target, get_current()):
 				if target.is_loot:
@@ -166,15 +178,15 @@ func action():
 		Game.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
 		Game.CONTEXT.GUARD:
-			if $gui/battle/box_enemy.visible:
-				return
+#			if $gui/battle/box_enemy.visible:
+#				return
 			if get_current().character.turn_limits.actions == 0:
 				_on_end()
 			else:
 				gui.guard()
 		Game.CONTEXT.HEAL:
-			if $gui/battle/box_enemy.visible:
-				return
+#			if $gui/battle/box_enemy.visible:
+#				return
 			if get_current().character.turn_limits.actions == 0:
 				_on_end()
 			else:
@@ -316,6 +328,7 @@ func _on_start_level():
 	$select.set_origin(get_current())
 	$select.call_deferred("enable")
 
+
 func _on_win(ignore_dialogue = false):
 	emit_signal("win")
 	if not gui.get_node("dialogue").visible or ignore_dialogue:
@@ -386,12 +399,16 @@ func _on_level_up(diff, character):
 func _initiate_turn():
 	# in case a signal triggers this after the level is won/lost
 	if current[Game.CONTROL.AI].size() == 0 or current[Game.CONTROL.PLAYER].size() == 0:
+		print("Don't initiate turn; the game is already over.")
 		return
 	if $select.disabled:
 		print("initiate turn")
 		gui.back()
 		$select.enable()
 		$select.set_origin(get_current())
+		$select.set_context(get_current_context($select.tile))
+	else:
+		print("Don't initiate turn: selector is enabled")
 	if current_turn == Game.CONTROL.AI:
 		print("Control turned over to AI")
 		ai.play()
@@ -402,7 +419,7 @@ func _on_attack():
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
 		# block ranged attacks if cover is between attacker and target
-		if get_current().character.character_class != Game.TYPE.FIGHTER and is_cover_between(get_current().tile, target.tile):
+		if get_current().character.character_class != Game.TYPE.FIGHTER and is_cover_between(get_current(), target.position):
 			gui.error("BLOCKED LINE OF SIGHT")
 			gui.call_deferred("back")
 			return
@@ -493,7 +510,7 @@ func _on_selector_moved(tile):
 	var context = get_current_context(tile)
 	print(context)
 	var target = entity_at($select.tile)
-	if target and !target.is_loot and !target.is_trigger: #and target.character.control == Game.CONTROL.AI: context == Game.CONTEXT.ATTACK and 
+	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and  context == Game.CONTEXT.ATTACK:
 		print("you are pointing on " + str(target.character.name))
 		gui.battle(get_current(), target)
 	else:
