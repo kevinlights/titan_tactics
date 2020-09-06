@@ -25,7 +25,7 @@ trigger_id = ""
 title = "Rolf:"
 text = "The Hass have sent scouts out this far?"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 10 )
@@ -36,7 +36,7 @@ trigger_id = "opening"
 title = ""
 text = "This isn't good... I must remember my training..."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 10 )
@@ -47,7 +47,7 @@ trigger_id = "tut"
 title = ""
 text = "Yes, I would like to learn the basics."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 10 )
@@ -58,7 +58,7 @@ trigger_id = "tut"
 title = ""
 text = "No, I don't have the time for rubbish tutorials."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 10 )
@@ -69,7 +69,7 @@ trigger_id = "second"
 title = ""
 text = "Would you like a tutorial?"
 branches = [ SubResource( 3 ), SubResource( 4 ) ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 10 )
@@ -80,7 +80,7 @@ trigger_id = "yes"
 title = "Character Placement:"
 text = "Start by choosing and placing your characters. "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 10 )
@@ -91,7 +91,7 @@ trigger_id = "tuts"
 title = ""
 text = "Place characters to your advantage given the level you face.|You may preview the map by selecting CHECK MAP in the menu in order to plan|your approach.|If you have placed your team but want to make a change, select EDIT TEAM.|When you are ready, select START LEVEL."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 10 )
@@ -102,7 +102,7 @@ trigger_id = "cont"
 title = "Character Movement:"
 text = "Each character has a fixed movement range that can "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 10 )
@@ -113,7 +113,7 @@ trigger_id = "moves"
 title = ""
 text = "split into multiple actions. An action consists of either attacking an enemy, walking |or guarding. A character cannot both attack and guard during the same turn"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 10 )
@@ -124,7 +124,7 @@ trigger_id = "units"
 title = "Character Classes:"
 text = "There are 3 classes, each has advantage over another"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 10 )
@@ -135,7 +135,7 @@ trigger_id = "class"
 title = ""
 text = "Sword ¢ beats bow }|Bow } beats staff §|Staff § beats sword ¢."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 10 )
@@ -146,7 +146,7 @@ trigger_id = "andthen"
 title = "Unit Recruitment:"
 text = "Recruitment is important in order to build a team"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 10 )
@@ -157,7 +157,7 @@ trigger_id = "stuff"
 title = ""
 text = "with diverse units.|Start by wearing an opponent down to a low enough health.|A ¥ icon will appear when they want to talk. Walk up to them and select Speak ¥|You will need to persuade them. Each enemy is different, so choose your|answers wisely!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 10 )
@@ -168,7 +168,7 @@ trigger_id = "things"
 title = "Changing Characters:"
 text = "During your turn, you can press £ and change which"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 10 )
@@ -179,7 +179,7 @@ trigger_id = "change"
 title = ""
 text = "character to control by pressing < and >. When a character has used up all|their actions for that turn, they will not be selectable."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=16]
 script = ExtResource( 6 )
@@ -217,7 +217,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 16 )
 item_def = SubResource( 17 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 10 )
@@ -228,7 +228,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=20]
 script = ExtResource( 10 )
@@ -239,7 +239,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=21]
 script = ExtResource( 8 )
