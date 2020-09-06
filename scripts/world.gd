@@ -49,7 +49,7 @@ func load_level(level_name):
 	$select.disable()
 
 func get_current():
-	current_character = clamp(current_character, 0, current[current_turn].size()-1)
+	current_character = clamp(current_character, 0, abs(current[current_turn].size()-1))
 	return current[current_turn][current_character]
 
 func entity_at(position_vector):
@@ -558,11 +558,15 @@ func get_current_context(tile):
 			return Game.CONTEXT.GUARD
 		else:
 			return Game.CONTEXT.NEUTRAL
-	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
-	if current_path.size() > 0:
-		var allowed = current_path.size() <= get_current().character.turn_limits.move_distance
-		if not allowed:
-			return Game.CONTEXT.NOT_ALLOWED
+	if not current[current_turn].empty():
+		print(current_character)
+		var current_path = pathfinder.find_path(get_current().tile, $select.tile)
+		if current_path.size() > 0:
+			var allowed = current_path.size() <= get_current().character.turn_limits.move_distance
+			if not allowed:
+				return Game.CONTEXT.NOT_ALLOWED
+	else:
+		return Game.CONTEXT.NOT_PLAYABLE
 	return Game.CONTEXT.MOVE
 
 # DEBUG INPUT
