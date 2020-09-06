@@ -23,7 +23,7 @@ portrait = 6
 trigger = 4
 trigger_id = ""
 title = "Rolf:"
-text = "There are the buildings Alexwas talking about up ahead! "
+text = "Over there, the buildings Alex talked about!"
 branches = [  ]
 audio_theme = ""
 
