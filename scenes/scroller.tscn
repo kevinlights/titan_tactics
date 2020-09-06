@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/scroller.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
+[ext_resource path="res://music/scroll_theme.ogg" type="AudioStream" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0627451, 0.203922, 0.262745, 1 )
@@ -32,3 +33,7 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="scroll_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -4.0

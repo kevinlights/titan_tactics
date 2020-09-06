@@ -7,6 +7,7 @@ var ms_per_pixel = 100
 func _ready():
 	start = OS.get_ticks_msec()
 	ttl = $panel/text.rect_size.y * ms_per_pixel
+	$scroll_theme.play()
 
 func _process(delta):
 	var now = OS.get_ticks_msec()

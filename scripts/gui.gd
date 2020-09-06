@@ -106,6 +106,7 @@ func team_confirm():
 func swap():
 	active = true
 	$characterswap.start = OS.get_ticks_msec()
+	$characterswap._input(null)
 	$characterswap.show()
 
 func win():

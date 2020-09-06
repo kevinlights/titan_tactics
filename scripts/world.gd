@@ -150,7 +150,6 @@ func action():
 	var context = get_current_context($select.tile)
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
 	var target = entity_at($select.tile)
-	
 	#gui.battle()
 	match(context):
 		Game.CONTEXT.ATTACK:
@@ -530,7 +529,7 @@ func _on_selector_moved(tile):
 	var context = get_current_context(tile)
 	print(context)
 	var target = entity_at($select.tile)
-	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and  context == Game.CONTEXT.ATTACK:
+	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and context == Game.CONTEXT.ATTACK:
 		print("you are pointing on " + str(target.character.name))
 		gui.battle(get_current(), target)
 	else:
