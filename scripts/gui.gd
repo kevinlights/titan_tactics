@@ -44,10 +44,12 @@ func turn(type):
 	active = true
 	match type:
 		Game.CONTROL.PLAYER:
+			yield(get_tree().create_timer(2.0), "timeout")
 			print("show turn for player")
 			$playerturn.reset()
 			$playerturn.show()
 		Game.CONTROL.AI:
+			#yield(get_tree().create_timer(0.0), "timeout")
 			print("show turn for AI")
 			$enemyturn.reset()
 			$enemyturn.show()
