@@ -67,13 +67,17 @@ func make_tile(tile_id):
 		"passable": tile_id != TILEID.NOT_PASSABLE and tile_id != TILEID.COVER
 	}
 
-func is_cover_between(start, end):
-	var current_position = start
-	while not current_position.is_equal_approx(end):
-		current_position = current_position.move_toward(end, 1)
-		if tile_meta.get_cellv(current_position) == TILEID.COVER: 
-			return true
-	return false
+func is_cover_between(character, end):
+	character.get_node("detect_cover").cast_to = (end) - character.position
+	var found_cover = character.get_node("detect_cover").is_colliding()
+	print("Found cover: ", found_cover)
+	return found_cover
+#	var current_position = start
+#	while not current_position.is_equal_approx(end):
+#		current_position = current_position.move_toward(end, 1)
+#		if tile_meta.get_cellv(current_position) == TILEID.COVER: 
+#			return true
+#	return false
 	
 func spawn_chest(x, y, item_spawner):
 	var chest = load("res://scenes/chest.tscn").instance()
@@ -406,7 +410,7 @@ func _on_attack():
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
 		# block ranged attacks if cover is between attacker and target
-		if get_current().character.character_class != Game.TYPE.FIGHTER and is_cover_between(get_current().tile, target.tile):
+		if get_current().character.character_class != Game.TYPE.FIGHTER and is_cover_between(get_current(), target.position):
 			gui.error("BLOCKED LINE OF SIGHT")
 			gui.call_deferred("back")
 			return

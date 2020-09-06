@@ -312,7 +312,6 @@ script = ExtResource( 14 )
 dialogue_id = "abandoned"
 
 [node name="navigation" type="Navigation2D" parent="."]
-visible = false
 position = Vector2( 65.502, 42.1491 )
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
