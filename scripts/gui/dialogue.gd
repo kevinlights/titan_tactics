@@ -123,7 +123,7 @@ func set_text(text):
 		if not typing_cancelled:
 			$background/body.text += i
 			rng.randomize()
-			var my_random_number = rng.randf_range(1.5, 2.0)
+			var my_random_number = rng.randf_range(1.1, 1.4)
 			$textsfx.set_pitch_scale(my_random_number)
 			$textsfx.play()
 			if $background/body.get_visible_line_count() > 3:

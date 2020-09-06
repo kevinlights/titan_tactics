@@ -454,6 +454,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -742,7 +743,6 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 30 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -755,6 +755,7 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 35 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1517,7 +1518,7 @@ playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
 stream = ExtResource( 19 )
-volume_db = -6.5
+volume_db = -12.0
 
 [node name="branches" type="NinePatchRect" parent="dialogue"]
 margin_left = 8.0
