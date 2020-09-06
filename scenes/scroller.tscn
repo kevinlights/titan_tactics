@@ -20,7 +20,8 @@ custom_styles/panel = SubResource( 1 )
 margin_left = 10.0
 margin_top = 148.0
 margin_right = 150.0
-margin_bottom = 616.0
+margin_bottom = 1153.0
+custom_constants/line_spacing = 10
 text = "	It is a time of dissonance and regression… Many years after an apocalyptic war, humanity has managed to survive, but science and reason have not. Superstition and struggle in a new dark age is the current reality. A powerful and ruthless tribe named The Hass have formed and constantly exert force to gain dominion of the free people.
 
 	You, Rolf, were orphaned as an infant. Ulrich, a hermit, found and raised you. In your early years, Ulrich acted as a healer for a settlement of free people who lived in caves. This settlement was found and destroyed by Hass forces. Those few survivors who were not captured or killed fled out into the forest to form a new hidden settlement. After helping establish the new settlement, Ulrich took you and another orphan, named Cyan, away into seclusion, hiding from both the free people and the Hass. Ulrich has done all he can to shelter both you and Cyan from any contact with anyone else since splitting from the free people. He insists this is for your safety, but will not elaborate further.
@@ -33,7 +34,8 @@ text = "	It is a time of dissonance and regression… Many years after an apocal
 
 
 
-	(Press X or A to continue)"
+
+	Press X or A to continue"
 align = 1
 autowrap = true
 __meta__ = {
