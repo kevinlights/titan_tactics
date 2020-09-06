@@ -122,6 +122,7 @@ func team_confirm():
 	$teamconfirm.call_deferred("show_dialog")
 
 func swap():
+	ally_hide(get_parent().get_current())
 	active = true
 	get_parent().get_node("select/select").show()
 	$characterswap.start = OS.get_ticks_msec()
