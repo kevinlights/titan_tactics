@@ -354,6 +354,8 @@ func all_enemies_eliminated():
 func check_end_game(ignore_dialogue = false):
 	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
 	for trigger in triggers:
+		print("Available ", trigger.available)
+		print("Consumed ", trigger.consumed)
 		if trigger.available == "level_complete" and !trigger.consumed:
 			return false
 	for control in [ Game.CONTROL.AI, Game.CONTROL.PLAYER ]:
@@ -590,6 +592,8 @@ func get_current_context(tile):
 		var current_path = pathfinder.find_path(get_current().tile, $select.tile)
 		if current_path.size() > 0:
 			var allowed = current_path.size() <= get_current().character.turn_limits.move_distance
+			if all_enemies_eliminated():
+				allowed = true
 			if not allowed:
 				return Game.CONTEXT.NOT_ALLOWED
 	else:

@@ -723,7 +723,7 @@ position = Vector2( 88.535, 70.5439 )
 texture = ExtResource( 7 )
 script = ExtResource( 8 )
 dialogue_id = "well"
-available = 1
+available = "level_complete"
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 104, 72 )

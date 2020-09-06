@@ -5,7 +5,7 @@ extends Sprite
 signal trigger
 
 export(String) var dialogue_id
-export(int, "always", "level_complete") var available = "always"
+export(String, "always", "level_complete") var available = "always"
 
 var tile = Vector2(0, 0)
 var is_trigger = true
