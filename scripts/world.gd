@@ -49,7 +49,7 @@ func load_level(level_name):
 	$select.disable()
 
 func get_current():
-	current_character = clamp(current_character, 0, current[current_turn].size() - 1)
+	current_character = clamp(current_character, 0, current[current_turn].size()-1)
 	return current[current_turn][current_character]
 
 func entity_at(position_vector):
