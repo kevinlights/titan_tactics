@@ -69,6 +69,7 @@ func hit(attacker):
 		pick_random_sfx($sfx/defend)
 	if character.hp != character.max_hp:
 		healthbar.show()
+		healthbar.set_value(character.hp, character.max_hp)
 	if character.max_hp <= 0:
 		print("nooooooooooooooooooooooo it can't be")
 	if character.hp <= 0:
