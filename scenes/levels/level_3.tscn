@@ -22,7 +22,7 @@ portrait = 6
 trigger = 4
 trigger_id = ""
 title = "Rolf:"
-text = "(Cyan should be around here somehwere."
+text = "(Cyan should be around here somewhere."
 branches = [  ]
 result = 2
 
@@ -193,6 +193,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 15 )
 item_def = SubResource( 16 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 9 )
@@ -252,6 +253,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 20 )
 item_def = SubResource( 21 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 9 )
@@ -311,6 +313,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 25 )
 item_def = SubResource( 26 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=28]
 script = ExtResource( 9 )
@@ -514,9 +517,11 @@ item_spawner = SubResource( 14 )
 
 [node name="Water2" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 48, 176 )
+frame = 1
 
 [node name="Water 1" parent="map" instance=ExtResource( 14 )]
 position = Vector2( 16, 176 )
+frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 120, 184 )
