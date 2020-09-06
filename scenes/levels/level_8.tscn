@@ -175,7 +175,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 14 )
 item_def = SubResource( 15 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=17]
 script = ExtResource( 5 )
@@ -235,7 +235,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 19 )
 item_def = SubResource( 20 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=22]
 script = ExtResource( 5 )
@@ -295,7 +295,7 @@ mov_range = 4
 heal = 8
 item_atk = SubResource( 24 )
 item_def = SubResource( 25 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=27]
 script = ExtResource( 5 )
@@ -355,7 +355,7 @@ mov_range = 4
 heal = 8
 item_atk = SubResource( 29 )
 item_def = SubResource( 30 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=32]
 script = ExtResource( 5 )
@@ -415,7 +415,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 34 )
 item_def = SubResource( 35 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=37]
 script = ExtResource( 5 )
@@ -475,7 +475,7 @@ mov_range = 4
 heal = 8
 item_atk = SubResource( 39 )
 item_def = SubResource( 40 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=42]
 script = ExtResource( 5 )
@@ -579,6 +579,7 @@ recruit_dialogue = SubResource( 43 )
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
+visible = false
 rotation = -0.000220277
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )

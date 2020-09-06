@@ -328,7 +328,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=54]
+[sub_resource type="Resource" id=31]
 script = ExtResource( 11 )
 character_class = 1
 name = "Wil"
@@ -342,7 +342,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 29 )
 item_def = SubResource( 30 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=32]
 script = ExtResource( 9 )
@@ -388,7 +388,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=55]
+[sub_resource type="Resource" id=36]
 script = ExtResource( 11 )
 character_class = 1
 name = "Tim"
@@ -402,7 +402,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 34 )
 item_def = SubResource( 35 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=37]
 script = ExtResource( 9 )
@@ -448,7 +448,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=56]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 11 )
 character_class = 2
 name = "Layla"
@@ -462,7 +462,7 @@ mov_range = 4
 heal = 7
 item_atk = SubResource( 39 )
 item_def = SubResource( 40 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=42]
 script = ExtResource( 9 )
@@ -508,7 +508,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=57]
+[sub_resource type="Resource" id=46]
 script = ExtResource( 11 )
 character_class = 0
 name = "Gor"
@@ -522,7 +522,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 44 )
 item_def = SubResource( 45 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=47]
 script = ExtResource( 9 )
@@ -568,7 +568,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=58]
+[sub_resource type="Resource" id=51]
 script = ExtResource( 11 )
 character_class = 1
 name = "Lota"
@@ -582,7 +582,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 49 )
 item_def = SubResource( 50 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=52]
 script = ExtResource( 9 )
@@ -637,35 +637,33 @@ item_spawner = SubResource( 28 )
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 128, 160 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 160, 160 )
+frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 272, 192 )
 rotation = 1.5708
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 272, 160 )
 rotation = 1.5708
-frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 272, 64 )
 rotation = 1.5708
-frame = 1
 
 [node name="Water4" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 272, 32 )
 rotation = 1.5708
-frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 56, 168 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 54 )
+stats = SubResource( 31 )
 dialogue = SubResource( 32 )
 recruit_dialogue = SubResource( 33 )
 
@@ -673,7 +671,7 @@ recruit_dialogue = SubResource( 33 )
 position = Vector2( 232, 184 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 55 )
+stats = SubResource( 36 )
 dialogue = SubResource( 37 )
 recruit_dialogue = SubResource( 38 )
 
@@ -681,7 +679,7 @@ recruit_dialogue = SubResource( 38 )
 position = Vector2( 136, 104 )
 texture = ExtResource( 13 )
 script = ExtResource( 10 )
-stats = SubResource( 56 )
+stats = SubResource( 41 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
 
@@ -689,7 +687,7 @@ recruit_dialogue = SubResource( 43 )
 position = Vector2( 152, 40 )
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 57 )
+stats = SubResource( 46 )
 dialogue = SubResource( 47 )
 recruit_dialogue = SubResource( 48 )
 
@@ -697,13 +695,14 @@ recruit_dialogue = SubResource( 48 )
 position = Vector2( 216, 88 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 58 )
+stats = SubResource( 51 )
 dialogue = SubResource( 52 )
 recruit_dialogue = SubResource( 53 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
+visible = false
 rotation = -0.000220277
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )

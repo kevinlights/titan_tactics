@@ -780,6 +780,7 @@ item_spawner = SubResource( 60 )
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
+visible = false
 rotation = -0.000220277
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )

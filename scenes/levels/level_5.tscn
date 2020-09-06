@@ -86,10 +86,10 @@ result = 2
 script = ExtResource( 5 )
 character_class = 1
 equipment_slot = 0
-level = 5
-name = "rare bow"
-attack = 30.0
-attack_range = 35.0
+level = 1
+name = "Minor Bow"
+attack = 1
+attack_range = 1
 defense = 0
 heal = 0
 
@@ -97,10 +97,10 @@ heal = 0
 script = ExtResource( 5 )
 character_class = 1
 equipment_slot = 0
-level = 5
-name = "rare bow"
-attack = 0
-attack_range = 0
+level = 1
+name = "Minor Bow"
+attack = 1
+attack_range = 1
 defense = 26.0
 heal = 0
 
@@ -118,7 +118,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 7 )
 item_def = SubResource( 8 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 7 )
@@ -146,10 +146,10 @@ result = 0
 script = ExtResource( 5 )
 character_class = 0
 equipment_slot = 0
-level = 5
-name = "rare knife"
-attack = 34.0
-attack_range = 27.0
+level = 1
+name = "Minor Knife"
+attack = 1
+attack_range = 1
 defense = 0
 heal = 0
 
@@ -157,10 +157,10 @@ heal = 0
 script = ExtResource( 5 )
 character_class = 0
 equipment_slot = 0
-level = 5
-name = "epic cleaver"
-attack = 0
-attack_range = 0
+level = 1
+name = "Minor Knife"
+attack = 1
+attack_range = 1
 defense = 36.0
 heal = 0
 
@@ -178,7 +178,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 12 )
 item_def = SubResource( 13 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 7 )
@@ -206,23 +206,23 @@ result = 0
 script = ExtResource( 5 )
 character_class = 2
 equipment_slot = 0
-level = 5
-name = "rare staff"
-attack = 26.0
-attack_range = 32.0
+level = 1
+name = "Minor Staff"
+attack = 1
+attack_range = 1
 defense = 0
-heal = 4.0
+heal = 1
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
 character_class = 2
 equipment_slot = 0
-level = 5
-name = "epic wand"
-attack = 0
-attack_range = 0
+level = 1
+name = "Minor Staff"
+attack = 1
+attack_range = 1
 defense = 37.0
-heal = 30.0
+heal = 1
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 6 )
@@ -238,7 +238,7 @@ mov_range = 4
 heal = 5
 item_atk = SubResource( 17 )
 item_def = SubResource( 18 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=20]
 script = ExtResource( 7 )
@@ -266,10 +266,10 @@ result = 0
 script = ExtResource( 5 )
 character_class = 1
 equipment_slot = 0
-level = 5
-name = "rare bow"
-attack = 32.0
-attack_range = 29.0
+level = 1
+name = "Minor Bow"
+attack = 1
+attack_range = 1
 defense = 0
 heal = 0
 
@@ -277,10 +277,10 @@ heal = 0
 script = ExtResource( 5 )
 character_class = 1
 equipment_slot = 0
-level = 5
-name = "epic bow"
-attack = 0
-attack_range = 0
+level = 1
+name = "Minor Bow"
+attack = 1
+attack_range = 1
 defense = 25.0
 heal = 0
 
@@ -298,7 +298,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 22 )
 item_def = SubResource( 23 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=25]
 script = ExtResource( 7 )
@@ -363,7 +363,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 28 )
 item_def = SubResource( 29 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=31]
 script = ExtResource( 7 )
@@ -405,20 +405,21 @@ centered = false
 
 [node name="torchbottom" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 232, 232 )
+frame = 1
 
 [node name="torchbottom2" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 184, 152 )
+frame = 1
 
 [node name="torchbottom3" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 184, 72 )
-frame = 1
 
 [node name="torchbottom4" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 88, 216 )
-frame = 1
 
 [node name="torchbottom5" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 104, 56 )
+frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 88, 88 )
@@ -475,6 +476,7 @@ item_spawner = SubResource( 33 )
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
+visible = false
 rotation = -0.000220277
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
@@ -486,18 +488,17 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 0, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 232, 216 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 88, 200 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 184, 136 )
-frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 184, 56 )
+frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
+frame = 1

@@ -193,7 +193,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 15 )
 item_def = SubResource( 16 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 9 )
@@ -221,10 +221,10 @@ result = 0
 script = ExtResource( 7 )
 character_class = 1
 equipment_slot = 0
-level = 4
-name = "strong bow"
-attack = 21.0
-attack_range = 17.0
+level = 1
+name = "Minor Bow"
+attack = 1
+attack_range = 1
 defense = 0
 heal = 0
 
@@ -253,7 +253,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 20 )
 item_def = SubResource( 21 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 9 )
@@ -313,7 +313,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 25 )
 item_def = SubResource( 26 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=28]
 script = ExtResource( 9 )
