@@ -25,7 +25,7 @@ trigger_id = ""
 title = "Cyan:"
 text = "The well is up ahead!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 5 )
@@ -36,7 +36,7 @@ trigger_id = "yet"
 title = "Rolf:"
 text = "Looks like we have a few obstacles to manage…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 5 )
@@ -47,7 +47,7 @@ trigger_id = "you"
 title = "Cyan:"
 text = "Oh no! The Hass discovered it’s location!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 5 )
@@ -58,7 +58,7 @@ trigger_id = "still"
 title = "Rolf:"
 text = "Don’t worry! We’ll handle these louts and get what "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 5 )
@@ -69,7 +69,7 @@ trigger_id = "get"
 title = ""
 text = "we came for."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
@@ -80,7 +80,7 @@ trigger_id = "these"
 title = "Rolf:"
 text = "Looks like there is still a bucket in the well… "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 5 )
@@ -91,7 +91,7 @@ trigger_id = "shirts"
 title = ""
 text = "The Hass have clearly used this well."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 5 )
@@ -102,7 +102,7 @@ trigger_id = "so"
 title = "Cyan:"
 text = "Let’s pull up some healing water…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 5 )
@@ -113,7 +113,7 @@ trigger_id = "well"
 title = "Rolf:"
 text = "… I just can’t believe it… The well is dry Cyan…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 5 )
@@ -124,7 +124,7 @@ trigger_id = "empty"
 title = "Cyan:"
 text = "You can’t be serious!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 5 )
@@ -135,7 +135,7 @@ trigger_id = "taco"
 title = "Rolf:"
 text = "e’ve failed Ulrich! He doesn’t stand a chance now…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 5 )
@@ -146,7 +146,7 @@ trigger_id = "borger"
 title = ""
 text = "¤A Swordswoman steps out from the shadows¤"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 5 )
@@ -157,7 +157,7 @@ trigger_id = "sword"
 title = "Alex:"
 text = "Rolf! Cyan! What brings you so far into the caves here?"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 5 )
@@ -168,7 +168,7 @@ trigger_id = "alex"
 title = "Cyan:"
 text = "Alex?…. I haven’t seen you since I was a child!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
@@ -179,7 +179,7 @@ trigger_id = "next"
 title = "Rolf:"
 text = "Alex, we could ask you the very same question. What"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=16]
 script = ExtResource( 5 )
@@ -190,7 +190,7 @@ trigger_id = "andalso"
 title = ""
 text = "are YOU doing down here?"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=17]
 script = ExtResource( 5 )
@@ -201,7 +201,7 @@ trigger_id = "yoddlers"
 title = "Alex:"
 text = "I came in search of mushrooms before the"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
@@ -212,7 +212,7 @@ trigger_id = "badness"
 title = ""
 text = "season’s end. I managed to slip by the Hass. They are thick lately… I fear there|may be something afoot…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 5 )
@@ -223,7 +223,7 @@ trigger_id = "darkness"
 title = "Cyan:"
 text = "They… They’ve  already found the settlement in"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=20]
 script = ExtResource( 5 )
@@ -234,7 +234,7 @@ trigger_id = "lightness"
 title = ""
 text = "the forest and destroyed it…. I am sorry. It must have happened after you|left the settlement."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=21]
 script = ExtResource( 5 )
@@ -245,7 +245,7 @@ trigger_id = "goodness"
 title = "Alex:"
 text = "…Mother..! My father! my family! I have to go back!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=22]
 script = ExtResource( 5 )
@@ -256,7 +256,7 @@ trigger_id = "wellness"
 title = ""
 text = "I have to see if anyone survived!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 5 )
@@ -267,7 +267,7 @@ trigger_id = "tide"
 title = "Rolf:"
 text = "You should stay with us if you value your life."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 5 )
@@ -278,7 +278,7 @@ trigger_id = "bleach"
 title = ""
 text = "The Hass have saturated the forest with troops."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=25]
 script = ExtResource( 5 )
@@ -289,7 +289,7 @@ trigger_id = "nevermind"
 title = "Alex:"
 text = "You’re right, I cannot return. What am I to do"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=26]
 script = ExtResource( 5 )
@@ -300,7 +300,7 @@ trigger_id = "nirvana"
 title = ""
 text = "now, though? I am destitute… I have no home!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=27]
 script = ExtResource( 5 )
@@ -311,7 +311,7 @@ trigger_id = "teenspirit"
 title = "Cyan:"
 text = "You are not the only one without the Gods' favor…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=28]
 script = ExtResource( 5 )
@@ -322,7 +322,7 @@ trigger_id = "foo"
 title = "Rolf:"
 text = "My foster father Ulrich has fallen ill… We have come to"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=29]
 script = ExtResource( 5 )
@@ -333,7 +333,7 @@ trigger_id = "fighters"
 title = ""
 text = "this well to gather its healing waters for him. He has no hope of survival|now, for the well is dry."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=30]
 script = ExtResource( 5 )
@@ -344,7 +344,7 @@ trigger_id = "big"
 title = "Alex:"
 text = "…Wait… If I remember correctly there is another"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=31]
 script = ExtResource( 5 )
@@ -355,7 +355,7 @@ trigger_id = "me"
 title = ""
 text = "of these wells in the city of Destra. It is a bit further, but I can come|with you. I don’t know if you realize this, but long ago when Ulrich acted as|the village healer he saved my mother from the Hass when they attacked… I feel|this moment is fated! I will help you save your foster father, Rolf!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=32]
 script = ExtResource( 5 )
@@ -366,7 +366,7 @@ trigger_id = "mentos"
 title = "Rolf:"
 text = "Then we must hurry to Destra! We cannot delay"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=33]
 script = ExtResource( 5 )
@@ -377,7 +377,7 @@ trigger_id = "freshmaker"
 title = ""
 text = "further. Lead the way, Alex!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=34]
 script = ExtResource( 12 )
@@ -415,7 +415,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 34 )
 item_def = SubResource( 35 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=37]
 script = ExtResource( 5 )
@@ -426,7 +426,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=38]
 script = ExtResource( 5 )
@@ -437,7 +437,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=39]
 script = ExtResource( 12 )
@@ -475,7 +475,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 39 )
 item_def = SubResource( 40 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=42]
 script = ExtResource( 5 )
@@ -486,7 +486,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=43]
 script = ExtResource( 5 )
@@ -497,7 +497,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=44]
 script = ExtResource( 12 )
@@ -535,7 +535,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 44 )
 item_def = SubResource( 45 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=47]
 script = ExtResource( 5 )
@@ -546,7 +546,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=48]
 script = ExtResource( 5 )
@@ -557,7 +557,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=49]
 script = ExtResource( 12 )
@@ -595,7 +595,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 49 )
 item_def = SubResource( 50 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=52]
 script = ExtResource( 5 )
@@ -606,7 +606,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=53]
 script = ExtResource( 5 )
@@ -617,7 +617,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=54]
 script = ExtResource( 12 )
@@ -655,7 +655,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 54 )
 item_def = SubResource( 55 )
-portrait_override = ""
+portrait_override = 0
 
 [sub_resource type="Resource" id=57]
 script = ExtResource( 5 )
@@ -666,7 +666,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=58]
 script = ExtResource( 5 )
@@ -677,7 +677,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=59]
 script = ExtResource( 14 )
@@ -710,20 +710,20 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 184, 184 )
-frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 104, 152 )
+frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 88, 56 )
-frame = 1
 
 [node name="DialogueTrigger" type="Sprite" parent="map"]
 position = Vector2( 88.535, 70.5439 )
 texture = ExtResource( 7 )
 script = ExtResource( 8 )
 dialogue_id = "well"
+available = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 104, 72 )
@@ -802,11 +802,10 @@ CREEPING VINES."
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 184, 168 )
+frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 104, 136 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 88, 40 )
-frame = 1

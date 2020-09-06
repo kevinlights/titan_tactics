@@ -347,8 +347,15 @@ func _on_win(ignore_dialogue = false):
 		$music/win.play()
 		emit_signal("win")
 		print("End game: WIN")
-	
+
+func all_enemies_eliminated():
+	return current[Game.CONTROL.AI].size() == 0
+
 func check_end_game(ignore_dialogue = false):
+	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
+	for trigger in triggers:
+		if trigger.available == "level_complete" and !trigger.consumed:
+			return false
 	for control in [ Game.CONTROL.AI, Game.CONTROL.PLAYER ]:
 		if current[control].size() == 0:
 			game_over = true
@@ -601,3 +608,7 @@ func _input(event):
 		additional_character.control = Game.CONTROL.PLAYER
 		Game.team.append(additional_character)
 		print("The OGRE has joined the team!")
+	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
+		for unit in current[Game.CONTROL.AI]:
+			unit.die()
+	

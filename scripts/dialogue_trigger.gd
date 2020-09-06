@@ -5,12 +5,13 @@ extends Sprite
 signal trigger
 
 export(String) var dialogue_id
-#export(int, "Interact", "Move") var trigger_type
+export(int, "always", "level_complete") var available = "always"
 
 var tile = Vector2(0, 0)
 var is_trigger = true
 var is_loot = false
 var is_dead = false
+var consumed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,5 +25,6 @@ func _ready():
 		hide()
 
 func use():
+	consumed = true
 	print("use trigger ", dialogue_id)
 	emit_signal("trigger", dialogue_id)
