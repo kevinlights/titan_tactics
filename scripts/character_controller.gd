@@ -356,10 +356,11 @@ func _process(delta):
 		return
 	if avatar.playing and avatar.animation.begins_with("attack"):
 		return
-	if is_done:
-		$done.show()
-	else:
-		$done.hide()
+	if character.control == Game.CONTROL.PLAYER:
+		if is_done:
+			$done.show()
+		else:
+			$done.hide()
 	if not path.empty():
 		var progress = float(now - movement.start_time) / float(movement.speed)
 		if position.is_equal_approx(movement.end_position) or progress >= 1.0:

@@ -62,9 +62,9 @@ func _input(event):
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
 		check_exhausted(-1)
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
-		hide()
 		get_parent().active = false
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
+		hide()
 	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
 		get_parent().get_parent().end_turn()
 		hide()

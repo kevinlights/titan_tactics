@@ -73,7 +73,7 @@ func _process(delta):
 		$box_enemy/hpline.set_point_position(1, new_hp_pos)
 	
 	if !moving_back:
-		update_stats()
+		#update_stats()
 		if $box_ally.position.x < end_x_ally:
 			$box_ally.position.x = lerp(start_x_ally, end_x_ally, float(now - start) / float(ttl))
 		else:
