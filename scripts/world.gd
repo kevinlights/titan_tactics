@@ -188,6 +188,7 @@ func action():
 		Game.CONTEXT.GUARD:
 #			if $gui/battle/box_enemy.visible:
 #				return
+			print("guard action")
 			if get_current().character.turn_limits.actions == 0:
 				get_current().is_done = true
 				_on_end()

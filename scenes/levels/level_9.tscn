@@ -23,7 +23,7 @@ portrait = 6
 trigger = 4
 trigger_id = ""
 title = "Rolf:"
-text = "There are the buildings Alex was talking about"
+text = "There are the buildings Alexwas talking about up ahead! "
 branches = [  ]
 result = 2
 
@@ -34,7 +34,7 @@ portrait = 6
 trigger = 5
 trigger_id = "1"
 title = ""
-text = "up ahead! We just have to get past these goons."
+text = "We just have to get past these goons."
 branches = [  ]
 result = 2
 
@@ -56,7 +56,7 @@ portrait = 9
 trigger = 5
 trigger_id = "3"
 title = ""
-text = "Look at the veins bulging out of that guys neck! That’s a sign of ferocity."
+text = "Look at the veins bulging out of that guys neck! That’s a sure sign of ferocity."
 branches = [  ]
 result = 2
 
@@ -662,29 +662,26 @@ centered = false
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 176, 256 )
+frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 224, 256 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 256, 256 )
+frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 72, 128 )
-frame = 1
 
 [node name="Water 4" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 120, 128 )
-frame = 1
 
 [node name="Water 5" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 216, 48 )
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 184, 48 )
-frame = 1
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 264, 280 )
