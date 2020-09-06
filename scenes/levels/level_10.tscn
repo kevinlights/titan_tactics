@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://gfx/Maps/lv10.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -423,58 +423,20 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=38]
+[sub_resource type="Resource" id=74]
 script = ExtResource( 7 )
 character_class = 0
 name = "Arie"
-level = 10
-hp = 115
-max_hp = 115
-atk = 11
+level = 9
+hp = 107
+max_hp = 107
+atk = 10
 def = 5
 atk_range = 1
 mov_range = 5
 heal = 0
 item_atk = SubResource( 36 )
 item_def = SubResource( 37 )
-portrait_override = 0
-
-[sub_resource type="Resource" id=39]
-script = ExtResource( 8 )
-character_class = 0
-equipment_slot = 0
-level = 1
-name = "Minor Knife"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=40]
-script = ExtResource( 8 )
-character_class = 0
-equipment_slot = 1
-level = 1
-name = "Minor Vest"
-attack = 0
-attack_range = 0
-defense = 1
-heal = 0
-
-[sub_resource type="Resource" id=41]
-script = ExtResource( 7 )
-character_class = 0
-name = "Kadif"
-level = 10
-hp = 115
-max_hp = 115
-atk = 11
-def = 5
-atk_range = 1
-mov_range = 5
-heal = 0
-item_atk = SubResource( 39 )
-item_def = SubResource( 40 )
 portrait_override = 0
 
 [sub_resource type="Resource" id=42]
@@ -493,7 +455,7 @@ script = ExtResource( 8 )
 character_class = 0
 equipment_slot = 0
 level = 3
-name = "Steel Cleaver"
+name = "Steel Knife"
 attack = 3.0
 attack_range = 1
 defense = 0
@@ -504,16 +466,16 @@ script = ExtResource( 8 )
 character_class = 0
 equipment_slot = 1
 level = 3
-name = "Sharp Chain"
+name = "Sharp Suit"
 attack = 3.0
 attack_range = 1
 defense = 3.0
 heal = 0
 
-[sub_resource type="Resource" id=45]
+[sub_resource type="Resource" id=75]
 script = ExtResource( 7 )
 character_class = 0
-name = "Minor Chain"
+name = "Nugat"
 level = 10
 hp = 115
 max_hp = 115
@@ -570,14 +532,14 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=50]
+[sub_resource type="Resource" id=76]
 script = ExtResource( 7 )
 character_class = 1
 name = "Rolf"
-level = 10
-hp = 110
-max_hp = 110
-atk = 11
+level = 9
+hp = 102
+max_hp = 102
+atk = 10
 def = 5
 atk_range = 3
 mov_range = 6
@@ -630,14 +592,14 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=55]
+[sub_resource type="Resource" id=77]
 script = ExtResource( 7 )
 character_class = 1
 name = "Clyde"
-level = 10
-hp = 110
-max_hp = 110
-atk = 11
+level = 9
+hp = 102
+max_hp = 102
+atk = 10
 def = 5
 atk_range = 3
 mov_range = 6
@@ -690,18 +652,18 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=60]
+[sub_resource type="Resource" id=78]
 script = ExtResource( 7 )
 character_class = 2
 name = "Sid"
-level = 10
-hp = 105
-max_hp = 105
-atk = 11
+level = 9
+hp = 97
+max_hp = 97
+atk = 10
 def = 5
 atk_range = 4
 mov_range = 4
-heal = 10
+heal = 9
 item_atk = SubResource( 58 )
 item_def = SubResource( 59 )
 portrait_override = 0
@@ -750,14 +712,14 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=65]
+[sub_resource type="Resource" id=79]
 script = ExtResource( 7 )
 character_class = 0
 name = "Mags"
-level = 10
-hp = 115
-max_hp = 115
-atk = 11
+level = 9
+hp = 107
+max_hp = 107
+atk = 10
 def = 5
 atk_range = 1
 mov_range = 5
@@ -810,18 +772,18 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=70]
+[sub_resource type="Resource" id=80]
 script = ExtResource( 7 )
 character_class = 2
 name = "Nedd"
-level = 10
-hp = 105
-max_hp = 105
-atk = 11
+level = 9
+hp = 97
+max_hp = 97
+atk = 10
 def = 5
 atk_range = 4
 mov_range = 4
-heal = 10
+heal = 9
 item_atk = SubResource( 68 )
 item_def = SubResource( 69 )
 portrait_override = 0
@@ -894,15 +856,15 @@ position = Vector2( 104, 40 )
 position = Vector2( 72, 88 )
 texture = ExtResource( 13 )
 script = ExtResource( 11 )
-stats = SubResource( 38 )
-dialogue = SubResource( 41 )
+stats = SubResource( 74 )
+dialogue = null
 recruit_dialogue = SubResource( 42 )
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
 position = Vector2( 120, 56 )
 texture = ExtResource( 13 )
 script = ExtResource( 11 )
-stats = SubResource( 45 )
+stats = SubResource( 75 )
 dialogue = SubResource( 46 )
 recruit_dialogue = SubResource( 47 )
 
@@ -910,7 +872,7 @@ recruit_dialogue = SubResource( 47 )
 position = Vector2( 216, 120 )
 texture = ExtResource( 14 )
 script = ExtResource( 11 )
-stats = SubResource( 50 )
+stats = SubResource( 76 )
 dialogue = SubResource( 51 )
 recruit_dialogue = SubResource( 52 )
 
@@ -918,7 +880,7 @@ recruit_dialogue = SubResource( 52 )
 position = Vector2( 152, 104 )
 texture = ExtResource( 14 )
 script = ExtResource( 11 )
-stats = SubResource( 55 )
+stats = SubResource( 77 )
 dialogue = SubResource( 56 )
 recruit_dialogue = SubResource( 57 )
 
@@ -926,7 +888,7 @@ recruit_dialogue = SubResource( 57 )
 position = Vector2( 200, 88 )
 texture = ExtResource( 12 )
 script = ExtResource( 11 )
-stats = SubResource( 60 )
+stats = SubResource( 78 )
 dialogue = SubResource( 61 )
 recruit_dialogue = SubResource( 62 )
 
@@ -934,7 +896,7 @@ recruit_dialogue = SubResource( 62 )
 position = Vector2( 200, 184 )
 texture = ExtResource( 13 )
 script = ExtResource( 11 )
-stats = SubResource( 65 )
+stats = SubResource( 79 )
 dialogue = SubResource( 66 )
 recruit_dialogue = SubResource( 67 )
 
@@ -942,7 +904,7 @@ recruit_dialogue = SubResource( 67 )
 position = Vector2( 152, 168 )
 texture = ExtResource( 12 )
 script = ExtResource( 11 )
-stats = SubResource( 70 )
+stats = SubResource( 80 )
 dialogue = SubResource( 71 )
 recruit_dialogue = SubResource( 72 )
 
