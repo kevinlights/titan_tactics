@@ -11,7 +11,8 @@ enum CONTEXT {
 	HEAL,
 	NEUTRAL,
 	USE,
-	NOT_ALLOWED
+	NOT_ALLOWED,
+	NOT_PLAYABLE
 }
 
 const cell_size = 16
