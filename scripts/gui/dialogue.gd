@@ -1,3 +1,4 @@
+class_name DialogueController
 extends Control
 
 var content

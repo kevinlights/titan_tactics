@@ -25,7 +25,7 @@ trigger_id = ""
 title = "Rolf:"
 text = "There are the buildings Alexwas talking about up ahead! "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 9 )
@@ -36,7 +36,7 @@ trigger_id = "1"
 title = ""
 text = "We just have to get past these goons."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 9 )
@@ -47,7 +47,7 @@ trigger_id = "2"
 title = "Cyan:"
 text = "This is not gonna be easy."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 9 )
@@ -58,7 +58,7 @@ trigger_id = "3"
 title = ""
 text = "Look at the veins bulging out of that guys neck! That’s a sure sign of ferocity."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 9 )
@@ -69,7 +69,7 @@ trigger_id = "4"
 title = "Rolf:"
 text = "Yeah, but what about my hairstyle?"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 9 )
@@ -80,7 +80,7 @@ trigger_id = "5"
 title = ""
 text = "Nobody messes with a guy with hair like this."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 9 )
@@ -91,7 +91,7 @@ trigger_id = ""
 title = "Rolf:"
 text = "That’s the last of them, but still no signal"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 9 )
@@ -102,7 +102,7 @@ trigger_id = "still"
 title = ""
 text = " from Alex. I wonder if everything is alright."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 9 )
@@ -113,7 +113,7 @@ trigger_id = "still"
 title = "Cyan:"
 text = "I just have a funny feeling about her."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 9 )
@@ -124,7 +124,7 @@ trigger_id = "get"
 title = "Rolf:"
 text = "What do you mean?"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 9 )
@@ -135,7 +135,7 @@ trigger_id = "these"
 title = "Cyan:"
 text = "She said she was hunting mushrooms in the caves"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 9 )
@@ -146,7 +146,7 @@ trigger_id = "shirts"
 title = ""
 text = "but the mushrooms only grow at the mouth of the cave."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 9 )
@@ -157,7 +157,7 @@ trigger_id = "so"
 title = "Rolf:"
 text = "Hmm… I did notice too that she seemed to show up"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 9 )
@@ -168,7 +168,7 @@ trigger_id = "clean"
 title = ""
 text = "at just the right time… and she hasn’t fought any battles with us."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 9 )
@@ -179,7 +179,7 @@ trigger_id = "one"
 title = "Cyan:"
 text = "I don’t think she’s lying about the well though."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=16]
 script = ExtResource( 9 )
@@ -190,7 +190,7 @@ trigger_id = "two"
 title = ""
 text = "I have heard rumours of a well in Destra."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=17]
 script = ExtResource( 9 )
@@ -201,7 +201,7 @@ trigger_id = "three"
 title = "Rolf:"
 text = "It must just be beyond those buildings there. "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 9 )
@@ -212,7 +212,7 @@ trigger_id = "four"
 title = ""
 text = "We won’t wait for Alex. Let’s head out team!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 3 )
@@ -276,7 +276,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=26]
 script = ExtResource( 9 )
@@ -287,7 +287,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=27]
 script = ExtResource( 12 )
@@ -336,7 +336,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=31]
 script = ExtResource( 9 )
@@ -347,7 +347,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=32]
 script = ExtResource( 12 )
@@ -396,7 +396,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=36]
 script = ExtResource( 9 )
@@ -407,7 +407,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=37]
 script = ExtResource( 12 )
@@ -456,7 +456,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=41]
 script = ExtResource( 9 )
@@ -467,7 +467,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=42]
 script = ExtResource( 12 )
@@ -516,7 +516,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=46]
 script = ExtResource( 9 )
@@ -527,7 +527,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=47]
 script = ExtResource( 12 )
@@ -576,7 +576,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=51]
 script = ExtResource( 9 )
@@ -587,7 +587,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=52]
 script = ExtResource( 12 )
@@ -636,7 +636,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=56]
 script = ExtResource( 9 )
@@ -647,7 +647,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [node name="level" type="Node2D"]
 script = ExtResource( 8 )
@@ -662,29 +662,26 @@ centered = false
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 176, 256 )
+frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 224, 256 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 256, 256 )
+frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 72, 128 )
-frame = 1
 
 [node name="Water 4" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 120, 128 )
-frame = 1
 
 [node name="Water 5" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 216, 48 )
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 184, 48 )
-frame = 1
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 264, 280 )

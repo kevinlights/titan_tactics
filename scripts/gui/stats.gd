@@ -35,6 +35,33 @@ var atlas_frames = {
 	Game.TYPE.MAGE: 4
 }
 
+var default_portraits = {
+	Game.CONTROL.AI: {
+		Game.TYPE.ARCHER: "ai_archer",
+		Game.TYPE.MAGE: "ai_mage",
+		Game.TYPE.FIGHTER: "ai_swordsman"
+	},
+	Game.CONTROL.PLAYER: {
+		Game.TYPE.ARCHER: "archer",
+		Game.TYPE.MAGE: "mage",
+		Game.TYPE.FIGHTER: "swordsman"
+	}
+}
+
+var portrait_map = {
+	Dialogue.PORTRAIT.ARCHER: "archer",
+	Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
+	Dialogue.PORTRAIT.MAGE: "mage",
+	Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
+	Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
+	Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
+	Dialogue.PORTRAIT.HERO: "hero",
+	Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
+	Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
+	Dialogue.PORTRAIT.OLD_MAN: "old_man",
+	Dialogue.PORTRAIT.CYAN: "cyan"
+}
+
 #level line width = 28
 
 func _process(delta):
@@ -112,20 +139,33 @@ func _ready():
 	$box_ally/playerhp.text = (playerhp)
 	$PlayerType.frame = atlas_frames[player.character.character_class]
 	$EnemyType.frame = atlas_frames[enemy.character.character_class]
-	if playername in special_names:
-		$box_ally/Player.play(playername)
+
+	if player.character.portrait_override:
+		var portrait = portrait_map[player.character.portrait_override]
+		$box_ally/portraits.play(portrait)
 	else:
-		$box_ally/Player.play("portraits")
-		$box_ally/Player.playing = false
-		$box_ally/Player.frame = player.character.character_class
-	if enemyname in special_names:
-		$box_enemy/Enemy.play(enemyname)
-		$box_enemy/Enemy.flip_h = true
+		$box_ally/portraits.play(default_portraits[player.character.control][player.character.character_class])
+	if enemy.character.portrait_override:
+		var portrait = portrait_map[enemy.character.portrait_override]
+		$box_enemy/portraits.play(portrait)
 	else:
-		$box_enemy/Enemy.flip_h = false
-		$box_enemy/Enemy.play("portraits")
-		$box_enemy/Enemy.playing = false
-		$box_enemy/Enemy.frame = enemy.character.character_class
+		$box_enemy/portraits.play(default_portraits[enemy.character.control][enemy.character.character_class])
+#
+#	if playername in special_names:
+#		$box_ally/Player.play(playername)
+#	else:
+#		$box_ally/Player.play("portraits")
+#		$box_ally/Player.playing = false
+#		$box_ally/Player.frame = player.character.character_class
+#	if enemyname in special_names:
+#		$box_enemy/Enemy.play(enemyname)
+#		$box_enemy/Enemy.flip_h = true
+#	else:
+#		$box_enemy/Enemy.flip_h = false
+#		$box_enemy/Enemy.play("portraits")
+#		$box_enemy/Enemy.playing = false
+#		$box_enemy/Enemy.frame = enemy.character.character_class
+
 	$PlayerAdvantage.play("neutral")
 	$EnemyAdvantage.play("neutral")
 	if player.character.character_class == enemy.character.weakness:

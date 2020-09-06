@@ -23,7 +23,7 @@ trigger_id = ""
 title = "Rolf:"
 text = "Just a little more to go and we will be at our mark."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 5 )
@@ -34,7 +34,7 @@ trigger_id = "1"
 title = "Hass Elite:"
 text = "You filth have no right to be in this city! Destra is"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 5 )
@@ -45,7 +45,7 @@ trigger_id = "2"
 title = ""
 text = "off limits to your kind!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 5 )
@@ -56,7 +56,7 @@ trigger_id = "3"
 title = "Hass Elite #2:"
 text = "Slaughter them all!"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 5 )
@@ -67,7 +67,7 @@ trigger_id = "4"
 title = "Rolf:"
 text = "Heh! We’ll see who gets slaughtered."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
@@ -78,7 +78,7 @@ trigger_id = "5"
 title = "Cyan:"
 text = "Not much further to go…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 5 )
@@ -89,7 +89,7 @@ trigger_id = "6"
 title = "Rolf:"
 text = "You’re getting pretty handy with that bow."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 5 )
@@ -100,7 +100,7 @@ trigger_id = "7"
 title = "Cyan:"
 text = "Have you seen yourself with that sword?"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 5 )
@@ -111,7 +111,7 @@ trigger_id = "8"
 title = "Rolf:"
 text = "Well, I don’t like to brag and I don’t like to boast,"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 5 )
@@ -122,7 +122,7 @@ trigger_id = "9"
 title = "Cyan:"
 text = "¤rolls eyes¤ You are too much…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 3 )
@@ -186,7 +186,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
@@ -197,7 +197,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 10 )
@@ -246,7 +246,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 5 )
@@ -257,7 +257,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 10 )
@@ -306,7 +306,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=28]
 script = ExtResource( 5 )
@@ -317,7 +317,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=29]
 script = ExtResource( 10 )
@@ -366,7 +366,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=33]
 script = ExtResource( 5 )
@@ -377,7 +377,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=34]
 script = ExtResource( 10 )
@@ -426,7 +426,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=38]
 script = ExtResource( 5 )
@@ -437,7 +437,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=39]
 script = ExtResource( 10 )
@@ -486,7 +486,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=43]
 script = ExtResource( 5 )
@@ -497,7 +497,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [node name="level" type="Node2D"]
 script = ExtResource( 6 )
