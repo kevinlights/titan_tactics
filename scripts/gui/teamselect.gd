@@ -7,6 +7,12 @@ var characters = []
 var library = []
 var selected = 0
 
+var atlas_frames = {
+	Game.TYPE.ARCHER: "archer",
+	Game.TYPE.FIGHTER: "fighter",
+	Game.TYPE.MAGE: "mage"
+}
+
 func set_characters(list):
 	library = list
 	characters = library.duplicate()
@@ -32,6 +38,7 @@ func update_view():
 	#		animation = "archer"
 	#	Game.TYPE.MAGE:
 	#		animation = "mage"
+	get_parent().get_parent().change_select(atlas_frames[characters[selected].character_class])
 	$name.text = characters[selected].name
 	if $name.text in get_parent().get_node("battle").special_names:
 		$Portrait.play($name.text)
@@ -40,11 +47,11 @@ func update_view():
 		$Portrait.frame = characters[selected].character_class
 		$Portrait.playing = false
 	
-	$atk.text = "%02d" % (characters[selected].atk + characters[selected].item_atk.attack)
-	$hp.text =  "%02d" % characters[selected].hp
+	$atk.text = "%02d" % int(round((characters[selected].atk + characters[selected].item_atk.attack)))
+	$hp.text =  "%02d" % int(round(characters[selected].hp))
 	$hp.text += "/" + str(characters[selected].max_hp)
 	$lvl.text =  "%02d" % characters[selected].level
-	$def.text =  "%02d" % (characters[selected].def + characters[selected].item_def.defense)
+	$def.text =  "%02d" % int(round((characters[selected].def + characters[selected].item_def.defense)))
 #	var current = characters[selected]
 	
 func _input(event):
@@ -61,9 +68,8 @@ func _input(event):
 		if characters.size() == 0:
 			emit_signal("library_exhausted")
 			return
-	
 	selected = clamp(selected, 0, characters.size() - 1)
-	if selected == 0:
+	if selected == characters.size() - 1:
 		$Arrows.hide()
 	else:
 		$Arrows.show()

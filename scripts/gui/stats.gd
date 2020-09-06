@@ -163,11 +163,11 @@ func update_stats():
 	enemyhp = str(enemyhp)  + "/" + str(enemy.character.max_hp)
 	playerhp = str(playerhp)  + "/" + str(player.character.max_hp)
 	playerlvl = player.character.level
-	playeratk = floor(player.character.atk+ player.character.item_atk.attack)
-	playerdef = floor(player.character.def + player.character.item_def.defense)
+	playeratk = int(round(player.character.atk+ player.character.item_atk.attack))
+	playerdef = int(round(player.character.def + player.character.item_def.defense))
 	enemylvl = enemy.character.level
-	enemyatk = floor(enemy.character.atk + enemy.character.item_atk.attack)
-	enemydef = floor(enemy.character.def + enemy.character.item_def.defense)
+	enemyatk = int(round(enemy.character.atk + enemy.character.item_atk.attack))
+	enemydef = int(round(enemy.character.def + enemy.character.item_def.defense))
 	$box_ally/playeratklevel.text = str(playeratk)
 	$box_ally/playerdeflevel.text = str(playerdef)
 	$box_ally/playerlevel.text = str(playerlvl)

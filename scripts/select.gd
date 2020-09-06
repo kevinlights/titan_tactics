@@ -66,12 +66,15 @@ func _input(event):
 	if world.current_turn == Game.CONTROL.AI:
 		play("blank")
 		return
+	if animation == "fighter" or animation == "mage" or animation == "archer":
+		return
 	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+		set_origin(get_parent().get_current())
+		get_parent().get_node("path_preview/path").clear_points()
 		get_parent().change_character()
 		return
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
 		advance.y = 1
-		print("hmmm")
 	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
 		advance.y = -1
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():

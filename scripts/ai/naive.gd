@@ -24,6 +24,7 @@ func play():
 		if weakest:
 			print("AI (" + character.character.name + ") says heal " + weakest.character.name)
 			character.heal(weakest)
+			character.is_done = true
 			world.advance_turn()
 			return
 	var enemy = get_nearest_enemy(character.position)
@@ -32,6 +33,7 @@ func play():
 		if character.can_recruit() and character.character.has_ability(Game.ABILITY.HEAL):
 			print("AI (" + character.character.name + ") says heal")
 			character.heal(character)
+			character.is_done = true
 			world.advance_turn()
 			return
 		if enemies_are_stronger(character.position, character):
@@ -43,6 +45,7 @@ func play():
 		if distance <= character.character.atk_range and character.character.turn_limits.actions > 0 and not world.is_cover_between(character, enemy.position):
 			print("AI (" + character.character.name + ") says attack")
 			character.attack(enemy)
+			character.is_done = true
 			world.advance_turn()
 			return
 		if character.character.turn_limits.move_distance > 1 and distance > character.character.atk_range:
@@ -56,18 +59,22 @@ func play():
 				return
 			else:
 				print("AI (" + character.character.name + ") says wait (path too short)")
+				character.is_done = true
 				world.advance_turn()
 				return
 		else:
 			print("AI (" + character.character.name + ") says wait (out of moves)")
+			character.is_done = true
 			world.advance_turn()
 			return
 		# if we reach this point, abandon turn
 		print("AI (" + character.character.name + ") abandons turn, exhausted options")
+		character.is_done = true
 		world.advance_turn()
 		return
 	else:
 		print("AI (" + character.character.name + ") says wait (nothing to do)")
+		character.is_done = true
 		world.advance_turn()
 
 

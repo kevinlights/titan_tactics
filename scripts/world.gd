@@ -102,6 +102,8 @@ func advance_turn(explicit = 1, direction = 1):
 	current_character += direction
 	if current_character >= current[current_turn].size():
 		current_character = 0
+	if current_character < 0:
+		current_character = current[current_turn].size() - 1
 	var num_done = 0
 	for character_check in current[current_turn]:
 		if character_check.is_done:
@@ -110,10 +112,8 @@ func advance_turn(explicit = 1, direction = 1):
 		print("End turn")
 		end_turn()
 		return
-		
-	if current_character < 0:
-		current_character = current[current_turn].size() - 1
-	print("Advance turn")
+	print("nd " + str(num_done))
+	print("Advance turn " + current[current_turn][current_character].character.name + "is done? : " + str(num_done == current[current_turn].size()))
 	$select.disable()
 	yield(get_tree().create_timer(1.0), "timeout")
 	$select.set_origin(get_current())
@@ -138,6 +138,9 @@ func end_turn():
 #	$select.set_origin(get_current())
 	gui.turn(current_turn)
 	$select.disable()
+
+func change_select(character_class):
+	$select.play(character_class)
 
 func to_world_path(path):
 	var world_path = PoolVector2Array()
