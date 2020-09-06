@@ -150,21 +150,6 @@ func _ready():
 		$box_enemy/portraits.play(portrait)
 	else:
 		$box_enemy/portraits.play(default_portraits[enemy.character.control][enemy.character.character_class])
-#
-#	if playername in special_names:
-#		$box_ally/Player.play(playername)
-#	else:
-#		$box_ally/Player.play("portraits")
-#		$box_ally/Player.playing = false
-#		$box_ally/Player.frame = player.character.character_class
-#	if enemyname in special_names:
-#		$box_enemy/Enemy.play(enemyname)
-#		$box_enemy/Enemy.flip_h = true
-#	else:
-#		$box_enemy/Enemy.flip_h = false
-#		$box_enemy/Enemy.play("portraits")
-#		$box_enemy/Enemy.playing = false
-#		$box_enemy/Enemy.frame = enemy.character.character_class
 
 	$PlayerAdvantage.play("neutral")
 	$EnemyAdvantage.play("neutral")
@@ -181,8 +166,12 @@ func _ready():
 #shrunk code by 50% ;)
 
 func set_entities(player_entity, enemy_entity):
-	player = player_entity
-	enemy = enemy_entity
+	if player_entity.character.control == Game.CONTROL.PLAYER:
+		player = player_entity
+		enemy = enemy_entity
+	else:
+		enemy = player_entity
+		player = enemy_entity
 	playername = player.character.name
 	enemyname = enemy.character.name
 	if player == enemy:

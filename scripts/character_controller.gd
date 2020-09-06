@@ -114,8 +114,12 @@ func heal(target):
 	var healed_hp = (character.atk * 3) * 0.8
 	target.character.hp = clamp(target.character.hp + healed_hp, 0, target.character.max_hp)
 	pick_random_sfx($sfx/heal)
+	target.healthbar.set_value(target.character.hp, target.character.max_hp)
+	if target.character.control == Game.CONTROL.AI and !target.can_recruit():
+		target.get_node("speak").hide()
+		spread_icons()
 	if target.character.hp == target.character.max_hp:
-		healthbar.hide()
+		target.healthbar.hide()
 	check_finished()
 	return healed_hp
 
