@@ -321,6 +321,7 @@ func _on_start_level():
 	$select.set_origin(get_current())
 	$select.call_deferred("enable")
 
+
 func _on_win(ignore_dialogue = false):
 	emit_signal("win")
 	if not gui.get_node("dialogue").visible or ignore_dialogue:
@@ -398,6 +399,7 @@ func _initiate_turn():
 		gui.back()
 		$select.enable()
 		$select.set_origin(get_current())
+		$select.set_context(get_current_context($select.tile))
 	else:
 		print("Don't initiate turn: selector is enabled")
 	if current_turn == Game.CONTROL.AI:
