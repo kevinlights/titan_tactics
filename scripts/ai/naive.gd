@@ -45,6 +45,7 @@ func play():
 		if distance <= character.character.atk_range and character.character.turn_limits.actions > 0 and not world.is_cover_between(character, enemy.position):
 			print("AI (" + character.character.name + ") says attack")
 			character.attack(enemy)
+			world.gui.battle(character, enemy)
 			character.is_done = true
 			world.advance_turn()
 			return
