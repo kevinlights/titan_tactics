@@ -182,6 +182,7 @@ func action():
 #			if $gui/battle/box_enemy.visible:
 #				return
 			if get_current().character.turn_limits.actions == 0:
+				get_current().is_done = true
 				_on_end()
 			else:
 				gui.guard()
@@ -514,7 +515,7 @@ func _on_selector_moved(tile):
 	var context = get_current_context(tile)
 	print(context)
 	var target = entity_at($select.tile)
-	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and context == Game.CONTEXT.ATTACK:
+	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and (context == Game.CONTEXT.ATTACK or context == Game.CONTEXT.GUARD):
 		print("you are pointing on " + str(target.character.name))
 		gui.battle(get_current(), target)
 	else:
