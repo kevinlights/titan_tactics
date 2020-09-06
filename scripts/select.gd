@@ -70,7 +70,7 @@ func _input(event):
 	if world.current_turn == Game.CONTROL.AI:
 		play("blank")
 		return
-	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
 		set_origin(get_parent().get_current())
 		get_parent().get_node("path_preview/path").clear_points()
 		get_parent().change_character()
@@ -101,7 +101,8 @@ func _input(event):
 
 func go_home():
 	self.tile = current_entity.tile
-	emit_signal("moved", self.tile)
+	if world.current_turn == Game.CONTROL.AI:
+		emit_signal("moved", self.tile)
 
 func set_origin(entity):
 	if current_entity:
