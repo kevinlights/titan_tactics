@@ -128,6 +128,7 @@ func change_character():
 	$gui.swap()
 
 func end_turn():
+	#yield(get_tree().create_timer(2.0), "timeout")
 #	current[current_turn][current_character]
 	for character in current[Game.CONTROL.PLAYER]:
 		character.get_node("done").hide()

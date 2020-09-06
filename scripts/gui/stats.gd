@@ -113,14 +113,19 @@ func _ready():
 	$PlayerType.frame = atlas_frames[player.character.character_class]
 	$EnemyType.frame = atlas_frames[enemy.character.character_class]
 	if playername in special_names:
-		print(playername)
 		$box_ally/Player.play(playername)
 	else:
 		$box_ally/Player.play("portraits")
 		$box_ally/Player.playing = false
-		$box_ally/Player.frame = atlas_frames[player.character.character_class]
-	$box_enemy/Enemy.frame = enemy.character.character_class
-	print (enemy.character.character_class)
+		$box_ally/Player.frame = player.character.character_class
+	if enemyname in special_names:
+		$box_enemy/Enemy.play(enemyname)
+		$box_enemy/Enemy.flip_h = true
+	else:
+		$box_enemy/Enemy.flip_h = false
+		$box_enemy/Enemy.play("portraits")
+		$box_enemy/Enemy.playing = false
+		$box_enemy/Enemy.frame = enemy.character.character_class
 	$PlayerAdvantage.play("neutral")
 	$EnemyAdvantage.play("neutral")
 	if player.character.character_class == enemy.character.weakness:
