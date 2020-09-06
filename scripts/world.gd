@@ -539,3 +539,8 @@ func _input(event):
 #		spawn_ai_team()
 	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
 		_on_replay()
+	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
+		var additional_character = load("res://resources/ogre.tres")
+		additional_character.control = Game.CONTROL.PLAYER
+		Game.team.append(additional_character)
+		print("The OGRE has joined the team!")
