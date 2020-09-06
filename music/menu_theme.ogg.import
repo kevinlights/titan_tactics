@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/menu_theme.ogg-968ecddaa974efdafae1a41eb1dbcd88.oggstr"
+path="res://.import/menu_theme.ogg-587edc056ead294fc077119cc215aebf.oggstr"
 
 [deps]
 
-source_file="res://Music/menu_theme.ogg"
-dest_files=[ "res://.import/menu_theme.ogg-968ecddaa974efdafae1a41eb1dbcd88.oggstr" ]
+source_file="res://music/menu_theme.ogg"
+dest_files=[ "res://.import/menu_theme.ogg-587edc056ead294fc077119cc215aebf.oggstr" ]
 
 [params]
 

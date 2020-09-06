@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gfx/tile_meta_16.png" type="Texture" id=2]
@@ -7,6 +7,30 @@
 [ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gfx/Maps/lv9.png" type="Texture" id=6]
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=7]
+[ext_resource path="res://scripts/level.gd" type="Script" id=8]
+[ext_resource path="res://scripts/dialogue.gd" type="Script" id=9]
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 9 )
+dialogue_id = "1"
+portrait = 6
+trigger = 4
+trigger_id = ""
+title = "Rolf:"
+text = "There are the buildings Alexwas talking about up ahead! "
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 9 )
+dialogue_id = "2"
+portrait = 6
+trigger = 5
+trigger_id = "1"
+title = ""
+text = "We just have to get past these goons."
+branches = [  ]
+result = 2
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
@@ -182,9 +206,11 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/z_index = 0
 
 [node name="level" type="Node2D"]
+script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
+dialogue = [ SubResource( 11 ), SubResource( 12 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -192,26 +218,29 @@ centered = false
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 176, 256 )
-frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 224, 256 )
+frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 256, 256 )
-frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 72, 128 )
+frame = 1
 
 [node name="Water 4" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 120, 128 )
+frame = 1
 
 [node name="Water 5" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 216, 48 )
+frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 184, 48 )
+frame = 1
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 264, 280 )
