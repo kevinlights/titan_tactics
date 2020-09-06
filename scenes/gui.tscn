@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -50,43 +50,43 @@
 [ext_resource path="res://scripts/ally.gd" type="Script" id=48]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 42 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 36 )
 region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 36 )
-region = Rect2( 0, 0, 36, 50 )
+region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 36 )
-region = Rect2( 36, 0, 36, 50 )
+atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Rolf",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "portraits",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "Rolf",
 "speed": 5.0
 } ]
 
@@ -155,31 +155,31 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 42 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 14 )
 region = Rect2( 36, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 4 )
 region = Rect2( 36, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 35 )
 region = Rect2( 36, 0, 36, 50 )
 
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
+
 [sub_resource type="SpriteFrames" id=25]
 animations = [ {
-"frames": [ SubResource( 21 ) ],
-"loop": true,
-"name": "Rolf",
-"speed": 0.0
-}, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "portraits",
+"speed": 0.0
+}, {
+"frames": [ SubResource( 24 ) ],
+"loop": true,
+"name": "Rolf",
 "speed": 0.0
 } ]
 
@@ -454,6 +454,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -742,7 +743,6 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 30 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -755,6 +755,7 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 35 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]

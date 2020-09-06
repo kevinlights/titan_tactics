@@ -70,6 +70,10 @@ func set_content(dialogue_content):
 	content = dialogue_content
 	text_blocks = content.text.split("|")
 	portrait.hide()
+	if dialogue_content.audio_theme and dialogue_content.audio_theme != "":
+		var music = get_tree().get_root().get_node("World/music")
+		music.get_node(Game.get_theme()).stop()
+		music.get_node(dialogue_content.audio_theme).play()
 	if dialogue_content.portrait != Dialogue.PORTRAIT.NONE:
 		var offset = portrait_offset_friendly
 		if "ai" in portrait_map[dialogue_content.portrait] or "revealed" in portrait_map[dialogue_content.portrait]:
