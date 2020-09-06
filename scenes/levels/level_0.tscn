@@ -25,7 +25,7 @@ portrait = 8
 trigger = 5
 trigger_id = "opening"
 title = ""
-text = "than a foster son… You are a close friend…If I do not make it before you return|and this is to be the end of me, do not blame yourself… Be thankful for|the days we have spent together…"
+text = "than a foster son… You are a close friend… If I do not make it before you return|and this is to be the end of me, do not blame yourself… Be thankful for|the days we have spent together…"
 branches = [  ]
 result = 2
 
