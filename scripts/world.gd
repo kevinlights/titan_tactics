@@ -166,15 +166,15 @@ func action():
 		Game.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
 		Game.CONTEXT.GUARD:
-			if $gui/battle/box_enemy.visible:
-				return
+#			if $gui/battle/box_enemy.visible:
+#				return
 			if get_current().character.turn_limits.actions == 0:
 				_on_end()
 			else:
 				gui.guard()
 		Game.CONTEXT.HEAL:
-			if $gui/battle/box_enemy.visible:
-				return
+#			if $gui/battle/box_enemy.visible:
+#				return
 			if get_current().character.turn_limits.actions == 0:
 				_on_end()
 			else:
@@ -493,7 +493,7 @@ func _on_selector_moved(tile):
 	var context = get_current_context(tile)
 	print(context)
 	var target = entity_at($select.tile)
-	if target and !target.is_loot and !target.is_trigger: #and target.character.control == Game.CONTROL.AI: context == Game.CONTEXT.ATTACK and 
+	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and  context == Game.CONTEXT.ATTACK:
 		print("you are pointing on " + str(target.character.name))
 		gui.battle(get_current(), target)
 	else:
