@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://gfx/Maps/lv5.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -108,11 +108,11 @@ heal = 0
 script = ExtResource( 6 )
 character_class = 1
 name = "Nora"
-level = 5
-hp = 27
-max_hp = 27
-atk = 10
-def = 7
+level = 4
+hp = 69
+max_hp = 69
+atk = 7
+def = 2
 atk_range = 3
 mov_range = 6
 heal = 0
@@ -169,10 +169,10 @@ script = ExtResource( 6 )
 character_class = 2
 name = "Kadif"
 level = 4
-hp = 22
-max_hp = 22
-atk = 8
-def = 4
+hp = 64
+max_hp = 64
+atk = 7
+def = 2
 atk_range = 4
 mov_range = 4
 heal = 4
@@ -229,10 +229,10 @@ script = ExtResource( 6 )
 character_class = 0
 name = "Jake"
 level = 5
-hp = 30
-max_hp = 30
-atk = 3
-def = 2
+hp = 79
+max_hp = 79
+atk = 7
+def = 3
 atk_range = 1
 mov_range = 5
 heal = 0
@@ -288,14 +288,14 @@ heal = 30.0
 script = ExtResource( 6 )
 character_class = 2
 name = "Layla"
-level = 4
-hp = 22
-max_hp = 22
-atk = 8
-def = 4
+level = 5
+hp = 69
+max_hp = 69
+atk = 7
+def = 3
 atk_range = 4
 mov_range = 4
-heal = 4
+heal = 5
 item_atk = SubResource( 22 )
 item_def = SubResource( 23 )
 portrait_override = ""
@@ -348,11 +348,11 @@ heal = 0
 script = ExtResource( 6 )
 character_class = 1
 name = "Amy"
-level = 5
-hp = 27
-max_hp = 27
-atk = 10
-def = 7
+level = 4
+hp = 69
+max_hp = 69
+atk = 7
+def = 2
 atk_range = 3
 mov_range = 6
 heal = 0
@@ -386,6 +386,71 @@ result = 0
 script = ExtResource( 15 )
 equipment_slot = 0
 level = 4
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 5 )
+character_class = 0
+equipment_slot = 0
+level = 1
+name = "Minor Cleaver"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=34]
+script = ExtResource( 5 )
+character_class = 0
+equipment_slot = 1
+level = 1
+name = "Minor Mail"
+attack = 0
+attack_range = 0
+defense = 1
+heal = 0
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 6 )
+character_class = 0
+name = "Tarek"
+level = 4
+hp = 74
+max_hp = 74
+atk = 7
+def = 2
+atk_range = 1
+mov_range = 5
+heal = 0
+item_atk = SubResource( 33 )
+item_def = SubResource( 34 )
+portrait_override = ""
+
+[sub_resource type="Resource" id=36]
+script = ExtResource( 7 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=37]
+script = ExtResource( 7 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=38]
+script = ExtResource( 15 )
+equipment_slot = 1
+level = 3
 
 [node name="level" type="Node2D"]
 script = ExtResource( 12 )
@@ -440,7 +505,7 @@ dialogue = SubResource( 20 )
 recruit_dialogue = SubResource( 21 )
 
 [node name="CharacterSpawner4" type="Sprite" parent="map"]
-position = Vector2( 176, 104 )
+position = Vector2( 168, 104 )
 texture = ExtResource( 9 )
 script = ExtResource( 10 )
 stats = SubResource( 24 )
@@ -460,6 +525,20 @@ position = Vector2( 120, 184 )
 texture = ExtResource( 13 )
 script = ExtResource( 14 )
 item_spawner = SubResource( 32 )
+
+[node name="CharacterSpawner6" type="Sprite" parent="map"]
+position = Vector2( 72, 168 )
+texture = ExtResource( 11 )
+script = ExtResource( 10 )
+stats = SubResource( 35 )
+dialogue = SubResource( 36 )
+recruit_dialogue = SubResource( 37 )
+
+[node name="ChestSpawner2" type="Sprite" parent="map"]
+position = Vector2( 72, 152 )
+texture = ExtResource( 13 )
+script = ExtResource( 14 )
+item_spawner = SubResource( 38 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 

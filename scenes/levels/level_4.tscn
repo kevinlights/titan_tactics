@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://gfx/Maps/lv4.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -126,7 +126,7 @@ attack_range = 0
 defense = 28.0
 heal = 0
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=36]
 script = ExtResource( 6 )
 character_class = 1
 name = "Trina"
@@ -186,7 +186,7 @@ attack_range = 0
 defense = 36.0
 heal = 1.0
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=37]
 script = ExtResource( 6 )
 character_class = 2
 name = "Mags"
@@ -246,13 +246,13 @@ attack_range = 1.0
 defense = 0
 heal = 0
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=38]
 script = ExtResource( 6 )
 character_class = 0
 name = "Nord"
 level = 4
-hp = 69
-max_hp = 69
+hp = 74
+max_hp = 74
 atk = 7
 def = 2
 atk_range = 1
@@ -306,13 +306,13 @@ attack_range = 1.0
 defense = 0
 heal = 2.0
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 6 )
 character_class = 2
 name = "Firas"
 level = 3
-hp = 65
-max_hp = 65
+hp = 60
+max_hp = 60
 atk = 6
 def = 2
 atk_range = 4
@@ -344,69 +344,14 @@ text = ""
 branches = [  ]
 result = 0
 
-[sub_resource type="Resource" id=29]
-script = ExtResource( 5 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "minor bow"
-attack = 1.0
-attack_range = 1.0
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=30]
-script = ExtResource( 5 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "minor bow"
-attack = 1.0
-attack_range = 1.0
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=31]
-script = ExtResource( 6 )
-character_class = 1
-name = "Gwen"
-level = 4
-hp = 69
-max_hp = 69
-atk = 7
-def = 2
-atk_range = 3
-mov_range = 6
-heal = 0
-item_atk = SubResource( 29 )
-item_def = SubResource( 30 )
-portrait_override = ""
-
-[sub_resource type="Resource" id=32]
-script = ExtResource( 7 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=33]
-script = ExtResource( 7 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
 [sub_resource type="Resource" id=34]
 script = ExtResource( 14 )
 equipment_slot = 1
+level = 2
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 14 )
+equipment_slot = 0
 level = 2
 
 [node name="level" type="Node2D"]
@@ -444,50 +389,48 @@ position = Vector2( 40, 152 )
 frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
-position = Vector2( 104, 104 )
+position = Vector2( 200, 152 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 11 )
+stats = SubResource( 36 )
 dialogue = SubResource( 12 )
 recruit_dialogue = SubResource( 13 )
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
-position = Vector2( 120, 120 )
+position = Vector2( 56, 168 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 16 )
+stats = SubResource( 37 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
 [node name="CharacterSpawner3" type="Sprite" parent="map"]
-position = Vector2( 184, 72 )
+position = Vector2( 72, 136 )
 texture = ExtResource( 15 )
 script = ExtResource( 9 )
-stats = SubResource( 21 )
+stats = SubResource( 38 )
 dialogue = SubResource( 22 )
 recruit_dialogue = SubResource( 23 )
 
 [node name="CharacterSpawner4" type="Sprite" parent="map"]
-position = Vector2( 72, 136 )
+position = Vector2( 56, 136 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )
-stats = SubResource( 26 )
+stats = SubResource( 39 )
 dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
-
-[node name="CharacterSpawner5" type="Sprite" parent="map"]
-position = Vector2( 200, 168 )
-texture = ExtResource( 10 )
-script = ExtResource( 9 )
-stats = SubResource( 31 )
-dialogue = SubResource( 32 )
-recruit_dialogue = SubResource( 33 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 152, 168 )
 texture = ExtResource( 12 )
 script = ExtResource( 13 )
 item_spawner = SubResource( 34 )
+
+[node name="ChestSpawner2" type="Sprite" parent="map"]
+position = Vector2( 168, 120 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
+item_spawner = SubResource( 35 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 

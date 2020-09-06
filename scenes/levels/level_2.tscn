@@ -114,7 +114,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=19]
 script = ExtResource( 4 )
 character_class = 1
 name = "Lily"
@@ -174,13 +174,13 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=20]
 script = ExtResource( 4 )
 character_class = 2
 name = "Steph"
 level = 2
-hp = 62
-max_hp = 62
+hp = 57
+max_hp = 57
 atk = 6
 def = 1
 atk_range = 4
@@ -226,18 +226,18 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
-position = Vector2( 53.6199, 38.9062 )
+position = Vector2( 72, 184 )
 texture = ExtResource( 8 )
 script = ExtResource( 5 )
-stats = SubResource( 10 )
+stats = SubResource( 19 )
 dialogue = SubResource( 11 )
 recruit_dialogue = SubResource( 12 )
 
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
-position = Vector2( 88, 168 )
+position = Vector2( 136, 184 )
 texture = ExtResource( 13 )
 script = ExtResource( 5 )
-stats = SubResource( 15 )
+stats = SubResource( 20 )
 dialogue = SubResource( 16 )
 recruit_dialogue = SubResource( 17 )
 

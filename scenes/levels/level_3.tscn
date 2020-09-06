@@ -179,7 +179,7 @@ attack_range = 1
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=30]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 8 )
 character_class = 1
 name = "Seth"
@@ -239,7 +239,7 @@ attack_range = 1
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=22]
 script = ExtResource( 8 )
 character_class = 1
 name = "Alf"
@@ -299,13 +299,13 @@ attack_range = 1
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=32]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 8 )
 character_class = 0
 name = "Firas"
 level = 3
-hp = 65
-max_hp = 65
+hp = 74
+max_hp = 74
 atk = 6
 def = 2
 atk_range = 1
@@ -359,15 +359,17 @@ item_spawner = SubResource( 14 )
 
 [node name="Water2" parent="map" instance=ExtResource( 13 )]
 position = Vector2( 48, 176 )
+frame = 1
 
 [node name="Water 1" parent="map" instance=ExtResource( 14 )]
 position = Vector2( 16, 176 )
+frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 120, 184 )
 texture = ExtResource( 10 )
 script = ExtResource( 6 )
-stats = SubResource( 30 )
+stats = SubResource( 17 )
 dialogue = SubResource( 18 )
 recruit_dialogue = SubResource( 19 )
 
@@ -375,7 +377,7 @@ recruit_dialogue = SubResource( 19 )
 position = Vector2( 136, 168 )
 texture = ExtResource( 10 )
 script = ExtResource( 6 )
-stats = SubResource( 31 )
+stats = SubResource( 22 )
 dialogue = SubResource( 23 )
 recruit_dialogue = SubResource( 24 )
 
@@ -383,7 +385,7 @@ recruit_dialogue = SubResource( 24 )
 position = Vector2( 72, 168 )
 texture = ExtResource( 12 )
 script = ExtResource( 6 )
-stats = SubResource( 32 )
+stats = SubResource( 27 )
 dialogue = SubResource( 28 )
 recruit_dialogue = SubResource( 29 )
 
