@@ -236,29 +236,26 @@ centered = false
 
 [node name="Water 1" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 176, 256 )
+frame = 1
 
 [node name="Water 2" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 224, 256 )
-frame = 1
 
 [node name="Water2" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 256, 256 )
+frame = 1
 
 [node name="Water 3" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 72, 128 )
-frame = 1
 
 [node name="Water 4" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 120, 128 )
-frame = 1
 
 [node name="Water 5" parent="map" instance=ExtResource( 1 )]
 position = Vector2( 216, 48 )
-frame = 1
 
 [node name="Water3" parent="map" instance=ExtResource( 5 )]
 position = Vector2( 184, 48 )
-frame = 1
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 264, 280 )

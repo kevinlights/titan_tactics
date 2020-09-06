@@ -1,10 +1,121 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://gfx/Maps/lv10.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/animated/torchbottom.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/animated/torchtop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/dialogue.gd" type="Script" id=5]
 [ext_resource path="res://scripts/level.gd" type="Script" id=6]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+dialogue_id = "opening"
+portrait = 6
+trigger = 4
+trigger_id = ""
+title = "Rolf:"
+text = "There’s the well! Let’s get to it team!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 5 )
+dialogue_id = "1"
+portrait = 7
+trigger = 5
+trigger_id = "opening"
+title = "Alex:"
+text = "¤steps out from the shadow of a building"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 5 )
+dialogue_id = "2"
+portrait = 7
+trigger = 5
+trigger_id = "1"
+title = ""
+text = "and drives a dagger into Cyan’s back¤"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 5 )
+dialogue_id = "3"
+portrait = 9
+trigger = 5
+trigger_id = "2"
+title = "Cyan:"
+text = "¤screams and falls to the ground¤ “I… I knew it!”"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 5 )
+dialogue_id = "4"
+portrait = 6
+trigger = 5
+trigger_id = "3"
+title = "Rolf:"
+text = "Cyan!! No!! ¤rushes to Cyan, but Alex blocks him¤"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 5 )
+dialogue_id = "5"
+portrait = 7
+trigger = 5
+trigger_id = "4"
+title = "Alex:"
+text = "You both are very trusting… This isn’t the first"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 5 )
+dialogue_id = "6"
+portrait = 7
+trigger = 5
+trigger_id = "5"
+title = ""
+text = "time the Hass have fooled you. Have you any idea who Ulrich is, Rolf?"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 5 )
+dialogue_id = "7"
+portrait = 6
+trigger = 0
+trigger_id = "6"
+title = "Rolf:"
+text = "Alex… I will rip you apart for what you’ve done!"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 5 )
+dialogue_id = "8"
+portrait = 6
+trigger = 5
+trigger_id = "7"
+title = ""
+text = "¤lunges at Alex¤"
+branches = [  ]
+result = 2
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 5 )
+dialogue_id = "9"
+portrait = 7
+trigger = 5
+trigger_id = "8"
+title = "Alex:"
+text = "¤dodges Rolf’s advance¤ “Your foster father helped"
+branches = [  ]
+result = 2
 
 [node name="level" type="Node2D"]
 script = ExtResource( 6 )
@@ -19,6 +130,7 @@ STRUCTURES
 COVERED IN
 CREEPING VINES."
 }
+dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ]
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -26,20 +138,21 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 248 )
+frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 296 )
-frame = 1
 
 [node name="Torch bottom4" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 296 )
+frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 248 )
+frame = 1
 
 [node name="Torch bottom5" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
-frame = 1
 
 [node name="navigation" type="Navigation2D" parent="."]
 
@@ -67,17 +180,18 @@ CREEPING VINES."
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 232 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 280 )
+frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 280 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 232 )
+frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 104, 24 )
+frame = 1
