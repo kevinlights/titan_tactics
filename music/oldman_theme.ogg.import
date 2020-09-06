@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/oldman_theme.ogg-3fc7757ec55184bda6abab1b25d8e989.oggstr"
+path="res://.import/oldman_theme.ogg-0d3b0a768ee5d842313a276cc47ed1bf.oggstr"
 
 [deps]
 
-source_file="res://music/oldman_theme.ogg"
-dest_files=[ "res://.import/oldman_theme.ogg-3fc7757ec55184bda6abab1b25d8e989.oggstr" ]
+source_file="res://Music/oldman_theme.ogg"
+dest_files=[ "res://.import/oldman_theme.ogg-0d3b0a768ee5d842313a276cc47ed1bf.oggstr" ]
 
 [params]
 
