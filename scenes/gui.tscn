@@ -47,6 +47,7 @@
 [ext_resource path="res://gfx/change.png" type="Texture" id=45]
 [ext_resource path="res://scripts/tip.gd" type="Script" id=46]
 [ext_resource path="res://scripts/option_text_focus.gd" type="Script" id=47]
+[ext_resource path="res://scripts/ally.gd" type="Script" id=48]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 42 )
@@ -453,7 +454,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -742,6 +742,7 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 30 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -754,7 +755,6 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 35 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -762,6 +762,104 @@ position = Vector2( 85.7853, 0.713303 )
 texture = ExtResource( 10 )
 
 [node name="LvlupSfx" type="AudioStreamPlayer2D" parent="battle"]
+
+[node name="ally" type="Control" parent="."]
+visible = false
+margin_left = -5.54782
+margin_top = 97.6417
+margin_right = 34.4522
+margin_bottom = 137.642
+script = ExtResource( 48 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+special_names = [ "Rolf" ]
+
+[node name="box_ally" type="Sprite" parent="ally"]
+position = Vector2( -30, 29.047 )
+texture = ExtResource( 28 )
+
+[node name="Player" type="AnimatedSprite" parent="ally/box_ally"]
+position = Vector2( -36, -68 )
+frames = SubResource( 8 )
+animation = "portraits"
+frame = 4
+speed_scale = 0.0
+centered = false
+
+[node name="playerlevel" type="Label" parent="ally/box_ally"]
+margin_left = 15.7445
+margin_top = -11.6735
+margin_right = 55.7445
+margin_bottom = 2.32654
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playername" type="Label" parent="ally/box_ally"]
+margin_left = -31.1581
+margin_top = -11.9374
+margin_right = 8.84195
+margin_bottom = 2.06264
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "Marie"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playeratklevel" type="Label" parent="ally/box_ally"]
+margin_left = -17.0678
+margin_top = -0.81588
+margin_right = 22.9322
+margin_bottom = 13.1841
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerdeflevel" type="Label" parent="ally/box_ally"]
+margin_left = 15.6839
+margin_top = -1.04449
+margin_right = 55.6839
+margin_bottom = 12.9555
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerhp" type="Label" parent="ally/box_ally"]
+margin_left = -17.3368
+margin_top = 6.68463
+margin_right = 22.6632
+margin_bottom = 20.6846
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="levelline" type="Line2D" parent="ally/box_ally"]
+position = Vector2( 2, -5.547 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 1.0
+default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+
+[node name="hpline" type="Line2D" parent="ally/box_ally"]
+position = Vector2( -31, 14.5 )
+points = PoolVector2Array( 0, 0, 61, 0 )
+width = 1.0
+default_color = Color( 0.917647, 1, 0.866667, 1 )
+
+[node name="LvlupSfx" type="AudioStreamPlayer2D" parent="ally"]
 
 [node name="playerturn" type="Control" parent="."]
 visible = false

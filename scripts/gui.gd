@@ -92,6 +92,13 @@ func level_up(diff, new_stats):
 func battle(friendly, enemy):
 	$battle.set_entities(friendly, enemy)
 	$battle.show()
+	
+func ally(friendly):
+	$ally.set_entities(friendly)
+	$ally.show()
+	
+func ally_hide(current):
+	$ally.start_hiding(current)
 
 func battle_hide(current):
 	$battle.start_hiding(current)
@@ -112,9 +119,11 @@ func loot(current, new, type):
 
 func team_confirm():
 	active = true
+	arrow_hide()
 	$teamconfirm.call_deferred("show_dialog")
 
 func swap():
+	ally_hide(get_parent().get_current())
 	active = true
 	get_parent().get_node("select/select").show()
 	$characterswap.start = OS.get_ticks_msec()
