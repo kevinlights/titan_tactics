@@ -40,7 +40,7 @@ func enable():
 	set_context(world.get_current_context(tile))
 
 func set_context(context):
-	if world.current_turn == Game.CONTROL.AI:
+	if world.current_turn == Game.CONTROL.AI or context == Game.CONTEXT.NOT_PLAYABLE:
 		play("blank")
 		return
 	match(context):
@@ -59,6 +59,8 @@ func set_context(context):
 
 func _input(event):
 	var advance = Vector2(0, 0)
+	if Game.level == 0:
+		return
 	if gui.active or disabled:
 		if not world.current_turn == Game.CONTROL.AI:
 			play("attack")

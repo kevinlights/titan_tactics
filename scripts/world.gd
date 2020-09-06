@@ -1,6 +1,7 @@
 extends Node2D
 
 signal win
+signal auto_deployed
 
 enum TILEID {
 	NOT_PASSABLE = 0,
@@ -280,8 +281,12 @@ func select_team():
 	for member in Game.team:
 		member.hp = member.max_hp
 		member.reset_turn() # reset actions and moves
-	gui.team_select(Game.team)
 	$select.tile = player_spawns[0]
+	if Game.team.size() > 1:
+		gui.team_select(Game.team)
+	else:
+		auto_deploy_only_character()
+
 
 func _on_dialogue_complete(content):
 	gui.back()
@@ -374,6 +379,21 @@ func _on_next_level():
 		gui.credits()
 		$music.get_node(Game.get_theme()).stop()
 		$music/win.play()
+
+func auto_deploy_only_character():
+	var character:Node = load("res://scenes/character_controller.tscn").instance()
+	var spawn = player_spawns.pop_front()
+	character.from_library(Game.team[0])
+	character.teleport(spawn.x, spawn.y)
+	character.add_to_group("characters")
+	world_map.add_child(character)
+	current[Game.CONTROL.PLAYER].append(character)
+	character.connect("done", self, "advance_turn")
+	character.connect("death", self, "_on_death")
+	character.character.control = Game.CONTROL.PLAYER
+	character.character.connect("level_up", self, "_on_level_up")
+	_on_start_level()
+	emit_signal("auto_deployed")
 
 func _on_select_team_member(team_member):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
@@ -530,6 +550,8 @@ func _on_selector_moved(tile):
 func get_current_context(tile):
 	if $select.mode == $select.MODE.CHECK_MAP:
 		return Game.CONTEXT.NEUTRAL
+	if Game.level == 0:
+		return Game.CONTEXT.NOT_PLAYABLE
 	var unit = entity_at(tile)
 	if unit:
 		if unit.is_loot or unit.is_trigger:
