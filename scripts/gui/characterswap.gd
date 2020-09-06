@@ -70,8 +70,7 @@ func _input(event):
 		#	return
 	#selected = clamp(selected, 0, characters.size() - 1)
 	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
-		pass
-		#get_parent().get_parent().end_turn()
+		get_parent().get_parent().end_turn()
 	if 0:
 		$Arrows.hide()
 	else:

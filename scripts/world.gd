@@ -139,9 +139,6 @@ func end_turn():
 	gui.turn(current_turn)
 	$select.disable()
 
-func change_select(character_class):
-	$select.play(character_class)
-
 func to_world_path(path):
 	var world_path = PoolVector2Array()
 	for point in path:
