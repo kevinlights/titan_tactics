@@ -543,7 +543,7 @@ func _on_selector_moved(tile):
 		gui.battle(get_current(), target)
 	else:
 		gui.battle_hide(get_current())
-	if target and !target.is_loot and !target.is_trigger and !target.character.control == Game.CONTROL.AI and context == Game.CONTEXT.GUARD:
+	if target and !target.is_loot and !target.is_trigger and !target.character.control == Game.CONTROL.AI and context == Game.CONTEXT.GUARD and !gui.active:
 		print("you are pointing on yourself : " + str(target.character.name))
 		gui.ally(get_current())
 	else:
