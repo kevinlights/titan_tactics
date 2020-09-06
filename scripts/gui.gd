@@ -119,6 +119,7 @@ func loot(current, new, type):
 
 func team_confirm():
 	active = true
+	arrow_hide()
 	$teamconfirm.call_deferred("show_dialog")
 
 func swap():
