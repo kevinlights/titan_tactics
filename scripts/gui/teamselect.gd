@@ -30,6 +30,10 @@ func _process(delta):
 		select.play(atlas_frames[characters[selected].character_class])
 	$levelline2.set_point_position(1, Vector2(characters[selected].xp/characters[selected].xp_to_next*28, 0))
 	$hpline2.set_point_position(1, Vector2(characters[selected].hp/characters[selected].max_hp * 61, 0))
+	if characters.size() == 1:
+		$Arrows.hide()
+	else:
+		$Arrows.show()
 
 func pick_random_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -72,9 +76,5 @@ func _input(event):
 			emit_signal("library_exhausted")
 			return
 	selected = clamp(selected, 0, characters.size() - 1)
-	if selected == characters.size() - 1:
-		$Arrows.hide()
-	else:
-		$Arrows.show()
 	update_view()
 	
