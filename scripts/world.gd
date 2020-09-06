@@ -538,11 +538,16 @@ func _on_selector_moved(tile):
 	var context = get_current_context(tile)
 	print(context)
 	var target = entity_at($select.tile)
-	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and (context == Game.CONTEXT.ATTACK or context == Game.CONTEXT.GUARD):
+	if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and context == Game.CONTEXT.ATTACK:
 		print("you are pointing on " + str(target.character.name))
 		gui.battle(get_current(), target)
 	else:
 		gui.battle_hide(get_current())
+	if target and !target.is_loot and !target.is_trigger and !target.character.control == Game.CONTROL.AI and context == Game.CONTEXT.GUARD:
+		print("you are pointing on yourself : " + str(target.character.name))
+		gui.ally(get_current())
+	else:
+		gui.ally_hide(get_current())
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
 	if current_path.size() > 0:
 		if context == Game.CONTEXT.MOVE:

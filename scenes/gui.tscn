@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://scripts/gui/characterswap.gd" type="Script" id=44]
 [ext_resource path="res://gfx/change.png" type="Texture" id=45]
 [ext_resource path="res://scripts/tip.gd" type="Script" id=46]
+[ext_resource path="res://scripts/ally.gd" type="Script" id=47]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 14 )
@@ -366,11 +367,13 @@ texture = ExtResource( 28 )
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 103.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 141.551, 130.424 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -451,6 +454,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -541,11 +545,13 @@ animation = "Rolf"
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 98.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Bbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 136.551, 130.424 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="battle" type="Control" parent="."]
@@ -739,7 +745,6 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 30 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -752,6 +757,7 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 35 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -759,6 +765,103 @@ position = Vector2( 85.7853, 0.713303 )
 texture = ExtResource( 10 )
 
 [node name="LvlupSfx" type="AudioStreamPlayer2D" parent="battle"]
+
+[node name="ally" type="Control" parent="."]
+visible = false
+margin_left = -5.54782
+margin_top = 97.6417
+margin_right = 34.4522
+margin_bottom = 137.642
+script = ExtResource( 47 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="box_ally" type="Sprite" parent="ally"]
+position = Vector2( -30, 29.047 )
+texture = ExtResource( 28 )
+
+[node name="Player" type="AnimatedSprite" parent="ally/box_ally"]
+position = Vector2( -36, -68 )
+frames = SubResource( 8 )
+animation = "portraits"
+frame = 4
+speed_scale = 0.0
+centered = false
+
+[node name="playerlevel" type="Label" parent="ally/box_ally"]
+margin_left = 15.7445
+margin_top = -11.6735
+margin_right = 55.7445
+margin_bottom = 2.32654
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playername" type="Label" parent="ally/box_ally"]
+margin_left = -31.1581
+margin_top = -11.9374
+margin_right = 8.84195
+margin_bottom = 2.06264
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "Marie"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playeratklevel" type="Label" parent="ally/box_ally"]
+margin_left = -17.0678
+margin_top = -0.81588
+margin_right = 22.9322
+margin_bottom = 13.1841
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerdeflevel" type="Label" parent="ally/box_ally"]
+margin_left = 15.6839
+margin_top = -1.04449
+margin_right = 55.6839
+margin_bottom = 12.9555
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerhp" type="Label" parent="ally/box_ally"]
+margin_left = -17.3368
+margin_top = 6.68463
+margin_right = 22.6632
+margin_bottom = 20.6846
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="levelline" type="Line2D" parent="ally/box_ally"]
+position = Vector2( 2, -5.547 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 1.0
+default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+
+[node name="hpline" type="Line2D" parent="ally/box_ally"]
+position = Vector2( -31, 14.5 )
+points = PoolVector2Array( 0, 0, 61, 0 )
+width = 1.0
+default_color = Color( 0.917647, 1, 0.866667, 1 )
+
+[node name="LvlupSfx" type="AudioStreamPlayer2D" parent="ally"]
 
 [node name="playerturn" type="Control" parent="."]
 visible = false
@@ -954,6 +1057,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 38 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -975,6 +1079,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 38 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -983,6 +1088,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 41 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -1095,7 +1201,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 41 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1121,6 +1226,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 38 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1218,7 +1324,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 44 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1241,7 +1346,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 44 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1330,7 +1434,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 44 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1353,7 +1456,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 44 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1411,7 +1513,6 @@ __meta__ = {
 [node name="more" type="AnimatedSprite" parent="dialogue/background"]
 position = Vector2( 145, 36 )
 frames = SubResource( 47 )
-frame = 1
 playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
@@ -1445,7 +1546,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
 visible = false
 frames = SubResource( 50 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1480,7 +1580,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
 visible = false
 frames = SubResource( 50 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1513,7 +1612,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
 visible = false
 frames = SubResource( 50 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )

@@ -92,6 +92,13 @@ func level_up(diff, new_stats):
 func battle(friendly, enemy):
 	$battle.set_entities(friendly, enemy)
 	$battle.show()
+	
+func ally(friendly):
+	$ally.set_entities(friendly)
+	$ally.show()
+	
+func ally_hide(current):
+	$ally.start_hiding(current)
 
 func battle_hide(current):
 	$battle.start_hiding(current)
