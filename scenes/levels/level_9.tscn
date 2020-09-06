@@ -251,7 +251,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=57]
+[sub_resource type="Resource" id=24]
 script = ExtResource( 11 )
 character_class = 2
 name = "Steph"
@@ -311,7 +311,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=58]
+[sub_resource type="Resource" id=29]
 script = ExtResource( 11 )
 character_class = 1
 name = "Symon"
@@ -371,7 +371,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=59]
+[sub_resource type="Resource" id=34]
 script = ExtResource( 11 )
 character_class = 0
 name = "Clyde"
@@ -431,7 +431,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=60]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 11 )
 character_class = 0
 name = "Bart"
@@ -491,7 +491,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=61]
+[sub_resource type="Resource" id=44]
 script = ExtResource( 11 )
 character_class = 0
 name = "Jonn"
@@ -529,6 +529,66 @@ text = ""
 branches = [  ]
 result = 0
 
+[sub_resource type="Resource" id=47]
+script = ExtResource( 12 )
+character_class = 1
+equipment_slot = 0
+level = 1
+name = "Minor Bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=48]
+script = ExtResource( 12 )
+character_class = 1
+equipment_slot = 1
+level = 1
+name = "Minor Chain"
+attack = 0
+attack_range = 0
+defense = 1
+heal = 0
+
+[sub_resource type="Resource" id=49]
+script = ExtResource( 11 )
+character_class = 1
+name = "Dara"
+level = 9
+hp = 102
+max_hp = 102
+atk = 10
+def = 5
+atk_range = 3
+mov_range = 6
+heal = 0
+item_atk = SubResource( 47 )
+item_def = SubResource( 48 )
+portrait_override = ""
+
+[sub_resource type="Resource" id=50]
+script = ExtResource( 9 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
+[sub_resource type="Resource" id=51]
+script = ExtResource( 9 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+result = 0
+
 [sub_resource type="Resource" id=52]
 script = ExtResource( 12 )
 character_class = 1
@@ -545,16 +605,16 @@ script = ExtResource( 12 )
 character_class = 1
 equipment_slot = 1
 level = 1
-name = "Minor Chain"
+name = "Minor Vest"
 attack = 0
 attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=62]
+[sub_resource type="Resource" id=54]
 script = ExtResource( 11 )
 character_class = 1
-name = "Dara"
+name = "Edd"
 level = 9
 hp = 102
 max_hp = 102
@@ -579,66 +639,6 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=56]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=63]
-script = ExtResource( 12 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "Minor Bow"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-
-[sub_resource type="Resource" id=64]
-script = ExtResource( 12 )
-character_class = 1
-equipment_slot = 1
-level = 1
-name = "Minor Vest"
-attack = 0
-attack_range = 0
-defense = 1
-heal = 0
-
-[sub_resource type="Resource" id=65]
-script = ExtResource( 11 )
-character_class = 1
-name = "Edd"
-level = 9
-hp = 102
-max_hp = 102
-atk = 10
-def = 5
-atk_range = 3
-mov_range = 6
-heal = 0
-item_atk = SubResource( 63 )
-item_def = SubResource( 64 )
-portrait_override = ""
-
-[sub_resource type="Resource" id=66]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-result = 0
-
-[sub_resource type="Resource" id=67]
 script = ExtResource( 9 )
 dialogue_id = ""
 portrait = 0
@@ -705,7 +705,7 @@ item_spawner = SubResource( 21 )
 position = Vector2( 88, 72 )
 texture = ExtResource( 13 )
 script = ExtResource( 10 )
-stats = SubResource( 57 )
+stats = SubResource( 24 )
 dialogue = SubResource( 25 )
 recruit_dialogue = SubResource( 26 )
 
@@ -713,7 +713,7 @@ recruit_dialogue = SubResource( 26 )
 position = Vector2( 184, 184 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 58 )
+stats = SubResource( 29 )
 dialogue = SubResource( 30 )
 recruit_dialogue = SubResource( 31 )
 
@@ -721,7 +721,7 @@ recruit_dialogue = SubResource( 31 )
 position = Vector2( 200, 200 )
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 59 )
+stats = SubResource( 34 )
 dialogue = SubResource( 35 )
 recruit_dialogue = SubResource( 36 )
 
@@ -729,7 +729,7 @@ recruit_dialogue = SubResource( 36 )
 position = Vector2( 120, 200 )
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 60 )
+stats = SubResource( 39 )
 dialogue = SubResource( 40 )
 recruit_dialogue = SubResource( 41 )
 
@@ -737,7 +737,7 @@ recruit_dialogue = SubResource( 41 )
 position = Vector2( 136, 184 )
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 61 )
+stats = SubResource( 44 )
 dialogue = SubResource( 45 )
 recruit_dialogue = SubResource( 46 )
 
@@ -745,17 +745,17 @@ recruit_dialogue = SubResource( 46 )
 position = Vector2( 104, 184 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 62 )
-dialogue = SubResource( 55 )
-recruit_dialogue = SubResource( 56 )
+stats = SubResource( 49 )
+dialogue = SubResource( 50 )
+recruit_dialogue = SubResource( 51 )
 
 [node name="CharacterSpawner7" type="Sprite" parent="map"]
 position = Vector2( 248, 72 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 65 )
-dialogue = SubResource( 66 )
-recruit_dialogue = SubResource( 67 )
+stats = SubResource( 54 )
+dialogue = SubResource( 55 )
+recruit_dialogue = SubResource( 56 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
