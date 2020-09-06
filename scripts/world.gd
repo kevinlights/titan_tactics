@@ -533,7 +533,7 @@ func _on_selector_moved(tile):
 	$select.set_context(context)
 
 func get_current_context(tile):
-	if Game.level == 0:
+	if Game.level == 0 or gui.get_node("dialogue").visible:
 		return Game.CONTEXT.NOT_PLAYABLE
 	if $select.mode == $select.MODE.CHECK_MAP:
 		return Game.CONTEXT.NEUTRAL

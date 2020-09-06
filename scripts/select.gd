@@ -60,7 +60,7 @@ func set_context(context):
 
 func _input(event):
 	var advance = Vector2(0, 0)
-	if Game.level == 0:
+	if world.get_current_context(tile) == Game.CONTEXT.NOT_PLAYABLE:
 		play("blank")
 		return
 	if gui.active or disabled:
