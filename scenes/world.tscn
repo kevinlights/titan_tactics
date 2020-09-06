@@ -162,6 +162,7 @@ width = 2.0
 z_as_relative = false
 frames = SubResource( 17 )
 animation = "attack"
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, -2 )
@@ -181,6 +182,7 @@ visible = false
 position = Vector2( 8, -7 )
 rotation = 1.5708
 frames = SubResource( 20 )
+frame = 1
 playing = true
 flip_v = true
 

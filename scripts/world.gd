@@ -28,6 +28,8 @@ var current_character = 0
 var turns = 0
 var map_size = { "width": 10, "height": 10 }
 
+var num_done = 0
+
 var current = {
 	Game.CONTROL.AI: [],
 	Game.CONTROL.PLAYER: []
@@ -107,7 +109,7 @@ func spawn_character(x, y, type = Game.TYPE.MAGE, control = Game.CONTROL.PLAYER)
 	return character
 
 func advance_turn(explicit = 1, direction = 1):
-	var num_done = 0
+	num_done = 0
 	for character_check in current[current_turn]:
 		if character_check.is_done:
 			num_done += 1
