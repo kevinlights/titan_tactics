@@ -15,7 +15,7 @@ mov_range = 6
 [sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
 character_class = 2
-hp = 60
+hp = 55
 atk = 5
 def = 1
 atk_range = 4
@@ -24,7 +24,7 @@ mov_range = 4
 [sub_resource type="Resource" id=3]
 script = ExtResource( 2 )
 character_class = 0
-hp = 60
+hp = 65
 atk = 5
 def = 1
 atk_range = 1

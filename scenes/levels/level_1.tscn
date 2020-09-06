@@ -23,7 +23,7 @@ portrait = 6
 trigger = 4
 trigger_id = ""
 title = "Rolf:"
-text = "(The Hass have sent scouts out this far?"
+text = "The Hass have sent scouts out this far?"
 branches = [  ]
 result = 2
 
@@ -34,7 +34,7 @@ portrait = 6
 trigger = 5
 trigger_id = "opening"
 title = ""
-text = " This isn't good... I must remember my training...)"
+text = "This isn't good... I must remember my training..."
 branches = [  ]
 result = 2
 
@@ -217,6 +217,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 16 )
 item_def = SubResource( 17 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=19]
 script = ExtResource( 10 )

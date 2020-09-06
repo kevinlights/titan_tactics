@@ -22,7 +22,7 @@ func _ready():
 func _on_continue():
 	$sfx/select.play()	
 	yield(get_tree().create_timer(0.3), "timeout")		
-	get_tree().change_scene("res://scenes/world.tscn")
+	get_tree().change_scene("res://scenes/scroller.tscn")
 
 func _on_new_game():
 	Game.team = []

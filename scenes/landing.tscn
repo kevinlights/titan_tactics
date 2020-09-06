@@ -42,7 +42,7 @@ volume_db = -5.3
 
 [node name="open" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 3 )
-volume_db = -2.5
+volume_db = -4.0
 
 [node name="close" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 4 )
@@ -102,6 +102,7 @@ align = 0
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -122,7 +123,6 @@ align = 0
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -144,6 +144,7 @@ align = 0
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )
@@ -163,6 +164,7 @@ align = 0
 visible = false
 position = Vector2( -2, 0 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 2 )

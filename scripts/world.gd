@@ -372,6 +372,7 @@ func _on_select_team_member(team_member):
 	current[Game.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
+	character.character.control = Game.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
 	if player_spawns.size() > 0:
 		$select.tile = player_spawns[0]
