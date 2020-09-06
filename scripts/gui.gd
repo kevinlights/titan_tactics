@@ -44,9 +44,11 @@ func turn(type):
 	active = true
 	match type:
 		Game.CONTROL.PLAYER:
+			print("show turn for player")
 			$playerturn.reset()
 			$playerturn.show()
 		Game.CONTROL.AI:
+			print("show turn for AI")
 			$enemyturn.reset()
 			$enemyturn.show()
 

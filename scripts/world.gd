@@ -142,11 +142,12 @@ func action():
 	#gui.battle()
 	match(context):
 		Game.CONTEXT.ATTACK:
-			if get_current().can_attack(target):
-				if target.can_recruit() and is_adjacent(get_current(), target):
-					gui.attack()
-				else:
-					_on_attack()
+			if get_current().character.turn_limits.actions > 0:
+				if get_current().can_attack(target):
+					if target.can_recruit() and is_adjacent(get_current(), target):
+						gui.attack()
+					else:
+						_on_attack()
 		Game.CONTEXT.USE:
 			if is_adjacent(target, get_current()):
 				if target.is_loot:
@@ -386,12 +387,15 @@ func _on_level_up(diff, character):
 func _initiate_turn():
 	# in case a signal triggers this after the level is won/lost
 	if current[Game.CONTROL.AI].size() == 0 or current[Game.CONTROL.PLAYER].size() == 0:
+		print("Don't initiate turn; the game is already over.")
 		return
 	if $select.disabled:
 		print("initiate turn")
 		gui.back()
 		$select.enable()
 		$select.set_origin(get_current())
+	else:
+		print("Don't initiate turn: selector is enabled")
 	if current_turn == Game.CONTROL.AI:
 		print("Control turned over to AI")
 		ai.play()

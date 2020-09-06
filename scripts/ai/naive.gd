@@ -8,15 +8,15 @@ var i_am = Game.CONTROL.AI
 func _init(my_world):
 	world = my_world
 	characters = world.current[Game.CONTROL.AI]
-	for character in characters:
-		character.connect("idle", self, "play")
+#	for character in characters:
+#		character.connect("idle", self, "play")
 	
 func play():
 	if world.game_over:
 		return
 	var character = world.get_current()
 	if character.character.control != Game.CONTROL.AI:
-		print("Not my turn, skipping")
+		print("AI (" + character.character.name + ") says not my turn, skipping")
 		return
 	print("AI taking turn")
 	if character.character.has_ability(Game.ABILITY.HEAL):
@@ -24,6 +24,7 @@ func play():
 		if weakest:
 			print("AI (" + character.character.name + ") says heal " + weakest.character.name)
 			character.heal(weakest)
+			world.advance_turn()
 			return
 	var enemy = get_nearest_enemy(character.position)
 	if enemy:
@@ -31,15 +32,18 @@ func play():
 		if character.can_recruit() and character.character.has_ability(Game.ABILITY.HEAL):
 			print("AI (" + character.character.name + ") says heal")
 			character.heal(character)
+			world.advance_turn()
 			return
 		if enemies_are_stronger(character.position, character):
 			print("AI (" + character.character.name + ") says guard")
 			character.guard()
+#			world.advance_turn()
 			return
 		var distance = character.tile.distance_to(enemy.tile)
-		if distance < character.character.atk_range and character.character.turn_limits.actions > 0 and not world.is_cover_between(character.tile, enemy.tile):
+		if distance <= character.character.atk_range and character.character.turn_limits.actions > 0 and not world.is_cover_between(character.tile, enemy.tile):
 			print("AI (" + character.character.name + ") says attack")
 			character.attack(enemy)
+			world.advance_turn()
 			return
 		if character.character.turn_limits.move_distance > 1 and distance > character.character.atk_range:
 			var path = get_path_to(character.tile, enemy.tile, character.character.turn_limits.move_distance, character)
@@ -47,13 +51,21 @@ func play():
 				print("AI (" + character.character.name + ") says move")
 				character.move(path)
 				world.get_node("select").tile = path[path.size() - 1] / Vector2(Game.cell_size, Game.cell_size)
+				if not character.is_connected("path_complete", self, "play"):
+					character.connect("path_complete", self, "play")
 				return
 			else:
 				print("AI (" + character.character.name + ") says wait (path too short)")
 				world.advance_turn()
+				return
 		else:
 			print("AI (" + character.character.name + ") says wait (out of moves)")
 			world.advance_turn()
+			return
+		# if we reach this point, abandon turn
+		print("AI (" + character.character.name + ") abandons turn, exhausted options")
+		world.advance_turn()
+		return
 	else:
 		print("AI (" + character.character.name + ") says wait (nothing to do)")
 		world.advance_turn()
