@@ -25,7 +25,7 @@ trigger_id = ""
 title = "Rolf:"
 text = "Everywhere we turn there are Hass troops. I have "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 7 )
@@ -36,7 +36,7 @@ trigger_id = "but"
 title = ""
 text = "never seen so many since living in the forest."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 7 )
@@ -47,7 +47,7 @@ trigger_id = "still"
 title = "Cyan:"
 text = "It’s really only a matter of time until they find Ulrich. "
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 7 )
@@ -58,7 +58,7 @@ trigger_id = "you"
 title = ""
 text = "We are nearly there."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 7 )
@@ -69,7 +69,7 @@ trigger_id = "get"
 title = "Rolf:"
 text = "Let’s dispose of this scum and keep going."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 7 )
@@ -80,7 +80,7 @@ trigger_id = "these"
 title = "Cyan"
 text = "Gods give us strength."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 5 )
@@ -96,12 +96,12 @@ heal = 0
 [sub_resource type="Resource" id=8]
 script = ExtResource( 5 )
 character_class = 1
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "Minor Bow"
-attack = 1
-attack_range = 1
-defense = 26.0
+name = "Minor Vest"
+attack = 0
+attack_range = 0
+defense = 1
 heal = 0
 
 [sub_resource type="Resource" id=9]
@@ -129,7 +129,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 7 )
@@ -140,7 +140,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 5 )
@@ -156,12 +156,12 @@ heal = 0
 [sub_resource type="Resource" id=13]
 script = ExtResource( 5 )
 character_class = 0
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "Minor Knife"
-attack = 1
-attack_range = 1
-defense = 36.0
+name = "Minor Boots"
+attack = 0
+attack_range = 0
+defense = 1
 heal = 0
 
 [sub_resource type="Resource" id=14]
@@ -189,7 +189,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=16]
 script = ExtResource( 7 )
@@ -200,7 +200,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=17]
 script = ExtResource( 5 )
@@ -216,12 +216,12 @@ heal = 1
 [sub_resource type="Resource" id=18]
 script = ExtResource( 5 )
 character_class = 2
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "Minor Staff"
-attack = 1
-attack_range = 1
-defense = 37.0
+name = "Minor Mail"
+attack = 0
+attack_range = 0
+defense = 1
 heal = 1
 
 [sub_resource type="Resource" id=19]
@@ -249,7 +249,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=21]
 script = ExtResource( 7 )
@@ -260,7 +260,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=22]
 script = ExtResource( 5 )
@@ -276,12 +276,12 @@ heal = 0
 [sub_resource type="Resource" id=23]
 script = ExtResource( 5 )
 character_class = 1
-equipment_slot = 0
+equipment_slot = 1
 level = 1
-name = "Minor Bow"
-attack = 1
-attack_range = 1
-defense = 25.0
+name = "Minor Suit"
+attack = 0
+attack_range = 0
+defense = 1
 heal = 0
 
 [sub_resource type="Resource" id=24]
@@ -309,7 +309,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=26]
 script = ExtResource( 7 )
@@ -320,7 +320,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=27]
 script = ExtResource( 15 )
@@ -374,7 +374,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=32]
 script = ExtResource( 7 )
@@ -385,7 +385,7 @@ trigger_id = ""
 title = ""
 text = ""
 branches = [  ]
-result = 0
+audio_theme = ""
 
 [sub_resource type="Resource" id=33]
 script = ExtResource( 15 )
