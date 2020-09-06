@@ -38,11 +38,20 @@ var movement = {
 
 func check_finished():
 	if character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
-		$done.show()
+		if character.control != Game.CONTROL.AI:
+			$done.show()
 		emit_signal("done")
 
 func _ready():
 	pass
+
+func spread_icons():
+	if $guard.visible and $speak.visible:
+		$guard.position.x = -4
+		$speak.position.x = 11
+	else:
+		$guard.position.x = 0
+		$speak.position.x = 7
 
 func hit(attacker):
 	match(attacker.character_class):
@@ -71,6 +80,9 @@ func hit(attacker):
 			print(dialogue.text)
 			emit_signal("dialogue", dialogue)
 #			gui.dialogue(dialogue)
+	if character.control == Game.CONTROL.AI and can_recruit():
+		$speak.show()
+		spread_icons()
 
 func pick_random_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -104,6 +116,7 @@ func heal(target):
 func guard():
 	if character.has_ability(Game.ABILITY.GUARD):
 		$guard.show()
+		spread_icons()
 		character.turn_limits.actions = 0
 		character.turn_limits.move_distance = 0
 		guarding = true

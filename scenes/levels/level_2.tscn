@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=28 format=2]
-=======
 [gd_scene load_steps=34 format=2]
->>>>>>> 1bb1bc9c6a8612f2248936ed4831608857c13054
 
 [ext_resource path="res://gfx/Maps/lv2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -16,10 +12,7 @@
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=10]
 [ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/animated/Water2.tscn" type="PackedScene" id=12]
-<<<<<<< HEAD
-=======
 [ext_resource path="res://gfx/mage.png" type="Texture" id=13]
->>>>>>> 1bb1bc9c6a8612f2248936ed4831608857c13054
 [ext_resource path="res://scripts/level.gd" type="Script" id=15]
 
 [sub_resource type="Resource" id=1]
@@ -170,8 +163,6 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=14]
-<<<<<<< HEAD
-=======
 script = ExtResource( 3 )
 character_class = 2
 equipment_slot = 0
@@ -231,7 +222,6 @@ branches = [  ]
 result = 0
 
 [sub_resource type="Resource" id=19]
->>>>>>> 1bb1bc9c6a8612f2248936ed4831608857c13054
 script = ExtResource( 7 )
 equipment_slot = 1
 level = 1
@@ -252,8 +242,6 @@ stats = SubResource( 11 )
 dialogue = SubResource( 12 )
 recruit_dialogue = SubResource( 13 )
 
-<<<<<<< HEAD
-=======
 [node name="CharacterSpawner2" type="Sprite" parent="map"]
 position = Vector2( 88, 168 )
 texture = ExtResource( 13 )
@@ -262,16 +250,11 @@ stats = SubResource( 16 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
->>>>>>> 1bb1bc9c6a8612f2248936ed4831608857c13054
 [node name="ChestSpawner" type="Sprite" parent="map"]
 position = Vector2( 40, 24 )
 texture = ExtResource( 9 )
 script = ExtResource( 10 )
-<<<<<<< HEAD
-item_spawner = SubResource( 14 )
-=======
 item_spawner = SubResource( 19 )
->>>>>>> 1bb1bc9c6a8612f2248936ed4831608857c13054
 
 [node name="Water 1" parent="map" instance=ExtResource( 11 )]
 position = Vector2( 192, 144 )
