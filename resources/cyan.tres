@@ -14,4 +14,4 @@ def = 4
 atk_range = 7
 mov_range = 6
 heal = 0
-portrait_override = "cyan"
+portrait_override = 9

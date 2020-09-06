@@ -70,7 +70,7 @@ var deny = {
 		"Your body will never be found!"
 	],
 	PERSONALITY.NARCISSIST: [
-		"I don't think you fully appreciate what I have to offer.",
+		"I don't think you fully appreciate what I offer.",
 		"Taste of my steel, you insolent mortal!",
 		"You are not worthy."
 	],
