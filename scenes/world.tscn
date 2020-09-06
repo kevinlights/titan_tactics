@@ -25,44 +25,44 @@ atlas = ExtResource( 3 )
 region = Rect2( 0, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 14 )
-region = Rect2( 18, 0, 18, 18 )
+atlas = ExtResource( 3 )
+region = Rect2( 20, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 14 )
-region = Rect2( 18, 18, 18, 18 )
+atlas = ExtResource( 3 )
+region = Rect2( 20, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 14 )
-region = Rect2( 90, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 14 )
-region = Rect2( 90, 18, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
 region = Rect2( 80, 0, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
 region = Rect2( 80, 20, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 14 )
-region = Rect2( 54, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 14 )
-region = Rect2( 54, 18, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
 region = Rect2( 40, 20, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
 region = Rect2( 40, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 14 )
+region = Rect2( 90, 0, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 14 )
+region = Rect2( 90, 18, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 14 )
+region = Rect2( 54, 0, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 14 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 3 )
@@ -73,12 +73,12 @@ atlas = ExtResource( 3 )
 region = Rect2( 60, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 3 )
-region = Rect2( 20, 0, 20, 20 )
+atlas = ExtResource( 14 )
+region = Rect2( 18, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 3 )
-region = Rect2( 20, 20, 20, 20 )
+atlas = ExtResource( 14 )
+region = Rect2( 18, 18, 18, 18 )
 
 [sub_resource type="SpriteFrames" id=17]
 animations = [ {
@@ -87,29 +87,34 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "blank",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "fighter",
+"name": "cantmove",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "archer",
+"name": "heal",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "heal",
+"name": "attack",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
-"name": "attack",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ) ],
@@ -117,28 +122,23 @@ animations = [ {
 "name": "guard",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "blank",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
-"name": "cantmove",
+"name": "fighter",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=261]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=262]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 8, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=263]
+[sub_resource type="SpriteFrames" id=20]
 animations = [ {
-"frames": [ SubResource( 261 ), SubResource( 262 ) ],
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
@@ -180,8 +180,7 @@ smoothing_enabled = true
 visible = false
 position = Vector2( 8, -7 )
 rotation = 1.5708
-frames = SubResource( 263 )
-frame = 1
+frames = SubResource( 20 )
 playing = true
 flip_v = true
 

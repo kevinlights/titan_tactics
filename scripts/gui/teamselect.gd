@@ -75,6 +75,7 @@ func _input(event):
 		if characters.size() == 0:
 			emit_signal("library_exhausted")
 			get_parent().arrow_hide()
+			get_parent().active = false
 			return
 	selected = clamp(selected, 0, characters.size() - 1)
 	update_view()

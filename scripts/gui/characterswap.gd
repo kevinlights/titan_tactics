@@ -20,6 +20,7 @@ func _ready():
 func _process(delta):
 	if !visible:
 		return
+	get_parent().make_select_blank()
 	var now = OS.get_ticks_msec()
 	if !moving_back:
 		if $box_ally.position.x < end_x:

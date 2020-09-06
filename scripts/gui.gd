@@ -65,9 +65,13 @@ func close_attack():
 
 func arrow_hide():
 	get_parent().get_node("select/select").hide()
+	
+func make_select_blank():
+	get_parent().get_node("select").play("blank")
 
 func team_select(characters):
 	modal = true
+	active = true
 	get_parent().get_node("select/select").show()
 	$characterselect.set_characters(characters)
 	$characterselect.show()
