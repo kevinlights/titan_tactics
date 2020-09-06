@@ -21,6 +21,7 @@ var portrait_map = {
 	Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
 	Dialogue.PORTRAIT.HERO: "hero",
 	Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
+	Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
 	Dialogue.PORTRAIT.OLD_MAN: "old_man",
 	Dialogue.PORTRAIT.CYAN: "cyan"
 }
@@ -71,7 +72,7 @@ func set_content(dialogue_content):
 	portrait.hide()
 	if dialogue_content.portrait != Dialogue.PORTRAIT.NONE:
 		var offset = portrait_offset_friendly
-		if "ai" in portrait_map[dialogue_content.portrait]:
+		if "ai" in portrait_map[dialogue_content.portrait] or "revealed" in portrait_map[dialogue_content.portrait]:
 			offset = portrait_offset_enemy
 		portrait.position.x = offset.x
 		portrait.position.y = 144 - dialogue_height + offset.y

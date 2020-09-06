@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://gfx/mage_p.png" type="Texture" id=1]
 [ext_resource path="res://gfx/archer_p.png" type="Texture" id=2]
 [ext_resource path="res://gfx/hero_antagonist_p.png" type="Texture" id=3]
 [ext_resource path="res://gfx/sidechars_p.png" type="Texture" id=4]
 [ext_resource path="res://gfx/swordsman_p.png" type="Texture" id=5]
+[ext_resource path="res://gfx/antagonist_p.png" type="Texture" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -35,22 +36,27 @@ atlas = ExtResource( 1 )
 region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
-region = Rect2( 36, 0, 36, 50 )
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
 region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 36, 50 )
+atlas = ExtResource( 4 )
+region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "cyan",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "antagonist_revealed",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 2 ) ],
@@ -85,7 +91,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 8 ) ],
 "loop": true,
-"name": "old_man",
+"name": "hero",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 9 ) ],
@@ -95,10 +101,10 @@ animations = [ {
 }, {
 "frames": [ SubResource( 10 ) ],
 "loop": true,
-"name": "hero",
+"name": "old_man",
 "speed": 5.0
 } ]
 
 [node name="portraits" type="AnimatedSprite"]
 frames = SubResource( 11 )
-animation = "antagonist"
+animation = "antagonist_revealed"
