@@ -104,7 +104,7 @@ attack_range = 0
 defense = 26.0
 heal = 0
 
-[sub_resource type="Resource" id=40]
+[sub_resource type="Resource" id=9]
 script = ExtResource( 6 )
 character_class = 1
 name = "Nora"
@@ -118,6 +118,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 7 )
 item_def = SubResource( 8 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 7 )
@@ -163,7 +164,7 @@ attack_range = 0
 defense = 29.0
 heal = 24.0
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=14]
 script = ExtResource( 6 )
 character_class = 2
 name = "Kadif"
@@ -177,6 +178,7 @@ mov_range = 4
 heal = 4
 item_atk = SubResource( 12 )
 item_def = SubResource( 13 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 7 )
@@ -222,7 +224,7 @@ attack_range = 0
 defense = 36.0
 heal = 0
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=19]
 script = ExtResource( 6 )
 character_class = 0
 name = "Jake"
@@ -236,6 +238,7 @@ mov_range = 5
 heal = 0
 item_atk = SubResource( 17 )
 item_def = SubResource( 18 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=20]
 script = ExtResource( 7 )
@@ -281,7 +284,7 @@ attack_range = 0
 defense = 37.0
 heal = 30.0
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=24]
 script = ExtResource( 6 )
 character_class = 2
 name = "Layla"
@@ -295,6 +298,7 @@ mov_range = 4
 heal = 4
 item_atk = SubResource( 22 )
 item_def = SubResource( 23 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=25]
 script = ExtResource( 7 )
@@ -340,7 +344,7 @@ attack_range = 0
 defense = 25.0
 heal = 0
 
-[sub_resource type="Resource" id=44]
+[sub_resource type="Resource" id=29]
 script = ExtResource( 6 )
 character_class = 1
 name = "Amy"
@@ -354,6 +358,7 @@ mov_range = 6
 heal = 0
 item_atk = SubResource( 27 )
 item_def = SubResource( 28 )
+portrait_override = ""
 
 [sub_resource type="Resource" id=30]
 script = ExtResource( 7 )
@@ -553,26 +558,27 @@ centered = false
 
 [node name="torchbottom" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 232, 232 )
+frame = 1
 
 [node name="torchbottom2" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 184, 152 )
+frame = 1
 
 [node name="torchbottom3" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 184, 72 )
-frame = 1
 
 [node name="torchbottom4" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 88, 216 )
-frame = 1
 
 [node name="torchbottom5" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 104, 56 )
+frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 88, 88 )
 texture = ExtResource( 8 )
 script = ExtResource( 10 )
-stats = SubResource( 40 )
+stats = SubResource( 9 )
 dialogue = SubResource( 10 )
 recruit_dialogue = SubResource( 11 )
 
@@ -580,7 +586,7 @@ recruit_dialogue = SubResource( 11 )
 position = Vector2( 56, 200 )
 texture = ExtResource( 9 )
 script = ExtResource( 10 )
-stats = SubResource( 41 )
+stats = SubResource( 14 )
 dialogue = SubResource( 15 )
 recruit_dialogue = SubResource( 16 )
 
@@ -588,7 +594,7 @@ recruit_dialogue = SubResource( 16 )
 position = Vector2( 88, 152 )
 texture = ExtResource( 11 )
 script = ExtResource( 10 )
-stats = SubResource( 42 )
+stats = SubResource( 19 )
 dialogue = SubResource( 20 )
 recruit_dialogue = SubResource( 21 )
 
@@ -596,7 +602,7 @@ recruit_dialogue = SubResource( 21 )
 position = Vector2( 176, 104 )
 texture = ExtResource( 9 )
 script = ExtResource( 10 )
-stats = SubResource( 43 )
+stats = SubResource( 24 )
 dialogue = SubResource( 25 )
 recruit_dialogue = SubResource( 26 )
 
@@ -604,12 +610,12 @@ recruit_dialogue = SubResource( 26 )
 position = Vector2( 216, 56 )
 texture = ExtResource( 8 )
 script = ExtResource( 10 )
-stats = SubResource( 44 )
+stats = SubResource( 29 )
 dialogue = SubResource( 30 )
 recruit_dialogue = SubResource( 31 )
 
 [node name="ChestSpawner" type="Sprite" parent="map"]
-position = Vector2( 144, 184 )
+position = Vector2( 120, 184 )
 texture = ExtResource( 13 )
 script = ExtResource( 14 )
 item_spawner = SubResource( 32 )
@@ -617,7 +623,6 @@ item_spawner = SubResource( 32 )
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
-visible = false
 rotation = -0.000220277
 tile_set = SubResource( 39 )
 cell_size = Vector2( 16, 16 )
@@ -629,18 +634,17 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 0, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 232, 216 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 88, 200 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 184, 136 )
-frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 184, 56 )
+frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
+frame = 1

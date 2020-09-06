@@ -47,11 +47,11 @@ func _process(delta):
 	new_stat = 2
 	#based on what type the gear is i assign values in text
 	if gear_type == Item.SLOT.ATK:
-		$current_stat.text = str("+", current_gear.attack)
-		$new_stat.text = str("+", new_gear.attack)
+		$current_stat.text = str("+", int(round(current_gear.attack)))
+		$new_stat.text = str("+", int(round(new_gear.attack)))
 	else:
-		$current_stat.text = str("+", current_gear.defense)
-		$new_stat.text = str("+", new_gear.defense)
+		$current_stat.text = str("+", int(round(current_gear.defense)))
+		$new_stat.text = str("+", int(round(new_gear.defense)))
 	$weapon_sprite1.frame = atlas[current_gear.character_class]
 	$weapon_sprite2.frame = atlas[new_gear.character_class]
 	if gear_type == Item.SLOT.DEF:
