@@ -1557,7 +1557,7 @@ volume_db = -4.0
 
 [node name="hit 1" type="AudioStreamPlayer" parent="sfx/arrow_hit"]
 stream = ExtResource( 9 )
-volume_db = -2.0
+volume_db = -2.5
 
 [node name="walk" type="Node" parent="sfx"]
 
@@ -1569,7 +1569,7 @@ volume_db = 2.5
 
 [node name="hit 1" type="AudioStreamPlayer" parent="sfx/magic_hit"]
 stream = ExtResource( 13 )
-volume_db = -3.5
+volume_db = -2.0
 
 [node name="sword_hit" type="Node" parent="sfx"]
 
@@ -1581,13 +1581,12 @@ volume_db = -2.0
 
 [node name="attack 1" type="AudioStreamPlayer" parent="sfx/magic_attack"]
 stream = ExtResource( 20 )
-volume_db = -2.0
 
 [node name="arrow_attack" type="Node" parent="sfx"]
 
 [node name="attack 1" type="AudioStreamPlayer" parent="sfx/arrow_attack"]
 stream = ExtResource( 25 )
-volume_db = -1.5
+volume_db = -2.0
 
 [node name="death" type="Node" parent="sfx"]
 
@@ -1599,7 +1598,7 @@ volume_db = -2.5
 
 [node name="guard 1" type="AudioStreamPlayer" parent="sfx/defend"]
 stream = ExtResource( 29 )
-volume_db = -1.0
+volume_db = -2.0
 
 [node name="heal" type="Node" parent="sfx"]
 
