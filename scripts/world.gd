@@ -533,10 +533,10 @@ func _on_selector_moved(tile):
 	$select.set_context(context)
 
 func get_current_context(tile):
-	if $select.mode == $select.MODE.CHECK_MAP:
-		return Game.CONTEXT.NEUTRAL
 	if Game.level == 0:
 		return Game.CONTEXT.NOT_PLAYABLE
+	if $select.mode == $select.MODE.CHECK_MAP:
+		return Game.CONTEXT.NEUTRAL
 	var unit = entity_at(tile)
 	if unit:
 		if unit.is_loot or unit.is_trigger:

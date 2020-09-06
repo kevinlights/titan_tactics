@@ -41,6 +41,7 @@ func enable():
 
 func set_context(context):
 	if world.current_turn == Game.CONTROL.AI or context == Game.CONTEXT.NOT_PLAYABLE:
+		print("context is not playable, hiding selector")
 		play("blank")
 		return
 	match(context):
@@ -60,6 +61,7 @@ func set_context(context):
 func _input(event):
 	var advance = Vector2(0, 0)
 	if Game.level == 0:
+		play("blank")
 		return
 	if gui.active or disabled:
 		if not world.current_turn == Game.CONTROL.AI:

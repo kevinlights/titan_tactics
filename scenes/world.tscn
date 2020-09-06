@@ -60,12 +60,12 @@ atlas = ExtResource( 3 )
 region = Rect2( 60, 20, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 14 )
-region = Rect2( 18, 0, 18, 18 )
+atlas = ExtResource( 3 )
+region = Rect2( 20, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 14 )
-region = Rect2( 100, 0, 20, 20 )
+atlas = ExtResource( 3 )
+region = Rect2( 20, 20, 20, 20 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -99,7 +99,7 @@ animations = [ {
 "name": "guard",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 11 ) ],
+"frames": [  ],
 "loop": true,
 "name": "blank",
 "speed": 5.0
