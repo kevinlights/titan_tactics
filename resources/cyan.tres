@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/character_stats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+character_class = 1
+name = "Cyan"
+level = 4
+hp = 90
+max_hp = 90
+atk = 9
+def = 4
+atk_range = 7
+mov_range = 6
+heal = 0
+portrait_override = "cyan"
