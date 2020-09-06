@@ -26,8 +26,7 @@ var signal_map = {
 
 var label_map = {
 	"attack": [ "Attack", "Speak ¥" ],
-	"guard": [ "Guard", "End" ],
-	"heal": [ "Heal", "End" ]	
+	"guard": [ "Guard", "Cancel" ],
 }
 
 func _ready():
