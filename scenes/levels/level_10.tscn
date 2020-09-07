@@ -256,7 +256,7 @@ trigger_id = ""
 title = "Cyan:"
 text = "¤lying in a pool of blood¤ I… I won’t make it Rolf…."
 branches = [  ]
-audio_theme = "res://music/end_theme.ogg"
+audio_theme = "ending"
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 5 )
@@ -848,20 +848,21 @@ centered = false
 
 [node name="Torch bottom" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 248 )
+frame = 1
 
 [node name="Torch bottom2" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 296 )
-frame = 1
 
 [node name="Torch bottom4" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 160, 296 )
+frame = 1
 
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 96, 248 )
+frame = 1
 
 [node name="Torch bottom5" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 104, 40 )
-frame = 1
 
 [node name="CharacterSpawner" type="Sprite" parent="map"]
 position = Vector2( 72, 88 )
@@ -950,17 +951,18 @@ CREEPING VINES."
 
 [node name="torchtop" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 232 )
-frame = 1
 
 [node name="torchtop2" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 280 )
+frame = 1
 
 [node name="torchtop4" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 160, 280 )
-frame = 1
 
 [node name="torchtop3" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 96, 232 )
+frame = 1
 
 [node name="torchtop5" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 104, 24 )
+frame = 1
