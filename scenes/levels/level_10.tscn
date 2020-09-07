@@ -423,7 +423,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=38]
+[sub_resource type="Resource" id=72]
 script = ExtResource( 7 )
 character_class = 0
 name = "Arie"
@@ -483,7 +483,7 @@ attack_range = 1
 defense = 3.0
 heal = 0
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=73]
 script = ExtResource( 7 )
 character_class = 0
 name = "Alex"
@@ -543,7 +543,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=48]
+[sub_resource type="Resource" id=74]
 script = ExtResource( 7 )
 character_class = 1
 name = "Rolf"
@@ -603,7 +603,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=53]
+[sub_resource type="Resource" id=75]
 script = ExtResource( 7 )
 character_class = 1
 name = "Clyde"
@@ -663,7 +663,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=58]
+[sub_resource type="Resource" id=76]
 script = ExtResource( 7 )
 character_class = 2
 name = "Sid"
@@ -723,7 +723,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=63]
+[sub_resource type="Resource" id=77]
 script = ExtResource( 7 )
 character_class = 0
 name = "Mags"
@@ -783,7 +783,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=68]
+[sub_resource type="Resource" id=78]
 script = ExtResource( 7 )
 character_class = 2
 name = "Nedd"
@@ -840,6 +840,7 @@ COVERED IN
 CREEPING VINES."
 }
 dialogue = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ]
+remove_character = "cyan"
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -866,7 +867,7 @@ frame = 1
 position = Vector2( 72, 88 )
 texture = ExtResource( 13 )
 script = ExtResource( 11 )
-stats = SubResource( 38 )
+stats = SubResource( 72 )
 dialogue = SubResource( 39 )
 recruit_dialogue = SubResource( 40 )
 
@@ -874,7 +875,7 @@ recruit_dialogue = SubResource( 40 )
 position = Vector2( 120, 56 )
 texture = ExtResource( 13 )
 script = ExtResource( 11 )
-stats = SubResource( 43 )
+stats = SubResource( 73 )
 dialogue = SubResource( 44 )
 recruit_dialogue = SubResource( 45 )
 
@@ -882,7 +883,7 @@ recruit_dialogue = SubResource( 45 )
 position = Vector2( 216, 120 )
 texture = ExtResource( 14 )
 script = ExtResource( 11 )
-stats = SubResource( 48 )
+stats = SubResource( 74 )
 dialogue = SubResource( 49 )
 recruit_dialogue = SubResource( 50 )
 
@@ -890,7 +891,7 @@ recruit_dialogue = SubResource( 50 )
 position = Vector2( 152, 104 )
 texture = ExtResource( 14 )
 script = ExtResource( 11 )
-stats = SubResource( 53 )
+stats = SubResource( 75 )
 dialogue = SubResource( 54 )
 recruit_dialogue = SubResource( 55 )
 
@@ -898,7 +899,7 @@ recruit_dialogue = SubResource( 55 )
 position = Vector2( 200, 88 )
 texture = ExtResource( 12 )
 script = ExtResource( 11 )
-stats = SubResource( 58 )
+stats = SubResource( 76 )
 dialogue = SubResource( 59 )
 recruit_dialogue = SubResource( 60 )
 
@@ -906,7 +907,7 @@ recruit_dialogue = SubResource( 60 )
 position = Vector2( 200, 184 )
 texture = ExtResource( 13 )
 script = ExtResource( 11 )
-stats = SubResource( 63 )
+stats = SubResource( 77 )
 dialogue = SubResource( 64 )
 recruit_dialogue = SubResource( 65 )
 
@@ -914,7 +915,7 @@ recruit_dialogue = SubResource( 65 )
 position = Vector2( 152, 168 )
 texture = ExtResource( 12 )
 script = ExtResource( 11 )
-stats = SubResource( 68 )
+stats = SubResource( 78 )
 dialogue = SubResource( 69 )
 recruit_dialogue = SubResource( 70 )
 

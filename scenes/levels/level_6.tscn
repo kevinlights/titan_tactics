@@ -401,7 +401,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=61]
 script = ExtResource( 11 )
 character_class = 0
 name = "Nora"
@@ -461,7 +461,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=62]
 script = ExtResource( 11 )
 character_class = 0
 name = "Rolf"
@@ -521,7 +521,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=46]
+[sub_resource type="Resource" id=63]
 script = ExtResource( 11 )
 character_class = 0
 name = "Dara"
@@ -581,7 +581,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=51]
+[sub_resource type="Resource" id=64]
 script = ExtResource( 11 )
 character_class = 0
 name = "Eva"
@@ -641,7 +641,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=56]
+[sub_resource type="Resource" id=65]
 script = ExtResource( 11 )
 character_class = 0
 name = "Jason"
@@ -729,7 +729,7 @@ available = "level_complete"
 position = Vector2( 104, 72 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 36 )
+stats = SubResource( 61 )
 dialogue = SubResource( 37 )
 recruit_dialogue = SubResource( 38 )
 
@@ -737,7 +737,7 @@ recruit_dialogue = SubResource( 38 )
 position = Vector2( 232, 232 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 41 )
+stats = SubResource( 62 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
 
@@ -745,7 +745,7 @@ recruit_dialogue = SubResource( 43 )
 position = Vector2( 168, 136 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 46 )
+stats = SubResource( 63 )
 dialogue = SubResource( 47 )
 recruit_dialogue = SubResource( 48 )
 
@@ -753,7 +753,7 @@ recruit_dialogue = SubResource( 48 )
 position = Vector2( 224, 72 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 51 )
+stats = SubResource( 64 )
 dialogue = SubResource( 52 )
 recruit_dialogue = SubResource( 53 )
 
@@ -761,7 +761,7 @@ recruit_dialogue = SubResource( 53 )
 position = Vector2( 152, 40 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
-stats = SubResource( 56 )
+stats = SubResource( 65 )
 dialogue = SubResource( 57 )
 recruit_dialogue = SubResource( 58 )
 
