@@ -57,6 +57,7 @@ func turn(type):
 			print("show turn for AI")
 			$enemyturn.reset()
 			$enemyturn.show()
+	get_parent().get_node("select").disable()
 
 func credits():
 	active = true
@@ -76,6 +77,7 @@ func team_select(characters):
 	modal = true
 	active = true
 	get_parent().get_node("select/select").show()
+	$characterswap.hide()
 	$characterselect.set_characters(characters)
 	$characterselect.show()
 

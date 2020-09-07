@@ -64,6 +64,7 @@ func update_view():
 func _input(event):
 	if !visible:
 		return
+	select.disable()
 	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
 		selected += 1
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
