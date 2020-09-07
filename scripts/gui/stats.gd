@@ -195,10 +195,10 @@ func update_stats():
 		enemyhp = 0
 	if playerhp < 0:
 		playerhp = 0
-	enemyhp = str(enemyhp)  + "/" + str(enemy.character.max_hp)
-	playerhp = str(playerhp)  + "/" + str(player.character.max_hp)
+	enemyhp = str(round(enemyhp))  + "/" + str(round(enemy.character.max_hp))
+	playerhp = str(round(playerhp))  + "/" + str(round(player.character.max_hp))
 	playerlvl = player.character.level
-	playeratk = int(round(player.character.atk+ player.character.item_atk.attack))
+	playeratk = int(round(player.character.atk + player.character.item_atk.attack))
 	playerdef = int(round(player.character.def + player.character.item_def.defense))
 	enemylvl = enemy.character.level
 	enemyatk = int(round(enemy.character.atk + enemy.character.item_atk.attack))
