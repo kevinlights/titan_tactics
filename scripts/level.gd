@@ -11,6 +11,7 @@ onready var selector = get_tree().get_root().get_node("World/select")
 func _ready():
 	gui.get_node("teamconfirm").connect("start_level", self, "_on_start_level")
 	world.connect("win", self, "_on_end_level")
+	world.connect("all_enemies_eliminated", self, "_on_end_level")
 	world.connect("auto_deployed", self, "_on_start_level")
 	for content in dialogue:
 		content.connect("completed", self, "_on_dialogue_complete")

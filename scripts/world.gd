@@ -2,6 +2,7 @@ extends Node2D
 
 signal win
 signal auto_deployed
+signal all_enemies_eliminated
 
 enum TILEID {
 	NOT_PASSABLE = 0,
@@ -358,6 +359,8 @@ func all_enemies_eliminated():
 	return current[Game.CONTROL.AI].size() == 0
 
 func check_end_game(ignore_dialogue = false):
+	if all_enemies_eliminated():
+		emit_signal("all_enemies_eliminated")
 	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
 	for trigger in triggers:
 		print("Available ", trigger.available)
