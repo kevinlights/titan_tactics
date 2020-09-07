@@ -42,6 +42,9 @@ func turn(type):
 	if $lvlup.visible:
 		return
 	active = true
+	if $battle.visible:
+		yield(get_tree().create_timer(2.0), "timeout")
+		battle_hide()
 	match type:
 		Game.CONTROL.PLAYER:
 			#battle_hide($battle.player)
@@ -90,8 +93,9 @@ func level_up(diff, new_stats):
 	$sfx/level_up.play()
 	
 func battle(friendly, enemy):
-	$battle.set_entities(friendly, enemy)
-	$battle.show()
+	if !$battle.visible:
+		$battle.set_entities(friendly, enemy)
+		$battle.show()
 	
 func ally(friendly):
 	$ally.set_entities(friendly)
@@ -100,7 +104,8 @@ func ally(friendly):
 func ally_hide(current):
 	$ally.start_hiding(current)
 
-func battle_hide(current):
+func battle_hide(current = null):
+	print("Hide battle UI")
 	$battle.start_hiding(current)
 	#$battle/box_ally.position.x = $battle.start_x_ally
 	#$battle/box_enemy.position.x = $battle.start_x_enemy

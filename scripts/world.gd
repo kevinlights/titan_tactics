@@ -450,17 +450,15 @@ func _initiate_turn():
 	
 func _on_attack():
 	print("attack option selected in menu")
-	#get_node("battle").show()
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
-		# block ranged attacks if cover is between attacker and target
 		if get_current().character.character_class != Game.TYPE.FIGHTER and is_cover_between(get_current(), target.position):
 			gui.error("BLOCKED LINE OF SIGHT")
 			gui.call_deferred("back")
 			return
 		var damage = get_current().attack(target)
 		gui.call_deferred("close_attack")
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 		gui.call_deferred("battle_hide")
 		
 	else:
@@ -520,7 +518,6 @@ func _on_end():
 	get_current().character.turn_limits.actions = 0
 	get_current().get_node("done").show()
 	get_current().is_done = true
-#	get_current().get_node("done").hide()
 	advance_turn()
 
 func _accept_loot(item):
@@ -601,7 +598,6 @@ func get_current_context(tile):
 func _input(event):
 	if event.is_action("ui_focus_next") && !event.is_echo() && event.is_pressed():
 		_on_next_level()
-#		spawn_ai_team()
 	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
 		_on_replay()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():

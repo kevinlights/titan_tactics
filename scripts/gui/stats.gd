@@ -64,7 +64,7 @@ var portrait_map = {
 
 #level line width = 28
 
-func _process(delta):
+func _process(_delta):
 	if !visible:
 		return
 	var now = OS.get_ticks_msec()
@@ -124,6 +124,7 @@ func _process(delta):
 func _ready():
 	if not player or not enemy:
 		return
+	print("resetting battle UI")
 	moving_back = false
 	$box_enemy/hpline.set_point_position(1, Vector2(enemy.character.hp/enemy.character.max_hp*61, 0))
 	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*61, 0))
@@ -211,9 +212,10 @@ func update_stats():
 	$box_enemy/enemyhp.text = (enemyhp)
 	$box_ally/playerhp.text = (playerhp)
 
-func start_hiding(player = null):
-	if player:
-		var lvl_pos = (player.character.xp)/(player.character.xp_to_next)*28
+func start_hiding(player_entity = null):
+	if player_entity:
+		var lvl_pos = (player_entity.character.xp)/(player_entity.character.xp_to_next)*28
 		$box_ally/levelline.set_point_position(1, Vector2(lvl_pos, 0))
+	print("moving out Battle UI")
 	moving_back = true
 	start = OS.get_ticks_msec()

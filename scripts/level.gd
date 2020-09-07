@@ -25,7 +25,7 @@ func _ready():
 	if remove_character and remove_character != "":
 		var found = null
 		for character in Game.team:
-			if character.name.lower() == remove_character:
+			if character.name.nocasecmp_to(remove_character) == 0:
 				found = character
 				break
 		if found:
