@@ -350,7 +350,10 @@ func _on_win(ignore_dialogue = false):
 	if not (gui.get_node("dialogue").visible or gui.get_node("lvlup").visible) or ignore_dialogue:
 		print("win, dialogue: ", gui.get_node("dialogue").visible)
 		gui.get_node("dialogue").hide()
-		gui.win()
+		if Game.level + 1 < Game.get_level_count():
+			gui.win()
+		else:
+			get_tree().change_scene("res://scenes/landing.tscn")
 		$music/win.play()
 		emit_signal("win")
 		print("End game: WIN")
@@ -603,17 +606,17 @@ func get_current_context(tile):
 	return Game.CONTEXT.MOVE
 
 # DEBUG INPUT
-func _input(event):
-	if event.is_action("ui_focus_next") && !event.is_echo() && event.is_pressed():
-		_on_next_level()
-	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
-		_on_replay()
-	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
-		var additional_character = load("res://resources/ogre.tres")
-		additional_character.control = Game.CONTROL.PLAYER
-		Game.team.append(additional_character)
-		print("The OGRE has joined the team!")
-	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
-		for unit in current[Game.CONTROL.AI]:
-			unit.die()
-	
+#func _input(event):
+#	if event.is_action("ui_focus_next") && !event.is_echo() && event.is_pressed():
+#		_on_next_level()
+#	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
+#		_on_replay()
+#	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
+#		var additional_character = load("res://resources/ogre.tres")
+#		additional_character.control = Game.CONTROL.PLAYER
+#		Game.team.append(additional_character)
+#		print("The OGRE has joined the team!")
+#	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
+#		for unit in current[Game.CONTROL.AI]:
+#			unit.die()
+#
