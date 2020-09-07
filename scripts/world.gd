@@ -191,7 +191,11 @@ func action():
 						if target.item_spawner.equipment_slot == 1:
 							gui.loot(get_current().character.item_def, loot, 1)
 				else:
-					target.use()
+					if target.available == "level_complete":
+						if all_enemies_eliminated():
+							target.use()
+					else:
+						target.use()
 		Game.CONTEXT.MOVE:
 			get_current().move(to_world_path(current_path))
 			$path_preview.hide_path()
