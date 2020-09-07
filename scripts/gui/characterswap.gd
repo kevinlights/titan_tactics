@@ -7,7 +7,7 @@ var current_character
 
 var end_x = 36
 var start_x = -36
-var start
+var start = 0
 var ttl = 60
 
 var moving_back = false
@@ -18,7 +18,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	if !visible:
+	if !visible or world.current[Game.CONTROL.PLAYER].size() == 0:
 		return
 	get_parent().make_select_blank()
 	var now = OS.get_ticks_msec()
@@ -40,6 +40,8 @@ func pick_random_sfx(audio_path):
 	effects[rand_range(0, effects.size() - 1)].play()
 	
 func update_view():
+	if !current_character:
+		return
 	var animation = "fighter"
 	$box_ally/name.text = current_character.name
 	if $box_ally/name.text in get_parent().get_node("battle").special_names:
@@ -67,7 +69,8 @@ func _input(event):
 		get_parent().active = false
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
 		get_parent().arrow_hide()
-		hide()
+		call_deferred("hide")
+		world.get_node("select").call_deferred("enable")
 	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
 		get_parent().get_parent().end_turn()
 		get_parent().arrow_hide()

@@ -131,9 +131,11 @@ func swap():
 	ally_hide(get_parent().get_current())
 	active = true
 	get_parent().get_node("select/select").show()
+	get_parent().get_node("select").disable()
 	$characterswap.start = OS.get_ticks_msec()
 	$characterswap._input(null)
 	$characterswap.show()
+	
 
 func win():
 	active = true

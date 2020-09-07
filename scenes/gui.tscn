@@ -340,11 +340,13 @@ texture = ExtResource( 28 )
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 103.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 141.551, 130.424 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -426,11 +428,9 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 44 )
@@ -517,11 +517,13 @@ animation = "Rolf"
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 98.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Bbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 136.551, 130.424 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="battle" type="Control" parent="."]
@@ -708,6 +710,7 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 25 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -720,7 +723,6 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 30 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1021,6 +1023,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1042,6 +1045,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1050,6 +1054,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 36 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -1162,7 +1167,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 36 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1188,6 +1192,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1285,7 +1290,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1308,7 +1312,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1397,7 +1400,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1420,7 +1422,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1478,7 +1479,6 @@ __meta__ = {
 [node name="more" type="AnimatedSprite" parent="dialogue/background"]
 position = Vector2( 145, 36 )
 frames = SubResource( 42 )
-frame = 1
 playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
@@ -1513,7 +1513,6 @@ __meta__ = {
 visible = false
 position = Vector2( 5, 0 )
 frames = SubResource( 45 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1550,7 +1549,6 @@ __meta__ = {
 visible = false
 position = Vector2( 5, 0 )
 frames = SubResource( 45 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1585,7 +1583,6 @@ __meta__ = {
 visible = false
 position = Vector2( 5, 0 )
 frames = SubResource( 45 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )

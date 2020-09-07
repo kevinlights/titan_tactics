@@ -122,13 +122,14 @@ func advance_turn(explicit = 1, direction = 1):
 		next_character(direction)
 		
 	print("Advance turn")
-	$select.disable()
-	yield(get_tree().create_timer(1.0), "timeout")
 	$select.set_origin(get_current())
+	if explicit == 1:
+		$select.disable()
+		yield(get_tree().create_timer(1.0), "timeout")
 	$path_preview/path.clear_points()
 	if current_turn  == Game.CONTROL.AI:
 		ai.play()
-	else:
+	elif explicit == 1:
 		$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
