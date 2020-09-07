@@ -178,14 +178,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -212,14 +212,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 28 ), SubResource( 29 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -1624,7 +1624,7 @@ volume_db = -2.0
 
 [node name="select" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 31 )
-volume_db = -4.0
+volume_db = -5.0
 
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
