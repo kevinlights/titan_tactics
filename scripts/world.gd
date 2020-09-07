@@ -155,6 +155,7 @@ func end_turn():
 	current_character = 0
 #	$select.set_origin(get_current())
 	gui.turn(current_turn)
+#	gui.battle_hide(get_current())
 	$select.disable()
 
 func to_world_path(path):
@@ -362,9 +363,9 @@ func check_end_game(ignore_dialogue = false):
 		if current[control].size() == 0:
 			game_over = true
 			$select.disable()
+			gui.call_deferred("battle_hide")
 			if control == Game.CONTROL.AI:
 				call_deferred("_on_win", ignore_dialogue)
-#				_on_win(ignore_dialogue)
 			else:
 				gui.lose()
 				print("End game: LOSE")
@@ -458,18 +459,9 @@ func _on_attack():
 			gui.call_deferred("back")
 			return
 		var damage = get_current().attack(target)
-#		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
-#		damage_feedback.position.x = target.position.x
-#		damage_feedback.position.y = target.position.y - 3
-#		if damage == 0:
-#			damage_feedback.get_node("damage").text = "miss"
-#		else:
-#			damage_feedback.get_node("damage").text = str("-", damage)	
-#		add_child(damage_feedback)
-		#gui.health(get_current(), target)
 		gui.call_deferred("close_attack")
 		yield(get_tree().create_timer(1), "timeout")
-		gui.battle_hide(get_current())
+		gui.call_deferred("battle_hide")
 		
 	else:
 		gui.error("NO MORE ACTIONS")
@@ -524,6 +516,10 @@ func _on_heal():
 func _on_end():
 	gui.call_deferred("back")
 	print("explicit end request, advancing turn")
+	get_current().character.turn_limits.move_distance = 0
+	get_current().character.turn_limits.actions = 0
+	get_current().get_node("done").show()
+	get_current().is_done = true
 #	get_current().get_node("done").hide()
 	advance_turn()
 

@@ -211,8 +211,9 @@ func update_stats():
 	$box_enemy/enemyhp.text = (enemyhp)
 	$box_ally/playerhp.text = (playerhp)
 
-func start_hiding(player):
-	var lvl_pos = (player.character.xp)/(player.character.xp_to_next)*28
-	$box_ally/levelline.set_point_position(1, Vector2(lvl_pos, 0))
+func start_hiding(player = null):
+	if player:
+		var lvl_pos = (player.character.xp)/(player.character.xp_to_next)*28
+		$box_ally/levelline.set_point_position(1, Vector2(lvl_pos, 0))
 	moving_back = true
 	start = OS.get_ticks_msec()
