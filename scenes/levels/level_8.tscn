@@ -161,7 +161,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=44]
 script = ExtResource( 9 )
 character_class = 1
 name = "Toni"
@@ -221,7 +221,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=45]
 script = ExtResource( 9 )
 character_class = 0
 name = "Vince"
@@ -281,7 +281,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=46]
 script = ExtResource( 9 )
 character_class = 2
 name = "Jake"
@@ -341,7 +341,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=47]
 script = ExtResource( 9 )
 character_class = 2
 name = "Rina"
@@ -401,7 +401,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=48]
 script = ExtResource( 9 )
 character_class = 1
 name = "Hayk"
@@ -461,7 +461,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=49]
 script = ExtResource( 9 )
 character_class = 2
 name = "Toni"
@@ -532,7 +532,7 @@ item_spawner = SubResource( 13 )
 position = Vector2( 72, 216 )
 texture = ExtResource( 12 )
 script = ExtResource( 8 )
-stats = SubResource( 16 )
+stats = SubResource( 44 )
 dialogue = SubResource( 17 )
 recruit_dialogue = SubResource( 18 )
 
@@ -540,7 +540,7 @@ recruit_dialogue = SubResource( 18 )
 position = Vector2( 88, 232 )
 texture = ExtResource( 13 )
 script = ExtResource( 8 )
-stats = SubResource( 21 )
+stats = SubResource( 45 )
 dialogue = SubResource( 22 )
 recruit_dialogue = SubResource( 23 )
 
@@ -548,7 +548,7 @@ recruit_dialogue = SubResource( 23 )
 position = Vector2( 232, 152 )
 texture = ExtResource( 11 )
 script = ExtResource( 8 )
-stats = SubResource( 26 )
+stats = SubResource( 46 )
 dialogue = SubResource( 27 )
 recruit_dialogue = SubResource( 28 )
 
@@ -556,7 +556,7 @@ recruit_dialogue = SubResource( 28 )
 position = Vector2( 248, 232 )
 texture = ExtResource( 11 )
 script = ExtResource( 8 )
-stats = SubResource( 31 )
+stats = SubResource( 47 )
 dialogue = SubResource( 32 )
 recruit_dialogue = SubResource( 33 )
 
@@ -564,7 +564,7 @@ recruit_dialogue = SubResource( 33 )
 position = Vector2( 104, 104 )
 texture = ExtResource( 12 )
 script = ExtResource( 8 )
-stats = SubResource( 36 )
+stats = SubResource( 48 )
 dialogue = SubResource( 37 )
 recruit_dialogue = SubResource( 38 )
 
@@ -572,14 +572,13 @@ recruit_dialogue = SubResource( 38 )
 position = Vector2( 200, 88 )
 texture = ExtResource( 11 )
 script = ExtResource( 8 )
-stats = SubResource( 41 )
+stats = SubResource( 49 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
-visible = false
 rotation = -0.000220277
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )

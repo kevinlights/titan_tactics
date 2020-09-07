@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://scenes/animated/Water1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
@@ -328,7 +328,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=59]
 script = ExtResource( 11 )
 character_class = 1
 name = "Wil"
@@ -388,7 +388,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=60]
 script = ExtResource( 11 )
 character_class = 1
 name = "Tim"
@@ -448,7 +448,7 @@ attack_range = 0
 defense = 1
 heal = 1
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=61]
 script = ExtResource( 11 )
 character_class = 2
 name = "Layla"
@@ -508,7 +508,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=46]
+[sub_resource type="Resource" id=62]
 script = ExtResource( 11 )
 character_class = 0
 name = "Gor"
@@ -568,7 +568,7 @@ attack_range = 0
 defense = 1
 heal = 0
 
-[sub_resource type="Resource" id=51]
+[sub_resource type="Resource" id=63]
 script = ExtResource( 11 )
 character_class = 1
 name = "Lota"
@@ -596,6 +596,66 @@ branches = [  ]
 audio_theme = ""
 
 [sub_resource type="Resource" id=53]
+script = ExtResource( 9 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+audio_theme = ""
+
+[sub_resource type="Resource" id=54]
+script = ExtResource( 12 )
+character_class = 1
+equipment_slot = 0
+level = 1
+name = "Minor Bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+
+[sub_resource type="Resource" id=55]
+script = ExtResource( 12 )
+character_class = 1
+equipment_slot = 1
+level = 1
+name = "Minor Mail"
+attack = 0
+attack_range = 0
+defense = 1
+heal = 0
+
+[sub_resource type="Resource" id=64]
+script = ExtResource( 11 )
+character_class = 1
+name = "Layla"
+level = 6
+hp = 80
+max_hp = 80
+atk = 8
+def = 3
+atk_range = 3
+mov_range = 6
+heal = 0
+item_atk = SubResource( 54 )
+item_def = SubResource( 55 )
+portrait_override = 0
+
+[sub_resource type="Resource" id=57]
+script = ExtResource( 9 )
+dialogue_id = ""
+portrait = 0
+trigger = 0
+trigger_id = ""
+title = ""
+text = ""
+branches = [  ]
+audio_theme = ""
+
+[sub_resource type="Resource" id=58]
 script = ExtResource( 9 )
 dialogue_id = ""
 portrait = 0
@@ -663,7 +723,7 @@ rotation = 1.5708
 position = Vector2( 56, 168 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 31 )
+stats = SubResource( 59 )
 dialogue = SubResource( 32 )
 recruit_dialogue = SubResource( 33 )
 
@@ -671,7 +731,7 @@ recruit_dialogue = SubResource( 33 )
 position = Vector2( 232, 184 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 36 )
+stats = SubResource( 60 )
 dialogue = SubResource( 37 )
 recruit_dialogue = SubResource( 38 )
 
@@ -679,7 +739,7 @@ recruit_dialogue = SubResource( 38 )
 position = Vector2( 136, 104 )
 texture = ExtResource( 13 )
 script = ExtResource( 10 )
-stats = SubResource( 41 )
+stats = SubResource( 61 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
 
@@ -687,7 +747,7 @@ recruit_dialogue = SubResource( 43 )
 position = Vector2( 152, 40 )
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 46 )
+stats = SubResource( 62 )
 dialogue = SubResource( 47 )
 recruit_dialogue = SubResource( 48 )
 
@@ -695,14 +755,21 @@ recruit_dialogue = SubResource( 48 )
 position = Vector2( 216, 88 )
 texture = ExtResource( 14 )
 script = ExtResource( 10 )
-stats = SubResource( 51 )
+stats = SubResource( 63 )
 dialogue = SubResource( 52 )
 recruit_dialogue = SubResource( 53 )
+
+[node name="CharacterSpawner6" type="Sprite" parent="map"]
+position = Vector2( 112, 120 )
+texture = ExtResource( 14 )
+script = ExtResource( 10 )
+stats = SubResource( 64 )
+dialogue = SubResource( 57 )
+recruit_dialogue = SubResource( 58 )
 
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
-visible = false
 rotation = -0.000220277
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )

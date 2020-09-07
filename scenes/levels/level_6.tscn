@@ -750,7 +750,7 @@ dialogue = SubResource( 47 )
 recruit_dialogue = SubResource( 48 )
 
 [node name="CharacterSpawner4" type="Sprite" parent="map"]
-position = Vector2( 224, 72 )
+position = Vector2( 216, 72 )
 texture = ExtResource( 10 )
 script = ExtResource( 9 )
 stats = SubResource( 64 )
@@ -780,7 +780,6 @@ item_spawner = SubResource( 60 )
 [node name="navigation" type="Navigation2D" parent="."]
 
 [node name="tile_meta" type="TileMap" parent="navigation"]
-visible = false
 rotation = -0.000220277
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
