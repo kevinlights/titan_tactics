@@ -1,18 +1,10 @@
-# Pocket Tactics
+# Titan Tactics
 
-[![pipeline status](https://gitlab.com/team-potato/pocket_tactics/badges/master/pipeline.svg)](https://gitlab.com/team-potato/pocket_tactics/-/commits/master)
+[![pipeline status](https://gitlab.com/team-potato/titan_tactics/badges/master/pipeline.svg)](https://gitlab.com/team-potato/titan_tactics/-/commits/master)
 
-## A GameBoy themed reimplementation of Tiny Tactics
+## A Sega Saturn themed reimplementation of Tiny/Pocket Tactics
 
-* Refactored all UI code
-* Reimplemented pathfinding
-* Reimplemented tile position calculations
-* Reimplemented ranged attacks to properly respect cover obstacles
-* Created new tools to tweak balancing
-* Introduced implicit equipment slots (Attack hand and Defense hand)
-* Introduced "dialogue" system
-* Replaced all graphics assets
-* Replaced all music
+Doing things in 3D now!
 
 # Controls
 
@@ -36,5 +28,5 @@ Alternative Keyboard:
 
 # Play in browser
 
-https://team-potato.gitlab.io/pocket_tactics/
+https://team-potato.gitlab.io/titan_tactics/
 
