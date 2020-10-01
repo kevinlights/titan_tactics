@@ -6,34 +6,34 @@ var enemy
 func _ready():
 	if not player:
 		return
-	if player.character_class == Game.TYPE.FIGHTER:
-		if enemy.character_class == Game.TYPE.FIGHTER:
+	if player.character_class == TT.TYPE.FIGHTER:
+		if enemy.character_class == TT.TYPE.FIGHTER:
 			$PlayerType.frame = 32
 			$EnemyType.frame = 32
-		elif enemy.character_class == Game.TYPE.MAGE:
+		elif enemy.character_class == TT.TYPE.MAGE:
 			$PlayerType.frame = 32
 			$EnemyType.frame = 34
-		elif enemy.character_class == Game.TYPE.ARCHER:
+		elif enemy.character_class == TT.TYPE.ARCHER:
 			$PlayerType.frame = 32
 			$EnemyType.frame = 33
-	elif player.character_class == Game.TYPE.MAGE:
-		if enemy.character_class == Game.TYPE.FIGHTER:
+	elif player.character_class == TT.TYPE.MAGE:
+		if enemy.character_class == TT.TYPE.FIGHTER:
 			$PlayerType.frame = 34
 			$EnemyType.frame = 32
-		elif enemy.character_class == Game.TYPE.MAGE:
+		elif enemy.character_class == TT.TYPE.MAGE:
 			$PlayerType.frame = 34
 			$EnemyType.frame = 34
-		elif enemy.character_class == Game.TYPE.ARCHER:
+		elif enemy.character_class == TT.TYPE.ARCHER:
 			$PlayerType.frame = 34
 			$EnemyType.frame = 33
-	elif player.character_class == Game.TYPE.ARCHER:
-		if enemy.character_class == Game.TYPE.FIGHTER:
+	elif player.character_class == TT.TYPE.ARCHER:
+		if enemy.character_class == TT.TYPE.FIGHTER:
 			$PlayerType.frame = 33
 			$EnemyType.frame = 32
-		elif enemy.character_class == Game.TYPE.MAGE:
+		elif enemy.character_class == TT.TYPE.MAGE:
 			$PlayerType.frame = 33	
 			$EnemyType.frame = 34
-		elif enemy.character_class == Game.TYPE.ARCHER:
+		elif enemy.character_class == TT.TYPE.ARCHER:
 			$PlayerType.frame = 33
 			$EnemyType.frame = 33
 

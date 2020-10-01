@@ -42,17 +42,17 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Dialogue",
 "language": "GDScript",
-"path": "res://scripts/dialogue.gd"
+"path": "res://scripts/dialogue/dialogue.gd"
 }, {
-"base": "Control",
-"class": "DialogueController",
+"base": "Resource",
+"class": "DialogueAction",
 "language": "GDScript",
-"path": "res://scripts/gui/dialogue.gd"
+"path": "res://scripts/dialogue/dialogue_action.gd"
 }, {
-"base": "Sprite",
-"class": "DialogueTrigger",
+"base": "Resource",
+"class": "DialogueMessage",
 "language": "GDScript",
-"path": "res://scripts/dialogue_trigger.gd"
+"path": "res://scripts/dialogue/dialogue_message.gd"
 }, {
 "base": "Resource",
 "class": "Item",
@@ -69,6 +69,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/ai/naive.gd"
 }, {
+"base": "Reference",
+"class": "PT_Dialogue",
+"language": "GDScript",
+"path": "res://scripts/pt_dialogue.gd"
+}, {
+"base": "Control",
+"class": "PT_DialogueController",
+"language": "GDScript",
+"path": "res://scripts/gui/dialogue.gd"
+}, {
+"base": "Sprite",
+"class": "PT_DialogueTrigger",
+"language": "GDScript",
+"path": "res://scripts/dialogue_trigger.gd"
+}, {
 "base": "Object",
 "class": "PathFinder",
 "language": "GDScript",
@@ -78,6 +93,11 @@ _global_script_classes=[ {
 "class": "Recruitment",
 "language": "GDScript",
 "path": "res://scripts/recruitment.gd"
+}, {
+"base": "Node",
+"class": "TT",
+"language": "GDScript",
+"path": "res://scripts/tt.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -87,13 +107,17 @@ _global_script_class_icons={
 "ChestSpawner": "",
 "DefaultClassStats": "",
 "Dialogue": "",
-"DialogueController": "",
-"DialogueTrigger": "",
+"DialogueAction": "",
+"DialogueMessage": "",
 "Item": "",
 "ItemSpawner": "",
 "NaiveAI": "",
+"PT_Dialogue": "",
+"PT_DialogueController": "",
+"PT_DialogueTrigger": "",
 "PathFinder": "",
-"Recruitment": ""
+"Recruitment": "",
+"TT": ""
 }
 
 [application]
@@ -113,12 +137,16 @@ Game="*res://scripts/game.gd"
 
 [display]
 
-window/size/width=160
-window/size/height=144
-window/size/test_width=640
-window/size/test_height=576
+window/size/width=320
+window/size/height=224
+window/size/test_width=960
+window/size/test_height=672
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "." )
 
 [importer_defaults]
 

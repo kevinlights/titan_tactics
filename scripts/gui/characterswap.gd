@@ -18,7 +18,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	if !visible or world.current[Game.CONTROL.PLAYER].size() == 0:
+	if !visible or world.current[TT.CONTROL.PLAYER].size() == 0:
 		return
 	get_parent().make_select_blank()
 	var now = OS.get_ticks_msec()

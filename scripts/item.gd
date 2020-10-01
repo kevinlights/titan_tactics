@@ -55,10 +55,10 @@ var item_prefix = {
 }
 
 var item_names = {
-	Game.TYPE.FIGHTER: [ "Sword", "Cleaver", "Knife", "Dagger" ],
-	Game.TYPE.ARCHER: [ "Bow", "Longbow" ],
-	Game.TYPE.MAGE: [ "Wand", "Staff", "Scepter" ],
-	Game.TYPE.OTHER: [ "Plate", "Helm", "Tunic", "Jacket", "Chain", "Mail", "Boots", "Vest", "Suit", "Shirt"]
+	TT.TYPE.FIGHTER: [ "Sword", "Cleaver", "Knife", "Dagger" ],
+	TT.TYPE.ARCHER: [ "Bow", "Longbow" ],
+	TT.TYPE.MAGE: [ "Wand", "Staff", "Scepter" ],
+	TT.TYPE.OTHER: [ "Plate", "Helm", "Tunic", "Jacket", "Chain", "Mail", "Boots", "Vest", "Suit", "Shirt"]
 }
 
 func sequence_cumulative(sequence, position):
@@ -82,7 +82,7 @@ func generate(item_level, slot, item_class):
 	var prefix = item_prefix[level][rand_range(0, item_prefix[level].size() - 1)]
 	var suffix = item_names[character_class][rand_range(0, item_names[character_class].size() - 1)]
 	if equipment_slot == SLOT.DEF:
-		suffix = item_names[Game.TYPE.OTHER][rand_range(0, item_names[Game.TYPE.OTHER].size() - 1)]
+		suffix = item_names[TT.TYPE.OTHER][rand_range(0, item_names[TT.TYPE.OTHER].size() - 1)]
 		
 	name = prefix + " " + suffix
 	if equipment_slot == SLOT.ATK:
@@ -92,7 +92,7 @@ func generate(item_level, slot, item_class):
 		defense = 1 + sequence_cumulative(up[equipment_slot], level)
 #		defense = floor(level * rand_range(level, level * 1.5))
 	heal = 0
-	if character_class == Game.TYPE.MAGE:
+	if character_class == TT.TYPE.MAGE:
 		heal = 1 + sequence_cumulative(up["heal"], level)		
 	if Engine.editor_hint:
 		property_list_changed_notify()

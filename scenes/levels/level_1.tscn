@@ -291,7 +291,7 @@ position = Vector2( 192, 144 )
 position = Vector2( 128, 192 )
 frame = 1
 
-[node name="DialogueTrigger" type="Sprite" parent="map"]
+[node name="PT_DialogueTrigger" type="Sprite" parent="map"]
 position = Vector2( 120, 104 )
 texture = ExtResource( 16 )
 script = ExtResource( 14 )

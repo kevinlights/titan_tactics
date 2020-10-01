@@ -1,5 +1,5 @@
 tool
-class_name DialogueTrigger
+class_name PT_DialogueTrigger
 extends Sprite
 
 signal trigger
@@ -17,8 +17,8 @@ var consumed = false
 func _ready():
 	add_to_group("characters") # so world can find it
 	add_to_group("dialogue_triggers") # so level can find it
-	tile.x = floor(position.x / Game.cell_size)
-	tile.y = floor(position.y / Game.cell_size)
+	tile.x = floor(position.x / TT.cell_size)
+	tile.y = floor(position.y / TT.cell_size)
 	if Engine.editor_hint:
 		texture = load("res://gfx/speak_map.png")
 	else:

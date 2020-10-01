@@ -30,36 +30,36 @@ var atlas_frames = {
 	"up": 3,
 	"down": 2,
 	"neutral": 128,
-	Game.TYPE.ARCHER: 2,
-	Game.TYPE.FIGHTER: 0,
-	Game.TYPE.MAGE: 4
+	TT.TYPE.ARCHER: 2,
+	TT.TYPE.FIGHTER: 0,
+	TT.TYPE.MAGE: 4
 }
 
 var default_portraits = {
-	Game.CONTROL.AI: {
-		Game.TYPE.ARCHER: "ai_archer",
-		Game.TYPE.MAGE: "ai_mage",
-		Game.TYPE.FIGHTER: "ai_swordsman"
+	TT.CONTROL.AI: {
+		TT.TYPE.ARCHER: "ai_archer",
+		TT.TYPE.MAGE: "ai_mage",
+		TT.TYPE.FIGHTER: "ai_swordsman"
 	},
-	Game.CONTROL.PLAYER: {
-		Game.TYPE.ARCHER: "archer",
-		Game.TYPE.MAGE: "mage",
-		Game.TYPE.FIGHTER: "swordsman"
+	TT.CONTROL.PLAYER: {
+		TT.TYPE.ARCHER: "archer",
+		TT.TYPE.MAGE: "mage",
+		TT.TYPE.FIGHTER: "swordsman"
 	}
 }
 
 var portrait_map = {
-	Dialogue.PORTRAIT.ARCHER: "archer",
-	Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
-	Dialogue.PORTRAIT.MAGE: "mage",
-	Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
-	Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
-	Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
-	Dialogue.PORTRAIT.HERO: "hero",
-	Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
-	Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
-	Dialogue.PORTRAIT.OLD_MAN: "old_man",
-	Dialogue.PORTRAIT.CYAN: "cyan"
+	PT_Dialogue.PORTRAIT.ARCHER: "archer",
+	PT_Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
+	PT_Dialogue.PORTRAIT.MAGE: "mage",
+	PT_Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
+	PT_Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
+	PT_Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
+	PT_Dialogue.PORTRAIT.HERO: "hero",
+	PT_Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
+	PT_Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
+	PT_Dialogue.PORTRAIT.OLD_MAN: "old_man",
+	PT_Dialogue.PORTRAIT.CYAN: "cyan"
 }
 
 #level line width = 28
@@ -167,7 +167,7 @@ func _ready():
 #shrunk code by 50% ;)
 
 func set_entities(player_entity, enemy_entity):
-	if player_entity.character.control == Game.CONTROL.PLAYER:
+	if player_entity.character.control == TT.CONTROL.PLAYER:
 		player = player_entity
 		enemy = enemy_entity
 	else:

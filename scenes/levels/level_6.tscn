@@ -718,7 +718,7 @@ frame = 1
 [node name="Torch bottom3" parent="map" instance=ExtResource( 3 )]
 position = Vector2( 88, 56 )
 
-[node name="DialogueTrigger" type="Sprite" parent="map"]
+[node name="PT_DialogueTrigger" type="Sprite" parent="map"]
 position = Vector2( 88.535, 70.5439 )
 texture = ExtResource( 7 )
 script = ExtResource( 8 )

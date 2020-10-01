@@ -86,9 +86,9 @@ var character
 var intro
 
 var portrait_map = {
-	Game.TYPE.ARCHER: Dialogue.PORTRAIT.AI_ARCHER,
-	Game.TYPE.MAGE: Dialogue.PORTRAIT.AI_MAGE,
-	Game.TYPE.FIGHTER: Dialogue.PORTRAIT.AI_SWORDSMAN
+	TT.TYPE.ARCHER: PT_Dialogue.PORTRAIT.AI_ARCHER,
+	TT.TYPE.MAGE: PT_Dialogue.PORTRAIT.AI_MAGE,
+	TT.TYPE.FIGHTER: PT_Dialogue.PORTRAIT.AI_SWORDSMAN
 }
 
 func _init(character, personality = null):
@@ -100,7 +100,7 @@ func _init(character, personality = null):
 	self.personality = personality
 	self.character = character
 	var num_intros = introductions[personality].size()
-	intro = Dialogue.new()
+	intro = PT_Dialogue.new()
 	intro.title = character.name
 	intro.text = introductions[personality][rand_range(0, num_intros)]
 	intro.portrait = portrait_map[character.character_class]
@@ -118,14 +118,14 @@ func _on_branch(id):
 		self.emit_signal("response", generate_response(false))
 
 func generate_branch(personality):
-	var branch = Dialogue.new()
+	var branch = PT_Dialogue.new()
 	var num_responses = persuasion[personality].size()
 	branch.text = persuasion[personality][rand_range(0, num_responses)]
 	branch.dialogue_id = personality
 	return branch
 	
 func generate_response(accepted):
-	var response = Dialogue.new()
+	var response = PT_Dialogue.new()
 	var num_options = accept[personality].size()
 	if not accepted:
 		num_options = deny[personality].size()

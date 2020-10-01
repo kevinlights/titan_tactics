@@ -3,11 +3,11 @@ class_name NaiveAI
 
 var world
 var characters
-var i_am = Game.CONTROL.AI
+var i_am = TT.CONTROL.AI
 
 func _init(my_world):
 	world = my_world
-	characters = world.current[Game.CONTROL.AI]
+	characters = world.current[TT.CONTROL.AI]
 #	for character in characters:
 #		character.connect("idle", self, "play")
 	
@@ -15,11 +15,11 @@ func play():
 	if world.game_over:
 		return
 	var character = world.get_current()
-	if character.character.control != Game.CONTROL.AI:
+	if character.character.control != TT.CONTROL.AI:
 		print("AI (" + character.character.name + ") says not my turn, skipping")
 		return
 	print("AI taking turn")
-	if character.character.has_ability(Game.ABILITY.HEAL):
+	if character.character.has_ability(TT.ABILITY.HEAL):
 		var weakest = get_weakest_ally(character)
 		if weakest:
 			print("AI (" + character.character.name + ") says heal " + weakest.character.name)
@@ -29,8 +29,8 @@ func play():
 			return
 	var enemy = get_nearest_enemy(character.position)
 	if enemy:
-		print("does it have heal? : " + str(character.character.has_ability(Game.ABILITY.HEAL)))
-		if character.can_recruit() and character.character.has_ability(Game.ABILITY.HEAL):
+		print("does it have heal? : " + str(character.character.has_ability(TT.ABILITY.HEAL)))
+		if character.can_recruit() and character.character.has_ability(TT.ABILITY.HEAL):
 			print("AI (" + character.character.name + ") says heal")
 			character.heal(character)
 			character.is_done = true
@@ -54,7 +54,7 @@ func play():
 			if path and path.size() > 1:
 				print("AI (" + character.character.name + ") says move")
 				character.move(path)
-				world.get_node("select").tile = path[path.size() - 1] / Vector2(Game.cell_size, Game.cell_size)
+				world.get_node("select").tile = path[path.size() - 1] / Vector2(TT.cell_size, TT.cell_size)
 				if not character.is_connected("path_complete", self, "play"):
 					character.connect("path_complete", self, "play")
 				return
@@ -84,7 +84,7 @@ func get_path_to(start, end, max_length, character):
 	path = shorten_to_atk_range(path, character)
 	var fixed_path = normalize_path(path, max_length)
 	# prevent landing on a tile that has someone on it
-	while fixed_path.size() > 1 and world.entity_at(fixed_path[fixed_path.size() - 1] / Vector2(Game.cell_size, Game.cell_size)):
+	while fixed_path.size() > 1 and world.entity_at(fixed_path[fixed_path.size() - 1] / Vector2(TT.cell_size, TT.cell_size)):
 		fixed_path.resize(fixed_path.size() - 1)
 	return fixed_path
 
@@ -96,7 +96,7 @@ func normalize_path(path, max_length):
 	return world.to_world_path(path)
 
 func get_nearest_enemy(position):
-	var enemies = world.current[Game.CONTROL.PLAYER]
+	var enemies = world.current[TT.CONTROL.PLAYER]
 	var shortest = 999
 	var closest
 	for enemy in enemies:
@@ -111,7 +111,7 @@ func enemies_are_stronger(position, character):
 	var enemies_in_range = 0
 	var stronger_in_range = 0
 	if character.can_recruit():
-		var enemies = world.current[Game.CONTROL.PLAYER]
+		var enemies = world.current[TT.CONTROL.PLAYER]
 		for enemy in enemies:
 			var distance = character.tile.distance_to(enemy.tile)
 			if distance <= enemy.character.atk_range:

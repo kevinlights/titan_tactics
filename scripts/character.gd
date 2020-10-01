@@ -25,13 +25,13 @@ var turn_limits = {
 
 func end_turn():
 	turn_limits.move_distance = default_stats.mov_range
-	turn_limits.actions = 1 # Game.class_stats.actions[type]
+	turn_limits.actions = 1 # TT.class_stats.actions[type]
 
 func _init(request_type, request_control):
 	default_stats = class_stats.archer
-	if request_type == Game.TYPE.FIGHTER:
+	if request_type == TT.TYPE.FIGHTER:
 		default_stats = class_stats.swordsman
-	elif request_type == Game.TYPE.MAGE:
+	elif request_type == TT.TYPE.MAGE:
 		default_stats = class_stats.mage 
 	
 	item = Item.new()
@@ -39,15 +39,15 @@ func _init(request_type, request_control):
 	type = request_type
 	control = request_control
 	
-	abilities = Game.class_stats.abilities[type]
+	abilities = TT.class_stats.abilities[type]
 	max_hp = floor(default_stats.hp + rand_range((Game.level + 1) * 4, (Game.level + 1) * 5) - 15)
 	hp = floor(default_stats.hp + rand_range((Game.level + 1) * 4, (Game.level + 1) * 5) - 15)
 	turn_limits.move_distance = default_stats.mov_range
-	turn_limits.actions = 1 # Game.class_stats.actions[type]
+	turn_limits.actions = 1 # TT.class_stats.actions[type]
 	attack_range = default_stats.atk_range
-	#attack_damage = Game.class_stats.damage[type]	
+	#attack_damage = TT.class_stats.damage[type]	
 	
-	if control == Game.CONTROL.AI:
+	if control == TT.CONTROL.AI:
 		match Game.level:
 			0:
 				attack_damage = default_stats.atk
@@ -68,11 +68,11 @@ func _init(request_type, request_control):
 				
 	defense = default_stats.def
 	heal = default_stats.atk
-	weakness = Game.class_stats.weakness[type]
-	strength = Game.class_stats.strength[type]
-	name = Game.character_names[rand_range(0, Game.character_names.size() - 1)]
+	weakness = TT.class_stats.weakness[type]
+	strength = TT.class_stats.strength[type]
+	name = TT.character_names[rand_range(0, TT.character_names.size() - 1)]
 	# don't want to take for ever to test death and level progression
-	if Game.sudden_death and control == Game.CONTROL.AI:
+	if Game.sudden_death and control == TT.CONTROL.AI:
 		hp = 1
 		max_hp = 1
 

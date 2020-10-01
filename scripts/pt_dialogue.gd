@@ -1,8 +1,7 @@
-class_name Dialogue
+class_name PT_Dialogue
 extends Resource
 
 signal completed
-signal dialogue_result
 
 enum TRIGGER { 
 	DISABLED = 0,

@@ -10,9 +10,9 @@ var selected = 0
 onready var select = get_parent().get_parent().get_node("select")
 
 var atlas_frames = {
-	Game.TYPE.ARCHER: "archer",
-	Game.TYPE.FIGHTER: "fighter",
-	Game.TYPE.MAGE: "mage"
+	TT.TYPE.ARCHER: "archer",
+	TT.TYPE.FIGHTER: "fighter",
+	TT.TYPE.MAGE: "mage"
 }
 
 func set_characters(list):
@@ -42,9 +42,9 @@ func pick_random_sfx(audio_path):
 func update_view():
 	var animation = "fighter"
 	#match characters[selected].character_class:
-	#	Game.TYPE.ARCHER:
+	#	TT.TYPE.ARCHER:
 	#		animation = "archer"
-	#	Game.TYPE.MAGE:
+	#	TT.TYPE.MAGE:
 	#		animation = "mage"
 	$name.text = characters[selected].name
 	if $name.text in get_parent().get_node("battle").special_names:

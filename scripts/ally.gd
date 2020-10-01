@@ -21,9 +21,9 @@ var atlas_frames = {
 	"up": 3,
 	"down": 2,
 	"neutral": 128,
-	Game.TYPE.ARCHER: 2,
-	Game.TYPE.FIGHTER: 0,
-	Game.TYPE.MAGE: 4
+	TT.TYPE.ARCHER: 2,
+	TT.TYPE.FIGHTER: 0,
+	TT.TYPE.MAGE: 4
 }
 
 #level line width = 28

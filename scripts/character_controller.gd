@@ -10,7 +10,7 @@ signal recruit_failed
 signal done
 signal dialogue
 
-var cell_size = Game.cell_size
+var cell_size = TT.cell_size
 var guarding = false
 var character
 var path = []
@@ -42,7 +42,7 @@ var movement = {
 func check_finished():
 	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
 		is_done = true
-		if character.control != Game.CONTROL.AI:
+		if character.control != TT.CONTROL.AI:
 			$done.show()
 		emit_signal("done")
 
@@ -59,13 +59,13 @@ func spread_icons():
 
 func hit(attacker):
 	match(attacker.character_class):
-		Game.TYPE.ARCHER:
+		TT.TYPE.ARCHER:
 			print("arrow hit!")
 			$vfx/arrow_hit.emitting = true
 			pick_random_sfx($sfx/arrow_hit)
-		Game.TYPE.FIGHTER:
+		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
-		Game.TYPE.MAGE:
+		TT.TYPE.MAGE:
 			$vfx/magic_hit.emitting = true
 			pick_random_sfx($sfx/magic_hit)
 	avatar.play("hit-" + movement.last_horizontal_direction)
@@ -80,12 +80,12 @@ func hit(attacker):
 		die()
 		attacker.add_xp(character.level)
 	else:
-		if dialogue and dialogue.trigger == Dialogue.TRIGGER.ATTACK and not dialogue_used:
+		if dialogue and dialogue.trigger == PT_Dialogue.TRIGGER.ATTACK and not dialogue_used:
 			dialogue_used = true
 			print(dialogue.text)
 			emit_signal("dialogue", dialogue)
 #			gui.dialogue(dialogue)
-	if character.control == Game.CONTROL.AI and can_recruit():
+	if character.control == TT.CONTROL.AI and can_recruit():
 		$speak.show()
 		spread_icons()
 
@@ -115,7 +115,7 @@ func heal(target):
 	target.character.hp = clamp(target.character.hp + healed_hp, 0, target.character.max_hp)
 	pick_random_sfx($sfx/heal)
 	target.healthbar.set_value(target.character.hp, target.character.max_hp)
-	if target.character.control == Game.CONTROL.AI and !target.can_recruit():
+	if target.character.control == TT.CONTROL.AI and !target.can_recruit():
 		target.get_node("speak").hide()
 		spread_icons()
 	if target.character.hp == target.character.max_hp:
@@ -124,7 +124,7 @@ func heal(target):
 	return healed_hp
 
 func guard():
-	if character.has_ability(Game.ABILITY.GUARD):
+	if character.has_ability(TT.ABILITY.GUARD):
 		$guard.show()
 		spread_icons()
 		character.turn_limits.actions = 0
@@ -172,15 +172,15 @@ func attack(target):
 	print("actual damage ", damage)
 	target.character.hp -= damage
 
-	if character.character_class == Game.TYPE.MAGE:
+	if character.character_class == TT.TYPE.MAGE:
 		var projectile = load("res://scenes/projectile.tscn").instance()
 		projectile.fire(position + Vector2(8, 8), target.position + Vector2(8, 8))
 		projectile.connect("hit", target, "hit", [character])
 		projectile.connect("hit", self, "attack_complete")
-		projectile.get_node("sparkle").play("player" if character.control == Game.CONTROL.PLAYER else "ai")
+		projectile.get_node("sparkle").play("player" if character.control == TT.CONTROL.PLAYER else "ai")
 		pick_random_sfx($sfx/magic_attack)
 		get_parent().add_child(projectile)
-	elif character.character_class == Game.TYPE.ARCHER:
+	elif character.character_class == TT.TYPE.ARCHER:
 		# move this to on animation complete 
 		pass
 	else:
@@ -222,27 +222,27 @@ func select_type():
 	$ai_archer.hide()
 	$ai_fighter.hide()
 	$ai_mage.hide()
-	if character.control == Game.CONTROL.PLAYER:
+	if character.control == TT.CONTROL.PLAYER:
 		match character.character_class:
-			Game.TYPE.ARCHER:
+			TT.TYPE.ARCHER:
 				print("Select archer")
 				avatar = $archer
-			Game.TYPE.FIGHTER:
+			TT.TYPE.FIGHTER:
 				print("Select fighter")
 				print($fighter)
 				avatar = $fighter
-			Game.TYPE.MAGE:
+			TT.TYPE.MAGE:
 				print("Select mage")
 				avatar = $mage
 	else:
 		match character.character_class:
-			Game.TYPE.ARCHER:
+			TT.TYPE.ARCHER:
 				print("Select ai archer")
 				avatar = $ai_archer
-			Game.TYPE.FIGHTER:
+			TT.TYPE.FIGHTER:
 				print("Select ai fighter")
 				avatar = $ai_fighter
-			Game.TYPE.MAGE:
+			TT.TYPE.MAGE:
 				print("Select ai mage")
 				avatar = $ai_mage
 	print("character class ", character.character_class)
@@ -261,12 +261,12 @@ func from_spawner(character_spawner):
 	character = character_spawner.stats #.duplicate()
 	# reset to max hp when deploying
 	character.hp = character.max_hp
-	if character_spawner.dialogue and character_spawner.dialogue.trigger != Dialogue.TRIGGER.DISABLED:
+	if character_spawner.dialogue and character_spawner.dialogue.trigger != PT_Dialogue.TRIGGER.DISABLED:
 		dialogue = character_spawner.dialogue
 		if character.portrait_override and character.portrait_override != "":
 			dialogue.portrait = character.portrait_override
 		dialogue.connect("completed", self, "_on_dialogue_completed")
-	if character_spawner.recruit_dialogue and character_spawner.recruit_dialogue.trigger != Dialogue.TRIGGER.DISABLED:
+	if character_spawner.recruit_dialogue and character_spawner.recruit_dialogue.trigger != PT_Dialogue.TRIGGER.DISABLED:
 		recruit_dialogue = character_spawner.recruit_dialogue
 	select_type()
 	init_common(character_spawner.stats.control)
@@ -316,19 +316,19 @@ func init_common(control):
 	healthbar.position.x = 0
 	healthbar.position.y = -5
 	healthbar.set_value(character.hp, character.max_hp)
-#	if control == Game.CONTROL.PLAYER:
+#	if control == TT.CONTROL.PLAYER:
 #		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
 	healthbar.hide()
 	add_child(healthbar)
 	
-func init(char_type, control = Game.CONTROL.PLAYER):	
+func init(char_type, control = TT.CONTROL.PLAYER):	
 	var default_stats = load("res://resources/class_stats.tres") # [class_map[char_type]]
 	character = CharacterStats.new()
 #	character.from_defaults(char_type, control)
 #	var class_map = {
-#		Game.TYPE.FIGHTER: "swordsman",
-#		Game.TYPE.ARCHER: "archer",
-#		Game.TYPE.MAGE: "mage"
+#		TT.TYPE.FIGHTER: "swordsman",
+#		TT.TYPE.ARCHER: "archer",
+#		TT.TYPE.MAGE: "mage"
 #	}
 	character.generate(default_stats, char_type, control)
 	#Character.new(char_type, control)
@@ -345,7 +345,7 @@ func fire_arrow(target):
 		last_target = null
 	
 func _on_animation_finished():
-	if avatar.animation.begins_with("attack") and character.character_class == Game.TYPE.ARCHER and last_target:
+	if avatar.animation.begins_with("attack") and character.character_class == TT.TYPE.ARCHER and last_target:
 		fire_arrow(last_target)
 	if is_dead and avatar.animation.begins_with("hit"):
 		emit_signal("death", self)
@@ -366,7 +366,7 @@ func _process(delta):
 		return
 	if avatar.playing and avatar.animation.begins_with("attack"):
 		return
-	if character.control == Game.CONTROL.PLAYER:
+	if character.control == TT.CONTROL.PLAYER:
 		if is_done:
 			$done.show()
 		else:

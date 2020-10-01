@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/levels/level_meta_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://gfx/Maps/lv0.png" type="Texture" id=3]
 [ext_resource path="res://gfx/Animated/campfire.png" type="Texture" id=4]
-[ext_resource path="res://scripts/dialogue.gd" type="Script" id=10]
+[ext_resource path="res://scripts/pt_dialogue.gd" type="Script" id=10]
 [ext_resource path="res://scripts/level.gd" type="Script" id=11]
 
 [sub_resource type="Resource" id=1]
@@ -16,7 +16,7 @@ trigger_id = ""
 title = "Ulrich:"
 text = "Rolf… ¤cough cough¤ You were always more to me"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 10 )
@@ -27,7 +27,7 @@ trigger_id = "opening"
 title = ""
 text = "than a foster son… You are a close friend… If I do not make it before you return|and this is to be the end of me, do not blame yourself… Be thankful for|the days we have spent together…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 10 )
@@ -38,7 +38,7 @@ trigger_id = "response"
 title = "Rolf:"
 text = "I will not fail you. The Gods favour you for your"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 10 )
@@ -49,7 +49,7 @@ trigger_id = "old"
 title = ""
 text = "good deeds and you still have many moons left. Cyan knows the way to the|healing well. The Hass could never have found it for only you and Cyan knew of|its location. We can be back within a fortnight. I have faith you can hold out."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 10 )
@@ -60,7 +60,7 @@ trigger_id = "new"
 title = "Ulrich:"
 text = "The Hass send scouts out regularly in all directions"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 10 )
@@ -71,7 +71,7 @@ trigger_id = "stuff"
 title = ""
 text = "searching for the forest settlement. You must be on your guard."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 10 )
@@ -82,7 +82,7 @@ trigger_id = "things"
 title = "Rolf:"
 text = "You have taught Cyan and I all we know about the art"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 10 )
@@ -93,7 +93,7 @@ trigger_id = "andthen"
 title = ""
 text = "of combat. We can handle ourselves if the need arises. I won't waste time.|Cyan has gone ahead of me to bless our journey at the altar of oak… The herbs we|gathered should be enough to sustain and comfort you until we return."
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 10 )
@@ -104,7 +104,7 @@ trigger_id = "taco"
 title = "Ulrich:"
 text = "….You are right. I have trained both you and Cyan"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 10 )
@@ -115,7 +115,7 @@ trigger_id = "borger"
 title = ""
 text = "for ¤cough¤ battle should it come to it. I have faith ¤cough cough¤ that…|¤cough cough¤ you… ¤gasp¤ ¤cough cough cough¤"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 10 )
@@ -126,7 +126,7 @@ trigger_id = "fishtaco"
 title = "Rolf:"
 text = "Please, do not strain yourself. I am ready for"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 10 )
@@ -137,7 +137,7 @@ trigger_id = "lettuce"
 title = ""
 text = "this journey and will meet up with Cyan in the forest on the way to the caves.|Rest easy here with the spirits of the forest and we will be back as soon as|we are able…"
 branches = [  ]
-result = 2
+audio_theme = ""
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 4 )

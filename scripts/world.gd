@@ -21,7 +21,7 @@ onready var gui = get_tree().get_root().get_node("World/gui")
 var tile_meta
 var world_map
 var game_over = false
-var current_turn = Game.CONTROL.PLAYER
+var current_turn = TT.CONTROL.PLAYER
 var player_spawns = []
 var pathfinder
 var ai
@@ -32,8 +32,8 @@ var map_size = { "width": 10, "height": 10 }
 var num_done = 0
 
 var current = {
-	Game.CONTROL.AI: [],
-	Game.CONTROL.PLAYER: []
+	TT.CONTROL.AI: [],
+	TT.CONTROL.PLAYER: []
 }
 
 func load_level(level_name):
@@ -46,8 +46,8 @@ func load_level(level_name):
 	var used_rect = tile_meta.get_used_rect()
 	map_size.width = used_rect.size.x
 	map_size.height = used_rect.size.y
-	$select/camera.limit_bottom = map_size.height * Game.cell_size
-	$select/camera.limit_right = map_size.width * Game.cell_size
+	$select/camera.limit_bottom = map_size.height * TT.cell_size
+	$select/camera.limit_right = map_size.width * TT.cell_size
 	tile_meta.hide() # meta data should not be visible to the player	
 	$select.disable()
 
@@ -63,7 +63,7 @@ func entity_at(position_vector):
 	return null
 
 func as_world_position(tile):
-	return Vector2(tile.x * Game.cell_size, tile.y * Game.cell_size)
+	return Vector2(tile.x * TT.cell_size, tile.y * TT.cell_size)
 
 func make_tile(tile_id):
 	return {
@@ -85,7 +85,7 @@ func is_cover_between(character, end):
 
 func spawn_cover(tile):
 	var cover = load("res://scenes/cover_tile.tscn").instance()
-	cover.position = tile * Vector2(Game.cell_size, Game.cell_size)
+	cover.position = tile * Vector2(TT.cell_size, TT.cell_size)
 	world_map.add_child(cover)
 	print("Spawned cover")
 	return cover
@@ -101,7 +101,7 @@ func spawn_chest(x, y, item_spawner):
 	print("Spawned chest")
 	return chest
 
-func spawn_character(x, y, type = Game.TYPE.MAGE, control = Game.CONTROL.PLAYER):
+func spawn_character(x, y, type = TT.TYPE.MAGE, control = TT.CONTROL.PLAYER):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	character.init(type, control)
 	character.teleport(x, y)
@@ -128,7 +128,7 @@ func advance_turn(explicit = 1, direction = 1):
 		$select.disable()
 		yield(get_tree().create_timer(1.0), "timeout")
 	$path_preview/path.clear_points()
-	if current_turn  == Game.CONTROL.AI:
+	if current_turn  == TT.CONTROL.AI:
 		ai.play()
 	elif explicit == 1:
 		$select.enable()
@@ -147,11 +147,11 @@ func change_character():
 func end_turn():
 	#yield(get_tree().create_timer(2.0), "timeout")
 #	current[current_turn][current_character]
-	for character in current[Game.CONTROL.PLAYER]:
+	for character in current[TT.CONTROL.PLAYER]:
 		character.is_done = false
 		character.get_node("done").hide()
 		
-	current_turn = Game.CONTROL.AI if current_turn == Game.CONTROL.PLAYER else Game.CONTROL.PLAYER
+	current_turn = TT.CONTROL.AI if current_turn == TT.CONTROL.PLAYER else TT.CONTROL.PLAYER
 	for character in current[current_turn]:
 		character.end_turn()
 	current_character = 0
@@ -163,7 +163,7 @@ func end_turn():
 func to_world_path(path):
 	var world_path = PoolVector2Array()
 	for point in path:
-		world_path.append(point * Vector2(Game.cell_size, Game.cell_size))
+		world_path.append(point * Vector2(TT.cell_size, TT.cell_size))
 	return world_path
 
 func action():
@@ -173,14 +173,14 @@ func action():
 	var target = entity_at($select.tile)
 	#gui.battle()
 	match(context):
-		Game.CONTEXT.ATTACK:
+		TT.CONTEXT.ATTACK:
 			if get_current().character.turn_limits.actions > 0:
 				if get_current().can_attack(target):
 					if target.can_recruit() and is_adjacent(get_current(), target):
 						gui.attack()
 					else:
 						_on_attack()
-		Game.CONTEXT.USE:
+		TT.CONTEXT.USE:
 			if is_adjacent(target, get_current()):
 				if target.is_loot:
 					var loot = target.open(get_current().character.character_class)
@@ -197,12 +197,12 @@ func action():
 							target.use()
 					else:
 						target.use()
-		Game.CONTEXT.MOVE:
+		TT.CONTEXT.MOVE:
 			get_current().move(to_world_path(current_path))
 			$path_preview.hide_path()
-		Game.CONTEXT.NOT_ALLOWED:
+		TT.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
-		Game.CONTEXT.GUARD:
+		TT.CONTEXT.GUARD:
 #			if $gui/battle/box_enemy.visible:
 #				return
 			print("guard action")
@@ -211,7 +211,7 @@ func action():
 				_on_end()
 			else:
 				gui.guard()
-		Game.CONTEXT.HEAL:
+		TT.CONTEXT.HEAL:
 #			if $gui/battle/box_enemy.visible:
 #				return
 			if get_current().character.turn_limits.actions == 0:
@@ -227,8 +227,8 @@ func _ready():
 	randomize()
 	
 	load_level(Game.get_level())
-	current[Game.CONTROL.PLAYER] = []
-	current[Game.CONTROL.AI] = []
+	current[TT.CONTROL.PLAYER] = []
+	current[TT.CONTROL.AI] = []
 	player_spawns = []
 	for x in range(map_size.width):
 		for y in range(map_size.height):
@@ -267,8 +267,8 @@ func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
 	for chest_spawn in chest_spawns:
 		var chest = spawn_chest(
-			floor(chest_spawn.position.x / Game.cell_size), 
-			floor(chest_spawn.position.y / Game.cell_size),
+			floor(chest_spawn.position.x / TT.cell_size), 
+			floor(chest_spawn.position.y / TT.cell_size),
 			chest_spawn.item_spawner)
 		chest_spawn.hide()
 	
@@ -277,13 +277,13 @@ func spawn_ai_team():
 	for ai_spawn in ai_spawns:
 		var character:Node = load("res://scenes/character_controller.tscn").instance()
 		character.from_spawner(ai_spawn)
-		character.teleport(floor(ai_spawn.position.x / Game.cell_size), floor(ai_spawn.position.y / Game.cell_size))
-		character.character.control = Game.CONTROL.AI
+		character.teleport(floor(ai_spawn.position.x / TT.cell_size), floor(ai_spawn.position.y / TT.cell_size))
+		character.character.control = TT.CONTROL.AI
 		character.add_to_group("characters")
-		current[Game.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / Game.cell_size), floor(ai_spawn.position.y / Game.cell_size), ai_spawn.stats.character_class, Game.CONTROL.AI))
-		current[Game.CONTROL.AI].back().connect("death", self, "_on_death")
-		current[Game.CONTROL.AI].back().connect("done", self, "advance_turn")
-		current[Game.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
+		current[TT.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / TT.cell_size), floor(ai_spawn.position.y / TT.cell_size), ai_spawn.stats.character_class, TT.CONTROL.AI))
+		current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
+		current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
+		current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
 		world_map.add_child(character)
 		ai_spawn.hide()
 #	print(ai_spawns)
@@ -329,9 +329,9 @@ func _on_edit_team():
 			if tile_id == TILEID.PLAYER_SPAWN:
 				player_spawns.append(Vector2(x, y))
 	# clear previously selected team
-	for character in current[Game.CONTROL.PLAYER]:
+	for character in current[TT.CONTROL.PLAYER]:
 		world_map.remove_child(character)
-	current[Game.CONTROL.PLAYER].resize(0)
+	current[TT.CONTROL.PLAYER].resize(0)
 	# and start over
 	gui.back()
 	#gui.get_node("sfx/select").play()
@@ -359,7 +359,7 @@ func _on_win(ignore_dialogue = false):
 		print("End game: WIN")
 
 func all_enemies_eliminated():
-	return current[Game.CONTROL.AI].size() == 0
+	return current[TT.CONTROL.AI].size() == 0
 
 func check_end_game(ignore_dialogue = false):
 	if all_enemies_eliminated():
@@ -370,12 +370,12 @@ func check_end_game(ignore_dialogue = false):
 		print("Consumed ", trigger.consumed)
 		if trigger.available == "level_complete" and !trigger.consumed:
 			return false
-	for control in [ Game.CONTROL.AI, Game.CONTROL.PLAYER ]:
+	for control in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
 		if current[control].size() == 0:
 			game_over = true
 			$select.disable()
 			gui.call_deferred("battle_hide")
-			if control == Game.CONTROL.AI:
+			if control == TT.CONTROL.AI:
 				call_deferred("_on_win", ignore_dialogue)
 			else:
 				gui.lose()
@@ -413,10 +413,10 @@ func auto_deploy_only_character():
 	character.teleport(spawn.x, spawn.y)
 	character.add_to_group("characters")
 	world_map.add_child(character)
-	current[Game.CONTROL.PLAYER].append(character)
+	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
-	character.character.control = Game.CONTROL.PLAYER
+	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
 	_on_start_level()
 	emit_signal("auto_deployed")
@@ -428,10 +428,10 @@ func _on_select_team_member(team_member):
 	character.teleport(spawn.x, spawn.y)
 	character.add_to_group("characters")
 	world_map.add_child(character)
-	current[Game.CONTROL.PLAYER].append(character)
+	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
-	character.character.control = Game.CONTROL.PLAYER
+	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
 	if player_spawns.size() > 0:
 		$select.tile = player_spawns[0]
@@ -444,7 +444,7 @@ func _on_level_up(diff, character):
 
 func _initiate_turn():
 	# in case a signal triggers this after the level is won/lost
-	if current[Game.CONTROL.AI].size() == 0 or current[Game.CONTROL.PLAYER].size() == 0:
+	if current[TT.CONTROL.AI].size() == 0 or current[TT.CONTROL.PLAYER].size() == 0:
 		print("Don't initiate turn; the game is already over.")
 		return
 	if $select.disabled:
@@ -455,7 +455,7 @@ func _initiate_turn():
 		$select.set_context(get_current_context($select.tile))
 	else:
 		print("Don't initiate turn: selector is enabled")
-	if current_turn == Game.CONTROL.AI:
+	if current_turn == TT.CONTROL.AI:
 		print("Control turned over to AI")
 		ai.play()
 	
@@ -463,7 +463,7 @@ func _on_attack():
 	print("attack option selected in menu")
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
-		if get_current().character.character_class != Game.TYPE.FIGHTER and is_cover_between(get_current(), target.position):
+		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), target.position):
 			gui.error("BLOCKED LINE OF SIGHT")
 			gui.call_deferred("back")
 			return
@@ -482,9 +482,9 @@ func _on_recruit_completed(id):
 	get_current().character.turn_limits.actions -= 1
 	if id == "accepted":
 		target.recruit(get_current())
-		target.character.control = Game.CONTROL.PLAYER
+		target.character.control = TT.CONTROL.PLAYER
 		Game.team.append(target.character)
-		current[Game.CONTROL.AI].erase(target)
+		current[TT.CONTROL.AI].erase(target)
 	else:
 		target.recruit_failed(get_current())
 		gui.error("FAILED TO RECRUIT")
@@ -552,22 +552,22 @@ func _on_selector_moved(tile):
 	var context = get_current_context(tile)
 	print(context)
 	var target = entity_at($select.tile)
-	if current_turn == Game.CONTROL.PLAYER:
-		if target and !target.is_loot and !target.is_trigger and target.character.control == Game.CONTROL.AI and context == Game.CONTEXT.ATTACK:
+	if current_turn == TT.CONTROL.PLAYER:
+		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
 			print("you are pointing on " + str(target.character.name))
 			gui.battle(get_current(), target)
 		else:
 			gui.battle_hide(get_current())
-		if target and !target.is_loot and !target.is_trigger and !target.character.control == Game.CONTROL.AI and context == Game.CONTEXT.GUARD and !gui.active:
+		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.GUARD and !gui.active:
 			print("you are pointing on yourself : " + str(target.character.name))
 			gui.ally(get_current())
 		else:
 			gui.ally_hide(get_current())
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
 	if current_path.size() > 0:
-		if context == Game.CONTEXT.MOVE:
+		if context == TT.CONTEXT.MOVE:
 			$path_preview.preview_path(current_path)
-		elif context == Game.CONTEXT.NOT_ALLOWED:
+		elif context == TT.CONTEXT.NOT_ALLOWED:
 			$path_preview.preview_path(current_path, false)
 		else:
 			$path_preview.hide_path()
@@ -577,21 +577,21 @@ func _on_selector_moved(tile):
 
 func get_current_context(tile):
 	if Game.level == 0 or gui.get_node("dialogue").visible:
-		return Game.CONTEXT.NOT_PLAYABLE
+		return TT.CONTEXT.NOT_PLAYABLE
 	if $select.mode == $select.MODE.CHECK_MAP:
-		return Game.CONTEXT.NEUTRAL
+		return TT.CONTEXT.NEUTRAL
 	var unit = entity_at(tile)
 	if unit:
 		if unit.is_loot or unit.is_trigger:
-			return Game.CONTEXT.USE
-		elif unit.character.control == Game.CONTROL.AI:
-			return Game.CONTEXT.ATTACK
-		elif get_current().character.has_ability(Game.ABILITY.HEAL):
-			return Game.CONTEXT.HEAL
+			return TT.CONTEXT.USE
+		elif unit.character.control == TT.CONTROL.AI:
+			return TT.CONTEXT.ATTACK
+		elif get_current().character.has_ability(TT.ABILITY.HEAL):
+			return TT.CONTEXT.HEAL
 		elif get_current() == unit:
-			return Game.CONTEXT.GUARD
+			return TT.CONTEXT.GUARD
 		else:
-			return Game.CONTEXT.NEUTRAL
+			return TT.CONTEXT.NEUTRAL
 	if not current[current_turn].empty():
 		print(current_character)
 		var current_path = pathfinder.find_path(get_current().tile, $select.tile)
@@ -600,10 +600,10 @@ func get_current_context(tile):
 			if all_enemies_eliminated():
 				allowed = true
 			if not allowed:
-				return Game.CONTEXT.NOT_ALLOWED
+				return TT.CONTEXT.NOT_ALLOWED
 	else:
-		return Game.CONTEXT.NOT_PLAYABLE
-	return Game.CONTEXT.MOVE
+		return TT.CONTEXT.NOT_PLAYABLE
+	return TT.CONTEXT.MOVE
 
 # DEBUG INPUT
 #func _input(event):
@@ -613,10 +613,10 @@ func get_current_context(tile):
 #		_on_replay()
 #	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
 #		var additional_character = load("res://resources/ogre.tres")
-#		additional_character.control = Game.CONTROL.PLAYER
+#		additional_character.control = TT.CONTROL.PLAYER
 #		Game.team.append(additional_character)
 #		print("The OGRE has joined the team!")
 #	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
-#		for unit in current[Game.CONTROL.AI]:
+#		for unit in current[TT.CONTROL.AI]:
 #			unit.die()
 #

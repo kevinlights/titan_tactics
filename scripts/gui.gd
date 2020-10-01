@@ -46,13 +46,13 @@ func turn(type):
 		yield(get_tree().create_timer(2.0), "timeout")
 		battle_hide()
 	match type:
-		Game.CONTROL.PLAYER:
+		TT.CONTROL.PLAYER:
 			#battle_hide($battle.player)
 			yield(get_tree().create_timer(1.0), "timeout")
 			print("show turn for player")
 			$playerturn.reset()
 			$playerturn.show()
-		Game.CONTROL.AI:
+		TT.CONTROL.AI:
 			#yield(get_tree().create_timer(0.0), "timeout")
 			print("show turn for AI")
 			$enemyturn.reset()

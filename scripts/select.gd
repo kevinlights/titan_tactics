@@ -21,11 +21,11 @@ var current_target = {
 }
 
 func set_tile(p_tile):
-	position.x = p_tile.x * Game.cell_size
-	position.y = p_tile.y * Game.cell_size
+	position.x = p_tile.x * TT.cell_size
+	position.y = p_tile.y * TT.cell_size
 
 func get_tile():
-	tile =  Vector2(floor(position.x / Game.cell_size), floor(position.y / Game.cell_size))
+	tile =  Vector2(floor(position.x / TT.cell_size), floor(position.y / TT.cell_size))
 	tile.x = clamp(tile.x, 0, world.map_size.width - 1)
 	tile.y = clamp(tile.y, 0, world.map_size.height - 1)
 	return tile
@@ -40,34 +40,34 @@ func enable():
 	set_context(world.get_current_context(tile))
 
 func set_context(context):
-	if world.current_turn == Game.CONTROL.AI or context == Game.CONTEXT.NOT_PLAYABLE:
+	if world.current_turn == TT.CONTROL.AI or context == TT.CONTEXT.NOT_PLAYABLE:
 		print("context is not playable, hiding selector")
 		play("blank")
 		return
 	match(context):
-		Game.CONTEXT.USE:
+		TT.CONTEXT.USE:
 			play("attack")
-		Game.CONTEXT.ATTACK:
+		TT.CONTEXT.ATTACK:
 			play("attack")
-		Game.CONTEXT.GUARD:
+		TT.CONTEXT.GUARD:
 			play("guard")
-		Game.CONTEXT.HEAL:
+		TT.CONTEXT.HEAL:
 			play("heal")
-		Game.CONTEXT.MOVE:
+		TT.CONTEXT.MOVE:
 			play("default")
-		Game.CONTEXT.NOT_ALLOWED:
+		TT.CONTEXT.NOT_ALLOWED:
 			play("cantmove")
 
 func _input(event):
 	var advance = Vector2(0, 0)
-	if world.get_current_context(tile) == Game.CONTEXT.NOT_PLAYABLE:
+	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
 		play("blank")
 		return
 	if gui.active or disabled:
-		if not world.current_turn == Game.CONTROL.AI:
+		if not world.current_turn == TT.CONTROL.AI:
 			play("attack")
 			return
-	if world.current_turn == Game.CONTROL.AI:
+	if world.current_turn == TT.CONTROL.AI:
 		play("blank")
 		return
 	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
@@ -101,7 +101,7 @@ func _input(event):
 
 func go_home():
 	self.tile = current_entity.tile
-	if world.current_turn == Game.CONTROL.AI:
+	if world.current_turn == TT.CONTROL.AI:
 		emit_signal("moved", self.tile)
 
 func set_origin(entity):

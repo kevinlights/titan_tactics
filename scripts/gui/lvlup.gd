@@ -11,9 +11,9 @@ var new_def
 var new_hp
 
 var atlas = {
-	Game.TYPE.FIGHTER: 0,
-	Game.TYPE.ARCHER: 2,
-	Game.TYPE.MAGE: 4
+	TT.TYPE.FIGHTER: 0,
+	TT.TYPE.ARCHER: 2,
+	TT.TYPE.MAGE: 4
 }
 
 #should be called after the level and stats are increased

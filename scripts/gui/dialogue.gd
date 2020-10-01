@@ -1,4 +1,4 @@
-class_name DialogueController
+class_name PT_DialogueController
 extends Control
 
 var content
@@ -14,17 +14,17 @@ var current_block = ""
 var rng = RandomNumberGenerator.new()
 
 var portrait_map = {
-	Dialogue.PORTRAIT.ARCHER: "archer",
-	Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
-	Dialogue.PORTRAIT.MAGE: "mage",
-	Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
-	Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
-	Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
-	Dialogue.PORTRAIT.HERO: "hero",
-	Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
-	Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
-	Dialogue.PORTRAIT.OLD_MAN: "old_man",
-	Dialogue.PORTRAIT.CYAN: "cyan"
+	PT_Dialogue.PORTRAIT.ARCHER: "archer",
+	PT_Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
+	PT_Dialogue.PORTRAIT.MAGE: "mage",
+	PT_Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
+	PT_Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
+	PT_Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
+	PT_Dialogue.PORTRAIT.HERO: "hero",
+	PT_Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
+	PT_Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
+	PT_Dialogue.PORTRAIT.OLD_MAN: "old_man",
+	PT_Dialogue.PORTRAIT.CYAN: "cyan"
 }
 
 func cancel_typing():
@@ -76,7 +76,7 @@ func set_content(dialogue_content):
 		music.get_node(Game.get_theme()).stop()
 		if music.get_node(dialogue_content.audio_theme):
 			music.get_node(dialogue_content.audio_theme).play()
-	if dialogue_content.portrait != Dialogue.PORTRAIT.NONE:
+	if dialogue_content.portrait != PT_Dialogue.PORTRAIT.NONE:
 		var offset = portrait_offset_friendly
 		if "ai" in portrait_map[dialogue_content.portrait] or "revealed" in portrait_map[dialogue_content.portrait]:
 			offset = portrait_offset_enemy

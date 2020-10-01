@@ -16,11 +16,11 @@ func _enter_tree():
 #		if !stats:
 #			print("create stats object")
 #			stats = CharacterStats.new()
-#			stats.from_defaults(default_stats, Game.TYPE.ARCHER, Game.CONTROL.AI)
+#			stats.from_defaults(default_stats, TT.TYPE.ARCHER, TT.CONTROL.AI)
 #		if !dialogue:
-#			dialogue = Dialogue.new()
+#			dialogue = PT_Dialogue.new()
 #		if !recruit_dialogue:
-#			recruit_dialogue = Dialogue.new()
+#			recruit_dialogue = PT_Dialogue.new()
 #		if stats.is_connected("class_changed", self, "set_sprite"):
 #			stats.disconnect("class_changed", self, "set_sprite")
 #		stats.connect("class_changed", self, "set_sprite")
@@ -40,16 +40,16 @@ func set_up_editor():
 			var default_stats = load("res://resources/class_stats.tres")
 			print("create stats object")
 			stats = CharacterStats.new()
-			stats.from_defaults(default_stats, Game.TYPE.ARCHER, Game.CONTROL.AI)
+			stats.from_defaults(default_stats, TT.TYPE.ARCHER, TT.CONTROL.AI)
 		else:
 			var force_reinit_stats = CharacterStats.new()
 			force_reinit_stats.from_other(stats)
 			stats = force_reinit_stats
 			property_list_changed_notify()
 		if !dialogue:
-			dialogue = Dialogue.new()
+			dialogue = PT_Dialogue.new()
 		if !recruit_dialogue:
-			recruit_dialogue = Dialogue.new()
+			recruit_dialogue = PT_Dialogue.new()
 		if stats.is_connected("class_changed", self, "set_sprite"):
 			stats.disconnect("class_changed", self, "set_sprite")
 		print("connect class_changed signal")
@@ -67,10 +67,10 @@ func set_sprite():
 	if Engine.editor_hint:
 		print("setting sprite")
 		match stats.character_class:
-			Game.TYPE.ARCHER:
+			TT.TYPE.ARCHER:
 				texture = load("res://gfx/archer.png")
-			Game.TYPE.FIGHTER:
+			TT.TYPE.FIGHTER:
 				texture = load("res://gfx/swordsman.png")
-			Game.TYPE.MAGE:
+			TT.TYPE.MAGE:
 				texture = load("res://gfx/mage.png")
 		property_list_changed_notify()

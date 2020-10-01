@@ -21,7 +21,7 @@ func _ready():
 		trigger.connect("trigger", self, "_on_dialogue_complete")
 	if add_character and add_character != "":
 		var additional_character = load("res://resources/" + add_character + ".tres")
-		additional_character.control = Game.CONTROL.PLAYER
+		additional_character.control = TT.CONTROL.PLAYER
 		Game.team.append(additional_character)
 	if remove_character and remove_character != "":
 		var found = null
@@ -33,14 +33,14 @@ func _ready():
 			Game.team.erase(found)
 
 func _on_start_level():
-	if dialogue.size() > 0 and dialogue[0].trigger == Dialogue.TRIGGER.LEVEL:
+	if dialogue.size() > 0 and dialogue[0].trigger == PT_Dialogue.TRIGGER.LEVEL:
 		gui.dialogue(dialogue[0])
 
 func _on_end_level():
 	print("dialog end level check")
 	if dialogue.size() > 0:
 		for content in dialogue:
-			if not content.consumed and content.trigger == Dialogue.TRIGGER.LEVEL_COMPLETE:
+			if not content.consumed and content.trigger == PT_Dialogue.TRIGGER.LEVEL_COMPLETE:
 				gui.dialogue(content)
 				break
 
@@ -49,7 +49,7 @@ func _on_dialogue_complete(id):
 	var followup = false
 	for content in dialogue:
 		var trigger_list = content.trigger_id.split(",")
-		if content.trigger == Dialogue.TRIGGER.DIALOGUE and id in trigger_list: # content.trigger_id == id:
+		if content.trigger == PT_Dialogue.TRIGGER.DIALOGUE and id in trigger_list: # content.trigger_id == id:
 			print("dialogue trigger content")
 			gui.call_deferred("dialogue", content)
 			followup = true

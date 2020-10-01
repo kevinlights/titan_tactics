@@ -17,7 +17,7 @@ export(int) var heal
 export(Resource) var item_atk
 export(Resource) var item_def
 #export(String, "default", "archer", "swordsman", "mage", "ai_archer", "ai_swordsman", "ai_mage", "hero", "antagonist", "antagonist_revealed", "old_man", "cyan") var portrait_override
-export(Dialogue.PORTRAIT) var portrait_override
+export(PT_Dialogue.PORTRAIT) var portrait_override
 var abilities
 var control
 var weakness
@@ -150,9 +150,9 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 		item_def = Item.new()
 		item_atk.create() #generate(level, Item.SLOT.ATK, character_class)
 		item_def.create() #generate(level, Item.SLOT.DEF, character_class)
-	weakness = Game.class_stats.weakness[character_class]
-	strength = Game.class_stats.strength[character_class]
-	abilities = Game.class_stats.abilities[character_class]
+	weakness = TT.class_stats.weakness[character_class]
+	strength = TT.class_stats.strength[character_class]
+	abilities = TT.class_stats.abilities[character_class]
 	level = request_level
 	xp_to_next = level * level
 
@@ -162,30 +162,30 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 	print("Regenerate stats")
 	var default_stats = class_stats.archer
 	default_stats = class_stats.archer
-	if request_class == Game.TYPE.FIGHTER:
+	if request_class == TT.TYPE.FIGHTER:
 		default_stats = class_stats.swordsman
-	elif request_class == Game.TYPE.MAGE:
+	elif request_class == TT.TYPE.MAGE:
 		default_stats = class_stats.mage 
 		heal = level
 	character_class = default_stats.character_class
 	control = request_control
-	abilities = Game.class_stats.abilities[character_class]
+	abilities = TT.class_stats.abilities[character_class]
 	max_hp = default_stats.hp + fibonacci_cumulative(level)
 	hp = max_hp # floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
 	mov_range = default_stats.mov_range
 	turn_limits.move_distance = default_stats.mov_range
-	turn_limits.actions = 1 # Game.class_stats.actions[type]
+	turn_limits.actions = 1 # TT.class_stats.actions[type]
 	atk_range = default_stats.atk_range
 	atk = default_stats.atk + sequence_cumulative(atk_up, level)
 	def = default_stats.def + sequence_cumulative(def_up, level)
 	# don't regenerate name if this character already has one
 	if name == "":
-		name = Game.character_names[rand_range(0, Game.character_names.size() - 1)]
+		name = TT.character_names[rand_range(0, TT.character_names.size() - 1)]
 	# don't want to take for ever to test death and level progression
 	if Engine.editor_hint:
 		property_list_changed_notify()
 	else:
-		if Game.sudden_death and control == Game.CONTROL.AI:
+		if TT.sudden_death and control == TT.CONTROL.AI:
 			hp = 1
 			max_hp = 1
 		
