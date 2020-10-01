@@ -64,39 +64,39 @@ pages:
   only: 
     - master
 
-# Itch.io Deploy
-itchio:linux:
-  stage: deploy
-  script:
-    - butler push ./${EXPORT_NAME}_linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
-  dependencies:
-    - linux
-  only: 
-    - master
+# # Itch.io Deploy
+# itchio:linux:
+#   stage: deploy
+#   script:
+#     - butler push ./${EXPORT_NAME}_linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
+#   dependencies:
+#     - linux
+#   only: 
+#     - master
 
-itchio:windows:
-  stage: deploy
-  script:
-    - butler push ./${EXPORT_NAME}_windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
-  dependencies:
-    - windows
-  only: 
-    - master
+# itchio:windows:
+#   stage: deploy
+#   script:
+#     - butler push ./${EXPORT_NAME}_windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
+#   dependencies:
+#     - windows
+#   only: 
+#     - master
 
-itchio:macosx:
-  stage: deploy
-  script:
-    - butler push ./${EXPORT_NAME}_mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
-  dependencies:
-    - mac
-  only: 
-    - master
+# itchio:macosx:
+#   stage: deploy
+#   script:
+#     - butler push ./${EXPORT_NAME}_mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
+#   dependencies:
+#     - mac
+#   only: 
+#     - master
 
-itchio:html:
-  stage: deploy
-  script:
-    - butler push ./${EXPORT_NAME}_web $ITCHIO_USERNAME/$ITCHIO_GAME:html
-  dependencies:
-    - web
-  only: 
-    - master
+# itchio:html:
+#   stage: deploy
+#   script:
+#     - butler push ./${EXPORT_NAME}_web $ITCHIO_USERNAME/$ITCHIO_GAME:html
+#   dependencies:
+#     - web
+#   only: 
+#     - master
