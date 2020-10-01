@@ -178,5 +178,7 @@ func dialogue(content):
 	modal = true
 	active = true
 	print(content.text)
-	$dialogue.set_content(content)
-	$dialogue.show()
+	$dialogue_box.set_content(content)
+#	$dialogue_box.set_text(content.text)
+	$dialogue_box.show()
+#	$dialogue.show()
