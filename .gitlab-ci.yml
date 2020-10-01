@@ -8,7 +8,7 @@ stages:
   - export
   - deploy
 variables:
-  EXPORT_NAME: pocket_tactics
+  EXPORT_NAME: titan_tactics
 
 windows:
   stage: export
