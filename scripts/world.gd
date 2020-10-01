@@ -606,17 +606,17 @@ func get_current_context(tile):
 	return TT.CONTEXT.MOVE
 
 # DEBUG INPUT
-#func _input(event):
-#	if event.is_action("ui_focus_next") && !event.is_echo() && event.is_pressed():
-#		_on_next_level()
-#	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
-#		_on_replay()
-#	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
-#		var additional_character = load("res://resources/ogre.tres")
-#		additional_character.control = TT.CONTROL.PLAYER
-#		Game.team.append(additional_character)
-#		print("The OGRE has joined the team!")
-#	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
-#		for unit in current[TT.CONTROL.AI]:
-#			unit.die()
-#
+func _input(event):
+	if event.is_action("ui_focus_next") && !event.is_echo() && event.is_pressed():
+		_on_next_level()
+	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
+		_on_replay()
+	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
+		var additional_character = load("res://resources/ogre.tres")
+		additional_character.control = TT.CONTROL.PLAYER
+		Game.team.append(additional_character)
+		print("The OGRE has joined the team!")
+	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
+		for unit in current[TT.CONTROL.AI]:
+			unit.die()
+
