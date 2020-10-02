@@ -69,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/ai/naive.gd"
 }, {
-"base": "Reference",
+"base": "Resource",
 "class": "PT_Dialogue",
 "language": "GDScript",
 "path": "res://scripts/pt_dialogue.gd"
@@ -239,10 +239,4 @@ cheat_kill_everyone={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
-quality/intended_usage/framebuffer_allocation=0
-quality/intended_usage/framebuffer_allocation.mobile=0
-quality/2d/use_pixel_snap=true
-vram_compression/import_etc=true
-vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.133333, 0.137255, 0.133333, 1 )
+environment/default_environment="res://default_env.tres"
