@@ -122,7 +122,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Pocket Tactics"
+config/name="Titan Tactics"
 run/main_scene="res://scenes/landing.tscn"
 config/use_custom_user_dir=true
 boot_splash/image="res://gfx/splash.png"

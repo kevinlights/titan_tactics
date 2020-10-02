@@ -16,7 +16,7 @@
 [ext_resource path="res://gfx/OBJS/underwater.dae" type="PackedScene" id=14]
 [ext_resource path="res://gfx/OBJS/bridgesm.dae" type="PackedScene" id=15]
 
-[sub_resource type="ArrayMesh" id=24]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube.006"
 surfaces/0 = {
 "aabb": AABB( -1, 1, -1, 2, 1.00136e-05, 2 ),
@@ -30,7 +30,7 @@ surfaces/0 = {
 "vertex_count": 4
 }
 
-[sub_resource type="AnimatedTexture" id=22]
+[sub_resource type="AnimatedTexture" id=2]
 flags = 2
 frames = 6
 fps = 3.0
@@ -46,16 +46,16 @@ frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 13 )
 frame_5/delay_sec = 0.0
 
-[sub_resource type="SpatialMaterial" id=23]
+[sub_resource type="SpatialMaterial" id=3]
 flags_unshaded = true
 params_blend_mode = 1
 params_use_alpha_scissor = true
 params_alpha_scissor_threshold = 0.2
 albedo_color = Color( 0.972549, 0.964706, 0.964706, 0.588235 )
-albedo_texture = SubResource( 22 )
+albedo_texture = SubResource( 2 )
 uv1_scale = Vector3( 2, 3, 2 )
 
-[sub_resource type="ArrayMesh" id=25]
+[sub_resource type="ArrayMesh" id=4]
 resource_name = "Cube.006"
 surfaces/0 = {
 "aabb": AABB( -1, 1, -1, 2, 1.00136e-05, 2 ),
@@ -64,7 +64,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 6,
-"material": SubResource( 23 ),
+"material": SubResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 4
@@ -92,12 +92,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51507, 0.0791392, 5.02376 )
 
 [node name="Water" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66427, 0.264564, 0.679764 )
-mesh = SubResource( 24 )
+mesh = SubResource( 1 )
 material/0 = ExtResource( 7 )
 
 [node name="waterside" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35822, 0.193266, -0.51892 )
-mesh = SubResource( 25 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="underwater" parent="." instance=ExtResource( 14 )]

@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/underwater.png-d3e0fb1141877dc277a98f6f3c032b2a.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://gfx/OBJS/underwater.png"
+dest_files=[ "res://.import/underwater.png-d3e0fb1141877dc277a98f6f3c032b2a.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=0
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
