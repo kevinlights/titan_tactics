@@ -1,6 +1,7 @@
 extends Node2D
 
-export(Array, Resource) var dialogue
+export(Resource) var start_dialogue
+export(Resource) var end_dialogue
 export(String) var add_character
 export(String) var remove_character
 
@@ -13,8 +14,11 @@ func _ready():
 	world.connect("win", self, "_on_end_level")
 	world.connect("all_enemies_eliminated", self, "_on_end_level")
 	world.connect("auto_deployed", self, "_on_start_level")
-	for content in dialogue:
-		content.connect("completed", self, "_on_dialogue_complete")
+#	for content in dialogue:
+	if start_dialogue:
+		start_dialogue.connect("completed", self, "_on_dialogue_complete")
+	if end_dialogue:
+		end_dialogue.connect("completed", self, "_on_dialogue_complete")
 	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
 	print("level dialogue triggers: ", triggers.size())
 	for trigger in triggers:
@@ -33,30 +37,34 @@ func _ready():
 			Game.team.erase(found)
 
 func _on_start_level():
-	if dialogue.size() > 0 and dialogue[0].trigger == PT_Dialogue.TRIGGER.LEVEL:
-		gui.dialogue(dialogue[0])
+	if start_dialogue:
+		gui.dialogue(start_dialogue)
+#	if dialogue.size() > 0 and dialogue[0].trigger == PT_Dialogue.TRIGGER.LEVEL:
+#		gui.dialogue(dialogue[0])
 
 func _on_end_level():
 	print("dialog end level check")
-	if dialogue.size() > 0:
-		for content in dialogue:
-			if not content.consumed and content.trigger == PT_Dialogue.TRIGGER.LEVEL_COMPLETE:
-				gui.dialogue(content)
-				break
+	if end_dialogue:
+		gui.dialogue(end_dialogue)
+#	if dialogue.size() > 0:
+#		for content in dialogue:
+#			if not content.consumed and content.trigger == PT_Dialogue.TRIGGER.LEVEL_COMPLETE:
+#				gui.dialogue(content)
+#				break
 
 func _on_dialogue_complete(id):
 	print("completed ", id)
 	var followup = false
-	for content in dialogue:
-		var trigger_list = content.trigger_id.split(",")
-		if content.trigger == PT_Dialogue.TRIGGER.DIALOGUE and id in trigger_list: # content.trigger_id == id:
-			print("dialogue trigger content")
-			gui.call_deferred("dialogue", content)
-			followup = true
-#			gui.dialogue(content)
-	if !followup:
-		if not world.check_end_game(true):
-			call_deferred("return_control")
+#	for content in dialogue:
+#		var trigger_list = content.trigger_id.split(",")
+#		if content.trigger == PT_Dialogue.TRIGGER.DIALOGUE and id in trigger_list: # content.trigger_id == id:
+#			print("dialogue trigger content")
+#			gui.call_deferred("dialogue", content)
+#			followup = true
+##			gui.dialogue(content)
+#	if !followup:
+#		if not world.check_end_game(true):
+#			call_deferred("return_control")
 
 func return_control():
 	print("return control")

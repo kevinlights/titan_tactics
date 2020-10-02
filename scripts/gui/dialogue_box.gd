@@ -11,6 +11,7 @@ var typing_timer
 var text_blocks = []
 var current_block = ""
 var rng = RandomNumberGenerator.new()
+var index = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,7 +56,7 @@ func set_content(dialogue_content):
 #		item.hide()
 #	$branches.hide()
 	content = dialogue_content
-	text_blocks = content.text.split("|")
+	text_blocks = content.messages[index].message.split("|")
 #	portrait.hide()
 #	if dialogue_content.audio_theme and dialogue_content.audio_theme != "":
 #		var music = get_tree().get_root().get_node("World/music")
@@ -115,4 +116,4 @@ func _input(event):
 				$more.hide()
 		else:
 			print("dialogue completed")
-			content.complete()
+#			content.complete()
