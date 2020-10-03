@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 export(Resource) var start_dialogue
 export(Resource) var end_dialogue

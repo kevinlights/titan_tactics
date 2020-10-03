@@ -77,27 +77,7 @@ func set_content(dialogue_content, set_index = 0):
 	print(content.messages[set_index].title)
 	if content.messages[set_index].title != "":
 		$portrait/portraits.play(content.messages[set_index].title.lstrip(" ").rstrip(" "))
-#	print(text_blocks)
-#	portrait.hide()
-#	if dialogue_content.audio_theme and dialogue_content.audio_theme != "":
-#		var music = get_tree().get_root().get_node("World/music")
-#		music.get_node(Game.get_theme()).stop()
-#		if music.get_node(dialogue_content.audio_theme):
-#			music.get_node(dialogue_content.audio_theme).play()
-#	if dialogue_content.portrait != PT_Dialogue.PORTRAIT.NONE:
-#		var offset = portrait_offset_friendly
-#		if "ai" in portrait_map[dialogue_content.portrait] or "revealed" in portrait_map[dialogue_content.portrait]:
-#			offset = portrait_offset_enemy
-#		portrait.position.x = offset.x
-#		portrait.position.y = 144 - dialogue_height + offset.y
-#		portrait.play(portrait_map[dialogue_content.portrait])
-#		if not has_node("portrait"):
-#			add_child(portrait)
-#		portrait.show()
-#	if dialogue_content.title and dialogue_content.title != "":
-#		set_title(dialogue_content.title)
-#	else:
-#		set_title("")
+
 	set_text(text_blocks[0])
 	text_blocks.remove(0)
 	print("follow up texts ", text_blocks.size())
