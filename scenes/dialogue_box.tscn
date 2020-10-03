@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/gui/dialogue_box.gd" type="Script" id=2]
+[ext_resource path="res://scenes/portraits.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -68,7 +69,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="portrait2" type="ColorRect" parent="."]
+[node name="portrait" type="ColorRect" parent="."]
 margin_left = 20.0
 margin_top = 10.0
 margin_right = 70.0
@@ -77,6 +78,11 @@ color = Color( 0.4, 0.4, 0.498039, 0.745098 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="portraits" parent="portrait" instance=ExtResource( 3 )]
+position = Vector2( 0.707108, 0 )
+scale = Vector2( 1.38302, 1.2192 )
+centered = false
 
 [node name="text" type="Label" parent="."]
 margin_left = 74.0
@@ -97,6 +103,9 @@ __meta__ = {
 [node name="more" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Polygon2D3" type="Polygon2D" parent="more"]
 position = Vector2( 207, 12 )

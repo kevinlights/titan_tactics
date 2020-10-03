@@ -69,10 +69,14 @@ func _process(delta):
 			else:
 				typing = false
 
-func set_content(dialogue_content):
+func set_content(dialogue_content, set_index = 0):
+	index = set_index
 	$more.hide()
 	content = dialogue_content
-	text_blocks = get_chunks(content.messages[index].message)
+	text_blocks = get_chunks(content.messages[set_index].message)
+	print(content.messages[set_index].title)
+	if content.messages[set_index].title != "":
+		$portrait/portraits.play(content.messages[set_index].title.lstrip(" ").rstrip(" "))
 #	print(text_blocks)
 #	portrait.hide()
 #	if dialogue_content.audio_theme and dialogue_content.audio_theme != "":
@@ -118,4 +122,6 @@ func _input(event):
 				$more.hide()
 		else:
 			print("dialogue completed")
+			if index < content.messages.size() -1:
+				set_content(content, index + 1)
 #			content.complete()
