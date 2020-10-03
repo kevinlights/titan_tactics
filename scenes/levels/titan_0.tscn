@@ -79,6 +79,7 @@ centered = false
 pixel_size = 0.2
 axis = 1
 frames = SubResource( 10 )
+frame = 6
 playing = true
 
 [node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
@@ -89,7 +90,7 @@ centered = false
 pixel_size = 0.2
 axis = 1
 frames = SubResource( 10 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]

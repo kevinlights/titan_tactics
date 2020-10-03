@@ -12,7 +12,9 @@ var text_blocks = []
 var current_block = ""
 var rng = RandomNumberGenerator.new()
 var index = 0
-
+var characters_visible = -1
+var typing_delay = 50
+var last_typed = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -24,39 +26,54 @@ func cancel_typing():
 #
 #func set_text(text):
 #	$text.text = text
-
+func get_chunks(text):
+	text = text.replace("\n", " ")
+	var words = text.split(" ")
+	var chunks = []
+	$text.text = ""
+	var chunk = PoolStringArray()
+	for word in words:
+		chunk.append(word)
+		$text.text = chunk.join(" ")
+		if $text.get_line_count() > 3:
+			chunk.resize(chunk.size() - 1)
+			chunks.append(chunk.join(" "))
+			chunk = PoolStringArray()
+			chunk.append(word)
+	if chunk.size() > 0:
+		chunks.append(chunk.join(" "))
+	return chunks
+	
 func set_text(text):
-	cancel_typing()
-#	if $background/title.text == "":
-#		$background/body.margin_top = 8
-#	else:
-#		$background/body.margin_top = 18
+	current_block = text
+	characters_visible = 0
 	$text.text = ""
 	call_deferred("resize")
-	current_block = text
 	typing = true
 	typing_cancelled = false
-	for i in text:
-		typing_timer = yield(get_tree().create_timer(0.05), "timeout")
-		if not typing_cancelled:
-			$text.text += i
-			rng.randomize()
-			var my_random_number = rng.randf_range(1.1, 1.4)
-#			$textsfx.set_pitch_scale(my_random_number)
-#			$textsfx.play()
-			if $text.get_visible_line_count() > 3:
-				typing_cancelled = true
+	$text.set_visible_characters(0)
+	$text.text = text
+
+func _process(delta):
+	if !visible:
+		return
+	var now = OS.get_ticks_msec()
+	if now - last_typed > typing_delay:
+		last_typed = now
+		if typing_cancelled:
+			$text.set_visible_characters(-1)
 		else:
-			break
-	typing = false
+			if characters_visible < current_block.length():
+				$text.set_visible_characters(characters_visible)
+				characters_visible += 1
+			else:
+				typing = false
 
 func set_content(dialogue_content):
 	$more.hide()
-#	for item in $branches.get_children():
-#		item.hide()
-#	$branches.hide()
 	content = dialogue_content
-	text_blocks = content.messages[index].message.split("|")
+	text_blocks = get_chunks(content.messages[index].message)
+#	print(text_blocks)
 #	portrait.hide()
 #	if dialogue_content.audio_theme and dialogue_content.audio_theme != "":
 #		var music = get_tree().get_root().get_node("World/music")
@@ -83,30 +100,15 @@ func set_content(dialogue_content):
 	if text_blocks.size() > 0:
 		print("show more arrow")
 		$more.show()
-#	if content.branches.size() > 0:
-#		$branches.show()
-#		$branches/trigger_1/option_text.text = content.branches[0].text
-#		$branches/trigger_1.show()
-#		$branches/trigger_1.grab_focus()
-#		if content.branches.size() > 1:
-#			$branches/trigger_2/option_text.text = content.branches[1].text
-#			$branches.margin_bottom = 74
-#			$branches/trigger_2.show()
-#		if content.branches.size() > 2:
-#			$branches/trigger_3/option_text.text = content.branches[2].text
-#			$branches/trigger_3.show()
-#			$branches.margin_bottom = 96
 
 func _input(event):
 	if not visible:
 		return
-#	if content.branches.size() > 0:
-#		return
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
 		if typing:
 			typing_cancelled = true
 			typing = false
-			$text.text = current_block
+			$text.set_visible_characters(-1)
 		elif text_blocks.size() > 0:
 			set_text(text_blocks[0])
 			text_blocks.remove(0)

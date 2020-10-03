@@ -19,6 +19,7 @@ enum CONTEXT {
 
 const cell_size = 16
 const levels = {
+#	"titan_0": "intro",
 	"level_0": "intro",
 	"level_1": "forest",
 	"level_2": "forest",

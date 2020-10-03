@@ -80,16 +80,16 @@ __meta__ = {
 
 [node name="text" type="Label" parent="."]
 margin_left = 74.0
-margin_top = 23.0
-margin_right = 294.0
-margin_bottom = 67.0
+margin_top = 21.0
+margin_right = 296.0
+margin_bottom = 83.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.929412, 0.92549, 0.878431, 1 )
-text = "Cyan! Ulrich! Do you know there's a shrine outside the eastern edge?..."
+text = "Cyan! Ulrich! Do you know there's a shrine outside the eastern edge?... Oh, EM, GEE! I SWARE this is just mad. MAD."
 autowrap = true
 clip_text = true
-percent_visible = -0.0166667
+max_lines_visible = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
