@@ -6,10 +6,12 @@
 [ext_resource path="res://sfx/gameplay/chest_opening.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
+flags = 23
 atlas = ExtResource( 1 )
 region = Rect2( 0, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 23
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
@@ -32,11 +34,11 @@ region = Rect2( 0, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 24, 16, 8, 8 )
+region = Rect2( 8, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 8, 16, 8, 8 )
+region = Rect2( 24, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
@@ -51,12 +53,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "battery",
+"name": "bow",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
-"name": "bow",
+"name": "battery",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ) ],
@@ -65,18 +67,22 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="chest" type="AnimatedSprite"]
+[node name="chest" type="AnimatedSprite3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00114679, 0.126645, -0.00570965 )
+centered = false
+pixel_size = 0.04
+billboard = 1
+alpha_cut = 2
 frames = SubResource( 3 )
 animation = "closed"
-centered = false
 script = ExtResource( 2 )
 
-[node name="drop" type="AnimatedSprite" parent="."]
+[node name="drop" type="AnimatedSprite3D" parent="."]
 visible = false
-frames = SubResource( 8 )
-animation = "battery"
 centered = false
 offset = Vector2( 4, 2 )
+frames = SubResource( 8 )
+animation = "battery"
 
 [node name="open" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

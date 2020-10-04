@@ -1,6 +1,6 @@
 tool
 class_name CharacterController
-extends Node2D
+extends Spatial
 
 signal path_complete
 signal idle
@@ -51,11 +51,11 @@ func _ready():
 
 func spread_icons():
 	if $guard.visible and $speak.visible:
-		$guard.position.x = -4
-		$speak.position.x = 11
+		$guard.translation.x = -4
+		$speak.translation.x = 11
 	else:
-		$guard.position.x = 0
-		$speak.position.x = 7
+		$guard.translation.x = 0
+		$speak.translation.x = 7
 
 func hit(attacker):
 	match(attacker.character_class):
@@ -104,8 +104,8 @@ func select():
 func teleport(x, y):
 	tile.x = x
 	tile.y = y
-	position.x = x * cell_size
-	position.y = y * cell_size
+	translation.x = x * cell_size
+	translation.z = y * cell_size
 
 func heal(target):
 	if character.turn_limits.actions < 1:
@@ -174,7 +174,7 @@ func attack(target):
 
 	if character.character_class == TT.TYPE.MAGE:
 		var projectile = load("res://scenes/projectile.tscn").instance()
-		projectile.fire(position + Vector2(8, 8), target.position + Vector2(8, 8))
+		projectile.fire(translation + Vector3(8, 0,  8), target.translation + Vector3(8, 0, 8))
 		projectile.connect("hit", target, "hit", [character])
 		projectile.connect("hit", self, "attack_complete")
 		projectile.get_node("sparkle").play("player" if character.control == TT.CONTROL.PLAYER else "ai")
@@ -186,13 +186,13 @@ func attack(target):
 	else:
 		attack_complete()
 		target.hit(character)
-	if target.position.x < position.x:
+	if target.translation.x < translation.x:
 		avatar.play("attack-left")
-	if target.position.x > position.x:
+	if target.translation.x > translation.x:
 		avatar.play("attack-right")
-	if target.position.y < position.y:
+	if target.translation.z < translation.z:
 		avatar.play("attack-up")
-	if target.position.y > position.y:
+	if target.translation.z > translation.z:
 		avatar.play("attack-down")
 	world.check_battle()
 	check_finished()
@@ -208,8 +208,8 @@ func move(target_path:PoolVector2Array):
 		return
 	path = target_path
 	movement.start_time = OS.get_ticks_msec()
-	movement.end_position = Vector2(path[0].x, path[0].y)
-	movement.start_position = Vector2(position.x, position.y)
+	movement.end_position = Vector3(path[0].x, 0, path[0].y)
+	movement.start_position = Vector3(translation.x, 0, translation.z)
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
 	character.turn_limits.move_distance -= path.size()
@@ -312,14 +312,15 @@ func die():
 	avatar.play("hit-" + movement.last_horizontal_direction)
 
 func init_common(control):
-	healthbar = load("res://scenes/healthbar.tscn").instance()
-	healthbar.position.x = 0
-	healthbar.position.y = -5
-	healthbar.set_value(character.hp, character.max_hp)
-#	if control == TT.CONTROL.PLAYER:
-#		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
-	healthbar.hide()
-	add_child(healthbar)
+	pass
+#	healthbar = load("res://scenes/healthbar.tscn").instance()
+#	healthbar.translation.x = 0
+#	healthbar.translation.z = -5
+#	healthbar.set_value(character.hp, character.max_hp)
+##	if control == TT.CONTROL.PLAYER:
+##		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
+#	healthbar.hide()
+#	add_child(healthbar)
 	
 func init(char_type, control = TT.CONTROL.PLAYER):	
 	var default_stats = load("res://resources/class_stats.tres") # [class_map[char_type]]
@@ -337,7 +338,7 @@ func init(char_type, control = TT.CONTROL.PLAYER):
 
 func fire_arrow(target):
 		var projectile = load("res://scenes/arrow.tscn").instance()
-		projectile.fire(position + Vector2(8, 8), target.position + Vector2(8, 8))
+		projectile.fire(translation + Vector3(8, 0, 8), target.translation + Vector3(8, 0, 8))
 		projectile.connect("hit", target, "hit", [character])
 		projectile.connect("hit", self, "attack_complete")
 		pick_random_sfx($sfx/arrow_attack)
@@ -373,14 +374,14 @@ func _process(delta):
 			$done.hide()
 	if not path.empty():
 		var progress = float(now - movement.start_time) / float(movement.speed)
-		if position.is_equal_approx(movement.end_position) or progress >= 1.0:
+		if translation.is_equal_approx(movement.end_position) or progress >= 1.0:
 			path.remove(0)
-			position = movement.end_position
-			tile.x = round(position.x / cell_size)
-			tile.y = round(position.y / cell_size)			
+			translation = movement.end_position
+			tile.x = round(translation.x / cell_size)
+			tile.y = round(translation.z / cell_size)			
 			if not path.empty():
-				movement.end_position = Vector2(path[0].x, path[0].y)
-				movement.start_position = Vector2(position.x, position.y)
+				movement.end_position = Vector3(path[0].x, 0, path[0].y)
+				movement.start_position = Vector3(translation.x, 0, translation.z)
 				movement.start_time = now
 				var diff = movement.start_position - movement.end_position
 				if abs(diff.x) > abs(diff.y):
@@ -404,4 +405,4 @@ func _process(delta):
 					movement.moving = false
 				stop_all_sfx($sfx/walk)
 		else:
-			position = lerp(movement.start_position, movement.end_position, progress)
+			translation = lerp(movement.start_position, movement.end_position, progress)

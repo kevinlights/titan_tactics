@@ -14,12 +14,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/character.gd"
 }, {
-"base": "Node2D",
+"base": "Spatial",
 "class": "CharacterController",
 "language": "GDScript",
 "path": "res://scripts/character_controller.gd"
 }, {
-"base": "Sprite",
+"base": "Sprite3D",
 "class": "CharacterSpawner",
 "language": "GDScript",
 "path": "res://scripts/characterspawner.gd"
@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/character_stats.gd"
 }, {
-"base": "Sprite",
+"base": "Sprite3D",
 "class": "ChestSpawner",
 "language": "GDScript",
 "path": "res://scripts/chestspawner.gd"

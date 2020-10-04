@@ -1,8 +1,7 @@
-extends AnimatedSprite
+extends AnimatedSprite3D
 
 var tile = Vector2(0, 0)
-var cell_size = 16
-var loot = Item.new()
+
 var empty = false
 var looted = false
 var is_loot = true
@@ -28,8 +27,10 @@ func _ready():
 func teleport(x, y):
 	tile.x = x
 	tile.y = y
-	position.x = x * cell_size
-	position.y = y * cell_size
+	translation.x = x * TT.cell_size
+	translation.z = y * TT.cell_size
+	translation.y = 0.1
+	print("Chest ", translation)
 
 func open(type):
 	if empty:
@@ -37,6 +38,7 @@ func open(type):
 	start = OS.get_ticks_msec()
 	start_y = $drop.position.y
 	empty = true
+	var loot = Item.new()
 	loot.generate(item_spawner.level, item_spawner.equipment_slot, type)
 	play("open")
 	$open.play()
@@ -48,13 +50,13 @@ func loot():
 	looted = true;
 	$drop.hide()
 
-func _process(delta):
+func _process(_delta):
 	if empty and !looted:
 		var now = OS.get_ticks_msec()
 		if now - start < ttl:
-			$drop.position.y = lerp(start_y, start_y - 8, float(now - start) / float(ttl))
+			$drop.translation.y = lerp(start_y, start_y - 8, float(now - start) / float(ttl))
 		else:
-			$drop.position.y = start_y - 8
+			$drop.translation.y = start_y - 8
 			yield(get_tree().create_timer(1.0), "timeout")
 			$drop.hide()
 #			get_parent().remove_child(self)?

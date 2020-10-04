@@ -14,10 +14,12 @@
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 23
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 23
 atlas = ExtResource( 9 )
 region = Rect2( 0, 8, 8, 8 )
 

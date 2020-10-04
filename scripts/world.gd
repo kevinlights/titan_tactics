@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 
 signal win
 signal auto_deployed
@@ -41,13 +41,13 @@ func load_level(level_name):
 	var level = load("res://scenes/levels/" + level_name + ".tscn").instance()
 	add_child_below_node($map_anchor, level)
 	tile_meta = level.get_node("navigation/tile_meta")
-	world_map = level.get_node("map")
+	world_map = level.get_node("map_3d")
 	pathfinder = PathFinder.new(tile_meta, [ 2, 3, 4, 5, 7 ])
 	var used_rect = tile_meta.get_used_rect()
 	map_size.width = used_rect.size.x
 	map_size.height = used_rect.size.y
-	$select/camera.limit_bottom = map_size.height * TT.cell_size
-	$select/camera.limit_right = map_size.width * TT.cell_size
+#	$select/camera.limit_bottom = map_size.height * TT.cell_size
+#	$select/camera.limit_right = map_size.width * TT.cell_size
 	tile_meta.hide() # meta data should not be visible to the player	
 	$select.disable()
 
@@ -72,16 +72,17 @@ func make_tile(tile_id):
 	}
 
 func is_cover_between(character, end):
-	var space = get_world_2d().get_space()
-	var space_state = Physics2DServer.space_get_direct_state(space)
-	print(space_state)
-	var mid_point = Vector2(8, 8)
-	var intersects = space_state.intersect_ray(character.position + mid_point, end + mid_point)
-	print(intersects)
-#	character.get_node("detect_cover").cast_to = (end) - character.position
-#	var found_cover = character.get_node("detect_cover").is_colliding()
-#	print("Found cover: ", found_cover)
-	return !intersects.empty()
+	return false
+#	var space = get_world_2d().get_space()
+#	var space_state = Physics2DServer.space_get_direct_state(space)
+#	print(space_state)
+#	var mid_point = Vector2(8, 8)
+#	var intersects = space_state.intersect_ray(character.position + mid_point, end + mid_point)
+#	print(intersects)
+##	character.get_node("detect_cover").cast_to = (end) - character.position
+##	var found_cover = character.get_node("detect_cover").is_colliding()
+##	print("Found cover: ", found_cover)
+#	return !intersects.empty()
 
 func spawn_cover(tile):
 	var cover = load("res://scenes/cover_tile.tscn").instance()
@@ -230,13 +231,16 @@ func _ready():
 	current[TT.CONTROL.PLAYER] = []
 	current[TT.CONTROL.AI] = []
 	player_spawns = []
-	for x in range(map_size.width):
-		for y in range(map_size.height):
-			var tile_id = tile_meta.get_cell(x, y)
-			if tile_id == TILEID.PLAYER_SPAWN:
-				player_spawns.append(Vector2(x, y))
-			if tile_id == TILEID.COVER:
-				spawn_cover(Vector2(x, y))
+#	for x in range(map_size.width):
+#		for y in range(map_size.height):
+#			var tile_id = tile_meta.get_cell(x, y)
+#			if tile_id == TILEID.PLAYER_SPAWN:
+#				player_spawns.append(Vector2(x, y))
+#			if tile_id == TILEID.COVER:
+#				spawn_cover(Vector2(x, y))
+	var player_spawn_nodes = get_tree().get_nodes_in_group("player_spawns")
+	for player_spawn_node in player_spawn_nodes:
+		player_spawns.append(player_spawn_node.translation) # Vector(player_spawn_node.translation.x, player_spawn_node.translation.z))
 	gui.get_node("action_menu").connect("attack", self, "_on_attack")
 	gui.get_node("action_menu").connect("recruit", self, "_on_recruit")
 	gui.get_node("action_menu").connect("guard", self, "_on_guard")
@@ -267,8 +271,8 @@ func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
 	for chest_spawn in chest_spawns:
 		var chest = spawn_chest(
-			floor(chest_spawn.position.x / TT.cell_size), 
-			floor(chest_spawn.position.y / TT.cell_size),
+			floor(chest_spawn.translation.x / TT.cell_size), 
+			floor(chest_spawn.translation.z / TT.cell_size),
 			chest_spawn.item_spawner)
 		chest_spawn.hide()
 	
@@ -277,7 +281,7 @@ func spawn_ai_team():
 	for ai_spawn in ai_spawns:
 		var character:Node = load("res://scenes/character_controller.tscn").instance()
 		character.from_spawner(ai_spawn)
-		character.teleport(floor(ai_spawn.position.x / TT.cell_size), floor(ai_spawn.position.y / TT.cell_size))
+		character.teleport(floor(ai_spawn.translation.x / TT.cell_size), floor(ai_spawn.translation.z / TT.cell_size))
 		character.character.control = TT.CONTROL.AI
 		character.add_to_group("characters")
 		current[TT.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / TT.cell_size), floor(ai_spawn.position.y / TT.cell_size), ai_spawn.stats.character_class, TT.CONTROL.AI))
@@ -410,8 +414,9 @@ func auto_deploy_only_character():
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
 	character.from_library(Game.team[0])
-	character.teleport(spawn.x, spawn.y)
+	character.teleport(spawn.x, spawn.z)
 	character.add_to_group("characters")
+	print("Player spawn ", spawn)
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")

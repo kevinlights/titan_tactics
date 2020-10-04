@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends AnimatedSprite3D
 
 signal moved
 
@@ -11,23 +11,23 @@ enum MODE {
 }
 
 var mode = MODE.PLAY
-var tile = Vector2(0, 0) setget set_tile, get_tile
+var tile = Vector3(0, 0, 0) setget set_tile, get_tile
 var current_entity
 var disabled = false
 
 var current_target = {
-	"tile": Vector2(0, 0),
+	"tile": Vector3(0, 0, 0),
 	"entity": null
 }
 
 func set_tile(p_tile):
-	position.x = p_tile.x * TT.cell_size
-	position.y = p_tile.y * TT.cell_size
+	translation.x = p_tile.x # * TT.cell_size
+	translation.z = p_tile.z # * TT.cell_size
 
 func get_tile():
-	tile =  Vector2(floor(position.x / TT.cell_size), floor(position.y / TT.cell_size))
-	tile.x = clamp(tile.x, 0, world.map_size.width - 1)
-	tile.y = clamp(tile.y, 0, world.map_size.height - 1)
+	tile =  translation # Vector3(floor(translation.x / TT.cell_size), 0, floor(translation.z / TT.cell_size))
+#	tile.x = clamp(tile.x, 0, world.map_size.width - 1)
+#	tile.z = clamp(tile.z, 0, world.map_size.height - 1)
 	return tile
 
 func disable():
@@ -40,10 +40,10 @@ func enable():
 	set_context(world.get_current_context(tile))
 
 func set_context(context):
-	if world.current_turn == TT.CONTROL.AI or context == TT.CONTEXT.NOT_PLAYABLE:
-		print("context is not playable, hiding selector")
-		play("blank")
-		return
+#	if world.current_turn == TT.CONTROL.AI or context == TT.CONTEXT.NOT_PLAYABLE:
+#		print("context is not playable, hiding selector")
+#		play("blank")
+#		return
 	match(context):
 		TT.CONTEXT.USE:
 			play("attack")
@@ -59,10 +59,10 @@ func set_context(context):
 			play("cantmove")
 
 func _input(event):
-	var advance = Vector2(0, 0)
-	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
-		play("blank")
-		return
+	var advance = Vector3(0, 0, 0)
+#	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
+#		play("blank")
+#		return
 	if gui.active or disabled:
 		if not world.current_turn == TT.CONTROL.AI:
 			play("attack")
@@ -76,15 +76,16 @@ func _input(event):
 		get_parent().change_character()
 		return
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
-		advance.y = 1
+		advance.z = 1
 	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
-		advance.y = -1
+		advance.z = -1
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
 		advance.x = -1
 	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
 		advance.x = 1
 	self.tile = self.tile + advance
-	if not advance.is_equal_approx(Vector2(0, 0)):
+	print("select tile ", tile)
+	if not advance.is_equal_approx(Vector3(0, 0, 0)):
 		emit_signal("moved", self.tile)
 	
 	if mode == MODE.PLAY:
@@ -108,6 +109,8 @@ func set_origin(entity):
 	if current_entity:
 		current_entity.disconnect("idle", self, "go_home")
 	current_entity = entity
-	position = entity.position
+	translation = entity.translation
+	translation.y = 0.1
+	print("Set origin ", translation)
 	current_entity.select()
 	current_entity.connect("idle", self, "go_home")

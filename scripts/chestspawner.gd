@@ -1,5 +1,5 @@
 class_name ChestSpawner
-extends Sprite
+extends Sprite3D
 tool
 
 export(Resource) var item_spawner

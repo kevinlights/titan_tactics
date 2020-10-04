@@ -1,5 +1,5 @@
 class_name CharacterSpawner
-extends Sprite
+extends Sprite3D
 tool
 
 export(Resource) var stats

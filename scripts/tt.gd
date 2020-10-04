@@ -17,9 +17,9 @@ enum CONTEXT {
 	NOT_PLAYABLE
 }
 
-const cell_size = 16
+const cell_size = 1
 const levels = {
-#	"titan_0": "intro",
+	"level_1_3dtest": "intro",
 	"level_0": "intro",
 	"level_1": "forest",
 	"level_2": "forest",
