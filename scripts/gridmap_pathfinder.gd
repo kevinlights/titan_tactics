@@ -74,12 +74,21 @@ var orientationModifier := {
 # should diagonal movement have a higher 'cost' as it has a higher distance? 
 
 func _ready():
+	#_remove_most_cells()
 	_init_astar()
 	
+func _remove_most_cells():
+	var keep = [Vector2(-1,-1), Vector2(0,0), Vector2(0, -2), Vector2(-1, -3)]
+	for cell in get_used_cells():
+		if keep.find(Vector2(cell.x, cell.z)) == -1:
+			set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
+
+var offset_x = 0
+var offset_z = -2
 func find_path(start, end):
 	print("find_path ", start, end)
-	var possible_starts = filter_tiles(start.x, start.y)
-	var possible_ends = filter_tiles(end.x, end.z)
+	var possible_starts = filter_tiles(start.x + offset_x, start.y + offset_z)
+	var possible_ends = filter_tiles(end.x + offset_x, end.z + offset_z)
 	if possible_starts.size() == 1 and possible_ends.size() == 1:
 		var start_id = vector_to_id(possible_starts[0])
 		var end_id = vector_to_id(possible_ends[0])
