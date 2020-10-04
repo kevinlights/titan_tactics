@@ -75,6 +75,32 @@ var orientationModifier := {
 
 func _ready():
 	_init_astar()
+	
+func find_path(start, end):
+	print("find_path ", start, end)
+	var possible_starts = filter_tiles(start.x, start.y)
+	var possible_ends = filter_tiles(end.x, end.z)
+	if possible_starts.size() == 1 and possible_ends.size() == 1:
+		var start_id = vector_to_id(possible_starts[0])
+		var end_id = vector_to_id(possible_ends[0])
+		var path = astar.get_point_path(start_id, end_id)
+		print("found_path [", path, "]")
+		return path
+	elif possible_starts.size() == 0 or possible_ends.size() == 0:
+		print('Unable to find a possible start/end tile for pathfinding')
+	elif possible_starts.size() > 1 or possible_ends.size() > 1:
+		print_debug("Multiple possible start/end tiles found for pathfinding")
+	return []
+
+func vector_to_id(vector):
+	return tiles.find(vector)
+	
+func filter_tiles(x, z):
+	var output = []
+	for tile in tiles:
+		if(tile.x == x and tile.z == z):
+			output.push_back(tile)
+	return output
 
 func _init_astar():
 	var ground_cells = get_used_cells()
@@ -122,7 +148,7 @@ func _init_astar():
 	
 	if hide_non_walkable_tiles:
 		for cell in ground_cells:
-			var cell_id = tiles.find(cell)
+			var cell_id = vector_to_id(cell)
 			if cell_id == -1:
 				set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
 			else:
@@ -138,8 +164,8 @@ func _connect_points():
 			_connect_cells(cell, neighbour)
 
 func _connect_cells(a_cell, b_cell, upsert = false):
-	var a_id = tiles.find(a_cell)
-	var b_id = tiles.find(b_cell)
+	var a_id = vector_to_id(a_cell)
+	var b_id = vector_to_id(b_cell)
 	if upsert:
 		if a_id == -1:
 			a_id = tiles.size()
