@@ -1,6 +1,6 @@
-extends AnimatedSprite3D
+extends MeshInstance
 
-var tile = Vector2(0, 0)
+var tile = Vector3(0, 0, 0)
 
 var empty = false
 var looted = false
@@ -25,10 +25,11 @@ func _ready():
 	pass # Replace with function body.
 
 func teleport(x, y):
-	tile.x = x
-	tile.y = y
-	translation.x = x * TT.cell_size
-	translation.z = y * TT.cell_size
+	tile.x = round(x)
+	tile.z = round(y)
+	tile.y = 0.1
+	translation.x = tile.x
+	translation.z = tile.z
 	translation.y = 0.1
 	print("Chest ", translation)
 
@@ -40,7 +41,7 @@ func open(type):
 	empty = true
 	var loot = Item.new()
 	loot.generate(item_spawner.level, item_spawner.equipment_slot, type)
-	play("open")
+#	play("open")
 	$open.play()
 	$drop.play(item_types[type])
 	$drop.show()

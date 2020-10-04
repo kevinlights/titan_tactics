@@ -96,13 +96,14 @@ func spawn_cover(tile):
 	return cover
 	
 func spawn_chest(x, y, item_spawner):
-	var chest = load("res://scenes/chest.tscn").instance()
+	var chest_node = load("res://scenes/chest.tscn").instance()
+	var chest = chest_node.get_node("chest")
 #	character.init(type, control)
 	chest.teleport(x, y)
 #	chest.level = Game.level + 1
 	chest.item_spawner = item_spawner
 	chest.add_to_group("characters")
-	world_map.add_child(chest)
+	world_map.add_child(chest_node)
 	print("Spawned chest")
 	return chest
 

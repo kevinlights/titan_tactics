@@ -1534,7 +1534,6 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 45 )
 animation = "idle-right"
-frame = 1
 playing = true
 
 [node name="fighter" type="AnimatedSprite3D" parent="."]
@@ -1545,6 +1544,7 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 90 )
 animation = "idle-right"
+frame = 1
 playing = true
 
 [node name="mage" type="AnimatedSprite3D" parent="."]
@@ -1555,6 +1555,7 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 127 )
 animation = "idle-right"
+frame = 1
 playing = true
 
 [node name="ai_archer" type="AnimatedSprite3D" parent="."]
@@ -1565,6 +1566,7 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 172 )
 animation = "idle-right"
+frame = 1
 playing = true
 
 [node name="ai_fighter" type="AnimatedSprite3D" parent="."]
@@ -1575,6 +1577,7 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 217 )
 animation = "idle-right"
+frame = 1
 playing = true
 
 [node name="ai_mage" type="AnimatedSprite3D" parent="."]
@@ -1585,6 +1588,7 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 254 )
 animation = "idle-right"
+frame = 1
 playing = true
 
 [node name="guard" type="AnimatedSprite3D" parent="."]
@@ -1593,6 +1597,7 @@ offset = Vector2( 8, 0 )
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 257 )
+frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -1601,7 +1606,6 @@ centered = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 260 )
-frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -1610,6 +1614,7 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 263 )
+frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]
