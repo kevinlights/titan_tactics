@@ -27,7 +27,7 @@ func play():
 			character.is_done = true
 			world.advance_turn()
 			return
-	var enemy = get_nearest_enemy(character.position)
+	var enemy = get_nearest_enemy(character.translation)
 	if enemy:
 		print("does it have heal? : " + str(character.character.has_ability(TT.ABILITY.HEAL)))
 		if character.can_recruit() and character.character.has_ability(TT.ABILITY.HEAL):
@@ -95,12 +95,12 @@ func normalize_path(path, max_length):
 		path.resize(max_length)
 	return world.to_world_path(path)
 
-func get_nearest_enemy(position):
+func get_nearest_enemy(translation):
 	var enemies = world.current[TT.CONTROL.PLAYER]
 	var shortest = 999
 	var closest
 	for enemy in enemies:
-		var distance = position.distance_to(enemy.position)
+		var distance = translation.distance_to(enemy.translation)
 		if distance < shortest:
 			shortest = distance
 			closest = enemy

@@ -102,10 +102,10 @@ func select():
 	pick_random_sfx($sfx/selected)
 
 func teleport(x, y):
-	tile.x = x
-	tile.y = y
-	translation.x = x * cell_size
-	translation.z = y * cell_size
+	tile.x = floor(x)
+	tile.y = floor(y)
+	translation.x = floor(x * TT.cell_size)
+	translation.z = floor(y * TT.cell_size)
 
 func heal(target):
 	if character.turn_limits.actions < 1:

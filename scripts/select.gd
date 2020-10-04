@@ -10,6 +10,8 @@ enum MODE {
 	CHECK_MAP
 }
 
+var camera_offset = Vector3(0, 8.8, 9)
+var camera_captured = false
 var mode = MODE.PLAY
 var tile = Vector3(0, 0, 0) setget set_tile, get_tile
 var current_entity
@@ -105,6 +107,9 @@ func go_home():
 	if world.current_turn == TT.CONTROL.AI:
 		emit_signal("moved", self.tile)
 
+func capture_camera():
+	camera_captured = true
+	
 func set_origin(entity):
 	if current_entity:
 		current_entity.disconnect("idle", self, "go_home")
@@ -114,3 +119,8 @@ func set_origin(entity):
 	print("Set origin ", translation)
 	current_entity.select()
 	current_entity.connect("idle", self, "go_home")
+	capture_camera()
+
+func _process(_delta):
+	if camera_captured:
+		world.get_node("level/map/camera").translation = translation + camera_offset

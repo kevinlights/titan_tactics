@@ -41,7 +41,7 @@ func load_level(level_name):
 	var level = load("res://scenes/levels/" + level_name + ".tscn").instance()
 	add_child_below_node($map_anchor, level)
 	tile_meta = level.get_node("navigation/tile_meta")
-	world_map = level.get_node("map_3d")
+	world_map = level.get_node("map")
 	pathfinder = PathFinder.new(tile_meta, [ 2, 3, 4, 5, 7 ])
 	var used_rect = tile_meta.get_used_rect()
 	map_size.width = used_rect.size.x

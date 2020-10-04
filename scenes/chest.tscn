@@ -6,12 +6,12 @@
 [ext_resource path="res://sfx/gameplay/chest_opening.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 23
+flags = 19
 atlas = ExtResource( 1 )
 region = Rect2( 0, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 23
+flags = 19
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
