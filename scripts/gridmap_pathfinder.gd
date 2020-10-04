@@ -12,7 +12,7 @@ onready var counts := {
 	'excluded_tiles': 0,
 }
 var debug := false # change to true to increase logging
-var hide_non_walkable_tiles := false # change to true to visually debug
+var hide_non_walkable_tiles := true # change to true to visually debug
 
 # decorations are impassable to the player.
 var decorations := ["Tree", "Water", "underwater", "waterside"]
@@ -202,6 +202,7 @@ func _connect_structures(cells):
 		
 		match name:
 			'Smallbridge':
+				return # cardinals below seem to be wrong need to re-do
 				# [NW, N, NE, E, SE, S, SW, W]
 				var before_cardinals = [null, -1, null, null, null, null, null, null]
 				var after_cardinals = [null, null, null, null, null, -1, null, null]
