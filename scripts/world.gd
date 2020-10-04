@@ -559,7 +559,7 @@ func check_battle():
 func _on_selector_moved(tile):
 	print("$select moved to ", tile)
 	var context = get_current_context(tile)
-	print(context)
+	print("current context = ", context, " [", TT.CONTEXT.keys()[context] ,"]")
 	var target = entity_at($select.tile)
 	if current_turn == TT.CONTROL.PLAYER:
 		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
@@ -585,7 +585,11 @@ func _on_selector_moved(tile):
 	$select.set_context(context)
 
 func get_current_context(tile):
-	if Game.level == 0 or gui.get_node("dialogue").visible:
+	print(Game.level, ", ",  gui.get_node("dialogue").visible)
+	if Game.level == 0:
+		#return TT.CONTEXT.NOT_PLAYABLE
+		pass
+	if gui.get_node("dialogue").visible:
 		return TT.CONTEXT.NOT_PLAYABLE
 	if $select.mode == $select.MODE.CHECK_MAP:
 		return TT.CONTEXT.NEUTRAL
@@ -610,6 +614,8 @@ func get_current_context(tile):
 				allowed = true
 			if not allowed:
 				return TT.CONTEXT.NOT_ALLOWED
+		else:
+			return TT.CONTEXT.NOT_ALLOWED
 	else:
 		return TT.CONTEXT.NOT_PLAYABLE
 	return TT.CONTEXT.MOVE

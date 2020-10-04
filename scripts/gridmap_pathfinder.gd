@@ -93,7 +93,7 @@ func find_path(start, end):
 		var start_id = vector_to_id(possible_starts[0])
 		var end_id = vector_to_id(possible_ends[0])
 		var path = astar.get_point_path(start_id, end_id)
-		print("found_path [", path, "]")
+		print("found_path ", path)
 		return path
 	elif possible_starts.size() == 0 or possible_ends.size() == 0:
 		print('Unable to find a possible start/end tile for pathfinding')
