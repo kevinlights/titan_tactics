@@ -167,8 +167,7 @@ script = ExtResource( 2 )
 
 [node name="map_anchor" type="Node" parent="."]
 
-[node name="path_preview" type="Node2D" parent="."]
-position = Vector2( 8, 8 )
+[node name="path_preview" type="Spatial" parent="."]
 script = ExtResource( 11 )
 good_color = Color( 0.917647, 1, 0.866667, 1 )
 bad_color = Color( 0.0627451, 0.203922, 0.262745, 1 )

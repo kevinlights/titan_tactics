@@ -10,7 +10,6 @@ signal recruit_failed
 signal done
 signal dialogue
 
-var cell_size = TT.cell_size
 var guarding = false
 var character
 var path = []
@@ -71,9 +70,9 @@ func hit(attacker):
 	avatar.play("hit-" + movement.last_horizontal_direction)
 	if guarding:
 		pick_random_sfx($sfx/defend)
-	if character.hp != character.max_hp:
-		healthbar.show()
-		healthbar.set_value(character.hp, character.max_hp)
+#	if character.hp != character.max_hp:
+#		healthbar.show()
+#		healthbar.set_value(character.hp, character.max_hp)
 	if character.max_hp <= 0:
 		print("nooooooooooooooooooooooo it can't be")
 	if character.hp <= 0:
@@ -102,10 +101,10 @@ func select():
 	pick_random_sfx($sfx/selected)
 
 func teleport(x, y):
-	tile.x = floor(x)
-	tile.z = floor(y)
-	translation.x = floor(x * TT.cell_size)
-	translation.z = floor(y * TT.cell_size)
+	tile.x = round(x)
+	tile.z = round(y)
+	translation.x = round(x) # * TT.cell_size)
+	translation.z = round(y) # * TT.cell_size)
 
 func heal(target):
 	if character.turn_limits.actions < 1:
@@ -282,7 +281,7 @@ func from_library(team_member):
 	init_common(team_member.control)
 
 func can_recruit():
-	if Game.sudden_death:
+	if TT.sudden_death:
 		return true 
 	else:
 		return character.hp <= character.max_hp / 3
@@ -377,14 +376,14 @@ func _process(delta):
 		if translation.is_equal_approx(movement.end_position) or progress >= 1.0:
 			path.remove(0)
 			translation = movement.end_position
-			tile.x = round(translation.x / cell_size)
-			tile.y = round(translation.z / cell_size)			
+			tile.x = round(translation.x)
+			tile.z = round(translation.z)
 			if not path.empty():
-				movement.end_position = Vector3(path[0].x, 0, path[0].y)
-				movement.start_position = Vector3(translation.x, 0, translation.z)
+				movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
+				movement.start_position = Vector3(translation.x, translation.y, translation.z)
 				movement.start_time = now
 				var diff = movement.start_position - movement.end_position
-				if abs(diff.x) > abs(diff.y):
+				if abs(diff.x) > abs(diff.z):
 					if diff.x > 0:
 						avatar.play("walk-left")
 						movement.last_horizontal_direction = "left"
@@ -392,14 +391,14 @@ func _process(delta):
 						avatar.play("walk-right")
 						movement.last_horizontal_direction = "right"
 				else:
-					if diff.y > 0:
+					if diff.z > 0:
 						avatar.play("walk-up")
 					else:
 						avatar.play("walk-down")
 			else:
 				avatar.play("idle-" + movement.last_horizontal_direction)
 				if movement.moving:
-					print("path complete")
+					print("path complete ", translation)
 					emit_signal("path_complete")
 					emit_signal("idle")
 					movement.moving = false

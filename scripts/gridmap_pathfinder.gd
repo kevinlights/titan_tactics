@@ -84,7 +84,7 @@ func _remove_most_cells():
 			set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
 
 var offset_x = 0
-var offset_z = -2
+var offset_z = 0
 func find_path(start, end):
 	print("find_path ", start, end)
 	var possible_starts = filter_tiles(start.x + offset_x, start.y + offset_z)

@@ -62,7 +62,7 @@ func get_current():
 func entity_at(position_vector):
 	var characters = get_tree().get_nodes_in_group ("characters")
 	for character in characters:
-		if character.tile.x == position_vector.x and character.tile.y == position_vector.y and not character.is_dead:
+		if character.tile.x == position_vector.x and character.tile.z == position_vector.z and not character.is_dead:
 			return character
 	return null
 
@@ -634,4 +634,6 @@ func _input(event):
 	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
 		for unit in current[TT.CONTROL.AI]:
 			unit.die()
-
+	if event.is_action("cheat_log_stats") && !event.is_echo() && event.is_pressed():
+		print($select.tile)
+		print(get_current().tile)

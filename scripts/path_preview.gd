@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 
 
 export(Color) var good_color

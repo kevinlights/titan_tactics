@@ -27,7 +27,7 @@ func set_tile(p_tile):
 	translation.z = p_tile.z # * TT.cell_size
 
 func get_tile():
-	tile =  translation # Vector3(floor(translation.x / TT.cell_size), 0, floor(translation.z / TT.cell_size))
+	tile =  Vector3(round(translation.x), round(translation.y), round(translation.z)) # Vector3(floor(translation.x / TT.cell_size), 0, floor(translation.z / TT.cell_size))
 #	tile.x = clamp(tile.x, 0, world.map_size.width - 1)
 #	tile.z = clamp(tile.z, 0, world.map_size.height - 1)
 	return tile
