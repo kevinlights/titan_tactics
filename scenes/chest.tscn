@@ -35,11 +35,11 @@ region = Rect2( 24, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 16, 16, 8, 8 )
+region = Rect2( 0, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 16, 8, 8 )
+region = Rect2( 16, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
@@ -54,12 +54,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "wand",
+"name": "sword",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
-"name": "sword",
+"name": "wand",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ) ],
@@ -68,7 +68,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Spatial" type="Spatial"]
+[node name="chest" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="chest_billboard" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00114679, 0.126645, -0.00570965 )
@@ -92,7 +93,6 @@ stream = ExtResource( 4 )
 volume_db = -4.0
 
 [node name="chest" type="MeshInstance" parent="."]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.2, 0, 0.2 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.5, 0.1, 0.5 )
 mesh = ExtResource( 5 )
 material/0 = null
-script = ExtResource( 2 )

@@ -101,10 +101,10 @@ func select():
 	pick_random_sfx($sfx/selected)
 
 func teleport(x, y):
-	tile.x = round(x)
-	tile.z = round(y)
-	translation.x = round(x) # * TT.cell_size)
-	translation.z = round(y) # * TT.cell_size)
+	tile.x = floor(x)
+	tile.z = floor(y)
+	translation.x = floor(x) # * TT.cell_size)
+	translation.z = floor(y) # * TT.cell_size)
 
 func heal(target):
 	if character.turn_limits.actions < 1:
@@ -376,8 +376,8 @@ func _process(delta):
 		if translation.is_equal_approx(movement.end_position) or progress >= 1.0:
 			path.remove(0)
 			translation = movement.end_position
-			tile.x = round(translation.x)
-			tile.z = round(translation.z)
+			tile.x = floor(translation.x)
+			tile.z = floor(translation.z)
 			if not path.empty():
 				movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
 				movement.start_position = Vector3(translation.x, translation.y, translation.z)

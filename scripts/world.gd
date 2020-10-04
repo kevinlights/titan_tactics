@@ -96,14 +96,14 @@ func spawn_cover(tile):
 	return cover
 	
 func spawn_chest(x, y, item_spawner):
-	var chest_node = load("res://scenes/chest.tscn").instance()
-	var chest = chest_node.get_node("chest")
+	var chest = load("res://scenes/chest.tscn").instance()
+#	var chest = chest_node.get_node("chest")
 #	character.init(type, control)
 	chest.teleport(x, y)
 #	chest.level = Game.level + 1
 	chest.item_spawner = item_spawner
 	chest.add_to_group("characters")
-	world_map.add_child(chest_node)
+	world_map.add_child(chest)
 	print("Spawned chest")
 	return chest
 
@@ -636,5 +636,10 @@ func _input(event):
 		for unit in current[TT.CONTROL.AI]:
 			unit.die()
 	if event.is_action("cheat_log_stats") && !event.is_echo() && event.is_pressed():
-		print($select.tile)
-		print(get_current().tile)
+		print("selector ", $select.tile)
+		print("current character tile ", get_current().tile)
+		print("current character translation ", get_current().translation)
+	if event.is_action("mute_music") && !event.is_echo() && event.is_pressed():
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
+	if event.is_action("unmute_music") && !event.is_echo() && event.is_pressed():
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)

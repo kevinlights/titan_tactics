@@ -176,15 +176,12 @@ bad_color = Color( 0.0627451, 0.203922, 0.262745, 1 )
 width = 2.0
 
 [node name="select" type="AnimatedSprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512056, 0 )
-centered = false
-offset = Vector2( -2, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
 pixel_size = 0.04
 axis = 1
 alpha_cut = 2
 frames = SubResource( 17 )
 animation = "attack"
-frame = 1
 playing = true
 script = ExtResource( 4 )
 

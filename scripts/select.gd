@@ -23,11 +23,14 @@ var current_target = {
 }
 
 func set_tile(p_tile):
-	translation.x = p_tile.x # * TT.cell_size
-	translation.z = p_tile.z # * TT.cell_size
+	translation.x = p_tile.x + 0.5 # * TT.cell_size
+	translation.z = p_tile.z - 1.5# * TT.cell_size
 
 func get_tile():
-	tile =  Vector3(round(translation.x), round(translation.y), round(translation.z)) # Vector3(floor(translation.x / TT.cell_size), 0, floor(translation.z / TT.cell_size))
+	tile =  Vector3(
+		floor(translation.x),
+		0,
+		ceil(translation.z + 1)) # Vector3(floor(translation.x / TT.cell_size), 0, floor(translation.z / TT.cell_size))
 #	tile.x = clamp(tile.x, 0, world.map_size.width - 1)
 #	tile.z = clamp(tile.z, 0, world.map_size.height - 1)
 	return tile

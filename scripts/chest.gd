@@ -1,4 +1,4 @@
-extends MeshInstance
+extends Spatial
 
 var tile = Vector3(0, 0, 0)
 
