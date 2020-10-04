@@ -11,23 +11,18 @@ func _input(event):
 func _ready():
 	$music/theme.play()
 	if Game.team.size() > 1:
-		$menu/margin/vbox/continue.show()
-		$menu/margin/vbox/continue.grab_focus()
+		$menu/continue.show()
+		$menu/continue.grab_focus()
 	else:
-		$menu/margin/vbox/new_game.grab_focus()
-	$menu/credits/ok.connect("pressed", self, "_on_close_credits")
-	if is_web and $menu/margin/vbox/quit:
-		$menu/margin/vbox/quit.hide()
+		$menu/newgame.grab_focus()
+#	$menu/credits/ok.connect("pressed", self, "_on_close_credits")
+#	if is_web and $menu/margin/vbox/quit:
+#		$menu/margin/vbox/quit.hide()
 
 func _on_continue():
 	$sfx/select.play()	
 	yield(get_tree().create_timer(0.3), "timeout")		
 	get_tree().change_scene("res://scenes/world.tscn")
-
-func _on_new_game():
-	Game.team = []
-	Game._ready()
-	_on_continue()
 
 func _on_close_credits():
 	$sfx/select.play()	
@@ -47,3 +42,9 @@ func _on_quit():
 	yield(get_tree().create_timer(0.25), "timeout")
 	get_tree().quit()
 
+
+
+func _on_newgame():
+	Game.team = []
+	Game._ready()
+	_on_continue()

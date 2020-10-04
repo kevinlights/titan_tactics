@@ -1,35 +1,66 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/landing.gd" type="Script" id=1]
 [ext_resource path="res://music/menu_theme.ogg" type="AudioStream" id=2]
 [ext_resource path="res://sfx/UI/click_open.wav" type="AudioStream" id=3]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=4]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=5]
-[ext_resource path="res://gfx/title.png" type="Texture" id=6]
-[ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=7]
+[ext_resource path="res://gfx/ui/bg.png" type="Texture" id=6]
+[ext_resource path="res://gfx/ui/new_on.png" type="Texture" id=7]
 [ext_resource path="res://scenes/gui/credits.tscn" type="PackedScene" id=8]
-[ext_resource path="res://gfx/menu_select.png" type="Texture" id=9]
-[ext_resource path="res://scripts/focus.gd" type="Script" id=10]
+[ext_resource path="res://gfx/ui/continue_off.png" type="Texture" id=9]
+[ext_resource path="res://gfx/ui/continue_on.png" type="Texture" id=10]
+[ext_resource path="res://gfx/ui/new_off.png" type="Texture" id=11]
+[ext_resource path="res://gfx/ui/credits-off.png" type="Texture" id=12]
+[ext_resource path="res://gfx/ui/credits-on.png" type="Texture" id=13]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 107, 26 )
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 23
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 8, 8 )
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 107, 26 )
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 23
-atlas = ExtResource( 9 )
-region = Rect2( 0, 8, 8, 8 )
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 107, 26 )
 
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 107, 26 )
 
 [node name="landing" type="Node2D"]
 script = ExtResource( 1 )
@@ -55,125 +86,58 @@ stream = ExtResource( 5 )
 volume_db = -3.5
 
 [node name="menu" type="TextureRect" parent="."]
-margin_right = 160.0
-margin_bottom = 144.0
+margin_right = 320.0
+margin_bottom = 224.0
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="menu"]
-margin_right = 160.0
-margin_bottom = 144.0
-color = Color( 0.0627451, 0.203922, 0.262745, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="title" type="Sprite" parent="menu/ColorRect"]
-position = Vector2( 80, 40 )
-texture = ExtResource( 6 )
-
-[node name="margin" type="MarginContainer" parent="menu"]
-margin_left = 50.0
-margin_right = 160.0
-margin_bottom = 144.0
-custom_constants/margin_top = 85
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="vbox" type="VBoxContainer" parent="menu/margin"]
-margin_top = 85.0
-margin_right = 110.0
-margin_bottom = 144.0
-theme = ExtResource( 7 )
-
-[node name="continue" type="ToolButton" parent="menu/margin/vbox"]
-visible = false
-margin_right = 110.0
-margin_bottom = 9.0
-focus_neighbour_bottom = NodePath("../new_game")
-focus_next = NodePath("../new_game")
+[node name="continue" type="Button" parent="menu"]
+margin_left = 111.0
+margin_top = 130.0
+margin_right = 218.0
+margin_bottom = 156.0
+focus_neighbour_bottom = NodePath("../newgame")
+focus_next = NodePath("../newgame")
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 1 )
-text = "Continue"
-align = 0
+custom_styles/normal = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/continue"]
-visible = false
-position = Vector2( -2, 0 )
-frames = SubResource( 4 )
-playing = true
-centered = false
-offset = Vector2( -1, 2 )
-script = ExtResource( 10 )
-
-[node name="new_game" type="ToolButton" parent="menu/margin/vbox"]
-margin_right = 110.0
-margin_bottom = 9.0
+[node name="newgame" type="Button" parent="menu"]
+margin_left = 111.0
+margin_top = 149.528
+margin_right = 218.0
+margin_bottom = 175.528
 focus_neighbour_top = NodePath("../continue")
 focus_neighbour_bottom = NodePath("../credits")
 focus_next = NodePath("../credits")
 focus_previous = NodePath("../continue")
-custom_styles/focus = SubResource( 1 )
-text = "New Game"
-align = 0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 9 )
 
-[node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/new_game"]
-visible = false
-position = Vector2( -2, 0 )
-frames = SubResource( 4 )
-frame = 1
-playing = true
-centered = false
-offset = Vector2( -1, 2 )
-script = ExtResource( 10 )
+[node name="credits" type="Button" parent="menu"]
+margin_left = 111.0
+margin_top = 168.82
+margin_right = 218.0
+margin_bottom = 194.82
+focus_neighbour_top = NodePath("../newgame")
+focus_previous = NodePath("../newgame")
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/normal = SubResource( 4 )
 
-[node name="credits" type="ToolButton" parent="menu/margin/vbox"]
-margin_top = 11.0
-margin_right = 110.0
-margin_bottom = 20.0
-focus_neighbour_top = NodePath("../new_game")
-focus_neighbour_bottom = NodePath("../quit")
-focus_next = NodePath("../quit")
-focus_previous = NodePath("../new_game")
-custom_styles/focus = SubResource( 1 )
-text = "Credits"
-align = 0
-
-[node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/credits"]
-visible = false
-position = Vector2( -2, 0 )
-frames = SubResource( 4 )
-playing = true
-centered = false
-offset = Vector2( -1, 2 )
-script = ExtResource( 10 )
-
-[node name="quit" type="ToolButton" parent="menu/margin/vbox"]
-margin_top = 22.0
-margin_right = 110.0
-margin_bottom = 31.0
-focus_neighbour_top = NodePath("../credits")
-focus_previous = NodePath("../credits")
-custom_styles/focus = SubResource( 1 )
-text = "Quit"
-align = 0
-
-[node name="focus" type="AnimatedSprite" parent="menu/margin/vbox/quit"]
-visible = false
-position = Vector2( -2, 0 )
-frames = SubResource( 4 )
-playing = true
-centered = false
-offset = Vector2( -1, 2 )
-script = ExtResource( 10 )
-
-[node name="credits" parent="menu" instance=ExtResource( 8 )]
+[node name="credits_old" parent="menu" instance=ExtResource( 8 )]
 visible = false
 script = null
-[connection signal="pressed" from="menu/margin/vbox/continue" to="." method="_on_continue"]
-[connection signal="pressed" from="menu/margin/vbox/new_game" to="." method="_on_new_game"]
-[connection signal="pressed" from="menu/margin/vbox/credits" to="." method="_on_credits"]
-[connection signal="pressed" from="menu/margin/vbox/quit" to="." method="_on_quit"]
+[connection signal="pressed" from="menu/continue" to="." method="_on_continue"]
+[connection signal="pressed" from="menu/newgame" to="." method="_on_newgame"]
