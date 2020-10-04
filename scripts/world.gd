@@ -203,7 +203,7 @@ func action():
 					else:
 						target.use()
 		TT.CONTEXT.MOVE:
-			get_current().move(to_world_path(current_path))
+			get_current().move(current_path) # to_world_path(current_path))
 			$path_preview.hide_path()
 		TT.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()

@@ -16,7 +16,7 @@ var character
 var path = []
 var avatar
 # var item = Item.new(0, 0, 0) # dummy item, no buffs
-var tile = Vector2(0, 0)
+var tile = Vector3(0, 0, 0)
 var is_loot = false
 var is_dead = false
 var is_trigger = false
@@ -31,8 +31,8 @@ var dialogue_used = false
 onready var world = get_parent().get_parent().get_parent()
 
 var movement = {
-	"start_position": Vector2(0, 0),
-	"end_position": Vector2(0, 0),
+	"start_position": Vector3(0, 0, 0),
+	"end_position": Vector3(0, 0, 0),
 	"start_time": 0,
 	"speed": 400,
 	"last_horizontal_direction": "left",
@@ -103,7 +103,7 @@ func select():
 
 func teleport(x, y):
 	tile.x = floor(x)
-	tile.y = floor(y)
+	tile.z = floor(y)
 	translation.x = floor(x * TT.cell_size)
 	translation.z = floor(y * TT.cell_size)
 
@@ -203,13 +203,13 @@ func attack_complete():
 	print("attack complete")
 	emit_signal("idle")
 
-func move(target_path:PoolVector2Array):
+func move(target_path:PoolVector3Array):
 	if movement.moving or target_path.size() == 0:
 		return
 	path = target_path
 	movement.start_time = OS.get_ticks_msec()
-	movement.end_position = Vector3(path[0].x, 0, path[0].y)
-	movement.start_position = Vector3(translation.x, 0, translation.z)
+	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
+	movement.start_position = Vector3(translation.x, translation.y, translation.z)
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
 	character.turn_limits.move_distance -= path.size()

@@ -14,20 +14,28 @@
 [ext_resource path="res://gfx/ui/credits-off.png" type="Texture" id=12]
 [ext_resource path="res://gfx/ui/credits-on.png" type="Texture" id=13]
 
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 10 )
-region_rect = Rect2( 0, 0, 107, 26 )
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 10 )
-region_rect = Rect2( 0, 0, 107, 26 )
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 107, 26 )
 
 [sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 107, 26 )
 
 [sub_resource type="StyleBoxTexture" id=7]
@@ -35,15 +43,11 @@ texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 107, 26 )
 
 [sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 7 )
-region_rect = Rect2( 0, 0, 107, 26 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 107, 26 )
 
 [sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 107, 26 )
 
 [sub_resource type="StyleBoxTexture" id=10]
@@ -55,10 +59,6 @@ texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 107, 26 )
 
 [sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 13 )
-region_rect = Rect2( 0, 0, 107, 26 )
-
-[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 107, 26 )
 
@@ -102,10 +102,10 @@ margin_right = 218.0
 margin_bottom = 156.0
 focus_neighbour_bottom = NodePath("../newgame")
 focus_next = NodePath("../newgame")
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -119,10 +119,10 @@ focus_neighbour_top = NodePath("../continue")
 focus_neighbour_bottom = NodePath("../credits")
 focus_next = NodePath("../credits")
 focus_previous = NodePath("../continue")
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 9 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 
 [node name="credits" type="Button" parent="menu"]
 margin_left = 111.0
@@ -131,10 +131,10 @@ margin_right = 218.0
 margin_bottom = 194.82
 focus_neighbour_top = NodePath("../newgame")
 focus_previous = NodePath("../newgame")
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/focus = SubResource( 12 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 
 [node name="credits_old" parent="menu" instance=ExtResource( 8 )]
 visible = false
