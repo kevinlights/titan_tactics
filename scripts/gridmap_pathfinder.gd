@@ -12,7 +12,7 @@ onready var counts := {
 	'excluded_tiles': 0,
 }
 var debug := false # change to true to increase logging
-var hide_non_walkable_tiles := true # change to true to visually debug
+var hide_non_walkable_tiles := false # change to true to visually debug
 
 # decorations are impassable to the player.
 var decorations := ["Tree", "Water", "underwater", "waterside"]
