@@ -28,28 +28,28 @@ var cardinalHeights := { # y_deltas
 	# tile_type: [NW, N, NE, E, SE, S, SW, W]
 	'Low cube': [1, 1, 1, 1, 1, 1, 1, 1],
 	'Cube': [2, 2, 2, 2, 2, 2, 2, 2],
-	'Ramp': [2, 1.5, 1, 1, 1, 1.5, 2, 2],
-	'Ramp corner': [1, 1, 1, 1, 1, 1.5, 2, 1.5],
+	'Ramp': [2, 2, 2, 1.5, 1, 1, 1, 1.5],
+	'Ramp corner': [2, 1.5, 1, 1, 1, 1, 1, 1.5],
 }
 var cardinalDeltas := [
 	# Vector2(x_delta, z_delta)
-	Vector2(1, -1), # NW
-	Vector2(1, 0), # N
-	Vector2(1, 1), # NE
-	Vector2(0, 1), # E
-	Vector2(-1, 1), # SE
-	Vector2(-1, 0), # S
-	Vector2(-1, -1), # SW
-	Vector2(0, -1), # W
+	Vector2(-1, -1), # NW
+	Vector2(0, -1), # N
+	Vector2(1, -1), # NE
+	Vector2(1, 0), # E
+	Vector2(1, 1), # SE
+	Vector2(0, 1), # S
+	Vector2(-1, 1), # SW
+	Vector2(-1, 0), # W
 ]
 
 # these are computed internally and are different depending on what axis it is rotated on.
 # this file currently only expects x axis rotation and doesn't support others.
 var orientationModifier := {
 	0: 0,
-	22: 2, # 90 deg,
+	22: 6, # 90 deg,
 	10: 4, # 180 deg,
-	16: 6, # 270/-90 deg
+	16: 2, # 270/-90 deg
 }
 
 # eg. should be connected cases.
