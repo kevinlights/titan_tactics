@@ -91,18 +91,16 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="Water1" parent="map_old" instance=ExtResource( 13 )]
-frame = 1
 
 [node name="Water4" parent="map_old" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
-frame = 1
 
 [node name="Water2" parent="map_old" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
-frame = 1
 
 [node name="Water3" parent="map_old" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
+frame = 1
 
 [node name="PT_DialogueTrigger" type="Sprite" parent="map_old"]
 position = Vector2( 120, 104 )
@@ -165,4 +163,4 @@ item_spawner = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -1.336, 7.5 )
 
 [node name="Spatial" parent="." instance=ExtResource( 15 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 8, -1.13271, 7 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.13271, 7 )
