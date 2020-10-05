@@ -245,11 +245,18 @@ func select_type():
 				print("Select ai mage")
 				avatar = $ai_mage
 	print("character class ", character.character_class)
-	avatar.connect("animation_finished", self, '_on_animation_finished')
+#	avatar.connect("animation_finished", self, '_on_animation_finished')
+	avatar.connect("frame_changed", self, "_on_frame_changed")
 	#item = Item.new()
 	
 	# print("generated item: " + item.name)
 	avatar.show()
+
+func _on_frame_changed():
+	var frame_count = avatar.frames.get_frame_count(avatar.animation)
+#	print("frames ", frame_count, " current ", avatar.frame)
+	if avatar.frame == frame_count - 1:
+		_on_animation_finished()
 
 func copy_stats(spawner):
 	pass
@@ -362,6 +369,7 @@ func _on_animation_finished():
 
 func _process(delta):
 	var now = OS.get_ticks_msec()
+	_on_frame_changed()
 	if not character:
 		return
 	if avatar.playing and avatar.animation.begins_with("attack"):

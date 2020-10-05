@@ -167,9 +167,9 @@ func end_turn():
 	$select.disable()
 
 func to_world_path(path):
-	var world_path = PoolVector2Array()
+	var world_path = PoolVector3Array()
 	for point in path:
-		world_path.append(point * Vector2(TT.cell_size, TT.cell_size))
+		world_path.append(point) # * Vector2(TT.cell_size, TT.cell_size))
 	return world_path
 
 func action():

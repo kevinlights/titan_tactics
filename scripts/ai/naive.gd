@@ -36,13 +36,13 @@ func play():
 			character.is_done = true
 			world.advance_turn()
 			return
-		if enemies_are_stronger(character.position, character):
+		if enemies_are_stronger(character):
 			print("AI (" + character.character.name + ") says guard")
 			character.guard()
 #			world.advance_turn()
 			return
 		var distance = character.tile.distance_to(enemy.tile)
-		if distance <= character.character.atk_range and character.character.turn_limits.actions > 0 and not world.is_cover_between(character, enemy.position):
+		if distance <= character.character.atk_range and character.character.turn_limits.actions > 0 and not world.is_cover_between(character, enemy.translation):
 			print("AI (" + character.character.name + ") says attack")
 			world.gui.battle(character, enemy)
 			character.attack(enemy)
@@ -54,7 +54,7 @@ func play():
 			if path and path.size() > 1:
 				print("AI (" + character.character.name + ") says move")
 				character.move(path)
-				world.get_node("select").tile = path[path.size() - 1] / Vector2(TT.cell_size, TT.cell_size)
+				world.get_node("select").tile = path[path.size() - 1]
 				if not character.is_connected("path_complete", self, "play"):
 					character.connect("path_complete", self, "play")
 				return
@@ -84,7 +84,7 @@ func get_path_to(start, end, max_length, character):
 	path = shorten_to_atk_range(path, character)
 	var fixed_path = normalize_path(path, max_length)
 	# prevent landing on a tile that has someone on it
-	while fixed_path.size() > 1 and world.entity_at(fixed_path[fixed_path.size() - 1] / Vector2(TT.cell_size, TT.cell_size)):
+	while fixed_path.size() > 1 and world.entity_at(fixed_path[fixed_path.size() - 1]):
 		fixed_path.resize(fixed_path.size() - 1)
 	return fixed_path
 
@@ -107,7 +107,7 @@ func get_nearest_enemy(translation):
 	return closest
 	
 
-func enemies_are_stronger(position, character):
+func enemies_are_stronger(character):
 	var enemies_in_range = 0
 	var stronger_in_range = 0
 	if character.can_recruit():

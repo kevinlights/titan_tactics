@@ -91,18 +91,16 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="Water1" parent="map_old" instance=ExtResource( 13 )]
-frame = 1
 
 [node name="Water4" parent="map_old" instance=ExtResource( 13 )]
 position = Vector2( 160, 144 )
-frame = 1
 
 [node name="Water2" parent="map_old" instance=ExtResource( 12 )]
 position = Vector2( 192, 144 )
-frame = 1
 
 [node name="Water3" parent="map_old" instance=ExtResource( 12 )]
 position = Vector2( 128, 192 )
+frame = 1
 
 [node name="PT_DialogueTrigger" type="Sprite" parent="map_old"]
 position = Vector2( 120, 104 )
