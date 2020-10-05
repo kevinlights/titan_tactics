@@ -19,8 +19,8 @@ var ttl = 100
 var start_x_ally = -30
 var end_x_ally = 42
 
-var start_x_enemy = 202
-var end_x_enemy = 130
+var start_x_enemy = 362
+var end_x_enemy = 290
 
 var moving_back = false
 
