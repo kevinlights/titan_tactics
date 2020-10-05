@@ -84,12 +84,16 @@ func _remove_most_cells():
 			set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
 
 func world_path(path:PoolVector3Array):
-	var offset = get_parent().translation + Vector3(-0.5, 0, -0.5)
-	offset.y = 0
 	var w_path = PoolVector3Array()
 	for point in path:
-		w_path.append(map_to_world(point.x, 0, point.z) + offset)
+		w_path.append(point_to_world(point, true))
 	return w_path
+
+func point_to_world(point: Vector3, exclude_y: bool):
+	var offset = get_parent().translation + Vector3(-0.5, 0, -0.5)
+	offset.y = 0
+	var y = 0 if exclude_y else point.y
+	return map_to_world(point.x, y, point.z) + offset
 
 func find_path(start, end):
 	var offset = get_parent().translation * -1
@@ -116,6 +120,30 @@ func find_path(start, end):
 	elif possible_starts.size() > 1 or possible_ends.size() > 1:
 		print_debug("Multiple possible start/end tiles found for pathfinding")
 	return []
+	
+func get_tiles_within(_start, distance):
+	var offset = get_parent().translation * -1
+	var start = world_to_map(_start + offset)
+	var possible_starts = filter_tiles(start.x, start.z)
+	if possible_starts.size() == 1:
+		var start_id = vector_to_id(possible_starts[0])
+		var output_ids = []
+		var start_ids = [start_id]
+		for i in range(0, distance):
+			print('iter ', i)
+			var next_ids = []
+			for id in start_ids:
+				for next in astar.get_point_connections(id):
+					if next != start_id and output_ids.find(next) == -1:
+						output_ids.push_back(next)
+						next_ids.push_back(next)
+				start_ids = next_ids
+		var output_points = []
+		for id in output_ids:
+			output_points.push_back(point_to_world(astar.get_point_position(id), false))
+		return output_points
+	else:
+		return []
 
 func vector_to_id(vector):
 	return tiles.find(vector)

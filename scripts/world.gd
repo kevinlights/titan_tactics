@@ -45,8 +45,10 @@ func load_level(level_name):
 	var _3d_map = level.get_node("Spatial").get_node("SINGLE")
 	if _3d_map:
 		pathfinder = _3d_map
+		$range_overlay.set_gridmap(_3d_map)
 	else:
 		pathfinder = PathFinder.new(tile_meta, [ 2, 3, 4, 5, 7 ])
+		$range_overlay.set_gridmap(null)
 	var used_rect = tile_meta.get_used_rect()
 	map_size.width = used_rect.size.x
 	map_size.height = used_rect.size.y
@@ -352,6 +354,7 @@ func _on_start_level():
 	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.PLAY
 	$select.set_origin(get_current())
+	$range_overlay.set_origin(get_current())
 	$select.call_deferred("enable")
 
 
@@ -463,11 +466,14 @@ func _initiate_turn():
 		$select.enable()
 		$select.set_origin(get_current())
 		$select.set_context(get_current_context($select.tile))
+		if current_turn == TT.CONTROL.PLAYER:
+			$range_overlay.set_origin(get_current())
 	else:
 		print("Don't initiate turn: selector is enabled")
 	if current_turn == TT.CONTROL.AI:
 		print("Control turned over to AI")
 		ai.play()
+		$range_overlay.set_origin(null)
 	
 func _on_attack():
 	print("attack option selected in menu")
