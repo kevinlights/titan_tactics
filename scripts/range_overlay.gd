@@ -58,9 +58,6 @@ func show():
 	for tile in tiles:
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context = world.get_current_context(context_tile)
-		if world.entity_at(tile):
-			print('test1')
-			print('test1')
 		if context == TT.CONTEXT.ATTACK:
 			drawSqaure(tile, materials.attack)
 		elif context == TT.CONTEXT.MOVE:

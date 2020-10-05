@@ -273,6 +273,7 @@ func _ready():
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")
+	$range_overlay.call_deferred("set_origin", get_current())
 
 func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
@@ -354,7 +355,6 @@ func _on_start_level():
 	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.PLAY
 	$select.set_origin(get_current())
-	$range_overlay.set_origin(get_current())
 	$select.call_deferred("enable")
 
 
