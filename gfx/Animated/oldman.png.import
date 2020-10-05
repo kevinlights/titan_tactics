@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/oldman.png-bf5ab8bff631b350c6543ba749d4a127.stex"
+path="res://.import/oldman.png-4049f7a15a42795c9f2f8fde5b835fdf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/Animated/oldman.png"
-dest_files=[ "res://.import/oldman.png-bf5ab8bff631b350c6543ba749d4a127.stex" ]
+source_file="res://gfx/animated/oldman.png"
+dest_files=[ "res://.import/oldman.png-4049f7a15a42795c9f2f8fde5b835fdf.stex" ]
 
 [params]
 
