@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tree64.png-e708afd49e0fc856641ddb87d6173c9c.stex"
+path="res://.import/stump1.png-1b95eb94ddfd28cb46b20382c6294b1a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/OBJS/tree64.png"
-dest_files=[ "res://.import/tree64.png-e708afd49e0fc856641ddb87d6173c9c.stex" ]
+source_file="res://gfx/OBJS/stump1.png"
+dest_files=[ "res://.import/stump1.png-1b95eb94ddfd28cb46b20382c6294b1a.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=true
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=0
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
