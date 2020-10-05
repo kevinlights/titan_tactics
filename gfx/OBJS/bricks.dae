@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.5 commit date:2020-08-19, commit time:06:07, hash:c2b144df395f</authoring_tool>
+    </contributor>
+    <created>2020-09-25T17:11:25</created>
+    <modified>2020-09-25T17:11:25</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="BRICKS-effect">
+      <profile_COMMON>
+        <newparam sid="bricks_png-surface">
+          <surface type="2D">
+            <init_from>bricks_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="bricks_png-sampler">
+          <sampler2D>
+            <source>bricks_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="bricks_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="bricks_png" name="bricks_png">
+      <init_from>bricks.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="BRICKS-material" name="BRICKS">
+      <instance_effect url="#BRICKS-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Cube_006-mesh" name="Cube.006">
+      <mesh>
+        <source id="Cube_006-mesh-positions">
+          <float_array id="Cube_006-mesh-positions-array" count="60">1 0.5 2 1 0.5 0 1 -0.5 2 1 -0.5 0 -1 0.5 2 -1 0.5 0 -1 -0.5 2 -1 -0.5 0 0.5 0.5 0 -0.5 0.5 0 0.5 -0.5 2 -0.5043132 -0.5 2 -0.5 -0.5 0 0.5 -0.5 0 -0.5043132 0.5 2 0.5 0.5 2 0.5 -0.5 1.7 -0.5043132 -0.5 1.7 -0.5043132 0.5 1.7 0.5 0.5 1.7</float_array>
+          <technique_common>
+            <accessor source="#Cube_006-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_006-mesh-normals">
+          <float_array id="Cube_006-mesh-normals-array" count="15">0 0 1 0 -1 0 -1 0 0 1 0 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#Cube_006-mesh-normals-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_006-mesh-map-0">
+          <float_array id="Cube_006-mesh-map-0-array" count="156">0.375 0.5 0.5 0 0.5 0.5 0.5 0 0.625 1 0.5 1 0.25 0 0.5 1 0.25 1 0.75 1 0.5 0 0.75 0 0.125 1 0 0 0.125 0 0.5 0 0.375 1 0.375 0 0.875 0 1 1 0.875 1 0.375 0 0.125 0.875 0.125 0 0.375 1 0.5 0.5 0.5 1 0.5 0.25 0.25 0.75 0.25 0.25 0.875 0.8125 0.625 0 0.875 0 0.375 0.5 0.453125 1 0.375 1 0.5 0.5 0.5625 1 0.5 1 0.375 0.5 0.375 0 0.5 0 0.5 0 0.625 0 0.625 1 0.25 0 0.5 0 0.5 1 0.75 1 0.5 1 0.5 0 0.125 1 0 1 0 0 0.5 0 0.5 1 0.375 1 0.875 0 1 0 1 1 0.375 0 0.375 0.875 0.125 0.875 0.375 1 0.375 0.5 0.5 0.5 0.5 0.25 0.5 0.75 0.25 0.75 0.875 0.8125 0.625 0.8125 0.625 0 0.375 0.5 0.453125 0.5 0.453125 1 0.5 0.5 0.5625 0.5 0.5625 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_006-mesh-map-0-array" count="78" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_006-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_006-mesh-positions"/>
+        </vertices>
+        <triangles material="BRICKS-material" count="26">
+          <input semantic="VERTEX" source="#Cube_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_006-mesh-map-0" offset="2" set="0"/>
+          <p>4 0 0 11 0 1 14 0 2 11 1 3 7 1 4 12 1 5 6 2 6 5 2 7 7 2 8 0 3 9 3 3 10 1 3 11 15 4 12 1 4 13 8 4 14 5 4 15 14 4 16 9 4 17 2 1 18 13 1 19 3 1 20 9 4 21 19 4 22 8 4 23 15 0 24 2 0 25 0 0 26 18 0 27 16 0 28 19 0 29 12 1 30 16 1 31 17 1 32 15 2 33 16 2 34 10 2 35 11 3 36 18 3 37 14 3 38 4 0 39 6 0 40 11 0 41 11 1 42 6 1 43 7 1 44 6 2 45 4 2 46 5 2 47 0 3 48 2 3 49 3 3 50 15 4 51 0 4 52 1 4 53 5 4 54 4 4 55 14 4 56 2 1 57 10 1 58 13 1 59 9 4 60 18 4 61 19 4 62 15 0 63 10 0 64 2 0 65 18 0 66 17 0 67 16 0 68 12 1 69 13 1 70 16 1 71 15 2 72 19 2 73 16 2 74 11 3 75 17 3 76 18 3 77</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="wall" name="wall" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_006-mesh" name="wall">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="BRICKS-material" target="#BRICKS-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

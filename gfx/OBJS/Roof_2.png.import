@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest.png-47347c1be9cda136f516ee9a86de33cd.stex"
+path="res://.import/Roof_2.png-5a1b18f69b1aee5af444d14a32eaf8ca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/OBJS/chest.png"
-dest_files=[ "res://.import/chest.png-47347c1be9cda136f516ee9a86de33cd.stex" ]
+source_file="res://gfx/OBJS/Roof_2.png"
+dest_files=[ "res://.import/Roof_2.png-5a1b18f69b1aee5af444d14a32eaf8ca.stex" ]
 
 [params]
 
@@ -20,15 +20,15 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
