@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gfx/OBJS/test1x.meshlib" type="MeshLibrary" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 1, 0.5, 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 0, 2, 0, 0, 0, 3, 1, 4, 3, 1, 0, 65534, 0, 2, 65534, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
