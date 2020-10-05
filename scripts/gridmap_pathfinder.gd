@@ -211,6 +211,14 @@ func _connect_ids(a_id, b_id):
 		counts.connections += 1
 				
 func _connect_structures(cells):
+	var deltaMappings = {
+		'Smallbridge': {
+			0: cardinalDeltas[7],
+			22: cardinalDeltas[1], # 90 deg,
+			10: cardinalDeltas[3], # 180 deg,
+			16: cardinalDeltas[5], # 270/-90 deg
+		}
+	}
 	for cell in cells:
 		var itemId = get_cell_item(cell.x, cell.y, cell.z)
 		var name = mesh_library.get_item_name(itemId)
@@ -218,15 +226,11 @@ func _connect_structures(cells):
 		
 		match name:
 			'Smallbridge':
-				return # cardinals below seem to be wrong need to re-do
-				# [NW, N, NE, E, SE, S, SW, W]
-				var before_cardinals = [null, -1, null, null, null, null, null, null]
-				var after_cardinals = [null, null, null, null, null, -1, null, null]
-				var cardinalDelta = cardinalDeltas[orientationModifier[orientation] + 1]
+				var cardinalDelta = deltaMappings[name][orientation]
 				
 				var before_cell = null
 				for y in range(cell.y, cell.y - 3, -1):
-					before_cell = Vector3(cell.x - cardinalDelta.x, y, cell.z - cardinalDelta.y)
+					before_cell = Vector3(cell.x + cardinalDelta.x, y, cell.z + cardinalDelta.y)
 					if (get_cell_item(before_cell.x, before_cell.y, before_cell.z) == GridMap.INVALID_CELL_ITEM):
 						before_cell = null
 					else:
@@ -239,13 +243,13 @@ func _connect_structures(cells):
 					var prev_tile = bridge_tile
 					if prev_tile == null:
 						prev_tile = cell
-					bridge_tile = Vector3(cell.x + cardinalDelta.x * mult, cell.y, cell.z + cardinalDelta.y * mult)
+					bridge_tile = Vector3(cell.x - cardinalDelta.x * mult, cell.y, cell.z - cardinalDelta.y * mult)
 					_connect_cells(prev_tile, bridge_tile, true)
 					
 				# TODO: not working for 0 degree orientation
 				var after_cell = null
 				for y in range(cell.y, cell.y - 3, -1):
-					after_cell = Vector3(bridge_tile.x + cardinalDelta.x, y, bridge_tile.z + cardinalDelta.y)
+					after_cell = Vector3(bridge_tile.x - cardinalDelta.x, y, bridge_tile.z - cardinalDelta.y)
 					if (get_cell_item(after_cell.x, after_cell.y, after_cell.z) == GridMap.INVALID_CELL_ITEM):
 						after_cell = null
 					else:
