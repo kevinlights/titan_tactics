@@ -84,19 +84,22 @@ func _remove_most_cells():
 			set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
 
 func world_path(path:PoolVector3Array):
+	var offset = get_parent().translation + Vector3(-0.5, 0, -0.5)
+	offset.y = 0
 	var w_path = PoolVector3Array()
 	for point in path:
-		w_path.append(map_to_world(point.x, 0, point.z))
+		w_path.append(map_to_world(point.x, 0, point.z) + offset)
 	return w_path
 
 func find_path(start, end):
+	var offset = get_parent().translation * -1
 	print("end ", end)
 	var map_end = world_to_map(end)
 	print("end map ", map_end)
 	print("back to world end ", map_to_world(map_end.x, map_end.y, map_end.z))
 	print("find_path ", start, end)
-	start = world_to_map(start)
-	end = world_to_map(end)
+	start = world_to_map(start + offset)
+	end = world_to_map(end + offset)
 	print("find_path (grid coordinates) ", start, end)
 	var possible_starts = filter_tiles(start.x, start.z)
 	var possible_ends = filter_tiles(end.x, end.z)
@@ -109,7 +112,7 @@ func find_path(start, end):
 		print("found_path (world) ", w_path)
 		return w_path
 	elif possible_starts.size() == 0 or possible_ends.size() == 0:
-		print('Unable to find a possible start/end tile for pathfinding')
+		print('Unable to find a possible start/end tile for pathfinding ', possible_starts, possible_ends)
 	elif possible_starts.size() > 1 or possible_ends.size() > 1:
 		print_debug("Multiple possible start/end tiles found for pathfinding")
 	return []
