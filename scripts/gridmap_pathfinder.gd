@@ -83,18 +83,31 @@ func _remove_most_cells():
 		if keep.find(Vector2(cell.x, cell.z)) == -1:
 			set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
 
-var offset_x = 0
-var offset_z = 0
+func world_path(path:PoolVector3Array):
+	var w_path = PoolVector3Array()
+	for point in path:
+		w_path.append(map_to_world(point.x, 0, point.z))
+	return w_path
+
 func find_path(start, end):
+	print("end ", end)
+	var map_end = world_to_map(end)
+	print("end map ", map_end)
+	print("back to world end ", map_to_world(map_end.x, map_end.y, map_end.z))
 	print("find_path ", start, end)
-	var possible_starts = filter_tiles(start.x + offset_x, start.y + offset_z)
-	var possible_ends = filter_tiles(end.x + offset_x, end.z + offset_z)
+	start = world_to_map(start)
+	end = world_to_map(end)
+	print("find_path (grid coordinates) ", start, end)
+	var possible_starts = filter_tiles(start.x, start.z)
+	var possible_ends = filter_tiles(end.x, end.z)
 	if possible_starts.size() == 1 and possible_ends.size() == 1:
 		var start_id = vector_to_id(possible_starts[0])
 		var end_id = vector_to_id(possible_ends[0])
 		var path = astar.get_point_path(start_id, end_id)
+		var w_path = world_path(path)
 		print("found_path ", path)
-		return path
+		print("found_path (world) ", w_path)
+		return w_path
 	elif possible_starts.size() == 0 or possible_ends.size() == 0:
 		print('Unable to find a possible start/end tile for pathfinding')
 	elif possible_starts.size() > 1 or possible_ends.size() > 1:
