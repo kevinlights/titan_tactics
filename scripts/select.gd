@@ -89,8 +89,8 @@ func _input(event):
 	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
 		advance.x = 1
 	self.tile = self.tile + advance
-	print("select tile ", tile)
 	if not advance.is_equal_approx(Vector3(0, 0, 0)):
+		print("select tile ", tile)
 		emit_signal("moved", self.tile)
 	
 	if mode == MODE.PLAY:
