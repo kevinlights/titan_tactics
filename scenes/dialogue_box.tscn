@@ -80,7 +80,7 @@ __meta__ = {
 }
 
 [node name="portraits" parent="portrait" instance=ExtResource( 3 )]
-position = Vector2( 0.707108, 0 )
+position = Vector2( -0.292892, -1 )
 scale = Vector2( 1.38302, 1.2192 )
 centered = false
 

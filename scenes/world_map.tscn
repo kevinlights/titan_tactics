@@ -1,0 +1,121 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/gui/dialogue_box.gd" type="Script" id=2]
+[ext_resource path="res://gfx/worldmap.png" type="Texture" id=3]
+[ext_resource path="res://gfx/map_select.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 13
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 12, 13 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 12, 0, 12, 13 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 24, 0, 12, 13 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 36, 0, 12, 13 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[node name="world_map" type="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -224.0
+margin_right = 320.0
+margin_bottom = -144.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="shadow" type="ColorRect" parent="."]
+margin_left = 22.0
+margin_top = 7.0
+margin_right = 302.0
+margin_bottom = 32.0
+color = Color( 0.2, 0.196078, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textbox outline" type="ColorRect" parent="."]
+margin_left = 20.0
+margin_top = 5.0
+margin_right = 300.0
+margin_bottom = 30.0
+color = Color( 0.89, 0.88288, 0.7832, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textbox shadow" type="ColorRect" parent="."]
+margin_left = 22.0
+margin_top = 7.0
+margin_right = 297.0
+margin_bottom = 28.0
+color = Color( 0.733333, 0.682353, 0.643137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textbox highlight" type="ColorRect" parent="."]
+margin_left = 23.0
+margin_top = 8.0
+margin_right = 298.0
+margin_bottom = 28.0
+color = Color( 0.941176, 0.921569, 0.882353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textbox2" type="ColorRect" parent="."]
+margin_left = 23.0
+margin_top = 8.0
+margin_right = 297.0
+margin_bottom = 27.0
+color = Color( 0.89, 0.88288, 0.7832, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="."]
+margin_top = 12.0
+margin_right = 320.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.929412, 0.92549, 0.878431, 1 )
+text = "Level 1 - Kakariko Village"
+align = 1
+autowrap = true
+clip_text = true
+max_lines_visible = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="map selector" type="AnimatedSprite" parent="."]
+position = Vector2( 70, 133.873 )
+frames = SubResource( 6 )
+playing = true
+centered = false
