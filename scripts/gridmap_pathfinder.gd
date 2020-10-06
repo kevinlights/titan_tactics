@@ -187,7 +187,8 @@ func _init_astar():
 					exclude = true
 					break
 			if not exclude:
-				astar.add_point(tiles.size(), cell)
+				var cell_height = cell.y + _compute_avg_height(name)
+				astar.add_point(tiles.size(), cell, min(1, cell_height))
 				if debug:
 					print('adding "', name, '" ', cell, ' as tile #', tiles.size())
 				tiles.push_back(cell)
@@ -209,7 +210,17 @@ func _init_astar():
 				if connections.size() == 0:
 					set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
 	print(counts)
-	
+
+func _compute_avg_height(name):
+	var heights = cardinalHeights[name]
+	if heights:
+		var sum = 0
+		for val in heights:
+			sum += val
+		return sum / heights.size()
+	else:
+		return 0
+
 func _connect_points():
 	for cell in tiles:
 		var neighbours = _get_neighbors(cell)
