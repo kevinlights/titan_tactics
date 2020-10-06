@@ -10,7 +10,7 @@ enum MODE {
 	CHECK_MAP
 }
 
-var camera_offset = Vector3(0, 8.8, 9)
+var camera_offset = Vector3(-6.5, 9, 6.5) # //Vector3(0, 8.8, 9)
 var camera_captured = false
 var mode = MODE.PLAY
 var tile = Vector3(0, 0, 0) setget set_tile, get_tile

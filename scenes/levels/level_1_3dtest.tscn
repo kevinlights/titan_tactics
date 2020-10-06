@@ -130,7 +130,7 @@ texture = ExtResource( 1 )
 [node name="map" type="Spatial" parent="."]
 
 [node name="camera" type="Camera" parent="map"]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.817, 10.972 )
+transform = Transform( 0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 2, 8.817, 13.972 )
 current = true
 fov = 25.0
 

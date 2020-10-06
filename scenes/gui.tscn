@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://scripts/ally.gd" type="Script" id=48]
 [ext_resource path="res://scenes/portraits.tscn" type="PackedScene" id=49]
 [ext_resource path="res://scenes/dialogue_box.tscn" type="PackedScene" id=50]
+[ext_resource path="res://scenes/dialogue_answers.tscn" type="PackedScene" id=51]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 14 )
@@ -179,14 +180,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 23 ), SubResource( 24 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -213,24 +214,24 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 28 ), SubResource( 29 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
 "speed": 3.0
+}, {
+"frames": [ SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "down",
+"speed": 3.0
 } ]
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 23
+flags = 19
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=32]
-flags = 23
+flags = 19
 atlas = ExtResource( 23 )
 region = Rect2( 0, 8, 8, 8 )
 
@@ -259,12 +260,12 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=37]
-flags = 23
+flags = 19
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=38]
-flags = 23
+flags = 19
 atlas = ExtResource( 23 )
 region = Rect2( 0, 8, 8, 8 )
 
@@ -293,12 +294,12 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=43]
-flags = 23
+flags = 19
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=44]
-flags = 23
+flags = 19
 atlas = ExtResource( 23 )
 region = Rect2( 0, 8, 8, 8 )
 
@@ -347,11 +348,13 @@ texture = ExtResource( 28 )
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 103.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 141.551, 130.424 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -433,7 +436,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -524,11 +526,13 @@ animation = "Rolf"
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 98.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Bbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 136.551, 130.424 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="battle" type="Control" parent="."]
@@ -714,6 +718,7 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 25 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -726,7 +731,6 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 30 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1027,6 +1031,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1048,6 +1053,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1056,6 +1062,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 36 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -1168,7 +1175,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 36 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1194,6 +1200,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1291,7 +1298,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1314,7 +1320,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1403,7 +1408,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1426,7 +1430,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1487,7 +1490,6 @@ __meta__ = {
 [node name="more" type="AnimatedSprite" parent="dialogue/background"]
 position = Vector2( 145, 36 )
 frames = SubResource( 42 )
-frame = 1
 playing = true
 
 [node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
@@ -1522,7 +1524,6 @@ __meta__ = {
 visible = false
 position = Vector2( 5, 0 )
 frames = SubResource( 45 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1559,7 +1560,6 @@ __meta__ = {
 visible = false
 position = Vector2( 5, 0 )
 frames = SubResource( 45 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1594,7 +1594,6 @@ __meta__ = {
 visible = false
 position = Vector2( 5, 0 )
 frames = SubResource( 45 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 2 )
@@ -1644,6 +1643,8 @@ stream = ExtResource( 7 )
 [node name="level_up" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 13 )
 volume_db = -3.5
+
+[node name="dialogue_questions" parent="." instance=ExtResource( 51 )]
 [connection signal="pressed" from="lvlup/Control/Ok" to="lvlup" method="_on_ok_pressed"]
 [connection signal="pressed" from="win/Control/Next" to="win" method="_on_Next_pressed"]
 [connection signal="pressed" from="win/Control/Retry" to="win" method="_on_Retry_pressed"]

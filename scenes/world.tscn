@@ -40,22 +40,22 @@ region = Rect2( 80, 20, 20, 20 )
 [sub_resource type="AtlasTexture" id=5]
 flags = 19
 atlas = ExtResource( 14 )
-region = Rect2( 54, 0, 18, 18 )
+region = Rect2( 90, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 19
 atlas = ExtResource( 14 )
-region = Rect2( 54, 18, 18, 18 )
+region = Rect2( 90, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 19
 atlas = ExtResource( 14 )
-region = Rect2( 90, 0, 18, 18 )
+region = Rect2( 54, 0, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 19
 atlas = ExtResource( 14 )
-region = Rect2( 90, 18, 18, 18 )
+region = Rect2( 54, 18, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 19
@@ -111,12 +111,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ) ],
@@ -134,24 +134,24 @@ animations = [ {
 "name": "fighter",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 15 ), SubResource( 16 ) ],
-"loop": true,
-"name": "cantmove",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "blank",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "cantmove",
+"speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=18]
-flags = 23
+flags = 19
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=19]
-flags = 23
+flags = 19
 atlas = ExtResource( 15 )
 region = Rect2( 0, 8, 8, 8 )
 
@@ -183,7 +183,6 @@ axis = 1
 alpha_cut = 2
 frames = SubResource( 17 )
 animation = "attack"
-frame = 1
 playing = true
 script = ExtResource( 4 )
 
@@ -191,6 +190,7 @@ script = ExtResource( 4 )
 visible = false
 flip_v = true
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="gui" parent="." instance=ExtResource( 6 )]

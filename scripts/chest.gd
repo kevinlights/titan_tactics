@@ -37,12 +37,12 @@ func open(type):
 	if empty:
 		return
 	start = OS.get_ticks_msec()
-	start_y = $drop.position.y
+	start_y = $drop.translation.y
 	empty = true
 	var loot = Item.new()
 	loot.generate(item_spawner.level, item_spawner.equipment_slot, type)
 #	play("open")
-	$open.play()
+#	$open.play()
 	$drop.play(item_types[type])
 	$drop.show()
 	return loot
@@ -55,9 +55,9 @@ func _process(_delta):
 	if empty and !looted:
 		var now = OS.get_ticks_msec()
 		if now - start < ttl:
-			$drop.translation.y = lerp(start_y, start_y - 8, float(now - start) / float(ttl))
+			$drop.translation.y = lerp(start_y, start_y + 0.5, float(now - start) / float(ttl))
 		else:
-			$drop.translation.y = start_y - 8
+			$drop.translation.y = start_y + 0.5
 			yield(get_tree().create_timer(1.0), "timeout")
 			$drop.hide()
 #			get_parent().remove_child(self)?

@@ -8,68 +8,79 @@
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
+atlas = ExtResource( 3 )
+region = Rect2( 24, 16, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 19
+atlas = ExtResource( 3 )
+region = Rect2( 16, 16, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 19
+atlas = ExtResource( 3 )
+region = Rect2( 8, 16, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 19
+atlas = ExtResource( 3 )
+region = Rect2( 0, 16, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "battery",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "wand",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "bow",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "sword",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 19
 atlas = ExtResource( 1 )
 region = Rect2( 0, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=7]
 flags = 19
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
+"frames": [ SubResource( 6 ) ],
 "loop": true,
 "name": "open",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ) ],
+"frames": [ SubResource( 7 ) ],
 "loop": true,
 "name": "closed",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 3 )
-region = Rect2( 24, 16, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 16, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 3 )
-region = Rect2( 16, 16, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 3 )
-region = Rect2( 8, 16, 8, 8 )
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "battery",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ) ],
-"loop": true,
-"name": "sword",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ) ],
-"loop": true,
-"name": "wand",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ) ],
-"loop": true,
-"name": "bow",
-"speed": 5.0
-} ]
-
 [node name="chest" type="Spatial"]
 script = ExtResource( 2 )
+
+[node name="drop" type="AnimatedSprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492104, 0.341152, 0.502054 )
+pixel_size = 0.04
+billboard = 2
+frames = SubResource( 5 )
+animation = "battery"
 
 [node name="chest_billboard" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00114679, 0.126645, -0.00570965 )
@@ -78,15 +89,8 @@ centered = false
 pixel_size = 0.04
 billboard = 1
 alpha_cut = 2
-frames = SubResource( 3 )
-animation = "closed"
-
-[node name="drop" type="AnimatedSprite3D" parent="chest_billboard"]
-visible = false
-centered = false
-offset = Vector2( 4, 2 )
 frames = SubResource( 8 )
-animation = "battery"
+animation = "closed"
 
 [node name="open" type="AudioStreamPlayer" parent="chest_billboard"]
 stream = ExtResource( 4 )

@@ -518,6 +518,7 @@ func _on_recruit():
 	if get_current().character.turn_limits.actions != 0 and is_adjacent(get_current(), target):
 		var recruitment = Recruitment.new(target.character, target.character.personality)
 		gui.dialogue(recruitment.intro)
+		gui.answers(recruitment.options)
 		recruitment.connect("response", self, "_on_recruit_response")
 
 func _on_guard():

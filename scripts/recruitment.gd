@@ -3,6 +3,7 @@ extends Object
 
 signal response
 
+var options = []
 enum PERSONALITY {
 	AGGRESSIVE,
 	NARCISSIST,
@@ -106,6 +107,10 @@ func _init(character, personality = null):
 	message.message = introductions[personality][rand_range(0, num_intros)]
 	message.title = portrait_map[character.character_class]
 	intro.messages.append(message)
+	options.append(generate_branch(PERSONALITY.AGGRESSIVE))
+	options.append(generate_branch(PERSONALITY.NARCISSIST))
+	options.append(generate_branch(PERSONALITY.GREEDY))
+	options.shuffle()
 #	intro.branches.append(generate_branch(PERSONALITY.AGGRESSIVE))
 #	intro.branches.append(generate_branch(PERSONALITY.NARCISSIST))
 #	intro.branches.append(generate_branch(PERSONALITY.GREEDY))
@@ -120,10 +125,10 @@ func _on_branch(id):
 		self.emit_signal("response", generate_response(false))
 
 func generate_branch(personality):
-	var branch = PT_Dialogue.new()
+	var branch = {}
 	var num_responses = persuasion[personality].size()
 	branch.text = persuasion[personality][rand_range(0, num_responses)]
-	branch.dialogue_id = personality
+	branch.id = personality
 	return branch
 	
 func generate_response(accepted):
