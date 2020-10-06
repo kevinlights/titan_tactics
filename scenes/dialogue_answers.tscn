@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/gui/dialogue_box.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 1 )
+
+[node name="dialogue_questions" type="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -84.0
+margin_right = 320.0
+margin_bottom = -4.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="box" type="Control" parent="."]
+margin_top = -140.0
+margin_right = 40.0
+margin_bottom = -100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="ColorRect" parent="box"]
+margin_left = 22.0
+margin_top = 18.0
+margin_right = 302.0
+margin_bottom = 172.0
+color = Color( 0.2, 0.196078, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textbox outline" type="ColorRect" parent="box"]
+margin_left = 20.0
+margin_top = 16.0
+margin_right = 300.0
+margin_bottom = 170.0
+color = Color( 0.89, 0.88288, 0.7832, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textbox shadow" type="ColorRect" parent="box"]
+margin_left = 22.0
+margin_top = 18.0
+margin_right = 297.0
+margin_bottom = 167.0
+color = Color( 0.733333, 0.682353, 0.643137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textbox highlight" type="ColorRect" parent="box"]
+margin_left = 23.0
+margin_top = 19.0
+margin_right = 298.0
+margin_bottom = 168.0
+color = Color( 0.941176, 0.921569, 0.882353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="textbox2" type="ColorRect" parent="box"]
+margin_left = 23.0
+margin_top = 19.0
+margin_right = 297.0
+margin_bottom = 167.0
+color = Color( 0.89, 0.88288, 0.7832, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="answers" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="one" type="Label" parent="answers"]
+margin_left = 45.3337
+margin_top = -120.0
+margin_right = 295.334
+margin_bottom = -75.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You smell like a donkey's butt"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="two" type="Label" parent="answers"]
+margin_left = 45.0
+margin_top = -70.0
+margin_right = 295.0
+margin_bottom = -25.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You smell like a donkey's butt"
+valign = 1
+autowrap = true
+
+[node name="three" type="Label" parent="answers"]
+margin_left = 45.0
+margin_top = -20.0
+margin_right = 295.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You smell like a donkey's butt"
+valign = 1
+autowrap = true

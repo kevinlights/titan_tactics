@@ -86,9 +86,9 @@ var character
 var intro
 
 var portrait_map = {
-	TT.TYPE.ARCHER: PT_Dialogue.PORTRAIT.AI_ARCHER,
-	TT.TYPE.MAGE: PT_Dialogue.PORTRAIT.AI_MAGE,
-	TT.TYPE.FIGHTER: PT_Dialogue.PORTRAIT.AI_SWORDSMAN
+	TT.TYPE.ARCHER: "ai_archer",
+	TT.TYPE.MAGE: "ai_mage",
+	TT.TYPE.FIGHTER: "ai_fighter"
 }
 
 func _init(character, personality = null):
@@ -100,15 +100,17 @@ func _init(character, personality = null):
 	self.personality = personality
 	self.character = character
 	var num_intros = introductions[personality].size()
-	intro = PT_Dialogue.new()
-	intro.title = character.name
-	intro.text = introductions[personality][rand_range(0, num_intros)]
-	intro.portrait = portrait_map[character.character_class]
-	intro.branches.append(generate_branch(PERSONALITY.AGGRESSIVE))
-	intro.branches.append(generate_branch(PERSONALITY.NARCISSIST))
-	intro.branches.append(generate_branch(PERSONALITY.GREEDY))
-	intro.branches.shuffle()
-	intro.connect("completed", self, "_on_branch")
+	intro = Dialogue.new()
+	var message = DialogueMessage.new()
+#	intro.title = character.name
+	message.message = introductions[personality][rand_range(0, num_intros)]
+	message.title = portrait_map[character.character_class]
+	intro.messages.append(message)
+#	intro.branches.append(generate_branch(PERSONALITY.AGGRESSIVE))
+#	intro.branches.append(generate_branch(PERSONALITY.NARCISSIST))
+#	intro.branches.append(generate_branch(PERSONALITY.GREEDY))
+#	intro.branches.shuffle()
+#	intro.connect("completed", self, "_on_branch")
 
 func _on_branch(id):
 	print("branch ", id)

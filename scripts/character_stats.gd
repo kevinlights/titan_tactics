@@ -25,6 +25,7 @@ var strength
 var xp = 0 # setget set_xp,get_xp
 var xp_to_next = 1
 var current_to_next = 0
+var personality = 0
 
 # fibronacci influences hp
 # hp_up does nothing?
@@ -32,6 +33,12 @@ var fibonacci = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
 var hp_up = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
 var atk_up = [ 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1 ]
 var def_up = [ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ]
+
+enum PERSONALITY {
+	AGGRESSIVE,
+	NARCISSIST,
+	GREEDY
+}
 
 func sequence_cumulative(sequence, position):
 	var result = 0
@@ -145,6 +152,7 @@ func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range =
 	item_def.generate(level, Item.SLOT.DEF, character_class)
 
 func generate(class_stats, request_class, request_control, request_level = 1, force = false):
+	var rng = RandomNumberGenerator.new()
 	if !item_atk or !item_def:
 		item_atk = Item.new()
 		item_def = Item.new()
@@ -155,7 +163,8 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 	abilities = TT.class_stats.abilities[character_class]
 	level = request_level
 	xp_to_next = level * level
-
+	rng.randomize()
+	personality = rng.randi_range(0, 2)
 	# prevent re-generating character on spawn
 	if not Engine.editor_hint and not force:
 		return
