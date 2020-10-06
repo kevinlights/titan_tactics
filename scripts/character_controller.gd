@@ -299,14 +299,6 @@ func recruit_failed(source):
 	emit_signal("recruit_failed")
 	
 func recruit(source):
-#	var chance_to_recruit = 0.5
-#	check_finished()
-#	if randf() < chance_to_recruit:
-#		attack(source)
-#		emit_signal("recruit_failed")
-#		$sfx/recruit/fail.play()
-#		return false
-#	else:
 	emit_signal("recruited")
 	die()
 	source.character.add_xp(character.level)

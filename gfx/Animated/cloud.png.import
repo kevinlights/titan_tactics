@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud.png-c1773f667acd4f3c2597b6ed882ad4ef.stex"
+path="res://.import/cloud.png-171e4f5e6c5b5e778b064d692a9189c8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/animated/cloud.png"
-dest_files=[ "res://.import/cloud.png-c1773f667acd4f3c2597b6ed882ad4ef.stex" ]
+source_file="res://gfx/Animated/cloud.png"
+dest_files=[ "res://.import/cloud.png-171e4f5e6c5b5e778b064d692a9189c8.stex" ]
 
 [params]
 

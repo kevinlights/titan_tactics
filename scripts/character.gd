@@ -14,9 +14,16 @@ var weakness
 var strength
 var name
 var item
+var personality
 
 var class_stats = load("res://resources/class_stats.tres")
 var default_stats
+
+enum PERSONALITY {
+	AGGRESSIVE,
+	NARCISSIST,
+	GREEDY
+}
 
 var turn_limits = {
 	"move_distance": 64,
@@ -38,7 +45,10 @@ func _init(request_type, request_control):
 	item.generate(Game.level, request_type)
 	type = request_type
 	control = request_control
-	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	if personality == null:
+		personality = rng.randi_range(0, 2)
 	abilities = TT.class_stats.abilities[type]
 	max_hp = floor(default_stats.hp + rand_range((Game.level + 1) * 4, (Game.level + 1) * 5) - 15)
 	hp = floor(default_stats.hp + rand_range((Game.level + 1) * 4, (Game.level + 1) * 5) - 15)
