@@ -117,6 +117,6 @@ __meta__ = {
 [node name="map_selector" type="AnimatedSprite" parent="."]
 position = Vector2( 267, 95 )
 frames = SubResource( 6 )
-frame = 3
+frame = 2
 playing = true
 centered = false

@@ -10,6 +10,7 @@ export(int) var attack = 0
 export(int) var attack_range = 0
 export(int) var defense = 0
 export(int) var heal = 0
+export(Resource) var effect = StatusEffect.new()
 
 enum SLOT {
 	ATK = 0,

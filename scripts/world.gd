@@ -460,6 +460,8 @@ func _initiate_turn():
 	if current[TT.CONTROL.AI].size() == 0 or current[TT.CONTROL.PLAYER].size() == 0:
 		print("Don't initiate turn; the game is already over.")
 		return
+	for character in current[current_turn]:
+		character.apply_effects()
 	if $select.disabled:
 		print("initiate turn")
 		gui.back()

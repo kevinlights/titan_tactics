@@ -26,6 +26,7 @@ var is_done = false
 var dialogue
 var recruit_dialogue
 var dialogue_used = false
+var status_effects = []
 
 onready var world = get_parent().get_parent().get_parent()
 
@@ -37,6 +38,13 @@ var movement = {
 	"last_horizontal_direction": "left",
 	"moving": false
 }
+
+func apply_effects():
+	for effect in status_effects:
+		effect.turns_left -= 1
+		character.hp -= effect.damage
+		if effect.effect == StatusEffect.EFFECT.STUN:
+			character.turn_limits.actions = 0
 
 func check_finished():
 	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
@@ -70,11 +78,6 @@ func hit(attacker):
 	avatar.play("hit-" + movement.last_horizontal_direction)
 	if guarding:
 		pick_random_sfx($sfx/defend)
-#	if character.hp != character.max_hp:
-#		healthbar.show()
-#		healthbar.set_value(character.hp, character.max_hp)
-	if character.max_hp <= 0:
-		print("nooooooooooooooooooooooo it can't be")
 	if character.hp <= 0:
 		die()
 		attacker.add_xp(character.level)
