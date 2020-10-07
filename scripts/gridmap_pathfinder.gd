@@ -13,6 +13,7 @@ onready var counts := {
 }
 var debug := false # change to true to increase logging
 var hide_non_walkable_tiles := false # change to true to visually debug
+var no_diagonal_movement := true # change to false to allow diagonal movement
 
 # decorations are impassable to the player.
 var decorations := ["Tree", "Water", "underwater", "waterside"]
@@ -228,6 +229,9 @@ func _connect_points():
 			_connect_cells(cell, neighbour)
 
 func _connect_cells(a_cell, b_cell, upsert = false):
+	if no_diagonal_movement:
+		if abs(a_cell.x - b_cell.x) + abs(a_cell.z - b_cell.z) > 1:
+			return
 	var a_id = vector_to_id(a_cell)
 	var b_id = vector_to_id(b_cell)
 	if upsert:
