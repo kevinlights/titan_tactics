@@ -132,17 +132,19 @@ func generate_branch(personality):
 	return branch
 	
 func generate_response(accepted):
-	var response = PT_Dialogue.new()
+	var response = Dialogue.new()
+	var message = DialogueMessage.new()
 	var num_options = accept[personality].size()
 	if not accepted:
 		num_options = deny[personality].size()
-		response.text = deny[personality][rand_range(0, num_options)]
-		response.dialogue_id = "denied"
+		message.message = deny[personality][rand_range(0, num_options)]
+		message.id = "denied"
 	else:
-		response.text = accept[personality][rand_range(0, num_options)]
-		response.dialogue_id = "accepted"
-	response.title = character.name
-	response.portrait = portrait_map[character.character_class]
+		message.message = accept[personality][rand_range(0, num_options)]
+		message.id = "accepted"
+	message.title = portrait_map[character.character_class]
+#	response.portrait = portrait_map[character.character_class]
+	response.messages.append(message)
 	return response
 	
 # Called when the node enters the scene tree for the first time.

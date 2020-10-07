@@ -104,4 +104,6 @@ func _input(event):
 			print("dialogue completed")
 			if index < content.messages.size() -1:
 				set_content(content, index + 1)
-#			content.complete()
+			else:
+				content.complete()
+				hide()

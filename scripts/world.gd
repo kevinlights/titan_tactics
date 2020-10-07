@@ -520,7 +520,7 @@ func _on_recruit():
 	if get_current().character.turn_limits.actions != 0 and is_adjacent(get_current(), target):
 		var recruitment = Recruitment.new(target.character, target.character.personality)
 		gui.dialogue(recruitment.intro)
-		gui.answers(recruitment.options)
+		gui.answers(recruitment)
 		recruitment.connect("response", self, "_on_recruit_response")
 
 func _on_guard():
@@ -595,7 +595,7 @@ func _on_selector_moved(tile):
 	$select.set_context(context)
 
 func get_current_context(tile):
-	print(Game.level, ", ",  gui.get_node("dialogue").visible)
+#	print(Game.level, ", ",  gui.get_node("dialogue").visible)
 	if Game.level == 0:
 		#return TT.CONTEXT.NOT_PLAYABLE
 		pass

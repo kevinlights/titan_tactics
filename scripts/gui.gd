@@ -173,11 +173,10 @@ func back():
 		if not exempt.has(dialog.name):
 			dialog.hide()
 
-func answers(options):
-	$dialogue_questions.set_options(options)
-#	$dialogue_box.set_text(content.text)
+func answers(recruitment):
+	$dialogue_questions.set_options(recruitment)
 	$dialogue_questions.show()
-
+	
 func dialogue(content):
 	back()
 	modal = true
