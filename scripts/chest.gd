@@ -58,6 +58,6 @@ func _process(_delta):
 			$drop.translation.y = lerp(start_y, start_y + 0.5, float(now - start) / float(ttl))
 		else:
 			$drop.translation.y = start_y + 0.5
-			yield(get_tree().create_timer(1.0), "timeout")
+			yield(get_tree().create_timer(4.0), "timeout")
 			$drop.hide()
 #			get_parent().remove_child(self)?

@@ -18,20 +18,72 @@ enum CONTEXT {
 }
 
 const cell_size = 1
-const levels = {
-	"level_1_3dtest": "intro",
-	"level_0": "intro",
-	"level_1": "forest",
-	"level_2": "forest",
-	"level_3": "forest",
-	"level_4": "cave",
-	"level_5": "cave",
-	"level_6": "cave",
-	"level_7": "city",
-	"level_8": "city",
-	"level_9": "city",
-	"level_10": "city"
-}
+const levels = [
+	{
+		"name": "Rolf the Confused",
+		"scene": "level_1_3dtest",
+		"music": "forest"
+	},
+	{
+		"name": "The OGRE enters the game",
+		"scene": "level_1_3dtest",
+		"music": "forest"
+	},
+	{
+		"name": "Roses are red, Violets are blue...",
+		"scene": "level_1_3dtest",
+		"music": "forest"
+	},
+	{
+		"name": "We all scream for ice cream",
+		"scene": "level_1_3dtest",
+		"music": "cave"
+	},
+	{
+		"name": "Viva la libertad",
+		"scene": "level_1_3dtest",
+		"music": "cave"
+	},
+	{
+		"name": "The well is not well",
+		"scene": "level_1_3dtest",
+		"music": "cave"
+	},
+	{
+		"name": "The hole is not whole",
+		"scene": "level_1_3dtest",
+		"music": "cave"
+	},
+	{
+		"name": "Meat is murder. Delicious, delicious murder.",
+		"scene": "level_1_3dtest",
+		"music": "city"
+	},
+	{
+		"name": "The end of the rainbow",
+		"scene": "level_1_3dtest",
+		"music": "city"
+	},
+	{
+		"name": "The pot of gold",
+		"scene": "level_1_3dtest",
+		"music": "city"
+	}
+]
+#const levels = {
+#	"level_1_3dtest": "intro",
+#	"level_0": "intro",
+#	"level_1": "forest",
+#	"level_2": "forest",
+#	"level_3": "forest",
+#	"level_4": "cave",
+#	"level_5": "cave",
+#	"level_6": "cave",
+#	"level_7": "city",
+#	"level_8": "city",
+#	"level_9": "city",
+#	"level_10": "city"
+#}
 
 const character_names = [
 	"Amy",

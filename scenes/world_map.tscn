@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://scripts/gui/dialogue_box.gd" type="Script" id=2]
+[ext_resource path="res://scripts/world_map.gd" type="Script" id=2]
 [ext_resource path="res://gfx/worldmap.png" type="Texture" id=3]
 [ext_resource path="res://gfx/map_select.png" type="Texture" id=4]
 
@@ -114,8 +114,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="map selector" type="AnimatedSprite" parent="."]
-position = Vector2( 70, 133.873 )
+[node name="map_selector" type="AnimatedSprite" parent="."]
+position = Vector2( 267, 95 )
 frames = SubResource( 6 )
+frame = 3
 playing = true
 centered = false

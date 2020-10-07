@@ -4,15 +4,16 @@ var team = []
 var level = 0
 
 func get_level_count():
-	return TT.levels.keys().size()
+	return TT.levels.size()
 
 func get_level():
-	var names = TT.levels.keys()
-	return names[level]
+#	var names = TT.levels
+	return TT.levels[level].scene
 
 func get_theme():
-	var lvl = get_level()
-	return TT.levels[lvl]
+#	var lvl = get_level()
+	return TT.levels[level].music
+#	return TT.levels[lvl]
 
 func _ready():
 	var default_stats = load("res://resources/class_stats.tres")
