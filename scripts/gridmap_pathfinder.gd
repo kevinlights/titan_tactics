@@ -12,6 +12,7 @@ onready var counts := {
 	'excluded_tiles': 0,
 }
 var debug := false # change to true to increase logging
+var debug_path := false # change to true to increase logging
 var hide_non_walkable_tiles := false # change to true to visually debug
 var no_diagonal_movement := true # change to false to allow diagonal movement
 
@@ -98,14 +99,17 @@ func point_to_world(point: Vector3, exclude_y: bool):
 
 func find_path(start, end):
 	var offset = get_parent().translation * -1
-	print("end ", end)
+	if debug_path:
+		print("end ", end)
 	var map_end = world_to_map(end)
-	print("end map ", map_end)
-	print("back to world end ", map_to_world(map_end.x, map_end.y, map_end.z))
-	print("find_path ", start, end)
+	if debug_path:
+		print("end map ", map_end)
+		print("back to world end ", map_to_world(map_end.x, map_end.y, map_end.z))
+		print("find_path ", start, end)
 	start = world_to_map(start + offset)
 	end = world_to_map(end + offset)
-	print("find_path (grid coordinates) ", start, end)
+	if debug_path:
+		print("find_path (grid coordinates) ", start, end)
 	var possible_starts = filter_tiles(start.x, start.z)
 	var possible_ends = filter_tiles(end.x, end.z)
 	if possible_starts.size() == 1 and possible_ends.size() == 1:
@@ -113,8 +117,9 @@ func find_path(start, end):
 		var end_id = vector_to_id(possible_ends[0])
 		var path = astar.get_point_path(start_id, end_id)
 		var w_path = world_path(path)
-		print("found_path ", path)
-		print("found_path (world) ", w_path)
+		if debug_path:
+			print("found_path ", path)
+			print("found_path (world) ", w_path)
 		return w_path
 	elif possible_starts.size() == 0 or possible_ends.size() == 0:
 		print('Unable to find a possible start/end tile for pathfinding ', possible_starts, possible_ends)
@@ -131,7 +136,6 @@ func get_tiles_within(_start, distance):
 		var output_ids = []
 		var start_ids = [start_id]
 		for i in range(0, distance):
-			print('iter ', i)
 			var next_ids = []
 			for id in start_ids:
 				for next in astar.get_point_connections(id):

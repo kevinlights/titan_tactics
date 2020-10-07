@@ -616,7 +616,6 @@ func get_current_context(tile):
 		else:
 			return TT.CONTEXT.NEUTRAL
 	if not current[current_turn].empty():
-		print(current_character)
 		var current_path = pathfinder.find_path(get_current().tile, $select.tile)
 		if current_path.size() > 0:
 			var allowed = current_path.size() <= get_current().character.turn_limits.move_distance
