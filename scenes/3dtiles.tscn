@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://gfx/OBJS/cube.dae" type="PackedScene" id=1]
 [ext_resource path="res://gfx/OBJS/corner.dae" type="PackedScene" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://gfx/OBJS/bricks.dae" type="PackedScene" id=16]
 [ext_resource path="res://gfx/OBJS/stump1.dae" type="PackedScene" id=17]
 [ext_resource path="res://gfx/OBJS/wall1.dae" type="PackedScene" id=18]
+[ext_resource path="res://gfx/OBJS/wallcorner1b.dae" type="PackedScene" id=19]
+[ext_resource path="res://gfx/OBJS/wallcorner1.dae" type="PackedScene" id=20]
 
 [sub_resource type="ArrayMesh" id=25]
 resource_name = "Cube.006"
@@ -117,3 +119,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73542, 1.84533, 1.812 )
 
 [node name="wall1" parent="." instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50726, 0.557541, 0.669501 )
+
+[node name="wallcorner1" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154531, 0.679136, 1.60453 )
+
+[node name="wallcorner1b" parent="." instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236673, 1.31567, 0.581328 )
