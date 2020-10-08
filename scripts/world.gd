@@ -495,6 +495,7 @@ func _on_attack():
 		gui.call_deferred("back")
 
 func _on_recruit_completed(id):
+	print("recruitment completed ", id)
 	gui.back()
 	var target = entity_at($select.tile)
 	get_current().character.turn_limits.actions -= 1
@@ -510,8 +511,9 @@ func _on_recruit_completed(id):
 	$select.call_deferred("enable")
 
 func _on_recruit_response(response):
-	gui.dialogue(response)
 	response.connect("completed", self, "_on_recruit_completed")
+	print("set response dialog ", response.messages[0].message)
+	gui.dialogue(response)
 
 func _on_recruit():
 	print("recruit option selected in menu")
@@ -519,9 +521,11 @@ func _on_recruit():
 	$select.disable()
 	if get_current().character.turn_limits.actions != 0 and is_adjacent(get_current(), target):
 		var recruitment = Recruitment.new(target.character, target.character.personality)
+		print("recruit dialog intro")
 		gui.dialogue(recruitment.intro)
 		gui.answers(recruitment)
 		recruitment.connect("response", self, "_on_recruit_response")
+		recruitment.connect("completed", self, "_on_recruit_completed")
 
 func _on_guard():
 	if get_current().character.turn_limits.actions != 0:

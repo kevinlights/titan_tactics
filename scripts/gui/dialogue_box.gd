@@ -53,6 +53,7 @@ func set_text(text):
 	typing_cancelled = false
 	$text.set_visible_characters(0)
 	$text.text = text
+	print(text)
 
 func _process(delta):
 	if !visible:
@@ -105,5 +106,6 @@ func _input(event):
 			if index < content.messages.size() -1:
 				set_content(content, index + 1)
 			else:
+				print("emit complete")
 				content.complete()
 				hide()

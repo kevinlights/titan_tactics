@@ -2,7 +2,9 @@ class_name Recruitment
 extends Object
 
 signal response
+signal completed
 
+var choice = 0
 var options = []
 enum PERSONALITY {
 	AGGRESSIVE,
@@ -117,12 +119,16 @@ func _init(character, personality = null):
 #	intro.branches.shuffle()
 #	intro.connect("completed", self, "_on_branch")
 
+func complete():
+	emit_signal("completed", choice)
+
 func _on_branch(id):
 	print("branch ", id)
+	choice = id
 	if id == self.personality:
-		self.emit_signal("response", generate_response(true))
+		emit_signal("response", generate_response(true))
 	else:
-		self.emit_signal("response", generate_response(false))
+		emit_signal("response", generate_response(false))
 
 func generate_branch(personality):
 	var branch = {}
@@ -138,13 +144,15 @@ func generate_response(accepted):
 	if not accepted:
 		num_options = deny[personality].size()
 		message.message = deny[personality][rand_range(0, num_options)]
-		message.id = "denied"
+		response.id = "denied"
 	else:
 		message.message = accept[personality][rand_range(0, num_options)]
-		message.id = "accepted"
+		response.id = "accepted"
 	message.title = portrait_map[character.character_class]
 #	response.portrait = portrait_map[character.character_class]
-	response.messages.append(message)
+#	response.messages.append(message)
+	print("responding ", message.message)
+	response.messages = [ message ]
 	return response
 	
 # Called when the node enters the scene tree for the first time.

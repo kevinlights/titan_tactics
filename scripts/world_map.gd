@@ -13,16 +13,6 @@ var level_markers = [
 	Vector2(267, 95)
 ]
 
-#var level_directions = [
-#	"down",
-#	"up",
-#	"up",
-#	"up",
-#	"left",
-#	"right",
-#
-#]
-
 func _ready():
 	move_selector()
 

@@ -1,7 +1,5 @@
 extends Control
 
-#signal answered
-
 var recruitment
 var selected = 0
 var options = []
@@ -27,7 +25,7 @@ func _input(event):
 		return
 	print(options)
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
-#		emit_signal("answered", options[selected])
+#		emit_signal("completed", options[selected])
 		recruitment._on_branch(options[selected].id)
 	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
 		selected -= 1
