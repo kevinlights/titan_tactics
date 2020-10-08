@@ -182,4 +182,4 @@ item_spawner = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -1.336, 7.5 )
 
 [node name="Spatial" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.13271, 7 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2.13271, 7 )
