@@ -438,7 +438,7 @@ func _on_select_team_member(team_member):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
 	character.from_library(team_member)
-	character.teleport(spawn.x, spawn.y)
+	character.teleport(spawn.x, spawn.z)
 	character.add_to_group("characters")
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
@@ -603,7 +603,7 @@ func get_current_context(tile):
 	if Game.level == 0:
 		#return TT.CONTEXT.NOT_PLAYABLE
 		pass
-	if gui.get_node("dialogue").visible:
+	if gui.get_node("dialogue_box").visible:
 		return TT.CONTEXT.NOT_PLAYABLE
 	if $select.mode == $select.MODE.CHECK_MAP:
 		return TT.CONTEXT.NEUTRAL

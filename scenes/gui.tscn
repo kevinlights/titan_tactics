@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -10,15 +10,12 @@
 [ext_resource path="res://scripts/gui/stats.gd" type="Script" id=8]
 [ext_resource path="res://gfx/UI.png" type="Texture" id=9]
 [ext_resource path="res://gfx/vs.png" type="Texture" id=10]
-[ext_resource path="res://gfx/text_arrow.png" type="Texture" id=11]
 [ext_resource path="res://sfx/UI/ingame_clickOpen1.wav" type="AudioStream" id=12]
 [ext_resource path="res://sfx/gameplay/level_up.wav" type="AudioStream" id=13]
 [ext_resource path="res://gfx/swordsman_p.png" type="Texture" id=14]
 [ext_resource path="res://scripts/gui/nextturn.gd" type="Script" id=15]
-[ext_resource path="res://gfx/dialogue.png" type="Texture" id=16]
 [ext_resource path="res://scripts/gui/weaponswap.gd" type="Script" id=17]
 [ext_resource path="res://scripts/gui/teamselect.gd" type="Script" id=18]
-[ext_resource path="res://sfx/UI/text.wav" type="AudioStream" id=19]
 [ext_resource path="res://gfx/swap.png" type="Texture" id=20]
 [ext_resource path="res://scenes/gui/teamconfirm.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=22]
@@ -28,8 +25,6 @@
 [ext_resource path="res://gfx/box_enemy.png" type="Texture" id=26]
 [ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
 [ext_resource path="res://gfx/box_ally.png" type="Texture" id=28]
-[ext_resource path="res://scripts/dialogue_body.gd" type="Script" id=29]
-[ext_resource path="res://scripts/gui/dialogue.gd" type="Script" id=30]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=32]
 [ext_resource path="res://gfx/panel.png" type="Texture" id=33]
@@ -46,7 +41,6 @@
 [ext_resource path="res://scripts/gui/characterswap.gd" type="Script" id=44]
 [ext_resource path="res://gfx/change.png" type="Texture" id=45]
 [ext_resource path="res://scripts/tip.gd" type="Script" id=46]
-[ext_resource path="res://scripts/option_text_focus.gd" type="Script" id=47]
 [ext_resource path="res://scripts/ally.gd" type="Script" id=48]
 [ext_resource path="res://scenes/portraits.tscn" type="PackedScene" id=49]
 [ext_resource path="res://scenes/dialogue_box.tscn" type="PackedScene" id=50]
@@ -279,40 +273,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 8, 8, 8 )
-
-[sub_resource type="SpriteFrames" id=42]
-animations = [ {
-"frames": [ SubResource( 40 ), SubResource( 41 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=43]
-flags = 19
-atlas = ExtResource( 23 )
-region = Rect2( 0, 0, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=44]
-flags = 19
-atlas = ExtResource( 23 )
-region = Rect2( 0, 8, 8, 8 )
-
-[sub_resource type="SpriteFrames" id=45]
-animations = [ {
-"frames": [ SubResource( 43 ), SubResource( 44 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [node name="gui" type="CanvasLayer"]
 script = ExtResource( 1 )
 
@@ -331,8 +291,9 @@ visible = false
 
 [node name="characterselect" type="Control" parent="."]
 visible = false
+margin_top = 80.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 120.0
 script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -350,11 +311,13 @@ texture = ExtResource( 28 )
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 103.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 141.551, 130.424 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -436,6 +399,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -526,11 +490,13 @@ animation = "Rolf"
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 98.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Bbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 136.551, 130.424 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="battle" type="Control" parent="."]
@@ -717,7 +683,6 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 25 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -730,6 +695,7 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 30 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1030,6 +996,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1051,6 +1018,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1059,6 +1027,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 44.6813, 29.1062 )
 frames = SubResource( 36 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -1171,7 +1140,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 36 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1197,6 +1165,7 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1294,7 +1263,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1317,7 +1285,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1406,7 +1373,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1429,7 +1395,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1437,183 +1402,6 @@ script = ExtResource( 24 )
 
 [node name="dialogue_box" parent="." instance=ExtResource( 50 )]
 visible = false
-
-[node name="dialogue" type="Control" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
-theme = ExtResource( 22 )
-script = ExtResource( 30 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="background" type="NinePatchRect" parent="dialogue"]
-margin_top = 100.0
-margin_right = 160.0
-margin_bottom = 144.0
-texture = ExtResource( 16 )
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="title" type="Label" parent="dialogue/background"]
-margin_left = 5.0
-margin_top = 7.0
-margin_right = 145.0
-margin_bottom = 15.0
-custom_colors/font_color = Color( 0.623529, 0.870588, 0.576471, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="body" type="Label" parent="dialogue/background"]
-margin_left = 5.0
-margin_top = 16.0
-margin_right = 155.0
-margin_bottom = 64.0
-custom_constants/line_spacing = 9
-text = "Ferme-toé un peu le mâche-patate"
-autowrap = true
-max_lines_visible = 3
-script = ExtResource( 29 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="more" type="AnimatedSprite" parent="dialogue/background"]
-position = Vector2( 145, 36 )
-frames = SubResource( 42 )
-frame = 1
-playing = true
-
-[node name="textsfx" type="AudioStreamPlayer" parent="dialogue"]
-stream = ExtResource( 19 )
-volume_db = -12.0
-
-[node name="branches" type="NinePatchRect" parent="dialogue"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 152.0
-margin_bottom = 74.0
-texture = ExtResource( 33 )
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="trigger_1" type="Button" parent="dialogue/branches"]
-margin_left = 4.0
-margin_top = 8.0
-margin_right = 16.0
-margin_bottom = 16.0
-focus_neighbour_bottom = NodePath("../trigger_2")
-focus_next = NodePath("../trigger_2")
-flat = true
-align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_1"]
-visible = false
-position = Vector2( 5, 0 )
-frames = SubResource( 45 )
-frame = 1
-playing = true
-centered = false
-offset = Vector2( -2, 2 )
-script = ExtResource( 24 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="option_text" type="Label" parent="dialogue/branches/trigger_1"]
-margin_left = 12.0
-margin_top = 4.0
-margin_right = 140.0
-margin_bottom = 24.0
-text = "Something Really cool I can do"
-autowrap = true
-script = ExtResource( 47 )
-
-[node name="trigger_2" type="Button" parent="dialogue/branches"]
-margin_left = 4.0
-margin_top = 32.0
-margin_right = 16.0
-margin_bottom = 40.0
-focus_neighbour_top = NodePath("../trigger_1")
-focus_neighbour_bottom = NodePath("../trigger_3")
-focus_next = NodePath("../trigger_3")
-focus_previous = NodePath("../trigger_1")
-flat = true
-align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_2"]
-visible = false
-position = Vector2( 5, 0 )
-frames = SubResource( 45 )
-frame = 1
-playing = true
-centered = false
-offset = Vector2( -2, 2 )
-script = ExtResource( 24 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="option_text" type="Label" parent="dialogue/branches/trigger_2"]
-margin_left = 12.0
-margin_top = 4.0
-margin_right = 140.0
-margin_bottom = 24.0
-text = "Something Really cool I can do better than you and companou"
-autowrap = true
-script = ExtResource( 47 )
-
-[node name="trigger_3" type="Button" parent="dialogue/branches"]
-margin_left = 4.0
-margin_top = 56.0
-margin_right = 16.0
-margin_bottom = 64.0
-focus_neighbour_top = NodePath("../trigger_2")
-focus_previous = NodePath("../trigger_2")
-flat = true
-align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="focus" type="AnimatedSprite" parent="dialogue/branches/trigger_3"]
-visible = false
-position = Vector2( 5, 0 )
-frames = SubResource( 45 )
-frame = 1
-playing = true
-centered = false
-offset = Vector2( -2, 2 )
-script = ExtResource( 24 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="option_text" type="Label" parent="dialogue/branches/trigger_3"]
-margin_left = 12.0
-margin_top = 4.0
-margin_right = 111.0
-margin_bottom = 24.0
-text = "Something Really cool I can do better than you"
-autowrap = true
-script = ExtResource( 47 )
 
 [node name="sfx" type="Node" parent="."]
 

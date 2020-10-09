@@ -124,6 +124,11 @@ animations = [ {
 "name": "attack",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "blank",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "guard",
@@ -132,11 +137,6 @@ animations = [ {
 "frames": [ SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "fighter",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "blank",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ) ],

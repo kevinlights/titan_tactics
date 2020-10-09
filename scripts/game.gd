@@ -23,4 +23,9 @@ func _ready():
 	character.name = "Rolf"
 	character.portrait_override = PT_Dialogue.PORTRAIT.HERO
 	team.append(character)
+	var character2 = CharacterStats.new()
+	character2.generate(default_stats, TT.TYPE.ARCHER, TT.CONTROL.PLAYER, 1, true)
+	character2.name = "Cyan"
+	character2.portrait_override = PT_Dialogue.PORTRAIT.CYAN
+	team.append(character2)
 	
