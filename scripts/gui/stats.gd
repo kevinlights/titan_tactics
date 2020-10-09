@@ -65,7 +65,7 @@ var portrait_map = {
 #level line width = 28
 
 func _process(_delta):
-	if !visible:
+	if !visible or !player:
 		return
 	var now = OS.get_ticks_msec()
 	

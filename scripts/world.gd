@@ -273,7 +273,6 @@ func _ready():
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")
-	$range_overlay.call_deferred("set_origin", get_current())
 
 func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
@@ -326,6 +325,7 @@ func _on_team_select_done():
 	gui.back()
 	gui.team_confirm()
 
+
 func _on_check_map():
 	gui.back()
 	#gui.get_node("sfx/select").play()
@@ -356,7 +356,7 @@ func _on_start_level():
 	$select.mode = $select.MODE.PLAY
 	$select.set_origin(get_current())
 	$select.call_deferred("enable")
-
+	$range_overlay.call_deferred("set_origin", get_current())
 
 func _on_win(ignore_dialogue = false):
 	if not (gui.get_node("dialogue").visible or gui.get_node("lvlup").visible) or ignore_dialogue:
