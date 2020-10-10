@@ -1,8 +1,8 @@
 extends Spatial
 
 onready var materials = {
-	"move": preload("res://gfx/move_range.material"),
-	"attack": preload("res://gfx/attack_range.material"),
+	"move": preload("res://gfx/range-overlay/move_range_shader.material"),
+	"attack": preload("res://gfx/range-overlay/attack_range_shader.material"),
 }
 
 
