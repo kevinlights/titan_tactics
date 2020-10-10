@@ -34,11 +34,6 @@ var cardinalHeights := { # y_deltas
 	'Cube': [2, 2, 2, 2, 2, 2, 2, 2],
 	'Ramp': [2, 2, 2, 1.5, 1, 1, 1, 1.5],
 	'Ramp corner': [2, 1.5, 1, 1, 1, 1, 1, 1.5],
-	'wall':  [2, 2, 2, 2, 2, 2, 2, 2],
-	'wall1':  [2, 2, 2, 2, 2, 2, 2, 2],
-	'wallcorner1001':  [2, 2, 2, 2, 2, 2, 2, 2],
-	'tree':  [2, 2, 2, 2, 2, 2, 2, 2],
-	'Stump': [1, 1, 1, 1, 1, 1, 1, 1],
 }
 var cardinalDeltas := [
 	# Vector2(x_delta, z_delta)
