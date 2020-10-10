@@ -99,7 +99,7 @@ func point_to_world(point: Vector3, exclude_y: bool):
 	var y = 0 if exclude_y else point.y
 	return map_to_world(point.x, y, point.z) + offset
 
-func find_path(start, end):
+func find_path(start, end, blocked_cells = []):
 	var offset = get_parent().translation * -1
 	if debug_path:
 		print("end ", end)
@@ -116,8 +116,18 @@ func find_path(start, end):
 	var possible_ends = filter_tiles(end.x, end.z)
 	if possible_starts.size() == 1 and possible_ends.size() == 1:
 		var start_id = vector_to_id(possible_starts[0])
-		var end_id = vector_to_id(possible_ends[0])
+		var end_id = vector_to_id(possible_ends[0])		
+		
+		var blocked_tile_ids = []
+		if(blocked_cells.size() > 0):
+			for blocked_cell in blocked_cells:
+				for tile in filter_tiles(blocked_cell.x, blocked_cell.z):
+					blocked_tile_ids.push_back(vector_to_id(tile))
+		for id in blocked_tile_ids:
+			astar.set_point_disabled(id, true)
 		var path = astar.get_point_path(start_id, end_id)
+		for id in blocked_tile_ids:
+			astar.set_point_disabled(id, false)
 		var w_path = world_path(path)
 		if debug_path:
 			print("found_path ", path)

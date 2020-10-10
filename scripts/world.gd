@@ -61,6 +61,14 @@ func get_current():
 	current_character = clamp(current_character, 0, abs(current[current_turn].size()-1))
 	return current[current_turn][current_character]
 
+func get_blocked_cells():
+	var blocked_cells = []
+	var characters = get_tree().get_nodes_in_group ("characters")
+	for character in characters:
+		if not character.is_dead:
+			blocked_cells.push_back(character.tile)
+	return blocked_cells
+
 func entity_at(position_vector):
 	var characters = get_tree().get_nodes_in_group ("characters")
 	for character in characters:
@@ -177,7 +185,7 @@ func to_world_path(path):
 func action():
 	print ("world action")
 	var context = get_current_context($select.tile)
-	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
+	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	var target = entity_at($select.tile)
 	#gui.battle()
 	match(context):
@@ -586,7 +594,7 @@ func _on_selector_moved(tile):
 			gui.ally(get_current())
 		else:
 			gui.ally_hide(get_current())
-	var current_path = pathfinder.find_path(get_current().tile, $select.tile)
+	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	if current_path.size() > 0:
 		if context == TT.CONTEXT.MOVE:
 			$path_preview.preview_path(current_path)
@@ -620,7 +628,7 @@ func get_current_context(tile):
 		else:
 			return TT.CONTEXT.NEUTRAL
 	if not current[current_turn].empty():
-		var current_path = pathfinder.find_path(get_current().tile, $select.tile)
+		var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 		if current_path.size() > 0:
 			var allowed = current_path.size() <= get_current().character.turn_limits.move_distance
 			if all_enemies_eliminated():
