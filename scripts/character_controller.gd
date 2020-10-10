@@ -108,7 +108,7 @@ func teleport(x, y):
 	tile.z = floor(y)
 	translation.x = floor(x) # * TT.cell_size)
 	translation.z = floor(y) # * TT.cell_size)
-#	translation.y = 0
+	translation.y = 0
 
 func heal(target):
 	if character.turn_limits.actions < 1:
@@ -211,7 +211,8 @@ func move(target_path:PoolVector3Array):
 		return
 	path = target_path
 	movement.start_time = OS.get_ticks_msec()
-	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
+	movement.end_position = Vector3(path[0].x, 0, path[0].z)
+#	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
 	movement.start_position = Vector3(translation.x, translation.y, translation.z)
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
@@ -383,9 +384,11 @@ func _process(delta):
 			tile.x = floor(translation.x)
 			tile.z = floor(translation.z)
 			if not path.empty():
-				movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
+#				movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
+				movement.end_position = Vector3(path[0].x, 0, path[0].z)
 				movement.start_position = Vector3(translation.x, translation.y, translation.z)
 				movement.start_time = now
+				print(movement.end_position)
 				var diff = movement.start_position - movement.end_position
 				if abs(diff.x) > abs(diff.z):
 					if diff.x > 0:
