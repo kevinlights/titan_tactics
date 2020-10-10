@@ -17,7 +17,7 @@ var hide_non_walkable_tiles := false # change to true to visually debug
 var no_diagonal_movement := true # change to false to allow diagonal movement
 
 # decorations are impassable to the player.
-var decorations := ["Tree", "Water", "underwater", "waterside"]
+var decorations := ["Tree", "tree", "stump", "Water", "underwater", "waterside"]
 
 # structures are normally larger than a single tile and require custom logic to join tiles
 var structures := ['Smallbridge']
@@ -26,6 +26,8 @@ var structures := ['Smallbridge']
 # nw, n, ne
 # w ,  , e
 # sw, s, se 
+# cardinalHeights are only needed for walkable nodes that join up.
+# structures such as bridges with custom logic need to be added above and manually implemented in _connect_structures.
 var cardinalHeights := { # y_deltas
 	# tile_type: [NW, N, NE, E, SE, S, SW, W]
 	'Low cube': [1, 1, 1, 1, 1, 1, 1, 1],
@@ -343,6 +345,9 @@ func get_cardinal_height(cell, dir_idx):
 	var name = mesh_library.get_item_name(itemId)
 	
 	if decorations.find(name) != -1 or structures.find(name) != -1:
+		return null
+	if not cardinalHeights.has(name):
+		print_debug('Unexpected cell type. Assuming not walkable.')
 		return null
 	var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
 	if orientation == -1:
