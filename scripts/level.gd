@@ -4,7 +4,7 @@ export(Resource) var start_dialogue
 export(Resource) var end_dialogue
 export(String) var add_character
 export(String) var remove_character
-
+export(String) var map_node = "SINGLE"
 onready var world = get_tree().get_root().get_node("World")
 onready var gui = get_tree().get_root().get_node("World/gui")
 onready var selector = get_tree().get_root().get_node("World/select")

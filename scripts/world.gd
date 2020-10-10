@@ -42,19 +42,19 @@ func load_level(level_name):
 	add_child_below_node($map_anchor, level)
 	tile_meta = level.get_node("navigation/tile_meta")
 	world_map = level.get_node("map")
-	var _3d_map = level.get_node("Spatial").get_node("SINGLE")
-	if _3d_map:
-		pathfinder = _3d_map
-		$range_overlay.set_gridmap(_3d_map)
-	else:
-		pathfinder = PathFinder.new(tile_meta, [ 2, 3, 4, 5, 7 ])
-		$range_overlay.set_gridmap(null)
-	var used_rect = tile_meta.get_used_rect()
-	map_size.width = used_rect.size.x
-	map_size.height = used_rect.size.y
+	var _3d_map = level.get_node("Spatial").get_node(level.map_node)
+#	if _3d_map:
+	pathfinder = _3d_map
+	$range_overlay.set_gridmap(_3d_map)
+#	else:
+#		pathfinder = PathFinder.new(tile_meta, [ 2, 3, 4, 5, 7 ])
+#		$range_overlay.set_gridmap(null)
+#	var used_rect = tile_meta.get_used_rect()
+#	map_size.width = used_rect.size.x
+#	map_size.height = used_rect.size.y
 #	$select/camera.limit_bottom = map_size.height * TT.cell_size
 #	$select/camera.limit_right = map_size.width * TT.cell_size
-	tile_meta.hide() # meta data should not be visible to the player	
+#	tile_meta.hide() # meta data should not be visible to the player	
 	$select.disable()
 
 func get_current():
@@ -359,9 +359,9 @@ func _on_start_level():
 	$range_overlay.call_deferred("set_origin", get_current())
 
 func _on_win(ignore_dialogue = false):
-	if not (gui.get_node("dialogue").visible or gui.get_node("lvlup").visible) or ignore_dialogue:
-		print("win, dialogue: ", gui.get_node("dialogue").visible)
-		gui.get_node("dialogue").hide()
+	if not (gui.get_node("dialogue_box").visible or gui.get_node("lvlup").visible) or ignore_dialogue:
+#		print("win, dialogue: ", gui.get_node("dialogue_box").visible)
+		gui.get_node("dialogue_box").hide()
 		if Game.level + 1 < Game.get_level_count():
 			gui.win()
 		else:
@@ -481,7 +481,7 @@ func _on_attack():
 	print("attack option selected in menu")
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
-		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), target.position):
+		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), target.translation):
 			gui.error("BLOCKED LINE OF SIGHT")
 			gui.call_deferred("back")
 			return

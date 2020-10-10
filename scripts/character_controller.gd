@@ -108,6 +108,7 @@ func teleport(x, y):
 	tile.z = floor(y)
 	translation.x = floor(x) # * TT.cell_size)
 	translation.z = floor(y) # * TT.cell_size)
+#	translation.y = 0
 
 func heal(target):
 	if character.turn_limits.actions < 1:
