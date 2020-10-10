@@ -17,8 +17,10 @@ func _ready():
 #	for content in dialogue:
 	if start_dialogue:
 		start_dialogue.connect("completed", self, "_on_dialogue_complete")
+		start_dialogue.connect("completed", world, "_on_dialogue_complete")		
 	if end_dialogue:
 		end_dialogue.connect("completed", self, "_on_dialogue_complete")
+		end_dialogue.connect("completed", world, "_on_dialogue_complete")
 	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
 	print("level dialogue triggers: ", triggers.size())
 	for trigger in triggers:
