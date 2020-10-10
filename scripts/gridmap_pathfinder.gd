@@ -20,7 +20,7 @@ var no_diagonal_movement := true # change to false to allow diagonal movement
 var decorations := ["Tree", "tree", "stump", "Water", "underwater", "waterside"]
 
 # structures are normally larger than a single tile and require custom logic to join tiles
-var structures := ['Smallbridge']
+var structures := ['Smallbridge', 'Bridge']
 
 # Cardinals
 # nw, n, ne
@@ -266,6 +266,12 @@ func _connect_structures(cells):
 			22: cardinalDeltas[1], # 90 deg,
 			10: cardinalDeltas[3], # 180 deg,
 			16: cardinalDeltas[5], # 270/-90 deg
+		},
+		'Bridge': {
+			0: cardinalDeltas[7],
+			22: cardinalDeltas[1], # 90 deg,
+			10: cardinalDeltas[3], # 180 deg,
+			16: cardinalDeltas[5], # 270/-90 deg
 		}
 	}
 	for cell in cells:
@@ -274,6 +280,43 @@ func _connect_structures(cells):
 		var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
 		
 		match name:
+			'Bridge':
+				var cardinalDelta = deltaMappings[name][orientation]
+				
+				var before_cell = null
+				for y in range(cell.y, cell.y - 3, -1):
+					before_cell = Vector3(cell.x + cardinalDelta.x * 2, y, cell.z + cardinalDelta.y * 2)
+					if (get_cell_item(before_cell.x, before_cell.y, before_cell.z) == GridMap.INVALID_CELL_ITEM):
+						before_cell = null
+					else:
+						var before_item_id = get_cell_item(before_cell.x, before_cell.y, before_cell.z)
+						var before_cell_name = mesh_library.get_item_name(before_item_id)
+						break
+				if before_cell == null:
+					print_debug("Can't find before tile of Bridge ", cell)
+					
+				var bridge_tile = null
+				for mult in range(1, 4):
+					var prev_tile = bridge_tile
+					if prev_tile == null:
+						prev_tile = before_cell
+					bridge_tile = Vector3(prev_tile.x - cardinalDelta.x, cell.y, prev_tile.z - cardinalDelta.y)
+					_connect_cells(prev_tile, bridge_tile, true)
+					
+				# TODO: not working for 0 degree orientation
+				var after_cell = null
+				for y in range(cell.y, cell.y - 3, -1):
+					after_cell = Vector3(bridge_tile.x - cardinalDelta.x, y, bridge_tile.z - cardinalDelta.y)
+					if (get_cell_item(after_cell.x, after_cell.y, after_cell.z) == GridMap.INVALID_CELL_ITEM):
+						after_cell = null
+					else:
+						break
+				if after_cell == null:
+					print_debug("Can't find after tile of Bridge ", cell)
+				
+				if before_cell and after_cell:
+					_connect_cells(before_cell, cell, true)
+					_connect_cells(bridge_tile, after_cell, true)
 			'Smallbridge':
 				var cardinalDelta = deltaMappings[name][orientation]
 				
