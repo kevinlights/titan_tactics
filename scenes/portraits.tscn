@@ -4,8 +4,8 @@
 [ext_resource path="res://gfx/archer_p.png" type="Texture" id=2]
 [ext_resource path="res://gfx/hero_antagonist_p.png" type="Texture" id=3]
 [ext_resource path="res://gfx/sidechars_p.png" type="Texture" id=4]
-[ext_resource path="res://gfx/swordsman_p.png" type="Texture" id=5]
 [ext_resource path="res://gfx/antagonist_p.png" type="Texture" id=6]
+[ext_resource path="res://gfx/swordsmenSpritesheet_50x60px.png" type="Texture" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -16,16 +16,12 @@ atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 36, 50 )
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 50, 60 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 5 )
-region = Rect2( 36, 0, 36, 50 )
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
@@ -36,27 +32,26 @@ atlas = ExtResource( 1 )
 region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 36, 50 )
+atlas = ExtResource( 4 )
+region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
 region = Rect2( 36, 0, 36, 50 )
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 4 )
-region = Rect2( 36, 0, 36, 50 )
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 7 )
+region = Rect2( 50, 0, 50, 60 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "cyan",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "antagonist_revealed",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 2 ) ],
@@ -69,14 +64,9 @@ animations = [ {
 "name": "swordsman",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "mage",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "ai_swordsman",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
@@ -91,7 +81,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 8 ) ],
 "loop": true,
-"name": "hero",
+"name": "old_man",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 9 ) ],
@@ -99,12 +89,22 @@ animations = [ {
 "name": "antagonist",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "old_man",
+"name": "antagonist_revealed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ) ],
+"loop": true,
+"name": "ai_swordsman",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "hero",
 "speed": 5.0
 } ]
 
 [node name="portraits" type="AnimatedSprite"]
-frames = SubResource( 11 )
-animation = "antagonist_revealed"
+frames = SubResource( 12 )
+animation = "swordsman"
