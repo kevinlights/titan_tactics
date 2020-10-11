@@ -7,6 +7,7 @@ onready var materials = {
 
 
 onready var world = get_tree().get_root().get_node("World")
+var data
 var origin setget set_origin
 var gridmap setget set_gridmap
 func set_gridmap(_gridmap):
@@ -15,12 +16,26 @@ func set_gridmap(_gridmap):
 func set_origin(_origin):
 	origin = _origin
 	if _origin:
-		show() 
+		generate_data(origin) 
 	else:
 		hide()
 	
 func _ready():
 	pass
+	
+func generate_data(origin):
+	var character = origin.character;
+	var _data = {
+		'move_distance': character.turn_limits.move_distance,
+		'actions': character.turn_limits.actions,
+		'atk_range': character.atk_range + character.item_atk.attack_range,
+	}
+	if data != _data:
+		data = _data
+		if data.actions > 0:
+			show()
+		else:
+			hide()
 
 func _process(time):
 	if gridmap and origin:
@@ -31,7 +46,7 @@ func _process(time):
 		else:
 			var shouldShow = (not origin.movement.moving) and (world.current_turn == TT.CONTROL.PLAYER) and (world.get_current_context(origin.tile) == TT.CONTEXT.GUARD)
 			if shouldShow:
-				show()
+				generate_data(origin)
 
 func clear():
 	for child in get_children():
@@ -51,14 +66,30 @@ func hide():
 
 func show():
 	clear()
+	if not data:
+		return
 	self.visible = true
-	var move_distance = origin.character.turn_limits.move_distance
-	var tiles = gridmap.get_tiles_within(origin.tile, move_distance - 1)
+	var context_map = {}
 	clear()
-	for tile in tiles:
+	for tile in gridmap.get_tiles_within(origin.tile, data.move_distance - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
-		var context = world.get_current_context(context_tile)
+		var context;
+		if not context_map.has(context_tile):
+			context = world.get_current_context(context_tile)
+			context_map[context_tile] = context
+		else:
+			context = context_map[context_tile]
 		if context == TT.CONTEXT.ATTACK:
 			drawSqaure(tile, materials.attack)
-		elif context == TT.CONTEXT.MOVE:
+		if context == TT.CONTEXT.MOVE:
 			drawSqaure(tile, materials.move)
+	for tile in gridmap.get_tiles_within(origin.tile, data.atk_range - 1):
+		var context_tile = Vector3(tile.x, 0, tile.z)
+		var context;
+		if not context_map.has(context_tile):
+			context = world.get_current_context(context_tile)
+			context_map[context_tile] = context
+		else:
+			context = context_map[context_tile]
+		if context == TT.CONTEXT.ATTACK:
+			drawSqaure(tile, materials.attack)
