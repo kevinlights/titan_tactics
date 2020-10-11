@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scenes/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://gfx/player.png" type="Texture" id=14]
 [ext_resource path="res://gfx/menu_select.png" type="Texture" id=15]
 [ext_resource path="res://scripts/range_overlay.gd" type="Script" id=16]
+[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=17]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
@@ -124,11 +125,6 @@ animations = [ {
 "name": "attack",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "blank",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "guard",
@@ -137,6 +133,11 @@ animations = [ {
 "frames": [ SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "fighter",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "blank",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ) ],
@@ -231,3 +232,5 @@ volume_db = -4.0
 [node name="range_overlay" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0.5 )
 script = ExtResource( 16 )
+
+[node name="camera" parent="." instance=ExtResource( 17 )]

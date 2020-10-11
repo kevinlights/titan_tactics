@@ -62,7 +62,7 @@ func perform_action(item):
 	var target = world.find_character(item.target)
 	selector.camera_captured = false
 	if item.action == "select":
-		world.get_node("level/map/camera").track(target)
+		world.get_node("camera").track(target)
 		world.select_by_name(item.target)
 	if item.action == "move":
 		var marker = world.find_story_marker(item.target)
@@ -124,7 +124,7 @@ func advance():
 			print("emit complete")
 			content.complete()
 			# attach camera to selector and return control to player
-			world.get_node("level/map/camera").track(selector)
+			world.get_node("camera").track(selector)
 			world.current_turn = TT.CONTROL.PLAYER
 			hide()
 

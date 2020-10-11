@@ -112,7 +112,7 @@ func go_home():
 
 func capture_camera():
 	camera_captured = true
-	world.get_node("level/map/camera").track(self)
+	world.get_node("camera").track(self)
 
 func set_origin(entity):
 	if current_entity:
