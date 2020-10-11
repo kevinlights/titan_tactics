@@ -3,6 +3,8 @@ extends Node
 
 const sudden_death = false
 
+var camera_offset = Vector3(-6.5, 9, 6.5) # //Vector3(0, 8.8, 9)
+
 enum TYPE { FIGHTER, ARCHER, MAGE, OTHER }
 enum ABILITY { MOVE, ATTACK, GUARD, HEAL }
 enum CONTROL { PLAYER, AI }

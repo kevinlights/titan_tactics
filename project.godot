@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/status_effect.gd"
 }, {
+"base": "Sprite3D",
+"class": "StoryMarker",
+"language": "GDScript",
+"path": "res://scripts/dialogue/story_marker.gd"
+}, {
 "base": "Node",
 "class": "TT",
 "language": "GDScript",
@@ -123,6 +128,7 @@ _global_script_class_icons={
 "PathFinder": "",
 "Recruitment": "",
 "StatusEffect": "",
+"StoryMarker": "",
 "TT": ""
 }
 

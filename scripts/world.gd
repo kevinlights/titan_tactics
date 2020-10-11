@@ -150,6 +150,30 @@ func advance_turn(explicit = 1, direction = 1):
 		$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
+func find_story_marker(name):
+	var markers = get_tree().get_nodes_in_group("story_markers")
+	for marker in markers:
+		if marker.marker_name == name:
+			return marker
+	
+func find_character(name):
+	for team in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
+		for character in current[team]:
+			print(character.character.name)
+			if character.character.name == name:
+				return character
+
+func select_by_name(name):
+	for team in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
+		var index = 0
+		for character in current[team]:
+			print(character.character.name)
+			if character.character.name == name:
+				current_turn = team
+				current_character = index
+				return index
+			index += 1
+	
 func next_character(direction):
 	current_character += direction
 	if current_character >= current[current_turn].size():

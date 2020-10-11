@@ -15,6 +15,8 @@ var index = 0
 var characters_visible = -1
 var typing_delay = 50
 var last_typed = 0
+onready var selector = get_tree().get_root().get_node("World/select")
+onready var world = get_tree().get_root().get_node("World")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -55,6 +57,21 @@ func set_text(text):
 	$text.text = text
 	print(text)
 
+func perform_action(item):
+	print(item.action, " ", item.target)
+	var target = world.find_character(item.target)
+	selector.camera_captured = false
+	if item.action == "select":
+		world.get_node("level/map/camera").track(target)
+		world.select_by_name(item.target)
+	if item.action == "move":
+		var marker = world.find_story_marker(item.target)
+		var character = world.get_current()
+		var path = world.pathfinder.find_path(character.translation, marker.translation)
+		character.connect("path_complete", self, "advance", [], CONNECT_ONESHOT)
+		character.move(path)
+	index += 1
+
 func _process(delta):
 	if !visible:
 		return
@@ -86,6 +103,31 @@ func set_content(dialogue_content, set_index = 0):
 		print("show more arrow")
 		$more.show()
 
+func advance():
+	if text_blocks.size() > 0:
+		set_text(text_blocks[0])
+		text_blocks.remove(0)
+		if text_blocks.size() > 0:
+			$more.show()
+		else:
+			$more.hide()
+	else:
+		print("dialogue completed")
+		if index < content.messages.size() -1:
+			if "message" in content.messages[index + 1]:
+				set_content(content, index + 1)
+			else:
+				perform_action(content.messages[index + 1])
+#					print(content.messages[index + 1].action, content.messages[index + 1].target)
+#					index += 1
+		else:
+			print("emit complete")
+			content.complete()
+			# attach camera to selector and return control to player
+			world.get_node("level/map/camera").track(selector)
+			world.current_turn = TT.CONTROL.PLAYER
+			hide()
+
 func _input(event):
 	if not visible:
 		return
@@ -94,18 +136,25 @@ func _input(event):
 			typing_cancelled = true
 			typing = false
 			$text.set_visible_characters(-1)
-		elif text_blocks.size() > 0:
-			set_text(text_blocks[0])
-			text_blocks.remove(0)
-			if text_blocks.size() > 0:
-				$more.show()
-			else:
-				$more.hide()
 		else:
-			print("dialogue completed")
-			if index < content.messages.size() -1:
-				set_content(content, index + 1)
-			else:
-				print("emit complete")
-				content.complete()
-				hide()
+			advance()
+#		elif text_blocks.size() > 0:
+#			set_text(text_blocks[0])
+#			text_blocks.remove(0)
+#			if text_blocks.size() > 0:
+#				$more.show()
+#			else:
+#				$more.hide()
+#		else:
+#			print("dialogue completed")
+#			if index < content.messages.size() -1:
+#				if "message" in content.messages[index + 1]:
+#					set_content(content, index + 1)
+#				else:
+#					perform_action(content.messages[index + 1])
+##					print(content.messages[index + 1].action, content.messages[index + 1].target)
+##					index += 1
+#			else:
+#				print("emit complete")
+#				content.complete()
+#				hide()
