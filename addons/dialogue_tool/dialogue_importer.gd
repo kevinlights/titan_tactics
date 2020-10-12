@@ -34,6 +34,10 @@ func get_import_options(preset):
 					{
 					   "name": "action_prefix",
 					   "default_value": ">"
+					},
+					{
+					   "name": "comment_prefix",
+					   "default_value": "//"
 					}]
 		_:
 			return []
@@ -59,6 +63,8 @@ func import(source_file, save_path, options, r_platform_variants, r_gen_files):
 			while lines.size() > 0:
 				var line = lines[0].lstrip(" ").rstrip(" ")
 				lines.remove(0)
+				if line.begins_with(options.comment_prefix):
+					continue
 				if not line.begins_with(options.action_prefix):
 					if line != "":
 						message.message += line + "\n"

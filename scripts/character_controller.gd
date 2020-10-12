@@ -35,7 +35,7 @@ var movement = {
 	"end_position": Vector3(0, 0, 0),
 	"start_time": 0,
 	"speed": 400,
-	"last_horizontal_direction": "left",
+	"last_direction": "left",
 	"moving": false
 }
 
@@ -75,7 +75,7 @@ func hit(attacker):
 		TT.TYPE.MAGE:
 			$vfx/magic_hit.emitting = true
 			pick_random_sfx($sfx/magic_hit)
-	avatar.play("hit-" + movement.last_horizontal_direction)
+	avatar.play("hit-" + movement.last_direction)
 	if guarding:
 		pick_random_sfx($sfx/defend)
 	if character.hp <= 0:
@@ -312,7 +312,7 @@ func recruit(source):
 func die():
 	is_dead = true
 	pick_random_sfx($sfx/death)
-	avatar.play("hit-" + movement.last_horizontal_direction)
+	avatar.play("hit-" + movement.last_direction)
 
 func init_common(control):
 	pass
@@ -356,9 +356,9 @@ func _on_animation_finished():
 		avatar.stop()
 	if avatar.animation.begins_with("attack") or avatar.animation.begins_with("hit") :
 		if avatar.animation.ends_with("up"):
-			avatar.play("idle-left")
+			avatar.play("idle-up")
 		if avatar.animation.ends_with("down"):
-			avatar.play("idle-right")
+			avatar.play("idle-down")
 		if avatar.animation.ends_with("left"):
 			avatar.play("idle-left")
 		if avatar.animation.ends_with("right"):
@@ -393,17 +393,19 @@ func _process(delta):
 				if abs(diff.x) > abs(diff.z):
 					if diff.x > 0:
 						avatar.play("walk-left")
-						movement.last_horizontal_direction = "left"
+						movement.last_direction = "left"
 					else:
 						avatar.play("walk-right")
-						movement.last_horizontal_direction = "right"
+						movement.last_direction = "right"
 				else:
 					if diff.z > 0:
 						avatar.play("walk-up")
+						movement.last_direction = "up"
 					else:
 						avatar.play("walk-down")
+						movement.last_direction = "down"						
 			else:
-				avatar.play("idle-" + movement.last_horizontal_direction)
+				avatar.play("idle-" + movement.last_direction)
 				if movement.moving:
 					print("path complete ", translation)
 					emit_signal("path_complete")

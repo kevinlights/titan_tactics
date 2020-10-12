@@ -1,11 +1,10 @@
-# swordsman
-Oh boy, what a mess. Rolf, my son, I have to tell you something important. You were adopted. No, it's true, stop crying.
-The woman you've always known as your mother is a prostitute I hired when I found you in the woods, and she's been taking care of you at an outrageous hourly fee.
-So anyway, your brothers and sisters are not your blood, and frankly, I don't even think they like you.
-I think it would be best for you if you were to just leave, and don't come back. There's rumors of a  wishing well to the west, maybe you can wish for a family or whatever.
+// Stage one, act one: We begin near our home village, where a village elder tasks our hero with an important mission.
+// The nearby capital city has been late collecting taxes, and what is worse, the capital city trade caravan hasn't been seen in weeks.
+// You must investigate what is going on, as we are building up a surplus of grains and suffer a dire shortage of textiles.
 
-> select Cyrus
-> move confront_hero
+# swordsman
+Kris, as our best scout, you have been selected by the council of elders to investigate what is going on in the Capital. As you know, the trade caravan from the Capital has not been seen in some time. And what is even stranger, is that no Royal Accountants have come to collect taxes for the kingdom recently.
+As long as we pay our taxes the King has generously allowed us to govern ourselves, but now the Elders fear something is afoot - we must know! You may seek out Bowie to accompany you to the City, she should be out hunting small game in the woods to the east.
 
 # hero
-Wait, what?
+I will not let you down!

@@ -13,3 +13,4 @@ dest_files=[ "res://.import/intro_cutscene.dialogue-1cb44869e7de60e6c543841f7172
 
 title_prefix="#"
 action_prefix=">"
+comment_prefix="//"
