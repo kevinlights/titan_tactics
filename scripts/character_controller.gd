@@ -165,6 +165,22 @@ func attack(target):
 		damage = damage * 1.3
 	if target.guarding:
 		damage = damage * 0.65
+	var behind_target = false
+	match target.movement.last_direction:
+		'right':
+			if tile.x < target.tile.x:
+				behind_target = true
+		'left':
+			if tile.x > target.tile.x:
+				behind_target = true
+		'up':
+			if tile.z > target.tile.z:
+				behind_target = true
+		'down':
+			if tile.z < target.tile.z:
+				behind_target = true
+	if behind_target:
+		damage = damage * 1.15
 	print("atk ", damage)
 	var target_defense = target.character.def + target.character.item_def.defense
 	var def_multiplier = get_def_buff(target_defense) #1.0 - (target_defense + tanh(target_defense)) / 100
