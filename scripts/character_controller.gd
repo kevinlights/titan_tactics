@@ -239,6 +239,7 @@ func select_type():
 	$archer.hide()
 	$fighter.hide()
 	$mage.hide()
+	$ai_boba.hide()
 	$ai_archer.hide()
 	$ai_fighter.hide()
 	$ai_mage.hide()
@@ -268,6 +269,7 @@ func select_type():
 			TT.TYPE.BOBA:
 				print("Select ai boba")
 				avatar = $ai_boba
+				avatar.offset.y = 0
 	print("character class ", character.character_class)
 #	avatar.connect("animation_finished", self, '_on_animation_finished')
 	avatar.connect("frame_changed", self, "_on_frame_changed")

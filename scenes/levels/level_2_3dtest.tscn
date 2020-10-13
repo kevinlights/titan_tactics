@@ -3,7 +3,7 @@
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap_pathfinder.gd" type="Script" id=2]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=3]
-[ext_resource path="res://gfx/archer.png" type="Texture" id=4]
+[ext_resource path="res://gfx/mage.png" type="Texture" id=4]
 [ext_resource path="res://scripts/character_stats.gd" type="Script" id=5]
 [ext_resource path="res://scripts/item.gd" type="Script" id=6]
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=7]
@@ -29,8 +29,8 @@ character_class = 3
 equipment_slot = 0
 level = 1
 name = "Minor Staff"
-attack = 1
-attack_range = 1
+attack = 0
+attack_range = 0
 defense = 0
 heal = 1
 effect = SubResource( 1 )
@@ -54,7 +54,7 @@ defense = 1
 heal = 1
 effect = SubResource( 3 )
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=9]
 script = ExtResource( 5 )
 character_class = 3
 name = "Cyrus"
@@ -63,7 +63,7 @@ hp = 60
 max_hp = 60
 atk = 5
 def = 1
-atk_range = 3
+atk_range = 1
 mov_range = 6
 heal = 1
 item_atk = SubResource( 2 )
@@ -154,7 +154,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
 }
-stats = SubResource( 5 )
+stats = SubResource( 9 )
 dialogue = SubResource( 6 )
 recruit_dialogue = SubResource( 7 )
 
