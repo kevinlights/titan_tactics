@@ -42,6 +42,14 @@ func get_import_options(preset):
 		_:
 			return []
 
+func remove_redundant_content(content, options):
+	var lines = content.split("\n")
+	var out_lines = PoolStringArray()
+	for line in lines:
+		if line.lstrip(" ").rstrip(" ") != "" and not line.begins_with(options.comment_prefix):
+			out_lines.append(line)
+	return out_lines.join("\n")
+
 func import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	var file = File.new()
 	var err = file.open(source_file, File.READ)
@@ -51,10 +59,11 @@ func import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	dialogue.messages = []
 	var current_message = DialogueMessage.new()
 	var content = file.get_as_text()
-	file.close()
-	var items = content.split(options.title_prefix)
+	file.close()	
+	var items = remove_redundant_content(content, options).split(options.title_prefix)
 	for item in items:
-		if item != "":
+		if item.lstrip(" ").lstrip("\n") != "":
+			print("Item: ", item)
 			var message = DialogueMessage.new()
 			var lines = item.split("\n")
 			message.title = lines[0]
@@ -63,8 +72,6 @@ func import(source_file, save_path, options, r_platform_variants, r_gen_files):
 			while lines.size() > 0:
 				var line = lines[0].lstrip(" ").rstrip(" ")
 				lines.remove(0)
-				if line.begins_with(options.comment_prefix):
-					continue
 				if not line.begins_with(options.action_prefix):
 					if line != "":
 						message.message += line + "\n"
