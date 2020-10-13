@@ -265,6 +265,9 @@ func select_type():
 			TT.TYPE.MAGE:
 				print("Select ai mage")
 				avatar = $ai_mage
+			TT.TYPE.BOBA:
+				print("Select ai boba")
+				avatar = $ai_boba
 	print("character class ", character.character_class)
 #	avatar.connect("animation_finished", self, '_on_animation_finished')
 	avatar.connect("frame_changed", self, "_on_frame_changed")

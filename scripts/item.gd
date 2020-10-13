@@ -59,6 +59,7 @@ var item_names = {
 	TT.TYPE.FIGHTER: [ "Sword", "Cleaver", "Knife", "Dagger" ],
 	TT.TYPE.ARCHER: [ "Bow", "Longbow" ],
 	TT.TYPE.MAGE: [ "Wand", "Staff", "Scepter" ],
+	TT.TYPE.BOBA: [ "Nothing" ],
 	TT.TYPE.OTHER: [ "Plate", "Helm", "Tunic", "Jacket", "Chain", "Mail", "Boots", "Vest", "Suit", "Shirt"]
 }
 
@@ -81,7 +82,9 @@ func generate(item_level, slot, item_class):
 	level = clamp(item_level, 0, 5)
 	equipment_slot = slot
 	var prefix = item_prefix[level][rand_range(0, item_prefix[level].size() - 1)]
-	var suffix = item_names[character_class][rand_range(0, item_names[character_class].size() - 1)]
+	var suffix = item_names[TT.TYPE.OTHER][rand_range(0, item_names[character_class].size() - 1)]
+	if character_class in item_names:
+		suffix = item_names[character_class][rand_range(0, item_names[character_class].size() - 1)]
 	if equipment_slot == SLOT.DEF:
 		suffix = item_names[TT.TYPE.OTHER][rand_range(0, item_names[TT.TYPE.OTHER].size() - 1)]
 		

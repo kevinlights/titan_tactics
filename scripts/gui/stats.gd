@@ -39,7 +39,8 @@ var default_portraits = {
 	TT.CONTROL.AI: {
 		TT.TYPE.ARCHER: "ai_archer",
 		TT.TYPE.MAGE: "ai_mage",
-		TT.TYPE.FIGHTER: "ai_swordsman"
+		TT.TYPE.FIGHTER: "ai_swordsman",
+		TT.TYPE.BOBA: "ai_mage"
 	},
 	TT.CONTROL.PLAYER: {
 		TT.TYPE.ARCHER: "archer",
@@ -138,8 +139,8 @@ func _ready():
 	$box_enemy/enemylevel.text = str(enemylvl)
 	$box_enemy/enemyhp.text = (enemyhp)
 	$box_ally/playerhp.text = (playerhp)
-	$PlayerType.frame = atlas_frames[player.character.character_class]
-	$EnemyType.frame = atlas_frames[enemy.character.character_class]
+#	$PlayerType.frame = atlas_frames[player.character.character_class]
+#	$EnemyType.frame = atlas_frames[enemy.character.character_class]
 
 	if player.character.portrait_override:
 		var portrait = portrait_map[player.character.portrait_override]

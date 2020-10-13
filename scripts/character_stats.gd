@@ -4,7 +4,7 @@ class_name CharacterStats
 signal class_changed
 signal level_up
 
-export(int, "Swordsman", "Archer", "Mage") var character_class setget set_character_class, get_character_class
+export(int, "Swordsman", "Archer", "Mage", "Boba") var character_class setget set_character_class, get_character_class
 export(String) var name
 export(int) var level = 1 setget set_level,get_level
 export(int) var hp
@@ -34,6 +34,7 @@ var hp_up = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
 var atk_up = [ 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1 ]
 var def_up = [ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ]
 
+var cant_carry = [ TT.TYPE.BOBA ]
 enum PERSONALITY {
 	AGGRESSIVE,
 	NARCISSIST,
@@ -146,18 +147,20 @@ func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range =
 	self.mov_range = mov_range
 	self.atk_range = atk_range
 	self.heal = 0
-	item_atk = Item.new()
-	item_def = Item.new()
-	item_atk.generate(level, Item.SLOT.ATK, character_class)
-	item_def.generate(level, Item.SLOT.DEF, character_class)
+	if !(request_class in cant_carry):
+		item_atk = Item.new()
+		item_def = Item.new()
+		item_atk.generate(level, Item.SLOT.ATK, character_class)
+		item_def.generate(level, Item.SLOT.DEF, character_class)
 
 func generate(class_stats, request_class, request_control, request_level = 1, force = false):
 	var rng = RandomNumberGenerator.new()
-	if !item_atk or !item_def:
-		item_atk = Item.new()
-		item_def = Item.new()
-		item_atk.create() #generate(level, Item.SLOT.ATK, character_class)
-		item_def.create() #generate(level, Item.SLOT.DEF, character_class)
+	if !(request_class in cant_carry):
+		if !item_atk or !item_def:
+			item_atk = Item.new()
+			item_def = Item.new()
+			item_atk.create() #generate(level, Item.SLOT.ATK, character_class)
+			item_def.create() #generate(level, Item.SLOT.DEF, character_class)
 	weakness = TT.class_stats.weakness[character_class]
 	strength = TT.class_stats.strength[character_class]
 	abilities = TT.class_stats.abilities[character_class]
@@ -176,6 +179,8 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 	elif request_class == TT.TYPE.MAGE:
 		default_stats = class_stats.mage 
 		heal = level
+	elif request_class == TT.TYPE.BOBA:
+		default_stats = class_stats.boba
 	character_class = default_stats.character_class
 	control = request_control
 	abilities = TT.class_stats.abilities[character_class]

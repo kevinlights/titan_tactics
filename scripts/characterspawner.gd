@@ -73,4 +73,6 @@ func set_sprite():
 				texture = load("res://gfx/swordsman.png")
 			TT.TYPE.MAGE:
 				texture = load("res://gfx/mage.png")
+			TT.TYPE.BOBA:
+				texture = load("res://gfx/mage.png")
 		property_list_changed_notify()
