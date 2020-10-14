@@ -1,7 +1,17 @@
 extends Node
 
+signal orientation_changed
+
 var team = []
 var level = 0
+var camera_orientation = TT.CAMERA.NORTH setget set_camera_orientation, get_camera_orientation
+
+func set_camera_orientation(new_orientation):
+	camera_orientation = new_orientation
+	emit_signal("orientation_changed")
+
+func get_camera_orientation():
+	return camera_orientation
 
 func get_level_count():
 	return TT.levels.size()

@@ -5,6 +5,33 @@ signal moved
 onready var world = get_tree().get_root().get_node("World")
 onready var gui = get_tree().get_root().get_node("World/gui")
 
+var directions = {
+	TT.CAMERA.NORTH: {
+		"left": Vector3(-1, 0, 0),
+		"right": Vector3(1, 0, 0),
+		"up": Vector3(0, 0, -1),
+		"down": Vector3(0, 0, 1)
+	},
+	TT.CAMERA.SOUTH: {
+		"left": Vector3(1, 0, 0),
+		"right": Vector3(-1, 0, 0),
+		"up": Vector3(0, 0, 1),
+		"down": Vector3(0, 0, -1)
+	},
+	TT.CAMERA.EAST: {
+		"left": Vector3(0, 0, -1),
+		"right": Vector3(0, 0, 1),
+		"up": Vector3(1, 0, 0),
+		"down": Vector3(-1, 0, 0)
+	},
+	TT.CAMERA.WEST: {
+		"left": Vector3(0, 0, 1),
+		"right": Vector3(0, 0, -1),
+		"up": Vector3(-1, 0, 0),
+		"down": Vector3(1, 0, 0)
+	}
+}
+
 enum MODE {
 	PLAY,
 	CHECK_MAP
@@ -81,13 +108,17 @@ func _input(event):
 		get_parent().change_character()
 		return
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
-		advance.z = 1
+#		advance.z = 1
+		advance = directions[Game.camera_orientation]["down"]
 	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
-		advance.z = -1
+#		advance.z = -1
+		advance = directions[Game.camera_orientation]["up"]
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
-		advance.x = -1
+#		advance.x = -1
+		advance = directions[Game.camera_orientation]["left"]
 	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
-		advance.x = 1
+#		advance.x = 1
+		advance = directions[Game.camera_orientation]["right"]
 	self.tile = self.tile + advance
 	if not advance.is_equal_approx(Vector3(0, 0, 0)):
 		print("select tile ", tile)

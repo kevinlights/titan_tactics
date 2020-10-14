@@ -30,6 +30,33 @@ var status_effects = []
 
 onready var world = get_parent().get_parent().get_parent()
 
+var directions = {
+	TT.CAMERA.NORTH: {
+		"left": "left",
+		"right": "right",
+		"up": "up",
+		"down": "down"
+	},
+	TT.CAMERA.SOUTH: {
+		"left": "right",
+		"right": "left",
+		"up": "down",
+		"down": "up"
+	},
+	TT.CAMERA.WEST: {
+		"left": "up",
+		"right": "down",
+		"up": "right",
+		"down": "left"
+	},
+	TT.CAMERA.EAST: {
+		"left": "down",
+		"right": "up",
+		"up": "left",
+		"down": "right"
+	}
+}
+
 var movement = {
 	"start_position": Vector3(0, 0, 0),
 	"end_position": Vector3(0, 0, 0),
@@ -333,7 +360,7 @@ func recruit(source):
 func die():
 	is_dead = true
 	pick_random_sfx($sfx/death)
-	avatar.play("hit-" + movement.last_direction)
+	avatar.play("hit-" + directions[Game.camera_orientation][movement.last_direction])
 
 func init_common(control):
 	pass
@@ -413,20 +440,20 @@ func _process(delta):
 				var diff = movement.start_position - movement.end_position
 				if abs(diff.x) > abs(diff.z):
 					if diff.x > 0:
-						avatar.play("walk-left")
+						avatar.play("walk-" + directions[Game.camera_orientation]["left"])
 						movement.last_direction = "left"
 					else:
-						avatar.play("walk-right")
+						avatar.play("walk-" + directions[Game.camera_orientation]["right"])
 						movement.last_direction = "right"
 				else:
 					if diff.z > 0:
-						avatar.play("walk-up")
+						avatar.play("walk-" + directions[Game.camera_orientation]["up"])
 						movement.last_direction = "up"
 					else:
-						avatar.play("walk-down")
-						movement.last_direction = "down"						
+						avatar.play("walk-" + directions[Game.camera_orientation]["down"])
+						movement.last_direction = "down"
 			else:
-				avatar.play("idle-" + movement.last_direction)
+				avatar.play("idle-" + directions[Game.camera_orientation][movement.last_direction])
 				if movement.moving:
 					print("path complete ", translation)
 					emit_signal("path_complete")
