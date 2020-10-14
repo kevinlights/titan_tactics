@@ -1,6 +1,6 @@
 extends Camera
 
-var offset = Vector3(-8.5, 11, 8.5)
+var offset = Vector3(-31.5, 32, 36.5)
 var tracked_item
 
 func track(item):

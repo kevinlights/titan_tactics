@@ -135,24 +135,24 @@ animations = [ {
 "name": "fighter",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "blank",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
 "name": "cantmove",
 "speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "blank",
+"speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=18]
-flags = 19
+flags = 23
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=19]
-flags = 19
+flags = 23
 atlas = ExtResource( 15 )
 region = Rect2( 0, 8, 8, 8 )
 
@@ -184,7 +184,6 @@ axis = 1
 alpha_cut = 2
 frames = SubResource( 17 )
 animation = "attack"
-frame = 1
 playing = true
 script = ExtResource( 4 )
 
@@ -234,3 +233,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0.5 )
 script = ExtResource( 16 )
 
 [node name="camera" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.819152, 0.32899, -0.469846, 0, 0.819152, 0.573577, 0.573577, -0.469846, 0.67101, 0, 0, 0 )
+fov = 11.0
