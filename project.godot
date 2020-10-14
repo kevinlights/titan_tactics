@@ -145,6 +145,7 @@ config/windows_native_icon="res://gfx/icon.ico"
 
 [autoload]
 
+SaveLoadSystem="*res://scripts/save_load_system.gd"
 Game="*res://scripts/game.gd"
 
 [display]

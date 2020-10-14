@@ -25,7 +25,9 @@ func get_theme():
 	return TT.levels[level].music
 #	return TT.levels[lvl]
 
-func _ready():
+func setup_new_game():
+	level = 0
+	team = []
 	var default_stats = load("res://resources/class_stats.tres")
 	var character = CharacterStats.new()
 #	character.from_defaults(TYPE.FIGHTER, CONTROL.PLAYER)
@@ -38,4 +40,3 @@ func _ready():
 	character2.name = "Cyan"
 	character2.portrait_override = PT_Dialogue.PORTRAIT.CYAN
 	team.append(character2)
-	
