@@ -233,13 +233,13 @@ func attack(target):
 		attack_complete()
 		target.hit(character)
 	if target.translation.x < translation.x:
-		avatar.play("attack-left")
+		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
 	if target.translation.x > translation.x:
-		avatar.play("attack-right")
+		avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
 	if target.translation.z < translation.z:
-		avatar.play("attack-up")
+		avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
 	if target.translation.z > translation.z:
-		avatar.play("attack-down")
+		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
 	world.check_battle()
 	check_finished()
 	return damage
@@ -404,13 +404,13 @@ func _on_animation_finished():
 		avatar.stop()
 	if avatar.animation.begins_with("attack") or avatar.animation.begins_with("hit") :
 		if avatar.animation.ends_with("up"):
-			avatar.play("idle-up")
+			avatar.play("idle-" +  directions[Game.camera_orientation]["up"])
 		if avatar.animation.ends_with("down"):
-			avatar.play("idle-down")
+			avatar.play("idle-" +  directions[Game.camera_orientation]["down"])
 		if avatar.animation.ends_with("left"):
-			avatar.play("idle-left")
+			avatar.play("idle-" +  directions[Game.camera_orientation]["left"])
 		if avatar.animation.ends_with("right"):
-			avatar.play("idle-right")
+			avatar.play("idle-" +  directions[Game.camera_orientation]["right"])
 
 func _process(delta):
 	var now = OS.get_ticks_msec()

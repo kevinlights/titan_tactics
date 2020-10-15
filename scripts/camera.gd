@@ -22,6 +22,7 @@ func track(item):
 	tracked_item = item
 
 func _ready():
+	# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
 	_on_orientation_changed()
 
@@ -29,7 +30,6 @@ func _on_orientation_changed():
 	offset = offsets[Game.camera_orientation]
 	rotation_degrees = rotations[Game.camera_orientation]
 
-func _process(delta):
-#	offset = offsets[Game.camera_orientation]
+func _process(_delta):
 	if tracked_item:
 		translation = tracked_item.translation + offset
