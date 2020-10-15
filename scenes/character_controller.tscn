@@ -2072,6 +2072,7 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 45 )
 animation = "idle-right"
+frame = 1
 playing = true
 
 [node name="fighter" type="AnimatedSprite3D" parent="."]
@@ -2105,7 +2106,6 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 196 )
 animation = "idle-right"
-frame = 1
 playing = true
 
 [node name="ai_archer" type="AnimatedSprite3D" parent="."]
@@ -2116,7 +2116,6 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 241 )
 animation = "idle-right"
-frame = 1
 playing = true
 
 [node name="ai_fighter" type="AnimatedSprite3D" parent="."]
@@ -2127,7 +2126,6 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 286 )
 animation = "idle-right"
-frame = 1
 playing = true
 
 [node name="ai_mage" type="AnimatedSprite3D" parent="."]
@@ -2138,7 +2136,6 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 323 )
 animation = "idle-right"
-frame = 1
 playing = true
 
 [node name="guard" type="AnimatedSprite3D" parent="."]
@@ -2175,6 +2172,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 335 )
+frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]

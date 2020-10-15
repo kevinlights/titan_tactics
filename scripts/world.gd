@@ -518,6 +518,7 @@ func _on_attack():
 			gui.call_deferred("back")
 			return
 		var damage = get_current().attack(target)
+
 		gui.call_deferred("close_attack")
 		yield(get_tree().create_timer(2.0), "timeout")
 		gui.call_deferred("battle_hide")

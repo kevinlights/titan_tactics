@@ -2,7 +2,7 @@ extends Node2D
 
 var start
 var start_y = 0
-var ttl = 400
+var ttl = 1000
 
 func _ready():
 	start = OS.get_ticks_msec()
@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	var now = OS.get_ticks_msec()
 	if now - start < ttl:
-		position.y = lerp(start_y, start_y - 8, float(now - start) / float(ttl))
+		position.y = lerp(start_y, start_y - 32, float(now - start) / float(ttl))
 		var modulate = Color(1, 1, 1, lerp(1, 1, float(now - start) / float(ttl)))
 		set("modulate", modulate)
 	else:

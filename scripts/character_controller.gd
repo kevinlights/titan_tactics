@@ -217,6 +217,11 @@ func attack(target):
 	damage = clamp(floor(damage), 0, 99)
 	print("actual damage ", damage)
 	target.character.hp -= damage
+	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
+	var feedback_position = world.get_node("camera").unproject_position(target.get_translation()) - Vector2(0, 8)
+	damage_feedback.position = feedback_position
+	damage_feedback.get_node("damage").text = "-" + str(damage)
+	world.add_child(damage_feedback)
 
 	if character.character_class == TT.TYPE.MAGE:
 		var projectile = load("res://scenes/projectile.tscn").instance()
