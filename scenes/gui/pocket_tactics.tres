@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=2]
 
-[ext_resource path="res://fonts/PocketTactics_8.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -12,18 +12,18 @@ grow_end = -3.0
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="DynamicFont" id=4]
-size = 9
-extra_spacing_top = -4
-extra_spacing_bottom = -4
+size = 13
+extra_spacing_char = 1
+extra_spacing_space = 1
 font_data = ExtResource( 1 )
 
 [resource]
 default_font = SubResource( 4 )
 BoxContainer/constants/separation = 4
-Button/colors/font_color = Color( 0.219608, 0.596078, 0.454902, 1 )
+Button/colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
 Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-Button/colors/font_color_hover = Color( 0.623529, 0.870588, 0.576471, 1 )
-Button/colors/font_color_pressed = Color( 0.623529, 0.870588, 0.576471, 1 )
+Button/colors/font_color_hover = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+Button/colors/font_color_pressed = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 Button/colors/icon_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/icon_color_pressed = Color( 0, 0, 0, 1 )
 Button/styles/disabled = null
@@ -1002,9 +1002,9 @@ TextEdit/icons/tab = null
 TextEdit/styles/focus = null
 TextEdit/styles/normal = null
 TextEdit/styles/read_only = null
-ToolButton/colors/font_color = Color( 0.219608, 0.596078, 0.454902, 1 )
-ToolButton/colors/font_color_hover = Color( 0.917647, 1, 0.866667, 1 )
-ToolButton/colors/font_color_pressed = Color( 0.917647, 1, 0.866667, 1 )
+ToolButton/colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
+ToolButton/colors/font_color_hover = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+ToolButton/colors/font_color_pressed = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 ToolButton/styles/disabled = null
 ToolButton/styles/focus = null
 ToolButton/styles/hover = null
