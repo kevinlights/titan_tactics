@@ -184,6 +184,7 @@ axis = 1
 alpha_cut = 2
 frames = SubResource( 17 )
 animation = "attack"
+frame = 1
 playing = true
 script = ExtResource( 4 )
 
@@ -191,6 +192,7 @@ script = ExtResource( 4 )
 visible = false
 flip_v = true
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="gui" parent="." instance=ExtResource( 6 )]

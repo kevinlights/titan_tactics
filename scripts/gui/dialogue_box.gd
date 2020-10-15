@@ -138,6 +138,9 @@ func _input(event):
 			$text.set_visible_characters(-1)
 		else:
 			advance()
+	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+		content.complete()
+		hide()
 #		elif text_blocks.size() > 0:
 #			set_text(text_blocks[0])
 #			text_blocks.remove(0)
