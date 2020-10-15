@@ -53,7 +53,7 @@ frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 13 )
 frame_5/delay_sec = 0.0
 
-[sub_resource type="SpatialMaterial" id=23]
+[sub_resource type="SpatialMaterial" id=3]
 flags_unshaded = true
 params_blend_mode = 1
 params_use_alpha_scissor = true
@@ -71,7 +71,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 6,
-"material": SubResource( 23 ),
+"material": SubResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 4
@@ -117,7 +117,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.656394, 0.000212193, 3.84624
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.50937, 3.85804, 0.0394397 )
 
 [node name="stump1" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73542, 1.84533, 1.812 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0354, 2.56733, -0.617436 )
 
 [node name="wall1" parent="." instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50726, 0.557541, 0.669501 )
