@@ -362,8 +362,11 @@ func die():
 	pick_random_sfx($sfx/death)
 	avatar.play("hit-" + directions[Game.camera_orientation][movement.last_direction])
 
+func _on_orientation_changed():
+	avatar.play("idle-" +  directions[Game.camera_orientation][movement.last_direction])
+
 func init_common(control):
-	pass
+	Game.connect("orientation_changed", self, "_on_orientation_changed")
 #	healthbar = load("res://scenes/healthbar.tscn").instance()
 #	healthbar.translation.x = 0
 #	healthbar.translation.z = -5
