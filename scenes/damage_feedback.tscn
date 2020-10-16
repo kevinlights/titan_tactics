@@ -9,6 +9,8 @@ font_data = ExtResource( 1 )
 [node name="damage_feedback" type="Node2D"]
 modulate = Color( 1, 1, 1, 0.5 )
 position = Vector2( 40, 40 )
+z_index = 3
+z_as_relative = false
 script = ExtResource( 2 )
 
 [node name="damage" type="Label" parent="."]

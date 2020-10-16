@@ -220,7 +220,7 @@ func attack(target):
 	print("actual damage ", damage)
 	target.character.hp -= damage
 	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
-	var feedback_position = world.get_node("camera").unproject_position(target.get_translation()) - Vector2(0, 8)
+	var feedback_position = world.get_node("camera").unproject_position(target.tile + tile + Vector3(.5, 1, .5))
 	damage_feedback.position = feedback_position
 	damage_feedback.get_node("damage").text = "-" + str(damage)
 	world.add_child(damage_feedback)
@@ -426,7 +426,7 @@ func _process(delta):
 	var now = OS.get_ticks_msec()
 	_on_frame_changed()
 	if $healthbar.visible:
-		var hp_position = world.get_node("camera").unproject_position(translation)
+		var hp_position = world.get_node("camera").unproject_position(tile + Vector3(.5, 0, .5))
 		$healthbar.position = hp_position
 	if not character:
 		return
