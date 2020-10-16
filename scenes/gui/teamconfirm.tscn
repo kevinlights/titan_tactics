@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/gui/teamconfirm.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
@@ -9,24 +9,31 @@
 [sub_resource type="ImageTexture" id=1]
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 2
 atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 8, 8 )
+region = Rect2( 0, 0, 10, 10 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 2
 atlas = ExtResource( 5 )
-region = Rect2( 0, 8, 8, 8 )
+region = Rect2( 0, 10, 10, 10 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="AtlasTexture" id=4]
+flags = 2
+atlas = ExtResource( 5 )
+region = Rect2( 0, 20, 10, 10 )
+
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="ImageTexture" id=5]
-
 [sub_resource type="ImageTexture" id=6]
+
+[sub_resource type="ImageTexture" id=7]
 
 [node name="teamconfirm" type="Control"]
 anchor_right = 1.0
@@ -100,7 +107,8 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="panel/check_map"]
 visible = false
 position = Vector2( 1, 1 )
-frames = SubResource( 4 )
+frames = SubResource( 5 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -117,7 +125,7 @@ focus_next = NodePath("../start_level")
 focus_previous = NodePath("../check_map")
 theme = ExtResource( 2 )
 text = "Edit team"
-icon = SubResource( 5 )
+icon = SubResource( 6 )
 align = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -126,8 +134,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="panel/edit_team"]
 visible = false
 position = Vector2( 1, 1 )
-frames = SubResource( 4 )
-frame = 1
+frames = SubResource( 5 )
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -142,7 +149,7 @@ focus_neighbour_top = NodePath("../edit_team")
 focus_previous = NodePath("../edit_team")
 theme = ExtResource( 2 )
 text = "Start level"
-icon = SubResource( 6 )
+icon = SubResource( 7 )
 align = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,7 +158,8 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="panel/start_level"]
 visible = false
 position = Vector2( 1, 1 )
-frames = SubResource( 4 )
+frames = SubResource( 5 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 2 )

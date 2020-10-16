@@ -159,7 +159,9 @@ func guard(is_healer = false):
 		$action_menu.call_deferred("show_dialog", "guard")
 
 func pause():
+	back()
 	$sfx/select.play()
+	modal = true
 	active = true
 	$pause.show_dialog()
 
