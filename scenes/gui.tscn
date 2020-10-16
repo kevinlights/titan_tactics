@@ -639,11 +639,13 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 247.863, 114.383 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 285.863, 114.383 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -729,7 +731,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -820,14 +821,17 @@ animation = "Rolf"
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 98.551, 130.424 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [node name="Bbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 136.551, 130.424 )
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
 [node name="battle" type="Control" parent="."]
+visible = false
 margin_top = 173.0
 margin_right = 40.0
 margin_bottom = 213.0
@@ -1009,7 +1013,6 @@ animation = "mage"
 position = Vector2( 130, -10 )
 frames = SubResource( 25 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -1021,6 +1024,7 @@ animation = "mage"
 position = Vector2( 190, -10 )
 frames = SubResource( 30 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1031,9 +1035,8 @@ texture = ExtResource( 10 )
 
 [node name="ally" type="Control" parent="."]
 visible = false
-margin_left = -5.548
 margin_top = 178.0
-margin_right = 34.452
+margin_right = 40.0
 margin_bottom = 218.0
 script = ExtResource( 48 )
 __meta__ = {
@@ -1042,22 +1045,15 @@ __meta__ = {
 special_names = [ "Rolf" ]
 
 [node name="box_ally" type="Sprite" parent="ally"]
-position = Vector2( -30, 29.047 )
+position = Vector2( 0, -8 )
 texture = ExtResource( 28 )
-
-[node name="Player" type="AnimatedSprite" parent="ally/box_ally"]
-position = Vector2( -36, -68 )
-frames = SubResource( 8 )
-animation = "portraits"
-frame = 4
-speed_scale = 0.0
 centered = false
 
 [node name="playerlevel" type="Label" parent="ally/box_ally"]
-margin_left = 15.7445
-margin_top = -11.6735
-margin_right = 55.7445
-margin_bottom = 2.32654
+margin_left = 121.426
+margin_top = 4.4833
+margin_right = 161.426
+margin_bottom = 18.4833
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -1066,10 +1062,10 @@ __meta__ = {
 }
 
 [node name="playername" type="Label" parent="ally/box_ally"]
-margin_left = -31.1581
-margin_top = -11.9374
-margin_right = 8.84195
-margin_bottom = 2.06264
+margin_left = 54.9233
+margin_top = 8.19239
+margin_right = 94.9233
+margin_bottom = 22.1924
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "Marie"
@@ -1078,10 +1074,10 @@ __meta__ = {
 }
 
 [node name="playeratklevel" type="Label" parent="ally/box_ally"]
-margin_left = -17.0678
-margin_top = -0.81588
-margin_right = 22.9322
-margin_bottom = 13.1841
+margin_left = 77.4893
+margin_top = 20.9031
+margin_right = 117.489
+margin_bottom = 34.9031
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -1090,10 +1086,10 @@ __meta__ = {
 }
 
 [node name="playerdeflevel" type="Label" parent="ally/box_ally"]
-margin_left = 15.6839
-margin_top = -1.04449
-margin_right = 55.6839
-margin_bottom = 12.9555
+margin_left = 121.1
+margin_top = 20.6745
+margin_right = 161.1
+margin_bottom = 34.6745
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -1102,10 +1098,10 @@ __meta__ = {
 }
 
 [node name="playerhp" type="Label" parent="ally/box_ally"]
-margin_left = -17.3368
-margin_top = 6.68463
-margin_right = 22.6632
-margin_bottom = 20.6846
+margin_left = 77.4851
+margin_top = 33.7009
+margin_right = 117.485
+margin_bottom = 47.7009
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -1120,10 +1116,13 @@ width = 1.0
 default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
 
 [node name="hpline" type="Line2D" parent="ally/box_ally"]
-position = Vector2( -31, 14.5 )
+position = Vector2( 55.337, 47.9003 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
 default_color = Color( 0.917647, 1, 0.866667, 1 )
+
+[node name="portraits" parent="ally/box_ally" instance=ExtResource( 49 )]
+position = Vector2( 25.1597, 22.8974 )
 
 [node name="LvlupSfx" type="AudioStreamPlayer2D" parent="ally"]
 
@@ -1232,7 +1231,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="weaponswap/dialogue_box"]
 position = Vector2( 131, 47 )
 frames = SubResource( 92 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1318,7 +1317,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 92 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1343,7 +1342,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 92 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1352,6 +1351,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 96 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -1464,7 +1464,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 96 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1491,7 +1490,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 92 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1589,7 +1588,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 99 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1612,7 +1610,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 99 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1701,7 +1698,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 99 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1724,7 +1720,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 99 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )

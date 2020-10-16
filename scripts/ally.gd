@@ -10,12 +10,18 @@ export(Array, String) var special_names
 
 var ttl = 100
 
-var start_x_ally = -30
-var end_x_ally = 42
+var start_x_ally = -160
+var end_x_ally = 0
 
 var moving_back = false
 
 var start
+
+var default_portraits = {
+	TT.TYPE.ARCHER: "archer",
+	TT.TYPE.MAGE: "mage",
+	TT.TYPE.FIGHTER: "swordsman"
+}
 
 var atlas_frames = {
 	"up": 3,
@@ -72,15 +78,11 @@ func _ready():
 	$box_ally/playerdeflevel.text = str(playerdef)
 	$box_ally/playerlevel.text = str(playerlvl)
 	$box_ally/playerhp.text = (playerhp)
-	if playername in special_names:
-		$box_ally/Player.play(playername)
+	if player.character.portrait_override and player.character.portrait_override != "":
+		$box_ally/portraits.play(player.character.portrait_override)
 	else:
-		$box_ally/Player.play("portraits")
-		$box_ally/Player.playing = false
-		$box_ally/Player.frame = player.character.character_class
+		$box_ally/portraits.play(default_portraits[player.character.character_class])
 	start = OS.get_ticks_msec()
-#big code like way too much code
-#shrunk code by 50% ;)
 
 func set_entities(player_entity):
 	player = player_entity

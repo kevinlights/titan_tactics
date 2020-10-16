@@ -151,6 +151,9 @@ func _ready():
 		$PlayerType.play(default_portraits[TT.CONTROL.PLAYER][player.character.character_class])
 	if enemy.character.character_class in default_portraits[TT.CONTROL.PLAYER]:
 		$EnemyType.play(default_portraits[TT.CONTROL.PLAYER][enemy.character.character_class])
+		$EnemyType.show()
+	else:
+		$EnemyType.hide()
 
 	if player.character.portrait_override:
 		var portrait = player.character.portrait_override
