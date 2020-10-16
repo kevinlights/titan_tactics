@@ -114,6 +114,8 @@ func hit(attacker):
 			print(dialogue.text)
 			emit_signal("dialogue", dialogue)
 #			gui.dialogue(dialogue)
+	if character.hp < character.max_hp:
+		$healthbar.show()
 	if character.control == TT.CONTROL.AI and can_recruit():
 		$speak.show()
 		spread_icons()
@@ -372,14 +374,14 @@ func _on_orientation_changed():
 
 func init_common(control):
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
-#	healthbar = load("res://scenes/healthbar.tscn").instance()
+	healthbar = load("res://scenes/healthbar.tscn").instance()
 #	healthbar.translation.x = 0
 #	healthbar.translation.z = -5
-#	healthbar.set_value(character.hp, character.max_hp)
-##	if control == TT.CONTROL.PLAYER:
-##		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
-#	healthbar.hide()
-#	add_child(healthbar)
+	healthbar.set_value(character.hp, character.max_hp)
+	if control == TT.CONTROL.PLAYER:
+		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
+	healthbar.hide()
+	add_child(healthbar)
 	
 func init(char_type, control = TT.CONTROL.PLAYER):	
 	var default_stats = load("res://resources/class_stats.tres") # [class_map[char_type]]
@@ -423,6 +425,9 @@ func _on_animation_finished():
 func _process(delta):
 	var now = OS.get_ticks_msec()
 	_on_frame_changed()
+	if $healthbar.visible:
+		var hp_position = world.get_node("camera").unproject_position(translation)
+		$healthbar.position = hp_position
 	if not character:
 		return
 	if avatar.playing and avatar.animation.begins_with("attack"):
