@@ -125,6 +125,11 @@ animations = [ {
 "name": "mage",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "blank",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "guard",
@@ -135,11 +140,6 @@ animations = [ {
 "name": "fighter",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "blank",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
 "name": "cantmove",
@@ -147,12 +147,12 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=18]
-flags = 19
+flags = 2
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=19]
-flags = 19
+flags = 2
 atlas = ExtResource( 15 )
 region = Rect2( 0, 8, 8, 8 )
 

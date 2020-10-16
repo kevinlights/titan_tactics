@@ -40,21 +40,10 @@ func load_level(level_name):
 	print("Loading level " + level_name)
 	var level = load("res://scenes/levels/" + level_name + ".tscn").instance()
 	add_child_below_node($map_anchor, level)
-	tile_meta = level.get_node("navigation/tile_meta")
 	world_map = level.get_node("map")
 	var _3d_map = level.get_node("Spatial").get_node(level.map_node)
-#	if _3d_map:
 	pathfinder = _3d_map
 	$range_overlay.set_gridmap(_3d_map)
-#	else:
-#		pathfinder = PathFinder.new(tile_meta, [ 2, 3, 4, 5, 7 ])
-#		$range_overlay.set_gridmap(null)
-#	var used_rect = tile_meta.get_used_rect()
-#	map_size.width = used_rect.size.x
-#	map_size.height = used_rect.size.y
-#	$select/camera.limit_bottom = map_size.height * TT.cell_size
-#	$select/camera.limit_right = map_size.width * TT.cell_size
-#	tile_meta.hide() # meta data should not be visible to the player	
 	$select.disable()
 
 func get_current():
@@ -672,6 +661,8 @@ func _input(event):
 		_on_next_level()
 	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
 		_on_replay()
+	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
+		gui.pause()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
 		var additional_character = load("res://resources/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER

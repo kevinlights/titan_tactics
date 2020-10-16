@@ -73,7 +73,7 @@ func perform_action(item):
 	index += 1
 
 func _process(delta):
-	if !visible:
+	if !visible or !$text:
 		return
 	var now = OS.get_ticks_msec()
 	if now - last_typed > typing_delay:
@@ -129,6 +129,8 @@ func advance():
 			hide()
 
 func _input(event):
+	if not content:
+		return
 	if not visible:
 		return
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
