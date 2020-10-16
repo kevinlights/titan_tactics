@@ -54,10 +54,10 @@ defense = 1
 heal = 1
 effect = SubResource( 3 )
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=9]
 script = ExtResource( 5 )
 character_class = 3
-name = "Cyrus"
+name = "Boba"
 level = 1
 hp = 60
 max_hp = 60
@@ -154,7 +154,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
 }
-stats = SubResource( 5 )
+stats = SubResource( 9 )
 dialogue = SubResource( 6 )
 recruit_dialogue = SubResource( 7 )
 

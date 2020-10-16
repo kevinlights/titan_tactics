@@ -40,7 +40,7 @@ var default_portraits = {
 		TT.TYPE.ARCHER: "ai_archer",
 		TT.TYPE.MAGE: "ai_mage",
 		TT.TYPE.FIGHTER: "ai_swordsman",
-		TT.TYPE.BOBA: "ai_mage"
+		TT.TYPE.BOBA: "boba"
 	},
 	TT.CONTROL.PLAYER: {
 		TT.TYPE.ARCHER: "archer",
