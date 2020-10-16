@@ -35,10 +35,10 @@ func set_weapons(current, new, type):
 	print(new_gear.name)
 	print(new_gear.attack)
 	$text.text = new_gear.name
-	if type == Item.SLOT.ATK:
-		$item_popup.region_rect.position.y = 67
-	else:
-		$item_popup.region_rect.position.y = 0
+#	if type == Item.SLOT.ATK:
+#		$item_popup.region_rect.position.y = 67
+#	else:
+#		$item_popup.region_rect.position.y = 0
 
 func _process(delta):
 	if visible == false:

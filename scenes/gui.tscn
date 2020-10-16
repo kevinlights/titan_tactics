@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://gfx/ui/yourturn.png" type="Texture" id=16]
 [ext_resource path="res://scripts/gui/weaponswap.gd" type="Script" id=17]
 [ext_resource path="res://scripts/gui/teamselect.gd" type="Script" id=18]
-[ext_resource path="res://scripts/gui/dialogue_box.gd" type="Script" id=19]
 [ext_resource path="res://gfx/swap.png" type="Texture" id=20]
 [ext_resource path="res://scenes/gui/teamconfirm.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=22]
@@ -494,6 +493,12 @@ animations = [ {
 "speed": 30.0
 } ]
 
+[sub_resource type="DynamicFont" id=93]
+size = 13
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 29 )
+
 [sub_resource type="AtlasTexture" id=89]
 flags = 2
 atlas = ExtResource( 23 )
@@ -516,12 +521,6 @@ animations = [ {
 "name": "default",
 "speed": 8.0
 } ]
-
-[sub_resource type="DynamicFont" id=93]
-size = 13
-extra_spacing_char = 1
-extra_spacing_space = 2
-font_data = ExtResource( 29 )
 
 [sub_resource type="AtlasTexture" id=94]
 flags = 19
@@ -568,6 +567,7 @@ animations = [ {
 script = ExtResource( 1 )
 
 [node name="pause" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="teamconfirm" parent="." instance=ExtResource( 21 )]
 visible = false
@@ -688,6 +688,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -967,6 +968,7 @@ animation = "mage"
 position = Vector2( 130, -10 )
 frames = SubResource( 25 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -978,7 +980,6 @@ animation = "mage"
 position = Vector2( 190, -10 )
 frames = SubResource( 30 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1127,7 +1128,6 @@ margin_left = -32.0
 margin_top = -15.0
 margin_right = 288.0
 margin_bottom = 80.0
-script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1181,13 +1181,6 @@ color = Color( 0.89, 0.88288, 0.7832, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="focus" type="AnimatedSprite" parent="weaponswap/dialogue_box"]
-position = Vector2( 131, 47 )
-frames = SubResource( 92 )
-playing = true
-centered = false
-offset = Vector2( -2, 8 )
 
 [node name="text" type="Label" parent="weaponswap"]
 margin_left = -32.0
@@ -1268,8 +1261,9 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="weaponswap/no"]
 visible = false
-position = Vector2( 0.407799, -11.0781 )
+position = Vector2( -3, -12 )
 frames = SubResource( 92 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1292,8 +1286,9 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="weaponswap/yes"]
 visible = false
-position = Vector2( 0, 1 )
+position = Vector2( -3, 7 )
 frames = SubResource( 92 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1441,6 +1436,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 92 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1538,7 +1534,6 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 99 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1561,7 +1556,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 99 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1650,7 +1644,6 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 99 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1673,7 +1666,6 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 99 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
