@@ -16,11 +16,11 @@ export(Array, String) var special_names
 
 var ttl = 100
 
-var start_x_ally = -30
-var end_x_ally = 42
+var start_x_ally = -160
+var end_x_ally = 0
 
-var start_x_enemy = 362
-var end_x_enemy = 290
+var start_x_enemy = 320
+var end_x_enemy = 160
 
 var moving_back = false
 
@@ -49,19 +49,19 @@ var default_portraits = {
 	}
 }
 
-var portrait_map = {
-	PT_Dialogue.PORTRAIT.ARCHER: "archer",
-	PT_Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
-	PT_Dialogue.PORTRAIT.MAGE: "mage",
-	PT_Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
-	PT_Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
-	PT_Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
-	PT_Dialogue.PORTRAIT.HERO: "hero",
-	PT_Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
-	PT_Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
-	PT_Dialogue.PORTRAIT.OLD_MAN: "old_man",
-	PT_Dialogue.PORTRAIT.CYAN: "cyan"
-}
+#var portrait_map = {
+#	PT_Dialogue.PORTRAIT.ARCHER: "archer",
+#	PT_Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
+#	PT_Dialogue.PORTRAIT.MAGE: "mage",
+#	PT_Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
+#	PT_Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
+#	PT_Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
+#	PT_Dialogue.PORTRAIT.HERO: "hero",
+#	PT_Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
+#	PT_Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
+#	PT_Dialogue.PORTRAIT.OLD_MAN: "old_man",
+#	PT_Dialogue.PORTRAIT.CYAN: "cyan"
+#}
 
 #level line width = 28
 
@@ -143,12 +143,12 @@ func _ready():
 #	$EnemyType.frame = atlas_frames[enemy.character.character_class]
 
 	if player.character.portrait_override:
-		var portrait = portrait_map[player.character.portrait_override]
+		var portrait = player.character.portrait_override
 		$box_ally/portraits.play(portrait)
 	else:
 		$box_ally/portraits.play(default_portraits[player.character.control][player.character.character_class])
 	if enemy.character.portrait_override:
-		var portrait = portrait_map[enemy.character.portrait_override]
+		var portrait = enemy.character.portrait_override
 		$box_enemy/portraits.play(portrait)
 	else:
 		$box_enemy/portraits.play(default_portraits[enemy.character.control][enemy.character.character_class])

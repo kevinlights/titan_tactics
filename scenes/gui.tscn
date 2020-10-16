@@ -544,6 +544,7 @@ visible = false
 visible = false
 
 [node name="characterselect" type="Control" parent="."]
+visible = false
 margin_top = 80.0
 margin_right = 40.0
 margin_bottom = 120.0
@@ -652,6 +653,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
+frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -752,11 +754,9 @@ frame = 1
 playing = true
 
 [node name="battle" type="Control" parent="."]
-visible = false
-margin_left = -5.548
-margin_top = 178.0
-margin_right = 34.452
-margin_bottom = 218.0
+margin_top = 173.0
+margin_right = 40.0
+margin_bottom = 213.0
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -764,14 +764,15 @@ __meta__ = {
 special_names = [ "Rolf" ]
 
 [node name="box_enemy" type="Sprite" parent="battle"]
-position = Vector2( 362, 29 )
+position = Vector2( 156, 0 )
 texture = ExtResource( 26 )
+centered = false
 
 [node name="enemyname" type="Label" parent="battle/box_enemy"]
-margin_left = -30.721
-margin_top = -11.5223
-margin_right = 9.279
-margin_bottom = 2.47769
+margin_left = 26.8052
+margin_top = 4.19216
+margin_right = 66.8052
+margin_bottom = 18.1922
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "Marie"
@@ -780,10 +781,10 @@ __meta__ = {
 }
 
 [node name="enemylevel" type="Label" parent="battle/box_enemy"]
-margin_left = 15.7094
-margin_top = -12.3626
-margin_right = 55.7094
-margin_bottom = 1.63743
+margin_left = 92.598
+margin_top = 3.63249
+margin_right = 132.598
+margin_bottom = 17.6325
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -792,10 +793,10 @@ __meta__ = {
 }
 
 [node name="enemyatklevel" type="Label" parent="battle/box_enemy"]
-margin_left = -17.0499
-margin_top = -1.25806
-margin_right = 22.9501
-margin_bottom = 12.7419
+margin_left = 49.0646
+margin_top = 20.4855
+margin_right = 89.0646
+margin_bottom = 54.4855
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00
@@ -805,10 +806,10 @@ __meta__ = {
 }
 
 [node name="enemydeflevel" type="Label" parent="battle/box_enemy"]
-margin_left = 15.9093
-margin_top = -1.15613
-margin_right = 55.9093
-margin_bottom = 12.8439
+margin_left = 91.6755
+margin_top = 22.4156
+margin_right = 131.675
+margin_bottom = 56.4156
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00
@@ -818,10 +819,10 @@ __meta__ = {
 }
 
 [node name="enemyhp" type="Label" parent="battle/box_enemy"]
-margin_left = -16.6635
-margin_top = 6.8612
-margin_right = 23.3365
-margin_bottom = 20.8612
+margin_left = 46.8609
+margin_top = 34.2032
+margin_right = 86.8609
+margin_bottom = 68.2032
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00
@@ -831,29 +832,30 @@ __meta__ = {
 }
 
 [node name="enemylevelline" type="Line2D" parent="battle/box_enemy"]
-position = Vector2( 2, -5.5 )
+position = Vector2( 72, 18 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 1.0
 default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
 
 [node name="hpline" type="Line2D" parent="battle/box_enemy"]
-position = Vector2( -31, 14.547 )
+position = Vector2( 28.3088, 48.48 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
 default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="portraits" parent="battle/box_enemy" instance=ExtResource( 49 )]
-position = Vector2( 18, -43 )
+position = Vector2( 138.748, 22.9136 )
+flip_h = true
 
 [node name="box_ally" type="Sprite" parent="battle"]
-position = Vector2( -30, 29.047 )
 texture = ExtResource( 28 )
+centered = false
 
 [node name="playerlevel" type="Label" parent="battle/box_ally"]
-margin_left = 15.7445
-margin_top = -11.6735
-margin_right = 55.7445
-margin_bottom = 2.32654
+margin_left = 118.994
+margin_top = 4.8265
+margin_right = 158.995
+margin_bottom = 18.8265
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -862,10 +864,10 @@ __meta__ = {
 }
 
 [node name="playername" type="Label" parent="battle/box_ally"]
-margin_left = -31.1581
-margin_top = -11.9374
-margin_right = 8.84195
-margin_bottom = 2.06264
+margin_left = 55.6065
+margin_top = 6.75036
+margin_right = 95.6065
+margin_bottom = 20.7504
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "Marie"
@@ -874,10 +876,10 @@ __meta__ = {
 }
 
 [node name="playeratklevel" type="Label" parent="battle/box_ally"]
-margin_left = -17.0678
-margin_top = -0.81588
-margin_right = 22.9322
-margin_bottom = 13.1841
+margin_left = 78.1822
+margin_top = 20.1841
+margin_right = 118.182
+margin_bottom = 34.1841
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -886,10 +888,10 @@ __meta__ = {
 }
 
 [node name="playerdeflevel" type="Label" parent="battle/box_ally"]
-margin_left = 15.6839
-margin_top = -1.04449
-margin_right = 55.6839
-margin_bottom = 12.9555
+margin_left = 118.684
+margin_top = 20.4555
+margin_right = 158.684
+margin_bottom = 34.4555
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -898,10 +900,10 @@ __meta__ = {
 }
 
 [node name="playerhp" type="Label" parent="battle/box_ally"]
-margin_left = -17.3368
-margin_top = 6.68463
-margin_right = 22.6632
-margin_bottom = 20.6846
+margin_left = 74.1632
+margin_top = 34.6846
+margin_right = 114.163
+margin_bottom = 48.6846
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 text = "00"
@@ -910,47 +912,47 @@ __meta__ = {
 }
 
 [node name="levelline" type="Line2D" parent="battle/box_ally"]
-position = Vector2( 2, -5.547 )
+position = Vector2( 100, 18 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 1.0
 default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
 
 [node name="hpline" type="Line2D" parent="battle/box_ally"]
-position = Vector2( -31, 14.5 )
+position = Vector2( 56.2393, 47.9992 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
 default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="portraits" parent="battle/box_ally" instance=ExtResource( 49 )]
-position = Vector2( -18, -43 )
+position = Vector2( 25, 23 )
 
 [node name="PlayerType" type="Sprite" parent="battle"]
-position = Vector2( 59.958, 0.56255 )
+position = Vector2( 123.303, -7.41394 )
 texture = ExtResource( 41 )
 vframes = 4
 hframes = 2
 
 [node name="PlayerAdvantage" type="AnimatedSprite" parent="battle"]
-position = Vector2( 51.5761, 0.49651 )
+position = Vector2( 99.0189, -7.3182 )
 frames = SubResource( 25 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
-position = Vector2( 107.683, 0.7991 )
+position = Vector2( 213.898, -7.39038 )
 texture = ExtResource( 41 )
 vframes = 4
 hframes = 2
 
 [node name="EnemyAdvantage" type="AnimatedSprite" parent="battle"]
-position = Vector2( 116.938, 0.85042 )
+position = Vector2( 192.48, -7.45827 )
 frames = SubResource( 30 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
-position = Vector2( 85.7853, 0.713303 )
+position = Vector2( 159.698, 1.73734 )
 texture = ExtResource( 10 )
 
 [node name="LvlupSfx" type="AudioStreamPlayer2D" parent="battle"]
@@ -1158,7 +1160,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="weaponswap/dialogue_box"]
 position = Vector2( 131, 47 )
 frames = SubResource( 92 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1244,7 +1246,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 92 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1269,7 +1271,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 92 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1417,7 +1419,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 92 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
