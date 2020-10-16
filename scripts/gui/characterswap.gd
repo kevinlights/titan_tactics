@@ -5,12 +5,18 @@ signal library_exhausted
 
 var current_character
 
-var end_x = 36
-var start_x = -36
+var end_x = 0
+var start_x = -160
 var start = 0
 var ttl = 60
 
 var moving_back = false
+
+var default_portraits = {
+	TT.TYPE.ARCHER: "archer",
+	TT.TYPE.MAGE: "mage",
+	TT.TYPE.FIGHTER: "swordsman"
+}
 
 onready var world = get_parent().get_parent()
 
@@ -44,12 +50,16 @@ func update_view():
 		return
 	var animation = "fighter"
 	$box_ally/name.text = current_character.name
-	if $box_ally/name.text in get_parent().get_node("battle").special_names:
-		$box_ally/Portrait.play($box_ally/name.text)
-	if !$box_ally/name.text in get_parent().get_node("battle").special_names:
-		$box_ally/Portrait.play("portraits")
-		$box_ally/Portrait.frame = current_character.character_class
-		$box_ally/Portrait.playing = false
+	if current_character.portrait_override and current_character.portrait_override != "":
+		$box_ally/portraits.play(current_character.portrait_override)
+	else:
+		$box_ally/portraits.play(default_portraits[current_character.character_class])	
+#	if $box_ally/name.text in get_parent().get_node("battle").special_names:
+#		$box_ally/Portrait.play($box_ally/name.text)
+#	if !$box_ally/name.text in get_parent().get_node("battle").special_names:
+#		$box_ally/Portrait.play("portraits")
+#		$box_ally/Portrait.frame = current_character.character_class
+#		$box_ally/Portrait.playing = false
 	
 	$box_ally/atk.text = "%02d" % int(round(current_character.atk + current_character.item_atk.attack))
 	$box_ally/hp.text =  "%02d" % current_character.hp
