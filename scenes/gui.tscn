@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=2]
+[gd_scene load_steps=158 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -154,30 +154,69 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=108]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 0, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=109]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=110]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 32, 16, 16 )
+region = Rect2( 0, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=111]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 48, 16, 16 )
+region = Rect2( 0, 48, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=112]
+animations = [ {
+"frames": [ SubResource( 108 ) ],
+"loop": true,
+"name": "archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 109 ) ],
+"loop": true,
+"name": "swordsman",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 110 ) ],
+"loop": true,
+"name": "mage",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 111 ) ],
+"loop": true,
+"name": "armor",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=100]
+atlas = ExtResource( 41 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 41 )
+region = Rect2( 32, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 41 )
+region = Rect2( 32, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 41 )
+region = Rect2( 32, 48, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=25]
 animations = [ {
-"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 100 ), SubResource( 101 ) ],
 "loop": true,
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 102 ), SubResource( 103 ) ],
 "loop": true,
 "name": "down",
 "speed": 3.0
@@ -188,30 +227,69 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=113]
 atlas = ExtResource( 41 )
 region = Rect2( 16, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=114]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=115]
 atlas = ExtResource( 41 )
 region = Rect2( 16, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=116]
 atlas = ExtResource( 41 )
 region = Rect2( 16, 48, 16, 16 )
 
+[sub_resource type="SpriteFrames" id=117]
+animations = [ {
+"frames": [ SubResource( 113 ) ],
+"loop": true,
+"name": "archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 114 ) ],
+"loop": true,
+"name": "swordsman",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 115 ) ],
+"loop": true,
+"name": "mage",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 116 ) ],
+"loop": true,
+"name": "armor",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 41 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=105]
+atlas = ExtResource( 41 )
+region = Rect2( 32, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=106]
+atlas = ExtResource( 41 )
+region = Rect2( 32, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=107]
+atlas = ExtResource( 41 )
+region = Rect2( 32, 48, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=30]
 animations = [ {
-"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"frames": [ SubResource( 104 ), SubResource( 105 ) ],
 "loop": true,
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 28 ), SubResource( 29 ) ],
+"frames": [ SubResource( 106 ), SubResource( 107 ) ],
 "loop": true,
 "name": "down",
 "speed": 3.0
@@ -561,13 +639,11 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 247.863, 114.383 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 285.863, 114.383 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -744,13 +820,11 @@ animation = "Rolf"
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 98.551, 130.424 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [node name="Bbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 136.551, 130.424 )
 frames = SubResource( 20 )
-frame = 1
 playing = true
 
 [node name="battle" type="Control" parent="."]
@@ -835,13 +909,13 @@ __meta__ = {
 position = Vector2( 72, 18 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 1.0
-default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+default_color = Color( 0.760784, 0.278431, 0.384314, 1 )
 
 [node name="hpline" type="Line2D" parent="battle/box_enemy"]
-position = Vector2( 28.3088, 48.48 )
+position = Vector2( 28, 48 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
-default_color = Color( 0.917647, 1, 0.866667, 1 )
+default_color = Color( 0.760784, 0.278431, 0.384314, 1 )
 
 [node name="portraits" parent="battle/box_enemy" instance=ExtResource( 49 )]
 position = Vector2( 138.748, 22.9136 )
@@ -915,44 +989,42 @@ __meta__ = {
 position = Vector2( 100, 18 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 1.0
-default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+default_color = Color( 0.313726, 0.564706, 0.690196, 1 )
 
 [node name="hpline" type="Line2D" parent="battle/box_ally"]
-position = Vector2( 56.2393, 47.9992 )
+position = Vector2( 56, 48 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
-default_color = Color( 0.917647, 1, 0.866667, 1 )
+default_color = Color( 0.313726, 0.564706, 0.690196, 1 )
 
 [node name="portraits" parent="battle/box_ally" instance=ExtResource( 49 )]
 position = Vector2( 25, 23 )
 
-[node name="PlayerType" type="Sprite" parent="battle"]
-position = Vector2( 123.303, -7.41394 )
-texture = ExtResource( 41 )
-vframes = 4
-hframes = 2
+[node name="PlayerType" type="AnimatedSprite" parent="battle"]
+position = Vector2( 110, -10 )
+frames = SubResource( 112 )
+animation = "mage"
 
 [node name="PlayerAdvantage" type="AnimatedSprite" parent="battle"]
-position = Vector2( 99.0189, -7.3182 )
+position = Vector2( 130, -10 )
 frames = SubResource( 25 )
-animation = "down"
-playing = true
-
-[node name="EnemyType" type="Sprite" parent="battle"]
-position = Vector2( 213.898, -7.39038 )
-texture = ExtResource( 41 )
-vframes = 4
-hframes = 2
-
-[node name="EnemyAdvantage" type="AnimatedSprite" parent="battle"]
-position = Vector2( 192.48, -7.45827 )
-frames = SubResource( 30 )
 animation = "down"
 frame = 1
 playing = true
 
+[node name="EnemyType" type="AnimatedSprite" parent="battle"]
+position = Vector2( 210, -10 )
+frames = SubResource( 117 )
+animation = "mage"
+
+[node name="EnemyAdvantage" type="AnimatedSprite" parent="battle"]
+position = Vector2( 190, -10 )
+frames = SubResource( 30 )
+animation = "down"
+playing = true
+
 [node name="vs" type="Sprite" parent="battle"]
-position = Vector2( 159.698, 1.73734 )
+position = Vector2( 160, 2 )
 texture = ExtResource( 10 )
 
 [node name="LvlupSfx" type="AudioStreamPlayer2D" parent="battle"]
@@ -1160,7 +1232,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="weaponswap/dialogue_box"]
 position = Vector2( 131, 47 )
 frames = SubResource( 92 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1246,7 +1318,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 92 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1271,7 +1343,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 92 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1280,7 +1352,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 96 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -1393,6 +1464,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 96 )
+frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1419,7 +1491,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 92 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1517,6 +1589,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 99 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1539,6 +1612,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 99 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1627,6 +1701,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 99 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1649,6 +1724,7 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 99 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )

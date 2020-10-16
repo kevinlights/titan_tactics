@@ -26,14 +26,14 @@ var moving_back = false
 
 var start
 
-var atlas_frames = {
-	"up": 3,
-	"down": 2,
-	"neutral": 128,
-	TT.TYPE.ARCHER: 2,
-	TT.TYPE.FIGHTER: 0,
-	TT.TYPE.MAGE: 4
-}
+#var atlas_frames = {
+#	"up": 3,
+#	"down": 2,
+#	"neutral": 128,
+#	TT.TYPE.ARCHER: 2,
+#	TT.TYPE.FIGHTER: 0,
+#	TT.TYPE.MAGE: 4
+#}
 
 var default_portraits = {
 	TT.CONTROL.AI: {
@@ -86,21 +86,25 @@ func _process(_delta):
 		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
 		
 	#move hp line
-	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*61:
+	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*78:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x - 0.5, 0)
 		$box_ally/hpline.set_point_position(1, new_hp_pos)
-	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*61:
+	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*78:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x + 0.5, 0)
 		$box_ally/hpline.set_point_position(1, new_hp_pos)
 	
-	if $box_enemy/hpline.get_point_position(1).x > (enemy.character.hp/enemy.character.max_hp)*61:
+	if $box_enemy/hpline.get_point_position(1).x > (enemy.character.hp/enemy.character.max_hp)*78:
 		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x - 0.5, 0)
 		$box_enemy/hpline.set_point_position(1, new_hp_pos)
-	if $box_enemy/hpline.get_point_position(1).x < (enemy.character.hp/enemy.character.max_hp)*61:
+	if $box_enemy/hpline.get_point_position(1).x < (enemy.character.hp/enemy.character.max_hp)*78:
 		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x + 0.5, 0)
 		$box_enemy/hpline.set_point_position(1, new_hp_pos)
 	
 	if !moving_back:
+		if now - start < ttl:
+			$vs.scale = lerp(Vector2(0, 0), Vector2(1, 1), float(now - start) / float(ttl))
+		else:
+			$vs.scale = Vector2(1, 1)
 		#update_stats()
 		if $box_ally.position.x < end_x_ally:
 			$box_ally.position.x = lerp(start_x_ally, end_x_ally, float(now - start) / float(ttl))
@@ -111,6 +115,10 @@ func _process(_delta):
 		else:
 			$box_enemy.position.x = end_x_enemy
 	else:
+		if now - start < ttl:
+			$vs.scale = lerp(Vector2(1, 1), Vector2(0, 0), float(now - start) / float(ttl))
+		else:
+			$vs.scale = Vector2(0, 0)
 		if $box_ally.position.x > start_x_ally:
 			$box_ally.position.x = lerp(end_x_ally, start_x_ally, float(now - start) / float(ttl))
 		else:
@@ -127,8 +135,8 @@ func _ready():
 		return
 	print("resetting battle UI")
 	moving_back = false
-	$box_enemy/hpline.set_point_position(1, Vector2(enemy.character.hp/enemy.character.max_hp*61, 0))
-	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*61, 0))
+	$box_enemy/hpline.set_point_position(1, Vector2(enemy.character.hp/enemy.character.max_hp*78, 0))
+	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*78, 0))
 	$box_ally/playername.text = playername
 	$box_ally/playeratklevel.text = str(playeratk)
 	$box_ally/playerdeflevel.text = str(playerdef)
@@ -139,8 +147,10 @@ func _ready():
 	$box_enemy/enemylevel.text = str(enemylvl)
 	$box_enemy/enemyhp.text = (enemyhp)
 	$box_ally/playerhp.text = (playerhp)
-#	$PlayerType.frame = atlas_frames[player.character.character_class]
-#	$EnemyType.frame = atlas_frames[enemy.character.character_class]
+	if player.character.character_class in default_portraits[TT.CONTROL.PLAYER]:
+		$PlayerType.play(default_portraits[TT.CONTROL.PLAYER][player.character.character_class])
+	if enemy.character.character_class in default_portraits[TT.CONTROL.PLAYER]:
+		$EnemyType.play(default_portraits[TT.CONTROL.PLAYER][enemy.character.character_class])
 
 	if player.character.portrait_override:
 		var portrait = player.character.portrait_override
