@@ -9,7 +9,7 @@ var selected = 0
 
 onready var select = get_parent().get_parent().get_node("select")
 
-var atlas_frames = {
+var portraits = {
 	TT.TYPE.ARCHER: "archer",
 	TT.TYPE.FIGHTER: "fighter",
 	TT.TYPE.MAGE: "mage"
@@ -26,8 +26,8 @@ func _ready():
 func _process(delta):
 	if !visible:
 		return
-	if select.animation != "fighter" and select.animation != "mage" and select.animation != "archer":
-		select.play(atlas_frames[characters[selected].character_class])
+#	if select.animation != "fighter" and select.animation != "mage" and select.animation != "archer":
+#		select.play(atlas_frames[characters[selected].character_class])
 	$levelline2.set_point_position(1, Vector2(characters[selected].xp/characters[selected].xp_to_next*28, 0))
 	$hpline2.set_point_position(1, Vector2(characters[selected].hp/characters[selected].max_hp * 61, 0))
 	if characters.size() == 1:
@@ -47,12 +47,20 @@ func update_view():
 	#	TT.TYPE.MAGE:
 	#		animation = "mage"
 	$name.text = characters[selected].name
-	if $name.text in get_parent().get_node("battle").special_names:
-		$Portrait.play($name.text)
-	if !$name.text in get_parent().get_node("battle").special_names:
-		$Portrait.play("portraits")
-		$Portrait.frame = characters[selected].character_class
-		$Portrait.playing = false
+	$portraits.show()
+	if characters[selected].portrait_override and characters[selected].portrait_override != "":
+		$portraits.play(characters[selected].portrait_override)
+	elif characters[selected].character_class in portraits:
+		$portraits.play(portraits[characters[selected].character_class])
+	else:
+		$portraits.hide()
+#	if $name.text in get_parent().get_node("battle").special_names:
+#		$portraits.play($name.text)
+#	if !$name.text in get_parent().get_node("battle").special_names:
+#
+#		$portraits.play("portraits")
+#		$portraits.frame = characters[selected].character_class
+#		$portraits.playing = false
 	
 	$atk.text = "%02d" % int(round((characters[selected].atk + characters[selected].item_atk.attack)))
 	$hp.text =  "%02d" % int(round(characters[selected].hp))

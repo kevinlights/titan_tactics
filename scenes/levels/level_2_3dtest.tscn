@@ -68,7 +68,7 @@ mov_range = 6
 heal = 1
 item_atk = SubResource( 2 )
 item_def = SubResource( 4 )
-portrait_override = 0
+portrait_override = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 10 )

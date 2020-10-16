@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/bowieSpritesheet_50x60px.png-8b13a6bd94c7fe0510b3dac7472ef6db.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://gfx/bowieSpritesheet_50x60px.png"
+dest_files=[ "res://.import/bowieSpritesheet_50x60px.png-8b13a6bd94c7fe0510b3dac7472ef6db.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

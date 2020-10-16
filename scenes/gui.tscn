@@ -49,47 +49,6 @@
 [ext_resource path="res://scenes/dialogue_box.tscn" type="PackedScene" id=50]
 [ext_resource path="res://scenes/dialogue_answers.tscn" type="PackedScene" id=51]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 35 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 42 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 36 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 36 )
-region = Rect2( 36, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 42 )
-region = Rect2( 0, 0, 36, 50 )
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "portraits",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ) ],
-"loop": true,
-"name": "Rolf",
-"speed": 5.0
-} ]
-
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 36, 24 )
@@ -136,6 +95,47 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 3.0
+} ]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 35 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 36 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 36 )
+region = Rect2( 36, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 42 )
+region = Rect2( 0, 0, 36, 50 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "portraits",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "Rolf",
+"speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=18]
@@ -544,7 +544,6 @@ visible = false
 visible = false
 
 [node name="characterselect" type="Control" parent="."]
-visible = false
 margin_top = 80.0
 margin_right = 40.0
 margin_bottom = 120.0
@@ -553,32 +552,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Portrait" type="AnimatedSprite" parent="characterselect"]
-position = Vector2( 18, 84 )
-frames = SubResource( 8 )
-animation = "Rolf"
-
 [node name="box_ally" type="Sprite" parent="characterselect"]
-position = Vector2( 36, 127 )
+position = Vector2( 0, 91 )
 texture = ExtResource( 28 )
+centered = false
 
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
-position = Vector2( 103.551, 130.424 )
+position = Vector2( 247.863, 114.383 )
 frames = SubResource( 11 )
 frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
-position = Vector2( 141.551, 130.424 )
+position = Vector2( 285.863, 114.383 )
 frames = SubResource( 14 )
 frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
-margin_left = 4.66079
-margin_top = 115.042
-margin_right = 44.6608
-margin_bottom = 129.042
+margin_left = 55.0
+margin_top = 97.2175
+margin_right = 92.9446
+margin_bottom = 111.218
 theme = ExtResource( 22 )
 text = "Rolf"
 __meta__ = {
@@ -586,10 +581,10 @@ __meta__ = {
 }
 
 [node name="atk" type="Label" parent="characterselect"]
-margin_left = 18.8527
-margin_top = 126.406
-margin_right = 58.8527
-margin_bottom = 140.406
+margin_left = 78.6472
+margin_top = 111.945
+margin_right = 118.647
+margin_bottom = 125.945
 theme = ExtResource( 22 )
 text = "00"
 __meta__ = {
@@ -597,10 +592,10 @@ __meta__ = {
 }
 
 [node name="hp" type="Label" parent="characterselect"]
-margin_left = 18.7793
-margin_top = 134.03
-margin_right = 58.7793
-margin_bottom = 148.03
+margin_left = 71.8199
+margin_top = 125.0
+margin_right = 111.82
+margin_bottom = 138.679
 theme = ExtResource( 22 )
 text = "00"
 __meta__ = {
@@ -608,10 +603,10 @@ __meta__ = {
 }
 
 [node name="def" type="Label" parent="characterselect"]
-margin_left = 51.6211
-margin_top = 125.742
-margin_right = 91.6211
-margin_bottom = 139.742
+margin_left = 120.742
+margin_top = 111.877
+margin_right = 160.742
+margin_bottom = 125.877
 theme = ExtResource( 22 )
 text = "00"
 __meta__ = {
@@ -619,10 +614,10 @@ __meta__ = {
 }
 
 [node name="lvl" type="Label" parent="characterselect"]
-margin_left = 52.368
-margin_top = 115.476
-margin_right = 92.368
-margin_bottom = 129.476
+margin_left = 118.711
+margin_top = 95.8563
+margin_right = 158.711
+margin_bottom = 109.856
 theme = ExtResource( 22 )
 text = "00"
 __meta__ = {
@@ -630,16 +625,20 @@ __meta__ = {
 }
 
 [node name="levelline2" type="Line2D" parent="characterselect"]
-position = Vector2( 38, 121.5 )
+position = Vector2( 100.09, 109.136 )
 points = PoolVector2Array( 0, 0, 28, 0 )
 width = 1.0
 default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="hpline2" type="Line2D" parent="characterselect"]
-position = Vector2( 5, 141.497 )
+position = Vector2( 56.2126, 139.14 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 1.0
 default_color = Color( 0.917647, 1, 0.866667, 1 )
+
+[node name="portraits" parent="characterselect" instance=ExtResource( 49 )]
+position = Vector2( 0, 84 )
+centered = false
 
 [node name="tip" type="Control" parent="."]
 visible = false
@@ -653,7 +652,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 136, 130 )
 frames = SubResource( 17 )
-frame = 1
 playing = true
 
 [node name="characterswap" type="Control" parent="."]
@@ -925,7 +923,6 @@ default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="portraits" parent="battle/box_ally" instance=ExtResource( 49 )]
 position = Vector2( -18, -43 )
-animation = "hero"
 
 [node name="PlayerType" type="Sprite" parent="battle"]
 position = Vector2( 59.958, 0.56255 )
@@ -937,6 +934,7 @@ hframes = 2
 position = Vector2( 51.5761, 0.49651 )
 frames = SubResource( 25 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="Sprite" parent="battle"]
@@ -949,7 +947,6 @@ hframes = 2
 position = Vector2( 116.938, 0.85042 )
 frames = SubResource( 30 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1161,6 +1158,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="weaponswap/dialogue_box"]
 position = Vector2( 131, 47 )
 frames = SubResource( 92 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1246,6 +1244,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0.407799, -11.0781 )
 frames = SubResource( 92 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1270,6 +1269,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 1 )
 frames = SubResource( 92 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1417,6 +1417,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 92 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
