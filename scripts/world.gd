@@ -294,6 +294,7 @@ func _ready():
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")
+	$camera.track($select)
 
 func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
@@ -356,11 +357,15 @@ func _on_check_map():
 func _on_edit_team():
 	# rediscover player spawns
 	player_spawns = []
-	for x in range(map_size.width):
-		for y in range(map_size.height):
-			var tile_id = tile_meta.get_cell(x, y)
-			if tile_id == TILEID.PLAYER_SPAWN:
-				player_spawns.append(Vector2(x, y))
+#	for x in range(map_size.width):
+#		for y in range(map_size.height):
+#			var tile_id = tile_meta.get_cell(x, y)
+#			if tile_id == TILEID.PLAYER_SPAWN:
+#				player_spawns.append(Vector2(x, y))
+	var player_spawn_nodes = get_tree().get_nodes_in_group("player_spawns")
+	for player_spawn_node in player_spawn_nodes:
+		player_spawns.append(player_spawn_node.translation) # Vector(player_spawn_node.translation.x, player_spawn_node.translation.z))
+
 	# clear previously selected team
 	for character in current[TT.CONTROL.PLAYER]:
 		world_map.remove_child(character)
