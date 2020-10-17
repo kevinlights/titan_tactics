@@ -44,6 +44,7 @@ web:
   stage: export
   script:
     - mkdir -v -p ${EXPORT_NAME}_web
+    - echo 'quality/driver/driver_name="GLES2"' >> project.godot
     - godot -v --export "HTML5" ${EXPORT_NAME}_web/index.html
   artifacts:
     name: $EXPORT_NAME-$CI_JOB_NAME
