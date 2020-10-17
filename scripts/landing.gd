@@ -10,7 +10,7 @@ func _input(event):
 
 func _ready():
 	$music/theme.play()
-	if SaveLoadSystem.has_save_file():
+	if SaveLoadSystem.has_save_file:
 		$menu/continue.show()
 		$menu/continue.grab_focus()
 	else:
