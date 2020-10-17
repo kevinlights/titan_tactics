@@ -1,4 +1,4 @@
-[gd_scene load_steps=302 format=2]
+[gd_scene load_steps=303 format=2]
 
 [ext_resource path="res://gfx/player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/character_controller.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://gfx/speak.png" type="Texture" id=7]
 [ext_resource path="res://resources/swordsman_spriteframes.tres" type="SpriteFrames" id=8]
 [ext_resource path="res://sfx/gameplay/arrow_hit1.wav" type="AudioStream" id=9]
+[ext_resource path="res://scripts/world_sprite.gd" type="Script" id=10]
 [ext_resource path="res://sfx/gameplay/walking1.wav" type="AudioStream" id=11]
 [ext_resource path="res://gfx/Sprites/shadow.png" type="Texture" id=12]
 [ext_resource path="res://sfx/gameplay/magic_hit1.wav" type="AudioStream" id=13]
@@ -283,6 +284,9 @@ animations = [ {
 "name": "idle-right",
 "speed": 5.0
 } ]
+
+[sub_resource type="CanvasItemMaterial" id=277]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id=46]
 flags = 16
@@ -1671,9 +1675,6 @@ colors = PoolColorArray( 0.917647, 1, 0.866667, 0, 0.917647, 1, 0.866667, 0 )
 [sub_resource type="Gradient" id=276]
 colors = PoolColorArray( 0.917647, 1, 0.866667, 1, 0.917647, 1, 0.866667, 1 )
 
-[sub_resource type="CanvasItemMaterial" id=277]
-light_mode = 1
-
 [node name="character_controller" type="Spatial"]
 script = ExtResource( 2 )
 
@@ -1694,7 +1695,7 @@ animation = "idle-right"
 frame = 1
 playing = true
 
-[node name="fighter" type="AnimatedSprite3D" parent="."]
+[node name="fighterOld" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.317352, 0.5 )
 visible = false
 offset = Vector2( 0, 12 )
@@ -1704,6 +1705,18 @@ alpha_cut = 2
 frames = ExtResource( 8 )
 animation = "idle-down"
 playing = true
+
+[node name="fighter" type="AnimatedSprite" parent="."]
+process_priority = 1
+light_mask = -2147483648
+material = SubResource( 277 )
+position = Vector2( 211.352, 137.016 )
+z_as_relative = false
+frames = ExtResource( 8 )
+animation = "idle-down"
+playing = true
+offset = Vector2( 0, -24 )
+script = ExtResource( 10 )
 
 [node name="ai_boba" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.317352, 0.5 )
@@ -1790,7 +1803,6 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 274 )
-frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]
@@ -1907,14 +1919,3 @@ emission_rect_extents = Vector2( 8, 8 )
 direction = Vector2( 1, 1 )
 gravity = Vector2( 0, -50 )
 color_ramp = SubResource( 276 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-process_priority = 1
-light_mask = -2147483648
-material = SubResource( 277 )
-position = Vector2( 211.352, 137.016 )
-z_as_relative = false
-frames = ExtResource( 8 )
-animation = "walk-down"
-frame = 3
-playing = true
