@@ -1,0 +1,15 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://gfx/Sprites/swman_walk_hit.png" type="Texture" id=1]
+
+[resource]
+flags_transparent = true
+flags_unshaded = true
+flags_fixed_size = true
+vertex_color_is_srgb = true
+params_specular_mode = 4
+params_cull_mode = 2
+params_depth_draw_mode = 2
+params_billboard_mode = 1
+params_billboard_keep_scale = true
+albedo_texture = ExtResource( 1 )
