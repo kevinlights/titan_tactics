@@ -1809,6 +1809,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 275 )
+frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]
