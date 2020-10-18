@@ -1,6 +1,6 @@
 extends Node
 
-var save_file_path = 'user://savegame.000.save'
+var save_file_path = 'user://savegame-0.0.1.save'
 var has_save_file = false 
 func _ready():
 	var save_file = File.new()
@@ -21,8 +21,11 @@ func load_game():
 	var save_data = parse_json(save_file.get_line())
 	Game.level = save_data.level
 	Game.team = []
+	
+	var default_stats = load("res://resources/class_stats.tres")
 	for character_dict in save_data.team:
-		var character = dict2inst(character_dict)
+		var character = CharacterStats.new()
+		character.from_save_data(default_stats, character_dict)
 		Game.team.push_back(character)
 	
 func save_dict():
@@ -31,11 +34,5 @@ func save_dict():
 		"team": [],
 	}
 	for character in Game.team:
-		save_dict.team.push_back(character_dict(character))
+		save_dict.team.push_back(character.to_save_data())
 	return save_dict
-
-func character_dict(character):
-	var data = inst2dict(character)
-	data.item_atk = inst2dict(character.item_atk)
-	data.item_def = inst2dict(character.item_def)
-	return data
