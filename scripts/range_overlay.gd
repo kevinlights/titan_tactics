@@ -54,7 +54,7 @@ func clear():
 
 func drawSqaure(location, material):
 	var square = CSGBox.new()
-	square.set_depth(0.75)
+	square.set_depth(0.9)
 	square.set_height(0.9)
 	square.set_width(0.9)
 	square.translate(Vector3(location.x + 0.05, location.y, location.z + 0.05))
