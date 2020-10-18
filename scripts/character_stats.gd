@@ -206,3 +206,52 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 	
 func has_ability(ability):
 	return abilities.has(ability)
+	
+func to_save_data():
+	var output = {
+		"item_atk": inst2dict(item_atk),
+		"item_def": inst2dict(item_def),
+		"character_class": character_class,
+		"level": level,
+		"control": control,
+		"xp": xp,
+		"personality": personality,
+		"portrait_override": portrait_override,
+	}
+	return output
+	
+func from_save_data(class_stats, data):
+	item_atk = dict2inst(data.item_atk)
+	item_def = dict2inst(data.item_def)
+	character_class = int(data.character_class)
+	level = data.level
+	control = data.control
+	xp = data.xp
+	personality = int(data.personality)
+	portrait_override = data.portrait_override
+	
+	print(TT.class_stats.weakness[character_class])
+	weakness = TT.class_stats.weakness[character_class]
+	strength = TT.class_stats.strength[character_class]
+	abilities = TT.class_stats.abilities[character_class]
+	xp_to_next = pow(level, 2)
+	heal = level
+	if level > 1:
+		current_to_next = xp - pow(level - 1, 2)
+	
+	var default_stats = class_stats.archer
+	if character_class == TT.TYPE.FIGHTER:
+		default_stats = class_stats.swordsman
+	elif character_class == TT.TYPE.MAGE:
+		default_stats = class_stats.mage 
+		heal = level
+	elif character_class == TT.TYPE.BOBA:
+		default_stats = class_stats.boba
+	max_hp = default_stats.hp + fibonacci_cumulative(level)
+	hp = max_hp # floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
+	mov_range = default_stats.mov_range
+	turn_limits.move_distance = default_stats.mov_range
+	turn_limits.actions = 1 # TT.class_stats.actions[type]
+	atk_range = default_stats.atk_range
+	atk = default_stats.atk + sequence_cumulative(atk_up, level)
+	def = default_stats.def + sequence_cumulative(def_up, level)
