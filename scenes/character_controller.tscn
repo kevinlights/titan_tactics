@@ -1704,7 +1704,8 @@ pixel_size = 0.00082
 billboard = 1
 alpha_cut = 2
 frames = ExtResource( 8 )
-animation = "idle-down"
+animation = "hit-right"
+frame = 6
 playing = true
 
 [node name="fighter_2d" type="AnimatedSprite" parent="."]
@@ -1715,7 +1716,8 @@ material = SubResource( 46 )
 position = Vector2( 211.352, 137.016 )
 z_as_relative = false
 frames = ExtResource( 8 )
-animation = "idle-down"
+animation = "hit-right"
+frame = 6
 playing = true
 offset = Vector2( 0, -24 )
 script = ExtResource( 10 )
@@ -1809,7 +1811,6 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 275 )
-frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]
