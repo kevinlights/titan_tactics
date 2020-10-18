@@ -1,4 +1,4 @@
-[gd_scene load_steps=314 format=2]
+[gd_scene load_steps=315 format=2]
 
 [ext_resource path="res://gfx/player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/character_controller.gd" type="Script" id=2]
@@ -289,6 +289,18 @@ animations = [ {
 
 [sub_resource type="CanvasItemMaterial" id=46]
 light_mode = 1
+
+[sub_resource type="SpatialMaterial" id=323]
+flags_transparent = true
+flags_unshaded = true
+flags_fixed_size = true
+vertex_color_is_srgb = true
+params_specular_mode = 4
+params_cull_mode = 2
+params_depth_draw_mode = 2
+params_billboard_mode = 1
+params_billboard_keep_scale = true
+albedo_texture = ExtResource( 14 )
 
 [sub_resource type="AtlasTexture" id=47]
 flags = 16
@@ -1770,6 +1782,7 @@ script = ExtResource( 2 )
 
 [node name="shadow" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.01, 0.632168 )
+visible = false
 pixel_size = 0.03
 axis = 1
 texture = ExtResource( 12 )
@@ -1795,8 +1808,7 @@ pixel_size = 0.00082
 billboard = 1
 alpha_cut = 2
 frames = ExtResource( 8 )
-animation = "hit-right"
-frame = 5
+animation = "idle-down"
 playing = true
 
 [node name="fighter_2d" type="AnimatedSprite" parent="."]
@@ -1808,16 +1820,16 @@ position = Vector2( 211.352, 137.016 )
 z_as_relative = false
 frames = ExtResource( 8 )
 animation = "hit-right"
-frame = 5
+frame = 3
 playing = true
 offset = Vector2( 0, -24 )
 script = ExtResource( 10 )
 
 [node name="ai_boba" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.317352, 0.5 )
-visible = false
+material_override = SubResource( 323 )
 offset = Vector2( 0, 12 )
-pixel_size = 0.023
+pixel_size = 0.0008
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 99 )
@@ -1833,7 +1845,7 @@ pixel_size = 0.0008
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 136 )
-animation = "hit-down"
+animation = "idle-down"
 playing = true
 
 [node name="ai_archer" type="AnimatedSprite3D" parent="."]
@@ -1873,6 +1885,7 @@ offset = Vector2( 8, 0 )
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 266 )
+frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -1881,7 +1894,6 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 269 )
-frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -1891,6 +1903,7 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 272 )
+frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]
@@ -1899,6 +1912,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 275 )
+frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]
