@@ -316,6 +316,7 @@ func spawn_ai_team():
 		current[TT.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / TT.cell_size), floor(ai_spawn.position.y / TT.cell_size), ai_spawn.stats.character_class, TT.CONTROL.AI))
 		current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
 		current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
+		current[TT.CONTROL.AI].back().connect("path_complete", $select, "update_context")
 		current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
 		world_map.add_child(character)
 		ai_spawn.hide()
@@ -455,6 +456,7 @@ func auto_deploy_only_character():
 	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
+	character.connect("path_complete", $select, "update_context")
 	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
 	_on_start_level()
@@ -470,6 +472,7 @@ func _on_select_team_member(team_member):
 	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
+	character.connect("path_complete", $select, "update_context")
 	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
 	if player_spawns.size() > 0:

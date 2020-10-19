@@ -71,20 +71,28 @@ func enable():
 	disabled = false
 	set_context(world.get_current_context(tile))
 
+func update_context():
+	set_context(world.get_current_context(tile))
+
 func set_context(context):
 #	if world.current_turn == TT.CONTROL.AI or context == TT.CONTEXT.NOT_PLAYABLE:
 #		print("context is not playable, hiding selector")
 #		play("blank")
 #		return
+	$selector.translation.y = 0.25
 	match(context):
 		TT.CONTEXT.USE:
 			play("attack")
+			$selector.translation.y = 0.6
 		TT.CONTEXT.ATTACK:
 			play("attack")
+			$selector.translation.y = 1.0
 		TT.CONTEXT.GUARD:
 			play("guard")
+			$selector.translation.y = 1.0
 		TT.CONTEXT.HEAL:
 			play("heal")
+			$selector.translation.y = 1.0
 		TT.CONTEXT.MOVE:
 			play("default")
 		TT.CONTEXT.NOT_ALLOWED:
@@ -157,6 +165,5 @@ func set_origin(entity):
 	current_entity.connect("idle", self, "go_home")
 	capture_camera()
 #
-#func _process(_delta):
-#	if camera_captured:
-#		world.get_node("level/map/camera").translation = translation + TT.camera_offset
+func _process(delta):
+	$selector.rotation.y += delta;
