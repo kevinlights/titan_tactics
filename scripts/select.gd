@@ -131,7 +131,7 @@ func _input(event):
 	if not advance.is_equal_approx(Vector3(0, 0, 0)):
 		print("select tile ", tile)
 		emit_signal("moved", self.tile)
-	
+
 	if mode == MODE.PLAY:
 		if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
 			world.action()
@@ -166,4 +166,4 @@ func set_origin(entity):
 	capture_camera()
 #
 func _process(delta):
-	$selector.rotation.y += delta;
+	$selector.rotation.y += delta * -3;
