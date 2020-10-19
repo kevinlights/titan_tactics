@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/gui/dialogue_box.gd" type="Script" id=2]
@@ -10,13 +10,29 @@ extra_spacing_char = 1
 extra_spacing_space = 2
 font_data = ExtResource( 1 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "textbounce"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 0.25, 2, 0.25 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
+}
+
 [node name="dialogue_box" type="Control"]
-visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -84.0
+margin_top = -224.0
 margin_right = 320.0
-margin_bottom = -4.0
+margin_bottom = -144.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -27,7 +43,7 @@ margin_left = 22.0
 margin_top = 18.0
 margin_right = 302.0
 margin_bottom = 72.0
-color = Color( 0.2, 0.196078, 0.196078, 1 )
+color = Color( 0.2, 0.196078, 0.196078, 0.588235 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -105,8 +121,9 @@ __meta__ = {
 }
 
 [node name="more" type="Control" parent="."]
+margin_top = -1.83628
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 38.1637
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -122,3 +139,7 @@ position = Vector2( 207, 11 )
 scale = Vector2( 0.37612, 0.595258 )
 color = Color( 0.243137, 0.243137, 0.301961, 1 )
 polygon = PoolVector2Array( 198.958, 89.7838, 210.786, 89.7838, 222.614, 89.7838, 210.786, 97.0636 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="more"]
+autoplay = "textbounce"
+anims/textbounce = SubResource( 2 )
