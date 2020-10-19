@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scenes/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
@@ -165,6 +165,23 @@ animations = [ {
 "speed": 3.0
 } ]
 
+[sub_resource type="Animation" id=21]
+resource_name = "bounce"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("selector:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 0.25, 2, 0.25 ),
+"update": 0,
+"values": [ Vector3( 0, 0.25, 0 ), Vector3( 0, 0.325258, 0 ), Vector3( 0, 0.249938, 0 ) ]
+}
+
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
 
@@ -185,22 +202,27 @@ axis = 1
 alpha_cut = 2
 frames = SubResource( 17 )
 animation = "attack"
+frame = 1
 playing = true
 script = ExtResource( 4 )
 
 [node name="select" type="AnimatedSprite3D" parent="select"]
-visible = false
 flip_v = true
 frames = SubResource( 20 )
+frame = 1
 playing = true
 
+[node name="Bounce" type="AnimationPlayer" parent="select"]
+anims/bounce = SubResource( 21 )
+
 [node name="selector" parent="select" instance=ExtResource( 18 )]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.325257, 0 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="select"]
 
 [node name="DirectionalLight2" type="DirectionalLight" parent="select"]
 transform = Transform( -0.431999, 0.769805, -0.469869, -0.234442, 0.407228, 0.882724, 0.87087, 0.491493, 0.00455248, -0.545057, 1.0873, 0 )
+light_color = Color( 1, 0.996078, 0.894118, 1 )
 light_energy = 10.0
 
 [node name="gui" parent="." instance=ExtResource( 6 )]
