@@ -42,7 +42,9 @@ func open(type):
 	var loot = Item.new()
 	loot.generate(item_spawner.level, item_spawner.equipment_slot, type)
 #	play("open")
-#	$open.play()
+	$open.play()
+	$chest.hide()
+	$openchest.show()
 	$drop.play(item_types[type])
 	$drop.show()
 	return loot
