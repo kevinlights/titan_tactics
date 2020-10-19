@@ -10,66 +10,66 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
 atlas = ExtResource( 3 )
-region = Rect2( 16, 16, 8, 8 )
+region = Rect2( 0, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 19
 atlas = ExtResource( 3 )
-region = Rect2( 0, 16, 8, 8 )
+region = Rect2( 8, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 19
 atlas = ExtResource( 3 )
-region = Rect2( 8, 16, 8, 8 )
+region = Rect2( 24, 16, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 19
 atlas = ExtResource( 3 )
-region = Rect2( 24, 16, 8, 8 )
+region = Rect2( 16, 16, 8, 8 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
-"name": "wand",
+"name": "sword",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "sword",
+"name": "bow",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "bow",
+"name": "battery",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "battery",
+"name": "wand",
 "speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 19
-atlas = ExtResource( 1 )
-region = Rect2( 0, 16, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 19
+flags = 23
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 23
+atlas = ExtResource( 1 )
+region = Rect2( 0, 16, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
-"name": "open",
+"name": "closed",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ) ],
 "loop": true,
-"name": "closed",
+"name": "open",
 "speed": 5.0
 } ]
 
@@ -78,6 +78,7 @@ script = ExtResource( 2 )
 
 [node name="drop" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492104, 0.306798, 0.502054 )
+visible = false
 pixel_size = 0.04
 billboard = 2
 frames = SubResource( 5 )
@@ -94,10 +95,10 @@ frames = SubResource( 8 )
 animation = "closed"
 
 [node name="chest" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0, 0.5 )
+transform = Transform( 0.45, 0, 0, 0, 0.4, 0, 0, 0, 0.35, 0.5, 0, 0.5 )
 
 [node name="openchest" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0, 0.5 )
+transform = Transform( 0.45, 0, 0, 0, 0.4, 0, 0, 0, 0.35, 0.5, 0, 0.5 )
 visible = false
 
 [node name="open" type="AudioStreamPlayer" parent="."]
