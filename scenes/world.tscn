@@ -185,7 +185,6 @@ axis = 1
 alpha_cut = 2
 frames = SubResource( 17 )
 animation = "attack"
-frame = 1
 playing = true
 script = ExtResource( 4 )
 
@@ -193,11 +192,16 @@ script = ExtResource( 4 )
 visible = false
 flip_v = true
 frames = SubResource( 20 )
-frame = 1
 playing = true
 
 [node name="selector" parent="select" instance=ExtResource( 18 )]
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="select"]
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="select"]
+transform = Transform( -0.431999, 0.769805, -0.469869, -0.234442, 0.407228, 0.882724, 0.87087, 0.491493, 0.00455248, -0.545057, 1.0873, 0 )
+light_energy = 10.0
 
 [node name="gui" parent="." instance=ExtResource( 6 )]
 
