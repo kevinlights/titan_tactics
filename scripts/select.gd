@@ -166,6 +166,7 @@ func set_origin(entity):
 	current_entity.select()
 	current_entity.connect("idle", self, "go_home")
 	capture_camera()
+	emit_signal("moved", self.tile)	
 #
 func _process(delta):
 	$top/selector.rotation.y += delta * -3;
