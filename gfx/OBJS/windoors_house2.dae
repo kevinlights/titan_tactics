@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.5 commit date:2020-08-19, commit time:06:07, hash:c2b144df395f</authoring_tool>
+    </contributor>
+    <created>2020-10-20T14:07:42</created>
+    <modified>2020-10-20T14:07:42</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="windoors_house1-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="windoors_house1-material" name="windoors_house1">
+      <instance_effect url="#windoors_house1-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Plane_004-mesh" name="Plane.004">
+      <mesh>
+        <source id="Plane_004-mesh-positions">
+          <float_array id="Plane_004-mesh-positions-array" count="24">-0.01239424 -3.004957 0.03026336 1.995823 -3.004957 0.03026336 -0.01239424 -3.004957 2.030264 1.995823 -3.004957 2.030264 -0.5482686 -2.931439 0.4079986 -0.5482686 -0.2296283 0.4079986 -0.5482686 -2.931439 1.838817 -0.5482686 -0.2296283 1.838817</float_array>
+          <technique_common>
+            <accessor source="#Plane_004-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_004-mesh-normals">
+          <float_array id="Plane_004-mesh-normals-array" count="6">0 -1 0 -1 0 0</float_array>
+          <technique_common>
+            <accessor source="#Plane_004-mesh-normals-array" count="2" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_004-mesh-map-0">
+          <float_array id="Plane_004-mesh-map-0-array" count="24">0.8721203 0.03287971 0.4678444 0.4371557 0.4678445 0.03287971 0.6759724 1.002821 0.02362591 0.7135986 0.6759724 0.7135986 0.8721203 0.03287971 0.8721203 0.4371557 0.4678444 0.4371557 0.6759724 1.002821 0.02362591 1.002821 0.02362591 0.7135986</float_array>
+          <technique_common>
+            <accessor source="#Plane_004-mesh-map-0-array" count="12" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane_004-mesh-vertices">
+          <input semantic="POSITION" source="#Plane_004-mesh-positions"/>
+        </vertices>
+        <triangles material="windoors_house1-material" count="4">
+          <input semantic="VERTEX" source="#Plane_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_004-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_004-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 6 1 3 5 1 4 4 1 5 1 0 6 3 0 7 2 0 8 6 1 9 7 1 10 5 1 11</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="windoors_house1" name="windoors_house1" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Plane_004-mesh" name="windoors_house1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="windoors_house1-material" target="#windoors_house1-material">
+                <bind_vertex_input semantic="Plane_004-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
