@@ -1,9 +1,21 @@
 extends CanvasLayer
 
 var active = false
-var modal = false
+var modal = false setget _set_modal, _get_modal
 
 var exempt = [ "sfx", "playerturn", "enemyturn" ]
+
+func _set_modal(value):
+	if value:
+		print("modal - hide selector")
+		get_parent().get_node("select").hide()
+	else:
+		print("modal close - show selector")
+		get_parent().get_node("select").show()
+	modal = value
+
+func _get_modal():
+	return modal
 
 func _ready():
 	$pause.connect("resume", self, "back")
@@ -14,7 +26,7 @@ func _ready():
 
 func _close_level_up():
 	print("run turn end ui")
-	modal = false
+	self.modal = false
 	var world = get_tree().get_root().get_node("World")
 	turn(world.current_turn)
 
@@ -74,7 +86,7 @@ func make_select_blank():
 	get_parent().get_node("select").play("blank")
 
 func team_select(characters):
-	modal = true
+	self.modal = true
 	active = true
 	get_parent().get_node("select/select").show()
 	$characterswap.hide()
@@ -89,7 +101,7 @@ func error(message):
 
 func level_up(diff, new_stats):
 	active = true
-	modal = true
+	self.modal = true
 	$lvlup.on_level_up(diff, new_stats)
 	$lvlup.call_deferred("show")
 	$sfx/level_up.play()
@@ -161,7 +173,7 @@ func guard(is_healer = false):
 func pause():
 	back()
 	$sfx/select.play()
-	modal = true
+	self.modal = true
 	active = true
 	$pause.show_dialog()
 
@@ -181,7 +193,7 @@ func answers(recruitment):
 	
 func dialogue(content):
 	back()
-	modal = true
+	self.modal = true
 	active = true
 	print(content.messages)
 	$dialogue_box.set_content(content)

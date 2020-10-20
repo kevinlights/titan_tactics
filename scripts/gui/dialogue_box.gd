@@ -88,6 +88,7 @@ func _process(delta):
 				typing = false
 
 func set_content(dialogue_content, set_index = 0):
+	selector.disable()
 	index = set_index
 	$more.hide()
 	content = dialogue_content
@@ -125,23 +126,26 @@ func advance():
 			content.complete()
 			# attach camera to selector and return control to player
 			world.get_node("camera").track(selector)
+			selector.enable()
 			world.current_turn = TT.CONTROL.PLAYER
+			get_parent().modal = false
 			hide()
 
 func _input(event):
-	if not content:
-		return
 	if not visible:
 		return
-	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
+	if not content:
+		return
+	if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 		if typing:
 			typing_cancelled = true
 			typing = false
 			$text.set_visible_characters(-1)
 		else:
 			advance()
-	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 		content.complete()
+		get_parent().modal = false
 		hide()
 #		elif text_blocks.size() > 0:
 #			set_text(text_blocks[0])

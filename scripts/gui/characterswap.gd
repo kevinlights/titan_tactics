@@ -80,6 +80,7 @@ func _input(event):
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
 		get_parent().arrow_hide()
 		call_deferred("hide")
+		print("character select")
 		world.get_node("select").call_deferred("enable")
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 		get_parent().get_parent().end_turn()

@@ -136,6 +136,7 @@ func advance_turn(explicit = 1, direction = 1):
 	if current_turn  == TT.CONTROL.AI:
 		ai.play()
 	elif explicit == 1:
+		print("explicit enable")
 		$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
@@ -353,6 +354,7 @@ func _on_check_map():
 	gui.back()
 	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.CHECK_MAP
+	print("check map enable selector")
 	$select.call_deferred("enable")
 
 func _on_edit_team():
@@ -382,6 +384,7 @@ func _on_start_level():
 	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.PLAY
 	$select.set_origin(get_current())
+	print("start level")
 	$select.call_deferred("enable")
 	$range_overlay.call_deferred("set_origin", get_current())
 
