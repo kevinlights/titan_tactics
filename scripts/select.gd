@@ -79,20 +79,20 @@ func set_context(context):
 #		print("context is not playable, hiding selector")
 #		play("blank")
 #		return
-	$selector.translation.y = 0.25
+	$top.translation.y = 0.25
 	match(context):
 		TT.CONTEXT.USE:
 			play("attack")
-			$selector.translation.y = 0.6
+			$top.translation.y = 0.6
 		TT.CONTEXT.ATTACK:
 			play("attack")
-			$selector.translation.y = 1.0
+			$top.translation.y = 1.0
 		TT.CONTEXT.GUARD:
 			play("guard")
-			$selector.translation.y = 1.0
+			$top.translation.y = 1.0
 		TT.CONTEXT.HEAL:
 			play("heal")
-			$selector.translation.y = 1.0
+			$top.translation.y = 1.0
 		TT.CONTEXT.MOVE:
 			play("default")
 		TT.CONTEXT.NOT_ALLOWED:
@@ -166,4 +166,4 @@ func set_origin(entity):
 	capture_camera()
 #
 func _process(delta):
-	$selector.rotation.y += delta * -3;
+	$top/selector.rotation.y += delta * -3;

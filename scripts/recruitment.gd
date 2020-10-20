@@ -91,7 +91,8 @@ var intro
 var portrait_map = {
 	TT.TYPE.ARCHER: "ai_archer",
 	TT.TYPE.MAGE: "ai_mage",
-	TT.TYPE.FIGHTER: "ai_fighter"
+	TT.TYPE.FIGHTER: "ai_fighter",
+	TT.TYPE.BOBA: "ai_boba",
 }
 
 func _init(character, personality = null):

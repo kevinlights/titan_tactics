@@ -445,8 +445,8 @@ func _process(delta):
 			tile.x = floor(translation.x)
 			tile.z = floor(translation.z)
 			if not path.empty():
-#				movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
-				movement.end_position = Vector3(path[0].x, 0, path[0].z)
+				movement.end_position = Vector3(path[0].x, path[0].y - .5, path[0].z)
+#				movement.end_position = Vector3(path[0].x, 0, path[0].z)
 				movement.start_position = Vector3(translation.x, translation.y, translation.z)
 				movement.start_time = now
 				print(movement.end_position)
