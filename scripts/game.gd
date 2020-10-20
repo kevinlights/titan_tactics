@@ -36,7 +36,7 @@ func setup_new_game():
 	character.portrait_override = "hero"
 	team.append(character)
 	var character2 = CharacterStats.new()
-	character2.generate(default_stats, TT.TYPE.MAGE, TT.CONTROL.PLAYER, 1, true)
+	character2.generate(default_stats, TT.TYPE.ARCHER, TT.CONTROL.PLAYER, 1, true)
 	character2.name = "Bowie"
 	character2.portrait_override = "bowie"
 	team.append(character2)
