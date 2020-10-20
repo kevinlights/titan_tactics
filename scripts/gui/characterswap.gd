@@ -75,13 +75,13 @@ func _input(event):
 		check_exhausted(1)
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
 		check_exhausted(-1)
-	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
+	if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 		get_parent().active = false
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
 		get_parent().arrow_hide()
 		call_deferred("hide")
 		world.get_node("select").call_deferred("enable")
-	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 		get_parent().get_parent().end_turn()
 		get_parent().arrow_hide()
 		hide()

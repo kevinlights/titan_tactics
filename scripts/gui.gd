@@ -19,7 +19,7 @@ func _close_level_up():
 	turn(world.current_turn)
 
 func _input(event):
-	if not modal and event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+	if not modal and event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 		$sfx/close.play()
 		back()
 	if not modal and event.is_action("ui_end") && !event.is_echo() && event.is_pressed():
@@ -29,7 +29,7 @@ func _input(event):
 			$sfx/open.play()
 		if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
 			$sfx/open.play()
-		if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
+		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 			$sfx/select.play()
 
 func attack():

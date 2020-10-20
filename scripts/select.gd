@@ -110,9 +110,11 @@ func _input(event):
 	if world.current_turn == TT.CONTROL.AI:
 		play("blank")
 		return
-	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
+	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
 		set_origin(get_parent().get_current())
 		get_parent().get_node("path_preview/path").clear_points()
+		return
+	if event.is_action("character_switch") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
 		get_parent().change_character()
 		return
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
@@ -133,12 +135,12 @@ func _input(event):
 		emit_signal("moved", self.tile)
 
 	if mode == MODE.PLAY:
-		if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
+		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 			world.action()
-		if event.is_action("ui_select") && !event.is_echo() && event.is_pressed():
+		if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 			gui.call_deferred("back")
 	else:
-		if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
+		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 			gui.team_confirm()
 			disable()
 		if animation != "attack":

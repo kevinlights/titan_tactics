@@ -208,7 +208,6 @@ script = ExtResource( 4 )
 [node name="select" type="AnimatedSprite3D" parent="select"]
 flip_v = true
 frames = SubResource( 20 )
-frame = 1
 playing = true
 
 [node name="top" type="Spatial" parent="select"]
