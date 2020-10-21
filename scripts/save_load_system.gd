@@ -1,6 +1,6 @@
 extends Node
 
-var save_file_path = 'user://savegame-0.0.1.save'
+var save_file_path = 'user://savegame-0.0.2.save'
 var has_save_file = false 
 func _ready():
 	var save_file = File.new()

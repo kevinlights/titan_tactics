@@ -6,7 +6,7 @@ var start_rotation = Vector3()
 var end_offset = Vector3()
 var end_rotation = Vector3()
 
-var ttl = 500
+var ttl = 300
 
 var offsets = {
 	TT.CAMERA.SOUTH: Vector3(15, 19, -15),

@@ -1007,7 +1007,7 @@ region = Rect2( 180, 240, 60, 60 )
 
 [sub_resource type="SpriteFrames" id=147]
 animations = [ {
-"frames": [ SubResource( 103 ), SubResource( 104 ) ],
+"frames": [ SubResource( 103 ), SubResource( 104 ), SubResource( 103 ), SubResource( 104 ), SubResource( 103 ), SubResource( 104 ) ],
 "loop": true,
 "name": "attack-up",
 "speed": 5.0
@@ -1017,7 +1017,7 @@ animations = [ {
 "name": "walk-left",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 111 ), SubResource( 112 ), SubResource( 112 ), SubResource( 111 ), SubResource( 111 ), SubResource( 112 ), SubResource( 111 ), SubResource( 112 ) ],
+"frames": [ SubResource( 111 ), SubResource( 112 ), SubResource( 111 ), SubResource( 112 ), SubResource( 111 ), SubResource( 112 ), SubResource( 111 ), SubResource( 112 ) ],
 "loop": true,
 "name": "hit-right",
 "speed": 8.0
@@ -1042,7 +1042,7 @@ animations = [ {
 "name": "idle-left",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 128 ), SubResource( 129 ) ],
+"frames": [ SubResource( 128 ), SubResource( 129 ), SubResource( 128 ), SubResource( 129 ), SubResource( 128 ), SubResource( 129 ) ],
 "loop": true,
 "name": "attack-down",
 "speed": 5.0
@@ -1072,7 +1072,7 @@ animations = [ {
 "name": "idle-up",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 142 ), SubResource( 143 ) ],
+"frames": [ SubResource( 142 ), SubResource( 143 ), SubResource( 142 ), SubResource( 143 ), SubResource( 142 ), SubResource( 143 ) ],
 "loop": true,
 "name": "attack-right",
 "speed": 5.0
@@ -1082,7 +1082,7 @@ animations = [ {
 "name": "idle-right",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 145 ), SubResource( 146 ) ],
+"frames": [ SubResource( 145 ), SubResource( 146 ), SubResource( 145 ), SubResource( 146 ), SubResource( 145 ), SubResource( 146 ) ],
 "loop": true,
 "name": "attack-left",
 "speed": 5.0
@@ -1139,10 +1139,12 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=284]
+flags = 16
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 9, 9 )
 
 [sub_resource type="AtlasTexture" id=285]
+flags = 16
 atlas = ExtResource( 7 )
 region = Rect2( 0, 9, 9, 9 )
 
@@ -1190,7 +1192,7 @@ visible = false
 material_override = ExtResource( 15 )
 cast_shadow = 0
 offset = Vector2( 0, 12 )
-pixel_size = 0.00082
+pixel_size = 0.000781
 billboard = 1
 alpha_cut = 2
 frames = ExtResource( 8 )
@@ -1203,7 +1205,7 @@ visible = false
 material_override = SubResource( 46 )
 cast_shadow = 0
 offset = Vector2( 0, 12 )
-pixel_size = 0.00082
+pixel_size = 0.000781
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 297 )
@@ -1228,7 +1230,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.317352, 0.5 )
 visible = false
 material_override = SubResource( 298 )
 offset = Vector2( 0, 12 )
-pixel_size = 0.00082
+pixel_size = 0.000781
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 101 )
@@ -1240,7 +1242,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.5 )
 visible = false
 material_override = SubResource( 102 )
 offset = Vector2( 0, 12 )
-pixel_size = 0.00082
+pixel_size = 0.000781
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 147 )
