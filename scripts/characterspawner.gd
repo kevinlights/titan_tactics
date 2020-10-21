@@ -9,6 +9,9 @@ export(Resource) var recruit_dialogue
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
 	print("spawn entered tree")
+	pixel_size = 0.04
+	billboard = SpatialMaterial.BILLBOARD_ENABLED
+	translation.y = 0.347
 	call_deferred("set_up_editor")
 #	set_up_editor()
 #	if Engine.editor_hint:

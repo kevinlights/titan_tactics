@@ -313,10 +313,11 @@ func select_type():
 	avatar.show()
 
 func _on_frame_changed():
-	var frame_count = avatar.frames.get_frame_count(avatar.animation)
-#	print("frames ", frame_count, " current ", avatar.frame)
-	if avatar.frame == frame_count - 1:
-		_on_animation_finished()
+	if avatar:
+		var frame_count = avatar.frames.get_frame_count(avatar.animation)
+	#	print("frames ", frame_count, " current ", avatar.frame)
+		if avatar.frame == frame_count - 1:
+			_on_animation_finished()
 
 func copy_stats(spawner):
 	pass
@@ -427,7 +428,7 @@ func _on_animation_finished():
 func _process(delta):
 	var now = OS.get_ticks_msec()
 	_on_frame_changed()
-	if $healthbar.visible:
+	if has_node("healthbar") and $healthbar.visible:
 		var hp_position = world.get_node("lookat/camera").unproject_position(tile + Vector3(.5, 0, .5))
 		$healthbar.position = hp_position
 	if not character:
