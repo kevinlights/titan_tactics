@@ -218,11 +218,21 @@ func to_save_data():
 		"personality": personality,
 		"portrait_override": portrait_override,
 	}
+	output.item_atk.effect = inst2dict(item_atk.effect)
+	output.item_def.effect = inst2dict(item_def.effect)
 	return output
 	
 func from_save_data(class_stats, data):
+	data.item_atk.level = int(data.item_atk.level)
+	data.item_atk.character_class = int(data.item_atk.character_class)
 	item_atk = dict2inst(data.item_atk)
+	item_atk.effect = dict2inst(item_atk.effect)
+	
+	data.item_def.level = int(data.item_def.level)
+	data.item_def.character_class = int(data.item_def.character_class)
 	item_def = dict2inst(data.item_def)
+	item_def.effect = dict2inst(item_def.effect)
+	
 	character_class = int(data.character_class)
 	level = data.level
 	control = data.control
