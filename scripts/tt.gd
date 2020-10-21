@@ -30,7 +30,7 @@ const cell_size = 1
 const levels = [
 	{
 		"name": "Rolf the Confused",
-		"scene": "level_1_3dtest",
+		"scene": "level_1_3d",
 		"music": "forest"
 	},
 	{
