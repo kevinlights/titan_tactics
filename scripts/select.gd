@@ -112,7 +112,6 @@ func _input(event):
 		return
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
 		set_origin(get_parent().get_current())
-		get_parent().get_node("path_preview/path").clear_points()
 		return
 	if event.is_action("character_switch") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
 		get_parent().change_character()

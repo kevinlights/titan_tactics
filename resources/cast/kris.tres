@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/character_stats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+character_class = 0
+name = ""
+level = 1
+hp = 60
+max_hp = 60
+atk = 7
+def = 3
+atk_range = 1
+mov_range = 4
+heal = 0
+portrait_override = "hero"

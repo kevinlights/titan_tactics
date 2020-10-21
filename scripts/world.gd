@@ -4,18 +4,6 @@ signal win
 signal auto_deployed
 signal all_enemies_eliminated
 
-enum TILEID {
-	NOT_PASSABLE = 0,
-	COVER,
-	PLAYER_SPAWN,
-	ENEMY_SPAWN_FIGHTER,
-	ENEMY_SPAWN_MAGE,
-	ENEMY_SPAWN_ARCHER
-	ENEMY_SPAWN,
-	PASSABLE,
-	CHEST
-}
-
 onready var gui = get_tree().get_root().get_node("World/gui")
 
 var tile_meta
@@ -68,24 +56,13 @@ func entity_at(position_vector):
 func as_world_position(tile):
 	return Vector2(tile.x * TT.cell_size, tile.y * TT.cell_size)
 
-func make_tile(tile_id):
-	return {
-		"cover": tile_id == TILEID.COVER,
-		"passable": tile_id != TILEID.NOT_PASSABLE and tile_id != TILEID.COVER
-	}
-
 func is_cover_between(character, end):
-	return false
-#	var space = get_world_2d().get_space()
-#	var space_state = Physics2DServer.space_get_direct_state(space)
-#	print(space_state)
-#	var mid_point = Vector2(8, 8)
-#	var intersects = space_state.intersect_ray(character.position + mid_point, end + mid_point)
-#	print(intersects)
-##	character.get_node("detect_cover").cast_to = (end) - character.position
-##	var found_cover = character.get_node("detect_cover").is_colliding()
-##	print("Found cover: ", found_cover)
-#	return !intersects.empty()
+	var ray = character.get_node("ranged_weapon")
+	ray.cast_to = character.to_local(end)
+	ray.force_raycast_update()
+	print("is cover between ", ray.is_colliding())
+	return ray.is_colliding()
+	# return false
 
 func spawn_cover(tile):
 	var cover = load("res://scenes/cover_tile.tscn").instance()
@@ -96,10 +73,7 @@ func spawn_cover(tile):
 	
 func spawn_chest(x, y, item_spawner):
 	var chest = load("res://scenes/chest.tscn").instance()
-#	var chest = chest_node.get_node("chest")
-#	character.init(type, control)
 	chest.teleport(x, y)
-#	chest.level = Game.level + 1
 	chest.item_spawner = item_spawner
 	chest.add_to_group("characters")
 	world_map.add_child(chest)
@@ -131,8 +105,7 @@ func advance_turn(explicit = 1, direction = 1):
 	$select.set_origin(get_current())
 	if explicit == 1:
 		$select.disable()
-		yield(get_tree().create_timer(1.0), "timeout")
-	$path_preview/path.clear_points()
+		yield(get_tree().create_timer(1.0), "timeout")	
 	if current_turn  == TT.CONTROL.AI:
 		ai.play()
 	elif explicit == 1:
@@ -175,8 +148,6 @@ func change_character():
 	$gui.swap()
 
 func end_turn():
-	#yield(get_tree().create_timer(2.0), "timeout")
-#	current[current_turn][current_character]
 	for character in current[TT.CONTROL.PLAYER]:
 		character.is_done = false
 		character.get_node("done").hide()
@@ -185,9 +156,7 @@ func end_turn():
 	for character in current[current_turn]:
 		character.end_turn()
 	current_character = 0
-#	$select.set_origin(get_current())
 	gui.turn(current_turn)
-#	gui.battle_hide(get_current())
 	$select.disable()
 
 func to_world_path(path):
@@ -201,7 +170,6 @@ func action():
 	var context = get_current_context($select.tile)
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	var target = entity_at($select.tile)
-	#gui.battle()
 	match(context):
 		TT.CONTEXT.ATTACK:
 			if get_current().character.turn_limits.actions > 0:
@@ -229,12 +197,9 @@ func action():
 						target.use()
 		TT.CONTEXT.MOVE:
 			get_current().move(current_path) # to_world_path(current_path))
-			$path_preview.hide_path()
 		TT.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
 		TT.CONTEXT.GUARD:
-#			if $gui/battle/box_enemy.visible:
-#				return
 			print("guard action")
 			if get_current().character.turn_limits.actions == 0:
 				get_current().is_done = true
@@ -242,8 +207,6 @@ func action():
 			else:
 				gui.guard()
 		TT.CONTEXT.HEAL:
-#			if $gui/battle/box_enemy.visible:
-#				return
 			if get_current().character.turn_limits.actions == 0:
 				_on_end()
 			else:
@@ -260,13 +223,7 @@ func _ready():
 	current[TT.CONTROL.PLAYER] = []
 	current[TT.CONTROL.AI] = []
 	player_spawns = []
-#	for x in range(map_size.width):
-#		for y in range(map_size.height):
-#			var tile_id = tile_meta.get_cell(x, y)
-#			if tile_id == TILEID.PLAYER_SPAWN:
-#				player_spawns.append(Vector2(x, y))
-#			if tile_id == TILEID.COVER:
-#				spawn_cover(Vector2(x, y))
+
 	var player_spawn_nodes = get_tree().get_nodes_in_group("player_spawns")
 	for player_spawn_node in player_spawn_nodes:
 		player_spawns.append(player_spawn_node.translation) # Vector(player_spawn_node.translation.x, player_spawn_node.translation.z))
@@ -321,7 +278,6 @@ func spawn_ai_team():
 		current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
 		world_map.add_child(character)
 		ai_spawn.hide()
-#	print(ai_spawns)
 	ai = NaiveAI.new(self)
 	
 func select_team():
@@ -360,22 +316,15 @@ func _on_check_map():
 func _on_edit_team():
 	# rediscover player spawns
 	player_spawns = []
-#	for x in range(map_size.width):
-#		for y in range(map_size.height):
-#			var tile_id = tile_meta.get_cell(x, y)
-#			if tile_id == TILEID.PLAYER_SPAWN:
-#				player_spawns.append(Vector2(x, y))
 	var player_spawn_nodes = get_tree().get_nodes_in_group("player_spawns")
 	for player_spawn_node in player_spawn_nodes:
-		player_spawns.append(player_spawn_node.translation) # Vector(player_spawn_node.translation.x, player_spawn_node.translation.z))
-
+		player_spawns.append(player_spawn_node.translation)
 	# clear previously selected team
 	for character in current[TT.CONTROL.PLAYER]:
 		world_map.remove_child(character)
 	current[TT.CONTROL.PLAYER].resize(0)
 	# and start over
 	gui.back()
-	#gui.get_node("sfx/select").play()
 	call_deferred("select_team")
 
 func _on_start_level():
@@ -620,15 +569,6 @@ func _on_selector_moved(tile):
 		else:
 			gui.ally_hide(get_current())
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
-	if current_path.size() > 0:
-		if context == TT.CONTEXT.MOVE:
-			$path_preview.preview_path(current_path)
-		elif context == TT.CONTEXT.NOT_ALLOWED:
-			$path_preview.preview_path(current_path, false)
-		else:
-			$path_preview.hide_path()
-	else:
-		$path_preview.hide_path()
 	$select.set_context(context)
 
 func get_current_context(tile):
@@ -675,7 +615,7 @@ func _input(event):
 	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
 		gui.pause()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
-		var additional_character = load("res://resources/ogre.tres")
+		var additional_character = load("res://resources/cast/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER
 		Game.team.append(additional_character)
 		print("The OGRE has joined the team!")
