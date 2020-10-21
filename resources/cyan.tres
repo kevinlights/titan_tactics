@@ -4,14 +4,14 @@
 [ext_resource path="res://scripts/item.gd" type="Script" id=2]
 [ext_resource path="res://scripts/status_effect.gd" type="Script" id=3]
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
 effect = 1
 turns = 1
 damage = 5
 name = ""
 
-[sub_resource type="Resource" id=1]
+[sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
 character_class = 0
 equipment_slot = 0
@@ -21,7 +21,7 @@ attack = 0
 attack_range = 0
 defense = 0
 heal = 0
-effect = SubResource( 2 )
+effect = SubResource( 1 )
 
 [resource]
 script = ExtResource( 1 )
@@ -35,5 +35,5 @@ def = 4
 atk_range = 7
 mov_range = 6
 heal = 0
-item_atk = SubResource( 1 )
-portrait_override = 9
+item_atk = SubResource( 2 )
+portrait_override = ""

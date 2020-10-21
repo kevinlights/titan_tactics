@@ -1809,7 +1809,6 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 45 )
 animation = "idle-right"
-frame = 1
 playing = true
 
 [node name="fighter" type="AnimatedSprite3D" parent="."]
@@ -1847,7 +1846,7 @@ position = Vector2( 211.352, 137.016 )
 z_as_relative = false
 frames = ExtResource( 8 )
 animation = "hit-right"
-frame = 6
+frame = 4
 playing = true
 offset = Vector2( 0, -24 )
 script = ExtResource( 10 )
@@ -1876,6 +1875,18 @@ frames = SubResource( 147 )
 animation = "idle-down"
 playing = true
 
+[node name="ai_mage" type="AnimatedSprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.5 )
+visible = false
+material_override = SubResource( 102 )
+offset = Vector2( 0, 12 )
+pixel_size = 0.00082
+billboard = 1
+alpha_cut = 2
+frames = SubResource( 147 )
+animation = "idle-down"
+playing = true
+
 [node name="ai_archer" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.5 )
 visible = false
@@ -1884,6 +1895,7 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 192 )
 animation = "idle-right"
+frame = 1
 playing = true
 
 [node name="ai_fighter" type="AnimatedSprite3D" parent="."]
@@ -1894,9 +1906,10 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 237 )
 animation = "idle-right"
+frame = 1
 playing = true
 
-[node name="ai_mage" type="AnimatedSprite3D" parent="."]
+[node name="ai_mage-" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.5 )
 visible = false
 pixel_size = 0.04
@@ -1904,6 +1917,7 @@ billboard = 1
 alpha_cut = 2
 frames = SubResource( 274 )
 animation = "idle-right"
+frame = 1
 playing = true
 
 [node name="guard" type="AnimatedSprite3D" parent="."]

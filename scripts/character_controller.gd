@@ -220,7 +220,7 @@ func attack(target):
 	print("actual damage ", damage)
 	target.character.hp -= damage
 	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
-	var feedback_position = world.get_node("camera").unproject_position(target.tile + tile + Vector3(.5, 1, .5))
+	var feedback_position = world.get_node("lookat/camera").unproject_position(target.tile + tile + Vector3(.5, 1, .5))
 	damage_feedback.position = feedback_position
 	damage_feedback.get_node("damage").text = "-" + str(damage)
 	world.add_child(damage_feedback)
@@ -428,7 +428,7 @@ func _process(delta):
 	var now = OS.get_ticks_msec()
 	_on_frame_changed()
 	if $healthbar.visible:
-		var hp_position = world.get_node("camera").unproject_position(tile + Vector3(.5, 0, .5))
+		var hp_position = world.get_node("lookat/camera").unproject_position(tile + Vector3(.5, 0, .5))
 		$healthbar.position = hp_position
 	if not character:
 		return
@@ -447,7 +447,7 @@ func _process(delta):
 			tile.x = floor(translation.x)
 			tile.z = floor(translation.z)
 			if not path.empty():
-				movement.end_position = Vector3(path[0].x, path[0].y - .5, path[0].z)
+				movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
 #				movement.end_position = Vector3(path[0].x, 0, path[0].z)
 				movement.start_position = Vector3(translation.x, translation.y, translation.z)
 				movement.start_time = now
