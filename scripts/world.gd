@@ -615,7 +615,7 @@ func _input(event):
 	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
 		gui.pause()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
-		var additional_character = load("res://resources/ogre.tres")
+		var additional_character = load("res://resources/cast/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER
 		Game.team.append(additional_character)
 		print("The OGRE has joined the team!")

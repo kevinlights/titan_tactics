@@ -41,7 +41,6 @@ func get_theme():
 func setup_new_game():
 	level = 0
 	team = []
-	var default_stats = load("res://resources/class_stats.tres")
 	var kris = load("res://resources/cast/kris.tres")
 	var bowie = load("res://resources/cast/bowie.tres")
 	team.append(kris)

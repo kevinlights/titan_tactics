@@ -11,7 +11,7 @@ onready var select = get_parent().get_parent().get_node("select")
 
 var portraits = {
 	TT.TYPE.ARCHER: "archer",
-	TT.TYPE.FIGHTER: "fighter",
+	TT.TYPE.FIGHTER: "swordsman",
 	TT.TYPE.MAGE: "mage"
 }
 
@@ -41,11 +41,6 @@ func pick_random_sfx(audio_path):
 	
 func update_view():
 	var animation = "fighter"
-	#match characters[selected].character_class:
-	#	TT.TYPE.ARCHER:
-	#		animation = "archer"
-	#	TT.TYPE.MAGE:
-	#		animation = "mage"
 	$name.text = characters[selected].name
 	$portraits.show()
 	if characters[selected].portrait_override and characters[selected].portrait_override != "":
