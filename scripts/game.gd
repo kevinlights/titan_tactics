@@ -42,16 +42,7 @@ func setup_new_game():
 	level = 0
 	team = []
 	var default_stats = load("res://resources/class_stats.tres")
-	var character = CharacterStats.new()
-#	character.from_defaults(TYPE.FIGHTER, CONTROL.PLAYER)
-	character.generate(default_stats, TT.TYPE.FIGHTER, TT.CONTROL.PLAYER, 1, true)
-	character.name = "Kris"
-	character.portrait_override = "hero"
-	team.append(character)
+	var kris = load("res://resources/cast/kris.tres")
 	var bowie = load("res://resources/cast/bowie.tres")
+	team.append(kris)
 	team.append(bowie)
-#	var character2 = CharacterStats.new()
-#	character2.generate(default_stats, TT.TYPE.ARCHER, TT.CONTROL.PLAYER, 1, true)
-#	character2.name = "Bowie"
-#	character2.portrait_override = "bowie"
-#	team.append(character2)
