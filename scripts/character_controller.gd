@@ -43,13 +43,13 @@ var directions = {
 		"up": "down",
 		"down": "up"
 	},
-	TT.CAMERA.WEST: {
+	TT.CAMERA.EAST: {
 		"left": "up",
 		"right": "down",
 		"up": "right",
 		"down": "left"
 	},
-	TT.CAMERA.EAST: {
+	TT.CAMERA.WEST: {
 		"left": "down",
 		"right": "up",
 		"up": "left",
@@ -62,7 +62,7 @@ var movement = {
 	"end_position": Vector3(0, 0, 0),
 	"start_time": 0,
 	"speed": 400,
-	"last_direction": "left",
+	"last_direction": "down",
 	"moving": false
 }
 
@@ -370,6 +370,8 @@ func die():
 	avatar.play("hit-" + directions[Game.camera_orientation][movement.last_direction])
 
 func _on_orientation_changed():
+	print(str(Game.camera_orientation))
+	print(movement.last_direction, " ", directions[Game.camera_orientation][movement.last_direction])
 	avatar.play("idle-" +  directions[Game.camera_orientation][movement.last_direction])
 
 func init_common(control):

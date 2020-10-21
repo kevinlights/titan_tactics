@@ -18,13 +18,13 @@ var directions = {
 		"up": Vector3(0, 0, 1),
 		"down": Vector3(0, 0, -1)
 	},
-	TT.CAMERA.EAST: {
+	TT.CAMERA.WEST: {
 		"left": Vector3(0, 0, -1),
 		"right": Vector3(0, 0, 1),
 		"up": Vector3(1, 0, 0),
 		"down": Vector3(-1, 0, 0)
 	},
-	TT.CAMERA.WEST: {
+	TT.CAMERA.EAST: {
 		"left": Vector3(0, 0, 1),
 		"right": Vector3(0, 0, -1),
 		"up": Vector3(-1, 0, 0),
