@@ -125,7 +125,7 @@ func advance():
 			print("emit complete")
 			content.complete()
 			# attach camera to selector and return control to player
-			world.get_node("camera").track(selector)
+			world.get_node("lookat/camera").track(selector)
 			selector.enable()
 			world.current_turn = TT.CONTROL.PLAYER
 			get_parent().modal = false
