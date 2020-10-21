@@ -31,8 +31,10 @@ var structures := ['Smallbridge', 'Bridge']
 var cardinalHeights := { # y_deltas
 	# tile_type: [NW, N, NE, E, SE, S, SW, W]
 	'Low cube': [1, 1, 1, 1, 1, 1, 1, 1],
+	'deck': [1, 1, 1, 1, 1, 1, 1, 1],
 	'Cube': [2, 2, 2, 2, 2, 2, 2, 2],
 	'Ramp': [2, 2, 2, 1.5, 1, 1, 1, 1.5],
+	'steps': [1, 0.5, 0, 0, 0, 0.5, 1, 1],
 	'Ramp corner': [2, 1.5, 1, 1, 1, 1, 1, 1.5],
 }
 var cardinalDeltas := [
@@ -374,11 +376,19 @@ func _get_neighbors(cell):
 		if expected_height == null:
 			continue
 		
-		for level_delta in range(0, expected_height):
+		for level_delta in range(0, expected_height + 1):
 			var neghbour = Vector3(cell.x + deltas.x, cell.y + level_delta, cell.z + deltas.y)
 			if (get_cell_item(neghbour.x, neghbour.y, neghbour.z) == GridMap.INVALID_CELL_ITEM):
 				continue
 			var neighbour_height = get_cardinal_height(neghbour, idx + 4)
+			#print(
+			#	deltas, ' ',
+			#	mesh_library.get_item_name(get_cell_item(cell.x, cell.y, cell.z)), 
+			#	expected_height,
+			#	', ',
+			#	mesh_library.get_item_name(get_cell_item(neghbour.x, neghbour.y, neghbour.z)), 
+			#	neighbour_height
+			#)
 			if neighbour_height == null:
 				continue
 			var computed_height = neghbour.y + get_cardinal_height(neghbour, idx + 4)
