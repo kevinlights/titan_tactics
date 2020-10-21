@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=2]
+[gd_scene load_steps=155 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -84,17 +84,33 @@ font_data = ExtResource( 29 )
 size = 13
 font_data = ExtResource( 4 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=109]
 atlas = ExtResource( 45 )
 region = Rect2( 0, 0, 36, 24 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=110]
 atlas = ExtResource( 45 )
 region = Rect2( 0, 24, 36, 24 )
 
+[sub_resource type="SpriteFrames" id=111]
+animations = [ {
+"frames": [ SubResource( 109 ), SubResource( 110 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="AtlasTexture" id=112]
+atlas = ExtResource( 20 )
+region = Rect2( 36, 0, 36, 24 )
+
+[sub_resource type="AtlasTexture" id=113]
+atlas = ExtResource( 20 )
+region = Rect2( 36, 24, 36, 24 )
+
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 112 ), SubResource( 113 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
@@ -643,13 +659,11 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 240.863, 114.383 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 286.863, 114.383 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="name" type="Label" parent="characterselect"]
@@ -792,10 +806,10 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
-position = Vector2( 288.45, 191.75 )
-frames = SubResource( 11 )
+position = Vector2( 269, 181 )
+frames = SubResource( 111 )
 playing = true
-offset = Vector2( -1.30072, 2.54651 )
+centered = false
 
 [node name="tip" type="Label" parent="tip"]
 margin_left = 269.0
@@ -816,16 +830,15 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
-position = Vector2( 242.45, 191.75 )
+position = Vector2( 221, 181 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
-offset = Vector2( -1.30072, 2.54651 )
+centered = false
 
 [node name="tip2" type="Label" parent="tip"]
-margin_left = 223.0
+margin_left = 221.0
 margin_top = 203.0
-margin_right = 259.0
+margin_right = 257.0
 margin_bottom = 235.0
 rect_pivot_offset = Vector2( 19.45, -11.25 )
 theme = ExtResource( 22 )
@@ -842,24 +855,23 @@ __meta__ = {
 
 [node name="characterswap" type="Control" parent="."]
 visible = false
-margin_top = 1.0
 margin_right = 40.0
-margin_bottom = 41.0
+margin_bottom = 40.0
 script = ExtResource( 44 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="box_ally" type="Sprite" parent="characterswap"]
-position = Vector2( 0, 170 )
+position = Vector2( 0, 171 )
 texture = ExtResource( 28 )
 centered = false
 
 [node name="name" type="Label" parent="characterswap/box_ally"]
 margin_left = 55.371
-margin_top = 5.40447
+margin_top = 6.40447
 margin_right = 95.371
-margin_bottom = 19.4045
+margin_bottom = 20.4045
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
@@ -872,9 +884,9 @@ __meta__ = {
 
 [node name="atk" type="Label" parent="characterswap/box_ally"]
 margin_left = 76.8232
-margin_top = 16.4522
+margin_top = 17.4522
 margin_right = 116.823
-margin_bottom = 34.4522
+margin_bottom = 35.4522
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
@@ -888,9 +900,9 @@ __meta__ = {
 
 [node name="hp" type="Label" parent="characterswap/box_ally"]
 margin_left = 72.311
-margin_top = 29.6528
+margin_top = 30.6528
 margin_right = 112.311
-margin_bottom = 47.6528
+margin_bottom = 48.6528
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
@@ -904,9 +916,9 @@ __meta__ = {
 
 [node name="def" type="Label" parent="characterswap/box_ally"]
 margin_left = 118.694
-margin_top = 16.4719
+margin_top = 17.4719
 margin_right = 158.694
-margin_bottom = 34.4719
+margin_bottom = 35.4719
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
@@ -920,9 +932,9 @@ __meta__ = {
 
 [node name="lvl" type="Label" parent="characterswap/box_ally"]
 margin_left = 115.48
-margin_top = 0.66326
+margin_top = 1.66326
 margin_right = 155.48
-margin_bottom = 18.6633
+margin_bottom = 19.6633
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
@@ -935,55 +947,77 @@ __meta__ = {
 }
 
 [node name="levelline2" type="Line2D" parent="characterswap/box_ally"]
-position = Vector2( 99.6456, 18.0281 )
+position = Vector2( 99.6456, 19.0281 )
 points = PoolVector2Array( -0.55014, 0, 35.2471, 0 )
 width = 2.0
 default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="hpline2" type="Line2D" parent="characterswap/box_ally"]
-position = Vector2( 54.9643, 48.02 )
+position = Vector2( 54.9643, 49.02 )
 points = PoolVector2Array( 0, 0, 79.6607, 0 )
 width = 2.0
 default_color = Color( 0.917647, 1, 0.866667, 1 )
 
 [node name="portraits" parent="characterswap/box_ally" instance=ExtResource( 49 )]
-position = Vector2( 25.4371, 22.9552 )
+position = Vector2( 25.4371, 23.9552 )
 
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
-position = Vector2( 243.337, 195.507 )
+position = Vector2( 175, 181 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
+centered = false
 
-[node name="Bbutton" type="AnimatedSprite" parent="characterswap"]
-position = Vector2( 285.337, 195.507 )
-frames = SubResource( 15 )
-frame = 1
+[node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
+position = Vector2( 221, 181 )
+frames = SubResource( 6 )
 playing = true
+centered = false
 
-[node name="tip3" type="Label" parent="characterswap"]
-margin_left = 269.0
-margin_top = 202.0
-margin_right = 305.0
-margin_bottom = 234.0
+[node name="tip5" type="Label" parent="characterswap"]
+margin_left = 221.0
+margin_top = 203.0
+margin_right = 257.0
+margin_bottom = 235.0
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "place
-"
+text = "select"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tributton" type="AnimatedSprite" parent="characterswap"]
+position = Vector2( 269, 181 )
+frames = SubResource( 15 )
+playing = true
+centered = false
+
+[node name="tip3" type="Label" parent="characterswap"]
+margin_left = 266.25
+margin_top = 203.0
+margin_right = 307.25
+margin_bottom = 235.0
+theme = ExtResource( 22 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "end turn"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="tip4" type="Label" parent="characterswap"]
-margin_left = 221.25
-margin_top = 202.0
-margin_right = 262.25
-margin_bottom = 234.0
+margin_left = 173.25
+margin_top = 203.0
+margin_right = 214.25
+margin_bottom = 235.0
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
@@ -1217,6 +1251,7 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 26 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -1228,7 +1263,6 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 36 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1512,7 +1546,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -12 )
 frames = SubResource( 99 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1537,7 +1571,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1546,7 +1580,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 102 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -1687,6 +1720,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 102 )
+frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1713,7 +1747,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 99 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1815,6 +1849,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 108 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1837,6 +1872,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 108 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1925,6 +1961,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 108 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1947,6 +1984,7 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 108 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
