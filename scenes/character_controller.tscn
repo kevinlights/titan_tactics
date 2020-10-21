@@ -884,7 +884,6 @@ offset = Vector2( 8, 0 )
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 104 )
-frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -893,6 +892,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 107 )
+frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -902,7 +902,6 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 110 )
-frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]
@@ -911,6 +910,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 113 )
+frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]
@@ -1027,3 +1027,8 @@ emission_rect_extents = Vector2( 8, 8 )
 direction = Vector2( 1, 1 )
 gravity = Vector2( 0, -50 )
 color_ramp = SubResource( 115 )
+
+[node name="ranged_weapon" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5 )
+enabled = true
+cast_to = Vector3( 0, 1, 0 )

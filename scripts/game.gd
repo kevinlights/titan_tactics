@@ -48,8 +48,10 @@ func setup_new_game():
 	character.name = "Kris"
 	character.portrait_override = "hero"
 	team.append(character)
-	var character2 = CharacterStats.new()
-	character2.generate(default_stats, TT.TYPE.ARCHER, TT.CONTROL.PLAYER, 1, true)
-	character2.name = "Bowie"
-	character2.portrait_override = "bowie"
-	team.append(character2)
+	var bowie = load("res://resources/cast/bowie.tres")
+	team.append(bowie)
+#	var character2 = CharacterStats.new()
+#	character2.generate(default_stats, TT.TYPE.ARCHER, TT.CONTROL.PLAYER, 1, true)
+#	character2.name = "Bowie"
+#	character2.portrait_override = "bowie"
+#	team.append(character2)
