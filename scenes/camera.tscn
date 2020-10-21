@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/camera.gd" type="Script" id=1]
+[ext_resource path="res://gfx/OBJS/tree.dae" type="PackedScene" id=2]
 
-[node name="camera" type="Camera"]
-transform = Transform( 0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 2, 8.817, 13.972 )
+[node name="lookat" type="Spatial"]
+
+[node name="camera" type="Camera" parent="."]
+transform = Transform( 0.707107, 0.45452, -0.541675, 0, 0.766045, 0.642788, 0.707107, -0.45452, 0.541675, -15, 19, 15 )
 current = true
-fov = 25.0
+fov = 10.0
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="tree" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.934067, 0, 0.793076 )
+visible = false

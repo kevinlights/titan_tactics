@@ -1,14 +1,24 @@
 extends Node
 
 signal orientation_changed
+signal orientation_changed_clockwise
+signal orientation_changed_counter_clockwise
 
 var team = []
 var level = 0
 var camera_orientation = TT.CAMERA.NORTH setget set_camera_orientation, get_camera_orientation
 
 func set_camera_orientation(new_orientation):
-	camera_orientation = new_orientation
 	emit_signal("orientation_changed")
+	if new_orientation > camera_orientation or (camera_orientation == TT.CAMERA.WEST and new_orientation == TT.CAMERA.NORTH):
+		if not (camera_orientation == TT.CAMERA.NORTH and new_orientation == TT.CAMERA.WEST):
+			emit_signal("orientation_changed_clockwise")
+			print("orientation_changed_clockwise")
+	if new_orientation < camera_orientation or (camera_orientation == TT.CAMERA.NORTH and new_orientation == TT.CAMERA.WEST):
+		if not (camera_orientation == TT.CAMERA.WEST and new_orientation == TT.CAMERA.NORTH):
+			emit_signal("orientation_changed_counter_clockwise")
+			print("orientation_changed_counter_clockwise")
+	camera_orientation = new_orientation
 
 func get_camera_orientation():
 	return camera_orientation

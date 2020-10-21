@@ -13,7 +13,7 @@ func _get_translation():
 	return translation
 
 func update_position():
-	position = world.get_node("camera").unproject_position(get_parent().translation + Vector3(0.5, 0, 0.5))
+	position = world.get_node("lookat/camera").unproject_position(get_parent().translation + Vector3(0.5, 0, 0.5))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -153,7 +153,7 @@ func go_home():
 
 func capture_camera():
 	camera_captured = true
-	world.get_node("camera").track(self)
+	world.get_node("lookat/camera").track(self)
 
 func set_origin(entity):
 	if current_entity:

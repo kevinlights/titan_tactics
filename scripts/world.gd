@@ -295,7 +295,7 @@ func _ready():
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")
-	$camera.track($select)
+	$lookat/camera.track($select)
 
 func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
@@ -691,13 +691,18 @@ func _input(event):
 	if event.is_action("unmute_music") && !event.is_echo() && event.is_pressed():
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed():
-		var new_orientation = Game.camera_orientation + 1
-		if new_orientation > 3:
-			new_orientation = 0
-		Game.camera_orientation = new_orientation
-	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed():
-		var new_orientation = Game.camera_orientation - 1
-		if new_orientation < 0:
-			new_orientation = 3
-		Game.camera_orientation = new_orientation
+		if not $lookat/camera.is_rotating():
+			var new_orientation = Game.camera_orientation + 1
+			if Game.camera_orientation == TT.CAMERA.WEST:
+				new_orientation = TT.CAMERA.NORTH
+			print("Clockwise ", Game.camera_orientation, " ", new_orientation)
+			Game.camera_orientation = new_orientation
 		
+	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed():
+		if not $lookat/camera.is_rotating():
+			var new_orientation = Game.camera_orientation - 1
+			if Game.camera_orientation == TT.CAMERA.NORTH:
+				new_orientation = TT.CAMERA.WEST
+			print("Counter-Clockwise ", Game.camera_orientation, " ", new_orientation)
+			Game.camera_orientation = new_orientation
+			

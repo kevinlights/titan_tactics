@@ -188,6 +188,7 @@ script = ExtResource( 2 )
 [node name="map_anchor" type="Node" parent="."]
 
 [node name="path_preview" type="Spatial" parent="."]
+visible = false
 script = ExtResource( 11 )
 good_color = Color( 0.917647, 1, 0.866667, 1 )
 bad_color = Color( 0.0627451, 0.203922, 0.262745, 1 )
@@ -209,7 +210,6 @@ script = ExtResource( 4 )
 [node name="select" type="AnimatedSprite3D" parent="select"]
 flip_v = true
 frames = SubResource( 20 )
-frame = 1
 playing = true
 
 [node name="top" type="Spatial" parent="select"]
@@ -267,6 +267,5 @@ volume_db = -4.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0.5 )
 script = ExtResource( 16 )
 
-[node name="camera" parent="." instance=ExtResource( 17 )]
-transform = Transform( -0.707107, -0.454519, 0.541675, 0, 0.766044, 0.642788, -0.707107, 0.454519, -0.541675, 0, 0, 0 )
-fov = 10.5
+[node name="lookat" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )

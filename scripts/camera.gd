@@ -32,28 +32,53 @@ func track(item):
 func _ready():
 	# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
-	_on_orientation_changed()
+	Game.connect("orientation_changed_clockwise", self, "_on_orientation_changed_clockwise")
+	Game.connect("orientation_changed_counter_clockwise", self, "_on_orientation_changed_counter_clockwise")
+#	_on_orientation_changed()
 
+func _on_orientation_changed_clockwise():
+	var now = OS.get_ticks_msec()
+#	if now - start_time < ttl:
+#		end_rotation += Vector3(0, 90, 0) 
+#		start_time += ttl #(now - start_time) 
+#		return
+	start_time = now
+	start_rotation = get_parent().rotation_degrees
+	end_rotation = start_rotation + Vector3(0, 90, 0) # rotations[Game.camera_orientation]
+
+func _on_orientation_changed_counter_clockwise():
+	var now = OS.get_ticks_msec()
+#	if now - start_time < ttl:
+#		end_rotation -= Vector3(0, 90, 0) # rotations[Game.camera_orientation]
+#		start_time += ttl 
+#		return
+	start_time = now
+	start_rotation = get_parent().rotation_degrees
+	end_rotation = start_rotation - Vector3(0, 90, 0) # rotations[Game.camera_orientation]
+	
 func _on_orientation_changed():
-	start_time = OS.get_ticks_msec()
-	start_offset = offset
-	end_offset = offsets[Game.camera_orientation]
-	start_rotation = rotation_degrees
-	end_rotation = rotations[Game.camera_orientation]
-	if start_rotation.y == 135 and end_rotation.y == -135:
-		end_rotation.y = 225
-	if start_rotation.y == -135 and end_rotation.y == 135:
-		end_rotation.y = -225
-	print(Game.camera_orientation)
-	print(start_rotation)
+	pass
+#	start_time = OS.get_ticks_msec()
+##	start_offset = offset
+##	end_offset = offsets[Game.camera_orientation]
+#	start_rotation = get_parent().rotation_degrees
+#	end_rotation = start_rotation + Vector3(0, 90, 0) # rotations[Game.camera_orientation]
+##	if start_rotation.y == 135 and end_rotation.y == -135:
+##		end_rotation.y = 225
+##	if start_rotation.y == -135 and end_rotation.y == 135:
+##		end_rotation.y = -225
+#	print(Game.camera_orientation)
+#	print(start_rotation)
+
+func is_rotating():
+	var now = OS.get_ticks_msec()
+	return now - start_time < ttl
 
 func _process(_delta):
 	var now = OS.get_ticks_msec()
-	if now - start_time < ttl:
-		offset = lerp(start_offset, end_offset, float(now - start_time) / float(ttl))
-		rotation_degrees = lerp(start_rotation, end_rotation, float(now - start_time) / float(ttl))
-	else:
-		rotation_degrees = rotations[Game.camera_orientation]
-		offset = end_offset
 	if tracked_item:
-		translation = tracked_item.translation + offset
+		get_parent().translation = tracked_item.get_global_transform().origin;
+	if now - start_time < ttl:
+		get_parent().rotation_degrees = lerp(start_rotation, end_rotation, float(now - start_time) / float(ttl))
+	else:
+		get_parent().rotation_degrees = end_rotation
