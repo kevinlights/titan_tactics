@@ -13,6 +13,7 @@ func play():
 	if world.game_over:
 		return
 	var character = world.get_current()
+	world.get_node("lookat/camera").track(character)
 	if character.character.control != TT.CONTROL.AI:
 		print("AI (" + character.character.name + ") says not my turn, skipping")
 		return
@@ -35,12 +36,6 @@ func play():
 			character.is_done = true
 			world.advance_turn()
 			return
-#		if enemies_are_stronger(character):
-#			print("AI (" + character.character.name + ") says guard")
-#			character.guard()
-##			world.advance_turn()
-#			return
-		var distance = character.tile.distance_to(enemy.tile)
 		if can_attack(character, enemy):
 			print("AI (" + character.character.name + ") says attack")
 			world.gui.battle(character, enemy)
@@ -48,8 +43,10 @@ func play():
 			character.is_done = true
 			world.advance_turn()
 			return
+		else:
+			print("AI (" + character.character.name + ") can't attack")
 		if character.character.turn_limits.move_distance > 1 and not can_attack(character, enemy):
-			var path = get_path_to(character.tile, enemy.tile, character.character.turn_limits.move_distance, character)
+			var path = get_path_to(character, enemy, character.character.turn_limits.move_distance)
 			if path and path.size() > 1:
 				print("AI (" + character.character.name + ") says move")
 				character.move(path)
@@ -89,19 +86,31 @@ func try_guarding(character):
 	character.guard()
 	return true
 
-func can_attack(attacker, victim):
-	if attacker.character.turn_limits.actions < 1:
+func can_attack(attacker, victim, ignore_action_limit = false):
+	if attacker.character.turn_limits.actions < 1 and not ignore_action_limit:
 		return false
-	var distance = attacker.tile.distance_to(victim.tile)
+	var distance = attacker.to_global(attacker.get_node("ranged_weapon").translation).distance_to(victim.translation)
 	var cover = world.is_cover_between(attacker, victim.translation)
 	if not cover:
+		print("no cover")
+		var int_distance = int(distance * 10)
+		distance = float(int_distance) / 10.0
+		print(distance, " <= ", attacker.character.atk_range)
 		if distance <= attacker.character.atk_range:
+			print("in range")
 			return true
 	return false
 
-func get_path_to(start, end, max_length, character):
-	var path = world.pathfinder.find_path(start, end)
-	path = shorten_to_atk_range(path, character)
+func can_attack_from(position, attacker, victim):
+	var attack_origin = Vector3(0.5, 0.5, 0.5)
+	attacker.get_node("ranged_weapon").translation = attacker.to_local(position) + attack_origin + Vector3(0, .5, 0)
+	var i_can_attack = can_attack(attacker, victim, true)
+	attacker.get_node("ranged_weapon").translation = attack_origin
+	return i_can_attack
+
+func get_path_to(character, target, max_length):
+	var path = world.pathfinder.find_path(character.tile, target.tile)
+	path = shorten_to_atk_range(path, character, target)
 	var fixed_path = normalize_path(path, max_length)
 	# prevent landing on a tile that has someone on it
 	while fixed_path.size() > 1 and world.entity_at(fixed_path[fixed_path.size() - 1]):
@@ -138,24 +147,10 @@ func get_nearest_enemy_with_disadvantage(character):
 				closest = enemy
 	return closest
 	
-#
-#func enemies_are_stronger(character):
-#	var enemies_in_range = 0
-#	var stronger_in_range = 0
-#	if character.can_recruit():
-#		var enemies = world.current[TT.CONTROL.PLAYER]
-#		for enemy in enemies:
-#			var distance = character.tile.distance_to(enemy.tile)
-#			if distance <= enemy.character.atk_range:
-#				enemies_in_range += 1
-#				if enemy.character.character_class == character.character.weakness:
-#					stronger_in_range += 1 
-#	return enemies_in_range == stronger_in_range and enemies_in_range > 0
-
-func shorten_to_atk_range(path, character):
+func shorten_to_atk_range(path, character, target):
 	for pos in range(path.size()):
-		var distance = (path[-1] - path[pos]).length()
-		if distance < character.character.atk_range:
+		var can_attack_from_here = can_attack_from(path[pos], character, target)
+		if can_attack_from_here:
 			path.resize(pos)
 			break
 	return path

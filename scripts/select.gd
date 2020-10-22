@@ -70,6 +70,7 @@ func enable():
 	print("enable selector")
 	disabled = false
 	set_context(world.get_current_context(tile))
+	capture_camera()
 
 func update_context():
 	set_context(world.get_current_context(tile))
