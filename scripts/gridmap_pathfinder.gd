@@ -171,7 +171,7 @@ func vector_to_id(vector):
 func filter_tiles(x, z):
 	var output = []
 	for tile in tiles:
-		if(tile.x == x and tile.z == z):
+		if(tile and tile.x == x and tile.z == z):
 			output.push_back(tile)
 	return output
 
