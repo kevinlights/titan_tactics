@@ -16,9 +16,9 @@ var ttl = 400
 var item_spawner
 
 var item_types = {
-	TT.TYPE.ARCHER: "bow",
-	TT.TYPE.MAGE: "wand",
-	TT.TYPE.FIGHTER: "sword"
+	TT.TYPE.ARCHER: "archer",
+	TT.TYPE.MAGE: "mage",
+	TT.TYPE.FIGHTER: "swordsman"
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,75 +1,32 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gfx/chest.png" type="Texture" id=1]
 [ext_resource path="res://scripts/chest.gd" type="Script" id=2]
-[ext_resource path="res://gfx/UI.png" type="Texture" id=3]
+[ext_resource path="res://resources/player_item_spriteframes.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://sfx/gameplay/chest_opening.wav" type="AudioStream" id=4]
 [ext_resource path="res://gfx/OBJS/openchest.dae" type="PackedScene" id=5]
 [ext_resource path="res://gfx/OBJS/chest.dae" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
-atlas = ExtResource( 3 )
-region = Rect2( 0, 16, 8, 8 )
+atlas = ExtResource( 1 )
+region = Rect2( 0, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 19
-atlas = ExtResource( 3 )
-region = Rect2( 8, 16, 8, 8 )
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 19
-atlas = ExtResource( 3 )
-region = Rect2( 24, 16, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 19
-atlas = ExtResource( 3 )
-region = Rect2( 16, 16, 8, 8 )
-
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
-"name": "sword",
+"name": "open",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "bow",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 3 ) ],
-"loop": true,
-"name": "battery",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "wand",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 23
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 23
-atlas = ExtResource( 1 )
-region = Rect2( 0, 16, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ SubResource( 6 ) ],
-"loop": true,
 "name": "closed",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ) ],
-"loop": true,
-"name": "open",
 "speed": 5.0
 } ]
 
@@ -81,7 +38,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492104, 0.306798, 0.502054 )
 visible = false
 pixel_size = 0.04
 billboard = 2
-frames = SubResource( 5 )
+frames = ExtResource( 3 )
 animation = "battery"
 
 [node name="chest_billboard" type="AnimatedSprite3D" parent="."]
@@ -91,7 +48,7 @@ centered = false
 pixel_size = 0.04
 billboard = 1
 alpha_cut = 2
-frames = SubResource( 8 )
+frames = SubResource( 3 )
 animation = "closed"
 
 [node name="chest" parent="." instance=ExtResource( 6 )]
