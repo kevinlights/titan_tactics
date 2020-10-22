@@ -17,10 +17,11 @@ var hide_non_walkable_tiles := false # change to true to visually debug
 var no_diagonal_movement := true # change to false to allow diagonal movement
 
 # decorations are impassable to the player.
-var decorations := ["Tree", "tree", "stump", "Water", "underwater", "waterside"]
+var decorations := ["Tree", "stump", "Water", "underwater", "waterside"]
 
 # structures are normally larger than a single tile and require custom logic to join tiles
 var structures := ['Smallbridge', 'Bridge']
+var multi_tile_objects := ['house1', 'tree']
 
 # Cardinals
 # nw, n, ne
@@ -178,12 +179,18 @@ func _init_astar():
 	var ground_cells = get_used_cells()
 	var iterated_types = []
 	var structure_tiles = []
+	var multi_tiles = []
 	for cell in ground_cells:
 		var itemId = get_cell_item(cell.x, cell.y, cell.z)
 		var name = mesh_library.get_item_name(itemId)
 		if decorations.find(name) != -1:
+			print(cell)
 			counts.decoration_tiles += 1
 			continue
+		if multi_tile_objects.find(name) != -1:
+			multi_tiles.push_back(cell)
+			counts.decoration_tiles += 1
+			continue			
 		if structures.find(name) != -1:
 			# TODO: add to array and manually connect after.
 			counts.structure_tiles += 1
@@ -216,6 +223,42 @@ func _init_astar():
 				counts.excluded_tiles += 1
 		else:
 			counts.excluded_tiles += 1
+	# Code to remove cells below multi tiled structures from passable_tiles
+	for cell in multi_tiles:
+		var itemId = get_cell_item(cell.x, cell.y, cell.z)
+		var name = mesh_library.get_item_name(itemId)
+		var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
+		var orientation_modifier = {
+			0: 0,
+			22: 2,
+			10: 4,
+			16: 6,
+		}[orientation]
+		var directions = []
+		match name:
+			'tree':
+				directions = [
+					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(1 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+				]
+			'house1':
+				directions = [
+					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(5 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
+				]
+		var cell_to_remove = Vector3(cell.x, cell.y - 1, cell.z)				
+		for delta in directions:
+			cell_to_remove.x += delta.x
+			cell_to_remove.z += delta.y
+			var idx = tiles.find(cell_to_remove)
+			print(idx)
+			if idx > -1:
+				tiles[idx] = null
+				counts.impassable_tiles += 1
+				counts.passable_tiles -= 1
+		pass
 	_connect_points()
 	_connect_structures(structure_tiles)
 	
@@ -242,6 +285,8 @@ func _compute_avg_height(name):
 
 func _connect_points():
 	for cell in tiles:
+		if not cell:
+			continue
 		var neighbours = _get_neighbors(cell)
 		for neighbour in neighbours:
 			_connect_cells(cell, neighbour)
@@ -368,6 +413,8 @@ func _connect_structures(cells):
 		
 
 func _get_neighbors(cell):
+	if not cell:
+		return
 	var neighbours = []
 	# deltas = Vector2(x_delta, z_delta)
 	for deltas in cardinalDeltas:
@@ -402,7 +449,7 @@ func get_cardinal_height(cell, dir_idx):
 	var itemId = get_cell_item(cell.x, cell.y, cell.z)
 	var name = mesh_library.get_item_name(itemId)
 	
-	if decorations.find(name) != -1 or structures.find(name) != -1:
+	if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
 		return null
 	if not cardinalHeights.has(name):
 		print_debug('Unexpected cell type. Assuming not walkable.')
