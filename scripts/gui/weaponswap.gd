@@ -16,10 +16,10 @@ var current_stat
 var new_stat
 
 var atlas = {
-	TT.TYPE.OTHER: 17,
-	TT.TYPE.FIGHTER: 32,
-	TT.TYPE.ARCHER: 33,
-	TT.TYPE.MAGE: 34
+	TT.TYPE.OTHER: "armor",
+	TT.TYPE.FIGHTER: "swordsman",
+	TT.TYPE.ARCHER: "archer",
+	TT.TYPE.MAGE: "mage"
 }
 
 func _ready():
@@ -52,11 +52,11 @@ func _process(delta):
 	else:
 		$current_stat.text = str("+", int(round(current_gear.defense)))
 		$new_stat.text = str("+", int(round(new_gear.defense)))
-	$weapon_sprite1.frame = atlas[current_gear.character_class]
-	$weapon_sprite2.frame = atlas[new_gear.character_class]
+	$weapon_sprite1.play(atlas[current_gear.character_class])
+	$weapon_sprite2.play(atlas[new_gear.character_class])
 	if gear_type == Item.SLOT.DEF:
-		$weapon_sprite1.frame = atlas[TT.TYPE.OTHER]
-		$weapon_sprite2.frame = atlas[TT.TYPE.OTHER]
+		$weapon_sprite1.play(atlas[TT.TYPE.OTHER])
+		$weapon_sprite2.play(atlas[TT.TYPE.OTHER])
 	if selected == 0:
 		$no/focus.show()
 		$yes/focus.hide()
