@@ -35,7 +35,7 @@ const levels = [
 	},
 	{
 		"name": "The OGRE enters the game",
-		"scene": "level_2_3dtest",
+		"scene": "level_2_3dtest", #replace with level_2_3d
 		"music": "forest"
 	},
 	{
