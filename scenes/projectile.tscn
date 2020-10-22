@@ -11,7 +11,7 @@ albedo_texture = ExtResource( 4 )
 
 [sub_resource type="QuadMesh" id=2]
 material = SubResource( 1 )
-size = Vector2( 0.1, 0.1 )
+size = Vector2( 0.2, 0.2 )
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.048951, 1 )
