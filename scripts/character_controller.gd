@@ -423,6 +423,7 @@ func _on_animation_finished():
 		fire_arrow(last_target)
 	if is_dead and avatar.animation.begins_with("hit"):
 		emit_signal("death", self)
+		$healthbar.hide()
 		avatar.stop()
 	if avatar.animation.begins_with("attack") or avatar.animation.begins_with("hit") :
 		if avatar.animation.ends_with("up"):

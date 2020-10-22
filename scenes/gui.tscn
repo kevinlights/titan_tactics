@@ -2309,7 +2309,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 position = Vector2( -6, -4 )
 frames = SubResource( 165 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -2333,7 +2333,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Retry"]
 position = Vector2( -5, -15.4519 )
 frames = SubResource( 165 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -2429,7 +2429,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Retry"]
 position = Vector2( -5, -4 )
 frames = SubResource( 165 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
