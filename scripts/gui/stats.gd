@@ -16,6 +16,7 @@ export(Array, String) var special_names
 
 var ttl = 100
 
+var bar_size = 80
 var start_x_ally = -160
 var end_x_ally = 0
 
@@ -86,17 +87,17 @@ func _process(_delta):
 		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
 		
 	#move hp line
-	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*78:
+	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*bar_size:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x - 0.5, 0)
 		$box_ally/hpline.set_point_position(1, new_hp_pos)
-	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*78:
+	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*bar_size:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x + 0.5, 0)
 		$box_ally/hpline.set_point_position(1, new_hp_pos)
 	
-	if $box_enemy/hpline.get_point_position(1).x > (enemy.character.hp/enemy.character.max_hp)*78:
+	if $box_enemy/hpline.get_point_position(1).x > (enemy.character.hp/enemy.character.max_hp)*bar_size:
 		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x - 0.5, 0)
 		$box_enemy/hpline.set_point_position(1, new_hp_pos)
-	if $box_enemy/hpline.get_point_position(1).x < (enemy.character.hp/enemy.character.max_hp)*78:
+	if $box_enemy/hpline.get_point_position(1).x < (enemy.character.hp/enemy.character.max_hp)*bar_size:
 		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x + 0.5, 0)
 		$box_enemy/hpline.set_point_position(1, new_hp_pos)
 	
@@ -135,8 +136,8 @@ func _ready():
 		return
 	print("resetting battle UI")
 	moving_back = false
-	$box_enemy/hpline.set_point_position(1, Vector2(enemy.character.hp/enemy.character.max_hp*78, 0))
-	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*78, 0))
+	$box_enemy/hpline.set_point_position(1, Vector2(enemy.character.hp/enemy.character.max_hp*bar_size, 0))
+	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*bar_size, 0))
 	$box_ally/playername.text = playername
 	$box_ally/playeratklevel.text = str(playeratk)
 	$box_ally/playerdeflevel.text = str(playerdef)
