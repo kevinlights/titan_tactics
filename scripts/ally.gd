@@ -12,6 +12,7 @@ var ttl = 100
 
 var start_x_ally = -160
 var end_x_ally = 0
+var bar_size = 80
 
 var moving_back = false
 
@@ -48,10 +49,10 @@ func _process(delta):
 		$box_ally/levelline.set_point_position(1, new_lvl_pos)
 		
 	#move hp line
-	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*61:
+	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*bar_size:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x - 0.5, 0)
 		$box_ally/hpline.set_point_position(1, new_hp_pos)
-	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*61:
+	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*bar_size:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x + 0.5, 0)
 		$box_ally/hpline.set_point_position(1, new_hp_pos)
 	
@@ -72,7 +73,7 @@ func _ready():
 	if not player:
 		return
 	moving_back = false
-	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*61, 0))
+	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*bar_size, 0))
 	$box_ally/playername.text = playername
 	$box_ally/playeratklevel.text = str(playeratk)
 	$box_ally/playerdeflevel.text = str(playerdef)

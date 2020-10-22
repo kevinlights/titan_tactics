@@ -1,9 +1,9 @@
-extends CPUParticles2D
+extends CPUParticles
 
 signal hit
 
-var start_position = Vector2(0, 0)
-var end_position = Vector2(64, 64)
+var start_position = Vector3(0, 0, 0)
+var end_position = Vector3(64, 0, 64)
 var start = 0
 var ttl = 500
 
@@ -22,8 +22,8 @@ func _process(delta):
 		return
 	var now = OS.get_ticks_msec()
 	if now - start < ttl:
-		position.x = lerp(start_position.x, end_position.x, float(now - start) / float(ttl))
-		position.y = lerp(start_position.y, end_position.y, float(now - start) / float(ttl))
+		translation = lerp(start_position, end_position, float(now - start) / float(ttl))
+#		translation.z = lerp(start_position.z, end_position.z, float(now - start) / float(ttl))
 	else:		
 		emit_signal("hit")
 		get_parent().remove_child(self)

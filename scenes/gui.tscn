@@ -144,22 +144,18 @@ size = 13
 font_data = ExtResource( 4 )
 
 [sub_resource type="AtlasTexture" id=20]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=21]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=22]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=23]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
@@ -182,22 +178,18 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=25]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
-flags = 16
-atlas = ExtResource( 41 )
-region = Rect2( 16, 32, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 41 )
+region = Rect2( 16, 32, 16, 16 )
+
 [sub_resource type="AtlasTexture" id=28]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 48, 16, 16 )
 
@@ -210,12 +202,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "mage",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 27 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 28 ) ],
@@ -225,22 +217,18 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=32]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=33]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
@@ -1265,7 +1253,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 centered = false
 
@@ -1290,7 +1277,6 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 
@@ -1712,6 +1698,7 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -1723,7 +1710,6 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1831,13 +1817,13 @@ __meta__ = {
 position = Vector2( 100, 18 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 2.0
-default_color = Color( 0.988235, 0.933333, 0.898039, 1 )
+default_color = Color( 0.313726, 0.564706, 0.690196, 1 )
 
 [node name="hpline" type="Line2D" parent="ally/box_ally"]
 position = Vector2( 55.337, 47.9003 )
 points = PoolVector2Array( 0, 0, 61, 0 )
 width = 2.0
-default_color = Color( 0.917647, 1, 0.866667, 1 )
+default_color = Color( 0.313726, 0.564706, 0.690196, 1 )
 
 [node name="portraits" parent="ally/box_ally" instance=ExtResource( 49 )]
 position = Vector2( 25.1597, 22.8974 )
@@ -2022,7 +2008,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -12 )
 frames = SubResource( 98 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -2047,7 +2032,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 98 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -2222,7 +2206,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 98 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -2243,6 +2226,7 @@ __meta__ = {
 }
 
 [node name="win" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 25 )
@@ -2325,7 +2309,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 position = Vector2( -6, -4 )
 frames = SubResource( 165 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -2349,7 +2333,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Retry"]
 position = Vector2( -5, -15.4519 )
 frames = SubResource( 165 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -2361,6 +2345,7 @@ frames = SubResource( 195 )
 frame = 22
 
 [node name="lose" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 27 )
@@ -2444,7 +2429,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Retry"]
 position = Vector2( -5, -4 )
 frames = SubResource( 165 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -2466,16 +2451,9 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Quit"]
-position = Vector2( -6, -15.4519 )
-frames = SubResource( 165 )
-frame = 2
-playing = true
-centered = false
-offset = Vector2( -1, 20 )
 script = ExtResource( 24 )
 
 [node name="banner" type="AnimatedSprite" parent="lose"]
-position = Vector2( 160, 86 )
 frames = SubResource( 226 )
 frame = 28
 

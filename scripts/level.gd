@@ -26,7 +26,7 @@ func _ready():
 	for trigger in triggers:
 		trigger.connect("trigger", self, "_on_dialogue_complete")
 	if add_character and add_character != "":
-		var additional_character = load("res://resources/" + add_character + ".tres")
+		var additional_character = load("res://resources/cast/" + add_character + ".tres")
 		additional_character.control = TT.CONTROL.PLAYER
 		Game.team.append(additional_character)
 	if remove_character and remove_character != "":

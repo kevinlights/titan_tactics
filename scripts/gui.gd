@@ -183,6 +183,7 @@ func close(dialog):
 
 func back():
 	active = false
+	self.modal = false
 	for dialog in get_children():
 		if not exempt.has(dialog.name):
 			dialog.hide()

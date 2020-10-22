@@ -228,10 +228,11 @@ func attack(target):
 
 	if character.character_class == TT.TYPE.MAGE:
 		var projectile = load("res://scenes/projectile.tscn").instance()
-		projectile.fire(translation + Vector3(8, 0,  8), target.translation + Vector3(8, 0, 8))
+		projectile.fire(translation + Vector3(0, 1,  0), target.translation + Vector3(0, 1, 0))
 		projectile.connect("hit", target, "hit", [character])
 		projectile.connect("hit", self, "attack_complete")
-		projectile.get_node("sparkle").play("player" if character.control == TT.CONTROL.PLAYER else "ai")
+#		world.get_node("lookat/camera").track(projectile)
+#		projectile.get_node("sparkle").play("player" if character.control == TT.CONTROL.PLAYER else "ai")
 		pick_random_sfx($sfx/magic_attack)
 		get_parent().add_child(projectile)
 	elif character.character_class == TT.TYPE.ARCHER:
@@ -422,6 +423,7 @@ func _on_animation_finished():
 		fire_arrow(last_target)
 	if is_dead and avatar.animation.begins_with("hit"):
 		emit_signal("death", self)
+		$healthbar.hide()
 		avatar.stop()
 	if avatar.animation.begins_with("attack") or avatar.animation.begins_with("hit") :
 		if avatar.animation.ends_with("up"):
