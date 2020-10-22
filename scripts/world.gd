@@ -270,7 +270,7 @@ func spawn_ai_team():
 	for ai_spawn in ai_spawns:
 		var character:Node = load("res://scenes/character_controller.tscn").instance()
 		character.from_spawner(ai_spawn)
-		character.teleport(floor(ai_spawn.translation.x / TT.cell_size), floor(ai_spawn.translation.z / TT.cell_size))
+		character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
 		character.character.control = TT.CONTROL.AI
 		character.add_to_group("characters")
 		current[TT.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / TT.cell_size), floor(ai_spawn.position.y / TT.cell_size), ai_spawn.stats.character_class, TT.CONTROL.AI))

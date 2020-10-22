@@ -261,16 +261,22 @@ func attack_complete():
 func move(target_path:PoolVector3Array):
 	if movement.moving or target_path.size() == 0:
 		return
-	path = target_path
+	path = normalize_path(target_path)
 	movement.start_time = OS.get_ticks_msec()
-	movement.end_position = Vector3(path[0].x, 0, path[0].z)
-#	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
+#	movement.end_position = Vector3(path[0].x, 0, path[0].z)
+	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
 	movement.start_position = Vector3(translation.x, translation.y, translation.z)
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
 	character.turn_limits.move_distance -= path.size()
 	check_finished()
 
+func normalize_path(path):
+	var target_path = PoolVector3Array()
+	for point in path:
+		target_path.append(point - Vector3(0, .25, 0))
+	return target_path
+	
 func select_type():
 	$archer.hide()
 	$fighter.hide()
@@ -473,6 +479,7 @@ func _process(delta):
 			else:
 				avatar.play("idle-" + directions[Game.camera_orientation][movement.last_direction])
 				if movement.moving:
+					translation = movement.end_position
 					print("path complete ", translation)
 					emit_signal("path_complete")
 					emit_signal("idle")

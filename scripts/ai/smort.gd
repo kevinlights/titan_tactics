@@ -40,7 +40,7 @@ func play():
 			print("AI (" + character.character.name + ") says attack")
 			world.gui.battle(character, enemy)
 			character.attack(enemy)
-			character.is_done = true
+#			character.is_done = true
 			if not character.is_connected("attack_complete", self, "play"):
 				character.connect("attack_complete", self, "play")
 			if not character.is_connected("attack_complete", world.gui, "battle_hide"):
@@ -96,8 +96,9 @@ func can_attack(attacker, victim, ignore_action_limit = false):
 	var cover = world.is_cover_between(attacker, victim.translation)
 	if not cover:
 		print("no cover")
-		var int_distance = int(distance * 10)
-		distance = float(int_distance) / 10.0
+#		var int_distance = int(distance * 10)
+#		distance = float(int_distance) / 10.0
+		distance = floor(distance)
 		print(distance, " <= ", attacker.character.atk_range)
 		if distance <= attacker.character.atk_range:
 			print("in range")
@@ -154,7 +155,8 @@ func shorten_to_atk_range(path, character, target):
 	for pos in range(path.size()):
 		var can_attack_from_here = can_attack_from(path[pos], character, target)
 		if can_attack_from_here:
-			path.resize(pos)
+			if pos + 1 < path.size():
+				path.resize(pos + 1)
 			break
 	return path
 

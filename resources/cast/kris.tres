@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 character_class = 0
-name = ""
+name = "Kris"
 level = 1
 hp = 60
 max_hp = 60
