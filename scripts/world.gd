@@ -107,8 +107,10 @@ func advance_turn(explicit = 1, direction = 1):
 		$select.disable()
 		yield(get_tree().create_timer(1.0), "timeout")	
 	if current_turn  == TT.CONTROL.AI:
+		gui.modal = true
 		ai.play()
 	elif explicit == 1:
+		gui.modal = false
 		print("explicit enable")
 		$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
@@ -455,6 +457,7 @@ func _initiate_turn():
 		print("Don't initiate turn: selector is enabled")
 	if current_turn == TT.CONTROL.AI:
 		print("Control turned over to AI")
+		gui.modal = true
 		ai.play()
 		$range_overlay.set_origin(null)
 	

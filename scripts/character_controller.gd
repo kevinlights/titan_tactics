@@ -9,6 +9,7 @@ signal recruited
 signal recruit_failed
 signal done
 signal dialogue
+signal attack_complete
 
 var guarding = false
 var character
@@ -255,6 +256,7 @@ func attack_complete():
 	yield(get_tree().create_timer(1.0), "timeout")
 	print("attack complete")
 	emit_signal("idle")
+	emit_signal("attack_complete")
 
 func move(target_path:PoolVector3Array):
 	if movement.moving or target_path.size() == 0:

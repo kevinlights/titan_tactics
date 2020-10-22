@@ -41,7 +41,10 @@ func play():
 			world.gui.battle(character, enemy)
 			character.attack(enemy)
 			character.is_done = true
-			world.advance_turn()
+			if not character.is_connected("attack_complete", self, "play"):
+				character.connect("attack_complete", self, "play")
+			if not character.is_connected("attack_complete", world.gui, "battle_hide"):
+				character.connect("attack_complete", world.gui, "battle_hide")
 			return
 		else:
 			print("AI (" + character.character.name + ") can't attack")
