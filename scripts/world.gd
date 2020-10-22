@@ -278,7 +278,7 @@ func spawn_ai_team():
 		current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
 		world_map.add_child(character)
 		ai_spawn.hide()
-	ai = NaiveAI.new(self)
+	ai = SmortAI.new(self)
 	
 func select_team():
 	for member in Game.team:
