@@ -608,12 +608,14 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 centered = false
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 centered = false
 
@@ -759,6 +761,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 centered = false
 
@@ -783,6 +786,7 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 
@@ -915,13 +919,13 @@ position = Vector2( 25.4371, 23.9552 )
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 175, 181 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 centered = false
 
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 centered = false
 
@@ -945,7 +949,6 @@ __meta__ = {
 [node name="Tributton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 269, 181 )
 frames = SubResource( 18 )
-frame = 1
 playing = true
 centered = false
 
@@ -1204,7 +1207,6 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -1216,6 +1218,7 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -1514,6 +1517,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -12 )
 frames = SubResource( 98 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -1538,6 +1542,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 98 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -1546,7 +1551,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 101 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -1686,6 +1690,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 101 )
+frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -1712,6 +1717,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 98 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -1813,6 +1819,7 @@ __meta__ = {
 visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 107 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1835,6 +1842,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -11.4519 )
 frames = SubResource( 107 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -1923,6 +1931,7 @@ __meta__ = {
 visible = false
 position = Vector2( -2, -1 )
 frames = SubResource( 107 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -1945,6 +1954,7 @@ __meta__ = {
 visible = false
 position = Vector2( 1, -11.4519 )
 frames = SubResource( 107 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
