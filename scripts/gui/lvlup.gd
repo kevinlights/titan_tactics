@@ -11,14 +11,14 @@ var new_def
 var new_hp
 
 var atlas = {
-	TT.TYPE.FIGHTER: 0,
-	TT.TYPE.ARCHER: 2,
-	TT.TYPE.MAGE: 4
+	TT.TYPE.FIGHTER: "swordsman",
+	TT.TYPE.ARCHER: "archer",
+	TT.TYPE.MAGE: "mage"
 }
 
 #should be called after the level and stats are increased
 func on_level_up(diff, character):
-	$char_sprite.frame = atlas[character.character_class]
+	$char_sprite.play(atlas[character.character_class])
 	$new_lvl.text = "%02d" % (character.level)
 	$current_hp.text = "%02d" % (character.max_hp - diff.hp)
 	$current_atk.text = "%02d" % (character.atk - diff.atk)
