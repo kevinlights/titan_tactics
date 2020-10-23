@@ -35,9 +35,9 @@
 [ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=33]
 [ext_resource path="res://sfx/UI/turn_alert1.wav" type="AudioStream" id=34]
 [ext_resource path="res://gfx/ui/swipe.png" type="Texture" id=35]
+[ext_resource path="res://gfx/ui/lvupbg.png" type="Texture" id=36]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
 [ext_resource path="res://scripts/gui/lvlup.gd" type="Script" id=39]
-[ext_resource path="res://gfx/level_popup.png" type="Texture" id=40]
 [ext_resource path="res://gfx/types.png" type="Texture" id=41]
 [ext_resource path="res://gfx/place.png" type="Texture" id=43]
 [ext_resource path="res://scripts/gui/characterswap.gd" type="Script" id=44]
@@ -185,43 +185,43 @@ animations = [ {
 [sub_resource type="AtlasTexture" id=25]
 flags = 16
 atlas = ExtResource( 41 )
-region = Rect2( 16, 48, 16, 16 )
+region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 flags = 16
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
 flags = 16
 atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
 flags = 16
 atlas = ExtResource( 41 )
-region = Rect2( 16, 32, 16, 16 )
+region = Rect2( 16, 48, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=29]
 animations = [ {
 "frames": [ SubResource( 25 ) ],
 "loop": true,
-"name": "armor",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "archer",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 27 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 28 ) ],
 "loop": true,
-"name": "mage",
+"name": "armor",
 "speed": 5.0
 } ]
 
@@ -2217,14 +2217,12 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 centered = false
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 centered = false
 
@@ -2526,13 +2524,13 @@ position = Vector2( 25.4371, 23.9552 )
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 175, 181 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 centered = false
 
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 centered = false
 
@@ -2556,6 +2554,7 @@ __meta__ = {
 [node name="Tributton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 269, 181 )
 frames = SubResource( 18 )
+frame = 1
 playing = true
 centered = false
 
@@ -3130,6 +3129,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3154,6 +3154,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3162,7 +3163,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 103 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -3177,7 +3177,7 @@ __meta__ = {
 }
 
 [node name="shadow" type="ColorRect" parent="lvlup"]
-margin_left = -9.0
+margin_left = -10.0
 margin_top = -13.0
 margin_right = 104.0
 margin_bottom = 102.0
@@ -3187,15 +3187,8 @@ __meta__ = {
 }
 
 [node name="level_popup" type="Sprite" parent="lvlup"]
-visible = false
-position = Vector2( 47, 49 )
-texture = ExtResource( 40 )
-region_rect = Rect2( 0, 0, 94, 67 )
-
-[node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
-position = Vector2( 6.5798, 24.1412 )
-frames = ExtResource( 14 )
-animation = "swordsman"
+position = Vector2( 47.5, 43.5 )
+texture = ExtResource( 36 )
 
 [node name="new_atk" type="Label" parent="lvlup"]
 margin_left = 76.0
@@ -3310,12 +3303,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow" type="AnimatedSprite" parent="lvlup"]
-position = Vector2( 48.6813, 58.1062 )
-frames = SubResource( 103 )
-frame = 2
-playing = true
-
 [node name="ok shadow" type="Label" parent="lvlup"]
 margin_left = 36.5341
 margin_top = 86.8965
@@ -3355,14 +3342,15 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
 
 [node name="name" type="Label" parent="lvlup"]
-margin_left = 16.0
+margin_left = 14.0
 margin_top = 19.0
-margin_right = 56.0
+margin_right = 54.0
 margin_bottom = 33.0
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
@@ -3389,6 +3377,17 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="arrow" type="AnimatedSprite" parent="lvlup"]
+position = Vector2( 46.6813, 58.1062 )
+frames = SubResource( 103 )
+frame = 1
+playing = true
+
+[node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
+position = Vector2( 4.5798, 24.1412 )
+frames = ExtResource( 14 )
+animation = "swordsman"
 
 [node name="win" type="Control" parent="."]
 visible = false
@@ -3431,6 +3430,7 @@ __meta__ = {
 visible = false
 position = Vector2( -6, -4 )
 frames = SubResource( 172 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -3455,6 +3455,7 @@ __meta__ = {
 visible = false
 position = Vector2( -5, -15.4519 )
 frames = SubResource( 172 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -3507,6 +3508,7 @@ __meta__ = {
 visible = false
 position = Vector2( -5, -4 )
 frames = SubResource( 172 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
