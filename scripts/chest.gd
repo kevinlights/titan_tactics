@@ -46,7 +46,7 @@ func open(type):
 	$chest.hide()
 	$openchest.show()
 	$drop.play(item_types[type])
-	$drop.show()
+#	$drop.show()
 	return loot
 
 func loot():

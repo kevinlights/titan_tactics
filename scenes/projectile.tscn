@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/projectile.gd" type="Script" id=1]
-[ext_resource path="res://gfx/icon.png" type="Texture" id=4]
+[ext_resource path="res://gfx/FX/mageatk.png" type="Texture" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
-flags_transparent = true
 flags_unshaded = true
+params_blend_mode = 1
 params_billboard_mode = 1
-albedo_texture = ExtResource( 4 )
+albedo_texture = ExtResource( 2 )
 
 [sub_resource type="QuadMesh" id=2]
 material = SubResource( 1 )
@@ -20,15 +20,15 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 [node name="projectile" type="CPUParticles"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1, 0 )
 cast_shadow = 0
-amount = 32
+amount = 16
 lifetime = 2.0
 local_coords = false
 mesh = SubResource( 2 )
 emission_shape = 1
 emission_sphere_radius = 2.0
-spread = 180.0
+spread = 90.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 4.0
+initial_velocity = 2.0
 initial_velocity_random = 1.0
 scale_amount = 0.1
 color_ramp = SubResource( 3 )
