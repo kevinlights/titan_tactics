@@ -218,7 +218,8 @@ func action():
 				gui.guard(true)
 
 func is_adjacent(one, two):
-	return abs(one.tile.x - two.tile.x) <= 1 and abs(one.tile.y - two.tile.y) <= 1
+	print("is adjacent ", one.tile, " ", two.tile)
+	return (abs(one.tile.x - two.tile.x) <= 1 and abs(one.tile.z - two.tile.z) == 0) or (abs(one.tile.x - two.tile.x) == 0 and abs(one.tile.z - two.tile.z) <= 1)
 
 func _ready():
 	print(Game.team)
