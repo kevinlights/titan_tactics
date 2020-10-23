@@ -286,18 +286,25 @@ func select_type():
 	$ai_archer.hide()
 	$ai_fighter.hide()
 	$ai_mage.hide()
+	
+	# cast
+	$kris.hide()
 	if character.control == TT.CONTROL.PLAYER:
-		match character.character_class:
-			TT.TYPE.ARCHER:
-				print("Select archer")
-				avatar = $archer
-			TT.TYPE.FIGHTER:
-				print("Select fighter")
-				print($fighter)
-				avatar = $fighter
-			TT.TYPE.MAGE:
-				print("Select mage")
-				avatar = $mage
+		print("Character portrait ", character.portrait_override)
+		if character.portrait_override and character.portrait_override != "" and has_node(character.portrait_override):
+			avatar = get_node(character.portrait_override)
+		else:
+			match character.character_class:
+				TT.TYPE.ARCHER:
+					print("Select archer")
+					avatar = $archer
+				TT.TYPE.FIGHTER:
+					print("Select fighter")
+					print($fighter)
+					avatar = $fighter
+				TT.TYPE.MAGE:
+					print("Select mage")
+					avatar = $mage
 	else:
 		match character.character_class:
 			TT.TYPE.ARCHER:
@@ -354,6 +361,7 @@ func from_library(team_member):
 	character = team_member
 	# reset to max hp when deploying
 	character.hp = character.max_hp
+	character.control = TT.CONTROL.PLAYER
 	select_type()
 	init_common(team_member.control)
 

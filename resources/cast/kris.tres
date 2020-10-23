@@ -14,4 +14,4 @@ def = 3
 atk_range = 1
 mov_range = 4
 heal = 0
-portrait_override = "hero"
+portrait_override = "kris"

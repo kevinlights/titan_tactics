@@ -28,32 +28,32 @@ atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 7 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
-region = Rect2( 36, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 3 )
-region = Rect2( 36, 0, 36, 50 )
-
-[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 50, 60 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 36, 0, 36, 50 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 36, 0, 36, 50 )
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -79,31 +79,6 @@ animations = [ {
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "ai_archer",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ) ],
-"loop": true,
-"name": "ai_mage",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ) ],
-"loop": true,
-"name": "ai_swordsman",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 8 ) ],
-"loop": true,
-"name": "old_man",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 9 ) ],
-"loop": true,
-"name": "antagonist",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 10 ) ],
-"loop": true,
 "name": "bowie",
 "speed": 5.0
 }, {
@@ -112,12 +87,37 @@ animations = [ {
 "name": "antagonist_revealed",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "ai_archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "ai_mage",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "ai_swordsman",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "kris",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "antagonist",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 11 ) ],
 "loop": true,
-"name": "hero",
+"name": "old_man",
 "speed": 5.0
 } ]
 
 [node name="portraits" type="AnimatedSprite"]
 frames = SubResource( 12 )
-animation = "boba"
+animation = "kris"
