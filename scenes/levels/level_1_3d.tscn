@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap_pathfinder.gd" type="Script" id=2]
@@ -55,7 +55,7 @@ defense = 1
 heal = 0
 effect = SubResource( 3 )
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 5 )
 character_class = 0
 name = "Rina"
@@ -102,10 +102,10 @@ name = ""
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 6 )
-character_class = 0
+character_class = 1
 equipment_slot = 0
 level = 1
-name = "Minor Sword"
+name = "Minor Bow"
 attack = 1
 attack_range = 1
 defense = 0
@@ -121,7 +121,7 @@ name = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
-character_class = 0
+character_class = 1
 equipment_slot = 1
 level = 1
 name = "Minor Suit"
@@ -131,17 +131,17 @@ defense = 1
 heal = 0
 effect = SubResource( 10 )
 
-[sub_resource type="Resource" id=12]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 5 )
-character_class = 0
-name = "Toni"
+character_class = 1
+name = "Tim"
 level = 1
-hp = 65
-max_hp = 65
+hp = 60
+max_hp = 60
 atk = 5
 def = 1
-atk_range = 1
-mov_range = 5
+atk_range = 3
+mov_range = 6
 heal = 0
 item_atk = SubResource( 9 )
 item_def = SubResource( 11 )
@@ -170,82 +170,6 @@ branches = [  ]
 audio_theme = ""
 
 [sub_resource type="Resource" id=15]
-script = ExtResource( 17 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 6 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "Minor Bow"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 15 )
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 17 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=18]
-script = ExtResource( 6 )
-character_class = 1
-equipment_slot = 1
-level = 1
-name = "Minor Suit"
-attack = 0
-attack_range = 0
-defense = 1
-heal = 0
-effect = SubResource( 17 )
-
-[sub_resource type="Resource" id=19]
-script = ExtResource( 5 )
-character_class = 1
-name = "Tim"
-level = 1
-hp = 60
-max_hp = 60
-atk = 5
-def = 1
-atk_range = 3
-mov_range = 6
-heal = 0
-item_atk = SubResource( 16 )
-item_def = SubResource( 18 )
-portrait_override = ""
-
-[sub_resource type="Resource" id=20]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=21]
-script = ExtResource( 10 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=22]
 script = ExtResource( 8 )
 equipment_slot = 0
 level = 1
@@ -300,37 +224,27 @@ script = ExtResource( 13 )
 marker_name = "confront_hero"
 
 [node name="CharacterSpawner" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.347, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.347, 5 )
 pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 5 )
+stats = SubResource( 16 )
 dialogue = SubResource( 6 )
 recruit_dialogue = SubResource( 7 )
 
-[node name="CharacterSpawner2" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.347, 11.5092 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 4 )
-script = ExtResource( 3 )
-stats = SubResource( 12 )
-dialogue = SubResource( 13 )
-recruit_dialogue = SubResource( 14 )
-
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.347, 6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.347, 2 )
 pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 15 )
 script = ExtResource( 3 )
-stats = SubResource( 19 )
-dialogue = SubResource( 20 )
-recruit_dialogue = SubResource( 21 )
+stats = SubResource( 17 )
+dialogue = SubResource( 13 )
+recruit_dialogue = SubResource( 14 )
 
 [node name="ChestSpawner" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 22 )
+item_spawner = SubResource( 15 )
