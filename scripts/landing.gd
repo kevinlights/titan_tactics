@@ -26,8 +26,8 @@ func _on_continue():
 
 func _on_close_credits():
 	$sfx/select.play()	
-	$menu/credits.hide()
-	$menu/margin/vbox/credits.grab_focus()
+	$menu/credits_overlay.hide()
+	$menu/credits.grab_focus()
 
 func _on_quit():
 	$sfx/select.play()
