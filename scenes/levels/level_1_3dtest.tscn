@@ -51,7 +51,7 @@ defense = 1
 heal = 0
 effect = SubResource( 3 )
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 5 )
 character_class = 1
 name = "Cyrus"
@@ -116,7 +116,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
 }
-stats = SubResource( 9 )
+stats = SubResource( 5 )
 dialogue = SubResource( 6 )
 recruit_dialogue = SubResource( 7 )
 
