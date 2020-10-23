@@ -1,4 +1,4 @@
-[gd_scene load_steps=273 format=2]
+[gd_scene load_steps=277 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -941,124 +941,147 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=197]
-atlas = ExtResource( 19 )
-region = Rect2( 0, 0, 227, 22 )
+flags = 2
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 10, 10 )
 
 [sub_resource type="AtlasTexture" id=198]
-atlas = ExtResource( 19 )
-region = Rect2( 0, 22, 227, 22 )
+flags = 2
+atlas = ExtResource( 23 )
+region = Rect2( 0, 10, 10, 10 )
 
 [sub_resource type="AtlasTexture" id=199]
-atlas = ExtResource( 19 )
-region = Rect2( 0, 44, 227, 22 )
+flags = 2
+atlas = ExtResource( 23 )
+region = Rect2( 0, 20, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=200]
-atlas = ExtResource( 19 )
-region = Rect2( 0, 66, 227, 22 )
+[sub_resource type="SpriteFrames" id=200]
+animations = [ {
+"frames": [ SubResource( 197 ), SubResource( 198 ), SubResource( 199 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="AtlasTexture" id=201]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 88, 227, 22 )
+region = Rect2( 0, 0, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=202]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 110, 227, 22 )
+region = Rect2( 0, 22, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=203]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 132, 227, 22 )
+region = Rect2( 0, 44, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=204]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 154, 227, 22 )
+region = Rect2( 0, 66, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=205]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 176, 227, 22 )
+region = Rect2( 0, 88, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=206]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 198, 227, 22 )
+region = Rect2( 0, 110, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=207]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 220, 227, 22 )
+region = Rect2( 0, 132, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=208]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 242, 227, 22 )
+region = Rect2( 0, 154, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=209]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 264, 227, 22 )
+region = Rect2( 0, 176, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=210]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 286, 227, 22 )
+region = Rect2( 0, 198, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=211]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 308, 227, 22 )
+region = Rect2( 0, 220, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=212]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 330, 227, 22 )
+region = Rect2( 0, 242, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=213]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 352, 227, 22 )
+region = Rect2( 0, 264, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=214]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 374, 227, 22 )
+region = Rect2( 0, 286, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=215]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 396, 227, 22 )
+region = Rect2( 0, 308, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=216]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 418, 227, 22 )
+region = Rect2( 0, 330, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=217]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 440, 227, 22 )
+region = Rect2( 0, 352, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=218]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 462, 227, 22 )
+region = Rect2( 0, 374, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=219]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 484, 227, 22 )
+region = Rect2( 0, 396, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=220]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 506, 227, 22 )
+region = Rect2( 0, 418, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=221]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 528, 227, 22 )
+region = Rect2( 0, 440, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=222]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 550, 227, 22 )
+region = Rect2( 0, 462, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=223]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 572, 227, 22 )
+region = Rect2( 0, 484, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=224]
 atlas = ExtResource( 19 )
-region = Rect2( 0, 594, 227, 22 )
+region = Rect2( 0, 506, 227, 22 )
 
 [sub_resource type="AtlasTexture" id=225]
 atlas = ExtResource( 19 )
+region = Rect2( 0, 528, 227, 22 )
+
+[sub_resource type="AtlasTexture" id=226]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 550, 227, 22 )
+
+[sub_resource type="AtlasTexture" id=227]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 572, 227, 22 )
+
+[sub_resource type="AtlasTexture" id=228]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 594, 227, 22 )
+
+[sub_resource type="AtlasTexture" id=229]
+atlas = ExtResource( 19 )
 region = Rect2( 0, 616, 227, 22 )
 
-[sub_resource type="SpriteFrames" id=226]
+[sub_resource type="SpriteFrames" id=230]
 animations = [ {
-"frames": [ SubResource( 197 ), SubResource( 198 ), SubResource( 199 ), SubResource( 200 ), SubResource( 201 ), SubResource( 202 ), SubResource( 203 ), SubResource( 204 ), SubResource( 205 ), SubResource( 206 ), SubResource( 207 ), SubResource( 208 ), SubResource( 209 ), SubResource( 210 ), SubResource( 211 ), SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ), SubResource( 216 ), SubResource( 217 ), SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 221 ), SubResource( 222 ), SubResource( 223 ), SubResource( 224 ), SubResource( 225 ) ],
+"frames": [ SubResource( 201 ), SubResource( 202 ), SubResource( 203 ), SubResource( 204 ), SubResource( 205 ), SubResource( 206 ), SubResource( 207 ), SubResource( 208 ), SubResource( 209 ), SubResource( 210 ), SubResource( 211 ), SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ), SubResource( 216 ), SubResource( 217 ), SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 221 ), SubResource( 222 ), SubResource( 223 ), SubResource( 224 ), SubResource( 225 ), SubResource( 226 ), SubResource( 227 ), SubResource( 228 ), SubResource( 229 ) ],
 "loop": false,
 "name": "default",
 "speed": 60.0
@@ -1102,14 +1125,12 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 centered = false
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 centered = false
 
@@ -1255,6 +1276,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 centered = false
 
@@ -1279,6 +1301,7 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 
@@ -1411,13 +1434,13 @@ position = Vector2( 25.4371, 23.9552 )
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 175, 181 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 centered = false
 
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 centered = false
 
@@ -1441,6 +1464,7 @@ __meta__ = {
 [node name="Tributton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 269, 181 )
 frames = SubResource( 18 )
+frame = 1
 playing = true
 centered = false
 
@@ -1699,7 +1723,6 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -1711,6 +1734,7 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -2009,7 +2033,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -12 )
 frames = SubResource( 98 )
-frame = 3
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -2034,7 +2058,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 98 )
-frame = 3
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -2043,6 +2067,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 101 )
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -2182,7 +2207,6 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 101 )
-frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -2209,7 +2233,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 98 )
-frame = 3
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -2270,7 +2294,7 @@ __meta__ = {
 visible = false
 position = Vector2( -6, -4 )
 frames = SubResource( 165 )
-frame = 2
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -2295,7 +2319,7 @@ __meta__ = {
 visible = false
 position = Vector2( -5, -15.4519 )
 frames = SubResource( 165 )
-frame = 2
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -2307,7 +2331,6 @@ frames = SubResource( 195 )
 frame = 22
 
 [node name="lose" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 27 )
@@ -2318,52 +2341,8 @@ __meta__ = {
 [node name="bg" type="AnimatedSprite" parent="lose"]
 frames = SubResource( 196 )
 frame = 56
+playing = true
 centered = false
-
-[node name="positioner2" type="Node2D" parent="lose"]
-position = Vector2( -160, 61 )
-z_index = 10
-
-[node name="front" type="ColorRect" parent="lose/positioner2"]
-margin_top = -0.292892
-margin_right = 160.0
-margin_bottom = 18.7071
-color = Color( 0.0627451, 0.203922, 0.262745, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="line" type="ColorRect" parent="lose/positioner2/front"]
-margin_left = 0.353554
-margin_top = 16.3536
-margin_right = 160.0
-margin_bottom = 17.3536
-color = Color( 0.219608, 0.596078, 0.454902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="line2" type="ColorRect" parent="lose/positioner2/front"]
-margin_top = 1.64645
-margin_right = 160.0
-margin_bottom = 2.64645
-color = Color( 0.219608, 0.596078, 0.454902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="player turn" type="Label" parent="lose/positioner2/front"]
-margin_left = 1.35355
-margin_top = 7.0
-margin_right = 160.354
-margin_bottom = 16.0
-theme = ExtResource( 22 )
-custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
-text = "You were defeated..."
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Control" type="Control" parent="lose"]
 margin_left = 60.0
@@ -2389,9 +2368,10 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Retry"]
+visible = false
 position = Vector2( -5, -4 )
 frames = SubResource( 165 )
-frame = 2
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -2413,10 +2393,13 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Quit"]
+visible = false
+frames = SubResource( 200 )
 script = ExtResource( 24 )
 
 [node name="banner" type="AnimatedSprite" parent="lose"]
-frames = SubResource( 226 )
+position = Vector2( 166.124, 86.9907 )
+frames = SubResource( 230 )
 frame = 28
 
 [node name="dialogue_box" parent="." instance=ExtResource( 50 )]
