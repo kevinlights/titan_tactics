@@ -447,7 +447,7 @@ func _process(delta):
 	var now = OS.get_ticks_msec()
 	_on_frame_changed()
 	if has_node("healthbar") and $healthbar.visible:
-		var hp_position = world.get_node("lookat/camera").unproject_position(tile + Vector3(.5, 0, .5))
+		var hp_position = world.get_node("lookat/camera").unproject_position(translation + Vector3(.5, 0, .5))
 		$healthbar.position = hp_position
 	if not character:
 		return
