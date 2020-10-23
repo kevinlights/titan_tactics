@@ -152,13 +152,17 @@ func swap():
 	
 
 func win():
+	back()
 	active = true
+	self.modal = true
 	$win.reset()
 	$win/Control/Next.grab_focus()
 	$win.show()
 
 func lose():
+	back()
 	active = true
+	self.modal = true
 	$lose.reset()
 	$lose/Control/Retry.grab_focus()
 	$lose.show()

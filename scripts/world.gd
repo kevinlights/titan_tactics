@@ -89,6 +89,8 @@ func spawn_character(x, y, type = TT.TYPE.MAGE, control = TT.CONTROL.PLAYER):
 	return character
 
 func advance_turn(explicit = 1, direction = 1):
+	if game_over:
+		return
 	num_done = 0
 	for character_check in current[current_turn]:
 		if character_check.is_done:
@@ -105,14 +107,15 @@ func advance_turn(explicit = 1, direction = 1):
 	$select.set_origin(get_current())
 	if explicit == 1:
 		$select.disable()
-		yield(get_tree().create_timer(1.0), "timeout")	
+		yield(get_tree().create_timer(1.0), "timeout")
 	if current_turn  == TT.CONTROL.AI:
 		gui.modal = true
 		ai.play()
 	elif explicit == 1:
-		gui.modal = false
-		print("explicit enable")
-		$select.enable()
+		if not game_over:
+			gui.modal = false
+			print("explicit enable")
+			$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
 func find_story_marker(name):

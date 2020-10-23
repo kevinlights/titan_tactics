@@ -1102,12 +1102,14 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 centered = false
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 centered = false
 
@@ -1409,13 +1411,13 @@ position = Vector2( 25.4371, 23.9552 )
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 175, 181 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 centered = false
 
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 centered = false
 
@@ -1439,7 +1441,6 @@ __meta__ = {
 [node name="Tributton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 269, 181 )
 frames = SubResource( 18 )
-frame = 1
 playing = true
 centered = false
 
@@ -2008,6 +2009,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -12 )
 frames = SubResource( 98 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -2032,6 +2034,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 98 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -2040,7 +2043,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 101 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -2180,6 +2182,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 48.6813, 58.1062 )
 frames = SubResource( 101 )
+frame = 1
 playing = true
 
 [node name="Control" type="Control" parent="lvlup"]
@@ -2206,6 +2209,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -5 )
 frames = SubResource( 98 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -2239,50 +2243,6 @@ frames = SubResource( 161 )
 frame = 56
 centered = false
 
-[node name="positioner" type="Node2D" parent="win"]
-position = Vector2( -160, 60 )
-z_index = 10
-
-[node name="front" type="ColorRect" parent="win/positioner"]
-margin_top = 1.0
-margin_right = 160.0
-margin_bottom = 20.0
-color = Color( 0.219608, 0.596078, 0.454902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="line" type="ColorRect" parent="win/positioner/front"]
-margin_top = 16.0
-margin_right = 160.0
-margin_bottom = 17.0
-color = Color( 0.623529, 0.870588, 0.576471, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="line2" type="ColorRect" parent="win/positioner/front"]
-margin_top = 2.0
-margin_right = 160.0
-margin_bottom = 3.0
-color = Color( 0.623529, 0.870588, 0.576471, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="player turn" type="Label" parent="win/positioner/front"]
-margin_left = -2.0
-margin_top = 7.0
-margin_right = 159.0
-margin_bottom = 21.0
-theme = ExtResource( 22 )
-custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
-text = "Level Clear!"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Control" type="Control" parent="win"]
 margin_left = 60.0
 margin_right = 100.0
@@ -2307,9 +2267,10 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
+visible = false
 position = Vector2( -6, -4 )
 frames = SubResource( 165 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -2331,9 +2292,10 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="win/Control/Retry"]
+visible = false
 position = Vector2( -5, -15.4519 )
 frames = SubResource( 165 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -2429,7 +2391,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Retry"]
 position = Vector2( -5, -4 )
 frames = SubResource( 165 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
