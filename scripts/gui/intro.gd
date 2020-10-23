@@ -24,3 +24,7 @@ func _process(delta):
 	if now - start > ttl:
 		emit_signal("closed")
 		hide()
+
+
+func _on_close_credits():
+	pass # Replace with function body.

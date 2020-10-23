@@ -135,9 +135,13 @@ custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/focus = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="credits_old" parent="menu" instance=ExtResource( 8 )]
+[node name="credits_overlay" parent="menu" instance=ExtResource( 8 )]
 visible = false
 script = null
 [connection signal="pressed" from="menu/continue" to="." method="_on_continue"]
 [connection signal="pressed" from="menu/newgame" to="." method="_on_newgame"]
+[connection signal="pressed" from="menu/credits" to="." method="_on_credits_pressed"]

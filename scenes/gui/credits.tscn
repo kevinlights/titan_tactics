@@ -73,8 +73,8 @@ custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/line_spacing = 9
 custom_constants/shadow_offset_y = 1
-text = "Armen138
-Sismter
+text = "Armen
+Simster
 
 Ondjon
 Kssio
@@ -158,6 +158,5 @@ position = Vector2( 0, 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D"]
 position = Vector2( 137.747, 192.947 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 centered = false

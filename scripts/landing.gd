@@ -16,7 +16,7 @@ func _ready():
 	else:
 		$menu/continue.hide()
 		$menu/newgame.grab_focus()
-#	$menu/credits/ok.connect("pressed", self, "_on_close_credits")
+	$menu/credits_overlay/ok.connect("pressed", self, "_on_close_credits")
 #	if is_web and $menu/margin/vbox/quit:
 #		$menu/margin/vbox/quit.hide()
 
@@ -28,14 +28,6 @@ func _on_close_credits():
 	$sfx/select.play()	
 	$menu/credits.hide()
 	$menu/margin/vbox/credits.grab_focus()
-
-func _on_credits():
-	$sfx/select.play()
-	$menu/credits.show() # ("show")
-	$menu/credits/ok.grab_focus()
-
-#	else:
-#		$menu/credits.call_deferred("hide")
 
 func _on_quit():
 	$sfx/select.play()
@@ -53,3 +45,9 @@ func _start_game():
 	yield(get_tree().create_timer(0.3), "timeout")
 	get_tree().change_scene("res://scenes/world_map.tscn")
 	
+
+
+func _on_credits_pressed():
+	$sfx/select.play()
+	$menu/credits_overlay.show()
+	$menu/credits_overlay/ok.grab_focus()
