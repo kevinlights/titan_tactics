@@ -448,16 +448,13 @@ func _initiate_turn():
 		return
 	for character in current[current_turn]:
 		character.apply_effects()
-	if $select.disabled:
-		print("initiate turn")
-		gui.back()
-		$select.enable()
-		$select.set_origin(get_current())
-		$select.set_context(get_current_context($select.tile))
-		if current_turn == TT.CONTROL.PLAYER:
-			$range_overlay.set_origin(get_current())
-	else:
-		print("Don't initiate turn: selector is enabled")
+	print("initiate turn")
+	gui.back()
+	$select.enable()
+	$select.set_origin(get_current())
+	$select.set_context(get_current_context($select.tile))
+	if current_turn == TT.CONTROL.PLAYER:
+		$range_overlay.set_origin(get_current())
 	if current_turn == TT.CONTROL.AI:
 		print("Control turned over to AI")
 		gui.modal = true
