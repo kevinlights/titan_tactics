@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud.png-171e4f5e6c5b5e778b064d692a9189c8.stex"
+path="res://.import/playerspawn_map.png-d18ab5d0e83aa003944a937b71308dbd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/Animated/cloud.png"
-dest_files=[ "res://.import/cloud.png-171e4f5e6c5b5e778b064d692a9189c8.stex" ]
+source_file="res://gfx/playerspawn_map.png"
+dest_files=[ "res://.import/playerspawn_map.png-d18ab5d0e83aa003944a937b71308dbd.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

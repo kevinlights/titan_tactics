@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/pathfinder.gd"
 }, {
+"base": "Sprite3D",
+"class": "PlayerSpawner",
+"language": "GDScript",
+"path": "res://scripts/playerspawner.gd"
+}, {
 "base": "Object",
 "class": "Recruitment",
 "language": "GDScript",
@@ -131,6 +136,7 @@ _global_script_class_icons={
 "PT_DialogueController": "",
 "PT_DialogueTrigger": "",
 "PathFinder": "",
+"PlayerSpawner": "",
 "Recruitment": "",
 "SmortAI": "",
 "StatusEffect": "",

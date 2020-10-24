@@ -290,7 +290,7 @@ func select_team():
 	for member in Game.team:
 		member.hp = member.max_hp
 		member.reset_turn() # reset actions and moves
-	$select.translation = player_spawns[0]
+	$select.translation = player_spawns[0] + Vector3(0.5, 0.5, -0.5);
 	$select.translation.y = 0.2
 	if Game.team.size() > 1:
 		gui.team_select(Game.team)
@@ -408,7 +408,7 @@ func auto_deploy_only_character():
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
 	character.from_library(Game.team[0])
-	character.teleport(spawn.x, spawn.z)
+	character.teleport(floor(spawn.x), floor(spawn.z - 1))
 	character.add_to_group("characters")
 	print("Player spawn ", spawn)
 	world_map.add_child(character)
@@ -425,7 +425,7 @@ func _on_select_team_member(team_member):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
 	character.from_library(team_member)
-	character.teleport(spawn.x, spawn.z)
+	character.teleport(floor(spawn.x), floor(spawn.z - 1))
 	character.add_to_group("characters")
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
