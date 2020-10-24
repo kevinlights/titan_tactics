@@ -102,6 +102,7 @@ func hit(attacker):
 		TT.TYPE.ARCHER:
 			print("arrow hit!")
 #			$vfx/arrow_hit.emitting = true
+			$vfx/arrow_hit.frame = 0
 			$vfx/arrow_hit.show()
 			$vfx/arrow_hit.play()
 			pick_random_sfx($sfx/arrow_hit)
