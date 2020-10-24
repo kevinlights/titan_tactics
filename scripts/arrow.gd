@@ -5,7 +5,7 @@ signal hit
 var start_position = Vector3(0, 0, 0)
 var end_position = Vector3(1, 0, 0)
 var start = 0
-var ttl = 1000
+var ttl = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
