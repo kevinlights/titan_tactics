@@ -96,7 +96,8 @@ func hit(attacker):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
 			print("arrow hit!")
-			$vfx/arrow_hit.emitting = true
+#			$vfx/arrow_hit.emitting = true
+			$vfx/arrow_hit.play()
 			pick_random_sfx($sfx/arrow_hit)
 		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
