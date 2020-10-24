@@ -45,7 +45,7 @@ const levels = [
 	},
 	{
 		"name": "We all scream for ice cream",
-		"scene": "level_1_3dtest",
+		"scene": "level_4_3d",
 		"music": "cave"
 	},
 	{
