@@ -229,7 +229,7 @@ func attack(target):
 	print("actual damage ", damage)
 	target.character.hp -= damage
 	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
-	var feedback_position = world.get_node("lookat/camera").unproject_position(target.tile + tile + Vector3(.5, 1, .5))
+	var feedback_position = world.get_node("lookat/camera").unproject_position(target.translation + Vector3(.5, .5, .5))
 	damage_feedback.position = feedback_position
 	damage_feedback.get_node("damage").text = "-" + str(damage)
 	world.add_child(damage_feedback)
@@ -439,6 +439,7 @@ func _on_animation_finished():
 		fire_arrow(last_target)
 	if is_dead and avatar.animation.begins_with("hit"):
 		emit_signal("death", self)
+		$vfx/arrow_hit.hide()
 		$healthbar.hide()
 		avatar.stop()
 	if avatar.animation.begins_with("attack") or avatar.animation.begins_with("hit") :
