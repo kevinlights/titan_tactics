@@ -78,7 +78,7 @@ func _process(_delta):
 	var now = OS.get_ticks_msec()
 	if tracked_item:
 			get_parent().translation = tracked_item.get_global_transform().origin;
-			get_parent().translation.y = 0.5
+			get_parent().translation.y = -1.0
 	if now - start_time < ttl:
 		get_parent().rotation_degrees = lerp(start_rotation, end_rotation, float(now - start_time) / float(ttl))
 	else:
