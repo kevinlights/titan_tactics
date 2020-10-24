@@ -13,6 +13,7 @@ var ttl = 100
 var start_x_ally = -160
 var end_x_ally = 0
 var bar_size = 80
+var xp_bar_size = 35
 
 var moving_back = false
 
@@ -41,13 +42,14 @@ func _process(delta):
 	var now = OS.get_ticks_msec()
 	
 	#move level line to the current exp
-	if $box_ally/levelline.get_point_position(1).x > (player.character.xp/player.character.xp_to_next)*28:
-		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x - 0.5, 0)
-		$box_ally/levelline.set_point_position(1, new_lvl_pos)
-	if $box_ally/levelline.get_point_position(1).x < (player.character.xp/player.character.xp_to_next)*28:
-		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x + 0.5, 0)
-		$box_ally/levelline.set_point_position(1, new_lvl_pos)
-		
+#	if $box_ally/levelline.get_point_position(1).x > (player.character.xp/player.character.xp_to_next)*xp_bar_size:
+#		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x - 0.5, 0)
+#		$box_ally/levelline.set_point_position(1, new_lvl_pos)
+#	if $box_ally/levelline.get_point_position(1).x < (player.character.xp/player.character.xp_to_next)*xp_bar_size:
+#		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x + 0.5, 0)
+#		$box_ally/levelline.set_point_position(1, new_lvl_pos)
+	if player:
+		$box_ally/levelline.set_point_position(1, Vector2((player.character.xp/player.character.xp_to_next)*xp_bar_size, 0))
 	#move hp line
 	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*bar_size:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x - 0.5, 0)

@@ -17,6 +17,7 @@ export(Array, String) var special_names
 var ttl = 100
 
 var bar_size = 80
+var xp_bar_size = 35
 var start_x_ally = -160
 var end_x_ally = 0
 
@@ -72,17 +73,17 @@ func _process(_delta):
 	var now = OS.get_ticks_msec()
 	
 	#move level line to the current exp
-	if $box_ally/levelline.get_point_position(1).x > (player.character.xp/player.character.xp_to_next)*28:
+	if $box_ally/levelline.get_point_position(1).x > (player.character.xp/player.character.xp_to_next)*xp_bar_size:
 		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x - 0.5, 0)
 		$box_ally/levelline.set_point_position(1, new_lvl_pos)
-	if $box_ally/levelline.get_point_position(1).x < (player.character.xp/player.character.xp_to_next)*28:
+	if $box_ally/levelline.get_point_position(1).x < (player.character.xp/player.character.xp_to_next)*xp_bar_size:
 		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x + 0.5, 0)
 		$box_ally/levelline.set_point_position(1, new_lvl_pos)
 		
-	if $box_enemy/enemylevelline.get_point_position(1).x > (enemy.character.xp/enemy.character.xp_to_next)*28:
+	if $box_enemy/enemylevelline.get_point_position(1).x > (enemy.character.xp/enemy.character.xp_to_next)*xp_bar_size:
 		var new_lvl_pos = Vector2($box_enemy/enemylevelline.get_point_position(1).x - 0.5, 0)
 		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
-	if $box_enemy/enemylevelline.get_point_position(1).x < (enemy.character.xp/enemy.character.xp_to_next)*28:
+	if $box_enemy/enemylevelline.get_point_position(1).x < (enemy.character.xp/enemy.character.xp_to_next)*xp_bar_size:
 		var new_lvl_pos = Vector2($box_enemy/enemylevelline.get_point_position(1).x + 0.5, 0)
 		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
 		
