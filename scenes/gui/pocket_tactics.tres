@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxLine" id=2]
-color = Color( 0.219608, 0.596078, 0.454902, 1 )
+color = Color( 0.929412, 0.92549, 0.878431, 1 )
 grow_begin = -3.0
 grow_end = -3.0
 

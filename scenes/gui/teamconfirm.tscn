@@ -1,34 +1,30 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/gui/teamconfirm.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
-[ext_resource path="res://gfx/panel.png" type="Texture" id=3]
+[ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=3]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=4]
-[ext_resource path="res://gfx/menu_select.png" type="Texture" id=5]
 
 [sub_resource type="ImageTexture" id=1]
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 2
-atlas = ExtResource( 5 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 10, 10 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 2
-atlas = ExtResource( 5 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 10, 10, 10 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 2
-atlas = ExtResource( 5 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 20, 10, 10 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 3 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 8.0
 } ]
 
 [sub_resource type="ImageTexture" id=6]
@@ -36,8 +32,10 @@ animations = [ {
 [sub_resource type="ImageTexture" id=7]
 
 [node name="teamconfirm" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_left = -83.75
+margin_top = 53.75
+margin_right = 236.25
+margin_bottom = 277.75
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -45,35 +43,39 @@ __meta__ = {
 }
 
 [node name="panel" type="Control" parent="."]
-margin_left = 40.0
-margin_top = 44.0
-margin_right = 117.0
-margin_bottom = 98.0
+margin_left = 116.5
+margin_top = 74.5
+margin_right = 193.5
+margin_bottom = 128.5
 theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="background" type="NinePatchRect" parent="panel"]
-margin_left = 2.0
-margin_top = -1.0
-margin_right = 75.0
-margin_bottom = 55.0
-texture = ExtResource( 3 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+[node name="background" type="ColorRect" parent="panel"]
+anchor_left = 0.578
+anchor_top = 0.62
+anchor_right = 0.578
+anchor_bottom = 0.62
+margin_left = -59.8596
+margin_top = -43.0536
+margin_right = 60.1404
+margin_bottom = 37.9464
+color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="title" type="Label" parent="panel"]
-margin_top = 3.0
-margin_right = 77.0
-margin_bottom = 15.0
+margin_left = -4.0
+margin_right = 94.0
+margin_bottom = 13.0
 theme = ExtResource( 2 )
-text = "Team OK?"
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "Confirm team?"
 align = 1
 valign = 1
 __meta__ = {
@@ -81,19 +83,35 @@ __meta__ = {
 }
 
 [node name="HSeparator" type="HSeparator" parent="panel"]
-margin_left = 3.0
+margin_left = -6.0
 margin_top = 14.0
-margin_right = 76.0
+margin_right = 95.0
 margin_bottom = 18.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="Label" parent="panel"]
+margin_left = 10.5
+margin_top = 22.25
+margin_right = 84.5
+margin_bottom = 39.25
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 1
+text = "Check map"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="check_map" type="ToolButton" parent="panel"]
 margin_left = 3.0
-margin_top = 17.0
-margin_right = 80.0
-margin_bottom = 29.0
+margin_top = 18.0
+margin_right = 89.0
+margin_bottom = 39.0
 focus_neighbour_bottom = NodePath("../edit_team")
 focus_next = NodePath("../edit_team")
 theme = ExtResource( 2 )
@@ -110,19 +128,35 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="panel/check_map"]
 visible = false
-position = Vector2( 1, 1 )
+position = Vector2( -4, 1 )
 frames = SubResource( 5 )
-frame = 1
+frame = 3
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 4 )
 
+[node name="shadow2" type="Label" parent="panel"]
+margin_left = 11.0
+margin_top = 36.0
+margin_right = 85.0
+margin_bottom = 49.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 1
+text = "Edit team"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="edit_team" type="ToolButton" parent="panel"]
 margin_left = 3.0
-margin_top = 28.0
-margin_right = 80.0
-margin_bottom = 40.0
+margin_top = 32.3535
+margin_right = 89.0
+margin_bottom = 53.3535
 focus_neighbour_top = NodePath("../check_map")
 focus_neighbour_bottom = NodePath("../start_level")
 focus_next = NodePath("../start_level")
@@ -141,19 +175,35 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="panel/edit_team"]
 visible = false
-position = Vector2( 1, 1 )
+position = Vector2( -4, 2 )
 frames = SubResource( 5 )
-frame = 2
+frame = 3
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 4 )
 
+[node name="shadow3" type="Label" parent="panel"]
+margin_left = 11.0
+margin_top = 50.0
+margin_right = 85.0
+margin_bottom = 63.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 1
+text = "Start level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="start_level" type="ToolButton" parent="panel"]
 margin_left = 3.0
-margin_top = 39.0
-margin_right = 80.0
-margin_bottom = 51.0
+margin_top = 46.0
+margin_right = 89.0
+margin_bottom = 67.0
 focus_neighbour_top = NodePath("../edit_team")
 focus_previous = NodePath("../edit_team")
 theme = ExtResource( 2 )
@@ -170,9 +220,9 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="panel/start_level"]
 visible = false
-position = Vector2( 1, 1 )
+position = Vector2( -4, 2 )
 frames = SubResource( 5 )
-frame = 1
+frame = 3
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
