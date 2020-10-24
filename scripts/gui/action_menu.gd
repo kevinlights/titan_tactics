@@ -25,7 +25,7 @@ var signal_map = {
 }
 
 var label_map = {
-	"attack": [ "Attack", "Speak ¥" ],
+	"attack": [ "Attack", "Speak" ],
 	"guard": [ "Guard", "End" ],
 	"heal": [ "Heal", "End" ]	
 }

@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gfx/menu_select.png" type="Texture" id=1]
 [ext_resource path="res://scripts/gui/action_menu.gd" type="Script" id=3]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=4]
-[ext_resource path="res://gfx/panel.png" type="Texture" id=5]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -38,15 +37,14 @@ animations = [ {
 [sub_resource type="ImageTexture" id=8]
 
 [node name="attack" type="Control"]
-visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -108.0
-margin_top = -28.0
-margin_right = -58.0
-margin_bottom = -4.0
+margin_left = -178.5
+margin_top = -132.5
+margin_right = -128.5
+margin_bottom = -108.5
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,27 +58,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="panel"]
-margin_left = -10.0
-margin_top = -1.0
-margin_right = 57.0
-margin_bottom = 28.0
-texture = ExtResource( 5 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="action_1" type="ToolButton" parent="panel" groups=[
 "button",
 ]]
 margin_left = -7.0
-margin_top = 3.0
-margin_right = 50.0
-margin_bottom = 12.0
+margin_top = 2.0
+margin_right = 52.0
+margin_bottom = 23.0
 focus_neighbour_bottom = NodePath("../action_2")
 focus_next = NodePath("../action_2")
 theme = ExtResource( 6 )
@@ -93,8 +77,8 @@ __meta__ = {
 }
 
 [node name="focus" type="AnimatedSprite" parent="panel/action_1"]
+visible = false
 frames = SubResource( 6 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( 1, 2 )
@@ -104,9 +88,9 @@ script = ExtResource( 4 )
 "button",
 ]]
 margin_left = -7.0
-margin_top = 13.0
-margin_right = 51.0
-margin_bottom = 22.0
+margin_top = 28.0
+margin_right = 61.0
+margin_bottom = 49.0
 rect_pivot_offset = Vector2( 13.4933, 1.83694 )
 focus_neighbour_top = NodePath("../action_1")
 focus_previous = NodePath("../action_1")
@@ -122,7 +106,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="panel/action_2"]
 visible = false
 frames = SubResource( 6 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( 1, 2 )
