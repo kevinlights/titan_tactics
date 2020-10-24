@@ -88,10 +88,10 @@ func make_select_blank():
 func team_select(characters):
 	self.modal = true
 	active = true
-	get_parent().get_node("select/select").show()
 	$characterswap.hide()
 	$characterselect.set_characters(characters)
 	$characterselect.show()
+	get_parent().get_node("select/select").show()
 
 func intro(description):
 	$intro.display(description)

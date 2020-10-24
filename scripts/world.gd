@@ -290,7 +290,8 @@ func select_team():
 	for member in Game.team:
 		member.hp = member.max_hp
 		member.reset_turn() # reset actions and moves
-	$select.tile = player_spawns[0]
+	$select.translation = player_spawns[0]
+	$select.translation.y = 0.2
 	if Game.team.size() > 1:
 		gui.team_select(Game.team)
 	else:
