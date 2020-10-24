@@ -17,7 +17,7 @@ var hide_non_walkable_tiles := false # change to true to visually debug
 var no_diagonal_movement := true # change to false to allow diagonal movement
 
 # decorations are impassable to the player.
-var decorations := ["Tree", "stump", "Water", "underwater", "waterside"]
+var decorations := ["Tree", "stump", "Water", "underwater", "waterside", 'rock_02', 'wall_02', 'wall_corner_02_shadow', 'wall_corner_02_light']
 
 # structures are normally larger than a single tile and require custom logic to join tiles
 var structures := ['Smallbridge', 'Bridge']
@@ -34,6 +34,7 @@ var cardinalHeights := { # y_deltas
 	'Low cube': [1, 1, 1, 1, 1, 1, 1, 1],
 	'deck': [1, 1, 1, 1, 1, 1, 1, 1],
 	'Cube': [2, 2, 2, 2, 2, 2, 2, 2],
+	'block_02': [2, 2, 2, 2, 2, 2, 2, 2],
 	'Ramp': [2, 2, 2, 1.5, 1, 1, 1, 1.5],
 	'steps': [1, 0.5, 0, 0, 0, 0.5, 1, 1],
 	'Ramp corner': [2, 1.5, 1, 1, 1, 1, 1, 1.5],
@@ -184,7 +185,6 @@ func _init_astar():
 		var itemId = get_cell_item(cell.x, cell.y, cell.z)
 		var name = mesh_library.get_item_name(itemId)
 		if decorations.find(name) != -1:
-			print(cell)
 			counts.decoration_tiles += 1
 			continue
 		if multi_tile_objects.find(name) != -1:
