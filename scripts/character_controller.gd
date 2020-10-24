@@ -78,6 +78,8 @@ func apply_effects():
 		if effect.effect == StatusEffect.EFFECT.POISON:
 			$vfx/poison.show()
 			$vfx/poison.play()
+	if has_node("healthbar"):
+		$healthbar.set_value(character.hp, character.max_hp)
 
 func check_finished():
 	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
@@ -229,6 +231,8 @@ func attack(target):
 	damage = clamp(floor(damage), 0, 99)
 	print("actual damage ", damage)
 	target.character.hp -= damage
+	if target.has_node("healthbar"):
+		target.get_node("healthbar").set_value(target.character.hp, target.character.max_hp)	
 	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
 	var feedback_position = world.get_node("lookat/camera").unproject_position(target.translation + Vector3(.5, .5, .5))
 	damage_feedback.position = feedback_position
