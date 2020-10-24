@@ -73,6 +73,11 @@ func apply_effects():
 		character.hp -= effect.damage
 		if effect.effect == StatusEffect.EFFECT.STUN:
 			character.turn_limits.actions = 0
+			$vfx/stun.show()
+			$vfx/stun.play()
+		if effect.effect == StatusEffect.EFFECT.POISON:
+			$vfx/poison.show()
+			$vfx/poison.play()
 
 func check_finished():
 	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
@@ -97,11 +102,13 @@ func hit(attacker):
 		TT.TYPE.ARCHER:
 			print("arrow hit!")
 #			$vfx/arrow_hit.emitting = true
+			$vfx/arrow_hit.show()
 			$vfx/arrow_hit.play()
 			pick_random_sfx($sfx/arrow_hit)
 		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
 		TT.TYPE.MAGE:
+			$vfx/magic_hit.show()
 			$vfx/magic_hit.emitting = true
 			pick_random_sfx($sfx/magic_hit)
 	avatar.play("hit-" + movement.last_direction)
