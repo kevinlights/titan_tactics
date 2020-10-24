@@ -24,7 +24,7 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 3 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 8.0
 } ]
 
 [sub_resource type="ImageTexture" id=6]
@@ -32,8 +32,10 @@ animations = [ {
 [sub_resource type="ImageTexture" id=7]
 
 [node name="teamconfirm" type="Control"]
-margin_right = 320.0
-margin_bottom = 224.0
+margin_left = -83.75
+margin_top = 53.75
+margin_right = 236.25
+margin_bottom = 277.75
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -90,35 +92,32 @@ __meta__ = {
 }
 
 [node name="shadow" type="Label" parent="panel"]
-margin_left = 12.0
-margin_top = 15.0
-margin_right = 99.0
-margin_bottom = 70.0
+margin_left = 10.5
+margin_top = 22.25
+margin_right = 84.5
+margin_bottom = 39.25
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/line_spacing = 0
 custom_constants/shadow_offset_y = 1
-text = "Check map
-Edit team
-Start level"
-valign = 1
+text = "Check map"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="check_map" type="ToolButton" parent="panel"]
 margin_left = 3.0
-margin_top = 19.0
+margin_top = 18.0
 margin_right = 89.0
-margin_bottom = 40.0
+margin_bottom = 39.0
 focus_neighbour_bottom = NodePath("../edit_team")
 focus_next = NodePath("../edit_team")
 theme = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_hover = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Check map"
 icon = SubResource( 1 )
@@ -129,19 +128,35 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="panel/check_map"]
 visible = false
-position = Vector2( -4, 2 )
+position = Vector2( -4, 1 )
 frames = SubResource( 5 )
-frame = 2
+frame = 3
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 4 )
 
+[node name="shadow2" type="Label" parent="panel"]
+margin_left = 11.0
+margin_top = 36.0
+margin_right = 85.0
+margin_bottom = 49.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 1
+text = "Edit team"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="edit_team" type="ToolButton" parent="panel"]
 margin_left = 3.0
-margin_top = 32.0
+margin_top = 32.3535
 margin_right = 89.0
-margin_bottom = 53.0
+margin_bottom = 53.3535
 focus_neighbour_top = NodePath("../check_map")
 focus_neighbour_bottom = NodePath("../start_level")
 focus_next = NodePath("../start_level")
@@ -149,7 +164,7 @@ focus_previous = NodePath("../check_map")
 theme = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_hover = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Edit team"
 icon = SubResource( 6 )
@@ -160,24 +175,41 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="panel/edit_team"]
 visible = false
-position = Vector2( -4, 3 )
+position = Vector2( -4, 2 )
 frames = SubResource( 5 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 4 )
 
+[node name="shadow3" type="Label" parent="panel"]
+margin_left = 11.0
+margin_top = 50.0
+margin_right = 85.0
+margin_bottom = 63.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 1
+text = "Start level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="start_level" type="ToolButton" parent="panel"]
 margin_left = 3.0
-margin_top = 45.0
+margin_top = 46.0
 margin_right = 89.0
-margin_bottom = 66.0
+margin_bottom = 67.0
 focus_neighbour_top = NodePath("../edit_team")
 focus_previous = NodePath("../edit_team")
 theme = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_hover = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Start level"
 icon = SubResource( 7 )
@@ -188,9 +220,9 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="panel/start_level"]
 visible = false
-position = Vector2( -4, 3 )
+position = Vector2( -4, 2 )
 frames = SubResource( 5 )
-frame = 2
+frame = 3
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
