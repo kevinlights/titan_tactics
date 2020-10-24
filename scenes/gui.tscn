@@ -2356,7 +2356,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 centered = false
 
@@ -2381,7 +2380,6 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 
@@ -2803,6 +2801,7 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -2814,7 +2813,6 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -3119,7 +3117,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3144,7 +3142,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3332,7 +3330,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3462,6 +3460,7 @@ frames = SubResource( 202 )
 frame = 22
 
 [node name="lose" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 27 )
@@ -3536,6 +3535,7 @@ script = ExtResource( 24 )
 position = Vector2( 166.124, 86.9907 )
 frames = SubResource( 237 )
 frame = 28
+playing = true
 
 [node name="dialogue_box" parent="." instance=ExtResource( 50 )]
 visible = false
