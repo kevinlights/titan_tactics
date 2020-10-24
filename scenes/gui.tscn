@@ -145,32 +145,23 @@ size = 13
 font_data = ExtResource( 4 )
 
 [sub_resource type="AtlasTexture" id=20]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=21]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=22]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=23]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=24]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
 "name": "up",
@@ -180,25 +171,26 @@ animations = [ {
 "loop": true,
 "name": "down",
 "speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
+"speed": 3.0
 } ]
 
 [sub_resource type="AtlasTexture" id=25]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 48, 16, 16 )
 
@@ -226,32 +218,23 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=32]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=33]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=34]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 30 ), SubResource( 31 ) ],
 "loop": true,
 "name": "up",
@@ -260,6 +243,11 @@ animations = [ {
 "frames": [ SubResource( 32 ), SubResource( 33 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -2368,6 +2356,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 centered = false
 
@@ -2392,6 +2381,7 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 
@@ -2813,7 +2803,6 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -2825,6 +2814,7 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -3129,7 +3119,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
-frame = 3
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3154,7 +3144,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
-frame = 3
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3342,7 +3332,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
-frame = 3
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3420,6 +3410,8 @@ focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath("../Retry")
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Next"
 align = 0
 __meta__ = {
@@ -3445,6 +3437,8 @@ focus_neighbour_top = NodePath("../Next")
 focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Retry"
 align = 0
 __meta__ = {
@@ -3462,12 +3456,12 @@ offset = Vector2( -1, 20 )
 script = ExtResource( 24 )
 
 [node name="banner" type="AnimatedSprite" parent="win"]
+visible = false
 position = Vector2( 160, 86 )
 frames = SubResource( 202 )
 frame = 22
 
 [node name="lose" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 27 )
@@ -3498,6 +3492,8 @@ focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath("../Quit")
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Retry"
 align = 0
 __meta__ = {
@@ -3523,6 +3519,8 @@ focus_neighbour_top = NodePath("../Retry")
 focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 22 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Quit"
 align = 0
 __meta__ = {
