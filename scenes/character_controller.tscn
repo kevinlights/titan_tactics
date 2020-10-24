@@ -1094,6 +1094,7 @@ offset = Vector2( 8, 0 )
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 106 )
+frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -1102,7 +1103,6 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 109 )
-frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -1112,6 +1112,7 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 112 )
+frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]

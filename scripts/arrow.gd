@@ -1,11 +1,11 @@
-extends Node2D
+extends Spatial
 
 signal hit
 
-var start_position = Vector2(0, 0)
-var end_position = Vector2(64, 64)
+var start_position = Vector3(0, 0, 0)
+var end_position = Vector3(1, 0, 0)
 var start = 0
-var ttl = 200
+var ttl = 1000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,8 +15,9 @@ func fire(from, to):
 	start = OS.get_ticks_msec()
 	start_position = from
 	end_position = to
-	var angle = from.angle_to(to)
-	$stick.rotate(angle)
+	$stick.look_at(end_position, Vector3.UP)
+#	var angle = from.angle_to(to)
+#	$stick.rotate(angle, Vector3(0, 1, 0))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,8 +25,9 @@ func _process(delta):
 		return
 	var now = OS.get_ticks_msec()
 	if now - start < ttl:
-		position.x = lerp(start_position.x, end_position.x, float(now - start) / float(ttl))
-		position.y = lerp(start_position.y, end_position.y, float(now - start) / float(ttl))
+		translation = lerp(start_position, end_position, float(now - start) / float(ttl))
 	else:
 		emit_signal("hit")
+		hide()
+		yield(get_tree().create_timer(1.0), "timeout")
 		get_parent().remove_child(self)

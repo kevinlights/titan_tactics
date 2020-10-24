@@ -240,7 +240,7 @@ func attack(target):
 		projectile.fire(translation + Vector3(0, 1,  0), target.translation + Vector3(0, 1, 0))
 		projectile.connect("hit", target, "hit", [character])
 		projectile.connect("hit", self, "attack_complete")
-#		world.get_node("lookat/camera").track(projectile)
+		world.get_node("lookat/camera").track(projectile)
 #		projectile.get_node("sparkle").play("player" if character.control == TT.CONTROL.PLAYER else "ai")
 		pick_random_sfx($sfx/magic_attack)
 		get_parent().add_child(projectile)
@@ -427,13 +427,14 @@ func init(char_type, control = TT.CONTROL.PLAYER):
 	init_common(control)
 
 func fire_arrow(target):
-		var projectile = load("res://scenes/arrow.tscn").instance()
-		projectile.fire(translation + Vector3(8, 0, 8), target.translation + Vector3(8, 0, 8))
-		projectile.connect("hit", target, "hit", [character])
-		projectile.connect("hit", self, "attack_complete")
-		pick_random_sfx($sfx/arrow_attack)
-		get_parent().add_child(projectile)
-		last_target = null
+	var projectile = load("res://scenes/arrow.tscn").instance()
+	projectile.fire(translation + Vector3(0, 1,  0), target.translation + Vector3(0, 1, 0))
+	projectile.connect("hit", target, "hit", [character])
+	projectile.connect("hit", self, "attack_complete")
+	world.get_node("lookat/camera").track(projectile)
+	pick_random_sfx($sfx/arrow_attack)
+	get_parent().add_child(projectile)
+	last_target = null
 	
 func _on_animation_finished():
 	if avatar.animation.begins_with("attack") and character.character_class == TT.TYPE.ARCHER and last_target:

@@ -5,7 +5,7 @@ signal hit
 var start_position = Vector3(0, 0, 0)
 var end_position = Vector3(64, 0, 64)
 var start = 0
-var ttl = 500
+var ttl = 2000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,4 +26,6 @@ func _process(delta):
 #		translation.z = lerp(start_position.z, end_position.z, float(now - start) / float(ttl))
 	else:		
 		emit_signal("hit")
+		hide()
+		yield(get_tree().create_timer(1.0), "timeout")
 		get_parent().remove_child(self)
