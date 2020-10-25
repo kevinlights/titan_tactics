@@ -80,10 +80,41 @@ var orientationModifier := {
 
 # Thoughts:
 # should diagonal movement have a higher 'cost' as it has a higher distance? 
-
+onready var ml_mapping = {}
 func _ready():
-	#_remove_most_cells()
+	_generate_overlayed_tiles()
 	_init_astar()
+	
+func _generate_overlayed_tiles():
+	var item_ids = mesh_library.get_item_list()
+	for item_id in item_ids:
+		var name = mesh_library.get_item_name(item_id)
+		if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
+			continue
+		var mesh = mesh_library.get_item_mesh(item_id)
+		var move_mesh = mesh.duplicate()
+		var move_material = mesh.surface_get_material(0).duplicate()
+		move_material.set_next_pass(load("res://gfx/range-overlay/inset_move.material"))
+		move_mesh.surface_set_material (0, move_material)
+		var move_id = mesh_library.get_last_unused_item_id() + 1
+		mesh_library.create_item(move_id)
+		mesh_library.set_item_mesh(move_id, move_mesh)
+		mesh_library.set_item_name(move_id, name + "_move")
+		
+		var attack_mesh = mesh.duplicate()
+		var attack_material = mesh.surface_get_material(0).duplicate()
+		attack_material.set_next_pass(load("res://gfx/range-overlay/inset_attack.material"))
+		attack_mesh.surface_set_material (0, attack_material)
+		var attack_id = mesh_library.get_last_unused_item_id() + 1
+		mesh_library.create_item(attack_id)
+		mesh_library.set_item_mesh(attack_id, attack_mesh)
+		mesh_library.set_item_name(attack_id, name + "_attack")
+		
+		ml_mapping[name] = {
+			'_': item_id,
+			'_move': move_id,
+			'_attack': attack_id,
+		}
 	
 func _remove_most_cells():
 	var keep = [Vector2(-1,-1), Vector2(0,0), Vector2(0, -2), Vector2(-1, -3)]
@@ -142,7 +173,8 @@ func find_path(start, end, blocked_cells = []):
 	elif possible_starts.size() > 1 or possible_ends.size() > 1:
 		print_debug("Multiple possible start/end tiles found for pathfinding")
 	return []
-	
+
+onready var world_to_tile_map = {}
 func get_tiles_within(_start, distance):
 	var offset = get_parent().translation * -1
 	var start = world_to_map(_start + offset)
@@ -161,10 +193,27 @@ func get_tiles_within(_start, distance):
 				start_ids = next_ids
 		var output_points = []
 		for id in output_ids:
-			output_points.push_back(point_to_world(astar.get_point_position(id), false))
+			var world_point = point_to_world(astar.get_point_position(id), false)
+			if not world_to_tile_map.has(world_point):
+				world_to_tile_map[world_point] = id
+			output_points.push_back(world_point)
 		return output_points
 	else:
 		return []
+
+func set_tile_overlay(world_point, type):
+	if world_to_tile_map.has(world_point):
+		var tile_id = world_to_tile_map[world_point]
+		var cell = astar.get_point_position(tile_id)
+		var name = get_cell_name(cell).replace('_move', '').replace('_attack', '')
+		if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
+			return false
+		
+		var new_item_id = ml_mapping[name]['_' + type]
+		var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
+		set_cell_item(cell.x, cell.y, cell.z, new_item_id, orientation)
+		return true
+	return false
 
 func vector_to_id(vector):
 	return tiles.find(vector)
@@ -182,8 +231,7 @@ func _init_astar():
 	var structure_tiles = []
 	var multi_tiles = []
 	for cell in ground_cells:
-		var itemId = get_cell_item(cell.x, cell.y, cell.z)
-		var name = mesh_library.get_item_name(itemId)
+		var name = get_cell_name(cell)
 		if decorations.find(name) != -1:
 			counts.decoration_tiles += 1
 			continue
@@ -225,8 +273,7 @@ func _init_astar():
 			counts.excluded_tiles += 1
 	# Code to remove cells below multi tiled structures from passable_tiles
 	for cell in multi_tiles:
-		var itemId = get_cell_item(cell.x, cell.y, cell.z)
-		var name = mesh_library.get_item_name(itemId)
+		var name = get_cell_name(cell)
 		var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
 		var orientation_modifier = {
 			0: 0,
@@ -332,8 +379,7 @@ func _connect_structures(cells):
 		}
 	}
 	for cell in cells:
-		var itemId = get_cell_item(cell.x, cell.y, cell.z)
-		var name = mesh_library.get_item_name(itemId)
+		var name = get_cell_name(cell)
 		var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
 		
 		match name:
@@ -346,8 +392,7 @@ func _connect_structures(cells):
 					if (get_cell_item(before_cell.x, before_cell.y, before_cell.z) == GridMap.INVALID_CELL_ITEM):
 						before_cell = null
 					else:
-						var before_item_id = get_cell_item(before_cell.x, before_cell.y, before_cell.z)
-						var before_cell_name = mesh_library.get_item_name(before_item_id)
+						var before_cell_name = get_cell_name(before_cell)
 						break
 				if before_cell == null:
 					print_debug("Can't find before tile of Bridge ", cell)
@@ -440,14 +485,12 @@ func _get_neighbors(cell):
 				continue
 			var computed_height = neghbour.y + get_cardinal_height(neghbour, idx + 4)
 			if computed_height == expected_height:
-				var itemId = get_cell_item(neghbour.x, neghbour.y, neghbour.z)
-				var neighbour_name = mesh_library.get_item_name(itemId)
+				var neighbour_name = get_cell_name(neghbour)
 				neighbours.push_back(neghbour)		
 	return neighbours
 
 func get_cardinal_height(cell, dir_idx):
-	var itemId = get_cell_item(cell.x, cell.y, cell.z)
-	var name = mesh_library.get_item_name(itemId)
+	var name = get_cell_name(cell)
 	
 	if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
 		return null
@@ -461,3 +504,8 @@ func get_cardinal_height(cell, dir_idx):
 		print_debug('Unexpected orientation (', orientation, ') for cell (', cell, '). Assuming no neighbours.')
 		return null
 	return cardinalHeights[name][(dir_idx + orientationModifier[orientation]) % cardinalDeltas.size()]
+
+func get_cell_name(cell):
+	var itemId = get_cell_item(cell.x, cell.y, cell.z)
+	var name = mesh_library.get_item_name(itemId)
+	return name
