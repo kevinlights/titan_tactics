@@ -125,13 +125,13 @@ func _remove_most_cells():
 func world_path(path:PoolVector3Array):
 	var w_path = PoolVector3Array()
 	for point in path:
-		w_path.append(point_to_world(point, true))
+		w_path.append(point_to_world(point, false))
 	return w_path
 
 func point_to_world(point: Vector3, exclude_y: bool):
-	var offset = get_parent().translation + Vector3(-0.5, 0, -0.5)
+	var offset = get_parent().translation + Vector3(-0.5, -1, -0.5)
 	offset.y = 0
-	var y = 0 if exclude_y else point.y
+	var y = 0 if exclude_y else (point.y / 2)
 	return map_to_world(point.x, y, point.z) + offset
 
 func find_path(start, end, blocked_cells = []):
@@ -207,6 +207,8 @@ func set_tile_overlay(world_point, type):
 		var cell = astar.get_point_position(tile_id)
 		var name = get_cell_name(cell).replace('_move', '').replace('_attack', '')
 		if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
+			return false
+		if not name:
 			return false
 		
 		var new_item_id = ml_mapping[name]['_' + type]
@@ -421,7 +423,6 @@ func _connect_structures(cells):
 					_connect_cells(bridge_tile, after_cell, true)
 			'Smallbridge':
 				var cardinalDelta = deltaMappings[name][orientation]
-				
 				var before_cell = null
 				for y in range(cell.y, cell.y - 3, -1):
 					before_cell = Vector3(cell.x + cardinalDelta.x, y, cell.z + cardinalDelta.y)

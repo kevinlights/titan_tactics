@@ -92,6 +92,10 @@ func show():
 		elif tile_overlay_success == false:
 			# TODO: implement fallback using previous approach to handle bridges etc
 			print ('tile_overlay failed for ', tile)
+			if context == TT.CONTEXT.ATTACK:
+				drawSqaure(tile, materials.attack)
+			elif context == TT.CONTEXT.MOVE:
+				drawSqaure(tile, materials.move)
 
 	for tile in gridmap.get_tiles_within(origin.tile, data.atk_range - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
@@ -109,4 +113,5 @@ func show():
 			overlayed_tiles.push_back(tile)
 		elif tile_overlay_success == false:
 			# TODO: implement fallback using previous approach to handle bridges etc
-			print ('tile_overlay failed for ', tile)
+			if context == TT.CONTEXT.ATTACK:
+				drawSqaure(tile, materials.attack)
