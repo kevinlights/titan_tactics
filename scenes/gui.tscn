@@ -1,4 +1,4 @@
-[gd_scene load_steps=285 format=2]
+[gd_scene load_steps=286 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://gfx/ui/swipe.png" type="Texture" id=35]
 [ext_resource path="res://gfx/ui/lvupbg.png" type="Texture" id=36]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
+[ext_resource path="res://scenes/gui/endturnconfirm.tscn" type="PackedScene" id=38]
 [ext_resource path="res://scripts/gui/lvlup.gd" type="Script" id=39]
 [ext_resource path="res://gfx/types.png" type="Texture" id=41]
 [ext_resource path="res://gfx/place.png" type="Texture" id=43]
@@ -2192,6 +2193,10 @@ margin_top = 0.0
 margin_right = 320.0
 margin_bottom = 223.0
 
+[node name="endturn" parent="." instance=ExtResource( 38 )]
+visible = false
+margin_left = -1.0
+
 [node name="action_menu" parent="." instance=ExtResource( 2 )]
 visible = false
 margin_left = -194.0
@@ -2375,6 +2380,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 centered = false
 
@@ -2399,6 +2405,7 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 
@@ -2820,7 +2827,6 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -2832,6 +2838,7 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
