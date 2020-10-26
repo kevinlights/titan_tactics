@@ -33,8 +33,9 @@ func _close_level_up():
 
 func _input(event):
 	if not modal and event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
-		$sfx/close.play()
-		back()
+		if not $characterselect.visible:
+			$sfx/close.play()
+			back()
 	if not modal and event.is_action("ui_end") && !event.is_echo() && event.is_pressed():
 		pause()
 	if active:

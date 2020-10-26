@@ -440,7 +440,7 @@ func _on_select_team_member(team_member):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
 	character.from_library(team_member)
-	character.teleport(floor(spawn.x), floor(spawn.z - 1))
+	character.teleport(floor(spawn.x), floor(spawn.z - 1))	
 	character.add_to_group("characters")
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
@@ -451,6 +451,7 @@ func _on_select_team_member(team_member):
 	character.character.connect("level_up", self, "_on_level_up")
 	if player_spawns.size() > 0:
 		$select.tile = player_spawns[0]
+		$gui/characterselect.set_spawn(player_spawns[0])
 	else:
 		_on_team_select_done()
 

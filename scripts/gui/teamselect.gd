@@ -87,10 +87,11 @@ func _input(event):
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
 		characters.remove(selected)
 		selected = 0
-		placeholder.hide()
 		if characters.size() == 0:
 			emit_signal("library_exhausted")
 			get_parent().arrow_hide()
 			get_parent().active = false
+			placeholder.hide()
 			return
-	
+		else:
+			update_view()
