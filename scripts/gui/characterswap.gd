@@ -82,7 +82,7 @@ func _input(event):
 		call_deferred("hide")
 		print("character select")
 		world.get_node("select").call_deferred("enable")
-	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
+	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
 		get_parent().get_parent().end_turn()
 		get_parent().arrow_hide()
 		hide()
