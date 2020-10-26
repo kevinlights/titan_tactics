@@ -1,4 +1,4 @@
-[gd_scene load_steps=291 format=2]
+[gd_scene load_steps=285 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -37,7 +37,6 @@
 [ext_resource path="res://gfx/ui/swipe.png" type="Texture" id=35]
 [ext_resource path="res://gfx/ui/lvupbg.png" type="Texture" id=36]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
-[ext_resource path="res://scenes/gui/endturnconfirm.tscn" type="PackedScene" id=38]
 [ext_resource path="res://scripts/gui/lvlup.gd" type="Script" id=39]
 [ext_resource path="res://gfx/types.png" type="Texture" id=41]
 [ext_resource path="res://gfx/place.png" type="Texture" id=43]
@@ -49,1101 +48,52 @@
 [ext_resource path="res://scenes/dialogue_box.tscn" type="PackedScene" id=50]
 [ext_resource path="res://scenes/dialogue_answers.tscn" type="PackedScene" id=51]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxLine" id=2]
-color = Color( 0.929412, 0.92549, 0.878431, 1 )
-grow_begin = -3.0
-grow_end = -3.0
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="DynamicFont" id=4]
-size = 13
-extra_spacing_char = 1
-extra_spacing_space = 1
-font_data = ExtResource( 29 )
-
-[sub_resource type="Theme" id=5]
-default_font = SubResource( 4 )
-BoxContainer/constants/separation = 4
-Button/colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
-Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-Button/colors/font_color_hover = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-Button/colors/font_color_pressed = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-Button/colors/icon_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/icon_color_pressed = Color( 0, 0, 0, 1 )
-Button/styles/disabled = null
-Button/styles/focus = SubResource( 1 )
-Button/styles/hover = null
-Button/styles/normal = null
-Button/styles/pressed = null
-CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
-CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
-CheckBox/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-CheckBox/colors/icon_color_hover = Color( 0, 0, 0, 1 )
-CheckBox/constants/check_vadjust = 0
-CheckBox/constants/hseparation = 4
-CheckBox/icons/checked = null
-CheckBox/icons/radio_checked = null
-CheckBox/icons/radio_unchecked = null
-CheckBox/icons/unchecked = null
-CheckBox/styles/disabled = null
-CheckBox/styles/hover = null
-CheckBox/styles/normal = null
-CheckBox/styles/pressed = null
-CheckButton/colors/font_color = Color( 0, 0, 0, 1 )
-CheckButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-CheckButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-CheckButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-CheckButton/colors/icon_color_hover = Color( 0, 0, 0, 1 )
-CheckButton/constants/check_vadjust = 0
-CheckButton/constants/hseparation = 4
-CheckButton/icons/off = null
-CheckButton/icons/off_disabled = null
-CheckButton/icons/on = null
-CheckButton/icons/on_disabled = null
-CheckButton/styles/disabled = null
-CheckButton/styles/hover = null
-CheckButton/styles/normal = null
-CheckButton/styles/pressed = null
-ColorPicker/constants/h_width = 30
-ColorPicker/constants/label_width = 10
-ColorPicker/constants/margin = 8
-ColorPicker/constants/sv_height = 256
-ColorPicker/constants/sv_width = 256
-ColorPicker/icons/add_preset = null
-ColorPicker/icons/overbright_indicator = null
-ColorPicker/icons/preset_bg = null
-ColorPicker/icons/screen_picker = null
-ColorPickerButton/icons/bg = null
-Editor/colors/accent_color = Color( 0, 0, 0, 1 )
-Editor/colors/axis_x_color = Color( 0, 0, 0, 1 )
-Editor/colors/axis_y_color = Color( 0, 0, 0, 1 )
-Editor/colors/axis_z_color = Color( 0, 0, 0, 1 )
-Editor/colors/base_color = Color( 0, 0, 0, 1 )
-Editor/colors/box_selection_fill_color = Color( 0, 0, 0, 1 )
-Editor/colors/box_selection_stroke_color = Color( 0, 0, 0, 1 )
-Editor/colors/contrast_color_1 = Color( 0, 0, 0, 1 )
-Editor/colors/contrast_color_2 = Color( 0, 0, 0, 1 )
-Editor/colors/dark_color_1 = Color( 0, 0, 0, 1 )
-Editor/colors/dark_color_2 = Color( 0, 0, 0, 1 )
-Editor/colors/dark_color_3 = Color( 0, 0, 0, 1 )
-Editor/colors/disabled_font_color = Color( 0, 0, 0, 1 )
-Editor/colors/error_color = Color( 0, 0, 0, 1 )
-Editor/colors/font_color = Color( 0, 0, 0, 1 )
-Editor/colors/highlight_color = Color( 0, 0, 0, 1 )
-Editor/colors/highlighted_font_color = Color( 0, 0, 0, 1 )
-Editor/colors/mono_color = Color( 0, 0, 0, 1 )
-Editor/colors/prop_category = Color( 0, 0, 0, 1 )
-Editor/colors/prop_section = Color( 0, 0, 0, 1 )
-Editor/colors/prop_subsection = Color( 0, 0, 0, 1 )
-Editor/colors/property_color = Color( 0, 0, 0, 1 )
-Editor/colors/success_color = Color( 0, 0, 0, 1 )
-Editor/colors/warning_color = Color( 0, 0, 0, 1 )
-Editor/constants/dark_theme = 1
-Editor/constants/inspector_margin = 8
-Editor/constants/scale = 1
-Editor/constants/thumb_size = 64
-Editor/styles/sub_inspector_bg = null
-EditorAbout/styles/panel = null
-EditorFonts/fonts/bold = null
-EditorFonts/fonts/doc = null
-EditorFonts/fonts/doc_bold = null
-EditorFonts/fonts/doc_source = null
-EditorFonts/fonts/doc_title = null
-EditorFonts/fonts/expression = null
-EditorFonts/fonts/main = null
-EditorFonts/fonts/output_source = null
-EditorFonts/fonts/rulers = null
-EditorFonts/fonts/source = null
-EditorFonts/fonts/status_source = null
-EditorFonts/fonts/title = null
-EditorHelp/colors/headline_color = Color( 0, 0, 0, 1 )
-EditorIcons/icons/2D = null
-EditorIcons/icons/3D = null
-EditorIcons/icons/AABB = null
-EditorIcons/icons/ARVRAnchor = null
-EditorIcons/icons/ARVRCamera = null
-EditorIcons/icons/ARVRController = null
-EditorIcons/icons/ARVROrigin = null
-EditorIcons/icons/AcceptDialog = null
-EditorIcons/icons/ActionCopy = null
-EditorIcons/icons/ActionCut = null
-EditorIcons/icons/ActionPaste = null
-EditorIcons/icons/Add = null
-EditorIcons/icons/AddAtlasTile = null
-EditorIcons/icons/AddAutotile = null
-EditorIcons/icons/AddSingleTile = null
-EditorIcons/icons/AddSplit = null
-EditorIcons/icons/Anchor = null
-EditorIcons/icons/AnimatedSprite = null
-EditorIcons/icons/AnimatedSprite3D = null
-EditorIcons/icons/AnimatedTexture = null
-EditorIcons/icons/Animation = null
-EditorIcons/icons/AnimationFilter = null
-EditorIcons/icons/AnimationPlayer = null
-EditorIcons/icons/AnimationTrackGroup = null
-EditorIcons/icons/AnimationTrackList = null
-EditorIcons/icons/AnimationTree = null
-EditorIcons/icons/AnimationTreePlayer = null
-EditorIcons/icons/Area = null
-EditorIcons/icons/Area2D = null
-EditorIcons/icons/Array = null
-EditorIcons/icons/ArrayMesh = null
-EditorIcons/icons/ArrowDown = null
-EditorIcons/icons/ArrowLeft = null
-EditorIcons/icons/ArrowRight = null
-EditorIcons/icons/ArrowUp = null
-EditorIcons/icons/AssetLib = null
-EditorIcons/icons/AtlasTexture = null
-EditorIcons/icons/AudioBusBypass = null
-EditorIcons/icons/AudioBusLayout = null
-EditorIcons/icons/AudioBusMute = null
-EditorIcons/icons/AudioBusSolo = null
-EditorIcons/icons/AudioStreamOGGVorbis = null
-EditorIcons/icons/AudioStreamPlayer = null
-EditorIcons/icons/AudioStreamPlayer2D = null
-EditorIcons/icons/AudioStreamPlayer3D = null
-EditorIcons/icons/AudioStreamSample = null
-EditorIcons/icons/AutoEnd = null
-EditorIcons/icons/AutoKey = null
-EditorIcons/icons/AutoPlay = null
-EditorIcons/icons/AutoTriangle = null
-EditorIcons/icons/Back = null
-EditorIcons/icons/BackBufferCopy = null
-EditorIcons/icons/Bake = null
-EditorIcons/icons/BakedLightmap = null
-EditorIcons/icons/BakedLightmapData = null
-EditorIcons/icons/Basis = null
-EditorIcons/icons/BezierHandlesBalanced = null
-EditorIcons/icons/BezierHandlesFree = null
-EditorIcons/icons/BezierHandlesMirror = null
-EditorIcons/icons/BitMap = null
-EditorIcons/icons/BitmapFont = null
-EditorIcons/icons/Blend = null
-EditorIcons/icons/Bone = null
-EditorIcons/icons/Bone2D = null
-EditorIcons/icons/BoneAttachment = null
-EditorIcons/icons/BoneTrack = null
-EditorIcons/icons/BoxShape = null
-EditorIcons/icons/Bucket = null
-EditorIcons/icons/BusVuEmpty = null
-EditorIcons/icons/BusVuFrozen = null
-EditorIcons/icons/BusVuFull = null
-EditorIcons/icons/Button = null
-EditorIcons/icons/ButtonGroup = null
-EditorIcons/icons/CPUParticles = null
-EditorIcons/icons/CPUParticles2D = null
-EditorIcons/icons/CSGBox = null
-EditorIcons/icons/CSGCapsule = null
-EditorIcons/icons/CSGCombiner = null
-EditorIcons/icons/CSGCylinder = null
-EditorIcons/icons/CSGMesh = null
-EditorIcons/icons/CSGPolygon = null
-EditorIcons/icons/CSGSphere = null
-EditorIcons/icons/CSGTorus = null
-EditorIcons/icons/Camera = null
-EditorIcons/icons/Camera2D = null
-EditorIcons/icons/CameraTexture = null
-EditorIcons/icons/CanvasItem = null
-EditorIcons/icons/CanvasItemMaterial = null
-EditorIcons/icons/CanvasItemShader = null
-EditorIcons/icons/CanvasItemShaderGraph = null
-EditorIcons/icons/CanvasLayer = null
-EditorIcons/icons/CanvasModulate = null
-EditorIcons/icons/CapsuleMesh = null
-EditorIcons/icons/CapsuleShape = null
-EditorIcons/icons/CapsuleShape2D = null
-EditorIcons/icons/CenterContainer = null
-EditorIcons/icons/CheckBox = null
-EditorIcons/icons/CheckButton = null
-EditorIcons/icons/Checkerboard = null
-EditorIcons/icons/CircleShape2D = null
-EditorIcons/icons/ClassList = null
-EditorIcons/icons/Clear = null
-EditorIcons/icons/ClippedCamera = null
-EditorIcons/icons/Close = null
-EditorIcons/icons/Collapse = null
-EditorIcons/icons/CollisionPolygon = null
-EditorIcons/icons/CollisionPolygon2D = null
-EditorIcons/icons/CollisionShape = null
-EditorIcons/icons/CollisionShape2D = null
-EditorIcons/icons/Color = null
-EditorIcons/icons/ColorPick = null
-EditorIcons/icons/ColorPicker = null
-EditorIcons/icons/ColorPickerButton = null
-EditorIcons/icons/ColorRamp = null
-EditorIcons/icons/ColorRect = null
-EditorIcons/icons/ColorTrackVu = null
-EditorIcons/icons/ConcavePolygonShape = null
-EditorIcons/icons/ConcavePolygonShape2D = null
-EditorIcons/icons/ConeTwistJoint = null
-EditorIcons/icons/ConfirmationDialog = null
-EditorIcons/icons/Container = null
-EditorIcons/icons/Control = null
-EditorIcons/icons/ControlAlignBottomCenter = null
-EditorIcons/icons/ControlAlignBottomLeft = null
-EditorIcons/icons/ControlAlignBottomRight = null
-EditorIcons/icons/ControlAlignBottomWide = null
-EditorIcons/icons/ControlAlignCenter = null
-EditorIcons/icons/ControlAlignCenterLeft = null
-EditorIcons/icons/ControlAlignCenterRight = null
-EditorIcons/icons/ControlAlignLeftCenter = null
-EditorIcons/icons/ControlAlignLeftWide = null
-EditorIcons/icons/ControlAlignRightCenter = null
-EditorIcons/icons/ControlAlignRightWide = null
-EditorIcons/icons/ControlAlignTopCenter = null
-EditorIcons/icons/ControlAlignTopLeft = null
-EditorIcons/icons/ControlAlignTopRight = null
-EditorIcons/icons/ControlAlignTopWide = null
-EditorIcons/icons/ControlAlignWide = null
-EditorIcons/icons/ControlHcenterWide = null
-EditorIcons/icons/ControlLayout = null
-EditorIcons/icons/ControlVcenterWide = null
-EditorIcons/icons/ConvexPolygonShape = null
-EditorIcons/icons/ConvexPolygonShape2D = null
-EditorIcons/icons/CopyNodePath = null
-EditorIcons/icons/CreateNewSceneFrom = null
-EditorIcons/icons/Crosshair = null
-EditorIcons/icons/CryptoKey = null
-EditorIcons/icons/CubeMap = null
-EditorIcons/icons/CubeMesh = null
-EditorIcons/icons/Curve = null
-EditorIcons/icons/Curve2D = null
-EditorIcons/icons/Curve3D = null
-EditorIcons/icons/CurveClose = null
-EditorIcons/icons/CurveConstant = null
-EditorIcons/icons/CurveCreate = null
-EditorIcons/icons/CurveCurve = null
-EditorIcons/icons/CurveDelete = null
-EditorIcons/icons/CurveEdit = null
-EditorIcons/icons/CurveIn = null
-EditorIcons/icons/CurveInOut = null
-EditorIcons/icons/CurveLinear = null
-EditorIcons/icons/CurveOut = null
-EditorIcons/icons/CurveOutIn = null
-EditorIcons/icons/CurveTexture = null
-EditorIcons/icons/CylinderMesh = null
-EditorIcons/icons/CylinderShape = null
-EditorIcons/icons/DampedSpringJoint2D = null
-EditorIcons/icons/Debug = null
-EditorIcons/icons/DebugContinue = null
-EditorIcons/icons/DebugNext = null
-EditorIcons/icons/DebugSkipBreakpointsOff = null
-EditorIcons/icons/DebugSkipBreakpointsOn = null
-EditorIcons/icons/DebugStep = null
-EditorIcons/icons/DefaultProjectIcon = null
-EditorIcons/icons/DeleteSplit = null
-EditorIcons/icons/Dictionary = null
-EditorIcons/icons/DirectionalLight = null
-EditorIcons/icons/DistractionFree = null
-EditorIcons/icons/Duplicate = null
-EditorIcons/icons/DynamicFont = null
-EditorIcons/icons/DynamicFontData = null
-EditorIcons/icons/Edit = null
-EditorIcons/icons/EditBezier = null
-EditorIcons/icons/EditInternal = null
-EditorIcons/icons/EditKey = null
-EditorIcons/icons/EditPivot = null
-EditorIcons/icons/EditResource = null
-EditorIcons/icons/Editor3DHandle = null
-EditorIcons/icons/EditorControlAnchor = null
-EditorIcons/icons/EditorCurveHandle = null
-EditorIcons/icons/EditorHandle = null
-EditorIcons/icons/EditorHandleAdd = null
-EditorIcons/icons/EditorInternalHandle = null
-EditorIcons/icons/EditorPathSharpHandle = null
-EditorIcons/icons/EditorPathSmoothHandle = null
-EditorIcons/icons/EditorPivot = null
-EditorIcons/icons/EditorPlugin = null
-EditorIcons/icons/EditorPosition = null
-EditorIcons/icons/EditorPositionPrevious = null
-EditorIcons/icons/EditorPositionUnselected = null
-EditorIcons/icons/Enum = null
-EditorIcons/icons/Environment = null
-EditorIcons/icons/Error = null
-EditorIcons/icons/ErrorSign = null
-EditorIcons/icons/ExpandBottomDock = null
-EditorIcons/icons/Favorites = null
-EditorIcons/icons/File = null
-EditorIcons/icons/FileBigThumb = null
-EditorIcons/icons/FileBroken = null
-EditorIcons/icons/FileBrokenBigThumb = null
-EditorIcons/icons/FileDead = null
-EditorIcons/icons/FileDeadBigThumb = null
-EditorIcons/icons/FileDeadMediumThumb = null
-EditorIcons/icons/FileDialog = null
-EditorIcons/icons/FileList = null
-EditorIcons/icons/FileMediumThumb = null
-EditorIcons/icons/FileThumbnail = null
-EditorIcons/icons/Filesystem = null
-EditorIcons/icons/FixedMaterial = null
-EditorIcons/icons/FixedSpatialMaterial = null
-EditorIcons/icons/Folder = null
-EditorIcons/icons/FolderBigThumb = null
-EditorIcons/icons/FolderMediumThumb = null
-EditorIcons/icons/Font = null
-EditorIcons/icons/Forward = null
-EditorIcons/icons/GDNativeLibrary = null
-EditorIcons/icons/GDScript = null
-EditorIcons/icons/GIProbe = null
-EditorIcons/icons/GIProbeData = null
-EditorIcons/icons/Generic6DOFJoint = null
-EditorIcons/icons/GizmoBakedLightmap = null
-EditorIcons/icons/GizmoCPUParticles = null
-EditorIcons/icons/GizmoCamera = null
-EditorIcons/icons/GizmoDirectionalLight = null
-EditorIcons/icons/GizmoGIProbe = null
-EditorIcons/icons/GizmoLight = null
-EditorIcons/icons/GizmoListener = null
-EditorIcons/icons/GizmoParticles = null
-EditorIcons/icons/GizmoReflectionProbe = null
-EditorIcons/icons/GizmoSpatialSamplePlayer = null
-EditorIcons/icons/GizmoSpatialStreamPlayer = null
-EditorIcons/icons/GizmoSpotLight = null
-EditorIcons/icons/Godot = null
-EditorIcons/icons/GodotDocs = null
-EditorIcons/icons/Gradient = null
-EditorIcons/icons/GradientTexture = null
-EditorIcons/icons/GraphEdit = null
-EditorIcons/icons/GraphNode = null
-EditorIcons/icons/Grid = null
-EditorIcons/icons/GridContainer = null
-EditorIcons/icons/GridMap = null
-EditorIcons/icons/GrooveJoint2D = null
-EditorIcons/icons/Group = null
-EditorIcons/icons/GroupViewport = null
-EditorIcons/icons/Groups = null
-EditorIcons/icons/GuiChecked = null
-EditorIcons/icons/GuiClose = null
-EditorIcons/icons/GuiCloseCustomizable = null
-EditorIcons/icons/GuiDropdown = null
-EditorIcons/icons/GuiEllipsis = null
-EditorIcons/icons/GuiGraphNodePort = null
-EditorIcons/icons/GuiHTick = null
-EditorIcons/icons/GuiHsplitter = null
-EditorIcons/icons/GuiMiniCheckerboard = null
-EditorIcons/icons/GuiOptionArrow = null
-EditorIcons/icons/GuiProgressBar = null
-EditorIcons/icons/GuiProgressFill = null
-EditorIcons/icons/GuiRadioChecked = null
-EditorIcons/icons/GuiRadioUnchecked = null
-EditorIcons/icons/GuiResizer = null
-EditorIcons/icons/GuiScrollArrowLeft = null
-EditorIcons/icons/GuiScrollArrowLeftHl = null
-EditorIcons/icons/GuiScrollArrowRight = null
-EditorIcons/icons/GuiScrollArrowRightHl = null
-EditorIcons/icons/GuiScrollBg = null
-EditorIcons/icons/GuiScrollGrabber = null
-EditorIcons/icons/GuiScrollGrabberHl = null
-EditorIcons/icons/GuiScrollGrabberPressed = null
-EditorIcons/icons/GuiSliderGrabber = null
-EditorIcons/icons/GuiSliderGrabberHl = null
-EditorIcons/icons/GuiSpace = null
-EditorIcons/icons/GuiSpinboxUpdown = null
-EditorIcons/icons/GuiTab = null
-EditorIcons/icons/GuiTabMenu = null
-EditorIcons/icons/GuiTabMenuHl = null
-EditorIcons/icons/GuiToggleOff = null
-EditorIcons/icons/GuiToggleOn = null
-EditorIcons/icons/GuiTreeArrowDown = null
-EditorIcons/icons/GuiTreeArrowRight = null
-EditorIcons/icons/GuiTreeArrowUp = null
-EditorIcons/icons/GuiTreeUpdown = null
-EditorIcons/icons/GuiUnchecked = null
-EditorIcons/icons/GuiVTick = null
-EditorIcons/icons/GuiViewportHdiagsplitter = null
-EditorIcons/icons/GuiViewportVdiagsplitter = null
-EditorIcons/icons/GuiViewportVhsplitter = null
-EditorIcons/icons/GuiVisibilityHidden = null
-EditorIcons/icons/GuiVisibilityVisible = null
-EditorIcons/icons/GuiVisibilityXray = null
-EditorIcons/icons/GuiVsplitBg = null
-EditorIcons/icons/GuiVsplitter = null
-EditorIcons/icons/HBoxContainer = null
-EditorIcons/icons/HScrollBar = null
-EditorIcons/icons/HSeparator = null
-EditorIcons/icons/HSlider = null
-EditorIcons/icons/HSplitContainer = null
-EditorIcons/icons/HTTPRequest = null
-EditorIcons/icons/Headphones = null
-EditorIcons/icons/HeightMapShape = null
-EditorIcons/icons/Help = null
-EditorIcons/icons/HelpSearch = null
-EditorIcons/icons/HingeJoint = null
-EditorIcons/icons/History = null
-EditorIcons/icons/Hsize = null
-EditorIcons/icons/Image = null
-EditorIcons/icons/ImageTexture = null
-EditorIcons/icons/ImmediateGeometry = null
-EditorIcons/icons/ImportCheck = null
-EditorIcons/icons/ImportFail = null
-EditorIcons/icons/InformationSign = null
-EditorIcons/icons/InsertAfter = null
-EditorIcons/icons/InsertBefore = null
-EditorIcons/icons/Instance = null
-EditorIcons/icons/InstanceOptions = null
-EditorIcons/icons/InterpCubic = null
-EditorIcons/icons/InterpLinear = null
-EditorIcons/icons/InterpRaw = null
-EditorIcons/icons/InterpWrapClamp = null
-EditorIcons/icons/InterpWrapLoop = null
-EditorIcons/icons/InterpolatedCamera = null
-EditorIcons/icons/InverseKinematics = null
-EditorIcons/icons/Issue = null
-EditorIcons/icons/ItemList = null
-EditorIcons/icons/JoyAxis = null
-EditorIcons/icons/JoyButton = null
-EditorIcons/icons/Joypad = null
-EditorIcons/icons/Key = null
-EditorIcons/icons/KeyAnimation = null
-EditorIcons/icons/KeyAudio = null
-EditorIcons/icons/KeyBezier = null
-EditorIcons/icons/KeyBezierHandle = null
-EditorIcons/icons/KeyBezierPoint = null
-EditorIcons/icons/KeyBezierSelected = null
-EditorIcons/icons/KeyCall = null
-EditorIcons/icons/KeyHover = null
-EditorIcons/icons/KeyInvalid = null
-EditorIcons/icons/KeyNext = null
-EditorIcons/icons/KeyPosition = null
-EditorIcons/icons/KeyRotation = null
-EditorIcons/icons/KeyScale = null
-EditorIcons/icons/KeySelected = null
-EditorIcons/icons/KeyValue = null
-EditorIcons/icons/KeyXform = null
-EditorIcons/icons/Keyboard = null
-EditorIcons/icons/KinematicBody = null
-EditorIcons/icons/KinematicBody2D = null
-EditorIcons/icons/Label = null
-EditorIcons/icons/LargeTexture = null
-EditorIcons/icons/Light2D = null
-EditorIcons/icons/LightOccluder2D = null
-EditorIcons/icons/Line2D = null
-EditorIcons/icons/LineEdit = null
-EditorIcons/icons/LineShape2D = null
-EditorIcons/icons/LinkButton = null
-EditorIcons/icons/ListSelect = null
-EditorIcons/icons/Listener = null
-EditorIcons/icons/Load = null
-EditorIcons/icons/Lock = null
-EditorIcons/icons/LockViewport = null
-EditorIcons/icons/Logo = null
-EditorIcons/icons/Loop = null
-EditorIcons/icons/LoopInterpolation = null
-EditorIcons/icons/MainPlay = null
-EditorIcons/icons/MarginContainer = null
-EditorIcons/icons/MatchCase = null
-EditorIcons/icons/MaterialPreviewCube = null
-EditorIcons/icons/MaterialPreviewCubeOff = null
-EditorIcons/icons/MaterialPreviewLight1 = null
-EditorIcons/icons/MaterialPreviewLight1Off = null
-EditorIcons/icons/MaterialPreviewLight2 = null
-EditorIcons/icons/MaterialPreviewLight2Off = null
-EditorIcons/icons/MaterialPreviewSphere = null
-EditorIcons/icons/MaterialPreviewSphereOff = null
-EditorIcons/icons/MemberConstant = null
-EditorIcons/icons/MemberMethod = null
-EditorIcons/icons/MemberProperty = null
-EditorIcons/icons/MemberSignal = null
-EditorIcons/icons/MemberTheme = null
-EditorIcons/icons/MenuButton = null
-EditorIcons/icons/Mesh = null
-EditorIcons/icons/MeshInstance = null
-EditorIcons/icons/MeshInstance2D = null
-EditorIcons/icons/MeshLibrary = null
-EditorIcons/icons/MeshTexture = null
-EditorIcons/icons/MiniObject = null
-EditorIcons/icons/MirrorX = null
-EditorIcons/icons/MirrorY = null
-EditorIcons/icons/Mouse = null
-EditorIcons/icons/MoveDown = null
-EditorIcons/icons/MoveLeft = null
-EditorIcons/icons/MovePoint = null
-EditorIcons/icons/MoveRight = null
-EditorIcons/icons/MoveUp = null
-EditorIcons/icons/MultiEdit = null
-EditorIcons/icons/MultiLine = null
-EditorIcons/icons/MultiMesh = null
-EditorIcons/icons/MultiMeshInstance = null
-EditorIcons/icons/MultiMeshInstance2D = null
-EditorIcons/icons/NativeScript = null
-EditorIcons/icons/Navigation = null
-EditorIcons/icons/Navigation2D = null
-EditorIcons/icons/NavigationMesh = null
-EditorIcons/icons/NavigationMeshInstance = null
-EditorIcons/icons/NavigationPolygon = null
-EditorIcons/icons/NavigationPolygonInstance = null
-EditorIcons/icons/New = null
-EditorIcons/icons/NewRoot = null
-EditorIcons/icons/Nil = null
-EditorIcons/icons/NinePatchRect = null
-EditorIcons/icons/Node = null
-EditorIcons/icons/Node2D = null
-EditorIcons/icons/NodePath = null
-EditorIcons/icons/NodeWarning = null
-EditorIcons/icons/NoiseTexture = null
-EditorIcons/icons/NonFavorite = null
-EditorIcons/icons/Object = null
-EditorIcons/icons/OccluderPolygon2D = null
-EditorIcons/icons/OmniLight = null
-EditorIcons/icons/Onion = null
-EditorIcons/icons/OptionButton = null
-EditorIcons/icons/OverbrightIndicator = null
-EditorIcons/icons/Override = null
-EditorIcons/icons/PackedDataContainer = null
-EditorIcons/icons/PackedScene = null
-EditorIcons/icons/PaintVertex = null
-EditorIcons/icons/Panel = null
-EditorIcons/icons/PanelContainer = null
-EditorIcons/icons/Panels1 = null
-EditorIcons/icons/Panels2 = null
-EditorIcons/icons/Panels2Alt = null
-EditorIcons/icons/Panels3 = null
-EditorIcons/icons/Panels3Alt = null
-EditorIcons/icons/Panels4 = null
-EditorIcons/icons/PanoramaSky = null
-EditorIcons/icons/ParallaxBackground = null
-EditorIcons/icons/ParallaxLayer = null
-EditorIcons/icons/ParticleAttractor2D = null
-EditorIcons/icons/Particles = null
-EditorIcons/icons/Particles2D = null
-EditorIcons/icons/ParticlesMaterial = null
-EditorIcons/icons/Path = null
-EditorIcons/icons/Path2D = null
-EditorIcons/icons/PathFollow = null
-EditorIcons/icons/PathFollow2D = null
-EditorIcons/icons/Pause = null
-EditorIcons/icons/PhysicalBone = null
-EditorIcons/icons/Pin = null
-EditorIcons/icons/PinJoint = null
-EditorIcons/icons/PinJoint2D = null
-EditorIcons/icons/PinPressed = null
-EditorIcons/icons/Plane = null
-EditorIcons/icons/PlaneMesh = null
-EditorIcons/icons/PlaneShape = null
-EditorIcons/icons/Play = null
-EditorIcons/icons/PlayBackwards = null
-EditorIcons/icons/PlayCustom = null
-EditorIcons/icons/PlayOverlay = null
-EditorIcons/icons/PlayScene = null
-EditorIcons/icons/PlayStart = null
-EditorIcons/icons/PlayStartBackwards = null
-EditorIcons/icons/PlayTravel = null
-EditorIcons/icons/PluginScript = null
-EditorIcons/icons/PointMesh = null
-EditorIcons/icons/Polygon2D = null
-EditorIcons/icons/PolygonPathFinder = null
-EditorIcons/icons/PoolByteArray = null
-EditorIcons/icons/PoolColorArray = null
-EditorIcons/icons/PoolIntArray = null
-EditorIcons/icons/PoolRealArray = null
-EditorIcons/icons/PoolStringArray = null
-EditorIcons/icons/PoolVector2Array = null
-EditorIcons/icons/PoolVector3Array = null
-EditorIcons/icons/Popup = null
-EditorIcons/icons/PopupDialog = null
-EditorIcons/icons/PopupMenu = null
-EditorIcons/icons/PopupPanel = null
-EditorIcons/icons/Portal = null
-EditorIcons/icons/Position2D = null
-EditorIcons/icons/Position3D = null
-EditorIcons/icons/PrismMesh = null
-EditorIcons/icons/ProceduralSky = null
-EditorIcons/icons/Progress1 = null
-EditorIcons/icons/Progress2 = null
-EditorIcons/icons/Progress3 = null
-EditorIcons/icons/Progress4 = null
-EditorIcons/icons/Progress5 = null
-EditorIcons/icons/Progress6 = null
-EditorIcons/icons/Progress7 = null
-EditorIcons/icons/Progress8 = null
-EditorIcons/icons/ProgressBar = null
-EditorIcons/icons/ProjectIconLoading = null
-EditorIcons/icons/ProximityGroup = null
-EditorIcons/icons/ProxyTexture = null
-EditorIcons/icons/Quad = null
-EditorIcons/icons/QuadMesh = null
-EditorIcons/icons/Quat = null
-EditorIcons/icons/RID = null
-EditorIcons/icons/RayCast = null
-EditorIcons/icons/RayCast2D = null
-EditorIcons/icons/RayShape = null
-EditorIcons/icons/RayShape2D = null
-EditorIcons/icons/Rayito = null
-EditorIcons/icons/Rect2 = null
-EditorIcons/icons/RectangleShape2D = null
-EditorIcons/icons/ReferenceRect = null
-EditorIcons/icons/ReflectionProbe = null
-EditorIcons/icons/RegionEdit = null
-EditorIcons/icons/Reload = null
-EditorIcons/icons/ReloadSmall = null
-EditorIcons/icons/RemoteTransform = null
-EditorIcons/icons/RemoteTransform2D = null
-EditorIcons/icons/Remove = null
-EditorIcons/icons/RemoveInternal = null
-EditorIcons/icons/Rename = null
-EditorIcons/icons/Reparent = null
-EditorIcons/icons/ReparentToNewNode = null
-EditorIcons/icons/ResourcePreloader = null
-EditorIcons/icons/RichTextEffect = null
-EditorIcons/icons/RichTextLabel = null
-EditorIcons/icons/RigidBody = null
-EditorIcons/icons/RigidBody2D = null
-EditorIcons/icons/Room = null
-EditorIcons/icons/RoomBounds = null
-EditorIcons/icons/Rotate0 = null
-EditorIcons/icons/Rotate180 = null
-EditorIcons/icons/Rotate270 = null
-EditorIcons/icons/Rotate90 = null
-EditorIcons/icons/RotateLeft = null
-EditorIcons/icons/RotateRight = null
-EditorIcons/icons/Ruler = null
-EditorIcons/icons/SampleLibrary = null
-EditorIcons/icons/Save = null
-EditorIcons/icons/Script = null
-EditorIcons/icons/ScriptCreate = null
-EditorIcons/icons/ScriptCreateDialog = null
-EditorIcons/icons/ScriptExtend = null
-EditorIcons/icons/ScriptRemove = null
-EditorIcons/icons/ScrollContainer = null
-EditorIcons/icons/Search = null
-EditorIcons/icons/SegmentShape2D = null
-EditorIcons/icons/Shader = null
-EditorIcons/icons/ShaderMaterial = null
-EditorIcons/icons/ShortCut = null
-EditorIcons/icons/Signal = null
-EditorIcons/icons/Signals = null
-EditorIcons/icons/SignalsAndGroups = null
-EditorIcons/icons/Skeleton = null
-EditorIcons/icons/Skeleton2D = null
-EditorIcons/icons/SkeletonIK = null
-EditorIcons/icons/SliderJoint = null
-EditorIcons/icons/Slot = null
-EditorIcons/icons/Snap = null
-EditorIcons/icons/SnapGrid = null
-EditorIcons/icons/SoftBody = null
-EditorIcons/icons/Sort = null
-EditorIcons/icons/Spatial = null
-EditorIcons/icons/SpatialMaterial = null
-EditorIcons/icons/SphereMesh = null
-EditorIcons/icons/SphereShape = null
-EditorIcons/icons/SpinBox = null
-EditorIcons/icons/SpotLight = null
-EditorIcons/icons/SpringArm = null
-EditorIcons/icons/Sprite = null
-EditorIcons/icons/Sprite3D = null
-EditorIcons/icons/SpriteFrames = null
-EditorIcons/icons/SpriteSheet = null
-EditorIcons/icons/StaticBody = null
-EditorIcons/icons/StaticBody2D = null
-EditorIcons/icons/StatusError = null
-EditorIcons/icons/StatusSuccess = null
-EditorIcons/icons/StatusWarning = null
-EditorIcons/icons/Stop = null
-EditorIcons/icons/StreamTexture = null
-EditorIcons/icons/String = null
-EditorIcons/icons/StyleBoxEmpty = null
-EditorIcons/icons/StyleBoxFlat = null
-EditorIcons/icons/StyleBoxLine = null
-EditorIcons/icons/StyleBoxTexture = null
-EditorIcons/icons/TabContainer = null
-EditorIcons/icons/Tabs = null
-EditorIcons/icons/TestCube = null
-EditorIcons/icons/TextEdit = null
-EditorIcons/icons/TextFile = null
-EditorIcons/icons/Texture3D = null
-EditorIcons/icons/TextureArray = null
-EditorIcons/icons/TextureButton = null
-EditorIcons/icons/TextureProgress = null
-EditorIcons/icons/TextureRect = null
-EditorIcons/icons/Theme = null
-EditorIcons/icons/ThumbnailWait = null
-EditorIcons/icons/TileMap = null
-EditorIcons/icons/TileSet = null
-EditorIcons/icons/Time = null
-EditorIcons/icons/TimelineIndicator = null
-EditorIcons/icons/Timer = null
-EditorIcons/icons/ToolAddNode = null
-EditorIcons/icons/ToolButton = null
-EditorIcons/icons/ToolConnect = null
-EditorIcons/icons/ToolMove = null
-EditorIcons/icons/ToolPan = null
-EditorIcons/icons/ToolRotate = null
-EditorIcons/icons/ToolScale = null
-EditorIcons/icons/ToolSelect = null
-EditorIcons/icons/ToolTriangle = null
-EditorIcons/icons/Tools = null
-EditorIcons/icons/TouchScreenButton = null
-EditorIcons/icons/TrackAddKey = null
-EditorIcons/icons/TrackAddKeyHl = null
-EditorIcons/icons/TrackCapture = null
-EditorIcons/icons/TrackContinuous = null
-EditorIcons/icons/TrackDiscrete = null
-EditorIcons/icons/TrackTrigger = null
-EditorIcons/icons/Transform = null
-EditorIcons/icons/Transform2D = null
-EditorIcons/icons/TransitionEnd = null
-EditorIcons/icons/TransitionEndAuto = null
-EditorIcons/icons/TransitionEndAutoBig = null
-EditorIcons/icons/TransitionEndBig = null
-EditorIcons/icons/TransitionImmediate = null
-EditorIcons/icons/TransitionImmediateAuto = null
-EditorIcons/icons/TransitionImmediateAutoBig = null
-EditorIcons/icons/TransitionImmediateBig = null
-EditorIcons/icons/TransitionSync = null
-EditorIcons/icons/TransitionSyncAuto = null
-EditorIcons/icons/TransitionSyncAutoBig = null
-EditorIcons/icons/TransitionSyncBig = null
-EditorIcons/icons/Translation = null
-EditorIcons/icons/Transpose = null
-EditorIcons/icons/Tree = null
-EditorIcons/icons/Tween = null
-EditorIcons/icons/Unbone = null
-EditorIcons/icons/Ungroup = null
-EditorIcons/icons/Unlock = null
-EditorIcons/icons/UnpaintVertex = null
-EditorIcons/icons/Uv = null
-EditorIcons/icons/VBoxContainer = null
-EditorIcons/icons/VScrollBar = null
-EditorIcons/icons/VSeparator = null
-EditorIcons/icons/VSlider = null
-EditorIcons/icons/VSplitContainer = null
-EditorIcons/icons/Variant = null
-EditorIcons/icons/Vector2 = null
-EditorIcons/icons/Vector3 = null
-EditorIcons/icons/VehicleBody = null
-EditorIcons/icons/VehicleWheel = null
-EditorIcons/icons/VideoPlayer = null
-EditorIcons/icons/Viewport = null
-EditorIcons/icons/ViewportContainer = null
-EditorIcons/icons/ViewportSpeed = null
-EditorIcons/icons/ViewportTexture = null
-EditorIcons/icons/ViewportZoom = null
-EditorIcons/icons/VisibilityEnabler = null
-EditorIcons/icons/VisibilityEnabler2D = null
-EditorIcons/icons/VisibilityNotifier = null
-EditorIcons/icons/VisibilityNotifier2D = null
-EditorIcons/icons/VisualScript = null
-EditorIcons/icons/VisualShader = null
-EditorIcons/icons/VisualShaderPort = null
-EditorIcons/icons/Warning = null
-EditorIcons/icons/WindowDialog = null
-EditorIcons/icons/World = null
-EditorIcons/icons/World2D = null
-EditorIcons/icons/WorldEnvironment = null
-EditorIcons/icons/X509Certificate = null
-EditorIcons/icons/YSort = null
-EditorIcons/icons/Zoom = null
-EditorIcons/icons/ZoomLess = null
-EditorIcons/icons/ZoomMore = null
-EditorIcons/icons/ZoomReset = null
-EditorIcons/icons/bool = null
-EditorIcons/icons/float = null
-EditorIcons/icons/int = null
-EditorSettingsDialog/styles/panel = null
-EditorStyles/styles/Background = null
-EditorStyles/styles/BottomPanelDebuggerOverride = null
-EditorStyles/styles/Content = null
-EditorStyles/styles/DebuggerPanel = null
-EditorStyles/styles/DebuggerTabBG = null
-EditorStyles/styles/DebuggerTabFG = null
-EditorStyles/styles/Focus = null
-EditorStyles/styles/Information3dViewport = null
-EditorStyles/styles/MenuHover = null
-EditorStyles/styles/MenuPanel = null
-EditorStyles/styles/PlayButtonPanel = null
-EditorStyles/styles/SceneTabBG = null
-EditorStyles/styles/SceneTabFG = null
-EditorStyles/styles/ScriptEditor = null
-EditorStyles/styles/ScriptEditorPanel = null
-FileDialog/colors/files_disabled = Color( 0, 0, 0, 1 )
-FileDialog/colors/folder_icon_modulate = Color( 0, 0, 0, 1 )
-FileDialog/icons/folder = null
-FileDialog/icons/parent_folder = null
-FileDialog/icons/reload = null
-FileDialog/icons/toggle_hidden = null
-GraphEdit/colors/activity = Color( 0, 0, 0, 1 )
-GraphEdit/colors/grid_major = Color( 0, 0, 0, 1 )
-GraphEdit/colors/grid_minor = Color( 0, 0, 0, 1 )
-GraphEdit/colors/selection_fill = Color( 0, 0, 0, 1 )
-GraphEdit/colors/selection_stroke = Color( 0, 0, 0, 1 )
-GraphEdit/constants/bezier_len_neg = 160
-GraphEdit/constants/bezier_len_pos = 80
-GraphEdit/icons/minus = null
-GraphEdit/icons/more = null
-GraphEdit/icons/reset = null
-GraphEdit/icons/snap = null
-GraphEdit/styles/bg = null
-GraphNode/colors/close_color = Color( 0, 0, 0, 1 )
-GraphNode/colors/resizer_color = Color( 0, 0, 0, 1 )
-GraphNode/colors/title_color = Color( 0, 0, 0, 1 )
-GraphNode/constants/close_h_offset = 20
-GraphNode/constants/close_offset = 20
-GraphNode/constants/port_offset = 14
-GraphNode/constants/separation = 1
-GraphNode/constants/title_h_offset = -16
-GraphNode/constants/title_offset = 20
-GraphNode/icons/close = null
-GraphNode/icons/port = null
-GraphNode/icons/resizer = null
-GraphNode/styles/breakpoint = null
-GraphNode/styles/comment = null
-GraphNode/styles/commentfocus = null
-GraphNode/styles/frame = null
-GraphNode/styles/position = null
-GraphNode/styles/selectedframe = null
-GraphNode/styles/state_machine_frame = null
-GraphNode/styles/state_machine_selectedframe = null
-GridContainer/constants/hseparation = 4
-GridContainer/constants/vseparation = 4
-HBoxContainer/constants/separation = 4
-HScrollBar/icons/decrement = null
-HScrollBar/icons/decrement_highlight = null
-HScrollBar/icons/increment = null
-HScrollBar/icons/increment_highlight = null
-HScrollBar/styles/grabber = null
-HScrollBar/styles/grabber_highlight = null
-HScrollBar/styles/grabber_pressed = null
-HScrollBar/styles/scroll = null
-HScrollBar/styles/scroll_focus = null
-HSeparator/styles/separator = SubResource( 2 )
-HSlider/icons/grabber = null
-HSlider/icons/grabber_highlight = null
-HSlider/styles/grabber_area = null
-HSlider/styles/slider = null
-HSplitContainer/constants/separation = 8
-HSplitContainer/icons/grabber = null
-HSplitContainer/styles/bg = null
-ItemList/colors/font_color = Color( 0, 0, 0, 1 )
-ItemList/colors/font_color_selected = Color( 0, 0, 0, 1 )
-ItemList/colors/guide_color = Color( 0, 0, 0, 1 )
-ItemList/constants/hseparation = 3
-ItemList/constants/icon_margin = 4
-ItemList/constants/line_separation = 3
-ItemList/constants/vseparation = 3
-ItemList/styles/bg = null
-ItemList/styles/bg_focus = null
-ItemList/styles/cursor = null
-ItemList/styles/cursor_unfocused = null
-ItemList/styles/selected = null
-ItemList/styles/selected_focus = null
-Label/colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-Label/constants/line_spacing = 8
-Label/constants/shadow_as_outline = 0
-Label/constants/shadow_offset_x = 0
-Label/constants/shadow_offset_y = 0
-Label/styles/normal = null
-LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
-LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
-LineEdit/colors/read_only = Color( 0, 0, 0, 1 )
-LineEdit/colors/selection_color = Color( 0, 0, 0, 1 )
-LineEdit/icons/clear = null
-LineEdit/styles/focus = null
-LineEdit/styles/normal = null
-LineEdit/styles/read_only = null
-LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
-LinkButton/styles/focus = null
-MarginContainer/constants/margin_bottom = 0
-MarginContainer/constants/margin_left = 0
-MarginContainer/constants/margin_right = 0
-MarginContainer/constants/margin_top = 0
-MenuButton/colors/font_color = Color( 0, 0, 0, 1 )
-MenuButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-MenuButton/styles/disabled = null
-MenuButton/styles/focus = null
-MenuButton/styles/hover = null
-MenuButton/styles/normal = null
-MenuButton/styles/pressed = null
-OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
-OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-OptionButton/colors/icon_color_hover = Color( 0, 0, 0, 1 )
-OptionButton/constants/arrow_margin = 4
-OptionButton/constants/hseparation = 4
-OptionButton/constants/modulate_arrow = 1
-OptionButton/icons/arrow = null
-OptionButton/styles/disabled = null
-OptionButton/styles/focus = null
-OptionButton/styles/hover = null
-OptionButton/styles/normal = null
-OptionButton/styles/pressed = null
-Panel/styles/panel = null
-PanelContainer/styles/panel = SubResource( 3 )
-PopupDialog/styles/panel = null
-PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
-PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
-PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
-PopupMenu/constants/vseparation = 5
-PopupMenu/icons/checked = null
-PopupMenu/icons/radio_checked = null
-PopupMenu/icons/radio_unchecked = null
-PopupMenu/icons/submenu = null
-PopupMenu/icons/unchecked = null
-PopupMenu/icons/visibility_hidden = null
-PopupMenu/icons/visibility_visible = null
-PopupMenu/icons/visibility_xray = null
-PopupMenu/styles/disabled = null
-PopupMenu/styles/focus = null
-PopupMenu/styles/hover = null
-PopupMenu/styles/labeled_separator_left = null
-PopupMenu/styles/labeled_separator_right = null
-PopupMenu/styles/normal = null
-PopupMenu/styles/panel = null
-PopupMenu/styles/pressed = null
-PopupMenu/styles/separator = null
-PopupPanel/styles/panel = null
-ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
-ProgressBar/styles/bg = null
-ProgressBar/styles/fg = null
-ProjectSettingsEditor/styles/panel = null
-RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
-RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-RichTextLabel/constants/shadow_as_outline = 0
-RichTextLabel/constants/shadow_offset_x = 1
-RichTextLabel/constants/shadow_offset_y = 1
-RichTextLabel/styles/focus = null
-RichTextLabel/styles/normal = null
-SpinBox/icons/updown = null
-TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
-TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
-TabContainer/constants/side_margin = 0
-TabContainer/icons/decrement = null
-TabContainer/icons/decrement_highlight = null
-TabContainer/icons/increment = null
-TabContainer/icons/increment_highlight = null
-TabContainer/icons/menu = null
-TabContainer/icons/menu_highlight = null
-TabContainer/styles/panel = null
-TabContainer/styles/tab_bg = null
-TabContainer/styles/tab_disabled = null
-TabContainer/styles/tab_fg = null
-Tabs/colors/font_color_bg = Color( 0, 0, 0, 1 )
-Tabs/colors/font_color_fg = Color( 0, 0, 0, 1 )
-Tabs/constants/hseparation = 4
-Tabs/icons/close = null
-Tabs/icons/decrement = null
-Tabs/icons/decrement_highlight = null
-Tabs/icons/increment = null
-Tabs/icons/increment_highlight = null
-Tabs/styles/button = null
-Tabs/styles/button_pressed = null
-Tabs/styles/tab_bg = null
-Tabs/styles/tab_disabled = null
-Tabs/styles/tab_fg = null
-TextEdit/colors/caret_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/font_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/selection_color = Color( 0, 0, 0, 1 )
-TextEdit/icons/fold = null
-TextEdit/icons/folded = null
-TextEdit/icons/space = null
-TextEdit/icons/tab = null
-TextEdit/styles/focus = null
-TextEdit/styles/normal = null
-TextEdit/styles/read_only = null
-ToolButton/colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
-ToolButton/colors/font_color_hover = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-ToolButton/colors/font_color_pressed = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-ToolButton/styles/disabled = null
-ToolButton/styles/focus = null
-ToolButton/styles/hover = null
-ToolButton/styles/normal = null
-ToolButton/styles/pressed = null
-TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )
-TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-TooltipPanel/styles/panel = null
-Tree/colors/custom_button_font_highlight = Color( 0, 0, 0, 1 )
-Tree/colors/drop_position_color = Color( 0, 0, 0, 1 )
-Tree/colors/font_color = Color( 0, 0, 0, 1 )
-Tree/colors/font_color_selected = Color( 0, 0, 0, 1 )
-Tree/colors/guide_color = Color( 0, 0, 0, 1 )
-Tree/colors/relationship_line_color = Color( 0, 0, 0, 1 )
-Tree/colors/title_button_color = Color( 0, 0, 0, 1 )
-Tree/constants/button_margin = 4
-Tree/constants/draw_guides = 0
-Tree/constants/draw_relationship_lines = 1
-Tree/constants/hseparation = 4
-Tree/constants/item_margin = 12
-Tree/constants/scroll_border = 40
-Tree/constants/scroll_speed = 12
-Tree/constants/vseparation = 4
-Tree/icons/arrow = null
-Tree/icons/arrow_collapsed = null
-Tree/icons/checked = null
-Tree/icons/select_arrow = null
-Tree/icons/unchecked = null
-Tree/icons/updown = null
-Tree/styles/bg = null
-Tree/styles/bg_focus = null
-Tree/styles/button_pressed = null
-Tree/styles/cursor = null
-Tree/styles/cursor_unfocused = null
-Tree/styles/custom_button = null
-Tree/styles/custom_button_hover = null
-Tree/styles/custom_button_pressed = null
-Tree/styles/hover = null
-Tree/styles/selected = null
-Tree/styles/selected_focus = null
-Tree/styles/title_button_hover = null
-Tree/styles/title_button_normal = null
-Tree/styles/title_button_pressed = null
-VBoxContainer/constants/separation = 2
-VScrollBar/icons/decrement = null
-VScrollBar/icons/decrement_highlight = null
-VScrollBar/icons/increment = null
-VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = null
-VScrollBar/styles/grabber_highlight = null
-VScrollBar/styles/grabber_pressed = null
-VScrollBar/styles/scroll = null
-VScrollBar/styles/scroll_focus = null
-VSeparator/styles/separator = null
-VSlider/icons/grabber = null
-VSlider/icons/grabber_highlight = null
-VSlider/styles/grabber_area = null
-VSlider/styles/slider = null
-VSplitContainer/constants/separation = 8
-VSplitContainer/icons/grabber = null
-VSplitContainer/styles/bg = null
-WindowDialog/colors/title_color = Color( 0, 0, 0, 1 )
-WindowDialog/constants/close_h_ofs = 22
-WindowDialog/constants/close_v_ofs = 20
-WindowDialog/constants/title_height = 24
-WindowDialog/fonts/title_font = null
-WindowDialog/icons/close = null
-WindowDialog/icons/close_highlight = null
-WindowDialog/styles/panel = null
-
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 36, 24 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 24, 36, 24 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 43 )
 region = Rect2( 0, 0, 36, 24 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 43 )
+region = Rect2( 0, 24, 36, 24 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=7]
+size = 11
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 13
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 45 )
+region = Rect2( 0, 0, 36, 24 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 45 )
 region = Rect2( 0, 24, 36, 24 )
 
 [sub_resource type="SpriteFrames" id=11]
@@ -1151,101 +101,77 @@ animations = [ {
 "frames": [ SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 3.0
 } ]
 
-[sub_resource type="DynamicFont" id=12]
-size = 11
-font_data = ExtResource( 29 )
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 20 )
+region = Rect2( 36, 0, 36, 24 )
 
-[sub_resource type="DynamicFont" id=13]
-size = 13
-font_data = ExtResource( 4 )
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 20 )
+region = Rect2( 36, 24, 36, 24 )
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 45 )
-region = Rect2( 0, 0, 36, 24 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 45 )
-region = Rect2( 0, 24, 36, 24 )
-
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
 } ]
+
+[sub_resource type="DynamicFont" id=15]
+size = 13
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 20 )
+region = Rect2( 36, 0, 36, 24 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 20 )
-region = Rect2( 36, 0, 36, 24 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 20 )
 region = Rect2( 36, 24, 36, 24 )
 
-[sub_resource type="SpriteFrames" id=19]
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "default",
-"speed": 3.0
-} ]
-
-[sub_resource type="DynamicFont" id=20]
-size = 13
-font_data = ExtResource( 4 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 20 )
-region = Rect2( 36, 0, 36, 24 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 20 )
-region = Rect2( 36, 24, 36, 24 )
-
-[sub_resource type="SpriteFrames" id=23]
-animations = [ {
-"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=19]
 size = 13
 font_data = ExtResource( 4 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=20]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=21]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=22]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=23]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=29]
+[sub_resource type="SpriteFrames" id=24]
 animations = [ {
-"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 27 ), SubResource( 28 ) ],
+"frames": [ SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "down",
 "speed": 3.0
@@ -1256,77 +182,77 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=25]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=26]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=27]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=28]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 48, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=34]
+[sub_resource type="SpriteFrames" id=29]
 animations = [ {
-"frames": [ SubResource( 30 ) ],
+"frames": [ SubResource( 25 ) ],
 "loop": true,
 "name": "archer",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 31 ) ],
+"frames": [ SubResource( 26 ) ],
 "loop": true,
 "name": "swordsman",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 32 ) ],
+"frames": [ SubResource( 27 ) ],
 "loop": true,
 "name": "mage",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 33 ) ],
+"frames": [ SubResource( 28 ) ],
 "loop": true,
 "name": "armor",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=35]
+[sub_resource type="AtlasTexture" id=30]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=31]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=32]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=33]
 flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=39]
+[sub_resource type="SpriteFrames" id=34]
 animations = [ {
-"frames": [ SubResource( 35 ), SubResource( 36 ) ],
+"frames": [ SubResource( 30 ), SubResource( 31 ) ],
 "loop": true,
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 37 ), SubResource( 38 ) ],
+"frames": [ SubResource( 32 ), SubResource( 33 ) ],
 "loop": true,
 "name": "down",
 "speed": 3.0
@@ -1337,328 +263,328 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="DynamicFont" id=40]
+[sub_resource type="DynamicFont" id=35]
 size = 13
 font_data = ExtResource( 4 )
 
-[sub_resource type="AtlasTexture" id=41]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 0, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=42]
+[sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 22, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=43]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 44, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=44]
+[sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 66, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=45]
+[sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 88, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=46]
+[sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 110, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=47]
+[sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 132, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=48]
+[sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 154, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=49]
+[sub_resource type="AtlasTexture" id=44]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 176, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=50]
+[sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 198, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=51]
+[sub_resource type="AtlasTexture" id=46]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 220, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=52]
+[sub_resource type="AtlasTexture" id=47]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 242, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=53]
+[sub_resource type="AtlasTexture" id=48]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 264, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=54]
+[sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 286, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=55]
+[sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 308, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=56]
+[sub_resource type="AtlasTexture" id=51]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 330, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=57]
+[sub_resource type="AtlasTexture" id=52]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 352, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=58]
+[sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 374, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=59]
+[sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 396, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=60]
+[sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 418, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=61]
+[sub_resource type="AtlasTexture" id=56]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 440, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=62]
+[sub_resource type="AtlasTexture" id=57]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 462, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=63]
+[sub_resource type="AtlasTexture" id=58]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 484, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=64]
+[sub_resource type="AtlasTexture" id=59]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 506, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=65]
+[sub_resource type="AtlasTexture" id=60]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 528, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=66]
+[sub_resource type="AtlasTexture" id=61]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 550, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=67]
+[sub_resource type="AtlasTexture" id=62]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 572, 163, 22 )
 
-[sub_resource type="AtlasTexture" id=68]
+[sub_resource type="AtlasTexture" id=63]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 594, 163, 22 )
 
-[sub_resource type="SpriteFrames" id=69]
+[sub_resource type="SpriteFrames" id=64]
 animations = [ {
-"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": false,
 "name": "default",
 "speed": 30.0
 } ]
 
-[sub_resource type="AtlasTexture" id=70]
+[sub_resource type="AtlasTexture" id=65]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=71]
+[sub_resource type="AtlasTexture" id=66]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 22, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=72]
+[sub_resource type="AtlasTexture" id=67]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 44, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=73]
+[sub_resource type="AtlasTexture" id=68]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 66, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=74]
+[sub_resource type="AtlasTexture" id=69]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 88, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=75]
+[sub_resource type="AtlasTexture" id=70]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 110, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=76]
+[sub_resource type="AtlasTexture" id=71]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 132, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=77]
+[sub_resource type="AtlasTexture" id=72]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 154, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=78]
+[sub_resource type="AtlasTexture" id=73]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 176, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=79]
+[sub_resource type="AtlasTexture" id=74]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 198, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=80]
+[sub_resource type="AtlasTexture" id=75]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 220, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=81]
+[sub_resource type="AtlasTexture" id=76]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 242, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=82]
+[sub_resource type="AtlasTexture" id=77]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 264, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=83]
+[sub_resource type="AtlasTexture" id=78]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 286, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=84]
+[sub_resource type="AtlasTexture" id=79]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 308, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=85]
+[sub_resource type="AtlasTexture" id=80]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 330, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=86]
+[sub_resource type="AtlasTexture" id=81]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 352, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=87]
+[sub_resource type="AtlasTexture" id=82]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 374, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=88]
+[sub_resource type="AtlasTexture" id=83]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 396, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=89]
+[sub_resource type="AtlasTexture" id=84]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 418, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=90]
+[sub_resource type="AtlasTexture" id=85]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 440, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=91]
+[sub_resource type="AtlasTexture" id=86]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 462, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=92]
+[sub_resource type="AtlasTexture" id=87]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 484, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=93]
+[sub_resource type="AtlasTexture" id=88]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 506, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=94]
+[sub_resource type="AtlasTexture" id=89]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 528, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=95]
+[sub_resource type="AtlasTexture" id=90]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 550, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=96]
+[sub_resource type="AtlasTexture" id=91]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 572, 183, 22 )
 
-[sub_resource type="AtlasTexture" id=97]
+[sub_resource type="AtlasTexture" id=92]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 594, 183, 22 )
 
-[sub_resource type="SpriteFrames" id=98]
+[sub_resource type="SpriteFrames" id=93]
 animations = [ {
-"frames": [ SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
+"frames": [ SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ) ],
 "loop": false,
 "name": "default",
 "speed": 30.0
 } ]
 
-[sub_resource type="DynamicFont" id=99]
+[sub_resource type="DynamicFont" id=94]
 size = 13
 extra_spacing_char = 1
 extra_spacing_space = 2
 font_data = ExtResource( 29 )
 
-[sub_resource type="DynamicFont" id=100]
+[sub_resource type="DynamicFont" id=95]
 size = 13
 font_data = ExtResource( 4 )
 
-[sub_resource type="AtlasTexture" id=101]
+[sub_resource type="AtlasTexture" id=96]
 atlas = ExtResource( 33 )
 region = Rect2( 0, 0, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=102]
+[sub_resource type="AtlasTexture" id=97]
 atlas = ExtResource( 33 )
 region = Rect2( 0, 10, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=103]
+[sub_resource type="AtlasTexture" id=98]
 atlas = ExtResource( 33 )
 region = Rect2( 0, 20, 10, 10 )
 
-[sub_resource type="SpriteFrames" id=104]
+[sub_resource type="SpriteFrames" id=99]
 animations = [ {
-"frames": [ SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 102 ) ],
+"frames": [ SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 97 ) ],
 "loop": true,
 "name": "default",
 "speed": 8.0
 } ]
 
-[sub_resource type="AtlasTexture" id=105]
+[sub_resource type="AtlasTexture" id=100]
 flags = 19
 atlas = ExtResource( 9 )
 region = Rect2( 0, 24, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=106]
+[sub_resource type="AtlasTexture" id=101]
 flags = 19
 atlas = ExtResource( 9 )
 region = Rect2( 0, 32, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=107]
+[sub_resource type="AtlasTexture" id=102]
 flags = 19
 atlas = ExtResource( 9 )
 region = Rect2( 0, 40, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=108]
+[sub_resource type="SpriteFrames" id=103]
 animations = [ {
-"frames": [ SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 106 ) ],
+"frames": [ SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 101 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=109]
+[sub_resource type="DynamicFont" id=104]
 size = 13
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=110]
+[sub_resource type="DynamicFont" id=105]
 size = 13
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxEmpty" id=111]
+[sub_resource type="StyleBoxEmpty" id=106]
 
-[sub_resource type="StyleBoxLine" id=112]
+[sub_resource type="StyleBoxLine" id=107]
 color = Color( 0.219608, 0.596078, 0.454902, 1 )
 grow_begin = -3.0
 grow_end = -3.0
 
-[sub_resource type="StyleBoxEmpty" id=113]
+[sub_resource type="StyleBoxEmpty" id=108]
 
-[sub_resource type="DynamicFont" id=114]
+[sub_resource type="DynamicFont" id=109]
 size = 13
 extra_spacing_char = 1
 extra_spacing_space = 1
 font_data = ExtResource( 29 )
 
-[sub_resource type="Theme" id=115]
-default_font = SubResource( 114 )
+[sub_resource type="Theme" id=110]
+default_font = SubResource( 109 )
 BoxContainer/constants/separation = 4
 Button/colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
 Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -1667,7 +593,7 @@ Button/colors/font_color_pressed = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 Button/colors/icon_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/icon_color_pressed = Color( 0, 0, 0, 1 )
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 111 )
+Button/styles/focus = SubResource( 106 )
 Button/styles/hover = null
 Button/styles/normal = null
 Button/styles/pressed = null
@@ -2502,7 +1428,7 @@ HScrollBar/styles/grabber_highlight = null
 HScrollBar/styles/grabber_pressed = null
 HScrollBar/styles/scroll = null
 HScrollBar/styles/scroll_focus = null
-HSeparator/styles/separator = SubResource( 112 )
+HSeparator/styles/separator = SubResource( 107 )
 HSlider/icons/grabber = null
 HSlider/icons/grabber_highlight = null
 HSlider/styles/grabber_area = null
@@ -2569,7 +1495,7 @@ OptionButton/styles/hover = null
 OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
 Panel/styles/panel = null
-PanelContainer/styles/panel = SubResource( 113 )
+PanelContainer/styles/panel = SubResource( 108 )
 PopupDialog/styles/panel = null
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
@@ -2715,539 +1641,539 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
-[sub_resource type="AtlasTexture" id=116]
+[sub_resource type="AtlasTexture" id=111]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 0, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=117]
+[sub_resource type="AtlasTexture" id=112]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 224, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=118]
+[sub_resource type="AtlasTexture" id=113]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 448, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=119]
+[sub_resource type="AtlasTexture" id=114]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 672, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=120]
+[sub_resource type="AtlasTexture" id=115]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 896, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=121]
+[sub_resource type="AtlasTexture" id=116]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 1120, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=122]
+[sub_resource type="AtlasTexture" id=117]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 1344, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=123]
+[sub_resource type="AtlasTexture" id=118]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 1568, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=124]
+[sub_resource type="AtlasTexture" id=119]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 1792, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=125]
+[sub_resource type="AtlasTexture" id=120]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2016, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=126]
+[sub_resource type="AtlasTexture" id=121]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2240, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=127]
+[sub_resource type="AtlasTexture" id=122]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2464, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=128]
+[sub_resource type="AtlasTexture" id=123]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2688, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=129]
+[sub_resource type="AtlasTexture" id=124]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2912, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=130]
+[sub_resource type="AtlasTexture" id=125]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 3136, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=131]
+[sub_resource type="AtlasTexture" id=126]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 3360, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=132]
+[sub_resource type="AtlasTexture" id=127]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 3584, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=133]
+[sub_resource type="AtlasTexture" id=128]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 3808, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=134]
+[sub_resource type="AtlasTexture" id=129]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4032, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=135]
+[sub_resource type="AtlasTexture" id=130]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4256, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=136]
+[sub_resource type="AtlasTexture" id=131]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4480, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=137]
+[sub_resource type="AtlasTexture" id=132]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4704, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=138]
+[sub_resource type="AtlasTexture" id=133]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4928, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=139]
+[sub_resource type="AtlasTexture" id=134]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 5152, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=140]
+[sub_resource type="AtlasTexture" id=135]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 5376, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=141]
+[sub_resource type="AtlasTexture" id=136]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 5600, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=142]
+[sub_resource type="AtlasTexture" id=137]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 5824, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=143]
+[sub_resource type="AtlasTexture" id=138]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6048, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=144]
+[sub_resource type="AtlasTexture" id=139]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6272, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=145]
+[sub_resource type="AtlasTexture" id=140]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6496, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=146]
+[sub_resource type="AtlasTexture" id=141]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6720, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=147]
+[sub_resource type="AtlasTexture" id=142]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6944, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=148]
+[sub_resource type="AtlasTexture" id=143]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 7168, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=149]
+[sub_resource type="AtlasTexture" id=144]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 7392, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=150]
+[sub_resource type="AtlasTexture" id=145]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 7616, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=151]
+[sub_resource type="AtlasTexture" id=146]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 7840, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=152]
+[sub_resource type="AtlasTexture" id=147]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8064, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=153]
+[sub_resource type="AtlasTexture" id=148]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8288, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=154]
+[sub_resource type="AtlasTexture" id=149]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8512, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=155]
+[sub_resource type="AtlasTexture" id=150]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8736, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=156]
+[sub_resource type="AtlasTexture" id=151]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8960, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=157]
+[sub_resource type="AtlasTexture" id=152]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 9184, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=158]
+[sub_resource type="AtlasTexture" id=153]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 9408, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=159]
+[sub_resource type="AtlasTexture" id=154]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 9632, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=160]
+[sub_resource type="AtlasTexture" id=155]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 9856, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=161]
+[sub_resource type="AtlasTexture" id=156]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10080, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=162]
+[sub_resource type="AtlasTexture" id=157]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10304, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=163]
+[sub_resource type="AtlasTexture" id=158]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10528, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=164]
+[sub_resource type="AtlasTexture" id=159]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10752, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=165]
+[sub_resource type="AtlasTexture" id=160]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10976, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=166]
+[sub_resource type="AtlasTexture" id=161]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 11200, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=167]
+[sub_resource type="AtlasTexture" id=162]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 11424, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=168]
+[sub_resource type="AtlasTexture" id=163]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 11648, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=169]
+[sub_resource type="AtlasTexture" id=164]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 11872, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=170]
+[sub_resource type="AtlasTexture" id=165]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 12096, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=171]
+[sub_resource type="AtlasTexture" id=166]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 12320, 320, 224 )
 
-[sub_resource type="AtlasTexture" id=172]
+[sub_resource type="AtlasTexture" id=167]
 atlas = ExtResource( 35 )
 region = Rect2( 0, 12544, 320, 224 )
 
-[sub_resource type="SpriteFrames" id=173]
+[sub_resource type="SpriteFrames" id=168]
 animations = [ {
-"frames": [ SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ), SubResource( 146 ), SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ), SubResource( 159 ), SubResource( 160 ), SubResource( 161 ), SubResource( 162 ), SubResource( 163 ), SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), SubResource( 167 ), SubResource( 168 ), SubResource( 169 ), SubResource( 170 ), SubResource( 171 ), SubResource( 172 ) ],
+"frames": [ SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ), SubResource( 146 ), SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ), SubResource( 159 ), SubResource( 160 ), SubResource( 161 ), SubResource( 162 ), SubResource( 163 ), SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), SubResource( 167 ) ],
 "loop": false,
 "name": "default",
 "speed": 60.0
 } ]
 
-[sub_resource type="AtlasTexture" id=174]
+[sub_resource type="AtlasTexture" id=169]
 flags = 2
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=175]
+[sub_resource type="AtlasTexture" id=170]
 flags = 2
 atlas = ExtResource( 23 )
 region = Rect2( 0, 10, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=176]
+[sub_resource type="AtlasTexture" id=171]
 flags = 2
 atlas = ExtResource( 23 )
 region = Rect2( 0, 20, 10, 10 )
 
-[sub_resource type="SpriteFrames" id=177]
+[sub_resource type="SpriteFrames" id=172]
 animations = [ {
-"frames": [ SubResource( 174 ), SubResource( 175 ), SubResource( 176 ), SubResource( 175 ) ],
+"frames": [ SubResource( 169 ), SubResource( 170 ), SubResource( 171 ), SubResource( 170 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=178]
+[sub_resource type="AtlasTexture" id=173]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 0, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=179]
+[sub_resource type="AtlasTexture" id=174]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 22, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=180]
+[sub_resource type="AtlasTexture" id=175]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 44, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=181]
+[sub_resource type="AtlasTexture" id=176]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 66, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=182]
+[sub_resource type="AtlasTexture" id=177]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 88, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=183]
+[sub_resource type="AtlasTexture" id=178]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 110, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=184]
+[sub_resource type="AtlasTexture" id=179]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 132, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=185]
+[sub_resource type="AtlasTexture" id=180]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 154, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=186]
+[sub_resource type="AtlasTexture" id=181]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 176, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=187]
+[sub_resource type="AtlasTexture" id=182]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 198, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=188]
+[sub_resource type="AtlasTexture" id=183]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 220, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=189]
+[sub_resource type="AtlasTexture" id=184]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 242, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=190]
+[sub_resource type="AtlasTexture" id=185]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 264, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=191]
+[sub_resource type="AtlasTexture" id=186]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 286, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=192]
+[sub_resource type="AtlasTexture" id=187]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 308, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=193]
+[sub_resource type="AtlasTexture" id=188]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 330, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=194]
+[sub_resource type="AtlasTexture" id=189]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 352, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=195]
+[sub_resource type="AtlasTexture" id=190]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 374, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=196]
+[sub_resource type="AtlasTexture" id=191]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 396, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=197]
+[sub_resource type="AtlasTexture" id=192]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 418, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=198]
+[sub_resource type="AtlasTexture" id=193]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 440, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=199]
+[sub_resource type="AtlasTexture" id=194]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 462, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=200]
+[sub_resource type="AtlasTexture" id=195]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 484, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=201]
+[sub_resource type="AtlasTexture" id=196]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 506, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=202]
+[sub_resource type="AtlasTexture" id=197]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 528, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=203]
+[sub_resource type="AtlasTexture" id=198]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 550, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=204]
+[sub_resource type="AtlasTexture" id=199]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 572, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=205]
+[sub_resource type="AtlasTexture" id=200]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 594, 217, 22 )
 
-[sub_resource type="AtlasTexture" id=206]
+[sub_resource type="AtlasTexture" id=201]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 616, 217, 22 )
 
-[sub_resource type="SpriteFrames" id=207]
+[sub_resource type="SpriteFrames" id=202]
 animations = [ {
-"frames": [ SubResource( 178 ), SubResource( 179 ), SubResource( 180 ), SubResource( 181 ), SubResource( 182 ), SubResource( 183 ), SubResource( 184 ), SubResource( 185 ), SubResource( 186 ), SubResource( 187 ), SubResource( 188 ), SubResource( 189 ), SubResource( 190 ), SubResource( 191 ), SubResource( 192 ), SubResource( 193 ), SubResource( 194 ), SubResource( 195 ), SubResource( 196 ), SubResource( 197 ), SubResource( 198 ), SubResource( 199 ), SubResource( 200 ), SubResource( 201 ), SubResource( 202 ), SubResource( 203 ), SubResource( 204 ), SubResource( 205 ), SubResource( 206 ) ],
+"frames": [ SubResource( 173 ), SubResource( 174 ), SubResource( 175 ), SubResource( 176 ), SubResource( 177 ), SubResource( 178 ), SubResource( 179 ), SubResource( 180 ), SubResource( 181 ), SubResource( 182 ), SubResource( 183 ), SubResource( 184 ), SubResource( 185 ), SubResource( 186 ), SubResource( 187 ), SubResource( 188 ), SubResource( 189 ), SubResource( 190 ), SubResource( 191 ), SubResource( 192 ), SubResource( 193 ), SubResource( 194 ), SubResource( 195 ), SubResource( 196 ), SubResource( 197 ), SubResource( 198 ), SubResource( 199 ), SubResource( 200 ), SubResource( 201 ) ],
 "loop": false,
 "name": "default",
 "speed": 60.0
 } ]
 
-[sub_resource type="SpriteFrames" id=208]
+[sub_resource type="SpriteFrames" id=203]
 animations = [ {
-"frames": [ SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ), SubResource( 146 ), SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ), SubResource( 159 ), SubResource( 160 ), SubResource( 161 ), SubResource( 162 ), SubResource( 163 ), SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), SubResource( 167 ), SubResource( 168 ), SubResource( 169 ), SubResource( 170 ), SubResource( 171 ), SubResource( 172 ) ],
+"frames": [ SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ), SubResource( 146 ), SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ), SubResource( 159 ), SubResource( 160 ), SubResource( 161 ), SubResource( 162 ), SubResource( 163 ), SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), SubResource( 167 ) ],
 "loop": false,
 "name": "default",
 "speed": 60.0
 } ]
 
-[sub_resource type="AtlasTexture" id=209]
+[sub_resource type="AtlasTexture" id=204]
 flags = 2
 atlas = ExtResource( 23 )
 region = Rect2( 0, 0, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=210]
+[sub_resource type="AtlasTexture" id=205]
 flags = 2
 atlas = ExtResource( 23 )
 region = Rect2( 0, 10, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=211]
+[sub_resource type="AtlasTexture" id=206]
 flags = 2
 atlas = ExtResource( 23 )
 region = Rect2( 0, 20, 10, 10 )
 
-[sub_resource type="SpriteFrames" id=212]
+[sub_resource type="SpriteFrames" id=207]
 animations = [ {
-"frames": [ SubResource( 209 ), SubResource( 210 ), SubResource( 211 ) ],
+"frames": [ SubResource( 204 ), SubResource( 205 ), SubResource( 206 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=213]
+[sub_resource type="AtlasTexture" id=208]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 0, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=214]
+[sub_resource type="AtlasTexture" id=209]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 22, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=215]
+[sub_resource type="AtlasTexture" id=210]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 44, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=216]
+[sub_resource type="AtlasTexture" id=211]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 66, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=217]
+[sub_resource type="AtlasTexture" id=212]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 88, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=218]
+[sub_resource type="AtlasTexture" id=213]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 110, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=219]
+[sub_resource type="AtlasTexture" id=214]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 132, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=220]
+[sub_resource type="AtlasTexture" id=215]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 154, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=221]
+[sub_resource type="AtlasTexture" id=216]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 176, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=222]
+[sub_resource type="AtlasTexture" id=217]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 198, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=223]
+[sub_resource type="AtlasTexture" id=218]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 220, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=224]
+[sub_resource type="AtlasTexture" id=219]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 242, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=225]
+[sub_resource type="AtlasTexture" id=220]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 264, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=226]
+[sub_resource type="AtlasTexture" id=221]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 286, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=227]
+[sub_resource type="AtlasTexture" id=222]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 308, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=228]
+[sub_resource type="AtlasTexture" id=223]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 330, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=229]
+[sub_resource type="AtlasTexture" id=224]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 352, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=230]
+[sub_resource type="AtlasTexture" id=225]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 374, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=231]
+[sub_resource type="AtlasTexture" id=226]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 396, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=232]
+[sub_resource type="AtlasTexture" id=227]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 418, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=233]
+[sub_resource type="AtlasTexture" id=228]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 440, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=234]
+[sub_resource type="AtlasTexture" id=229]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 462, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=235]
+[sub_resource type="AtlasTexture" id=230]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 484, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=236]
+[sub_resource type="AtlasTexture" id=231]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 506, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=237]
+[sub_resource type="AtlasTexture" id=232]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 528, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=238]
+[sub_resource type="AtlasTexture" id=233]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 550, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=239]
+[sub_resource type="AtlasTexture" id=234]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 572, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=240]
+[sub_resource type="AtlasTexture" id=235]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 594, 227, 22 )
 
-[sub_resource type="AtlasTexture" id=241]
+[sub_resource type="AtlasTexture" id=236]
 atlas = ExtResource( 19 )
 region = Rect2( 0, 616, 227, 22 )
 
-[sub_resource type="SpriteFrames" id=242]
+[sub_resource type="SpriteFrames" id=237]
 animations = [ {
-"frames": [ SubResource( 213 ), SubResource( 214 ), SubResource( 215 ), SubResource( 216 ), SubResource( 217 ), SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 221 ), SubResource( 222 ), SubResource( 223 ), SubResource( 224 ), SubResource( 225 ), SubResource( 226 ), SubResource( 227 ), SubResource( 228 ), SubResource( 229 ), SubResource( 230 ), SubResource( 231 ), SubResource( 232 ), SubResource( 233 ), SubResource( 234 ), SubResource( 235 ), SubResource( 236 ), SubResource( 237 ), SubResource( 238 ), SubResource( 239 ), SubResource( 240 ), SubResource( 241 ) ],
+"frames": [ SubResource( 208 ), SubResource( 209 ), SubResource( 210 ), SubResource( 211 ), SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ), SubResource( 216 ), SubResource( 217 ), SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 221 ), SubResource( 222 ), SubResource( 223 ), SubResource( 224 ), SubResource( 225 ), SubResource( 226 ), SubResource( 227 ), SubResource( 228 ), SubResource( 229 ), SubResource( 230 ), SubResource( 231 ), SubResource( 232 ), SubResource( 233 ), SubResource( 234 ), SubResource( 235 ), SubResource( 236 ) ],
 "loop": false,
 "name": "default",
 "speed": 60.0
@@ -3265,13 +2191,6 @@ margin_left = -1.0
 margin_top = 0.0
 margin_right = 320.0
 margin_bottom = 223.0
-theme = SubResource( 5 )
-
-[node name="endturn" parent="." instance=ExtResource( 38 )]
-visible = false
-margin_left = -1.0
-margin_top = 6.0
-margin_right = 321.0
 
 [node name="action_menu" parent="." instance=ExtResource( 2 )]
 visible = false
@@ -3302,14 +2221,14 @@ centered = false
 
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 221, 181 )
-frames = SubResource( 8 )
+frames = SubResource( 3 )
 frame = 1
 playing = true
 centered = false
 
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
-frames = SubResource( 11 )
+frames = SubResource( 6 )
 frame = 1
 playing = true
 centered = false
@@ -3335,7 +2254,7 @@ margin_top = 203.0
 margin_right = 305.0
 margin_bottom = 235.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3353,7 +2272,7 @@ margin_top = 203.0
 margin_right = 260.25
 margin_bottom = 235.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3370,7 +2289,7 @@ margin_top = 186.945
 margin_right = 116.647
 margin_bottom = 204.945
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3386,7 +2305,7 @@ margin_top = 201.0
 margin_right = 111.82
 margin_bottom = 219.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3402,7 +2321,7 @@ margin_top = 186.877
 margin_right = 158.742
 margin_bottom = 204.877
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3418,7 +2337,7 @@ margin_top = 171.856
 margin_right = 154.711
 margin_bottom = 189.856
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3455,7 +2374,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
-frames = SubResource( 16 )
+frames = SubResource( 11 )
 playing = true
 centered = false
 
@@ -3466,7 +2385,7 @@ margin_right = 257.0
 margin_bottom = 235.0
 rect_pivot_offset = Vector2( 19.45, -11.25 )
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3479,7 +2398,7 @@ __meta__ = {
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
-frames = SubResource( 19 )
+frames = SubResource( 14 )
 playing = true
 centered = false
 
@@ -3490,7 +2409,7 @@ margin_right = 305.0
 margin_bottom = 235.0
 rect_pivot_offset = Vector2( 19.45, -11.25 )
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3536,7 +2455,7 @@ margin_top = 17.4522
 margin_right = 116.823
 margin_bottom = 35.4522
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3552,7 +2471,7 @@ margin_top = 30.6528
 margin_right = 112.311
 margin_bottom = 48.6528
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3568,7 +2487,7 @@ margin_top = 17.4719
 margin_right = 158.694
 margin_bottom = 35.4719
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3584,7 +2503,7 @@ margin_top = 1.66326
 margin_right = 155.48
 margin_bottom = 19.6633
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3611,7 +2530,7 @@ position = Vector2( 25.4371, 23.9552 )
 
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 175, 181 )
-frames = SubResource( 8 )
+frames = SubResource( 3 )
 frame = 1
 playing = true
 centered = false
@@ -3622,7 +2541,7 @@ margin_top = 22.0
 margin_right = 39.25
 margin_bottom = 54.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3635,7 +2554,7 @@ __meta__ = {
 
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
-frames = SubResource( 11 )
+frames = SubResource( 6 )
 playing = true
 centered = false
 
@@ -3644,7 +2563,7 @@ margin_top = 22.0
 margin_right = 36.0
 margin_bottom = 54.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3657,7 +2576,7 @@ __meta__ = {
 
 [node name="Tributton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 269, 181 )
-frames = SubResource( 23 )
+frames = SubResource( 18 )
 playing = true
 centered = false
 
@@ -3667,7 +2586,7 @@ margin_top = 22.0
 margin_right = 38.25
 margin_bottom = 54.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3715,7 +2634,7 @@ margin_top = 0.63249
 margin_right = 126.598
 margin_bottom = 18.6325
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3731,7 +2650,7 @@ margin_top = 16.4855
 margin_right = 88.0646
 margin_bottom = 60.4855
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3748,7 +2667,7 @@ margin_top = 16.4156
 margin_right = 130.675
 margin_bottom = 60.4156
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3765,7 +2684,7 @@ margin_top = 30.2032
 margin_right = 82.8609
 margin_bottom = 74.2032
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3803,7 +2722,7 @@ margin_top = 0.8265
 margin_right = 154.995
 margin_bottom = 18.8265
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3834,7 +2753,7 @@ margin_top = 16.1841
 margin_right = 117.182
 margin_bottom = 34.1841
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3850,7 +2769,7 @@ margin_top = 16.4555
 margin_right = 158.684
 margin_bottom = 34.4555
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3866,7 +2785,7 @@ margin_top = 29.6846
 margin_right = 112.163
 margin_bottom = 47.6846
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3899,19 +2818,19 @@ animation = "mage"
 
 [node name="PlayerAdvantage" type="AnimatedSprite" parent="battle"]
 position = Vector2( 130, -8 )
-frames = SubResource( 29 )
+frames = SubResource( 24 )
 animation = "down"
 frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
 position = Vector2( 202, -7 )
-frames = SubResource( 34 )
+frames = SubResource( 29 )
 animation = "mage"
 
 [node name="EnemyAdvantage" type="AnimatedSprite" parent="battle"]
 position = Vector2( 189, -8 )
-frames = SubResource( 39 )
+frames = SubResource( 34 )
 animation = "down"
 playing = true
 
@@ -3943,7 +2862,7 @@ margin_top = 1.4833
 margin_right = 155.426
 margin_bottom = 19.4833
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 40 )
+custom_fonts/font = SubResource( 35 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3974,7 +2893,7 @@ margin_top = 15.9031
 margin_right = 117.489
 margin_bottom = 33.9031
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 40 )
+custom_fonts/font = SubResource( 35 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3990,7 +2909,7 @@ margin_top = 15.6745
 margin_right = 159.1
 margin_bottom = 33.6745
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 40 )
+custom_fonts/font = SubResource( 35 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4006,7 +2925,7 @@ margin_top = 29.7009
 margin_right = 112.485
 margin_bottom = 47.7009
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 40 )
+custom_fonts/font = SubResource( 35 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4045,7 +2964,7 @@ __meta__ = {
 
 [node name="banner" type="AnimatedSprite" parent="playerturn"]
 position = Vector2( 160, 110 )
-frames = SubResource( 69 )
+frames = SubResource( 64 )
 frame = 27
 
 [node name="enemyturn" type="Control" parent="."]
@@ -4060,7 +2979,7 @@ __meta__ = {
 
 [node name="banner" type="AnimatedSprite" parent="enemyturn"]
 position = Vector2( 160, 110 )
-frames = SubResource( 98 )
+frames = SubResource( 93 )
 frame = 13
 
 [node name="weaponswap" type="Control" parent="."]
@@ -4144,7 +3063,7 @@ margin_left = -32.0
 margin_top = 38.0
 margin_right = 288.0
 margin_bottom = 54.0
-custom_fonts/font = SubResource( 99 )
+custom_fonts/font = SubResource( 94 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/line_spacing = 1
@@ -4173,7 +3092,7 @@ margin_top = 55.0
 margin_right = 183.0
 margin_bottom = 73.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 100 )
+custom_fonts/font = SubResource( 95 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4189,7 +3108,7 @@ margin_top = 55.0
 margin_right = 115.0
 margin_bottom = 73.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 100 )
+custom_fonts/font = SubResource( 95 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4217,8 +3136,8 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="weaponswap/no"]
 visible = false
 position = Vector2( -3, -13 )
-frames = SubResource( 104 )
-frame = 1
+frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -4242,8 +3161,8 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="weaponswap/yes"]
 visible = false
 position = Vector2( -3, 7 )
-frames = SubResource( 104 )
-frame = 1
+frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -4251,7 +3170,7 @@ script = ExtResource( 24 )
 
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
-frames = SubResource( 108 )
+frames = SubResource( 103 )
 frame = 1
 playing = true
 
@@ -4286,7 +3205,7 @@ margin_top = 34.0
 margin_right = 98.0
 margin_bottom = 52.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 109 )
+custom_fonts/font = SubResource( 104 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4302,7 +3221,7 @@ margin_top = 15.0
 margin_right = 97.0
 margin_bottom = 33.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 110 )
+custom_fonts/font = SubResource( 105 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4318,7 +3237,7 @@ margin_top = 48.0
 margin_right = 99.0
 margin_bottom = 66.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 109 )
+custom_fonts/font = SubResource( 104 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4334,7 +3253,7 @@ margin_top = 62.0
 margin_right = 99.0
 margin_bottom = 80.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 109 )
+custom_fonts/font = SubResource( 104 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4350,7 +3269,7 @@ margin_top = 34.0
 margin_right = 47.0
 margin_bottom = 52.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 109 )
+custom_fonts/font = SubResource( 104 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4366,7 +3285,7 @@ margin_top = 48.0
 margin_right = 47.0
 margin_bottom = 66.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 109 )
+custom_fonts/font = SubResource( 104 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4382,7 +3301,7 @@ margin_top = 62.0
 margin_right = 48.0
 margin_bottom = 106.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 109 )
+custom_fonts/font = SubResource( 104 )
 custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4398,7 +3317,7 @@ margin_left = 36.5341
 margin_top = 86.8965
 margin_right = 61.5341
 margin_bottom = 100.896
-theme = SubResource( 115 )
+theme = SubResource( 110 )
 custom_colors/font_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 text = "Ok"
 align = 1
@@ -4431,8 +3350,8 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
-frames = SubResource( 104 )
-frame = 1
+frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -4457,7 +3376,7 @@ margin_left = -115.0
 margin_top = -5.0
 margin_right = 207.0
 margin_bottom = 9.0
-theme = SubResource( 115 )
+theme = SubResource( 110 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -4470,7 +3389,7 @@ __meta__ = {
 
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 58.1062 )
-frames = SubResource( 108 )
+frames = SubResource( 103 )
 frame = 2
 playing = true
 
@@ -4489,7 +3408,7 @@ __meta__ = {
 }
 
 [node name="bg" type="AnimatedSprite" parent="win"]
-frames = SubResource( 173 )
+frames = SubResource( 168 )
 frame = 56
 centered = false
 
@@ -4521,7 +3440,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 visible = false
 position = Vector2( -6, -4 )
-frames = SubResource( 177 )
+frames = SubResource( 172 )
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -4547,7 +3466,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Retry"]
 visible = false
 position = Vector2( -5, -15.4519 )
-frames = SubResource( 177 )
+frames = SubResource( 172 )
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -4556,7 +3475,7 @@ script = ExtResource( 24 )
 [node name="banner" type="AnimatedSprite" parent="win"]
 visible = false
 position = Vector2( 160, 86 )
-frames = SubResource( 207 )
+frames = SubResource( 202 )
 frame = 22
 
 [node name="lose" type="Control" parent="."]
@@ -4569,7 +3488,7 @@ __meta__ = {
 }
 
 [node name="bg" type="AnimatedSprite" parent="lose"]
-frames = SubResource( 208 )
+frames = SubResource( 203 )
 frame = 56
 playing = true
 centered = false
@@ -4602,7 +3521,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Retry"]
 visible = false
 position = Vector2( -5, -4 )
-frames = SubResource( 177 )
+frames = SubResource( 172 )
 playing = true
 centered = false
 offset = Vector2( -1, 9 )
@@ -4627,13 +3546,13 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="lose/Control/Quit"]
 visible = false
-frames = SubResource( 212 )
+frames = SubResource( 207 )
 script = ExtResource( 24 )
 
 [node name="banner" type="AnimatedSprite" parent="lose"]
 visible = false
 position = Vector2( 166.124, 86.9907 )
-frames = SubResource( 242 )
+frames = SubResource( 237 )
 frame = 28
 playing = true
 
