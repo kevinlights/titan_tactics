@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=2]
+[gd_scene load_steps=180 format=2]
 
 [ext_resource path="res://resources/archer_spriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/character_controller.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://gfx/FX/mageatk.png" type="Texture" id=23]
 [ext_resource path="res://gfx/Sprites/arath.png" type="Texture" id=24]
 [ext_resource path="res://sfx/gameplay/arrow_shoot1.wav" type="AudioStream" id=25]
+[ext_resource path="res://gfx/Sprites/poisonboba.png" type="Texture" id=26]
 [ext_resource path="res://sfx/gameplay/enemy_defeat1.wav" type="AudioStream" id=27]
 [ext_resource path="res://sfx/gameplay/defend1.wav" type="AudioStream" id=29]
 [ext_resource path="res://sfx/gameplay/heal1.wav" type="AudioStream" id=31]
@@ -421,6 +422,18 @@ animations = [ {
 "name": "idle-up",
 "speed": 5.0
 } ]
+
+[sub_resource type="SpatialMaterial" id=148]
+flags_transparent = true
+flags_unshaded = true
+flags_fixed_size = true
+vertex_color_is_srgb = true
+params_specular_mode = 4
+params_cull_mode = 2
+params_depth_draw_mode = 2
+params_billboard_mode = 1
+params_billboard_keep_scale = true
+albedo_texture = ExtResource( 26 )
 
 [sub_resource type="SpatialMaterial" id=58]
 flags_transparent = true
@@ -1077,6 +1090,18 @@ frames = SubResource( 57 )
 animation = "idle-down"
 playing = true
 
+[node name="ai_poison_boba" type="AnimatedSprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.317352, 0.5 )
+visible = false
+material_override = SubResource( 148 )
+offset = Vector2( 0, 12 )
+pixel_size = 0.000781
+billboard = 1
+alpha_cut = 2
+frames = SubResource( 57 )
+animation = "idle-down"
+playing = true
+
 [node name="mage" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.5 )
 visible = false
@@ -1120,7 +1145,6 @@ offset = Vector2( 8, 0 )
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 107 )
-frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -1129,6 +1153,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 110 )
+frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -1138,7 +1163,6 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 113 )
-frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]

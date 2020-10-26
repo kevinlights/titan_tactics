@@ -4,7 +4,7 @@ class_name CharacterStats
 signal class_changed
 signal level_up
 
-export(int, "Swordsman", "Archer", "Mage", "Boba") var character_class setget set_character_class, get_character_class
+export(int, "Swordsman", "Archer", "Mage", "Boba", "Poison Boba") var character_class setget set_character_class, get_character_class
 export(String) var name
 export(int) var level = 1 setget set_level,get_level
 export(int) var hp

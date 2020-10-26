@@ -337,6 +337,10 @@ func select_type():
 				print("Select ai boba")
 				avatar = $ai_boba
 				avatar.offset.y = 0
+			TT.TYPE.POISON_BOBA:
+				print("Select ai boba")
+				avatar = $ai_poison_boba
+				avatar.offset.y = 0
 	print("character class ", character.character_class)
 #	avatar.connect("animation_finished", self, '_on_animation_finished')
 	avatar.connect("frame_changed", self, "_on_frame_changed")
