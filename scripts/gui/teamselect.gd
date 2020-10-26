@@ -6,7 +6,7 @@ signal library_exhausted
 var characters = []
 var library = []
 var selected = 0
-
+var placeholder = load("res://scenes/character_controller.tscn").instance()
 onready var select = get_parent().get_parent().get_node("select")
 
 var portraits = {
@@ -15,21 +15,24 @@ var portraits = {
 	TT.TYPE.MAGE: "mage"
 }
 
+func set_spawn(where):
+	placeholder.translation = where
+	
 func set_characters(list):
 	library = list
 	characters = library.duplicate()
 	update_view()
 
 func _ready():
-	pass
+	get_tree().get_root().get_node("World/level/map").append_child(placeholder)
 
 func _process(delta):
 	if !visible:
 		return
 #	if select.animation != "fighter" and select.animation != "mage" and select.animation != "archer":
 #		select.play(atlas_frames[characters[selected].character_class])
-	$levelline2.set_point_position(1, Vector2(characters[selected].xp/characters[selected].xp_to_next*28, 0))
-	$hpline2.set_point_position(1, Vector2(characters[selected].hp/characters[selected].max_hp * 61, 0))
+	$levelline2.set_point_position(1, Vector2(characters[selected].xp/characters[selected].xp_to_next*35, 0))
+	$hpline2.set_point_position(1, Vector2(characters[selected].hp/characters[selected].max_hp * 80, 0))
 	if characters.size() == 1:
 		$Arrows.hide()
 	else:
@@ -62,6 +65,7 @@ func update_view():
 	$hp.text += "/" + str(characters[selected].max_hp)
 	$lvl.text =  "%02d" % characters[selected].level
 	$def.text =  "%02d" % int(round((characters[selected].def + characters[selected].item_def.defense)))
+	placeholder.from_libary(characters[selected])
 #	var current = characters[selected]
 	
 func _input(event):
@@ -76,6 +80,7 @@ func _input(event):
 		emit_signal("character_selected", characters[selected])
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
 		characters.remove(selected)
+		placeholder.hide()
 		if characters.size() == 0:
 			emit_signal("library_exhausted")
 			get_parent().arrow_hide()

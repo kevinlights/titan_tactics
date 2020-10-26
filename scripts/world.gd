@@ -294,6 +294,7 @@ func select_team():
 	$select.translation.y = 0.2
 	if Game.team.size() > 1:
 		gui.team_select(Game.team)
+		$gui/characterselect.set_spawn(player_spawns[0] + Vector3(0.5, 0.5, -0.5))
 	else:
 		auto_deploy_only_character()
 
