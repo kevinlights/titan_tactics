@@ -43,13 +43,13 @@ enum PERSONALITY {
 
 func sequence_cumulative(sequence, position):
 	var result = 0
-	for x in range(position):
+	for x in range(min(position, sequence.size())):
 		result += sequence[x]
 	return result
 
 func fibonacci_cumulative(position):
 	var result = 0
-	for x in range(position):
+	for x in range(min(position, fibonacci.size())):
 		result += fibonacci[x]
 	return result
 
