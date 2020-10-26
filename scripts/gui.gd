@@ -109,9 +109,8 @@ func level_up(diff, new_stats):
 	$sfx/level_up.play()
 	
 func battle(friendly, enemy):
-	if !$battle.visible:
-		$battle.set_entities(friendly, enemy)
-		$battle.show()
+	$battle.set_entities(friendly, enemy)
+	$battle.show()
 	
 func ally(friendly):
 	$ally.set_entities(friendly)

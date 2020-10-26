@@ -32,6 +32,8 @@ func _ready():
 
 func _process(delta):
 	if !visible:
+		if placeholder.visible:
+			placeholder.hide()
 		return
 #	if select.animation != "fighter" and select.animation != "mage" and select.animation != "archer":
 #		select.play(atlas_frames[characters[selected].character_class])
