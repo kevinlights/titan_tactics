@@ -55,17 +55,17 @@ const levels = [
 	},
 	{
 		"name": "The well is not well",
-		"scene": "level_1_3dtest",
+		"scene": "level_6_3d",
 		"music": "city" #ice
 	},
 	{
 		"name": "The hole is not whole",
-		"scene": "level_1_3dtest",
+		"scene": "level_7_3d",
 		"music": "city" #ice
 	},
 	{
 		"name": "Meat is murder. Delicious, delicious murder.",
-		"scene": "level_1_3dtest",
+		"scene": "level_8_3d",
 		"music": "city" #ice
 	},
 	{
