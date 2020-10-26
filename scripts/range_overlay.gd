@@ -1,15 +1,17 @@
 extends Spatial
 
 onready var materials = {
-	"move": preload("res://gfx/range-overlay/move_range_shader.material"),
-	"attack": preload("res://gfx/range-overlay/attack_range_shader.material"),
+	"move": preload("res://gfx/range-overlay/move.material"),
+	"attack": preload("res://gfx/range-overlay/attack.material"),
 }
 
 
 onready var world = get_tree().get_root().get_node("World")
+var overlayed_tiles = []
 var data
 var origin setget set_origin
 var gridmap setget set_gridmap
+
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
@@ -49,6 +51,9 @@ func _process(time):
 				generate_data(origin)
 
 func clear():
+	for tile in overlayed_tiles:
+		gridmap.set_tile_overlay(tile, '')
+	overlayed_tiles = []
 	for child in get_children():
 		child.queue_free()
 
@@ -63,26 +68,35 @@ func drawSqaure(location, material):
 
 func hide():
 	self.visible = false
+	clear()
 
 func show():
-	clear()
 	if not data:
 		return
+	clear()
 	self.visible = true
 	var context_map = {}
-	clear()
+	
 	for tile in gridmap.get_tiles_within(origin.tile, data.move_distance - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
-		var context;
-		if not context_map.has(context_tile):
-			context = world.get_current_context(context_tile)
-			context_map[context_tile] = context
-		else:
-			context = context_map[context_tile]
+		var context = world.get_current_context(context_tile)
+		context_map[context_tile] = context
+		
+		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK:
-			drawSqaure(tile, materials.attack)
-		if context == TT.CONTEXT.MOVE:
-			drawSqaure(tile, materials.move)
+			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+		elif context == TT.CONTEXT.MOVE:
+			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
+		if tile_overlay_success == true:
+			overlayed_tiles.push_back(tile)
+		elif tile_overlay_success == false:
+			# TODO: implement fallback using previous approach to handle bridges etc
+			print ('tile_overlay failed for ', tile)
+			if context == TT.CONTEXT.ATTACK:
+				drawSqaure(tile, materials.attack)
+			elif context == TT.CONTEXT.MOVE:
+				drawSqaure(tile, materials.move)
+
 	for tile in gridmap.get_tiles_within(origin.tile, data.atk_range - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context;
@@ -91,5 +105,13 @@ func show():
 			context_map[context_tile] = context
 		else:
 			context = context_map[context_tile]
+		
+		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK:
-			drawSqaure(tile, materials.attack)
+			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+		if tile_overlay_success == true:
+			overlayed_tiles.push_back(tile)
+		elif tile_overlay_success == false:
+			# TODO: implement fallback using previous approach to handle bridges etc
+			if context == TT.CONTEXT.ATTACK:
+				drawSqaure(tile, materials.attack)

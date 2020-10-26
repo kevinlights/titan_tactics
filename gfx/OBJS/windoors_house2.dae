@@ -3,23 +3,33 @@
   <asset>
     <contributor>
       <author>Blender User</author>
-      <authoring_tool>Blender 2.83.5 commit date:2020-08-19, commit time:06:07, hash:c2b144df395f</authoring_tool>
+      <authoring_tool>Blender 2.90.1 commit date:2020-09-23, commit time:06:43, hash:3e85bb34d0d7</authoring_tool>
     </contributor>
-    <created>2020-10-20T14:07:42</created>
-    <modified>2020-10-20T14:07:42</modified>
+    <created>2020-10-24T21:15:49</created>
+    <modified>2020-10-24T21:15:49</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_effects>
-    <effect id="windoors_house1-effect">
+    <effect id="windoors_house2-effect">
       <profile_COMMON>
+        <newparam sid="windoors_house2_png-surface">
+          <surface type="2D">
+            <init_from>windoors_house2_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="windoors_house2_png-sampler">
+          <sampler2D>
+            <source>windoors_house2_png-surface</source>
+          </sampler2D>
+        </newparam>
         <technique sid="common">
           <lambert>
             <emission>
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <color sid="diffuse">0.8 0.8 0.8 1</color>
+              <texture texture="windoors_house2_png-sampler" texcoord="Plane_004-mesh-map-0"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -29,17 +39,21 @@
       </profile_COMMON>
     </effect>
   </library_effects>
-  <library_images/>
+  <library_images>
+    <image id="windoors_house2_png" name="windoors_house2_png">
+      <init_from>windoors_house2.png</init_from>
+    </image>
+  </library_images>
   <library_materials>
-    <material id="windoors_house1-material" name="windoors_house1">
-      <instance_effect url="#windoors_house1-effect"/>
+    <material id="windoors_house2-material" name="windoors_house2">
+      <instance_effect url="#windoors_house2-effect"/>
     </material>
   </library_materials>
   <library_geometries>
     <geometry id="Plane_004-mesh" name="Plane.004">
       <mesh>
         <source id="Plane_004-mesh-positions">
-          <float_array id="Plane_004-mesh-positions-array" count="24">-0.01239424 -3.004957 0.03026336 1.995823 -3.004957 0.03026336 -0.01239424 -3.004957 2.030264 1.995823 -3.004957 2.030264 -0.5482686 -2.931439 0.4079986 -0.5482686 -0.2296283 0.4079986 -0.5482686 -2.931439 1.838817 -0.5482686 -0.2296283 1.838817</float_array>
+          <float_array id="Plane_004-mesh-positions-array" count="24">0.1873812 -3.00375 0.004859507 1.796048 -3.00375 0.004859507 0.1873812 -3.00375 2.328939 1.796048 -3.00375 2.328939 -0.5482686 -2.472022 0.4577441 -0.5482686 0.2297886 0.4577441 -0.5482686 -2.472022 1.888563 -0.5482686 0.2297886 1.888563</float_array>
           <technique_common>
             <accessor source="#Plane_004-mesh-positions-array" count="8" stride="3">
               <param name="X" type="float"/>
@@ -59,7 +73,7 @@
           </technique_common>
         </source>
         <source id="Plane_004-mesh-map-0">
-          <float_array id="Plane_004-mesh-map-0-array" count="24">0.8721203 0.03287971 0.4678444 0.4371557 0.4678445 0.03287971 0.6759724 1.002821 0.02362591 0.7135986 0.6759724 0.7135986 0.8721203 0.03287971 0.8721203 0.4371557 0.4678444 0.4371557 0.6759724 1.002821 0.02362591 1.002821 0.02362591 0.7135986</float_array>
+          <float_array id="Plane_004-mesh-map-0-array" count="24">0.8721203 0.03287971 0.4678444 0.5722942 0.4678445 0.03287971 0.680623 0.9726491 0.02827644 0.6190366 0.680623 0.6190366 0.8721203 0.03287971 0.8721203 0.5722942 0.4678444 0.5722942 0.680623 0.9726491 0.02827644 0.9726491 0.02827644 0.6190366</float_array>
           <technique_common>
             <accessor source="#Plane_004-mesh-map-0-array" count="12" stride="2">
               <param name="S" type="float"/>
@@ -70,7 +84,7 @@
         <vertices id="Plane_004-mesh-vertices">
           <input semantic="POSITION" source="#Plane_004-mesh-positions"/>
         </vertices>
-        <triangles material="windoors_house1-material" count="4">
+        <triangles material="windoors_house2-material" count="4">
           <input semantic="VERTEX" source="#Plane_004-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Plane_004-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Plane_004-mesh-map-0" offset="2" set="0"/>
@@ -80,20 +94,7 @@
     </geometry>
   </library_geometries>
   <library_visual_scenes>
-    <visual_scene id="Scene" name="Scene">
-      <node id="windoors_house1" name="windoors_house1" type="NODE">
-        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
-        <instance_geometry url="#Plane_004-mesh" name="windoors_house1">
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="windoors_house1-material" target="#windoors_house1-material">
-                <bind_vertex_input semantic="Plane_004-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
-              </instance_material>
-            </technique_common>
-          </bind_material>
-        </instance_geometry>
-      </node>
-    </visual_scene>
+    <visual_scene id="Scene" name="Scene"/>
   </library_visual_scenes>
   <scene>
     <instance_visual_scene url="#Scene"/>

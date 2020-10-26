@@ -1,6 +1,5 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=71 format=2]
 
-[ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap_pathfinder.gd" type="Script" id=2]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=3]
 [ext_resource path="res://gfx/swordsman.png" type="Texture" id=4]
@@ -18,6 +17,8 @@
 [ext_resource path="res://gfx/mage.png" type="Texture" id=16]
 [ext_resource path="res://scripts/status_effect.gd" type="Script" id=17]
 [ext_resource path="res://gfx/OBJS/desert.meshlib" type="MeshLibrary" id=18]
+[ext_resource path="res://scripts/playerspawner.gd" type="Script" id=19]
+[ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=20]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -62,7 +63,7 @@ defense = 1
 heal = 0
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=57]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
 character_class = 1
 name = "Shawn"
@@ -138,7 +139,7 @@ defense = 1
 heal = 0
 effect = SubResource( 11 )
 
-[sub_resource type="Resource" id=58]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 5 )
 character_class = 0
 name = "Rafe"
@@ -214,7 +215,7 @@ defense = 1
 heal = 1
 effect = SubResource( 18 )
 
-[sub_resource type="Resource" id=59]
+[sub_resource type="Resource" id=20]
 script = ExtResource( 5 )
 character_class = 2
 name = "Arie"
@@ -290,7 +291,7 @@ defense = 1
 heal = 0
 effect = SubResource( 25 )
 
-[sub_resource type="Resource" id=60]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 5 )
 character_class = 1
 name = "Norr"
@@ -366,7 +367,7 @@ defense = 1
 heal = 0
 effect = SubResource( 32 )
 
-[sub_resource type="Resource" id=61]
+[sub_resource type="Resource" id=34]
 script = ExtResource( 5 )
 character_class = 0
 name = "Silva"
@@ -404,14 +405,14 @@ text = ""
 branches = [  ]
 audio_theme = ""
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=37]
 script = ExtResource( 17 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=38]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
@@ -421,16 +422,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 42 )
+effect = SubResource( 37 )
 
-[sub_resource type="Resource" id=44]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 17 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=45]
+[sub_resource type="Resource" id=40]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 1
@@ -440,9 +441,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 44 )
+effect = SubResource( 39 )
 
-[sub_resource type="Resource" id=62]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 5 )
 character_class = 0
 name = "Nugat"
@@ -454,11 +455,11 @@ def = 1
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 43 )
-item_def = SubResource( 45 )
+item_atk = SubResource( 38 )
+item_def = SubResource( 40 )
 portrait_override = ""
 
-[sub_resource type="Resource" id=47]
+[sub_resource type="Resource" id=42]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -469,7 +470,7 @@ text = ""
 branches = [  ]
 audio_theme = ""
 
-[sub_resource type="Resource" id=48]
+[sub_resource type="Resource" id=43]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -480,14 +481,14 @@ text = ""
 branches = [  ]
 audio_theme = ""
 
-[sub_resource type="Resource" id=49]
+[sub_resource type="Resource" id=44]
 script = ExtResource( 17 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=50]
+[sub_resource type="Resource" id=45]
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 0
@@ -497,16 +498,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 49 )
+effect = SubResource( 44 )
 
-[sub_resource type="Resource" id=51]
+[sub_resource type="Resource" id=46]
 script = ExtResource( 17 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=52]
+[sub_resource type="Resource" id=47]
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 1
@@ -516,9 +517,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 51 )
+effect = SubResource( 46 )
 
-[sub_resource type="Resource" id=63]
+[sub_resource type="Resource" id=48]
 script = ExtResource( 5 )
 character_class = 1
 name = "Ozzy"
@@ -530,11 +531,11 @@ def = 1
 atk_range = 3
 mov_range = 6
 heal = 0
-item_atk = SubResource( 50 )
-item_def = SubResource( 52 )
+item_atk = SubResource( 45 )
+item_def = SubResource( 47 )
 portrait_override = ""
 
-[sub_resource type="Resource" id=54]
+[sub_resource type="Resource" id=49]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -545,7 +546,7 @@ text = ""
 branches = [  ]
 audio_theme = ""
 
-[sub_resource type="Resource" id=55]
+[sub_resource type="Resource" id=50]
 script = ExtResource( 10 )
 dialogue_id = ""
 portrait = 0
@@ -556,7 +557,7 @@ text = ""
 branches = [  ]
 audio_theme = ""
 
-[sub_resource type="Resource" id=56]
+[sub_resource type="Resource" id=51]
 script = ExtResource( 8 )
 equipment_slot = 0
 level = 1
@@ -574,16 +575,16 @@ mesh_library = ExtResource( 18 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
-"cells": PoolIntArray( 0, 0, 3, 1, 0, 1073741827, 2, 0, -1073741821, 3, 0, 3, 4, 0, 3, 5, 0, 1073741827, 6, 0, 3, 7, 0, 3, 8, 0, 3, 9, 0, -1073741821, 10, 0, -1610612733, 11, 0, 3, 12, 0, 3, 13, 0, -1073741821, 14, 0, -1610612733, 15, 0, 3, 16, 0, 3, 17, 0, 3, 18, 0, 536870915, 65540, 0, 655366, 65549, 0, 655372, 0, 1, 3, 1, 1, -1073741821, 2, 1, 3, 3, 1, 3, 4, 1, 3, 5, 1, 3, 6, 1, 3, 7, 1, 1073741827, 8, 1, 3, 9, 1, -1073741821, 10, 1, 1073741827, 11, 1, 3, 12, 1, 3, 13, 1, 3, 14, 1, -1610612733, 15, 1, -1610612733, 16, 1, -1610612733, 17, 1, -1610612733, 18, 1, 3, 131075, 1, -1073741812, 0, 2, 3, 1, 2, 3, 2, 2, 1073741827, 3, 2, 3, 4, 2, 3, 5, 2, 3, 6, 2, 3, 7, 2, 3, 8, 2, 1073741827, 9, 2, 1073741827, 10, 2, 3, 11, 2, -1073741821, 12, 2, 3, 13, 2, -1073741821, 14, 2, -1610612733, 15, 2, 3, 16, 2, -1610612733, 17, 2, 3, 18, 2, 536870915, 65548, 2, 16, 131074, 2, 537526276, 131075, 2, 537526276, 131076, 2, 655364, 131077, 2, 537526276, 131078, 2, 537526273, 131081, 2, -1609564156, 131083, 2, 1048580, 131085, 2, 537919492, 131087, 2, 537919492, 0, 3, -1073741821, 1, 3, -1073741821, 2, 3, 3, 3, 3, 3, 4, 3, 3, 5, 3, 3, 6, 3, 3, 7, 3, 3, 8, 3, 3, 9, 3, 3, 10, 3, 3, 11, 3, 3, 12, 3, 3, 13, 3, 3, 14, 3, 536870915, 15, 3, 3, 16, 3, -1610612733, 17, 3, 3, 18, 3, 536870915, 131073, 3, 12, 131076, 3, 1048592, 131081, 3, 1048580, 131083, 3, 536870912, 131084, 3, 537526276, 131085, 3, 537919488, 131087, 3, -1609564156, -65530, 3, 8, -65529, 3, 8, -65528, 3, 8, -65527, 3, 8, -65526, 3, 8, -65525, 3, 8, -65524, 3, 8, -65523, 3, 8, 0, 4, 3, 1, 4, 3, 2, 4, 3, 3, 4, 3, 4, 4, 3, 5, 4, 3, 6, 4, 3, 7, 4, 3, 8, 4, 3, 9, 4, 3, 10, 4, 3, 11, 4, 3, 12, 4, 3, 13, 4, 3, 14, 4, 3, 15, 4, 536870915, 16, 4, 3, 17, 4, 3, 18, 4, 3, 131073, 4, -1609957372, 131074, 4, 537526276, 131075, 4, 655364, 131076, 4, 655364, 131077, 4, 655361, 131081, 4, 1048580, 131087, 4, 537919492, -65536, 4, 1441798, -65530, 4, 8, -65529, 4, 8, -65528, 4, 8, -65527, 4, 8, -65526, 4, 8, -65525, 4, 8, -65524, 4, 8, -65523, 4, 8, 0, 5, 3, 1, 5, 3, 2, 5, 3, 3, 5, 3, 4, 5, 3, 5, 5, 3, 6, 5, 3, 7, 5, 3, 8, 5, 3, 9, 5, 3, 10, 5, 3, 11, 5, 3, 12, 5, 3, 13, 5, 3, 14, 5, 3, 15, 5, -1610612733, 16, 5, 3, 17, 5, 3, 18, 5, 3, 131076, 5, 1441808, 131081, 5, 1048580, 131083, 5, 13, 131084, 5, 13, 131085, 5, 13, 131087, 5, 537919492, -65530, 5, 8, -65529, 5, 536870920, -65528, 5, 1441800, -65527, 5, 1441800, -65526, 5, 1441800, -65525, 5, 1075183624, -65524, 5, 1441800, -65523, 5, -1072300024, 0, 6, 1073741827, 1, 6, 1073741827, 2, 6, 1073741827, 3, 6, -1073741821, 4, 6, 3, 5, 6, -1073741821, 6, 6, 1073741827, 7, 6, 3, 8, 6, 3, 9, 6, 3, 10, 6, -1073741821, 11, 6, 1073741827, 12, 6, 1073741827, 13, 6, -1073741821, 14, 6, 3, 15, 6, 3, 16, 6, 3, 17, 6, 3, 18, 6, 3, 131081, 6, 536870912, 131082, 6, 537526276, 131083, 6, 537526273, 131085, 6, 538312705, 131086, 6, 537526276, 131087, 6, -1609564160, -65530, 6, 8, -65529, 6, 8, -65526, 6, 1075183624, 0, 7, 1073741827, 1, 7, -1073741821, 2, 7, -1073741821, 3, 7, 3, 4, 7, 3, 5, 7, 3, 6, 7, -1073741821, 7, 7, 3, 8, 7, 3, 9, 7, 3, 10, 7, -1073741821, 11, 7, 3, 12, 7, 1073741827, 13, 7, -1073741821, 14, 7, 3, 15, 7, 3, 16, 7, -1073741821, 17, 7, 3, 18, 7, 3, 131073, 7, 1075183626, 131083, 7, 537919492, 131084, 7, 1441804, 131085, 7, 537919492, 0, 8, 1073741827, 1, 8, 3, 2, 8, -1073741821, 3, 8, -1073741821, 4, 8, 1073741827, 5, 8, 3, 6, 8, 3, 7, 8, 3, 8, 8, -1073741821, 9, 8, -1073741821, 10, 8, 3, 11, 8, 3, 12, 8, -1073741821, 13, 8, 1073741827, 14, 8, -1610612733, 15, 8, -1610612733, 16, 8, 3, 17, 8, -1610612733, 18, 8, 536870915, 131076, 8, 12, 131077, 8, 537526274, 0, 9, 3, 1, 9, 3, 2, 9, 3, 3, 9, 3, 4, 9, 3, 5, 9, 3, 6, 9, 3, 7, 9, 1073741827, 8, 9, 1073741827, 9, 9, -1073741821, 10, 9, 3, 11, 9, 3, 12, 9, 3, 13, 9, -1073741821, 14, 9, 1073741827, 15, 9, 3, 16, 9, -1610612733, 17, 9, 536870915, 18, 9, 3, 131088, 9, 537526274, 0, 10, 1073741827, 1, 10, 1073741827, 2, 10, 3, 3, 10, -1073741821, 4, 10, -1073741821, 5, 10, 3, 6, 10, 3, 7, 10, 3, 8, 10, 3, 9, 10, 3, 10, 10, -1073741821, 11, 10, 1073741827, 12, 10, -1073741821, 13, 10, 1073741827, 14, 10, 536870915, 15, 10, 3, 16, 10, -1610612733, 17, 10, 3, 18, 10, 3, 131074, 10, 537526274, 0, 11, 3, 1, 11, -1073741821, 2, 11, -1073741821, 3, 11, 3, 4, 11, 1073741827, 5, 11, 3, 6, 11, 1073741827, 7, 11, 3, 8, 11, -1073741821, 9, 11, 1073741827, 10, 11, -1073741821, 11, 11, -1073741821, 12, 11, 3, 13, 11, -1073741821, 14, 11, 3, 15, 11, 3, 16, 11, -1610612733, 17, 11, 3, 18, 11, 536870915, 131076, 11, -1072300022, 131083, 11, 10, 0, 12, 3, 1, 12, 3, 2, 12, -1073741821, 3, 12, 3, 4, 12, 3, 5, 12, 3, 6, 12, 3, 7, 12, 1073741827, 8, 12, 3, 9, 12, 3, 10, 12, 1073741827, 11, 12, 3, 12, 12, 3, 13, 12, 1073741827, 14, 12, 3, 15, 12, -1610612733, 16, 12, -1610612733, 17, 12, -1610612733, 18, 12, 3, 131085, 12, 537526274, 0, 13, 3, 1, 13, 3, 2, 13, 3, 3, 13, 3, 4, 13, 3, 5, 13, 3, 6, 13, 3, 7, 13, 3, 8, 13, 3, 9, 13, 3, 10, 13, 3, 11, 13, 3, 12, 13, 3, 13, 13, 3, 14, 13, 3, 15, 13, -1073741821, 16, 13, 3, 17, 13, 536870915, 18, 13, 536870915, 131075, 13, 10, 131083, 13, 1441802, 0, 14, 3, 1, 14, 3, 2, 14, 3, 3, 14, 3, 4, 14, 3, 5, 14, 3, 6, 14, 3, 7, 14, 3, 8, 14, 3, 9, 14, 3, 10, 14, 3, 11, 14, 3, 12, 14, 3, 13, 14, 3, 14, 14, 3, 15, 14, -1610612733, 16, 14, 3, 17, 14, -1610612733, 18, 14, 536870915, 131084, 65533, 655379 )
+"cells": PoolIntArray( 0, 0, 3, 1, 0, -1073741821, 2, 0, 3, 3, 0, 3, 4, 0, -536870909, 5, 0, 3, 6, 0, 3, 7, 0, -1073741821, 8, 0, 3, 9, 0, 3, 10, 0, -1073741821, 11, 0, 3, 12, 0, -1073741821, 13, 0, 536870915, 14, 0, -536870909, 15, 0, 3, 16, 0, 3, 17, 0, 3, 18, 0, 1610612739, 65540, 0, -536215546, 65549, 0, -1609957364, 0, 1, 536870915, 1, 1, 3, 2, 1, 3, 3, 1, 3, 4, 1, 1610612739, 5, 1, 1610612739, 6, 1, -1073741821, 7, 1, 3, 8, 1, 536870915, 9, 1, -2147483645, 10, 1, 1073741827, 11, 1, 3, 12, 1, 536870915, 13, 1, -1073741821, 14, 1, 1073741827, 15, 1, -536870909, 16, 1, -2147483645, 17, 1, -1610612733, 18, 1, 1610612739, 131075, 1, -1073741812, 0, 2, 1610612739, 1, 2, 3, 2, 2, -1073741821, 3, 2, 536870915, 4, 2, -2147483645, 5, 2, -1073741821, 6, 2, 3, 7, 2, -536870909, 8, 2, 1073741827, 9, 2, 536870915, 10, 2, 3, 11, 2, -536870909, 12, 2, -536870909, 13, 2, -536870909, 14, 2, 1610612739, 15, 2, -536870909, 16, 2, -1073741821, 17, 2, 1073741827, 18, 2, -1610612733, 65548, 2, -1073741808, 131074, 2, -1609957372, 131075, 2, -1609957372, 131076, 2, 655364, 131077, 2, 655364, 131078, 2, -1609957375, 131081, 2, 537919492, 131083, 2, -1609564156, 131085, 2, -2146435068, 131087, 2, 1074790404, 0, 3, 1610612739, 1, 3, -1073741821, 2, 3, -536870909, 3, 3, -1073741821, 4, 3, -536870909, 5, 3, 3, 6, 3, 536870915, 7, 3, 3, 8, 3, 3, 9, 3, 1073741827, 10, 3, -536870909, 11, 3, 3, 12, 3, 3, 13, 3, 3, 14, 3, 3, 15, 3, -2147483645, 16, 3, 3, 17, 3, -2147483645, 18, 3, 1610612739, 131073, 3, 1610612748, 131076, 3, -535822320, 131081, 3, 1074790404, 131083, 3, 0, 131084, 3, -2146828284, 131085, 3, 1048576, 131087, 3, 1048580, -65530, 3, -1073741816, -65529, 3, -1073741816, -65528, 3, 8, -65527, 3, 1073741832, -65526, 3, 1073741832, -65525, 3, 8, -65524, 3, -536870904, -65523, 3, 1610612744, 0, 4, 536870915, 1, 4, 1073741827, 2, 4, -1610612733, 3, 4, 3, 4, 4, 3, 5, 4, -536870909, 6, 4, 536870915, 7, 4, 536870915, 8, 4, -536870909, 9, 4, 1073741827, 10, 4, 3, 11, 4, 1610612739, 12, 4, 3, 13, 4, 3, 14, 4, -2147483645, 15, 4, -536870909, 16, 4, 3, 17, 4, 3, 18, 4, 3, 131073, 4, 655364, 131074, 4, 1611268100, 131075, 4, -1073086460, 131076, 4, 655364, 131077, 4, -1073086463, 131081, 4, -1072693244, 131087, 4, 1074790404, -65536, 4, -1609170938, -65530, 4, 1610612744, -65529, 4, 1610612744, -65528, 4, 8, -65527, 4, 8, -65526, 4, 1073741832, -65525, 4, 1073741832, -65524, 4, -1073741816, -65523, 4, 8, 0, 5, 3, 1, 5, -2147483645, 2, 5, 1610612739, 3, 5, 536870915, 4, 5, 3, 5, 5, 3, 6, 5, 3, 7, 5, 3, 8, 5, 3, 9, 5, 3, 10, 5, 3, 11, 5, 3, 12, 5, 3, 13, 5, 3, 14, 5, 536870915, 15, 5, 3, 16, 5, -1073741821, 17, 5, 3, 18, 5, 3, 131076, 5, 1441808, 131081, 5, 1048580, 131083, 5, 536870925, 131084, 5, -536870899, 131085, 5, 1610612749, 131087, 5, 1048580, -65530, 5, 8, -65529, 5, 536870920, -65528, 5, 1441800, -65527, 5, 1441800, -65526, 5, 1441800, -65525, 5, 1441800, -65524, 5, 1612054536, -65523, 5, 1441800, 0, 6, 3, 1, 6, 3, 2, 6, 3, 3, 6, 1610612739, 4, 6, 536870915, 5, 6, 3, 6, 6, 3, 7, 6, 3, 8, 6, 3, 9, 6, 3, 10, 6, 3, 11, 6, 3, 12, 6, 1073741827, 13, 6, 3, 14, 6, 3, 15, 6, -1073741821, 16, 6, 3, 17, 6, 3, 18, 6, 3, 131081, 6, 0, 131082, 6, 655364, 131083, 6, 655361, 131085, 6, 1441793, 131086, 6, 655364, 131087, 6, 1048576, -65530, 6, 8, -65529, 6, -536870904, -65526, 6, -1072300024, 0, 7, 3, 1, 7, 3, 2, 7, 3, 3, 7, 3, 4, 7, 3, 5, 7, 3, 6, 7, 3, 7, 7, 3, 8, 7, 3, 9, 7, 3, 10, 7, 3, 11, 7, 3, 12, 7, 3, 13, 7, 3, 14, 7, 3, 15, 7, 3, 16, 7, 3, 17, 7, 3, 18, 7, 3, 131073, 7, 1441802, 131083, 7, 1048580, 131084, 7, 1441804, 131085, 7, 1048580, 0, 8, 3, 1, 8, 3, 2, 8, 3, 3, 8, 3, 4, 8, 3, 5, 8, 3, 6, 8, 3, 7, 8, 3, 8, 8, 3, 9, 8, 3, 10, 8, 3, 11, 8, 3, 12, 8, 3, 13, 8, 3, 14, 8, 3, 15, 8, 3, 16, 8, 3, 17, 8, 3, 18, 8, 3, 131076, 8, 12, 131077, 8, 655362, 0, 9, 3, 1, 9, 3, 2, 9, 3, 3, 9, 3, 4, 9, 3, 5, 9, 3, 6, 9, 3, 7, 9, 3, 8, 9, 3, 9, 9, 3, 10, 9, 3, 11, 9, 3, 12, 9, 3, 13, 9, 3, 14, 9, 3, 15, 9, 3, 16, 9, 3, 17, 9, 3, 18, 9, 3, 131088, 9, 655362, 0, 10, 3, 1, 10, 3, 2, 10, 3, 3, 10, 3, 4, 10, 3, 5, 10, 3, 6, 10, 3, 7, 10, 3, 8, 10, 3, 9, 10, 3, 10, 10, 3, 11, 10, 3, 12, 10, 3, 13, 10, 3, 14, 10, 3, 15, 10, 3, 16, 10, 3, 17, 10, 3, 18, 10, 3, 131074, 10, 655362, 0, 11, 3, 1, 11, 3, 2, 11, 3, 3, 11, 3, 4, 11, 3, 5, 11, 3, 6, 11, 3, 7, 11, 3, 8, 11, 3, 9, 11, 3, 10, 11, 3, 11, 11, 3, 12, 11, 3, 13, 11, 3, 14, 11, 3, 15, 11, 3, 16, 11, 3, 17, 11, 3, 18, 11, 3, 131076, 11, 1441802, 131083, 11, 10, 0, 12, 3, 1, 12, 3, 2, 12, 3, 3, 12, 3, 4, 12, 3, 5, 12, 3, 6, 12, 3, 7, 12, 3, 8, 12, 3, 9, 12, 3, 10, 12, 3, 11, 12, 3, 12, 12, 3, 13, 12, 1610612739, 14, 12, 3, 15, 12, 3, 16, 12, 3, 17, 12, 3, 18, 12, 3, 131085, 12, 655362, 0, 13, 3, 1, 13, 3, 2, 13, 3, 3, 13, 3, 4, 13, 3, 5, 13, 3, 6, 13, 3, 7, 13, 3, 8, 13, 3, 9, 13, 3, 10, 13, 3, 11, 13, 3, 12, 13, 3, 13, 13, 3, 14, 13, 3, 15, 13, 3, 16, 13, 3, 17, 13, 3, 18, 13, 3, 131075, 13, 10, 131083, 13, 1441802, 0, 14, 3, 1, 14, 3, 2, 14, 3, 3, 14, 3, 4, 14, 3, 5, 14, 3, 6, 14, 3, 7, 14, 3, 8, 14, 3, 9, 14, 3, 10, 14, 3, 11, 14, 3, 12, 14, 3, 13, 14, 3, 14, 14, 3, 15, 14, 3, 16, 14, 536870915, 17, 14, 3, 18, 14, 3, 131084, 65533, 655379 )
 }
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 6, 0, -9 )
+"_editor_floor_": Vector3( 6, 2, -9 )
 }
 
 [node name="decorative" type="GridMap" parent="Spatial"]
-mesh_library = ExtResource( 1 )
+mesh_library = ExtResource( 18 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
@@ -595,11 +596,6 @@ __meta__ = {
 }
 
 [node name="map" type="Spatial" parent="."]
-
-[node name="PlayerSpawner" type="Position3D" parent="map" groups=[
-"player_spawns",
-]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46973, -0.336, 13.5 )
 
 [node name="StoryMarker" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.2, 2.14962 )
@@ -623,7 +619,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 15 )
 script = ExtResource( 3 )
-stats = SubResource( 57 )
+stats = SubResource( 6 )
 dialogue = SubResource( 7 )
 recruit_dialogue = SubResource( 8 )
 
@@ -633,7 +629,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 58 )
+stats = SubResource( 13 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
 
@@ -643,7 +639,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 59 )
+stats = SubResource( 20 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
 
@@ -653,7 +649,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 15 )
 script = ExtResource( 3 )
-stats = SubResource( 60 )
+stats = SubResource( 27 )
 dialogue = SubResource( 28 )
 recruit_dialogue = SubResource( 29 )
 
@@ -663,7 +659,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 61 )
+stats = SubResource( 34 )
 dialogue = SubResource( 35 )
 recruit_dialogue = SubResource( 36 )
 
@@ -673,9 +669,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 62 )
-dialogue = SubResource( 47 )
-recruit_dialogue = SubResource( 48 )
+stats = SubResource( 41 )
+dialogue = SubResource( 42 )
+recruit_dialogue = SubResource( 43 )
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.347, 5 )
@@ -683,12 +679,44 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 15 )
 script = ExtResource( 3 )
-stats = SubResource( 63 )
-dialogue = SubResource( 54 )
-recruit_dialogue = SubResource( 55 )
+stats = SubResource( 48 )
+dialogue = SubResource( 49 )
+recruit_dialogue = SubResource( 50 )
 
 [node name="ChestSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 1 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-item_spawner = SubResource( 56 )
+item_spawner = SubResource( 51 )
+
+[node name="PlayerSpawner" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, 13 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 20 )
+script = ExtResource( 19 )
+
+[node name="PlayerSpawner2" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.2, 13 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 20 )
+script = ExtResource( 19 )
+
+[node name="PlayerSpawner3" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.2, 14 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 20 )
+script = ExtResource( 19 )
+
+[node name="PlayerSpawner4" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 14 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 20 )
+script = ExtResource( 19 )
