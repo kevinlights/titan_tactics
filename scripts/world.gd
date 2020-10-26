@@ -88,8 +88,20 @@ func spawn_character(x, y, type = TT.TYPE.MAGE, control = TT.CONTROL.PLAYER):
 	world_map.add_child(character)
 	return character
 
+func resume():
+	gui.paused = false
+	if current_turn  == TT.CONTROL.AI:
+		print("resume ai turn")
+		gui.modal = true
+		ai.play()
+	else:
+		if not game_over:
+			print("resume player turn")
+			gui.modal = false
+			$select.enable()
+
 func advance_turn(explicit = 1, direction = 1):
-	if game_over:
+	if game_over or gui.paused:
 		return
 	num_done = 0
 	for character_check in current[current_turn]:
@@ -117,6 +129,8 @@ func advance_turn(explicit = 1, direction = 1):
 			print("explicit enable")
 			$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
+	if current_turn == TT.CONTROL.PLAYER:
+		$range_overlay.set_origin(get_current())
 
 func find_story_marker(name):
 	var markers = get_tree().get_nodes_in_group("story_markers")
@@ -252,6 +266,7 @@ func _ready():
 	gui.get_node("win").connect("next", self, "_on_next_level")
 	gui.get_node("win").connect("retry", self, "_on_replay")
 	gui.get_node("lose").connect("retry", self, "_on_replay")
+	gui.get_node("pause").connect("resume", self, "resume")
 	$select.connect("moved", self, "_on_selector_moved")
 
 	call_deferred("select_team")
@@ -294,10 +309,9 @@ func select_team():
 	$select.translation.y = 0.2
 	if Game.team.size() > 1:
 		gui.team_select(Game.team)
-		$gui/characterselect.set_spawn(player_spawns[0]) # + Vector3(0.5, 0.5, -0.5))
+		$gui/characterselect.set_spawn(player_spawns[0])
 	else:
 		auto_deploy_only_character()
-
 
 func _on_dialogue_complete(content):
 	gui.back()

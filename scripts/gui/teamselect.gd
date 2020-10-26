@@ -86,6 +86,7 @@ func _input(event):
 		emit_signal("character_selected", characters[selected])
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
 		characters.remove(selected)
+		selected = 0
 		placeholder.hide()
 		if characters.size() == 0:
 			emit_signal("library_exhausted")

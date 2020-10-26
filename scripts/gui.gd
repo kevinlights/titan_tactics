@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var active = false
 var modal = false setget _set_modal, _get_modal
+var paused = false
 
 var exempt = [ "sfx", "playerturn", "enemyturn" ]
 
@@ -179,6 +180,7 @@ func pause():
 	$sfx/select.play()
 	self.modal = true
 	active = true
+	paused = true
 	$pause.show_dialog()
 
 func close(dialog):
@@ -186,6 +188,7 @@ func close(dialog):
 	get_node(dialog).hide()
 
 func back():
+	paused = false
 	active = false
 	self.modal = false
 	for dialog in get_children():
