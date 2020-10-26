@@ -254,7 +254,7 @@ func _ready():
 	gui.get_node("lose").connect("retry", self, "_on_replay")
 	$select.connect("moved", self, "_on_selector_moved")
 
-	select_team()
+	call_deferred("select_team")
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")
@@ -294,7 +294,7 @@ func select_team():
 	$select.translation.y = 0.2
 	if Game.team.size() > 1:
 		gui.team_select(Game.team)
-		$gui/characterselect.set_spawn(player_spawns[0] + Vector3(0.5, 0.5, -0.5))
+		$gui/characterselect.set_spawn(player_spawns[0]) # + Vector3(0.5, 0.5, -0.5))
 	else:
 		auto_deploy_only_character()
 

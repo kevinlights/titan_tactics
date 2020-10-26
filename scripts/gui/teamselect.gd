@@ -16,15 +16,19 @@ var portraits = {
 }
 
 func set_spawn(where):
-	placeholder.translation = where
-	
+	placeholder.teleport(where.x, where.z - 1)
+		
 func set_characters(list):
 	library = list
 	characters = library.duplicate()
+	if not placeholder.get_parent():
+		print("Adding placeholder to map")
+		get_tree().get_root().get_node("World").add_child(placeholder)
 	update_view()
 
 func _ready():
-	get_tree().get_root().get_node("World/level/map").append_child(placeholder)
+	pass
+#	get_tree().get_root().get_node("World").world_map.append_child(placeholder)
 
 func _process(delta):
 	if !visible:
@@ -65,7 +69,7 @@ func update_view():
 	$hp.text += "/" + str(characters[selected].max_hp)
 	$lvl.text =  "%02d" % characters[selected].level
 	$def.text =  "%02d" % int(round((characters[selected].def + characters[selected].item_def.defense)))
-	placeholder.from_libary(characters[selected])
+	placeholder.from_library(characters[selected])
 #	var current = characters[selected]
 	
 func _input(event):
@@ -73,9 +77,11 @@ func _input(event):
 		return
 	select.disable()
 	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
-		selected += 1
+		selected = clamp(selected + 1, 0, characters.size() - 1)
+		update_view()
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
-		selected -= 1		
+		selected = clamp(selected - 1, 0, characters.size() - 1)
+		update_view()
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
 		emit_signal("character_selected", characters[selected])
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
@@ -86,6 +92,4 @@ func _input(event):
 			get_parent().arrow_hide()
 			get_parent().active = false
 			return
-	selected = clamp(selected, 0, characters.size() - 1)
-	update_view()
 	

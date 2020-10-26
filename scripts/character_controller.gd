@@ -24,6 +24,8 @@ var healthbar
 var last_target
 var is_done = false
 
+var initialized = false
+
 var dialogue
 var recruit_dialogue
 var dialogue_used = false
@@ -302,6 +304,8 @@ func select_type():
 	
 	# cast
 	$kris.hide()
+	if avatar:
+		avatar.hide()
 	if character.control == TT.CONTROL.PLAYER:
 		print("Character portrait ", character.portrait_override)
 		if character.portrait_override and character.portrait_override != "" and has_node(character.portrait_override):
@@ -406,10 +410,11 @@ func _on_orientation_changed():
 	avatar.play("idle-" +  directions[Game.camera_orientation][movement.last_direction])
 
 func init_common(control):
+	if initialized:
+		return
+	initialized = true
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
 	healthbar = load("res://scenes/healthbar.tscn").instance()
-#	healthbar.translation.x = 0
-#	healthbar.translation.z = -5
 	healthbar.set_value(character.hp, character.max_hp)
 	if control == TT.CONTROL.PLAYER:
 		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
