@@ -33,7 +33,7 @@ __meta__ = {
 }
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.0627451, 0.0627451, 0.0705882, 0.54902 )
+color = Color( 0.0627451, 0.0627451, 0.0705882, 0.921569 )
 polygon = PoolVector2Array( 0, 0, 0, 224, 320, 224, 320, 0 )
 
 [node name="role" type="Label" parent="."]
@@ -110,10 +110,10 @@ custom_constants/shadow_offset_x = 1
 custom_constants/line_spacing = 9
 custom_constants/shadow_offset_y = 1
 text = "Romaselli
-Federico Calchera
 Dieg Barcellos
 Marcelo Cabral
 TheZakMan
+Federico Calchera
 Quitandeiro"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -157,7 +157,10 @@ margin_bottom = 217.0
 focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "OK"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,5 +172,6 @@ position = Vector2( 0, 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D"]
 position = Vector2( 137.747, 193.947 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 centered = false
