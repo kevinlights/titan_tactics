@@ -171,21 +171,21 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
 [sub_resource type="AtlasTexture" id=25]
 flags = 16
 atlas = ExtResource( 41 )
-region = Rect2( 16, 32, 16, 16 )
+region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 flags = 16
@@ -195,7 +195,7 @@ region = Rect2( 16, 0, 16, 16 )
 [sub_resource type="AtlasTexture" id=27]
 flags = 16
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
 flags = 16
@@ -206,7 +206,7 @@ region = Rect2( 16, 48, 16, 16 )
 animations = [ {
 "frames": [ SubResource( 25 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ) ],
@@ -216,7 +216,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 27 ) ],
 "loop": true,
-"name": "archer",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 28 ) ],
@@ -252,14 +252,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
-"speed": 3.0
-}, {
 "frames": [ SubResource( 32 ), SubResource( 33 ) ],
 "loop": true,
 "name": "down",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -2371,7 +2371,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 centered = false
 
@@ -2396,7 +2395,6 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 
@@ -2819,6 +2817,7 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -2830,7 +2829,6 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -3136,7 +3134,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3161,7 +3158,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3170,6 +3166,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 103 )
+frame = 2
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -3194,7 +3191,7 @@ __meta__ = {
 }
 
 [node name="level_popup" type="Sprite" parent="lvlup"]
-position = Vector2( 47.5, 43.5 )
+position = Vector2( 47.5, 44 )
 texture = ExtResource( 36 )
 
 [node name="new_atk" type="Label" parent="lvlup"]
@@ -3204,7 +3201,7 @@ margin_right = 98.0
 margin_bottom = 52.0
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 104 )
-custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -3236,7 +3233,7 @@ margin_right = 99.0
 margin_bottom = 66.0
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 104 )
-custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -3252,7 +3249,7 @@ margin_right = 99.0
 margin_bottom = 80.0
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 104 )
-custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -3268,7 +3265,7 @@ margin_right = 47.0
 margin_bottom = 52.0
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 104 )
-custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -3284,7 +3281,7 @@ margin_right = 47.0
 margin_bottom = 66.0
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 104 )
-custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -3300,7 +3297,7 @@ margin_right = 48.0
 margin_bottom = 106.0
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 104 )
-custom_colors/font_color = Color( 0.917647, 1, 0.866667, 1 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -3352,7 +3349,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3391,7 +3387,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 58.1062 )
 frames = SubResource( 103 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
@@ -3466,6 +3462,7 @@ __meta__ = {
 visible = false
 position = Vector2( -6, -5 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3492,6 +3489,7 @@ __meta__ = {
 visible = false
 position = Vector2( -4, -16 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -3571,6 +3569,7 @@ __meta__ = {
 visible = false
 position = Vector2( -5, 4 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3596,6 +3595,7 @@ __meta__ = {
 visible = false
 position = Vector2( -6, 4 )
 frames = SubResource( 207 )
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
