@@ -113,7 +113,7 @@ func can_attack_from(position, attacker, victim):
 	return i_can_attack
 
 func get_path_to(character, target, max_length):
-	var path = world.pathfinder.find_path(character.tile, target.tile)
+	var path = world.pathfinder.find_path(character.tile, target.tile, world.get_blocked_cells())
 	path = shorten_to_atk_range(path, character, target)
 	var fixed_path = normalize_path(path, max_length)
 	# prevent landing on a tile that has someone on it

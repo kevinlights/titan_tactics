@@ -67,7 +67,7 @@ func perform_action(item):
 	if item.action == "move":
 		var marker = world.find_story_marker(item.target)
 		var character = world.get_current()
-		var path = world.pathfinder.find_path(character.translation, marker.translation)
+		var path = world.pathfinder.find_path(character.translation, marker.translation, world.get_blocked_cells())
 		character.connect("path_complete", self, "advance", [], CONNECT_ONESHOT)
 		character.move(path)
 	index += 1

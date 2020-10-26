@@ -80,7 +80,7 @@ func play():
 
 
 func get_path_to(start, end, max_length, character):
-	var path = world.pathfinder.find_path(start, end)
+	var path = world.pathfinder.find_path(start, end, world.get_blocked_cells())
 	path = shorten_to_atk_range(path, character)
 	var fixed_path = normalize_path(path, max_length)
 	# prevent landing on a tile that has someone on it
