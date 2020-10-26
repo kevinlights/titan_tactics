@@ -46,37 +46,37 @@ const levels = [
 	{
 		"name": "We all scream for ice cream",
 		"scene": "level_4_3d",
-		"music": "cave"
+		"music": "cave" #desert
 	},
 	{
 		"name": "Viva la libertad",
-		"scene": "level_1_3dtest",
-		"music": "cave"
+		"scene": "level_5_3d",
+		"music": "cave" #desert
 	},
 	{
 		"name": "The well is not well",
 		"scene": "level_1_3dtest",
-		"music": "cave"
+		"music": "city" #ice
 	},
 	{
 		"name": "The hole is not whole",
 		"scene": "level_1_3dtest",
-		"music": "cave"
+		"music": "city" #ice
 	},
 	{
 		"name": "Meat is murder. Delicious, delicious murder.",
 		"scene": "level_1_3dtest",
-		"music": "city"
+		"music": "city" #ice
 	},
 	{
 		"name": "The end of the rainbow",
-		"scene": "level_1_3dtest",
-		"music": "city"
+		"scene": "level_9_3d",
+		"music": "cave" #desert
 	},
 	{
 		"name": "The pot of gold",
-		"scene": "level_1_3dtest",
-		"music": "city"
+		"scene": "level_10_3d",
+		"music": "cave" #desert
 	}
 ]
 #const levels = {
