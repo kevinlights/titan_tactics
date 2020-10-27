@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cs4_calm_theme.ogg-bf777a912c6636c0e8a43ab1a6d30b21.oggstr"
+
+[deps]
+
+source_file="res://music/cs4_calm_theme.ogg"
+dest_files=[ "res://.import/cs4_calm_theme.ogg-bf777a912c6636c0e8a43ab1a6d30b21.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

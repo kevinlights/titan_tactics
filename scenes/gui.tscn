@@ -180,11 +180,11 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 41 )
@@ -198,12 +198,12 @@ region = Rect2( 16, 48, 16, 16 )
 animations = [ {
 "frames": [ SubResource( 25 ) ],
 "loop": true,
-"name": "archer",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 27 ) ],
@@ -3631,10 +3631,11 @@ volume_db = -5.0
 
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
+volume_db = -1.0
 
 [node name="level_up" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 13 )
-volume_db = -3.5
+volume_db = -3.0
 
 [node name="dialogue_questions" parent="." instance=ExtResource( 51 )]
 visible = false
