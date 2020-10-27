@@ -116,12 +116,6 @@ func _generate_overlayed_tiles():
 			'_attack': attack_id,
 		}
 	
-func _remove_most_cells():
-	var keep = [Vector2(-1,-1), Vector2(0,0), Vector2(0, -2), Vector2(-1, -3)]
-	for cell in get_used_cells():
-		if keep.find(Vector2(cell.x, cell.z)) == -1:
-			set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
-
 func world_path(path:PoolVector3Array):
 	var w_path = PoolVector3Array()
 	for point in path:
@@ -310,7 +304,16 @@ func _init_astar():
 				tiles[idx] = null
 				counts.impassable_tiles += 1
 				counts.passable_tiles -= 1
-		pass
+		cell_to_remove = Vector3(cell.x, cell.y - 2, cell.z)
+		for delta in directions:
+			cell_to_remove.x += delta.x
+			cell_to_remove.z += delta.y
+			var idx = tiles.find(cell_to_remove)
+			print(idx)
+			if idx > -1:
+				tiles[idx] = null
+				counts.impassable_tiles += 1
+				counts.passable_tiles -= 1
 	_connect_points()
 	_connect_structures(structure_tiles)
 	
