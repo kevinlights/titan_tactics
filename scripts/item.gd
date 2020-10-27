@@ -60,6 +60,7 @@ var item_names = {
 	TT.TYPE.ARCHER: [ "Bow", "Longbow" ],
 	TT.TYPE.MAGE: [ "Wand", "Staff", "Scepter" ],
 	TT.TYPE.BOBA: [ "Nothing" ],
+	TT.TYPE.POISON_BOBA: [ "Boba Juice" ],
 	TT.TYPE.OTHER: [ "Plate", "Helm", "Tunic", "Jacket", "Chain", "Mail", "Boots", "Vest", "Suit", "Shirt"]
 }
 

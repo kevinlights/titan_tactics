@@ -187,8 +187,8 @@ func end_turn():
 
 func can_attack(target):
 	var atk_range = character.atk_range + character.item_atk.attack_range
-	print(atk_range, " > ", target.tile.distance_to(tile), " : ", !(target.tile.distance_to(tile) > atk_range));
-	return !(target.tile.distance_to(tile) > atk_range)
+	print(atk_range, " > ", target.translation.distance_to(translation), " : ", !(target.translation.distance_to(translation) > atk_range));
+	return !(target.translation.distance_to(translation) > atk_range)
 
 func get_def_buff(def_value):
 	print(log(def_value))
