@@ -21,7 +21,7 @@ var decorations := ["Tree", "stump", "Water", "underwater", "waterside", 'rock_0
 
 # structures are normally larger than a single tile and require custom logic to join tiles
 var structures := ['Smallbridge', 'Bridge']
-var multi_tile_objects := ['house1', 'tree']
+var multi_tile_objects := ['house1', 'house_02', 'tree']
 
 # Cardinals
 # nw, n, ne
@@ -289,6 +289,13 @@ func _init_astar():
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
 				]
 			'house1':
+				directions = [
+					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(5 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
+				]
+			'house_02':
+				# NOTE: assuming identical behaviour with house1
 				directions = [
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
 					cardinalDeltas[(5 + orientation_modifier) % cardinalDeltas.size()],
