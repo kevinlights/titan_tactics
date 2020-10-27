@@ -76,7 +76,7 @@ const levels = [
 	{
 		"name": "The pot of gold",
 		"scene": "level_10_3d",
-		"music": "cave" #desert
+		"music": "cave" #boss
 	}
 ]
 #const levels = {
