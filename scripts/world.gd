@@ -29,6 +29,9 @@ func load_level(level_name):
 	var level = load("res://scenes/levels/" + level_name + ".tscn").instance()
 	add_child_below_node($map_anchor, level)
 	world_map = level.get_node("map")
+	# NOTE: If the below errors:
+	# - please check that the level's node has the level.gd script attached
+	# - please check the script's variables are set correctly	
 	var _3d_map = level.get_node("Spatial").get_node(level.map_node)
 	pathfinder = _3d_map
 	$range_overlay.set_gridmap(_3d_map)
