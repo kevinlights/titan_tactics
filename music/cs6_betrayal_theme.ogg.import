@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cs6_betrayal_theme.ogg-653841ce79c8346eaa4566ba63e64e4f.oggstr"
+
+[deps]
+
+source_file="res://music/cs6_betrayal_theme.ogg"
+dest_files=[ "res://.import/cs6_betrayal_theme.ogg-653841ce79c8346eaa4566ba63e64e4f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

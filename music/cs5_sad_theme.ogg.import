@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cs5_sad_theme.ogg-993635d7e8c6ed57a5e5ea5fc81dbcac.oggstr"
+
+[deps]
+
+source_file="res://music/cs5_sad_theme.ogg"
+dest_files=[ "res://.import/cs5_sad_theme.ogg-993635d7e8c6ed57a5e5ea5fc81dbcac.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
