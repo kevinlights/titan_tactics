@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal modal_closed
+
 var active = false
 var modal = false setget _set_modal, _get_modal
 var paused = false
@@ -13,6 +15,7 @@ func _set_modal(value):
 	else:
 		print("modal close - show selector")
 		get_parent().get_node("select").show()
+		emit_signal("modal_closed")
 	modal = value
 
 func _get_modal():
@@ -32,7 +35,7 @@ func _close_level_up():
 	turn(world.current_turn)
 
 func _input(event):
-	if not modal and event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
+	if not self.modal and event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 		if not $characterselect.visible and not $characterswap.visible:
 			$sfx/close.play()
 			back()

@@ -88,6 +88,11 @@ func spawn_character(x, y, type = TT.TYPE.MAGE, control = TT.CONTROL.PLAYER):
 	world_map.add_child(character)
 	return character
 
+func _on_modal_resume():
+	gui.paused = false
+	if current_turn == TT.CONTROL.PLAYER:
+		$select.enable()
+
 func resume():
 	gui.paused = false
 	if current_turn  == TT.CONTROL.AI:
@@ -100,9 +105,8 @@ func resume():
 			gui.modal = false
 			$select.enable()
 
-func advance_turn(explicit = 1, direction = 1):
-	if game_over or gui.paused:
-		return
+func check_end_turn():
+	print("check end turn")
 	num_done = 0
 	for character_check in current[current_turn]:
 		if character_check.is_done:
@@ -110,6 +114,13 @@ func advance_turn(explicit = 1, direction = 1):
 	if num_done == current[current_turn].size():
 		print("End turn")
 		end_turn()
+		return true
+	return false
+
+func advance_turn(explicit = 1, direction = 1):
+	if game_over or gui.paused:
+		return
+	if check_end_turn():
 		return
 	next_character(direction)
 	while current[current_turn][current_character].is_done:
@@ -167,6 +178,7 @@ func change_character():
 	$gui.swap()
 
 func end_turn():
+	gui.back()
 	for character in current[TT.CONTROL.PLAYER]:
 		character.is_done = false
 		character.get_node("done").hide()
@@ -262,11 +274,13 @@ func _ready():
 	gui.get_node("teamconfirm").connect("start_level", self, "_on_start_level")
 	gui.get_node("teamconfirm").connect("check_map", self, "_on_check_map")
 	gui.get_node("teamconfirm").connect("edit_team", self, "_on_edit_team")
+	gui.get_node("lvlup").connect("close", self, "check_end_turn")
 	gui.get_node("lvlup").connect("close", self, "check_end_game")
 	gui.get_node("win").connect("next", self, "_on_next_level")
 	gui.get_node("win").connect("retry", self, "_on_replay")
 	gui.get_node("lose").connect("retry", self, "_on_replay")
 	gui.get_node("pause").connect("resume", self, "resume")
+	gui.connect("modal_closed", self, "_on_modal_resume")
 	$select.connect("moved", self, "_on_selector_moved")
 
 	call_deferred("select_team")
@@ -312,6 +326,10 @@ func select_team():
 		$gui/characterselect.set_spawn(player_spawns[0])
 	else:
 		auto_deploy_only_character()
+
+func _on_attack_complete():
+	if current_turn == TT.CONTROL.PLAYER:
+		$range_overlay.set_origin(get_current())
 
 func _on_dialogue_complete(content):
 	gui.back()
@@ -431,6 +449,7 @@ func auto_deploy_only_character():
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
 	character.connect("path_complete", $select, "update_context")
+	character.connect("attack_complete", self, "_on_attack_complete")
 	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
 	_on_start_level()
@@ -447,6 +466,7 @@ func _on_select_team_member(team_member):
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
 	character.connect("path_complete", $select, "update_context")
+	character.connect("attack_complete", self, "_on_attack_complete")
 	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
 	if player_spawns.size() > 0:

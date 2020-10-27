@@ -274,6 +274,7 @@ func attack_complete():
 	emit_signal("idle")
 	emit_signal("attack_complete")
 
+
 func move(target_path:PoolVector3Array):
 	if movement.moving or target_path.size() == 0:
 		return
