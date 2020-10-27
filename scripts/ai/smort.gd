@@ -58,6 +58,7 @@ func play():
 					character.connect("path_complete", self, "play")
 				return
 			else:
+				print("AI (" + character.character.name + ") says no path")
 				if not try_guarding(character):
 					print("AI (" + character.character.name + ") says wait (no path)")
 				character.is_done = true

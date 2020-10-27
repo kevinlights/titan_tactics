@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/waterside2.png-42dd100e3b3a9b0267cd85b7ab3217de.stex"
+path="res://.import/waterside2.png-040967836539f282f8bfc83fd0deb111.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/Animated/waterside2.png"
-dest_files=[ "res://.import/waterside2.png-42dd100e3b3a9b0267cd85b7ab3217de.stex" ]
+source_file="res://gfx/animated/waterside2.png"
+dest_files=[ "res://.import/waterside2.png-040967836539f282f8bfc83fd0deb111.stex" ]
 
 [params]
 

@@ -154,10 +154,13 @@ func find_path(start, end, blocked_cells = []):
 		var end_id = vector_to_id(possible_ends[0])		
 		
 		var blocked_tile_ids = []
+		print(start, end, blocked_cells)
 		if(blocked_cells.size() > 0):
 			for blocked_cell in blocked_cells:
 				for tile in filter_tiles(blocked_cell.x, blocked_cell.z):
-					blocked_tile_ids.push_back(vector_to_id(tile))
+					var blocked_id = vector_to_id(tile)
+					if blocked_id != start_id and blocked_id != end_id:
+						blocked_tile_ids.push_back(blocked_id)
 		for id in blocked_tile_ids:
 			astar.set_point_disabled(id, true)
 		var path = astar.get_point_path(start_id, end_id)
