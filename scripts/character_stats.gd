@@ -16,6 +16,8 @@ export(int) var mov_range
 export(int) var heal
 export(Resource) var item_atk
 export(Resource) var item_def
+export(int, "Can't Recruit", "May Recruit", "Must Recruit") var recruit_mode = 0
+
 #export(String, "default", "archer", "swordsman", "mage", "ai_archer", "ai_swordsman", "ai_mage", "hero", "antagonist", "antagonist_revealed", "old_man", "cyan") var portrait_override
 export(String) var portrait_override
 var abilities

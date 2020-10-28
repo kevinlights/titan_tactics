@@ -125,7 +125,10 @@ func hit(attacker):
 	if guarding:
 		pick_random_sfx($sfx/defend)
 	if character.hp <= 0:
-		die()
+		if character.recruit_mode == 2:
+			recruit(attacker)
+		else:
+			die()
 		attacker.add_xp(character.level)
 	else:
 		if dialogue and dialogue.trigger == PT_Dialogue.TRIGGER.ATTACK and not dialogue_used:
@@ -395,10 +398,9 @@ func from_library(team_member):
 	init_common(team_member.control)
 
 func can_recruit():
-	if TT.sudden_death:
-		return true 
-	else:
-		return character.hp <= character.max_hp / 3
+	if character.recruit_mode == 0:
+		return
+	return character.hp <= character.max_hp / 3
 
 func recruit_failed(source):
 	attack(source)
