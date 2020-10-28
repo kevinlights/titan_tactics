@@ -4,65 +4,64 @@
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
 [ext_resource path="res://gfx/ui/pause_bg.png" type="Texture" id=3]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=4]
-[ext_resource path="res://gfx/menu_select.png" type="Texture" id=5]
+[ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=5]
 
 [sub_resource type="ImageTexture" id=1]
 
-[sub_resource type="AtlasTexture" id=6]
-flags = 2
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=7]
-flags = 2
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 10, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=8]
-flags = 2
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 20, 10, 10 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 3 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 8.0
 } ]
 
-[sub_resource type="ImageTexture" id=5]
+[sub_resource type="ImageTexture" id=6]
 
-[node name="pause" type="CenterContainer"]
+[node name="pause" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 320.0
 margin_bottom = 224.0
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="menu" type="VBoxContainer" parent="."]
-margin_left = 127.0
-margin_top = 90.0
-margin_right = 192.0
-margin_bottom = 134.0
+[node name="menu" type="Control" parent="."]
+margin_left = 125.0
+margin_top = 100.0
+margin_right = 160.0
+margin_bottom = 112.0
 
 [node name="resume" type="ToolButton" parent="menu"]
-margin_right = 65.0
-margin_bottom = 21.0
+margin_left = -125.0
+margin_top = -5.0
+margin_right = 195.0
+margin_bottom = 16.0
 focus_neighbour_bottom = NodePath("../quit")
 focus_next = NodePath("../quit")
 theme = ExtResource( 2 )
-custom_colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 1 )
-custom_colors/font_color = Color( 0.564706, 0.580392, 0.537255, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_colors/font_color_disabled = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Resume"
 icon = SubResource( 1 )
 __meta__ = {
@@ -71,33 +70,35 @@ __meta__ = {
 
 [node name="focus" type="AnimatedSprite" parent="menu/resume"]
 visible = false
-frames = SubResource( 4 )
-frame = 1
+position = Vector2( 124, 2 )
+frames = SubResource( 5 )
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 4 )
 
 [node name="quit" type="ToolButton" parent="menu"]
-margin_top = 23.0
-margin_right = 65.0
-margin_bottom = 44.0
+margin_left = -125.0
+margin_top = 18.0
+margin_right = 194.0
+margin_bottom = 39.0
 focus_neighbour_top = NodePath("../resume")
 focus_previous = NodePath("../resume")
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.564706, 0.580392, 0.537255, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_colors/font_color_disabled = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Quit"
-icon = SubResource( 5 )
+icon = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="focus" type="AnimatedSprite" parent="menu/quit"]
 visible = false
-frames = SubResource( 4 )
-frame = 1
+position = Vector2( 133, 2 )
+frames = SubResource( 5 )
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
