@@ -73,7 +73,7 @@ func apply_effects():
 	for effect in status_effects:
 		effect.turns_left -= 1
 		character.hp -= effect.damage
-		print("Apply status effect ", effect)
+#		print("Apply status effect ", effect)
 		if effect.effect == StatusEffect.EFFECT.STUN:
 			character.turn_limits.actions = 0
 			$vfx/stun.show()
@@ -105,7 +105,7 @@ func spread_icons():
 func hit(attacker):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
-			print("arrow hit!")
+#			print("arrow hit!")
 #			$vfx/arrow_hit.emitting = true
 			$vfx/arrow_hit.frame = 0
 			$vfx/arrow_hit.show()
@@ -129,11 +129,11 @@ func hit(attacker):
 			recruit(attacker)
 		else:
 			die()
-		attacker.add_xp(character.level)
+			attacker.add_xp(character.level)
 	else:
 		if dialogue and dialogue.trigger == PT_Dialogue.TRIGGER.ATTACK and not dialogue_used:
 			dialogue_used = true
-			print(dialogue.text)
+#			print(dialogue.text)
 			emit_signal("dialogue", dialogue)
 #			gui.dialogue(dialogue)
 	if character.hp < character.max_hp:
@@ -197,11 +197,11 @@ func can_attack(target):
 	var atk_range = character.atk_range + character.item_atk.attack_range
 	var level_target = Vector2(target.translation.x, target.translation.z)
 	var level_source = Vector2(translation.x, translation.z)
-	print(atk_range, " > ", level_source.distance_to(level_target), " : ", !(level_source.distance_to(level_target) > atk_range));
+#	print(atk_range, " > ", level_source.distance_to(level_target), " : ", !(level_source.distance_to(level_target) > atk_range));
 	return !(level_target.distance_to(level_source) > atk_range)
 
 func get_def_buff(def_value):
-	print(log(def_value))
+#	print(log(def_value))
 	return 1.0 - (log(def_value) / log(10)) * 0.3
 
 func attack(target):
@@ -234,14 +234,14 @@ func attack(target):
 				behind_target = true
 	if behind_target:
 		damage = damage * 1.15
-	print("atk ", damage)
+#	print("atk ", damage)
 	var target_defense = target.character.def + target.character.item_def.defense
 	var def_multiplier = get_def_buff(target_defense) #1.0 - (target_defense + tanh(target_defense)) / 100
 	damage *= def_multiplier
-	print("def ", target_defense)
-	print("def penalty ", (def_multiplier) * 100.0, "%")
+#	print("def ", target_defense)
+#	print("def penalty ", (def_multiplier) * 100.0, "%")
 	damage = clamp(floor(damage), 0, 99)
-	print("actual damage ", damage)
+#	print("actual damage ", damage)
 	target.character.hp -= damage
 	if target.has_node("healthbar"):
 		target.get_node("healthbar").set_value(target.character.hp, target.character.max_hp)	
@@ -280,7 +280,7 @@ func attack(target):
 
 func attack_complete():
 	yield(get_tree().create_timer(1.0), "timeout")
-	print("attack complete")
+#	print("attack complete")
 	emit_signal("idle")
 	emit_signal("attack_complete")
 
@@ -318,41 +318,41 @@ func select_type():
 	if avatar:
 		avatar.hide()
 	if character.control == TT.CONTROL.PLAYER:
-		print("Character portrait ", character.portrait_override)
+#		print("Character portrait ", character.portrait_override)
 		if character.portrait_override and character.portrait_override != "" and has_node(character.portrait_override):
 			avatar = get_node(character.portrait_override)
 		else:
 			match character.character_class:
 				TT.TYPE.ARCHER:
-					print("Select archer")
+#					print("Select archer")
 					avatar = $archer
 				TT.TYPE.FIGHTER:
-					print("Select fighter")
+#					print("Select fighter")
 					print($fighter)
 					avatar = $fighter
 				TT.TYPE.MAGE:
-					print("Select mage")
+#					print("Select mage")
 					avatar = $mage
 	else:
 		match character.character_class:
 			TT.TYPE.ARCHER:
-				print("Select ai archer")
+#				print("Select ai archer")
 				avatar = $ai_archer
 			TT.TYPE.FIGHTER:
-				print("Select ai fighter")
+#				print("Select ai fighter")
 				avatar = $ai_fighter
 			TT.TYPE.MAGE:
-				print("Select ai mage")
+#				print("Select ai mage")
 				avatar = $ai_mage
 			TT.TYPE.BOBA:
-				print("Select ai boba")
+#				print("Select ai boba")
 				avatar = $ai_boba
 				avatar.offset.y = 0
 			TT.TYPE.POISON_BOBA:
-				print("Select ai boba")
+#				print("Select ai boba")
 				avatar = $ai_poison_boba
 				avatar.offset.y = 0
-	print("character class ", character.character_class)
+#	print("character class ", character.character_class)
 #	avatar.connect("animation_finished", self, '_on_animation_finished')
 	avatar.connect("frame_changed", self, "_on_frame_changed")
 	#item = Item.new()
@@ -419,8 +419,8 @@ func die():
 	avatar.play("hit-" + directions[Game.camera_orientation][movement.last_direction])
 
 func _on_orientation_changed():
-	print(str(Game.camera_orientation))
-	print(movement.last_direction, " ", directions[Game.camera_orientation][movement.last_direction])
+#	print(str(Game.camera_orientation))
+#	print(movement.last_direction, " ", directions[Game.camera_orientation][movement.last_direction])
 	avatar.play("idle-" +  directions[Game.camera_orientation][movement.last_direction])
 
 func init_common(control):
@@ -504,7 +504,7 @@ func _process(delta):
 #				movement.end_position = Vector3(path[0].x, 0, path[0].z)
 				movement.start_position = Vector3(translation.x, translation.y, translation.z)
 				movement.start_time = now
-				print(movement.end_position)
+#				print(movement.end_position)
 				var diff = movement.start_position - movement.end_position
 				if abs(diff.x) > abs(diff.z):
 					if diff.x > 0:
@@ -524,7 +524,7 @@ func _process(delta):
 				avatar.play("idle-" + directions[Game.camera_orientation][movement.last_direction])
 				if movement.moving:
 					translation = movement.end_position
-					print("path complete ", translation)
+#					print("path complete ", translation)
 					emit_signal("path_complete")
 					emit_signal("idle")
 					movement.moving = false

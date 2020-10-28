@@ -96,13 +96,13 @@ func can_attack(attacker, victim, ignore_action_limit = false):
 	var distance = attacker.to_global(attacker.get_node("ranged_weapon").translation).distance_to(victim.translation)
 	var cover = world.is_cover_between(attacker, victim.translation)
 	if not cover:
-		print("no cover")
+#		print("no cover")
 #		var int_distance = int(distance * 10)
 #		distance = float(int_distance) / 10.0
 		distance = floor(distance)
 		print(distance, " <= ", attacker.character.atk_range)
 		if distance <= attacker.character.atk_range:
-			print("in range")
+#			print("in range")
 			return true
 	return false
 
