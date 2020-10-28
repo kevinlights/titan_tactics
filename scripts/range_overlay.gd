@@ -34,7 +34,7 @@ func generate_data(origin):
 	}
 	if data != _data:
 		data = _data
-		if data.actions > 0:
+		if data.actions > 0 or data.move_distance > 1:
 			show()
 		else:
 			hide()
@@ -83,7 +83,7 @@ func show():
 		context_map[context_tile] = context
 		
 		var tile_overlay_success;
-		if context == TT.CONTEXT.ATTACK:
+		if context == TT.CONTEXT.ATTACK and data.actions > 0:
 			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
 		elif context == TT.CONTEXT.MOVE:
 			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
@@ -96,7 +96,9 @@ func show():
 				drawSqaure(tile, materials.attack)
 			elif context == TT.CONTEXT.MOVE:
 				drawSqaure(tile, materials.move)
-
+				
+	if data.actions == 0:
+		return
 	for tile in gridmap.get_tiles_within(origin.tile, data.atk_range - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context;
