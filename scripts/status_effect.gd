@@ -23,3 +23,9 @@ func poison(turns, damage):
 	self.turns = turns
 	self.damage = damage
 	effect = EFFECT.POISON
+
+func copy(other):
+	self.turns = other.turns
+	self.damage = other.damage
+	self.effect = other.effect
+	self.name = other.name

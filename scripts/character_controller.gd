@@ -73,6 +73,7 @@ func apply_effects():
 	for effect in status_effects:
 		effect.turns_left -= 1
 		character.hp -= effect.damage
+		print("Apply status effect ", effect)
 		if effect.effect == StatusEffect.EFFECT.STUN:
 			character.turn_limits.actions = 0
 			$vfx/stun.show()
@@ -117,6 +118,10 @@ func hit(attacker):
 			$vfx/magic_hit.emitting = true
 			pick_random_sfx($sfx/magic_hit)
 	avatar.play("hit-" + movement.last_direction)
+	if attacker.item_atk.effect:
+		var hit_effect = StatusEffect.new()
+		hit_effect.copy(attacker.item_atk.effect)
+		status_effects.append(hit_effect)
 	if guarding:
 		pick_random_sfx($sfx/defend)
 	if character.hp <= 0:
@@ -187,8 +192,10 @@ func end_turn():
 
 func can_attack(target):
 	var atk_range = character.atk_range + character.item_atk.attack_range
-	print(atk_range, " > ", target.translation.distance_to(translation), " : ", !(target.translation.distance_to(translation) > atk_range));
-	return !(target.translation.distance_to(translation) > atk_range)
+	var level_target = Vector2(target.translation.x, target.translation.z)
+	var level_source = Vector2(translation.x, translation.z)
+	print(atk_range, " > ", level_source.distance_to(level_target), " : ", !(level_source.distance_to(level_target) > atk_range));
+	return !(level_target.distance_to(level_source) > atk_range)
 
 func get_def_buff(def_value):
 	print(log(def_value))

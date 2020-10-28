@@ -150,17 +150,20 @@ func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range =
 	if !(request_class in cant_carry):
 		item_atk = Item.new()
 		item_def = Item.new()
-		item_atk.generate(level, Item.SLOT.ATK, character_class)
-		item_def.generate(level, Item.SLOT.DEF, character_class)
+		item_atk.create()
+		item_def.create()
+#		item_atk.generate(level, Item.SLOT.ATK, character_class)
+#		item_def.generate(level, Item.SLOT.DEF, character_class)
 
 func generate(class_stats, request_class, request_control, request_level = 1, force = false):
 	var rng = RandomNumberGenerator.new()
 	if !(request_class in cant_carry):
-		if !item_atk or !item_def:
+		if !item_atk:
 			item_atk = Item.new()
+			item_atk.create()
+		if !item_def:
 			item_def = Item.new()
-			item_atk.create() #generate(level, Item.SLOT.ATK, character_class)
-			item_def.create() #generate(level, Item.SLOT.DEF, character_class)
+			item_def.create()
 	weakness = TT.class_stats.weakness[character_class]
 	strength = TT.class_stats.strength[character_class]
 	abilities = TT.class_stats.abilities[character_class]
@@ -240,7 +243,6 @@ func from_save_data(class_stats, data):
 	personality = int(data.personality)
 	portrait_override = data.portrait_override
 	
-	print(TT.class_stats.weakness[character_class])
 	weakness = TT.class_stats.weakness[character_class]
 	strength = TT.class_stats.strength[character_class]
 	abilities = TT.class_stats.abilities[character_class]
