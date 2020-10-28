@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/status_poison.wav-1603fa5016ff6f26ca1ebbbf58bdd4c5.sample"
+
+[deps]
+
+source_file="res://sfx/gameplay/status_poison.wav"
+dest_files=[ "res://.import/status_poison.wav-1603fa5016ff6f26ca1ebbbf58bdd4c5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -117,6 +117,8 @@ func hit(attacker):
 			$vfx/magic_hit.show()
 			$vfx/magic_hit.emitting = true
 			pick_random_sfx($sfx/magic_hit)
+		TT.TYPE.BOBA:
+			pick_random_sfx($sfx/boba_hit)			
 	avatar.play("hit-" + movement.last_direction)
 	if attacker.item_atk.effect:
 		var hit_effect = StatusEffect.new()

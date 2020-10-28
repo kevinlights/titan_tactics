@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/status_polymorph.wav-50aa5a520d65301a9c1465bc404b9d30.sample"
+
+[deps]
+
+source_file="res://sfx/gameplay/status_polymorph.wav"
+dest_files=[ "res://.import/status_polymorph.wav-50aa5a520d65301a9c1465bc404b9d30.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
