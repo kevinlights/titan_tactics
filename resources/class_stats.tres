@@ -27,6 +27,7 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 5
+recruit_mode = 0
 portrait_override = ""
 
 [sub_resource type="Resource" id=3]
@@ -70,6 +71,7 @@ atk_range = 1
 mov_range = 5
 heal = 5
 item_atk = SubResource( 5 )
+recruit_mode = 0
 portrait_override = ""
 
 [sub_resource type="Resource" id=7]
