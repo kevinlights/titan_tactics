@@ -78,9 +78,16 @@ func apply_effects():
 			character.turn_limits.actions = 0
 			$vfx/stun.show()
 			$vfx/stun.play()
+			pick_random_sfx($sfx/stun_hit)
 		if effect.effect == StatusEffect.EFFECT.POISON:
 			$vfx/poison.show()
 			$vfx/poison.play()
+			pick_random_sfx($sfx/poison_hit)
+		if effect.effect == StatusEffect.EFFECT.POLYMORPH:
+			$vfx/poison.show()
+			$vfx/poison.play()
+			pick_random_sfx($sfx/polymorph_hit)
+			
 	if has_node("healthbar"):
 		$healthbar.set_value(character.hp, character.max_hp)
 
@@ -118,7 +125,9 @@ func hit(attacker):
 			$vfx/magic_hit.emitting = true
 			pick_random_sfx($sfx/magic_hit)
 		TT.TYPE.BOBA:
-			pick_random_sfx($sfx/boba_hit)			
+			pick_random_sfx($sfx/boba_hit)
+		TT.TYPE.POISON_BOBA:
+			pick_random_sfx($sfx/poison_hit)
 	avatar.play("hit-" + movement.last_direction)
 	if attacker.item_atk.effect:
 		var hit_effect = StatusEffect.new()

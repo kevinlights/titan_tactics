@@ -4,6 +4,7 @@ extends Resource
 enum EFFECT {
 	STUN,
 	POISON,
+	POLYMORPH,
 	NONE
 }
 
@@ -23,6 +24,10 @@ func poison(turns, damage):
 	self.turns = turns
 	self.damage = damage
 	effect = EFFECT.POISON
+
+func polymorph(turns):
+	self.turns = turns
+	effect = EFFECT.POLYMORPH
 
 func copy(other):
 	self.turns = other.turns

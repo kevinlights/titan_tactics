@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=2]
+[gd_scene load_steps=204 format=2]
 
 [ext_resource path="res://resources/archer_spriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/character_controller.gd" type="Script" id=2]
@@ -34,6 +34,9 @@
 [ext_resource path="res://sfx/gameplay/recruit_success.wav" type="AudioStream" id=32]
 [ext_resource path="res://sfx/gameplay/recruit_fail.wav" type="AudioStream" id=33]
 [ext_resource path="res://sfx/gameplay/boba_attack.wav" type="AudioStream" id=34]
+[ext_resource path="res://sfx/gameplay/status_poison.wav" type="AudioStream" id=35]
+[ext_resource path="res://sfx/gameplay/status_stun.wav" type="AudioStream" id=36]
+[ext_resource path="res://sfx/gameplay/status_polymorph.wav" type="AudioStream" id=37]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -1253,6 +1256,7 @@ material_override = SubResource( 106 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 109 )
+frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -1262,7 +1266,6 @@ material_override = SubResource( 110 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 113 )
-frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -1272,6 +1275,7 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 116 )
+frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]
@@ -1280,6 +1284,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 119 )
+frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]
@@ -1358,6 +1363,21 @@ volume_db = -1.0
 [node name="fail" type="AudioStreamPlayer" parent="sfx/recruit"]
 stream = ExtResource( 33 )
 volume_db = -1.5
+
+[node name="poison_hit" type="Node" parent="sfx"]
+
+[node name="hit 1" type="AudioStreamPlayer" parent="sfx/poison_hit"]
+stream = ExtResource( 35 )
+
+[node name="stun_hit" type="Node" parent="sfx"]
+
+[node name="hit 1" type="AudioStreamPlayer" parent="sfx/stun_hit"]
+stream = ExtResource( 36 )
+
+[node name="polymorph_hit" type="Node" parent="sfx"]
+
+[node name="hit 1" type="AudioStreamPlayer" parent="sfx/polymorph_hit"]
+stream = ExtResource( 37 )
 
 [node name="vfx" type="Spatial" parent="."]
 
