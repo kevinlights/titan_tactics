@@ -14,4 +14,5 @@ def = 6
 atk_range = 9
 mov_range = 5
 heal = 0
+recruit_mode = 0
 portrait_override = "bowie"

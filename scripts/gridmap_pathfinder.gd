@@ -148,7 +148,7 @@ func find_path(start, end, blocked_cells = []):
 		var end_id = vector_to_id(possible_ends[0])		
 		
 		var blocked_tile_ids = []
-		print(start, end, blocked_cells)
+#		print(start, end, blocked_cells)
 		if(blocked_cells.size() > 0):
 			for blocked_cell in blocked_cells:
 				for tile in filter_tiles(blocked_cell.x, blocked_cell.z):
