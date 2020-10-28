@@ -18,12 +18,14 @@ func play():
 		print("AI (" + character.character.name + ") says not my turn, skipping")
 		return
 	print("AI taking turn")
+	yield(world.get_tree().create_timer(2.0), "timeout")
 	if character.character.has_ability(TT.ABILITY.HEAL):
 		var dying = get_dying_ally(character)
 		if dying:
 			print("AI (" + character.character.name + ") says heal " + dying.character.name)
 			character.heal(dying)
 			character.is_done = true
+			yield(world.get_tree().create_timer(2.0), "timeout")
 			world.advance_turn()
 			return
 	var enemy = get_nearest_enemy_with_disadvantage(character)
@@ -34,6 +36,7 @@ func play():
 			print("AI (" + character.character.name + ") says heal self")
 			character.heal(character)
 			character.is_done = true
+			yield(world.get_tree().create_timer(2.0), "timeout")
 			world.advance_turn()
 			return
 		if can_attack(character, enemy):
@@ -62,18 +65,21 @@ func play():
 				if not try_guarding(character):
 					print("AI (" + character.character.name + ") says wait (no path)")
 				character.is_done = true
+				yield(world.get_tree().create_timer(2.0), "timeout")
 				world.advance_turn()
 				return
 		else:
 			if not try_guarding(character):
 				print("AI (" + character.character.name + ") says wait (out of moves)")
 			character.is_done = true
+			yield(world.get_tree().create_timer(2.0), "timeout")
 			world.advance_turn()
 			return
 		# if we reach this point, abandon turn
 		if not try_guarding(character):
 			print("AI (" + character.character.name + ") abandons turn, exhausted options")
 		character.is_done = true
+		yield(world.get_tree().create_timer(2.0), "timeout")
 		world.advance_turn()
 		return
 	else:
@@ -81,6 +87,7 @@ func play():
 		if not try_guarding(character):
 			print("AI (" + character.character.name + ") says wait (nothing to do)")
 		character.is_done = true
+		yield(world.get_tree().create_timer(2.0), "timeout")
 		world.advance_turn()
 
 func try_guarding(character):
