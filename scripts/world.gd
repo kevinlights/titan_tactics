@@ -116,7 +116,6 @@ func check_end_turn():
 			num_done += 1
 	if num_done == current[current_turn].size():
 		print("End turn")
-		end_turn()
 		return true
 	return false
 
@@ -124,6 +123,7 @@ func advance_turn(explicit = 1, direction = 1):
 	if game_over or gui.paused:
 		return
 	if check_end_turn():
+		end_turn()
 		return
 	next_character(direction)
 	while current[current_turn][current_character].is_done:
@@ -236,8 +236,7 @@ func action():
 		TT.CONTEXT.GUARD:
 			print("guard action")
 			if get_current().character.turn_limits.actions == 0:
-				get_current().is_done = true
-				_on_end()
+				gui.call_deferred("confirm_end_turn")
 			else:
 				gui.guard()
 		TT.CONTEXT.HEAL:
@@ -245,6 +244,10 @@ func action():
 				_on_end()
 			else:
 				gui.guard(true)
+
+func _on_confirm_end_turn():
+	get_current().is_done = true
+	_on_end()
 
 func is_adjacent(one, two):
 	print("is adjacent ", one.tile, " ", two.tile)
@@ -284,6 +287,7 @@ func _ready():
 	gui.get_node("lose").connect("retry", self, "_on_replay")
 	gui.get_node("pause").connect("resume", self, "resume")
 	gui.connect("modal_closed", self, "_on_modal_resume")
+	gui.get_node("endturn").connect("confirm_end_turn", self, "_on_confirm_end_turn")
 	$select.connect("moved", self, "_on_selector_moved")
 
 	call_deferred("select_team")

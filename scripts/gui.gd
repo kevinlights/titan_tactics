@@ -26,7 +26,7 @@ func _ready():
 	$pause.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
 	$lose.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
 	$lvlup.connect("close", self, "_close_level_up")
-
+	$endturn/panel/cancel.connect("cancel", self, "_set_modal", [ false ])
 
 func _close_level_up():
 	print("run turn end ui")
@@ -54,6 +54,11 @@ func attack():
 #	$healthpage.call_deferred("hide")
 	$battle.call_deferred("hide")
 	$action_menu.call_deferred("show_dialog", "attack")
+
+func confirm_end_turn():
+	self.modal = true
+	$endturn.show()
+	$endturn/panel/end_turn.grab_focus()
 
 func turn(type):
 	if $lvlup.visible:

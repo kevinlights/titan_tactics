@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=2]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=3]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=4]
+[ext_resource path="res://scripts/gui/endturnconfirm.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -1106,6 +1107,7 @@ animations = [ {
 margin_right = 320.0
 margin_bottom = 224.0
 theme = SubResource( 5 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1180,8 +1182,8 @@ margin_left = 3.0
 margin_top = 18.0
 margin_right = 48.0
 margin_bottom = 39.0
-focus_neighbour_bottom = NodePath("../edit_team")
-focus_next = NodePath("../edit_team")
+focus_neighbour_bottom = NodePath("../cancel")
+focus_next = NodePath("../cancel")
 theme = ExtResource( 4 )
 custom_colors/font_color_disabled = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
@@ -1197,7 +1199,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="panel/end_turn"]
 position = Vector2( -4, 1 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -1224,10 +1225,8 @@ margin_left = 3.0
 margin_top = 32.0
 margin_right = 42.0
 margin_bottom = 53.0
-focus_neighbour_top = NodePath("../check_map")
-focus_neighbour_bottom = NodePath("../start_level")
-focus_next = NodePath("../start_level")
-focus_previous = NodePath("../check_map")
+focus_neighbour_top = NodePath("../end_turn")
+focus_previous = NodePath("../end_turn")
 theme = ExtResource( 4 )
 custom_colors/font_color_disabled = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
@@ -1244,8 +1243,9 @@ __meta__ = {
 visible = false
 position = Vector2( -4, 2 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 3 )
+[connection signal="pressed" from="panel/end_turn" to="." method="_on_end_turn_pressed"]
+[connection signal="pressed" from="panel/cancel" to="." method="_on_cancel_pressed"]
