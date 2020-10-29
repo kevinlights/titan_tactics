@@ -5,6 +5,7 @@ tool
 export(Resource) var stats
 export(Resource) var dialogue
 export(Resource) var recruit_dialogue
+export(Resource) var death_dialogue
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
