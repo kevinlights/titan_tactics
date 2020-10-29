@@ -79,6 +79,8 @@ func _process(_delta):
 	if tracked_item:
 			get_parent().translation = tracked_item.get_global_transform().origin;
 			get_parent().translation.y = -1.0
+	else:
+		tracked_item = get_tree().get_root().get_node("World").get_current()
 	if now - start_time < ttl:
 		get_parent().rotation_degrees = lerp(start_rotation, end_rotation, float(now - start_time) / float(ttl))
 	else:
