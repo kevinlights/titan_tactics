@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue"
+type="Dialogue"
+path="res://.import/level1_attack2.dialogue-cf924db1a6eaace7914db2f06d600832.tres"
+
+[deps]
+
+source_file="res://resources/story/level1_attack2.dialogue"
+dest_files=[ "res://.import/level1_attack2.dialogue-cf924db1a6eaace7914db2f06d600832.tres" ]
+
+[params]
+
+title_prefix="#"
+action_prefix=">"
+comment_prefix="//"
