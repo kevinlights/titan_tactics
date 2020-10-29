@@ -17,11 +17,11 @@ var hide_non_walkable_tiles := false # change to true to visually debug
 var no_diagonal_movement := true # change to false to allow diagonal movement
 
 # decorations are impassable to the player.
-var decorations := ["Tree", "stump", "Water", "underwater", "waterside", 'rock_02', 'wall_02', 'wall_corner_02_shadow', 'wall_corner_02_light']
+var decorations := ["Tree", "stump", "Water", "underwater", "waterside", 'wall', 'wall1', 'wallcorner1001', 'wallcorner1003', 'rock_02', 'wall_02', 'wall_corner_02_shadow', 'wall_corner_02_light', 'pillar', 'Palm Tree', 'Stalagmite', 'crystal000', 'rock_03', 'wall_03', 'wall_corner_03_shadow', 'wall_corner_03_light']
 
 # structures are normally larger than a single tile and require custom logic to join tiles
 var structures := ['Smallbridge', 'Bridge']
-var multi_tile_objects := ['house1', 'house_02', 'tree']
+var multi_tile_objects := ['house1', 'house_02', 'house_03', 'tree', 'cristal005']
 
 # Cardinals
 # nw, n, ne
@@ -35,6 +35,7 @@ var cardinalHeights := { # y_deltas
 	'deck': [1, 1, 1, 1, 1, 1, 1, 1],
 	'Cube': [2, 2, 2, 2, 2, 2, 2, 2],
 	'block_02': [2, 2, 2, 2, 2, 2, 2, 2],
+	'ground_03': [2, 2, 2, 2, 2, 2, 2, 2],
 	'Ramp': [2, 2, 2, 1.5, 1, 1, 1, 1.5],
 	'steps': [1, 0.5, 0, 0, 0, 0.5, 1, 1],
 	'Ramp corner': [2, 1.5, 1, 1, 1, 1, 1, 1.5],
@@ -288,6 +289,13 @@ func _init_astar():
 					cardinalDeltas[(1 + orientation_modifier) % cardinalDeltas.size()],
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
 				]
+      'cristal005':
+				# NOTE: assuming identical behaviour with tree
+				directions = [
+					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(1 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+				]
 			'house1':
 				directions = [
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
@@ -295,6 +303,13 @@ func _init_astar():
 					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
 				]
 			'house_02':
+				# NOTE: assuming identical behaviour with house1
+				directions = [
+					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(5 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
+				]
+			'house_03':
 				# NOTE: assuming identical behaviour with house1
 				directions = [
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
