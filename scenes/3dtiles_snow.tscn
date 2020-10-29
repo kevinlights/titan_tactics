@@ -34,7 +34,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63286, -2.25305, 0.0514395 
 transform = Transform( 0.999959, 0, -0.00911051, 0, 1, 0, 0.00911051, 0, 0.999959, -2.21578, -2.6151, -4.93359 )
 
 [node name="windoors_03" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75487, -1.95295, 0.132463 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20627, -0.144673, 1.18456 )
 
 [node name="tree_03" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.657019, -2.89652, 0.582026 )
