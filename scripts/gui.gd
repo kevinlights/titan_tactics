@@ -29,13 +29,14 @@ func _ready():
 	$pause.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
 	$lose.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
 	$lvlup.connect("close", self, "_close_level_up")
-	$endturn/panel/cancel.connect("cancel", self, "_set_modal", [ false ])
+	$endturn/panel/cancel.connect("cancel", get_parent().get_node("select"), "enable")
 
 func _close_level_up():
 	print("run turn end ui")
 	self.modal = false
 	var world = get_tree().get_root().get_node("World")
-	turn(world.current_turn)
+	world.check_end_turn()
+#	turn(world.current_turn)
 
 func _input(event):
 	if not self.modal and event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
@@ -61,11 +62,8 @@ func attack():
 func confirm_end_turn():
 	if $lvlup.visible:
 		return
-	if not self.modal:
-		self.modal = true
-		self.active = true
-		$endturn.show()
-		$endturn/panel/end_turn.grab_focus()
+	$endturn.show()
+	$endturn/panel/end_turn.grab_focus()
 
 func turn(type):
 	if $lvlup.visible:
