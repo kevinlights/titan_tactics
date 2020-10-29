@@ -431,14 +431,17 @@ func _on_death(character):
 		advance_turn()
 
 func _on_replay():
-	get_tree().reload_current_scene()
+  SaveLoadSystem.save_game()
+  get_tree().reload_current_scene()
 
 func _on_next_level():
 	if Game.level + 1 < Game.get_level_count():
 		Game.level += 1
+		SaveLoadSystem.save_game()
 		get_tree().reload_current_scene()
 	else:
 		# All levels completed?
+		SaveLoadSystem.save_game()
 		gui.back()
 		gui.credits()
 		$music.get_node(Game.get_theme()).stop()

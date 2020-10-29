@@ -45,7 +45,6 @@ func _on_start_level():
 #		gui.dialogue(dialogue[0])
 
 func _on_end_level():
-	SaveLoadSystem.save_game()
 	print("dialog end level check")
 	if end_dialogue:
 		gui.dialogue(end_dialogue)
