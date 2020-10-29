@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/world_map.gd" type="Script" id=2]
 [ext_resource path="res://gfx/worldmap.png" type="Texture" id=3]
 [ext_resource path="res://gfx/map_select.png" type="Texture" id=4]
+[ext_resource path="res://gfx/mapdots.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -33,6 +34,42 @@ animations = [ {
 "speed": 7.0
 } ]
 
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 16, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 8, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="world_map" type="Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -53,7 +90,7 @@ margin_left = 22.0
 margin_top = 7.0
 margin_right = 302.0
 margin_bottom = 32.0
-color = Color( 0.2, 0.196078, 0.196078, 1 )
+color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,8 +152,256 @@ __meta__ = {
 }
 
 [node name="map_selector" type="AnimatedSprite" parent="."]
-position = Vector2( 267, 95 )
+position = Vector2( 70, 134 )
 frames = SubResource( 6 )
-frame = 3
 playing = true
 centered = false
+
+[node name="map point" type="AnimatedSprite" parent="."]
+position = Vector2( 76.014, 152.382 )
+frames = SubResource( 8 )
+
+[node name="map point2" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 60.6175, 121.028 )
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="map point2"]
+position = Vector2( 7.97189, 27.8185 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="map point2"]
+position = Vector2( 3.37569, 21.8081 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="map point2"]
+position = Vector2( 0.370487, 15.9744 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="map point2"]
+position = Vector2( -0.690174, 8.72659 )
+frames = SubResource( 10 )
+
+[node name="map point3" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 88.4711, 104.174 )
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="map point3"]
+position = Vector2( -20.412, 11.9688 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="map point3"]
+position = Vector2( -14.5784, 8.78679 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="map point3"]
+position = Vector2( -8.56801, 5.95837 )
+frames = SubResource( 10 )
+
+[node name="map point4" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 70.514, 76.1744 )
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="map point4"]
+position = Vector2( 10.9801, 22.8211 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="map point4"]
+position = Vector2( 7.3839, 17.8106 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="map point4"]
+position = Vector2( 4.37869, 12.977 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="map point4"]
+position = Vector2( 2.31803, 6.72916 )
+frames = SubResource( 10 )
+
+[node name="map point5" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 124, 83 )
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="map point5"]
+position = Vector2( -45.1576, -6.45518 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="map point5"]
+position = Vector2( -38.1471, -5.4552 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="map point5"]
+position = Vector2( -30.8993, -4.45518 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="map point5"]
+position = Vector2( -24.1211, -3.27841 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="map point5"]
+position = Vector2( -17.2875, -2.15709 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite14" type="AnimatedSprite" parent="map point5"]
+position = Vector2( -10.5093, -0.980316 )
+frames = SubResource( 10 )
+
+[node name="map point6" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 197, 74 )
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite15" type="AnimatedSprite" parent="map point6"]
+position = Vector2( -64.2407, 8.0249 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite16" type="AnimatedSprite" parent="map point6"]
+position = Vector2( -56.6999, 3.54482 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite17" type="AnimatedSprite" parent="map point6"]
+position = Vector2( -49.9824, -0.404922 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite18" type="AnimatedSprite" parent="map point6"]
+position = Vector2( -42.1436, -2.58691 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite19" type="AnimatedSprite" parent="map point6"]
+position = Vector2( -34.7796, -2.70302 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite20" type="AnimatedSprite" parent="map point6"]
+position = Vector2( -26.4105, -2.94046 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite21" type="AnimatedSprite" parent="map point6"]
+position = Vector2( -17.6323, -2.70302 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite22" type="AnimatedSprite" parent="map point6"]
+position = Vector2( -9.26315, -1.17271 )
+frames = SubResource( 10 )
+
+[node name="map point7" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 241, 80 )
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite15" type="AnimatedSprite" parent="map point7"]
+position = Vector2( -35.939, -5.04617 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite16" type="AnimatedSprite" parent="map point7"]
+position = Vector2( -28.9286, -4.04619 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite17" type="AnimatedSprite" parent="map point7"]
+position = Vector2( -21.6807, -3.04617 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite18" type="AnimatedSprite" parent="map point7"]
+position = Vector2( -14.9026, -1.8694 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite19" type="AnimatedSprite" parent="map point7"]
+position = Vector2( -8.06894, -0.748077 )
+frames = SubResource( 10 )
+
+[node name="map point8" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 187, 92 )
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite15" type="AnimatedSprite" parent="map point8"]
+position = Vector2( 51.295, -4.31824 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite16" type="AnimatedSprite" parent="map point8"]
+position = Vector2( 47.113, -0.0253601 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite17" type="AnimatedSprite" parent="map point8"]
+position = Vector2( 41.3349, 2.80829 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite18" type="AnimatedSprite" parent="map point8"]
+position = Vector2( 34.1477, 4.16185 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite19" type="AnimatedSprite" parent="map point8"]
+position = Vector2( 27.1927, 4.22249 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite20" type="AnimatedSprite" parent="map point8"]
+position = Vector2( 20.3591, 3.45475 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite21" type="AnimatedSprite" parent="map point8"]
+position = Vector2( 13.9344, 2.45472 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite22" type="AnimatedSprite" parent="map point8"]
+position = Vector2( 7.98471, 1.68699 )
+frames = SubResource( 10 )
+
+[node name="map point9" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 144.402, 105.496 )
+frames = SubResource( 8 )
+
+[node name="AnimatedSprite28" type="AnimatedSprite" parent="map point9"]
+position = Vector2( 34.0818, -13.5161 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite27" type="AnimatedSprite" parent="map point9"]
+position = Vector2( 27.2482, -14.1071 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite25" type="AnimatedSprite" parent="map point9"]
+position = Vector2( 21.2378, -13.0465 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite24" type="AnimatedSprite" parent="map point9"]
+position = Vector2( 16.4351, -9.23705 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite23" type="AnimatedSprite" parent="map point9"]
+position = Vector2( 12.0772, -4.58577 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite26" type="AnimatedSprite" parent="map point9"]
+position = Vector2( 6.95407, -1.16934 )
+frames = SubResource( 10 )
+
+[node name="map point10" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 110, 119 )
+frames = SubResource( 12 )
+
+[node name="AnimatedSprite23" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 5.59782, -6.08435 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite24" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 10.0587, -10.5918 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite25" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 14.8462, -14.9282 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite26" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 19.4374, -18.8657 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite27" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 24.8133, -22.4246 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite28" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 30.5439, -20.1809 )
+frames = SubResource( 10 )
