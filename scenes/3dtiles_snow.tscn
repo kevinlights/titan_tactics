@@ -1,0 +1,48 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://gfx/OBJS/house_03.dae" type="PackedScene" id=1]
+[ext_resource path="res://gfx/OBJS/wall_corner_03_light.dae" type="PackedScene" id=2]
+[ext_resource path="res://gfx/OBJS/windoors_03.dae" type="PackedScene" id=3]
+[ext_resource path="res://gfx/OBJS/wall_03.dae" type="PackedScene" id=4]
+[ext_resource path="res://gfx/OBJS/ground_03.dae" type="PackedScene" id=5]
+[ext_resource path="res://gfx/OBJS/wall_corner_03_shadow.dae" type="PackedScene" id=6]
+[ext_resource path="res://gfx/OBJS/rock_03.dae" type="PackedScene" id=7]
+[ext_resource path="res://gfx/OBJS/tree_03.dae" type="PackedScene" id=8]
+[ext_resource path="res://gfx/OBJS/bigcrystal.dae" type="PackedScene" id=9]
+[ext_resource path="res://gfx/OBJS/crystal.dae" type="PackedScene" id=10]
+[ext_resource path="res://gfx/OBJS/stalagmite.dae" type="PackedScene" id=11]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="wall_corner_03_light" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49411, -1.703, -3.90041 )
+
+[node name="wall_corner_03_shadow" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0743977, -1.14734, -6.30119 )
+
+[node name="rock_03" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66093, -4.74664, -2.45104 )
+
+[node name="ground_03" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8082, -3.61083, -4.73897 )
+
+[node name="wall_03" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63286, -2.25305, 0.0514395 )
+
+[node name="house_03" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.999959, 0, -0.00911051, 0, 1, 0, 0.00911051, 0, 0.999959, -2.21578, -2.6151, -4.93359 )
+
+[node name="windoors_03" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.999959, 0, -0.00911051, 0, 1, 0, 0.00911051, 0, 0.999959, 2.75487, -1.95295, 0.132463 )
+
+[node name="tree_03" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.657019, -2.89652, 0.582026 )
+
+[node name="bigcrystal" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65254, 0.868581, -0.747921 )
+
+[node name="crystal" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8844, 1.01074, 0.170197 )
+
+[node name="stalagmite" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0935891, -0.550068, -8.62009 )
