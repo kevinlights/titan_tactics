@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue"
+type="Dialogue"
+path="res://.import/level1_end.dialogue-6d720aab10c32ab88610b343228fff68.tres"
+
+[deps]
+
+source_file="res://resources/story/level1_end.dialogue"
+dest_files=[ "res://.import/level1_end.dialogue-6d720aab10c32ab88610b343228fff68.tres" ]
+
+[params]
+
+title_prefix="#"
+action_prefix=">"
+comment_prefix="//"
