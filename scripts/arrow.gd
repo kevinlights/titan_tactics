@@ -6,6 +6,7 @@ var start_position = Vector3(0, 0, 0)
 var end_position = Vector3(1, 0, 0)
 var start = 0
 var ttl = 500
+var is_gone = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,4 +31,5 @@ func _process(delta):
 		emit_signal("hit")
 		hide()
 		yield(get_tree().create_timer(1.0), "timeout")
-		get_parent().remove_child(self)
+#		get_parent().remove_child(self)
+		queue_free()

@@ -102,7 +102,6 @@ func set_character_class(new_character_class):
 		item_def.character_class = new_character_class
 	var default_stats = load("res://resources/class_stats.tres")
 	generate(default_stats, character_class, control, level)
-	print("class changed emit singal")
 	emit_signal("class_changed")
 
 func get_character_class():

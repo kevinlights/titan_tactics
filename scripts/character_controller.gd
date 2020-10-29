@@ -307,7 +307,7 @@ func move(target_path:PoolVector3Array):
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
 	character.turn_limits.move_distance -= path.size()
-	check_finished()
+#	check_finished()
 
 func normalize_path(path):
 	var target_path = PoolVector3Array()
@@ -387,6 +387,8 @@ func from_spawner(character_spawner):
 	character = character_spawner.stats #.duplicate()
 	# reset to max hp when deploying
 	character.hp = character.max_hp
+	if character.character_class == TT.TYPE.BOBA or character.character_class == TT.TYPE.POISON_BOBA:
+		character.name = "Boba"
 	if character_spawner.dialogue and character_spawner.dialogue.trigger != PT_Dialogue.TRIGGER.DISABLED:
 		dialogue = character_spawner.dialogue
 		if character.portrait_override and character.portrait_override != "":
@@ -538,6 +540,7 @@ func _process(delta):
 #					print("path complete ", translation)
 					emit_signal("path_complete")
 					emit_signal("idle")
+					check_finished()
 					movement.moving = false
 				stop_all_sfx($sfx/walk)
 		else:
