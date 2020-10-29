@@ -3,6 +3,7 @@ class_name StoryMarker
 extends Sprite3D
 
 export(String) var marker_name
+export(Resource) var dialogue
 
 func _enter_tree():
 	axis = 1
