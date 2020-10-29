@@ -5,12 +5,12 @@ var level_markers = [
 	Vector2(54, 103),
 	Vector2(82, 86),
 	Vector2(65, 58),
-	Vector2(42, 75),
-	Vector2(116, 65),
-	Vector2(180, 65),
-	Vector2(214, 85),
-	Vector2(246, 107),
-	Vector2(267, 95)
+	Vector2(118, 65),
+	Vector2(191, 56),
+	Vector2(235, 62),
+	Vector2(181, 74),
+	Vector2(138, 88),
+	Vector2(104, 101)
 ]
 
 func _ready():
