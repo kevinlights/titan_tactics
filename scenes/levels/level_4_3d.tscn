@@ -586,7 +586,7 @@ mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
-"cells": PoolIntArray( 131077, 2, 6, 131079, 2, 6, 131073, 12, 1048582, 131073, 14, 1048582 )
+"cells": PoolIntArray( 131077, 2, 9, 131079, 2, 9, 327686, 3, 655370, 131073, 12, 1048585, 131073, 14, 1048585 )
 }
 __meta__ = {
 "_editor_clip_": 0,

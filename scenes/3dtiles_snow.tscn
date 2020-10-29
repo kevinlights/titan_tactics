@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gfx/OBJS/house_03.dae" type="PackedScene" id=1]
 [ext_resource path="res://gfx/OBJS/wall_corner_03_light.dae" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://gfx/OBJS/bigcrystal.dae" type="PackedScene" id=9]
 [ext_resource path="res://gfx/OBJS/crystal.dae" type="PackedScene" id=10]
 [ext_resource path="res://gfx/OBJS/stalagmite.dae" type="PackedScene" id=11]
+[ext_resource path="res://gfx/OBJS/redbridge.dae" type="PackedScene" id=12]
 
 [node name="Spatial" type="Spatial"]
 
@@ -46,3 +47,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8844, 1.01074, 0.170197 )
 
 [node name="stalagmite" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0935891, -0.550068, -8.62009 )
+
+[node name="redbridge" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280359, -1.03367, 0.0481669 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://gfx/OBJS/rock_02.dae" type="PackedScene" id=1]
 [ext_resource path="res://gfx/OBJS/block_02.dae" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://gfx/OBJS/windoors_house2.dae" type="PackedScene" id=7]
 [ext_resource path="res://gfx/OBJS/palmtree.dae" type="PackedScene" id=8]
 [ext_resource path="res://gfx/OBJS/pillar.dae" type="PackedScene" id=9]
+[ext_resource path="res://gfx/OBJS/window_desert.dae" type="PackedScene" id=10]
 
 [node name="Spatial" type="Spatial"]
 
@@ -38,3 +39,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.959405, -1.02733, -0.574164 
 
 [node name="pillar" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18328, -0.43011, -1.83336 )
+
+[node name="window_desert" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45917, 1.94484, -5.25226 )
