@@ -307,7 +307,7 @@ func move(target_path:PoolVector3Array):
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
 	character.turn_limits.move_distance -= path.size()
-	check_finished()
+#	check_finished()
 
 func normalize_path(path):
 	var target_path = PoolVector3Array()
@@ -540,6 +540,7 @@ func _process(delta):
 #					print("path complete ", translation)
 					emit_signal("path_complete")
 					emit_signal("idle")
+					check_finished()
 					movement.moving = false
 				stop_all_sfx($sfx/walk)
 		else:
