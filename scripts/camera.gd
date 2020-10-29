@@ -7,6 +7,11 @@ var end_offset = Vector3()
 var end_rotation = Vector3()
 
 var ttl = 300
+var move_ttl = 500
+
+var target_position = Vector3()
+var move_time = 0
+var move_start = Vector3()
 
 var offsets = {
 	TT.CAMERA.SOUTH: Vector3(15, 19, -15),
@@ -27,7 +32,10 @@ var tracked_item
 var offset = offsets[Game.camera_orientation]
 
 func track(item):
+	var now = OS.get_ticks_msec()
 	tracked_item = item
+	move_time = now
+	move_start = get_parent().translation
 
 func _ready():
 	# warning-ignore:return_value_discarded
@@ -77,8 +85,11 @@ func is_rotating():
 func _process(_delta):
 	var now = OS.get_ticks_msec()
 	if tracked_item:
+		if now - move_time < move_ttl:
+			get_parent().translation = lerp(move_start, tracked_item.get_global_transform().origin, float(now - move_time) / float(move_ttl))
+		else:
 			get_parent().translation = tracked_item.get_global_transform().origin;
-			get_parent().translation.y = -1.0
+		get_parent().translation.y = -1.0
 	else:
 		tracked_item = get_tree().get_root().get_node("World").get_current()
 	if now - start_time < ttl:

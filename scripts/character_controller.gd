@@ -169,8 +169,8 @@ func select():
 func teleport(x, y):
 	tile.x = floor(x)
 	tile.z = floor(y)
-	translation.x = floor(x) # * TT.cell_size)
-	translation.z = floor(y) # * TT.cell_size)
+	translation.x = floor(x)
+	translation.z = floor(y)
 	translation.y = 0
 
 func heal(target):
@@ -209,11 +209,9 @@ func can_attack(target):
 	var atk_range = character.atk_range + character.item_atk.attack_range
 	var level_target = Vector2(target.translation.x, target.translation.z)
 	var level_source = Vector2(translation.x, translation.z)
-#	print(atk_range, " > ", level_source.distance_to(level_target), " : ", !(level_source.distance_to(level_target) > atk_range));
 	return !(level_target.distance_to(level_source) > atk_range)
 
 func get_def_buff(def_value):
-#	print(log(def_value))
 	return 1.0 - (log(def_value) / log(10)) * 0.3
 
 func attack(target):
@@ -246,14 +244,10 @@ func attack(target):
 				behind_target = true
 	if behind_target:
 		damage = damage * 1.15
-#	print("atk ", damage)
 	var target_defense = target.character.def + target.character.item_def.defense
-	var def_multiplier = get_def_buff(target_defense) #1.0 - (target_defense + tanh(target_defense)) / 100
+	var def_multiplier = get_def_buff(target_defense)
 	damage *= def_multiplier
-#	print("def ", target_defense)
-#	print("def penalty ", (def_multiplier) * 100.0, "%")
 	damage = clamp(floor(damage), 0, 99)
-#	print("actual damage ", damage)
 	target.character.hp -= damage
 	if target.has_node("healthbar"):
 		target.get_node("healthbar").set_value(target.character.hp, target.character.max_hp)	
@@ -269,7 +263,6 @@ func attack(target):
 		projectile.connect("hit", target, "hit", [character])
 		projectile.connect("hit", self, "attack_complete")
 		world.get_node("lookat/camera").track(projectile)
-#		projectile.get_node("sparkle").play("player" if character.control == TT.CONTROL.PLAYER else "ai")
 		pick_random_sfx($sfx/magic_attack)
 		get_parent().add_child(projectile)
 	elif character.character_class == TT.TYPE.ARCHER:
