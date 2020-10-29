@@ -663,11 +663,11 @@ mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
-"cells": PoolIntArray( 131073, 1, 9, 131075, 2, 9, 131090, 8, 1441798, 131090, 10, 1441798 )
+"cells": PoolIntArray( 131073, 1, 9, 131075, 2, 9, 327682, 2, 655370, 131090, 8, 1441798, 131090, 10, 1441798 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 2, 0 )
+"_editor_floor_": Vector3( 0, 5, 0 )
 }
 
 [node name="map" type="Spatial" parent="."]

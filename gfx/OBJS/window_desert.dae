@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.5 commit date:2020-08-19, commit time:06:07, hash:c2b144df395f</authoring_tool>
+    </contributor>
+    <created>2020-10-29T02:35:57</created>
+    <modified>2020-10-29T02:35:57</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="windoors_house2-effect">
+      <profile_COMMON>
+        <newparam sid="windoors_desert_001_png_002-surface">
+          <surface type="2D">
+            <init_from>windoors_desert_001_png_002</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="windoors_desert_001_png_002-sampler">
+          <sampler2D>
+            <source>windoors_desert_001_png_002-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="windoors_desert_001_png_002-sampler" texcoord="Plane_004-mesh-map-0"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="windoors_desert_001_png_002" name="windoors_desert_001_png_002">
+      <init_from>windoors_desert_001.png.002.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="windoors_house2-material" name="windoors_house2">
+      <instance_effect url="#windoors_house2-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Plane_002-mesh" name="Plane.002">
+      <mesh>
+        <source id="Plane_002-mesh-positions">
+          <float_array id="Plane_002-mesh-positions-array" count="24">0.1873812 -3.00375 0.004859507 1.796048 -3.00375 0.004859507 0.1873812 -3.00375 2.328939 1.796048 -3.00375 2.328939 -0.5482686 -2.472022 0.4577441 -0.5482686 0.2297886 0.4577441 -0.5482686 -2.472022 1.888563 -0.5482686 0.2297886 1.888563</float_array>
+          <technique_common>
+            <accessor source="#Plane_002-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_002-mesh-normals">
+          <float_array id="Plane_002-mesh-normals-array" count="3">-1 0 0</float_array>
+          <technique_common>
+            <accessor source="#Plane_002-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_002-mesh-map-0">
+          <float_array id="Plane_002-mesh-map-0-array" count="12">0.680623 0.9726491 0.02827644 0.6190366 0.680623 0.6190366 0.680623 0.9726491 0.02827644 0.9726491 0.02827644 0.6190366</float_array>
+          <technique_common>
+            <accessor source="#Plane_002-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane_002-mesh-vertices">
+          <input semantic="POSITION" source="#Plane_002-mesh-positions"/>
+        </vertices>
+        <triangles material="windoors_house2-material" count="2">
+          <input semantic="VERTEX" source="#Plane_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_002-mesh-map-0" offset="2" set="0"/>
+          <p>6 0 0 5 0 1 4 0 2 6 0 3 7 0 4 5 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="window_desert" name="window_desert" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Plane_002-mesh" name="window_desert">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="windoors_house2-material" target="#windoors_house2-material">
+                <bind_vertex_input semantic="Plane_004-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
