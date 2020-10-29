@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue"
+type="Dialogue"
+path="res://.import/level2_recruit.dialogue-9d37b1c057e78ba5fb54ae5dc8e90142.tres"
+
+[deps]
+
+source_file="res://resources/story/level2_recruit.dialogue"
+dest_files=[ "res://.import/level2_recruit.dialogue-9d37b1c057e78ba5fb54ae5dc8e90142.tres" ]
+
+[params]
+
+title_prefix="#"
+action_prefix=">"
+comment_prefix="//"
