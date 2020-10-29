@@ -165,7 +165,8 @@ func set_origin(entity):
 	print("Set origin ", translation)
 	current_entity.select()
 	current_entity.connect("idle", self, "go_home")
-	capture_camera()
+	if current_entity.character.control != TT.CONTROL.AI:
+		capture_camera()
 	emit_signal("moved", self.tile)	
 #
 func _process(delta):
