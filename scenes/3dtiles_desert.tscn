@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gfx/OBJS/rock_02.dae" type="PackedScene" id=1]
 [ext_resource path="res://gfx/OBJS/block_02.dae" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gfx/OBJS/wall_02.dae" type="PackedScene" id=5]
 [ext_resource path="res://gfx/OBJS/house_02.dae" type="PackedScene" id=6]
 [ext_resource path="res://gfx/OBJS/windoors_house2.dae" type="PackedScene" id=7]
+[ext_resource path="res://gfx/OBJS/palmtree.dae" type="PackedScene" id=8]
 
 [node name="Spatial" type="Spatial"]
 
@@ -30,3 +31,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.659919, 1.73197, -4.94203 )
 
 [node name="windoors_house2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9955, 2.06679, -7.46054 )
+
+[node name="palmtree" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.959405, -1.02733, -0.574164 )
