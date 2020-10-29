@@ -387,6 +387,8 @@ func from_spawner(character_spawner):
 	character = character_spawner.stats #.duplicate()
 	# reset to max hp when deploying
 	character.hp = character.max_hp
+	if character.character_class == TT.TYPE.BOBA or character.character_class == TT.TYPE.POISON_BOBA:
+		character.name = "Boba"
 	if character_spawner.dialogue and character_spawner.dialogue.trigger != PT_Dialogue.TRIGGER.DISABLED:
 		dialogue = character_spawner.dialogue
 		if character.portrait_override and character.portrait_override != "":

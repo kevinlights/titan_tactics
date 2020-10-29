@@ -18,7 +18,7 @@ mov_range = 6
 [sub_resource type="Resource" id=2]
 script = ExtResource( 3 )
 character_class = 3
-name = ""
+name = "Boba"
 level = 1
 hp = 8
 max_hp = 8
@@ -61,7 +61,7 @@ effect = SubResource( 4 )
 [sub_resource type="Resource" id=6]
 script = ExtResource( 3 )
 character_class = 4
-name = ""
+name = "Boba"
 level = 1
 hp = 9
 max_hp = 9
