@@ -7,7 +7,7 @@ var modal = false setget _set_modal, _get_modal
 var paused = false
 
 var exempt = [ "sfx", "playerturn", "enemyturn" ]
-
+var modal_dialogs = [ "teamconfirm", "lvlup", "endturn" ]
 func _set_modal(value):
 	if value:
 		print("modal - hide selector")
@@ -19,6 +19,9 @@ func _set_modal(value):
 	modal = value
 
 func _get_modal():
+	for dialog in modal_dialogs:
+		if get_node(dialog).visible:
+			return true
 	return modal
 
 func _ready():
@@ -56,9 +59,13 @@ func attack():
 	$action_menu.call_deferred("show_dialog", "attack")
 
 func confirm_end_turn():
-	self.modal = true
-	$endturn.show()
-	$endturn/panel/end_turn.grab_focus()
+	if $lvlup.visible:
+		return
+	if not self.modal:
+		self.modal = true
+		self.active = true
+		$endturn.show()
+		$endturn/panel/end_turn.grab_focus()
 
 func turn(type):
 	if $lvlup.visible:
@@ -146,6 +153,7 @@ func loot(current, new, type):
 #		$healthpage.show()
 
 func team_confirm():
+	self.modal = true
 	active = true
 	arrow_hide()
 	$teamconfirm.call_deferred("show_dialog")

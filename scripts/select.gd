@@ -104,7 +104,7 @@ func _input(event):
 #	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
 #		play("blank")
 #		return
-	if gui.active or disabled:
+	if gui.active or disabled or gui.modal:
 		if not world.current_turn == TT.CONTROL.AI:
 			play("attack")
 			return
