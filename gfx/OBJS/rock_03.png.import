@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/waterside3.png-c1aa121dd42846cb0d4c8bcf4d3324f5.stex"
+path="res://.import/rock_03.png-fc01b858fcc00df85351c3e8ca58f2f2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/Animated/waterside3.png"
-dest_files=[ "res://.import/waterside3.png-c1aa121dd42846cb0d4c8bcf4d3324f5.stex" ]
+source_file="res://gfx/OBJS/rock_03.png"
+dest_files=[ "res://.import/rock_03.png-fc01b858fcc00df85351c3e8ca58f2f2.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
