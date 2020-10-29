@@ -34,9 +34,10 @@ var offset = offsets[Game.camera_orientation]
 func track(item):
 	print("Camera now tracks ", item.name)
 	var now = OS.get_ticks_msec()
+	if tracked_item:
+		move_time = now
+		move_start = get_parent().translation
 	tracked_item = item
-	move_time = now
-	move_start = get_parent().translation
 
 func _ready():
 	# warning-ignore:return_value_discarded
