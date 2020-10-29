@@ -140,6 +140,7 @@ func hit(attacker):
 			recruit(attacker)
 		else:
 			die()
+			yield(get_tree().create_timer(1.0), "timeout")
 			attacker.add_xp(character.level)
 	else:
 		if dialogue and dialogue.trigger == PT_Dialogue.TRIGGER.ATTACK and not dialogue_used:
@@ -147,7 +148,7 @@ func hit(attacker):
 #			print(dialogue.text)
 			emit_signal("dialogue", dialogue)
 #			gui.dialogue(dialogue)
-	if character.hp < character.max_hp:
+	if character.hp < character.max_hp and not is_dead:
 		$healthbar.show()
 	if character.control == TT.CONTROL.AI and can_recruit():
 		$speak.show()
@@ -428,6 +429,7 @@ func recruit(source):
 
 func die():
 	is_dead = true
+	$healthbar.hide()
 	pick_random_sfx($sfx/death)
 	avatar.play("hit-" + directions[Game.camera_orientation][movement.last_direction])
 
