@@ -20,8 +20,10 @@ export(int, "Can't Recruit", "May Recruit", "Must Recruit") var recruit_mode = 0
 
 #export(String, "default", "archer", "swordsman", "mage", "ai_archer", "ai_swordsman", "ai_mage", "hero", "antagonist", "antagonist_revealed", "old_man", "cyan") var portrait_override
 export(String) var portrait_override
+export(TT.CONTROL) var control = TT.CONTROL.AI
+
 var abilities
-var control
+#var control
 var weakness
 var strength
 var xp = 0 # setget set_xp,get_xp

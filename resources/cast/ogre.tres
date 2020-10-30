@@ -14,4 +14,6 @@ def = 50
 atk_range = 1
 mov_range = 8
 heal = 0
+recruit_mode = 0
 portrait_override = ""
+control = 1

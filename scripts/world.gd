@@ -157,7 +157,7 @@ func find_character(name):
 	for team in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
 		for character in current[team]:
 			print(character.character.name)
-			if character.character.name == name:
+			if character.character.name.to_lower() == name.to_lower():
 				return character
 
 func select_by_name(name):
@@ -322,13 +322,20 @@ func spawn_ai_character(ai_spawn, surprise = false):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	character.from_spawner(ai_spawn, surprise)
 	character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
-	character.character.control = TT.CONTROL.AI
+#	print("Control: ", character.character.control)
+#	if !character.character.control:
+#		character.character.control = TT.CONTROL.AI
 	character.add_to_group("characters")
-	current[TT.CONTROL.AI].append(character)
-	current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
-	current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
-	current[TT.CONTROL.AI].back().connect("path_complete", $select, "update_context")
-	current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
+	current[character.character.control].append(character)
+	character.connect("done", self, "advance_turn")
+	character.connect("path_complete", $select, "update_context")
+	character.connect("death", self, "_on_death")
+	if character.character.control == TT.CONTROL.AI:
+		character.connect("dialogue", self, "_on_dialogue")
+	else:
+		character.connect("path_complete", self, "check_move_triggers", [ character ])
+		character.connect("attack_complete", self, "_on_attack_complete")
+		character.character.connect("level_up", self, "_on_level_up")		
 	world_map.add_child(character)
 	
 func spawn_ai_team():
@@ -624,8 +631,8 @@ func _on_heal():
 	if get_current().character.turn_limits.actions != 0:
 		var healed = get_current().heal(target)
 		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
-		damage_feedback.position.x = target.position.x
-		damage_feedback.position.y = target.position.y - 3
+		damage_feedback.translation.x = target.translation.x
+		damage_feedback.translation.z = target.translation.z
 		damage_feedback.get_node("damage").text = "+" + str(healed)
 		add_child(damage_feedback)
 		target.get_node("vfx/heal").emitting = true

@@ -123,8 +123,9 @@ func hit(attacker):
 		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
 		TT.TYPE.MAGE:
+			$vfx/magic_hit.frame = 0
 			$vfx/magic_hit.show()
-			$vfx/magic_hit.emitting = true
+			$vfx/magic_hit.play()
 			pick_random_sfx($sfx/magic_hit)
 		TT.TYPE.BOBA:
 			pick_random_sfx($sfx/boba_hit)
@@ -321,6 +322,8 @@ func select_type():
 	
 	# cast
 	$kris.hide()
+	$elyne.hide()
+	$arath.hide()
 	if avatar:
 		avatar.hide()
 	if character.control == TT.CONTROL.PLAYER:
@@ -393,8 +396,8 @@ func from_spawner(character_spawner, surprise = false):
 	dialogue = character_spawner.dialogue
 	death_dialogue = character_spawner.death_dialogue
 	recruit_dialogue = character_spawner.recruit_dialogue
-	if character_spawner.recruit_dialogue and character_spawner.recruit_dialogue.trigger != PT_Dialogue.TRIGGER.DISABLED:
-		recruit_dialogue = character_spawner.recruit_dialogue
+#	if character_spawner.recruit_dialogue and character_spawner.recruit_dialogue.trigger != PT_Dialogue.TRIGGER.DISABLED:
+#	recruit_dialogue = character_spawner.recruit_dialogue
 	select_type()
 	init_common(character_spawner.stats.control)
 
