@@ -202,6 +202,8 @@ func to_world_path(path):
 
 func action():
 	print ("world action")
+	if game_over:
+		return
 	var context = get_current_context($select.tile)
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	var target = entity_at($select.tile)
@@ -305,22 +307,47 @@ func spawn_chests():
 			floor(chest_spawn.translation.z / TT.cell_size),
 			chest_spawn.item_spawner)
 		chest_spawn.hide()
+
+func surprise_spawn(spawn_trigger):
+	print("Surprise spawns! ", spawn_trigger)
+	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
+	for ai_spawn in ai_spawns:
+		if ai_spawn.spawn_trigger == spawn_trigger:
+			print("Spawning surprise enemy")
+			spawn_ai_character(ai_spawn, true)
+			yield(get_tree().create_timer(0.5), "timeout")
+
+func spawn_ai_character(ai_spawn, surprise = false):
+	ai_spawn.has_spawned = true
+	var character:Node = load("res://scenes/character_controller.tscn").instance()
+	character.from_spawner(ai_spawn, surprise)
+	character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
+	character.character.control = TT.CONTROL.AI
+	character.add_to_group("characters")
+	current[TT.CONTROL.AI].append(character)
+	current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
+	current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
+	current[TT.CONTROL.AI].back().connect("path_complete", $select, "update_context")
+	current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
+	world_map.add_child(character)
 	
 func spawn_ai_team():
 	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
 	for ai_spawn in ai_spawns:
 		if ai_spawn.spawn_trigger == "" or ai_spawn.spawn_trigger == "level_start":
-			var character:Node = load("res://scenes/character_controller.tscn").instance()
-			character.from_spawner(ai_spawn)
-			character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
-			character.character.control = TT.CONTROL.AI
-			character.add_to_group("characters")
-			current[TT.CONTROL.AI].append(character)
-			current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
-			current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
-			current[TT.CONTROL.AI].back().connect("path_complete", $select, "update_context")
-			current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
-			world_map.add_child(character)
+			spawn_ai_character(ai_spawn)
+#			ai_spawn.has_spawned = true
+#			var character:Node = load("res://scenes/character_controller.tscn").instance()
+#			character.from_spawner(ai_spawn)
+#			character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
+#			character.character.control = TT.CONTROL.AI
+#			character.add_to_group("characters")
+#			current[TT.CONTROL.AI].append(character)
+#			current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
+#			current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
+#			current[TT.CONTROL.AI].back().connect("path_complete", $select, "update_context")
+#			current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
+#			world_map.add_child(character)
 		ai_spawn.hide()
 	ai = SmortAI.new(self)
 	
@@ -343,7 +370,8 @@ func _on_attack_complete():
 func _on_dialogue_complete(content):
 	gui.back()
 	print("character triggered dialogue complete")
-	$select.enable()
+	if not check_end_game(true):
+		$select.enable()
 
 func _on_dialogue(content):
 	$select.disable()
@@ -387,42 +415,51 @@ func _on_start_level():
 	$range_overlay.call_deferred("set_origin", get_current())
 
 func _on_win(ignore_dialogue = false):
-	if not (gui.get_node("dialogue_box").visible or gui.get_node("lvlup").visible) or ignore_dialogue:
-#		print("win, dialogue: ", gui.get_node("dialogue_box").visible)
+	if (!gui.get_node("dialogue_box").visible and !gui.get_node("lvlup").visible) or ignore_dialogue:
 		gui.get_node("dialogue_box").hide()
 		if Game.level + 1 < Game.get_level_count():
 			gui.win()
 		else:
 			get_tree().change_scene("res://scenes/landing.tscn")
 		$music/win.play()
-		emit_signal("win")
+#		emit_signal("win")
 		print("End game: WIN")
+	else:
+		print("Not ending level for some reason")
+		print("ignoring dialogue for end condition: ", ignore_dialogue)
 
 func all_enemies_eliminated():
+	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
+	for spawn in ai_spawns:
+		if not spawn.has_spawned:
+			print("more surprise spawns remain")
+			return false
 	return current[TT.CONTROL.AI].size() == 0
 
 func check_end_game(ignore_dialogue = false):
 	if all_enemies_eliminated():
 		emit_signal("all_enemies_eliminated")
-	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
-	for trigger in triggers:
-		print("Available ", trigger.available)
-		print("Consumed ", trigger.consumed)
-		if trigger.available == "level_complete" and !trigger.consumed:
-			return false
-	for control in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
-		if current[control].size() == 0:
-			game_over = true
-			$select.disable()
-			gui.call_deferred("battle_hide")
-			if control == TT.CONTROL.AI:
-				call_deferred("_on_win", ignore_dialogue)
-			else:
-				gui.lose()
-				print("End game: LOSE")
-				$music/lose.play()
-			$music.get_node(Game.get_theme()).stop()
-			return true
+#		var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
+#		for trigger in triggers:
+#			print("Available ", trigger.available)
+#			print("Consumed ", trigger.consumed)
+#			if trigger.available == "level_complete" and !trigger.consumed:
+#				return false
+		for control in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
+			if current[control].size() == 0:
+				game_over = true
+				$select.disable()
+				gui.call_deferred("battle_hide")
+				if control == TT.CONTROL.AI:
+					print("try ending game, ignoring dialogue: ", ignore_dialogue)
+					emit_signal("win")
+					call_deferred("_on_win", ignore_dialogue)
+				else:
+					gui.lose()
+					print("End game: LOSE")
+					$music/lose.play()
+				$music.get_node(Game.get_theme()).stop()
+				return true
 	return false
 
 func _on_death(character):
@@ -449,6 +486,19 @@ func _on_next_level():
 		$music.get_node(Game.get_theme()).stop()
 		$music/win.play()
 
+func same_tile(tile1, tile2):
+	var tile1_floor = Vector3(floor(tile1.x), 0, floor(tile1.z))
+	var tile2_floor = Vector3(floor(tile2.x), 0, floor(tile2.z))
+	return tile1_floor.is_equal_approx(tile2_floor)
+
+func check_move_triggers(character):
+	var markers = get_tree().get_nodes_in_group("story_markers")
+	for marker in markers:
+		if marker.dialogue and same_tile(marker.translation, character.translation): #marker.translation.is_equal_approx(character.translation):
+			if not marker.dialogue.consumed:
+				gui.dialogue(marker.dialogue)
+				break
+
 func auto_deploy_only_character():
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
@@ -460,6 +510,7 @@ func auto_deploy_only_character():
 	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
+	character.connect("path_complete", self, "check_move_triggers", [ character ])
 	character.connect("path_complete", $select, "update_context")
 	character.connect("attack_complete", self, "_on_attack_complete")
 	character.character.control = TT.CONTROL.PLAYER
@@ -477,6 +528,7 @@ func _on_select_team_member(team_member):
 	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
 	character.connect("death", self, "_on_death")
+	character.connect("path_complete", self, "check_move_triggers", [ character ])
 	character.connect("path_complete", $select, "update_context")
 	character.connect("attack_complete", self, "_on_attack_complete")
 	character.character.control = TT.CONTROL.PLAYER

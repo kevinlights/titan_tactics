@@ -9,6 +9,8 @@ export(Resource) var death_dialogue
 
 export(String) var spawn_trigger = "level_start"
 
+var has_spawned = false
+
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
 	print("spawn entered tree")

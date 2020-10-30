@@ -17,7 +17,7 @@ func _ready():
 #	for content in dialogue:
 	if start_dialogue:
 		start_dialogue.connect("completed", self, "_on_dialogue_complete")
-		start_dialogue.connect("completed", world, "_on_dialogue_complete")		
+		start_dialogue.connect("completed", world, "_on_dialogue_complete")
 	if end_dialogue:
 		end_dialogue.connect("completed", self, "_on_dialogue_complete")
 		end_dialogue.connect("completed", world, "_on_dialogue_complete")
@@ -46,7 +46,7 @@ func _on_start_level():
 
 func _on_end_level():
 	print("dialog end level check")
-	if end_dialogue:
+	if end_dialogue and !end_dialogue.consumed:
 		gui.dialogue(end_dialogue)
 #	if dialogue.size() > 0:
 #		for content in dialogue:

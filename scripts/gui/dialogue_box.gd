@@ -70,6 +70,11 @@ func perform_action(item):
 		var path = world.pathfinder.find_path(character.translation, marker.translation, world.get_blocked_cells())
 		character.connect("path_complete", self, "advance", [], CONNECT_ONESHOT)
 		character.move(path)
+	if item.action == "focus":
+		var marker = world.find_story_marker(item.target)
+		world.get_node("lookat/camera").track(marker)
+	if item.action == "spawn":
+		world.surprise_spawn(item.target)
 	index += 1
 
 func _process(delta):
@@ -131,6 +136,12 @@ func advance():
 			get_parent().modal = false
 			hide()
 
+func dismiss():
+	content.complete()
+	get_parent().modal = false
+	hide()
+	world.check_end_game(true)
+
 func _input(event):
 	if not visible:
 		return
@@ -144,9 +155,7 @@ func _input(event):
 		else:
 			advance()
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
-		content.complete()
-		get_parent().modal = false
-		hide()
+		dismiss()
 #		elif text_blocks.size() > 0:
 #			set_text(text_blocks[0])
 #			text_blocks.remove(0)

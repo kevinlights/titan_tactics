@@ -56,6 +56,8 @@ func fibonacci_cumulative(position):
 	return result
 
 func add_xp(more_xp):
+	if level == 0:
+		return
 	xp += more_xp
 	current_to_next += more_xp
 	print("xp gained ", more_xp)

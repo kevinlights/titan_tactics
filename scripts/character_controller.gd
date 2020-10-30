@@ -378,12 +378,18 @@ func copy_stats(spawner):
 #	return CharacterStats.new(default_stats, char_type, control)
 
 	
-func from_spawner(character_spawner):
+func from_spawner(character_spawner, surprise = false):
+	if surprise:
+		$vfx/poly.frame = 0
+		$vfx/poly.play()
+		$vfx/poly.show()
 	character = character_spawner.stats #.duplicate()
 	# reset to max hp when deploying
 	character.hp = character.max_hp
 	if character.character_class == TT.TYPE.BOBA or character.character_class == TT.TYPE.POISON_BOBA:
 		character.name = "Boba"
+	if character.level == 0:
+		character.xp_to_next = 9999
 	dialogue = character_spawner.dialogue
 	death_dialogue = character_spawner.death_dialogue
 	recruit_dialogue = character_spawner.recruit_dialogue
@@ -420,10 +426,13 @@ func recruit(source):
 	$sfx/recruit/success.play()
 
 func die():
-	is_dead = true
-	$healthbar.hide()
-	pick_random_sfx($sfx/death)
-	avatar.play("hit-" + directions[Game.camera_orientation][movement.last_direction])
+	if not is_dead:
+		is_dead = true
+		$healthbar.hide()
+		pick_random_sfx($sfx/death)
+		avatar.play("hit-" + directions[Game.camera_orientation][movement.last_direction])
+		if death_dialogue:
+			emit_signal("dialogue", death_dialogue)
 
 func _on_orientation_changed():
 #	print(str(Game.camera_orientation))

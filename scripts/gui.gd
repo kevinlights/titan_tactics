@@ -171,8 +171,9 @@ func win():
 	active = true
 	self.modal = true
 	$win.reset()
-	$win/Control/Next.grab_focus()
+#	$win/Control/Next.grab_focus()
 	$win.show()
+	$win/Control/Next.call_deferred("grab_focus")
 
 func lose():
 	back()
