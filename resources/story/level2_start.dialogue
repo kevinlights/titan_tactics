@@ -15,8 +15,9 @@ All right! Adventure time with my buddy Kris!
 //tutorial2 starts here
 
 # bowie
-Let me just remind you of some stuff. Human enemies can use ether swords, bows or magic wands. You have a sword and I have a bow. Humans with bows can hit you from far away. Each type of unit has its own advantages against the others, causing you to deal or receive more damage to them. Sword beats bow, bow beats magic, and magic beats sword
-> select Petr
+Let me just remind you of some stuff. Human enemies can use ether swords, bows or magic wands. You have a sword and I have a bow. Humans with bows can hit you from far away. Each type of unit has its own advantages against the others, causing you to deal or receive more damage to them. Sword beats bow, bow beats magic, and magic beats sword.
+
+> focus Petr
 //animation enemy archer shooting arrow near our characters
 
 # bowie
