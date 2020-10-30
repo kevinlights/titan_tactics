@@ -289,7 +289,7 @@ func _init_astar():
 					cardinalDeltas[(1 + orientation_modifier) % cardinalDeltas.size()],
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
 				]
-	  'cristal005':
+			'cristal005':
 				# NOTE: assuming identical behaviour with tree
 				directions = [
 					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
