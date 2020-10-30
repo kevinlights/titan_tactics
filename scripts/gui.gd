@@ -134,8 +134,8 @@ func ally_hide(current):
 
 func battle_hide(current = null):
 	print("Hide battle UI")
-	# TODO: make yield conditional on AI turn only
-	yield(get_tree().create_timer(2.0), "timeout")
+	if get_tree().get_root().get_node("World").current_turn == TT.CONTROL.AI:
+		yield(get_tree().create_timer(2.0), "timeout")
 	$battle.start_hiding(current)
 	#$battle/box_ally.position.x = $battle.start_x_ally
 	#$battle/box_enemy.position.x = $battle.start_x_enemy
