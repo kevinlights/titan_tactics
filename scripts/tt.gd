@@ -29,52 +29,52 @@ enum CONTEXT {
 const cell_size = 1
 const levels = [
 	{
-		"name": "Rolf the Confused",
+		"name": "Haki Village",
 		"scene": "level_1_3d",
 		"music": "forest"
 	},
 	{
-		"name": "The OGRE enters the game",
+		"name": "Down the Rabbit Hole",
 		"scene": "level_2_3d", #replace with level_2_3dtest if needed
 		"music": "forest"
 	},
 	{
-		"name": "Roses are red, Violets are blue...",
+		"name": "Silent but Deadly",
 		"scene": "level_3_3d",
 		"music": "forest"
 	},
 	{
-		"name": "We all scream for ice cream",
+		"name": "To the Rescue",
 		"scene": "level_4_3d",
 		"music": "cave" #desert
 	},
 	{
-		"name": "Viva la libertad",
+		"name": "A Helping Hand",
 		"scene": "level_5_3d",
 		"music": "cave" #desert
 	},
 	{
-		"name": "The well is not well",
+		"name": "Cutting Cheese",
 		"scene": "level_6_3d",
 		"music": "city" #ice
 	},
 	{
-		"name": "The hole is not whole",
+		"name": "The Battle of Skathi",
 		"scene": "level_7_3d",
 		"music": "city" #ice
 	},
 	{
-		"name": "Meat is murder. Delicious, delicious murder.",
+		"name": "Turning the Tables",
 		"scene": "level_8_3d",
 		"music": "city" #ice
 	},
 	{
-		"name": "The end of the rainbow",
+		"name": "The Horrible Truth",
 		"scene": "level_9_3d",
 		"music": "cave" #desert
 	},
 	{
-		"name": "The pot of gold",
+		"name": "The Battle of Tyrmyr",
 		"scene": "level_10_3d",
 		"music": "cave" #boss
 	}

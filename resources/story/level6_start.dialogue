@@ -1,7 +1,7 @@
 //Starting level6 – Elyne tells the party that Kingdom2 is trying to invade them and sends party to Kingdom2
 
 > select elyne
-> move to kris
+> move kris
 
 # elyne
 Thank you brave soldiers from Haki.
