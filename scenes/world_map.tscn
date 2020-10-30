@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/world_map.gd" type="Script" id=2]
 [ext_resource path="res://gfx/worldmap.png" type="Texture" id=3]
 [ext_resource path="res://gfx/map_select.png" type="Texture" id=4]
 [ext_resource path="res://gfx/mapdots.png" type="Texture" id=5]
+[ext_resource path="res://music/map_theme.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -154,6 +155,7 @@ __meta__ = {
 [node name="map_selector" type="AnimatedSprite" parent="."]
 position = Vector2( 70, 134 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 centered = false
 
@@ -405,3 +407,9 @@ frames = SubResource( 10 )
 [node name="AnimatedSprite28" type="AnimatedSprite" parent="map point10"]
 position = Vector2( 30.5439, -20.1809 )
 frames = SubResource( 10 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource( 6 )
+autoplay = true
