@@ -28,6 +28,7 @@ func _ready():
 func generate_data(origin):
 	var character = origin.character;
 	var _data = {
+		'tile': origin.tile,
 		'move_distance': character.turn_limits.move_distance,
 		'actions': character.turn_limits.actions,
 		'atk_range': character.atk_range + character.item_atk.attack_range,
@@ -41,10 +42,13 @@ func generate_data(origin):
 
 func _process(time):
 	if gridmap and origin:
+		#print(self.visible, data, origin.movement.moving, origin.tile)
 		if self.visible:
 			var shouldHide = (origin.movement.moving) or (world.current_turn == TT.CONTROL.AI or world.get_current_context(origin.tile) == TT.CONTEXT.NOT_PLAYABLE)
 			if shouldHide:
 				hide()
+			if not origin.movement.moving and origin.tile != data.tile:
+				generate_data(origin)
 		else:
 			var shouldShow = (not origin.movement.moving) and (world.current_turn == TT.CONTROL.PLAYER) and (world.get_current_context(origin.tile) == TT.CONTEXT.GUARD)
 			if shouldShow:
@@ -77,14 +81,15 @@ func show():
 	self.visible = true
 	var context_map = {}
 	
-	for tile in gridmap.get_tiles_within(origin.tile, data.move_distance - 1):
+	for tile in gridmap.get_tiles_within(data.tile, data.move_distance - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context = world.get_current_context(context_tile)
 		context_map[context_tile] = context
 		
 		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK and data.actions > 0:
-			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			pass # TODO: include if/when implementing psuedo range for melee
+			#tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
 		elif context == TT.CONTEXT.MOVE:
 			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
 		if tile_overlay_success == true:
@@ -96,10 +101,8 @@ func show():
 				drawSqaure(tile, materials.attack)
 			elif context == TT.CONTEXT.MOVE:
 				drawSqaure(tile, materials.move)
-				
-	if data.actions == 0:
-		return
-	for tile in gridmap.get_tiles_within(origin.tile, data.atk_range - 1):
+	
+	for tile in gridmap.get_tiles_within(data.tile, data.atk_range - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context;
 		if not context_map.has(context_tile):

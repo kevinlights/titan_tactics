@@ -247,6 +247,7 @@ func action():
 				_on_end()
 			else:
 				gui.guard(true)
+	$range_overlay.set_origin(get_current())
 
 func _on_confirm_end_turn():
 	get_current().is_done = true
