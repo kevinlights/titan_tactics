@@ -629,7 +629,7 @@ func _on_guard():
 	gui.call_deferred("back")
 
 func _on_heal():
-	var target = entity_at($select.tile)	
+	var target = entity_at($select.tile)
 	if get_current().character.turn_limits.actions != 0:
 		var healed = get_current().heal(target)
 		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
@@ -684,6 +684,11 @@ func _on_selector_moved(tile):
 			gui.ally_hide(get_current())
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	$select.set_context(context)
+
+func play_music(music_node):
+	$music.get_node(Game.get_theme()).stop()
+	var music = $cutscene_music.get_node(music_node)
+	music.play()
 
 func get_current_context(tile):
 #	print(Game.level, ", ",  gui.get_node("dialogue").visible)
