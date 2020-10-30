@@ -295,6 +295,7 @@ func _ready():
 	$select.connect("moved", self, "_on_selector_moved")
 
 	call_deferred("select_team")
+	#$cutscene_music.get_node(Game.get_theme()).play()
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")

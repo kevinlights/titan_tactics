@@ -36,11 +36,13 @@ const levels = [
 	{
 		"name": "Down the Rabbit Hole",
 		"scene": "level_2_3d", #replace with level_2_3dtest if needed
+		"cutscene_music": "home",
 		"music": "forest"
 	},
 	{
 		"name": "Silent but Deadly",
 		"scene": "level_3_3d",
+		"cutscene_music": "caravan",
 		"music": "forest"
 	},
 	{
@@ -51,11 +53,13 @@ const levels = [
 	{
 		"name": "A Helping Hand",
 		"scene": "level_5_3d",
+		"cutscene_music": "calm",
 		"music": "cave" #desert
 	},
 	{
 		"name": "Cutting Cheese",
 		"scene": "level_6_3d",
+		"cutscene_music": "sad",
 		"music": "city" #ice
 	},
 	{
@@ -66,17 +70,20 @@ const levels = [
 	{
 		"name": "Turning the Tables",
 		"scene": "level_8_3d",
+		"cutscene_music": "royal",
 		"music": "city" #ice
 	},
 	{
 		"name": "The Horrible Truth",
 		"scene": "level_9_3d",
+		"cutscene_music": "royal",
 		"music": "cave" #desert
 	},
 	{
 		"name": "The Battle of Tyrmyr",
 		"scene": "level_10_3d",
-		"music": "cave" #boss
+		"cutscene_music": "betrayal",
+		"music": "boss" #boss
 	}
 ]
 #const levels = {
