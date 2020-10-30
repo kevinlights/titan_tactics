@@ -185,6 +185,8 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 		heal = level
 	elif request_class == TT.TYPE.BOBA:
 		default_stats = class_stats.boba
+	elif request_class == TT.TYPE.POISON_BOBA:
+		default_stats = class_stats.poison_boba
 	character_class = default_stats.character_class
 	control = request_control
 	abilities = TT.class_stats.abilities[character_class]

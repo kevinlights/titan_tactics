@@ -92,18 +92,6 @@ func import(source_file, save_path, options, r_platform_variants, r_gen_files):
 			if not message.handled:
 				print("Append message ", message.message)
 				dialogue.messages.append(message)
-#	while not file.eof_reached():
-#		var line = file.get_line()
-#		if line.begins_with(options.title_prefix):
-#			if current_message.title:
-#				dialogue.messages.append(current_message)
-#			var title = line.substr(1)
-#			current_message = DialogueMessage.new()
-#			current_message.title = title.lstrip(options.action_prefix + " ").rstrip(" ")
-#			current_message.message = ""
-#		else:
-##			if line.lstrip(" ").rstrip(" ") != "":
-#			current_message.message += line + "\n"
 	var save_file = "%s.%s" % [save_path, get_save_extension()]
 	var error = ResourceSaver.save(save_file, dialogue)
 	return error

@@ -28,6 +28,8 @@ var initialized = false
 
 var dialogue
 var recruit_dialogue
+var death_dialogue
+
 var dialogue_used = false
 var status_effects = []
 
@@ -143,9 +145,8 @@ func hit(attacker):
 			yield(get_tree().create_timer(1.0), "timeout")
 			attacker.add_xp(character.level)
 	else:
-		if dialogue and dialogue.trigger == PT_Dialogue.TRIGGER.ATTACK and not dialogue_used:
+		if dialogue and not dialogue_used:
 			dialogue_used = true
-#			print(dialogue.text)
 			emit_signal("dialogue", dialogue)
 #			gui.dialogue(dialogue)
 	if character.hp < character.max_hp and not is_dead:
@@ -383,11 +384,9 @@ func from_spawner(character_spawner):
 	character.hp = character.max_hp
 	if character.character_class == TT.TYPE.BOBA or character.character_class == TT.TYPE.POISON_BOBA:
 		character.name = "Boba"
-	if character_spawner.dialogue and character_spawner.dialogue.trigger != PT_Dialogue.TRIGGER.DISABLED:
-		dialogue = character_spawner.dialogue
-		if character.portrait_override and character.portrait_override != "":
-			dialogue.portrait = character.portrait_override
-		dialogue.connect("completed", self, "_on_dialogue_completed")
+	dialogue = character_spawner.dialogue
+	death_dialogue = character_spawner.death_dialogue
+	recruit_dialogue = character_spawner.recruit_dialogue
 	if character_spawner.recruit_dialogue and character_spawner.recruit_dialogue.trigger != PT_Dialogue.TRIGGER.DISABLED:
 		recruit_dialogue = character_spawner.recruit_dialogue
 	select_type()

@@ -309,17 +309,18 @@ func spawn_chests():
 func spawn_ai_team():
 	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
 	for ai_spawn in ai_spawns:
-		var character:Node = load("res://scenes/character_controller.tscn").instance()
-		character.from_spawner(ai_spawn)
-		character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
-		character.character.control = TT.CONTROL.AI
-		character.add_to_group("characters")
-		current[TT.CONTROL.AI].append(character) # spawn_character(floor(ai_spawn.position.x / TT.cell_size), floor(ai_spawn.position.y / TT.cell_size), ai_spawn.stats.character_class, TT.CONTROL.AI))
-		current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
-		current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
-		current[TT.CONTROL.AI].back().connect("path_complete", $select, "update_context")
-		current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
-		world_map.add_child(character)
+		if ai_spawn.spawn_trigger == "" or ai_spawn.spawn_trigger == "level_start":
+			var character:Node = load("res://scenes/character_controller.tscn").instance()
+			character.from_spawner(ai_spawn)
+			character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
+			character.character.control = TT.CONTROL.AI
+			character.add_to_group("characters")
+			current[TT.CONTROL.AI].append(character)
+			current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
+			current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
+			current[TT.CONTROL.AI].back().connect("path_complete", $select, "update_context")
+			current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
+			world_map.add_child(character)
 		ai_spawn.hide()
 	ai = SmortAI.new(self)
 	
