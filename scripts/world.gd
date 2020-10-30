@@ -165,7 +165,7 @@ func select_by_name(name):
 		var index = 0
 		for character in current[team]:
 			print(character.character.name)
-			if character.character.name == name:
+			if character.character.name.to_lower() == name.to_lower():
 				current_turn = team
 				current_character = index
 				return index

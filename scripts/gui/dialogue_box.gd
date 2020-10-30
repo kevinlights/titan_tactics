@@ -65,9 +65,15 @@ func perform_action(item):
 		world.get_node("lookat/camera").track(target)
 		world.select_by_name(item.target)
 	if item.action == "move":
+		var target_character = world.select_by_name(item.target)
 		var marker = world.find_story_marker(item.target)
 		var character = world.get_current()
-		var path = world.pathfinder.find_path(character.translation, marker.translation, world.get_blocked_cells())
+		var path = PoolVector3Array()
+		if target_character:
+			path = world.pathfinder.find_path(character.translation, target_character.translation, world.get_blocked_cells())
+			path.resize(path.size() - 1)
+		else:
+			path = world.pathfinder.find_path(character.translation, marker.translation, world.get_blocked_cells())
 		character.connect("path_complete", self, "advance", [], CONNECT_ONESHOT)
 		character.move(path)
 	if item.action == "focus":
