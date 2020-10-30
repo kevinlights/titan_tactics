@@ -294,7 +294,7 @@ data = {
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 6, 2, -9 )
+"_editor_floor_": Vector3( 6, 0, -9 )
 }
 
 [node name="decorative" type="GridMap" parent="Spatial"]
