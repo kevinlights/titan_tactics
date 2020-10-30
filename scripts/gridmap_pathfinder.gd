@@ -114,10 +114,20 @@ func _generate_overlayed_tiles():
 		mesh_library.set_item_mesh(attack_id, attack_mesh)
 		mesh_library.set_item_name(attack_id, name + "_attack")
 		
+		var hint_mesh = mesh.duplicate()
+		var hint_material = mesh.surface_get_material(0).duplicate()
+		hint_material.set_next_pass(load("res://gfx/range-overlay/inset_hint.material"))
+		hint_mesh.surface_set_material (0, attack_material)
+		var hint_id = mesh_library.get_last_unused_item_id() + 1
+		mesh_library.create_item(hint_id)
+		mesh_library.set_item_mesh(hint_id, hint_mesh)
+		mesh_library.set_item_name(hint_id, name + "_hint")
+		
 		ml_mapping[name] = {
 			'_': item_id,
 			'_move': move_id,
 			'_attack': attack_id,
+			'_hint': hint_id,
 		}
 	
 func world_path(path:PoolVector3Array):

@@ -11,7 +11,11 @@ var overlayed_tiles = []
 var data
 var origin setget set_origin
 var gridmap setget set_gridmap
+var hint_tiles = []
 
+func add_hint_tile(tile):
+	hint_tiles.push_back(tile)
+	
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
@@ -120,3 +124,8 @@ func show():
 			# TODO: implement fallback using previous approach to handle bridges etc
 			if context == TT.CONTEXT.ATTACK:
 				drawSqaure(tile, materials.attack)
+	
+	for tile in hint_tiles:
+		var tile_overlay_success = gridmap.set_tile_overlay(tile, 'hint')
+		if not tile_overlay_success == true:
+			print_debug("Failed to render hint overlay")
