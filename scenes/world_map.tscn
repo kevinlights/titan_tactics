@@ -155,7 +155,6 @@ __meta__ = {
 [node name="map_selector" type="AnimatedSprite" parent="."]
 position = Vector2( 70, 134 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 centered = false
 
@@ -412,4 +411,5 @@ frames = SubResource( 10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
 stream = ExtResource( 6 )
+volume_db = -2.0
 autoplay = true
