@@ -108,12 +108,13 @@ func _ready():
 	pass
 
 func spread_icons():
-	if $guard.visible and $speak.visible:
-		$guard.translation.x = -4
-		$speak.translation.x = 11
-	else:
-		$guard.translation.x = 0
-		$speak.translation.x = 7
+	pass
+#	if $guard.visible and $speak.visible:
+#		$guard.translation.x = -4
+#		$speak.translation.x = 11
+#	else:
+#		$guard.translation.x = 0
+#		$speak.translation.x = 7
 
 func hit(attacker):
 	match(attacker.character_class):
