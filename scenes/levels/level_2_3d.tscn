@@ -64,7 +64,7 @@ defense = 1
 heal = 0
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
 character_class = 1
 name = "Petr"
@@ -142,7 +142,7 @@ defense = 1
 heal = 0
 effect = SubResource( 11 )
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 5 )
 character_class = 3
 name = "Sage"
@@ -184,7 +184,7 @@ audio_theme = ""
 
 [sub_resource type="Resource" id=16]
 script = ExtResource( 17 )
-effect = 2
+effect = 3
 turns = 0
 damage = 0
 name = ""
@@ -220,7 +220,7 @@ defense = 1
 heal = 0
 effect = SubResource( 18 )
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=20]
 script = ExtResource( 5 )
 character_class = 3
 name = "Bram"
@@ -298,7 +298,7 @@ defense = 1
 heal = 0
 effect = SubResource( 25 )
 
-[sub_resource type="Resource" id=44]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 5 )
 character_class = 4
 name = "Datev"
@@ -376,7 +376,7 @@ defense = 1
 heal = 0
 effect = SubResource( 32 )
 
-[sub_resource type="Resource" id=45]
+[sub_resource type="Resource" id=34]
 script = ExtResource( 5 )
 character_class = 3
 name = "Seth"
@@ -454,7 +454,7 @@ defense = 0
 heal = 0
 effect = SubResource( 39 )
 
-[sub_resource type="Resource" id=46]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 5 )
 character_class = 1
 name = "Bowie"
@@ -498,7 +498,7 @@ mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
-"cells": PoolIntArray( 4, 0, 1048583, 5, 0, 1441799, 4, 1, 1048583, 5, 1, 1441799, 4, 2, 1048583, 5, 2, 1441799, 4, 3, 1048583, 5, 3, 1441799, 196609, 3, 18, 4, 4, 1048583, 5, 4, 1441799, 196610, 4, 655378, 4, 5, 1048583, 5, 5, 538312711, 4, 6, 1048583, 5, 6, 1441799, 4, 7, 1048583, 5, 7, 1441799, 4, 8, 1048583, 5, 8, 1441799, 131084, 8, 1441810, 4, 9, 1048583, 5, 9, 538312711, 131083, 9, 18, 4, 10, 1048583, 5, 10, 1441799, 4, 11, 1048583, 5, 11, 1441799, 4, 12, 1048583, 5, 12, 1441799, 4, 13, 1048583, 5, 13, 1441799, 4, 14, 1048583, 5, 14, 1441799 )
+"cells": PoolIntArray( 4, 0, 1048583, 5, 0, 1441799, 4, 1, 1048583, 5, 1, 1441799, 4, 2, 1048583, 5, 2, 1441799, 4, 3, 1048583, 5, 3, 1441799, 196609, 3, 536870930, 4, 4, 1048583, 5, 4, 1441799, 196610, 4, 655378, 4, 5, 1048583, 5, 5, 1441799, 4, 6, 1048583, 5, 6, 1441799, 4, 7, 1048583, 5, 7, 1441799, 4, 8, 1048583, 5, 8, 1441799, 131084, 8, 1441810, 4, 9, 1048583, 5, 9, 1441799, 131083, 9, 18, 4, 10, 1048583, 5, 10, 538312711, 4, 11, 1048583, 5, 11, 1441799, 4, 12, 1048583, 5, 12, 1441799, 4, 13, 1048583, 5, 13, 1441799, 4, 14, 1048583, 5, 14, 1441799 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -529,7 +529,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 41 )
+stats = SubResource( 6 )
 dialogue = SubResource( 7 )
 recruit_dialogue = SubResource( 8 )
 death_dialogue = null
@@ -541,7 +541,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 42 )
+stats = SubResource( 13 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
 death_dialogue = null
@@ -553,7 +553,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 43 )
+stats = SubResource( 20 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
 death_dialogue = null
@@ -565,7 +565,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 44 )
+stats = SubResource( 27 )
 dialogue = SubResource( 28 )
 recruit_dialogue = SubResource( 29 )
 death_dialogue = null
@@ -577,7 +577,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 45 )
+stats = SubResource( 34 )
 dialogue = SubResource( 35 )
 recruit_dialogue = SubResource( 36 )
 death_dialogue = null
@@ -615,7 +615,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 46 )
+stats = SubResource( 41 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null

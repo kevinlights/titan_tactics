@@ -1,0 +1,41 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://scripts/character_stats.gd" type="Script" id=1]
+[ext_resource path="res://scripts/item.gd" type="Script" id=2]
+[ext_resource path="res://scripts/status_effect.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+effect = 0
+turns = 3
+damage = 1
+name = ""
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+character_class = 0
+equipment_slot = 0
+level = 1
+name = "Minor Knife"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 1 )
+
+[resource]
+script = ExtResource( 1 )
+character_class = 0
+name = "Zara"
+level = 1
+hp = 70
+max_hp = 70
+atk = 8
+def = 3
+atk_range = 1
+mov_range = 4
+heal = 0
+item_atk = SubResource( 2 )
+recruit_mode = 0
+portrait_override = "zara"
+control = 1
