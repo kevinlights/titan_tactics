@@ -217,11 +217,10 @@ func answers(recruitment):
 	$dialogue_questions.show()
 	
 func dialogue(content):
-	back()
-	self.modal = true
-	active = true
-	print(content.messages)
-	$dialogue_box.set_content(content)
-#	$dialogue_box.set_text(content.text)
-	$dialogue_box.show()
-#	$dialogue.show()
+	if "messages" in content:
+		back()
+		self.modal = true
+		active = true
+		print(content.messages)
+		$dialogue_box.set_content(content)
+		$dialogue_box.show()
