@@ -1,4 +1,4 @@
-[gd_scene load_steps=285 format=2]
+[gd_scene load_steps=284 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -32,7 +32,6 @@
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=32]
 [ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=33]
-[ext_resource path="res://sfx/UI/turn_alert1.wav" type="AudioStream" id=34]
 [ext_resource path="res://gfx/ui/swipe.png" type="Texture" id=35]
 [ext_resource path="res://gfx/ui/lvupbg.png" type="Texture" id=36]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
@@ -64,25 +63,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 43 )
-region = Rect2( 0, 0, 36, 24 )
+[sub_resource type="DynamicFont" id=4]
+size = 11
+font_data = ExtResource( 29 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 43 )
+region = Rect2( 0, 0, 36, 24 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 43 )
 region = Rect2( 0, 24, 36, 24 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="DynamicFont" id=7]
-size = 11
-font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 13
@@ -184,11 +183,11 @@ region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 32, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 41 )
@@ -203,12 +202,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 27 ) ],
 "loop": true,
-"name": "mage",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 28 ) ],
@@ -2212,12 +2211,46 @@ frame = 1
 playing = true
 centered = false
 
+[node name="tip2" type="Label" parent="characterselect/Arrows"]
+margin_left = -1.75
+margin_top = 22.0
+margin_right = 39.25
+margin_bottom = 54.0
+theme = ExtResource( 22 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "change"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 frame = 1
 playing = true
 centered = false
+
+[node name="tip1" type="Label" parent="characterselect/Abutton"]
+margin_top = 22.0
+margin_right = 36.0
+margin_bottom = 54.0
+theme = ExtResource( 22 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "place
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="name" type="Label" parent="characterselect"]
 margin_left = 55.0
@@ -2230,41 +2263,6 @@ custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 text = "Rolf"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="tip1" type="Label" parent="characterselect"]
-margin_left = 269.0
-margin_top = 203.0
-margin_right = 305.0
-margin_bottom = 235.0
-theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "place
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="tip2" type="Label" parent="characterselect"]
-margin_left = 219.25
-margin_top = 203.0
-margin_right = 260.25
-margin_bottom = 235.0
-theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "change"
-align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2371,7 +2369,7 @@ margin_right = 257.0
 margin_bottom = 235.0
 rect_pivot_offset = Vector2( 19.45, -11.25 )
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -2396,7 +2394,7 @@ margin_right = 305.0
 margin_bottom = 235.0
 rect_pivot_offset = Vector2( 19.45, -11.25 )
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -2528,7 +2526,7 @@ margin_top = 22.0
 margin_right = 39.25
 margin_bottom = 54.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -2541,7 +2539,7 @@ __meta__ = {
 
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 playing = true
 centered = false
 
@@ -2550,7 +2548,7 @@ margin_top = 22.0
 margin_right = 36.0
 margin_bottom = 54.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -2573,7 +2571,7 @@ margin_top = 22.0
 margin_right = 38.25
 margin_bottom = 54.0
 theme = ExtResource( 22 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -3124,6 +3122,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3148,6 +3147,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3339,6 +3339,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3613,8 +3614,8 @@ volume_db = -4.0
 [node name="turn_alert" type="Node" parent="sfx"]
 
 [node name="alert 1" type="AudioStreamPlayer" parent="sfx/turn_alert"]
-stream = ExtResource( 34 )
-volume_db = -4.0
+stream = ExtResource( 31 )
+volume_db = -7.0
 
 [node name="open" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 12 )
@@ -3625,8 +3626,8 @@ stream = ExtResource( 37 )
 volume_db = -2.0
 
 [node name="select" type="AudioStreamPlayer" parent="sfx"]
-stream = ExtResource( 31 )
-volume_db = -7.0
+stream = ExtResource( 12 )
+volume_db = -2.0
 
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
