@@ -5,6 +5,7 @@ signal auto_deployed
 signal all_enemies_eliminated
 
 onready var gui = get_tree().get_root().get_node("World/gui")
+onready var range_overlay = $range_overlay
 
 var tile_meta
 var world_map

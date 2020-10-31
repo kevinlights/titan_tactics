@@ -64,6 +64,12 @@ func perform_action(item):
 	if item.action == "select":
 		world.get_node("lookat/camera").track(target)
 		world.select_by_name(item.target)
+	if item.action == "hint":
+		var marker = world.find_story_marker(item.target)
+		if marker:
+			world.range_overlay.set_hint_tile(marker.translation)
+		else:
+			world.range_overlay.set_hint_tile(null)
 	if item.action == "move":
 		var target_character = world.find_character(item.target)
 		var marker = world.find_story_marker(item.target)

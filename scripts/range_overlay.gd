@@ -14,10 +14,22 @@ var data
 var origin setget set_origin
 var gridmap setget set_gridmap
 var selector setget set_selector
-var hint_tiles = []
+var hint_tile
 
-func add_hint_tile(tile):
-	hint_tiles.push_back(tile)
+func set_hint_tile(tile):
+	if hint_tile:
+		if overlayed_tiles.find(hint_tile) > -1:
+			var context_tile = Vector3(hint_tile.x, 0, hint_tile.z)
+			var context = world.get_current_context(context_tile)
+			if context == TT.CONTEXT.MOVE:
+				gridmap.set_tile_overlay(hint_tile, 'move')
+			elif context == TT.CONTEXT.ATTACK:
+				gridmap.set_tile_overlay(hint_tile, 'attack')
+			else:
+				gridmap.set_tile_overlay(hint_tile, '')
+		else:
+			gridmap.set_tile_overlay(hint_tile, '')
+	hint_tile = tile
 	
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
@@ -32,7 +44,10 @@ func set_selector(_selector):
 			var context_tile = Vector3(selector.x, 0, selector.z)
 			var context = world.get_current_context(context_tile)
 			if context == TT.CONTEXT.MOVE:
-				gridmap.set_tile_overlay(selector, 'move')
+				if hint_tile and hint_tile.x == selector.x and hint_tile.z == selector.z:
+					gridmap.set_tile_overlay(selector, 'hint')
+				else:
+					gridmap.set_tile_overlay(selector, 'move')
 			elif context == TT.CONTEXT.ATTACK:
 				gridmap.set_tile_overlay(selector, 'attack')
 			else:
@@ -147,7 +162,9 @@ func show():
 			if context == TT.CONTEXT.ATTACK:
 				drawSqaure(tile, materials.attack)
 	
-	for tile in hint_tiles:
-		var tile_overlay_success = gridmap.set_tile_overlay(tile, 'hint')
-		if not tile_overlay_success == true:
+	if hint_tile:
+		var tile_overlay_success = gridmap.set_tile_overlay(hint_tile, 'hint')
+		if tile_overlay_success == true:
+			overlayed_tiles.push_back(hint_tile)
+		else:
 			print_debug("Failed to render hint overlay")
