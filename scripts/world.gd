@@ -455,21 +455,24 @@ func check_end_game(ignore_dialogue = false):
 #			print("Consumed ", trigger.consumed)
 #			if trigger.available == "level_complete" and !trigger.consumed:
 #				return false
-		for control in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
-			if current[control].size() == 0:
-				game_over = true
-				$select.disable()
-				gui.call_deferred("battle_hide")
-				if control == TT.CONTROL.AI:
-					print("try ending game, ignoring dialogue: ", ignore_dialogue)
-					emit_signal("win")
-					call_deferred("_on_win", ignore_dialogue)
-				else:
-					gui.lose()
-					print("End game: LOSE")
-					$music/lose.play()
-				$music.get_node(Game.get_theme()).stop()
-				return true
+
+	for control in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
+		if current[control].size() == 0:
+			if control == TT.CONTROL.AI and !all_enemies_eliminated():
+				return false
+			game_over = true
+			$select.disable()
+			gui.call_deferred("battle_hide")
+			if control == TT.CONTROL.AI:
+				print("try ending game, ignoring dialogue: ", ignore_dialogue)
+				emit_signal("win")
+				call_deferred("_on_win", ignore_dialogue)
+			else:
+				gui.lose()
+				print("End game: LOSE")
+				$music/lose.play()
+			$music.get_node(Game.get_theme()).stop()
+			return true
 	return false
 
 func _on_death(character):
