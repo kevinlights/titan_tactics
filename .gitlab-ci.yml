@@ -1,4 +1,4 @@
-image: barichello/godot-ci:3.2.1
+image: barichello/godot-ci:3.2.3
 # Cache imported assets between runs
 cache:
   key: import-assets
@@ -40,31 +40,6 @@ mac:
     paths:
       - ${EXPORT_NAME}_mac
 
-# web:
-#   stage: export
-#   script:
-#     - mkdir -v -p ${EXPORT_NAME}_web
-#     - echo 'quality/driver/driver_name="GLES2"' >> project.godot
-#     - godot -v --export "HTML5" ${EXPORT_NAME}_web/index.html
-#   artifacts:
-#     name: $EXPORT_NAME-$CI_JOB_NAME
-#     paths:
-#       - ${EXPORT_NAME}_web
-
-# # GitLab Pages Deploy
-# pages:
-#   stage: deploy
-#   dependencies:
-#     - web
-#   script:
-#     - mkdir -p public
-#     - mv ${EXPORT_NAME}_web/** ./public
-#   artifacts:
-#     paths:
-#       - public
-#   only: 
-#     - master
-
 # Itch.io Deploy
 itchio:linux:
   stage: deploy
@@ -92,12 +67,3 @@ itchio:macosx:
     - mac
   only: 
     - master
-
-# itchio:html:
-#   stage: deploy
-#   script:
-#     - butler push ./${EXPORT_NAME}_web $ITCHIO_USERNAME/$ITCHIO_GAME:html
-#   dependencies:
-#     - web
-#   only: 
-#     - master
