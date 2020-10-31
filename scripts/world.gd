@@ -682,6 +682,7 @@ func _on_selector_moved(tile):
 			gui.ally(get_current())
 		else:
 			gui.ally_hide(get_current())
+	$range_overlay.set_selector(tile)
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	$select.set_context(context)
 

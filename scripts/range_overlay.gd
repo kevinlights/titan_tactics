@@ -13,6 +13,7 @@ var overlayed_tiles = []
 var data
 var origin setget set_origin
 var gridmap setget set_gridmap
+var selector setget set_selector
 var hint_tiles = []
 
 func add_hint_tile(tile):
@@ -21,10 +22,26 @@ func add_hint_tile(tile):
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
+func set_selector(_selector):
+	if selector:
+		if overlayed_tiles.find(selector) > -1:
+			var context_tile = Vector3(selector.x, 0, selector.z)
+			var context = world.get_current_context(context_tile)
+			if context == TT.CONTEXT.MOVE:
+				gridmap.set_tile_overlay(selector, 'move')
+			elif context == TT.CONTEXT.ATTACK:
+				gridmap.set_tile_overlay(selector, 'attack')
+			else:
+				gridmap.set_tile_overlay(selector, '')
+		else:
+			gridmap.set_tile_overlay(selector, '')
+	selector = _selector + Vector3(0, 0.25, 0)
+	gridmap.set_tile_overlay(selector, 'select')
+
 func set_origin(_origin):
 	origin = _origin
 	if _origin:
-		generate_data(origin) 
+		generate_data(origin)
 	else:
 		hide()
 	
