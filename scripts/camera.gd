@@ -5,7 +5,7 @@ var start_offset = Vector3()
 var start_rotation = Vector3()
 var end_offset = Vector3()
 var end_rotation = Vector3()
-
+var rotating = false
 var ttl = 300
 var move_ttl = 500
 
@@ -55,6 +55,7 @@ func _on_orientation_changed_clockwise():
 	start_time = now
 	start_rotation = get_parent().rotation_degrees
 	end_rotation = start_rotation + Vector3(0, 90, 0) # rotations[Game.camera_orientation]
+	rotating = true
 
 func _on_orientation_changed_counter_clockwise():
 	var now = OS.get_ticks_msec()
@@ -65,6 +66,7 @@ func _on_orientation_changed_counter_clockwise():
 	start_time = now
 	start_rotation = get_parent().rotation_degrees
 	end_rotation = start_rotation - Vector3(0, 90, 0) # rotations[Game.camera_orientation]
+	rotating = true
 	
 func _on_orientation_changed():
 	pass
@@ -81,8 +83,9 @@ func _on_orientation_changed():
 #	print(start_rotation)
 
 func is_rotating():
-	var now = OS.get_ticks_msec()
-	return now - start_time < ttl
+	return rotating
+#	var now = OS.get_ticks_msec()
+#	return now - start_time < ttl
 
 func _process(_delta):
 	var now = OS.get_ticks_msec()
@@ -98,3 +101,4 @@ func _process(_delta):
 		get_parent().rotation_degrees = lerp(start_rotation, end_rotation, float(now - start_time) / float(ttl))
 	else:
 		get_parent().rotation_degrees = end_rotation
+		rotating = false
