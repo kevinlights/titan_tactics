@@ -83,12 +83,10 @@ func show():
 		return
 	clear()
 	self.visible = true
-	var context_map = {}
 	
 	for tile in gridmap.get_tiles_within(data.tile, data.move_distance - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context = world.get_current_context(context_tile)
-		context_map[context_tile] = context
 		
 		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK and data.actions > 0:
@@ -106,14 +104,9 @@ func show():
 			elif context == TT.CONTEXT.MOVE:
 				drawSqaure(tile, materials.move)
 	
-	for tile in gridmap.get_tiles_within(data.tile, data.atk_range - 1):
+	for tile in gridmap.get_tiles_within(data.tile, data.atk_range):
 		var context_tile = Vector3(tile.x, 0, tile.z)
-		var context;
-		if not context_map.has(context_tile):
-			context = world.get_current_context(context_tile)
-			context_map[context_tile] = context
-		else:
-			context = context_map[context_tile]
+		var context = world.get_current_context(context_tile)
 		
 		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK:
