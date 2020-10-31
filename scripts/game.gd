@@ -43,6 +43,4 @@ func setup_new_game():
 	level = 0
 	team = []
 	var kris = load("res://resources/cast/kris.tres")
-#	var bowie = load("res://resources/cast/bowie.tres")
 	team.append(kris)
-#	team.append(bowie)

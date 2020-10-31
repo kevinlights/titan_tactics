@@ -336,7 +336,6 @@ func select_type():
 	if avatar:
 		avatar.hide()
 	if character.control == TT.CONTROL.PLAYER:
-#		print("Character portrait ", character.portrait_override)
 		if character.portrait_override and character.portrait_override != "" and has_node(character.portrait_override):
 			avatar = get_node(character.portrait_override)
 		else:
@@ -352,30 +351,30 @@ func select_type():
 #					print("Select mage")
 					avatar = $mage
 	else:
-		match character.character_class:
-			TT.TYPE.ARCHER:
-#				print("Select ai archer")
-				avatar = $ai_archer
-			TT.TYPE.FIGHTER:
-#				print("Select ai fighter")
-				avatar = $ai_fighter
-			TT.TYPE.MAGE:
-#				print("Select ai mage")
-				avatar = $ai_mage
-			TT.TYPE.BOBA:
-#				print("Select ai boba")
-				avatar = $ai_boba
-				avatar.offset.y = 0
-			TT.TYPE.POISON_BOBA:
-#				print("Select ai boba")
-				avatar = $ai_poison_boba
-				avatar.offset.y = 0
-#	print("character class ", character.character_class)
-#	avatar.connect("animation_finished", self, '_on_animation_finished')
+		print(character.name, " has ", character.portrait_override)
+		if character.portrait_override and character.portrait_override != "" and has_node(character.portrait_override):
+			print("Character portrait ", character.portrait_override)
+			avatar = get_node(character.portrait_override)
+		else:
+			match character.character_class:
+				TT.TYPE.ARCHER:
+	#				print("Select ai archer")
+					avatar = $ai_archer
+				TT.TYPE.FIGHTER:
+	#				print("Select ai fighter")
+					avatar = $ai_fighter
+				TT.TYPE.MAGE:
+	#				print("Select ai mage")
+					avatar = $ai_mage
+				TT.TYPE.BOBA:
+	#				print("Select ai boba")
+					avatar = $ai_boba
+					avatar.offset.y = 0
+				TT.TYPE.POISON_BOBA:
+	#				print("Select ai boba")
+					avatar = $ai_poison_boba
+					avatar.offset.y = 0
 	avatar.connect("frame_changed", self, "_on_frame_changed")
-	#item = Item.new()
-	
-	# print("generated item: " + item.name)
 	avatar.show()
 
 func _on_frame_changed():
@@ -436,6 +435,19 @@ func recruit(source):
 	die()
 	source.character.add_xp(character.level)
 	$sfx/recruit/success.play()
+
+func despawn():
+	$healthbar.hide()
+	pick_random_sfx($sfx/death)
+	$vfx/poly.frame = 0
+	$vfx/poly.play()
+	$vfx/poly.show()
+	avatar.hide()
+	$shadow.hide()
+	is_dead = true
+	yield(get_tree().create_timer(3.0), "timeout")
+	hide()
+	
 
 func die():
 	if not is_dead:
