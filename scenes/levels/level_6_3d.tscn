@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level.gd" type="Script" id=2]
@@ -36,7 +36,7 @@ equipment_slot = 0
 level = 0
 name = "Small Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 2 )
@@ -109,12 +109,12 @@ name = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 7 )
-character_class = 3
+character_class = 4
 equipment_slot = 0
 level = 0
-name = "Small Nothing"
+name = "Small Boba Juice"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 9 )
@@ -128,10 +128,10 @@ name = ""
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 7 )
-character_class = 3
+character_class = 4
 equipment_slot = 0
 level = 0
-name = "Broken Nothing"
+name = "Weak Boba Juice"
 attack = 1
 attack_range = 1
 defense = 0
@@ -140,11 +140,11 @@ effect = SubResource( 11 )
 
 [sub_resource type="Resource" id=64]
 script = ExtResource( 6 )
-character_class = 3
+character_class = 4
 name = "Horm"
 level = 1
-hp = 8
-max_hp = 8
+hp = 9
+max_hp = 9
 atk = 3
 def = 3
 atk_range = 1
@@ -228,7 +228,7 @@ equipment_slot = 0
 level = 0
 name = "Weak Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 21 )
@@ -252,7 +252,7 @@ defense = 0
 heal = 0
 effect = SubResource( 23 )
 
-[sub_resource type="Resource" id=68]
+[sub_resource type="Resource" id=25]
 script = ExtResource( 6 )
 character_class = 3
 name = "Tarek"
@@ -306,7 +306,7 @@ equipment_slot = 0
 level = 0
 name = "Puny Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 28 )
@@ -330,7 +330,7 @@ defense = 0
 heal = 0
 effect = SubResource( 30 )
 
-[sub_resource type="Resource" id=69]
+[sub_resource type="Resource" id=32]
 script = ExtResource( 6 )
 character_class = 3
 name = "Yava"
@@ -384,7 +384,7 @@ equipment_slot = 0
 level = 0
 name = "Broken Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 35 )
@@ -408,7 +408,7 @@ defense = 0
 heal = 0
 effect = SubResource( 37 )
 
-[sub_resource type="Resource" id=70]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 6 )
 character_class = 3
 name = "Bram"
@@ -462,7 +462,7 @@ equipment_slot = 0
 level = 0
 name = "Rusted Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 42 )
@@ -486,7 +486,7 @@ defense = 0
 heal = 0
 effect = SubResource( 44 )
 
-[sub_resource type="Resource" id=71]
+[sub_resource type="Resource" id=46]
 script = ExtResource( 6 )
 character_class = 3
 name = "Ruth"
@@ -540,7 +540,7 @@ equipment_slot = 0
 level = 0
 name = "Broken Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 49 )
@@ -564,7 +564,7 @@ defense = 0
 heal = 0
 effect = SubResource( 51 )
 
-[sub_resource type="Resource" id=72]
+[sub_resource type="Resource" id=53]
 script = ExtResource( 6 )
 character_class = 3
 name = "Laura"
@@ -613,12 +613,12 @@ name = ""
 
 [sub_resource type="Resource" id=57]
 script = ExtResource( 7 )
-character_class = 3
+character_class = 4
 equipment_slot = 0
 level = 0
-name = "Rusted Nothing"
+name = "Small Boba Juice"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 56 )
@@ -632,23 +632,23 @@ name = ""
 
 [sub_resource type="Resource" id=59]
 script = ExtResource( 7 )
-character_class = 3
+character_class = 4
 equipment_slot = 0
 level = 0
-name = "Small Nothing"
+name = "Broken Boba Juice"
 attack = 1
 attack_range = 1
 defense = 0
 heal = 0
 effect = SubResource( 58 )
 
-[sub_resource type="Resource" id=73]
+[sub_resource type="Resource" id=60]
 script = ExtResource( 6 )
-character_class = 3
+character_class = 4
 name = "Ruth"
 level = 1
-hp = 8
-max_hp = 8
+hp = 9
+max_hp = 9
 atk = 3
 def = 3
 atk_range = 1
@@ -773,6 +773,8 @@ script = ExtResource( 12 )
 stats = SubResource( 63 )
 dialogue = SubResource( 7 )
 recruit_dialogue = SubResource( 8 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.347, 8 )
@@ -783,6 +785,8 @@ script = ExtResource( 12 )
 stats = SubResource( 64 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.347, 9 )

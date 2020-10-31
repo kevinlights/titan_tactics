@@ -77,6 +77,7 @@ item_atk = SubResource( 3 )
 item_def = SubResource( 5 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 14 )
@@ -154,6 +155,7 @@ item_atk = SubResource( 10 )
 item_def = SubResource( 12 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 14 )
@@ -231,6 +233,7 @@ item_atk = SubResource( 17 )
 item_def = SubResource( 19 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=21]
 script = ExtResource( 14 )
@@ -308,6 +311,7 @@ item_atk = SubResource( 24 )
 item_def = SubResource( 26 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=28]
 script = ExtResource( 14 )
@@ -345,7 +349,7 @@ equipment_slot = 0
 level = 0
 name = "Weak Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 30 )
@@ -385,6 +389,7 @@ item_atk = SubResource( 31 )
 item_def = SubResource( 33 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=35]
 script = ExtResource( 14 )
@@ -422,7 +427,7 @@ equipment_slot = 0
 level = 0
 name = "Rusted Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 37 )
@@ -462,6 +467,7 @@ item_atk = SubResource( 38 )
 item_def = SubResource( 40 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=42]
 script = ExtResource( 14 )
@@ -539,6 +545,7 @@ item_atk = SubResource( 45 )
 item_def = SubResource( 47 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=49]
 script = ExtResource( 14 )
@@ -616,6 +623,7 @@ item_atk = SubResource( 52 )
 item_def = SubResource( 54 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=56]
 script = ExtResource( 14 )
@@ -693,6 +701,7 @@ item_atk = SubResource( 59 )
 item_def = SubResource( 61 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=63]
 script = ExtResource( 14 )
@@ -770,6 +779,7 @@ item_atk = SubResource( 66 )
 item_def = SubResource( 68 )
 recruit_mode = 0
 portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=70]
 script = ExtResource( 14 )
@@ -892,6 +902,7 @@ stats = SubResource( 6 )
 dialogue = SubResource( 7 )
 recruit_dialogue = SubResource( 8 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.347, 6 )
@@ -903,6 +914,7 @@ stats = SubResource( 13 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.347, 9 )
@@ -914,6 +926,7 @@ stats = SubResource( 20 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.347, 10 )
@@ -925,6 +938,7 @@ stats = SubResource( 27 )
 dialogue = SubResource( 28 )
 recruit_dialogue = SubResource( 29 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.347, 6 )
@@ -936,6 +950,7 @@ stats = SubResource( 34 )
 dialogue = SubResource( 35 )
 recruit_dialogue = SubResource( 36 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.347, 7 )
@@ -947,6 +962,7 @@ stats = SubResource( 41 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.347, 5 )
@@ -958,6 +974,7 @@ stats = SubResource( 48 )
 dialogue = SubResource( 49 )
 recruit_dialogue = SubResource( 50 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner8" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.347, 14 )
@@ -969,6 +986,7 @@ stats = SubResource( 55 )
 dialogue = SubResource( 56 )
 recruit_dialogue = SubResource( 57 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner9" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.347, 13 )
@@ -980,6 +998,7 @@ stats = SubResource( 62 )
 dialogue = SubResource( 63 )
 recruit_dialogue = SubResource( 64 )
 death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner10" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.347, 10 )
@@ -991,3 +1010,4 @@ stats = SubResource( 69 )
 dialogue = SubResource( 70 )
 recruit_dialogue = SubResource( 71 )
 death_dialogue = null
+spawn_trigger = "level_start"
