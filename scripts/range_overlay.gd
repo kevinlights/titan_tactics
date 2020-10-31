@@ -14,29 +14,53 @@ var data
 var origin setget set_origin
 var gridmap setget set_gridmap
 var selector setget set_selector
-var hint_tiles = []
+var hint_tile
 
-func add_hint_tile(tile):
-	hint_tiles.push_back(tile)
+func set_hint_tile(tile):
+	if hint_tile:
+		if overlayed_tiles.find(hint_tile) > -1:
+			var context_tile = Vector3(hint_tile.x, 0, hint_tile.z)
+			var context = world.get_current_context(context_tile)
+			if context == TT.CONTEXT.MOVE:
+				gridmap.set_tile_overlay(hint_tile, 'move')
+			elif context == TT.CONTEXT.ATTACK:
+				gridmap.set_tile_overlay(hint_tile, 'attack')
+			else:
+				gridmap.set_tile_overlay(hint_tile, '')
+		else:
+			gridmap.set_tile_overlay(hint_tile, '')
+	hint_tile = tile
 	
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
+var selectedCube
 func set_selector(_selector):
 	if selector:
-		if overlayed_tiles.find(selector) > -1:
+		if selectedCube:
+			remove_child(selectedCube)
+			selectedCube = null
+		elif overlayed_tiles.find(selector) > -1:
 			var context_tile = Vector3(selector.x, 0, selector.z)
 			var context = world.get_current_context(context_tile)
 			if context == TT.CONTEXT.MOVE:
-				gridmap.set_tile_overlay(selector, 'move')
+				if hint_tile and hint_tile.x == selector.x and hint_tile.z == selector.z:
+					gridmap.set_tile_overlay(selector, 'hint')
+				else:
+					gridmap.set_tile_overlay(selector, 'move')
 			elif context == TT.CONTEXT.ATTACK:
 				gridmap.set_tile_overlay(selector, 'attack')
 			else:
 				gridmap.set_tile_overlay(selector, '')
 		else:
 			gridmap.set_tile_overlay(selector, '')
-	selector = _selector + Vector3(0, 0.25, 0)
-	gridmap.set_tile_overlay(selector, 'select')
+	var map_selector = gridmap.world_to_map(_selector)
+	var possible_selected_tiles = gridmap.filter_tiles(map_selector.x, map_selector.z)
+	if possible_selected_tiles.size() == 1:
+		selector = gridmap.point_to_world(possible_selected_tiles[0], false)
+		var tile_overlay_success = gridmap.set_tile_overlay(selector, 'select')
+		if not tile_overlay_success:
+			selectedCube = drawSqaure(selector, materials.select)
 
 func set_origin(_origin):
 	origin = _origin
@@ -92,6 +116,7 @@ func drawSqaure(location, material):
 	square.translate(Vector3(location.x + 0.05, location.y, location.z + 0.05))
 	square.set_material(material)
 	add_child(square)
+	return square
 
 func hide():
 	self.visible = false
@@ -137,7 +162,9 @@ func show():
 			if context == TT.CONTEXT.ATTACK:
 				drawSqaure(tile, materials.attack)
 	
-	for tile in hint_tiles:
-		var tile_overlay_success = gridmap.set_tile_overlay(tile, 'hint')
-		if not tile_overlay_success == true:
+	if hint_tile:
+		var tile_overlay_success = gridmap.set_tile_overlay(hint_tile, 'hint')
+		if tile_overlay_success == true:
+			overlayed_tiles.push_back(hint_tile)
+		else:
 			print_debug("Failed to render hint overlay")
