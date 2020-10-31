@@ -40,58 +40,58 @@ mac:
     paths:
       - ${EXPORT_NAME}_mac
 
-web:
-  stage: export
-  script:
-    - mkdir -v -p ${EXPORT_NAME}_web
-    - echo 'quality/driver/driver_name="GLES2"' >> project.godot
-    - godot -v --export "HTML5" ${EXPORT_NAME}_web/index.html
-  artifacts:
-    name: $EXPORT_NAME-$CI_JOB_NAME
-    paths:
-      - ${EXPORT_NAME}_web
+# web:
+#   stage: export
+#   script:
+#     - mkdir -v -p ${EXPORT_NAME}_web
+#     - echo 'quality/driver/driver_name="GLES2"' >> project.godot
+#     - godot -v --export "HTML5" ${EXPORT_NAME}_web/index.html
+#   artifacts:
+#     name: $EXPORT_NAME-$CI_JOB_NAME
+#     paths:
+#       - ${EXPORT_NAME}_web
 
-# GitLab Pages Deploy
-pages:
+# # GitLab Pages Deploy
+# pages:
+#   stage: deploy
+#   dependencies:
+#     - web
+#   script:
+#     - mkdir -p public
+#     - mv ${EXPORT_NAME}_web/** ./public
+#   artifacts:
+#     paths:
+#       - public
+#   only: 
+#     - master
+
+# Itch.io Deploy
+itchio:linux:
   stage: deploy
-  dependencies:
-    - web
   script:
-    - mkdir -p public
-    - mv ${EXPORT_NAME}_web/** ./public
-  artifacts:
-    paths:
-      - public
+    - butler push ./${EXPORT_NAME}_linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
+  dependencies:
+    - linux
   only: 
     - master
 
-# # Itch.io Deploy
-# itchio:linux:
-#   stage: deploy
-#   script:
-#     - butler push ./${EXPORT_NAME}_linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
-#   dependencies:
-#     - linux
-#   only: 
-#     - master
+itchio:windows:
+  stage: deploy
+  script:
+    - butler push ./${EXPORT_NAME}_windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
+  dependencies:
+    - windows
+  only: 
+    - master
 
-# itchio:windows:
-#   stage: deploy
-#   script:
-#     - butler push ./${EXPORT_NAME}_windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
-#   dependencies:
-#     - windows
-#   only: 
-#     - master
-
-# itchio:macosx:
-#   stage: deploy
-#   script:
-#     - butler push ./${EXPORT_NAME}_mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
-#   dependencies:
-#     - mac
-#   only: 
-#     - master
+itchio:macosx:
+  stage: deploy
+  script:
+    - butler push ./${EXPORT_NAME}_mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
+  dependencies:
+    - mac
+  only: 
+    - master
 
 # itchio:html:
 #   stage: deploy
