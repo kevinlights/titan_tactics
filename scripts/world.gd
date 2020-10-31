@@ -753,7 +753,7 @@ func _input(event):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
 		gui.guard()
-	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed():
+	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed() && !gui.active && !gui.modal:
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation + 1
 			if Game.camera_orientation == TT.CAMERA.WEST:
@@ -761,7 +761,7 @@ func _input(event):
 			print("Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
 		
-	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed():
+	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed() && !gui.active && !gui.modal:
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation - 1
 			if Game.camera_orientation == TT.CAMERA.NORTH:
