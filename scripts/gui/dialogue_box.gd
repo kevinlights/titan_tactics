@@ -60,21 +60,31 @@ func set_text(text):
 	print(text)
 
 func perform_action(item):
-	print(item.action, " ", item.target)
+	print("perform action ",item.action, " ", item.target)
 	var target = world.find_character(item.target)
 	selector.camera_captured = false
 	if item.action == "select":
 		world.get_node("lookat/camera").track(target)
 		world.select_by_name(item.target)
+#		yield(get_tree().create_timer(1.0), "timeout")
+		index += 1
+		advance()
+		return
 	if item.action == "hint":
 		var marker = world.find_story_marker(item.target)
 		if marker:
 			world.range_overlay.set_hint_tile(marker.translation)
 		else:
 			world.range_overlay.set_hint_tile(null)
+		index += 1
+		advance()
+		return
 	if item.action == "despawn":
 		var target_character = world.find_character(item.target)
 		target_character.despawn()
+		index += 1
+		advance()
+		return
 	if item.action == "move":
 		var target_character = world.find_character(item.target)
 		var marker = world.find_story_marker(item.target)
@@ -90,6 +100,10 @@ func perform_action(item):
 	if item.action == "focus":
 		var marker = world.find_story_marker(item.target)
 		world.get_node("lookat/camera").track(marker)
+#		yield(get_tree().create_timer(1.0), "timeout")
+		index += 1
+		advance()
+		return
 	if item.action == "spawn":
 		world.surprise_spawn(item.target)
 	index += 1
@@ -128,8 +142,19 @@ func set_content(dialogue_content, set_index = 0):
 	if "music" in content:
 		world.play_music(content.music)
 
+func return_control():
+	print("emit complete")
+	content.complete()
+	# attach camera to selector and return control to player
+	world.get_node("lookat/camera").track(selector)
+	selector.enable()
+	world.current_turn = TT.CONTROL.PLAYER
+	get_parent().modal = false
+	hide()
+	skip = false
+
 func advance():
-	if text_blocks.size() > 0:
+	if text_blocks.size() > 0 and !skip:
 		set_text(text_blocks[0])
 		text_blocks.remove(0)
 		if text_blocks.size() > 0:
@@ -139,6 +164,13 @@ func advance():
 	else:
 		print("dialogue completed")
 		if index < content.messages.size() -1:
+			if skip:
+				while "message" in content.messages[index + 1]:
+					if index == content.messages.size() - 2:
+						return_control()
+						break
+					else:
+						index += 1
 			if "message" in content.messages[index + 1]:
 				set_content(content, index + 1)
 			else:
@@ -146,14 +178,7 @@ func advance():
 #					print(content.messages[index + 1].action, content.messages[index + 1].target)
 #					index += 1
 		else:
-			print("emit complete")
-			content.complete()
-			# attach camera to selector and return control to player
-			world.get_node("lookat/camera").track(selector)
-			selector.enable()
-			world.current_turn = TT.CONTROL.PLAYER
-			get_parent().modal = false
-			hide()
+			return_control()
 
 func dismiss():
 	content.complete()
@@ -174,7 +199,10 @@ func _input(event):
 		else:
 			advance()
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
-		dismiss()
+#		dismiss()
+		skip = true
+		hide()
+		advance()
 #		elif text_blocks.size() > 0:
 #			set_text(text_blocks[0])
 #			text_blocks.remove(0)

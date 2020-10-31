@@ -633,7 +633,7 @@ func _on_heal():
 	var target = entity_at($select.tile)
 	if get_current().character.turn_limits.actions != 0:
 		var healed = get_current().heal(target)
-		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
+		var damage_feedback = load("res://scenes/damage_feedback.tscn").instance()
 		damage_feedback.translation.x = target.translation.x
 		damage_feedback.translation.z = target.translation.z
 		damage_feedback.get_node("damage").text = "+" + str(healed)
