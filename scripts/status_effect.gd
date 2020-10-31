@@ -36,8 +36,8 @@ func tag():
 			effect_tag = "poison"
 		EFFECT.STUN:
 			effect_tag = "stun"
-		EFFECT.POLYMORPH:
-			effect_tag = "polymorph"
+#		EFFECT.POLYMORPH:
+#			effect_tag = "polymorph"
 	return effect_tag
 
 func copy(other):

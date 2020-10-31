@@ -13,4 +13,5 @@ dest_files=[ "res://.import/level1_end.dialogue-6d720aab10c32ab88610b343228fff68
 
 title_prefix="#"
 action_prefix=">"
+music_prefix="$"
 comment_prefix="//"
