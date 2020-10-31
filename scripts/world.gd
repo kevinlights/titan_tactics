@@ -750,6 +750,8 @@ func _input(event):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 	if event.is_action("unmute_music") && !event.is_echo() && event.is_pressed():
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
+	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
+		gui.guard()
 	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed():
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation + 1
