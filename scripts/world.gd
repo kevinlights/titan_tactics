@@ -338,7 +338,8 @@ func spawn_ai_character(ai_spawn, surprise = false):
 	else:
 		character.connect("path_complete", self, "check_move_triggers", [ character ])
 		character.connect("attack_complete", self, "_on_attack_complete")
-		character.character.connect("level_up", self, "_on_level_up")		
+		character.character.connect("level_up", self, "_on_level_up")
+		character.character.reset_turn()
 	world_map.add_child(character)
 	
 func spawn_ai_team():
@@ -455,21 +456,24 @@ func check_end_game(ignore_dialogue = false):
 #			print("Consumed ", trigger.consumed)
 #			if trigger.available == "level_complete" and !trigger.consumed:
 #				return false
-		for control in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
-			if current[control].size() == 0:
-				game_over = true
-				$select.disable()
-				gui.call_deferred("battle_hide")
-				if control == TT.CONTROL.AI:
-					print("try ending game, ignoring dialogue: ", ignore_dialogue)
-					emit_signal("win")
-					call_deferred("_on_win", ignore_dialogue)
-				else:
-					gui.lose()
-					print("End game: LOSE")
-					$music/lose.play()
-				$music.get_node(Game.get_theme()).stop()
-				return true
+
+	for control in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
+		if current[control].size() == 0:
+			if control == TT.CONTROL.AI and !all_enemies_eliminated():
+				return false
+			game_over = true
+			$select.disable()
+			gui.call_deferred("battle_hide")
+			if control == TT.CONTROL.AI:
+				print("try ending game, ignoring dialogue: ", ignore_dialogue)
+				emit_signal("win")
+				call_deferred("_on_win", ignore_dialogue)
+			else:
+				gui.lose()
+				print("End game: LOSE")
+				$music/lose.play()
+			$music.get_node(Game.get_theme()).stop()
+			return true
 	return false
 
 func _on_death(character):
