@@ -255,8 +255,8 @@ func _init_astar():
 		
 		if !iterated_types.has(name):
 			iterated_types.append(name)
-			if not cardinalHeights.has(name):
-				print_debug("Missing cardinal heights for '", name, "' type. Excluding all occurances from walkable tiles.")
+#			if not cardinalHeights.has(name):
+#				print_debug("Missing cardinal heights for '", name, "' type. Excluding all occurances from walkable tiles.")
 		
 		if cardinalHeights.has(name):
 			var max_height = cell.y + cardinalHeights[name].max()
@@ -532,7 +532,7 @@ func get_cardinal_height(cell, dir_idx):
 	if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
 		return null
 	if not cardinalHeights.has(name):
-		print_debug('Unexpected cell type. Assuming not walkable.')
+#		print_debug('Unexpected cell type. Assuming not walkable.')
 		return null
 	var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
 	if orientation == -1:

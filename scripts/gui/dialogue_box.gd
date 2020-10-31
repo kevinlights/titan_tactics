@@ -70,6 +70,9 @@ func perform_action(item):
 			world.range_overlay.set_hint_tile(marker.translation)
 		else:
 			world.range_overlay.set_hint_tile(null)
+	if item.action == "despawn":
+		var target_character = world.find_character(item.target)
+		target_character.despawn()
 	if item.action == "move":
 		var target_character = world.find_character(item.target)
 		var marker = world.find_story_marker(item.target)

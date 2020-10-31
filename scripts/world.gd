@@ -237,12 +237,12 @@ func action():
 			get_current().move(current_path) # to_world_path(current_path))
 		TT.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
-		TT.CONTEXT.GUARD:
-			print("guard action")
-			if get_current().character.turn_limits.actions == 0:
-				gui.call_deferred("confirm_end_turn")
-			else:
-				gui.guard()
+#		TT.CONTEXT.GUARD:
+#			print("guard action")
+#			if get_current().character.turn_limits.actions == 0:
+#				gui.call_deferred("confirm_end_turn")
+#			else:
+#				gui.guard()
 		TT.CONTEXT.HEAL:
 			if get_current().character.turn_limits.actions == 0:
 				_on_end()
