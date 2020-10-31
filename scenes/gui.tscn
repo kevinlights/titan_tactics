@@ -1,4 +1,4 @@
-[gd_scene load_steps=285 format=2]
+[gd_scene load_steps=284 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -32,7 +32,6 @@
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=31]
 [ext_resource path="res://sfx/UI/char_select1.wav" type="AudioStream" id=32]
 [ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=33]
-[ext_resource path="res://sfx/UI/turn_alert1.wav" type="AudioStream" id=34]
 [ext_resource path="res://gfx/ui/swipe.png" type="Texture" id=35]
 [ext_resource path="res://gfx/ui/lvupbg.png" type="Texture" id=36]
 [ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=37]
@@ -167,28 +166,28 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 32, 16, 16 )
+region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 41 )
@@ -198,17 +197,17 @@ region = Rect2( 16, 48, 16, 16 )
 animations = [ {
 "frames": [ SubResource( 25 ) ],
 "loop": true,
-"name": "archer",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 27 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 28 ) ],
@@ -240,14 +239,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 32 ), SubResource( 33 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -3121,7 +3120,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3146,7 +3144,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3337,7 +3334,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3609,8 +3605,8 @@ volume_db = -4.0
 [node name="turn_alert" type="Node" parent="sfx"]
 
 [node name="alert 1" type="AudioStreamPlayer" parent="sfx/turn_alert"]
-stream = ExtResource( 34 )
-volume_db = -4.0
+stream = ExtResource( 31 )
+volume_db = -7.0
 
 [node name="open" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 12 )
@@ -3621,8 +3617,8 @@ stream = ExtResource( 37 )
 volume_db = -2.0
 
 [node name="select" type="AudioStreamPlayer" parent="sfx"]
-stream = ExtResource( 31 )
-volume_db = -7.0
+stream = ExtResource( 12 )
+volume_db = -2.0
 
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
