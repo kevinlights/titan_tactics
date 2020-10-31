@@ -888,7 +888,7 @@ texture = ExtResource( 6 )
 script = ExtResource( 5 )
 
 [node name="ChestSpawner" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 9 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5 )
 texture = ExtResource( 9 )
 script = ExtResource( 7 )
 item_spawner = SubResource( 1 )
@@ -902,6 +902,8 @@ script = ExtResource( 10 )
 stats = SubResource( 6 )
 dialogue = SubResource( 7 )
 recruit_dialogue = SubResource( 8 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.347, 6 )
@@ -912,6 +914,8 @@ script = ExtResource( 10 )
 stats = SubResource( 13 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.347, 9 )
@@ -922,6 +926,8 @@ script = ExtResource( 10 )
 stats = SubResource( 20 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.347, 10 )
@@ -932,6 +938,8 @@ script = ExtResource( 10 )
 stats = SubResource( 27 )
 dialogue = SubResource( 28 )
 recruit_dialogue = SubResource( 29 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.347, 6 )
@@ -942,6 +950,8 @@ script = ExtResource( 10 )
 stats = SubResource( 34 )
 dialogue = SubResource( 35 )
 recruit_dialogue = SubResource( 36 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.347, 7 )
@@ -952,6 +962,8 @@ script = ExtResource( 10 )
 stats = SubResource( 41 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.347, 5 )
@@ -962,6 +974,8 @@ script = ExtResource( 10 )
 stats = SubResource( 48 )
 dialogue = SubResource( 49 )
 recruit_dialogue = SubResource( 50 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner8" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.347, 14 )
@@ -972,6 +986,8 @@ script = ExtResource( 10 )
 stats = SubResource( 55 )
 dialogue = SubResource( 56 )
 recruit_dialogue = SubResource( 57 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner9" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.347, 13 )
@@ -982,6 +998,8 @@ script = ExtResource( 10 )
 stats = SubResource( 62 )
 dialogue = SubResource( 63 )
 recruit_dialogue = SubResource( 64 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner10" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.347, 10 )
@@ -992,3 +1010,5 @@ script = ExtResource( 10 )
 stats = SubResource( 69 )
 dialogue = SubResource( 70 )
 recruit_dialogue = SubResource( 71 )
+death_dialogue = null
+spawn_trigger = "level_start"
