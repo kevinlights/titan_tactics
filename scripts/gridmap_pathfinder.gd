@@ -21,7 +21,7 @@ var decorations := ["Tree", "stump", "Water", "underwater", "waterside", 'wall',
 
 # structures are normally larger than a single tile and require custom logic to join tiles
 var structures := ['Smallbridge', 'Bridge']
-var multi_tile_objects := ['house1', 'house_02', 'house_03', 'tree', 'cristal005']
+var multi_tile_objects := ['house1', 'house_02', 'house_03', 'tree', 'cristal005', 'Wagon']
 
 # Cardinals
 # nw, n, ne
@@ -291,6 +291,11 @@ func _init_astar():
 		}[orientation]
 		var directions = []
 		match name:
+			'Wagon':
+				directions = [
+					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+				]
 			'tree':
 				directions = [
 					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
