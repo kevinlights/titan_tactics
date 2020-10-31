@@ -114,8 +114,8 @@ func set_content(dialogue_content, set_index = 0):
 	if text_blocks.size() > 0:
 		print("show more arrow")
 		$more.show()
-	#if content.music:
-		#world.play_music(content.music)
+	if "music" in content:
+		world.play_music(content.music)
 
 func advance():
 	if text_blocks.size() > 0:
