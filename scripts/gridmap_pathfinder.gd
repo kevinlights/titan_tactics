@@ -201,6 +201,12 @@ func get_tiles_within(_start, distance):
 		return []
 
 func set_tile_overlay(world_point, type):
+	if not world_to_tile_map.has(world_point):
+		var local_point = world_to_map(world_point)
+		var possible_tiles = filter_tiles(local_point.x, local_point.z)
+		if possible_tiles.size() == 1:
+			var tile_id = tiles.find(possible_tiles[0])
+			world_to_tile_map[world_point] = tile_id
 	if world_to_tile_map.has(world_point):
 		var tile_id = world_to_tile_map[world_point]
 		var cell = astar.get_point_position(tile_id)

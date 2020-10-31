@@ -22,9 +22,13 @@ func add_hint_tile(tile):
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
+var selectedCube
 func set_selector(_selector):
 	if selector:
-		if overlayed_tiles.find(selector) > -1:
+		if selectedCube:
+			remove_child(selectedCube)
+			selectedCube = null
+		elif overlayed_tiles.find(selector) > -1:
 			var context_tile = Vector3(selector.x, 0, selector.z)
 			var context = world.get_current_context(context_tile)
 			if context == TT.CONTEXT.MOVE:
@@ -35,8 +39,13 @@ func set_selector(_selector):
 				gridmap.set_tile_overlay(selector, '')
 		else:
 			gridmap.set_tile_overlay(selector, '')
-	selector = _selector + Vector3(0, 0.25, 0)
-	gridmap.set_tile_overlay(selector, 'select')
+	var map_selector = gridmap.world_to_map(_selector)
+	var possible_selected_tiles = gridmap.filter_tiles(map_selector.x, map_selector.z)
+	if possible_selected_tiles.size() == 1:
+		selector = gridmap.point_to_world(possible_selected_tiles[0], false)
+		var tile_overlay_success = gridmap.set_tile_overlay(selector, 'select')
+		if not tile_overlay_success:
+			selectedCube = drawSqaure(selector, materials.select)
 
 func set_origin(_origin):
 	origin = _origin
@@ -92,6 +101,7 @@ func drawSqaure(location, material):
 	square.translate(Vector3(location.x + 0.05, location.y, location.z + 0.05))
 	square.set_material(material)
 	add_child(square)
+	return square
 
 func hide():
 	self.visible = false
