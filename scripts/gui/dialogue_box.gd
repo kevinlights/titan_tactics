@@ -52,7 +52,7 @@ func set_text(text):
 	current_block = text
 	characters_visible = 0
 	$text.text = ""
-	call_deferred("resize")
+	#call_deferred("resize")
 	typing = true
 	typing_cancelled = false
 	$text.set_visible_characters(0)

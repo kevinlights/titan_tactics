@@ -40,9 +40,10 @@ func set_selector(_selector):
 	if selector:
 		if selectedCube:
 			remove_child(selectedCube)
-			add_child(origCube)
+			if origCube:
+				add_child(origCube)
+				origCube = null
 			selectedCube = null
-			origCube = null
 		elif overlayed_tiles.find(selector) > -1:
 			var context_tile = Vector3(selector.x, 0, selector.z)
 			var context = world.get_current_context(context_tile)
