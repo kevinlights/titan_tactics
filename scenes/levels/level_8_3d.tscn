@@ -61,7 +61,7 @@ defense = 0
 heal = 1
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=72]
 script = ExtResource( 11 )
 character_class = 2
 name = "Nora"
@@ -139,7 +139,7 @@ defense = 0
 heal = 1
 effect = SubResource( 11 )
 
-[sub_resource type="Resource" id=13]
+[sub_resource type="Resource" id=73]
 script = ExtResource( 11 )
 character_class = 2
 name = "Nord"
@@ -217,7 +217,7 @@ defense = 0
 heal = 0
 effect = SubResource( 18 )
 
-[sub_resource type="Resource" id=20]
+[sub_resource type="Resource" id=74]
 script = ExtResource( 11 )
 character_class = 1
 name = "Symon"
@@ -295,7 +295,7 @@ defense = 0
 heal = 0
 effect = SubResource( 25 )
 
-[sub_resource type="Resource" id=27]
+[sub_resource type="Resource" id=75]
 script = ExtResource( 11 )
 character_class = 0
 name = "Rash"
@@ -373,7 +373,7 @@ defense = 0
 heal = 0
 effect = SubResource( 32 )
 
-[sub_resource type="Resource" id=34]
+[sub_resource type="Resource" id=76]
 script = ExtResource( 11 )
 character_class = 3
 name = "Lota"
@@ -451,7 +451,7 @@ defense = 0
 heal = 0
 effect = SubResource( 39 )
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=77]
 script = ExtResource( 11 )
 character_class = 3
 name = "Pop"
@@ -529,7 +529,7 @@ defense = 0
 heal = 0
 effect = SubResource( 46 )
 
-[sub_resource type="Resource" id=48]
+[sub_resource type="Resource" id=78]
 script = ExtResource( 11 )
 character_class = 3
 name = "Kara"
@@ -607,7 +607,7 @@ defense = 0
 heal = 0
 effect = SubResource( 53 )
 
-[sub_resource type="Resource" id=55]
+[sub_resource type="Resource" id=79]
 script = ExtResource( 11 )
 character_class = 1
 name = "Shawn"
@@ -685,7 +685,7 @@ defense = 0
 heal = 0
 effect = SubResource( 60 )
 
-[sub_resource type="Resource" id=62]
+[sub_resource type="Resource" id=80]
 script = ExtResource( 11 )
 character_class = 0
 name = "Morg"
@@ -763,7 +763,7 @@ defense = 0
 heal = 0
 effect = SubResource( 67 )
 
-[sub_resource type="Resource" id=69]
+[sub_resource type="Resource" id=81]
 script = ExtResource( 11 )
 character_class = 0
 name = "Kara"
@@ -899,11 +899,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 17 )
 script = ExtResource( 10 )
-stats = SubResource( 6 )
+stats = SubResource( 72 )
 dialogue = SubResource( 7 )
 recruit_dialogue = SubResource( 8 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.347, 6 )
@@ -911,11 +909,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 17 )
 script = ExtResource( 10 )
-stats = SubResource( 13 )
+stats = SubResource( 73 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.347, 9 )
@@ -923,11 +919,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 20 )
+stats = SubResource( 74 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.347, 10 )
@@ -935,11 +929,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 10 )
-stats = SubResource( 27 )
+stats = SubResource( 75 )
 dialogue = SubResource( 28 )
 recruit_dialogue = SubResource( 29 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.347, 6 )
@@ -947,11 +939,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 17 )
 script = ExtResource( 10 )
-stats = SubResource( 34 )
+stats = SubResource( 76 )
 dialogue = SubResource( 35 )
 recruit_dialogue = SubResource( 36 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.347, 7 )
@@ -959,11 +949,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 17 )
 script = ExtResource( 10 )
-stats = SubResource( 41 )
+stats = SubResource( 77 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.347, 5 )
@@ -971,11 +959,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 17 )
 script = ExtResource( 10 )
-stats = SubResource( 48 )
+stats = SubResource( 78 )
 dialogue = SubResource( 49 )
 recruit_dialogue = SubResource( 50 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner8" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.347, 14 )
@@ -983,11 +969,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 55 )
+stats = SubResource( 79 )
 dialogue = SubResource( 56 )
 recruit_dialogue = SubResource( 57 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner9" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.347, 13 )
@@ -995,11 +979,9 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 10 )
-stats = SubResource( 62 )
+stats = SubResource( 80 )
 dialogue = SubResource( 63 )
 recruit_dialogue = SubResource( 64 )
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner10" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.347, 10 )
@@ -1007,8 +989,6 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 10 )
-stats = SubResource( 69 )
+stats = SubResource( 81 )
 dialogue = SubResource( 70 )
 recruit_dialogue = SubResource( 71 )
-death_dialogue = null
-spawn_trigger = "level_start"
