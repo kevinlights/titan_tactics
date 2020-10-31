@@ -179,7 +179,7 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 48, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 41 )
@@ -187,17 +187,17 @@ region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 32, 16, 16 )
+region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 48, 16, 16 )
+region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=29]
 animations = [ {
 "frames": [ SubResource( 25 ) ],
 "loop": true,
-"name": "archer",
+"name": "armor",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ) ],
@@ -207,12 +207,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 27 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 28 ) ],
 "loop": true,
-"name": "armor",
+"name": "mage",
 "speed": 5.0
 } ]
 
@@ -2356,6 +2356,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 11 )
+frame = 1
 playing = true
 centered = false
 
@@ -2380,6 +2381,7 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 centered = false
 
@@ -2802,7 +2804,6 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -2814,6 +2815,7 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -3151,6 +3153,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 103 )
+frame = 2
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -3371,7 +3374,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 58.1062 )
 frames = SubResource( 103 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
@@ -3445,6 +3448,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 position = Vector2( -6, -5 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3471,6 +3475,7 @@ __meta__ = {
 visible = false
 position = Vector2( -4, -16 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -3550,6 +3555,7 @@ __meta__ = {
 visible = false
 position = Vector2( -5, 4 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3575,6 +3581,7 @@ __meta__ = {
 visible = false
 position = Vector2( -6, 4 )
 frames = SubResource( 207 )
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3604,7 +3611,7 @@ volume_db = -4.0
 
 [node name="alert 1" type="AudioStreamPlayer" parent="sfx/turn_alert"]
 stream = ExtResource( 31 )
-volume_db = -7.0
+volume_db = -6.0
 
 [node name="open" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 12 )
@@ -3616,7 +3623,7 @@ volume_db = -2.0
 
 [node name="select" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 12 )
-volume_db = -2.0
+volume_db = -3.7
 
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
@@ -3624,7 +3631,7 @@ volume_db = -1.0
 
 [node name="level_up" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 13 )
-volume_db = -3.0
+volume_db = -2.5
 
 [node name="dialogue_questions" parent="." instance=ExtResource( 51 )]
 visible = false
