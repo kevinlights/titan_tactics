@@ -29,6 +29,17 @@ func polymorph(turns):
 	self.turns = turns
 	effect = EFFECT.POLYMORPH
 
+func tag():
+	var effect_tag
+	match(effect):
+		EFFECT.POISON:
+			effect_tag = "poison"
+		EFFECT.STUN:
+			effect_tag = "stun"
+		EFFECT.POLYMORPH:
+			effect_tag = "polymorph"
+	return effect_tag
+
 func copy(other):
 	self.turns = other.turns
 	self.damage = other.damage

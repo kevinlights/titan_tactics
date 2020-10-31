@@ -73,23 +73,27 @@ var movement = {
 
 func apply_effects():
 	for effect in status_effects:
-		effect.turns_left -= 1
-		character.hp -= effect.damage
-#		print("Apply status effect ", effect)
-		if effect.effect == StatusEffect.EFFECT.STUN:
-			character.turn_limits.actions = 0
-			$vfx/stun.show()
-			$vfx/stun.play()
-			pick_random_sfx($sfx/stun_hit)
-		if effect.effect == StatusEffect.EFFECT.POISON:
-			$vfx/poison.show()
-			$vfx/poison.play()
-			pick_random_sfx($sfx/poison_hit)
-		if effect.effect == StatusEffect.EFFECT.POLYMORPH:
-			$vfx/poison.show()
-			$vfx/poison.play()
-			pick_random_sfx($sfx/polymorph_hit)
-			
+		if effect.turns_left > 0:
+			character.hp -= effect.damage
+			if effect.effect == StatusEffect.EFFECT.STUN:
+				character.turn_limits.actions = 0
+				$vfx/stun.show()
+				$vfx/stun.play()
+				pick_random_sfx($sfx/stun_hit)
+			if effect.effect == StatusEffect.EFFECT.POISON:
+				$vfx/poison.show()
+				$vfx/poison.play()
+				pick_random_sfx($sfx/poison_hit)
+			if effect.effect == StatusEffect.EFFECT.POLYMORPH:
+				$vfx/poison.show()
+				$vfx/poison.play()
+				pick_random_sfx($sfx/polymorph_hit)
+			effect.turns_left -= 1
+		else:
+			var tag = effect.tag()
+			if tag:
+				get_node(tag).hide()
+
 	if has_node("healthbar"):
 		$healthbar.set_value(character.hp, character.max_hp)
 
@@ -136,6 +140,11 @@ func hit(attacker):
 		var hit_effect = StatusEffect.new()
 		hit_effect.copy(attacker.item_atk.effect)
 		status_effects.append(hit_effect)
+		var tag = hit_effect.tag()
+		if tag:
+			get_node(tag).show()
+		else:
+			print("No tag for ", hit_effect.effect)
 	if guarding:
 		pick_random_sfx($sfx/defend)
 	if character.hp <= 0:

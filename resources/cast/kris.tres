@@ -14,4 +14,6 @@ def = 3
 atk_range = 1
 mov_range = 4
 heal = 0
+recruit_mode = 0
 portrait_override = "kris"
+control = 1
