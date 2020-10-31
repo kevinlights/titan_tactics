@@ -28,7 +28,7 @@ windows_debug:
   artifacts:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
-      - ${EXPORT_NAME}_windows
+      - ${EXPORT_NAME}_windows_debug
 
 linux:
   stage: export
