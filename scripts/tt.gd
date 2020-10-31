@@ -40,7 +40,7 @@ const levels = [
 		"music": "forest"
 	},
 	{
-		"name": "Silent but Deadly",
+		"name": "A Dangerous Path",
 		"scene": "level_3_3d",
 		"cutscene_music": "caravan",
 		"music": "forest"
@@ -57,7 +57,7 @@ const levels = [
 		"music": "cave" #desert
 	},
 	{
-		"name": "Cutting Cheese",
+		"name": "Crystal Clear",
 		"scene": "level_6_3d",
 		"cutscene_music": "sad",
 		"music": "city" #ice
