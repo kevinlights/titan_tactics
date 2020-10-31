@@ -86,49 +86,37 @@ var orientationModifier := {
 # should diagonal movement have a higher 'cost' as it has a higher distance? 
 onready var ml_mapping = {}
 func _ready():
-	_generate_overlayed_tiles()
+	_init_overlayed_tiles()
 	_init_astar()
 	
-func _generate_overlayed_tiles():
+func _init_overlayed_tiles():
 	var item_ids = mesh_library.get_item_list()
 	for item_id in item_ids:
 		var name = mesh_library.get_item_name(item_id)
-		if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
-			continue
-		var mesh = mesh_library.get_item_mesh(item_id)
-		var move_mesh = mesh.duplicate()
-		var move_material = mesh.surface_get_material(0).duplicate()
-		move_material.set_next_pass(load("res://gfx/range-overlay/inset_move.material"))
-		move_mesh.surface_set_material (0, move_material)
-		var move_id = mesh_library.get_last_unused_item_id() + 1
-		mesh_library.create_item(move_id)
-		mesh_library.set_item_mesh(move_id, move_mesh)
-		mesh_library.set_item_name(move_id, name + "_move")
-		
-		var attack_mesh = mesh.duplicate()
-		var attack_material = mesh.surface_get_material(0).duplicate()
-		attack_material.set_next_pass(load("res://gfx/range-overlay/inset_attack.material"))
-		attack_mesh.surface_set_material (0, attack_material)
-		var attack_id = mesh_library.get_last_unused_item_id() + 1
-		mesh_library.create_item(attack_id)
-		mesh_library.set_item_mesh(attack_id, attack_mesh)
-		mesh_library.set_item_name(attack_id, name + "_attack")
-		
-		var hint_mesh = mesh.duplicate()
-		var hint_material = mesh.surface_get_material(0).duplicate()
-		hint_material.set_next_pass(load("res://gfx/range-overlay/inset_hint.material"))
-		hint_mesh.surface_set_material (0, attack_material)
-		var hint_id = mesh_library.get_last_unused_item_id() + 1
-		mesh_library.create_item(hint_id)
-		mesh_library.set_item_mesh(hint_id, hint_mesh)
-		mesh_library.set_item_name(hint_id, name + "_hint")
-		
-		ml_mapping[name] = {
-			'_': item_id,
-			'_move': move_id,
-			'_attack': attack_id,
-			'_hint': hint_id,
-		}
+		if cardinalHeights.has(name):
+			ml_mapping[name] = {
+				'_': item_id,
+			}
+
+func generate_overlay_tile(name, item_id, type):
+	# type = move / attack / hint / select
+	var type_key = '_' + type;
+	if ml_mapping.has(name):
+		if not ml_mapping[name].has(type_key):
+			var mesh = mesh_library.get_item_mesh(item_id)
+			var mesh_dup = mesh.duplicate()
+			var material = mesh.surface_get_material(0).duplicate()
+			material.set_next_pass(load("res://gfx/range-overlay/inset_"+ type + ".material"))
+			mesh_dup.surface_set_material (0, material)
+			
+			var id = mesh_library.get_last_unused_item_id() + 1
+			mesh_library.create_item(id)
+			mesh_library.set_item_mesh(id, mesh_dup)
+			mesh_library.set_item_name(id, name + type_key)
+			ml_mapping[name][type_key] = id
+		return true
+	else:
+		return false
 	
 func world_path(path:PoolVector3Array):
 	var w_path = PoolVector3Array()
@@ -216,16 +204,17 @@ func set_tile_overlay(world_point, type):
 	if world_to_tile_map.has(world_point):
 		var tile_id = world_to_tile_map[world_point]
 		var cell = astar.get_point_position(tile_id)
-		var name = get_cell_name(cell).replace('_move', '').replace('_attack', '')
-		if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
-			return false
-		if not name:
-			return false
+		var item_id = get_cell_item(cell.x, cell.y, cell.z)
+		var name = get_cell_name(cell).replace('_move', '').replace('_attack', '').replace('_hint', '').replace('_select', '')
+		if type != '':
+			generate_overlay_tile(name, item_id, type)
 		
-		var new_item_id = ml_mapping[name]['_' + type]
-		var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
-		set_cell_item(cell.x, cell.y, cell.z, new_item_id, orientation)
-		return true
+		var type_key = '_' + type;
+		if ml_mapping.has(name) and ml_mapping[name].has(type_key):
+			var new_item_id = ml_mapping[name][type_key]
+			var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
+			set_cell_item(cell.x, cell.y, cell.z, new_item_id, orientation)
+			return true
 	return false
 
 func vector_to_id(vector):

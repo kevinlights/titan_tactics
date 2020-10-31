@@ -3,6 +3,8 @@ extends Spatial
 onready var materials = {
 	"move": preload("res://gfx/range-overlay/move.material"),
 	"attack": preload("res://gfx/range-overlay/attack.material"),
+	"select": preload("res://gfx/range-overlay/select.material"),
+	"hint": preload("res://gfx/range-overlay/hint.material"),
 }
 
 
