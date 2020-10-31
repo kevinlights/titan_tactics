@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://gfx/OBJS/cube.dae" type="PackedScene" id=1]
 [ext_resource path="res://gfx/OBJS/corner.dae" type="PackedScene" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://gfx/animated/waterside6.png" type="Texture" id=13]
 [ext_resource path="res://gfx/OBJS/underwater.dae" type="PackedScene" id=14]
 [ext_resource path="res://gfx/OBJS/bridgesm.dae" type="PackedScene" id=15]
+[ext_resource path="res://gfx/OBJS/wagon.dae" type="PackedScene" id=16]
+[ext_resource path="res://gfx/OBJS/rock_02.dae" type="PackedScene" id=17]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube.006"
@@ -31,7 +33,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="AnimatedTexture" id=2]
-flags = 2
+flags = 16
 frames = 6
 fps = 3.0
 frame_0/texture = ExtResource( 9 )
@@ -46,7 +48,7 @@ frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 13 )
 frame_5/delay_sec = 0.0
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=114]
 flags_unshaded = true
 params_blend_mode = 1
 params_use_alpha_scissor = true
@@ -64,7 +66,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 6,
-"material": SubResource( 3 ),
+"material": SubResource( 114 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 4
@@ -105,3 +107,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7993, -2.15348, -3.8819 )
 
 [node name="bridgesm" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.656394, 0.000212193, 3.84624 )
+
+[node name="wagon" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48592, 1.20255, 0.860586 )
+
+[node name="rock_02" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.380312, 1.48062, -1.88287 )

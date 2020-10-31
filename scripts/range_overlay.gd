@@ -3,6 +3,8 @@ extends Spatial
 onready var materials = {
 	"move": preload("res://gfx/range-overlay/move.material"),
 	"attack": preload("res://gfx/range-overlay/attack.material"),
+	"select": preload("res://gfx/range-overlay/select.material"),
+	"hint": preload("res://gfx/range-overlay/hint.material"),
 }
 
 
@@ -11,6 +13,7 @@ var overlayed_tiles = []
 var data
 var origin setget set_origin
 var gridmap setget set_gridmap
+var selector setget set_selector
 var hint_tiles = []
 
 func add_hint_tile(tile):
@@ -19,10 +22,26 @@ func add_hint_tile(tile):
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
+func set_selector(_selector):
+	if selector:
+		if overlayed_tiles.find(selector) > -1:
+			var context_tile = Vector3(selector.x, 0, selector.z)
+			var context = world.get_current_context(context_tile)
+			if context == TT.CONTEXT.MOVE:
+				gridmap.set_tile_overlay(selector, 'move')
+			elif context == TT.CONTEXT.ATTACK:
+				gridmap.set_tile_overlay(selector, 'attack')
+			else:
+				gridmap.set_tile_overlay(selector, '')
+		else:
+			gridmap.set_tile_overlay(selector, '')
+	selector = _selector + Vector3(0, 0.25, 0)
+	gridmap.set_tile_overlay(selector, 'select')
+
 func set_origin(_origin):
 	origin = _origin
 	if _origin:
-		generate_data(origin) 
+		generate_data(origin)
 	else:
 		hide()
 	
@@ -83,12 +102,10 @@ func show():
 		return
 	clear()
 	self.visible = true
-	var context_map = {}
 	
 	for tile in gridmap.get_tiles_within(data.tile, data.move_distance - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context = world.get_current_context(context_tile)
-		context_map[context_tile] = context
 		
 		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK and data.actions > 0:
@@ -106,14 +123,9 @@ func show():
 			elif context == TT.CONTEXT.MOVE:
 				drawSqaure(tile, materials.move)
 	
-	for tile in gridmap.get_tiles_within(data.tile, data.atk_range - 1):
+	for tile in gridmap.get_tiles_within(data.tile, data.atk_range):
 		var context_tile = Vector3(tile.x, 0, tile.z)
-		var context;
-		if not context_map.has(context_tile):
-			context = world.get_current_context(context_tile)
-			context_map[context_tile] = context
-		else:
-			context = context_map[context_tile]
+		var context = world.get_current_context(context_tile)
 		
 		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK:
