@@ -175,6 +175,7 @@ func win():
 	$win.reset()
 #	$win/Control/Next.grab_focus()
 	$win.show()
+	print("Win: focus next button")
 	$win/Control/Next.call_deferred("grab_focus")
 
 func lose():

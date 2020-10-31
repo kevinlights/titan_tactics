@@ -144,7 +144,6 @@ func set_content(dialogue_content, set_index = 0):
 
 func return_control():
 	print("emit complete")
-	content.complete()
 	# attach camera to selector and return control to player
 	world.get_node("lookat/camera").track(selector)
 	selector.enable()
@@ -152,6 +151,7 @@ func return_control():
 	get_parent().modal = false
 	hide()
 	skip = false
+	content.complete()
 
 func advance():
 	if text_blocks.size() > 0 and !skip:

@@ -448,6 +448,7 @@ func despawn():
 	is_dead = true
 	yield(get_tree().create_timer(3.0), "timeout")
 	hide()
+	emit_signal("death", self)
 	
 
 func die():

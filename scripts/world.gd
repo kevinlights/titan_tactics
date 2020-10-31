@@ -127,7 +127,7 @@ func advance_turn(explicit = 1, direction = 1):
 		end_turn()
 		return
 	next_character(direction)
-	while current[current_turn][current_character].is_done:
+	while current[current_turn][current_character].is_done or current[current_turn][current_character].is_dead:
 		next_character(direction)
 		
 	print("Advance turn")
@@ -347,18 +347,6 @@ func spawn_ai_team():
 	for ai_spawn in ai_spawns:
 		if ai_spawn.spawn_trigger == "" or ai_spawn.spawn_trigger == "level_start":
 			spawn_ai_character(ai_spawn)
-#			ai_spawn.has_spawned = true
-#			var character:Node = load("res://scenes/character_controller.tscn").instance()
-#			character.from_spawner(ai_spawn)
-#			character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
-#			character.character.control = TT.CONTROL.AI
-#			character.add_to_group("characters")
-#			current[TT.CONTROL.AI].append(character)
-#			current[TT.CONTROL.AI].back().connect("death", self, "_on_death")
-#			current[TT.CONTROL.AI].back().connect("done", self, "advance_turn")
-#			current[TT.CONTROL.AI].back().connect("path_complete", $select, "update_context")
-#			current[TT.CONTROL.AI].back().connect("dialogue", self, "_on_dialogue")
-#			world_map.add_child(character)
 		ai_spawn.hide()
 	ai = SmortAI.new(self)
 	
@@ -429,7 +417,7 @@ func _on_win(ignore_dialogue = false):
 	if (!gui.get_node("dialogue_box").visible and !gui.get_node("lvlup").visible) or ignore_dialogue:
 		gui.get_node("dialogue_box").hide()
 		if Game.level + 1 < Game.get_level_count():
-			gui.win()
+			gui.call_deferred("win")
 		else:
 			get_tree().change_scene("res://scenes/landing.tscn")
 		$music/win.play()

@@ -544,5 +544,7 @@ func get_cardinal_height(cell, dir_idx):
 
 func get_cell_name(cell):
 	var itemId = get_cell_item(cell.x, cell.y, cell.z)
+	if itemId < 0:
+		return ""
 	var name = mesh_library.get_item_name(itemId)
 	return name
