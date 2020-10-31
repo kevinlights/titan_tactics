@@ -101,9 +101,9 @@ func set_context(context):
 
 func _input(event):
 	var advance = Vector3(0, 0, 0)
-#	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
+	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
 #		play("blank")
-#		return
+		return
 	if gui.active or disabled or gui.modal:
 		if not world.current_turn == TT.CONTROL.AI:
 			play("attack")
