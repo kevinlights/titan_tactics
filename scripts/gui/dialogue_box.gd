@@ -15,6 +15,8 @@ var index = 0
 var characters_visible = -1
 var typing_delay = 50
 var last_typed = 0
+var skip = false
+
 onready var selector = get_tree().get_root().get_node("World/select")
 onready var world = get_tree().get_root().get_node("World")
 # Called when the node enters the scene tree for the first time.
