@@ -338,7 +338,8 @@ func spawn_ai_character(ai_spawn, surprise = false):
 	else:
 		character.connect("path_complete", self, "check_move_triggers", [ character ])
 		character.connect("attack_complete", self, "_on_attack_complete")
-		character.character.connect("level_up", self, "_on_level_up")		
+		character.character.connect("level_up", self, "_on_level_up")
+		character.character.reset_turn()
 	world_map.add_child(character)
 	
 func spawn_ai_team():
