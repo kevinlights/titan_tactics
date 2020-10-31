@@ -91,9 +91,10 @@ func _ready():
 	
 func _init_overlayed_tiles():
 	var item_ids = mesh_library.get_item_list()
+	var skip_overlay = ['steps']
 	for item_id in item_ids:
 		var name = mesh_library.get_item_name(item_id)
-		if cardinalHeights.has(name):
+		if cardinalHeights.has(name) and not (skip_overlay.find(name) > -1):
 			ml_mapping[name] = {
 				'_': item_id,
 			}

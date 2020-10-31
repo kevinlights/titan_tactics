@@ -35,11 +35,14 @@ func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
 var selectedCube
+var origCube
 func set_selector(_selector):
 	if selector:
 		if selectedCube:
 			remove_child(selectedCube)
+			add_child(origCube)
 			selectedCube = null
+			origCube = null
 		elif overlayed_tiles.find(selector) > -1:
 			var context_tile = Vector3(selector.x, 0, selector.z)
 			var context = world.get_current_context(context_tile)
@@ -61,6 +64,12 @@ func set_selector(_selector):
 		var tile_overlay_success = gridmap.set_tile_overlay(selector, 'select')
 		if not tile_overlay_success:
 			selectedCube = drawSqaure(selector, materials.select)
+			remove_child(selectedCube)
+			for child in get_children():
+				if child.translation == selectedCube.translation:
+					origCube = child
+					remove_child(origCube)
+			add_child(selectedCube)
 
 func set_origin(_origin):
 	origin = _origin
