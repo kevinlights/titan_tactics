@@ -180,15 +180,15 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 32, 16, 16 )
+region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 41 )
@@ -198,17 +198,17 @@ region = Rect2( 16, 48, 16, 16 )
 animations = [ {
 "frames": [ SubResource( 25 ) ],
 "loop": true,
-"name": "mage",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "archer",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 27 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "mage",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 28 ) ],
@@ -2180,10 +2180,10 @@ margin_left = -1.0
 
 [node name="action_menu" parent="." instance=ExtResource( 2 )]
 visible = false
-margin_left = -194.0
-margin_top = -133.0
-margin_right = -144.0
-margin_bottom = -70.0
+margin_left = 130.0
+margin_top = 85.0
+margin_right = 193.0
+margin_bottom = 154.0
 
 [node name="intro" parent="." instance=ExtResource( 5 )]
 visible = false

@@ -7,8 +7,8 @@ signal end
 signal heal
 
 var start
-var native_x = -50
-var ttl = 60
+# var native_x = -50
+# var ttl = 60
 var done = true
 var menu_type = "attack"
 
@@ -47,19 +47,19 @@ func show_dialog(menu_type = "attack"):
 	$panel/action_2.text = label_map[menu_type][1]
 	start = OS.get_ticks_msec()
 	done = false
-	margin_left = 0
+#	margin_left = 0
 	$panel/action_1.grab_focus()
 	show()
 
 func _process(delta):
 	if !visible or done:
 		return
-	var now = OS.get_ticks_msec()
-	if now - start < ttl:
-		margin_left = lerp(0, native_x, float(now - start) / float(ttl))
-	else:
-		done = true
-		margin_left = native_x
+#	var now = OS.get_ticks_msec()
+#	if now - start < ttl:
+#		margin_left = lerp(0, native_x, float(now - start) / float(ttl))
+#	else:
+#		done = true
+#		margin_left = native_x
 
 func _input(event):
 	if !visible:
