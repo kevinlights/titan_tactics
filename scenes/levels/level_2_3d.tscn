@@ -64,7 +64,7 @@ defense = 1
 heal = 0
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=37]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
 character_class = 1
 name = "Petr"
@@ -118,7 +118,7 @@ equipment_slot = 0
 level = 1
 name = "Minor Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 9 )
@@ -142,7 +142,7 @@ defense = 1
 heal = 0
 effect = SubResource( 11 )
 
-[sub_resource type="Resource" id=38]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 5 )
 character_class = 3
 name = "Sage"
@@ -196,7 +196,7 @@ equipment_slot = 0
 level = 1
 name = "Minor Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 16 )
@@ -220,7 +220,7 @@ defense = 1
 heal = 0
 effect = SubResource( 18 )
 
-[sub_resource type="Resource" id=39]
+[sub_resource type="Resource" id=20]
 script = ExtResource( 5 )
 character_class = 3
 name = "Bram"
@@ -274,7 +274,7 @@ equipment_slot = 0
 level = 1
 name = "Minor Boba Juice"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 23 )
@@ -298,7 +298,7 @@ defense = 1
 heal = 0
 effect = SubResource( 25 )
 
-[sub_resource type="Resource" id=40]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 5 )
 character_class = 4
 name = "Datev"
@@ -352,7 +352,7 @@ equipment_slot = 0
 level = 1
 name = "Minor Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 30 )
@@ -369,20 +369,20 @@ script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 1
 level = 1
-name = "Minor Chain"
+name = "Minor Suit"
 attack = 0
 attack_range = 0
 defense = 1
 heal = 0
 effect = SubResource( 32 )
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=34]
 script = ExtResource( 5 )
 character_class = 3
-name = "Lokum"
+name = "Seth"
 level = 1
-hp = 10
-max_hp = 10
+hp = 8
+max_hp = 8
 atk = 3
 def = 3
 atk_range = 1
@@ -442,7 +442,7 @@ mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
-"cells": PoolIntArray( 4, 0, 1048583, 5, 0, 1441799, 4, 1, 1048583, 5, 1, 1441799, 4, 2, 1048583, 5, 2, 1441799, 4, 3, 1048583, 5, 3, 1441799, 196609, 3, 18, 4, 4, 1048583, 5, 4, 1441799, 196610, 4, 537526290, 4, 5, 1048583, 5, 5, 1441799, 4, 6, 1048583, 5, 6, 1441799, 4, 7, 1048583, 5, 7, 1441799, 4, 8, 1048583, 5, 8, 1441799, 131084, 8, 538312722, 4, 9, 1048583, 5, 9, 1441799, 131083, 9, 18, 4, 10, 1048583, 5, 10, 1441799, 4, 11, 1048583, 5, 11, 1441799, 4, 12, 1048583, 5, 12, 1441799, 4, 13, 1048583, 5, 13, 1441799, 4, 14, 1048583, 5, 14, 1441799 )
+"cells": PoolIntArray( 4, 0, 1048583, 5, 0, 1441799, 4, 1, 1048583, 5, 1, 538312711, 4, 2, 1048583, 5, 2, 1441799, 4, 3, 1048583, 5, 3, 1441799, 196609, 3, 18, 4, 4, 1048583, 5, 4, 1441799, 196610, 4, 655378, 4, 5, 1048583, 5, 5, 1441799, 4, 6, 1048583, 5, 6, 1441799, 4, 7, 1048583, 5, 7, 1441799, 4, 8, 1048583, 5, 8, 1441799, 131084, 8, 1441810, 4, 9, 1048583, 5, 9, 1441799, 131083, 9, 18, 4, 10, 1048583, 5, 10, 1441799, 4, 11, 1048583, 5, 11, 1441799, 4, 12, 1048583, 5, 12, 538312711, 4, 13, 1048583, 5, 13, 1441799, 4, 14, 1048583, 5, 14, 1441799 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -473,7 +473,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 37 )
+stats = SubResource( 6 )
 dialogue = SubResource( 7 )
 recruit_dialogue = SubResource( 8 )
 death_dialogue = null
@@ -485,7 +485,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 38 )
+stats = SubResource( 13 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
 death_dialogue = null
@@ -497,7 +497,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 39 )
+stats = SubResource( 20 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
 death_dialogue = null
@@ -509,7 +509,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 40 )
+stats = SubResource( 27 )
 dialogue = SubResource( 28 )
 recruit_dialogue = SubResource( 29 )
 death_dialogue = null
@@ -521,7 +521,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 41 )
+stats = SubResource( 34 )
 dialogue = SubResource( 35 )
 recruit_dialogue = SubResource( 36 )
 death_dialogue = null
