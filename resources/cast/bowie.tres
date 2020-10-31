@@ -6,10 +6,10 @@
 script = ExtResource( 1 )
 character_class = 1
 name = "Bowie"
-level = 1
+level = 2
 hp = 55
 max_hp = 55
-atk = 12
+atk = 9
 def = 6
 atk_range = 9
 mov_range = 5
