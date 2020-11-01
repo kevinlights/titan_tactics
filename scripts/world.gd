@@ -209,7 +209,6 @@ func action():
 	if game_over:
 		return
 	var context = get_current_context($select.tile)
-	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	var target = entity_at($select.tile)
 	match(context):
 		TT.CONTEXT.ATTACK:
@@ -237,6 +236,7 @@ func action():
 					else:
 						target.use()
 		TT.CONTEXT.MOVE:
+			var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 			get_current().move(current_path) # to_world_path(current_path))
 		TT.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()

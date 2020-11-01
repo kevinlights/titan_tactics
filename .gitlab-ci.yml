@@ -40,6 +40,16 @@ linux:
     paths:
       - ${EXPORT_NAME}_linux
 
+linux_debug:
+  stage: export
+  script:
+    - mkdir -v -p ${EXPORT_NAME}_linux_debug
+    - godot -v --export-debug "Linux/X11" ${EXPORT_NAME}_linux_debug/$EXPORT_NAME.x86_64
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - ${EXPORT_NAME}_linux_debug
+
 mac:
   stage: export
   script:
@@ -50,30 +60,40 @@ mac:
     paths:
       - ${EXPORT_NAME}_mac
 
+mac_debug:
+  stage: export
+  script:
+    - mkdir -v -p ${EXPORT_NAME}_mac_debug
+    - godot -v --export-debug "Mac OSX" ${EXPORT_NAME}_mac_debug/$EXPORT_NAME.zip
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - ${EXPORT_NAME}_mac_debug
+
 # Itch.io Deploy
 itchio:linux:
   stage: deploy
   script:
-    - butler push ./${EXPORT_NAME}_linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
+    - butler push ./${EXPORT_NAME}_linux_debug $ITCHIO_USERNAME/$ITCHIO_GAME:linux
   dependencies:
-    - linux
+    - linux_debug
   only: 
     - master
 
 itchio:windows:
   stage: deploy
   script:
-    - butler push ./${EXPORT_NAME}_windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
+    - butler push ./${EXPORT_NAME}_windows_debug $ITCHIO_USERNAME/$ITCHIO_GAME:windows
   dependencies:
-    - windows
+    - windows_debug
   only: 
     - master
 
 itchio:macosx:
   stage: deploy
   script:
-    - butler push ./${EXPORT_NAME}_mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
+    - butler push ./${EXPORT_NAME}_mac_debug $ITCHIO_USERNAME/$ITCHIO_GAME:mac
   dependencies:
-    - mac
+    - mac_debug
   only: 
     - master
