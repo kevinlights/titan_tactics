@@ -16,7 +16,7 @@
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=14]
 [ext_resource path="res://resources/story/level6_start.dialogue" type="Resource" id=15]
 [ext_resource path="res://resources/story/level6_end.dialogue" type="Resource" id=16]
-[ext_resource path="res://resources/cast/arath.tres" type="Resource" id=17]
+[ext_resource path="res://resources/cast/elyne.tres" type="Resource" id=17]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 13 )

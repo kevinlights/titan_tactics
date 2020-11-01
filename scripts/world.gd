@@ -627,11 +627,18 @@ func _on_heal():
 	var target = entity_at($select.tile)
 	if get_current().character.turn_limits.actions != 0:
 		var healed = get_current().heal(target)
-		var damage_feedback = load("res://scenes/damage_feedback.tscn").instance()
-		damage_feedback.translation.x = target.translation.x
-		damage_feedback.translation.z = target.translation.z
+
+		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
+		var feedback_position = get_node("lookat/camera").unproject_position(target.translation + Vector3(.5, .5, .5))
+		damage_feedback.position = feedback_position
 		damage_feedback.get_node("damage").text = "+" + str(healed)
 		add_child(damage_feedback)
+#
+#		var damage_feedback = load("res://scenes/damage_feedback.tscn").instance()
+#		damage_feedback.translation.x = target.translation.x
+#		damage_feedback.translation.z = target.translation.z
+#		damage_feedback.get_node("damage").text = "+" + str(healed)
+#		add_child(damage_feedback)
 		target.get_node("vfx/heal").emitting = true
 		print("healed")
 	gui.call_deferred("back")
