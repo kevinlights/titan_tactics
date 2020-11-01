@@ -248,7 +248,8 @@ func action():
 #				gui.guard()
 		TT.CONTEXT.HEAL:
 			if get_current().character.turn_limits.actions == 0:
-				_on_end()
+#				_on_end()
+				gui.end()
 			else:
 				gui.guard(true)
 	$range_overlay.set_origin(get_current())
@@ -761,7 +762,10 @@ func _input(event):
 	if event.is_action("unmute_music") && !event.is_echo() && event.is_pressed():
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
-		gui.guard()
+		if get_current().character.turn_limits.actions > 0:
+			gui.guard()
+		else:
+			gui.end()
 	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed() && !gui.active && !gui.modal:
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation + 1

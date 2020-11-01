@@ -187,6 +187,10 @@ func lose():
 	$lose/Control/Retry.grab_focus()
 	$lose.show()
 
+func end():
+	active = true
+	$action_menu.call_deferred("show_dialog", "end")
+
 func guard(is_healer = false):
 	active = true
 	if is_healer:

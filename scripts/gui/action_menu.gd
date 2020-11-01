@@ -21,14 +21,17 @@ var menu_type = "attack"
 var signal_map = {
 	"attack": [ "attack", "recruit" ],
 	"guard": [ "guard", "end" ],
-	"heal": [ "heal", "end" ]
+	"heal": [ "heal", "end" ],
+	"end": [ "end" ]
 }
 
 var label_map = {
 	"attack": [ "Attack", "Speak" ],
 	"guard": [ "Guard", "End" ],
-	"heal": [ "Heal", "End" ]	
+	"heal": [ "Heal", "End" ],
+	"end": [ "End" ]
 }
+
 
 func _ready():
 	$panel/action_1.grab_focus()
@@ -44,7 +47,11 @@ func _on_action_2():
 func show_dialog(menu_type = "attack"):
 	self.menu_type = menu_type
 	$panel/action_1.text = label_map[menu_type][0]
-	$panel/action_2.text = label_map[menu_type][1]
+	if label_map[menu_type].size() > 1:
+		$panel/action_2.text = label_map[menu_type][1]
+		$panel/action_2.show()
+	else:
+		$panel/action_2.hide()
 	start = OS.get_ticks_msec()
 	done = false
 #	margin_left = 0

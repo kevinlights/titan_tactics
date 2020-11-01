@@ -8,7 +8,7 @@ func _ready():
 	start = OS.get_ticks_msec()
 	start_y = position.y
 
-func _process(delta):
+func _process(_delta):
 	var now = OS.get_ticks_msec()
 	if now - start < ttl:
 		position.y = lerp(start_y, start_y - 16, float(now - start) / float(ttl))
