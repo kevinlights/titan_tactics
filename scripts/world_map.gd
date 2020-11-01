@@ -4,7 +4,7 @@ var level_markers = [
 	Vector2(70, 134),
 	Vector2(54, 103),
 	Vector2(82, 86),
-	Vector2(65, 58),
+	Vector2(53, 67),
 	Vector2(118, 65),
 	Vector2(191, 56),
 	Vector2(235, 62),
