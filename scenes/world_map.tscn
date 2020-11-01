@@ -155,16 +155,18 @@ __meta__ = {
 [node name="map_selector" type="AnimatedSprite" parent="."]
 position = Vector2( 70, 134 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 centered = false
 
-[node name="map point" type="AnimatedSprite" parent="."]
+[node name="map point" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 76.014, 152.382 )
 frames = SubResource( 8 )
 
-[node name="map point2" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point2" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 60.6175, 121.028 )
 frames = SubResource( 8 )
 
@@ -184,8 +186,9 @@ frames = SubResource( 10 )
 position = Vector2( -0.690174, 8.72659 )
 frames = SubResource( 10 )
 
-[node name="map point3" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point3" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 88.4711, 104.174 )
 frames = SubResource( 8 )
 
@@ -201,8 +204,9 @@ frames = SubResource( 10 )
 position = Vector2( -8.56801, 5.95837 )
 frames = SubResource( 10 )
 
-[node name="map point4" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point4" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 70.514, 76.1744 )
 frames = SubResource( 8 )
 
@@ -222,8 +226,9 @@ frames = SubResource( 10 )
 position = Vector2( 2.31803, 6.72916 )
 frames = SubResource( 10 )
 
-[node name="map point5" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point5" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 124, 83 )
 frames = SubResource( 8 )
 
@@ -251,8 +256,9 @@ frames = SubResource( 10 )
 position = Vector2( -10.5093, -0.980316 )
 frames = SubResource( 10 )
 
-[node name="map point6" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point6" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 197, 74 )
 frames = SubResource( 8 )
 
@@ -288,8 +294,9 @@ frames = SubResource( 10 )
 position = Vector2( -9.26315, -1.17271 )
 frames = SubResource( 10 )
 
-[node name="map point7" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point7" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 241, 80 )
 frames = SubResource( 8 )
 
@@ -313,8 +320,9 @@ frames = SubResource( 10 )
 position = Vector2( -8.06894, -0.748077 )
 frames = SubResource( 10 )
 
-[node name="map point8" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point8" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 187, 92 )
 frames = SubResource( 8 )
 
@@ -350,8 +358,9 @@ frames = SubResource( 10 )
 position = Vector2( 7.98471, 1.68699 )
 frames = SubResource( 10 )
 
-[node name="map point9" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point9" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 144.402, 105.496 )
 frames = SubResource( 8 )
 
@@ -379,33 +388,34 @@ frames = SubResource( 10 )
 position = Vector2( 6.95407, -1.16934 )
 frames = SubResource( 10 )
 
-[node name="map point10" type="AnimatedSprite" parent="."]
-visible = false
+[node name="map point10" type="AnimatedSprite" parent="." groups=[
+"map_points",
+]]
 position = Vector2( 110, 119 )
 frames = SubResource( 12 )
 
-[node name="AnimatedSprite23" type="AnimatedSprite" parent="map point10"]
-position = Vector2( 5.59782, -6.08435 )
-frames = SubResource( 10 )
-
-[node name="AnimatedSprite24" type="AnimatedSprite" parent="map point10"]
-position = Vector2( 10.0587, -10.5918 )
-frames = SubResource( 10 )
-
-[node name="AnimatedSprite25" type="AnimatedSprite" parent="map point10"]
-position = Vector2( 14.8462, -14.9282 )
-frames = SubResource( 10 )
-
-[node name="AnimatedSprite26" type="AnimatedSprite" parent="map point10"]
-position = Vector2( 19.4374, -18.8657 )
+[node name="AnimatedSprite28" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 30.5439, -20.1809 )
 frames = SubResource( 10 )
 
 [node name="AnimatedSprite27" type="AnimatedSprite" parent="map point10"]
 position = Vector2( 24.8133, -22.4246 )
 frames = SubResource( 10 )
 
-[node name="AnimatedSprite28" type="AnimatedSprite" parent="map point10"]
-position = Vector2( 30.5439, -20.1809 )
+[node name="AnimatedSprite26" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 19.4374, -18.8657 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite25" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 14.8462, -14.9282 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite24" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 10.0587, -10.5918 )
+frames = SubResource( 10 )
+
+[node name="AnimatedSprite23" type="AnimatedSprite" parent="map point10"]
+position = Vector2( 5.59782, -6.08435 )
 frames = SubResource( 10 )
 
 [node name="Node" type="Node" parent="."]

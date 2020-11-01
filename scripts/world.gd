@@ -478,6 +478,8 @@ func _on_replay():
 func _on_next_level():
 	if Game.level + 1 < Game.get_level_count():
 		Game.level += 1
+		if Game.level > Game.unlocked_level:
+			Game.unlocked_level = Game.level
 		SaveLoadSystem.save_game()
 		get_tree().reload_current_scene()
 	else:
