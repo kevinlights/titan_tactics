@@ -93,8 +93,8 @@ func level_up():
 
 func set_level(lvl):
 	level = lvl
-	var default_stats = load("res://resources/class_stats.tres")
-	generate(default_stats, character_class, control, level)
+#	var default_stats = load("res://resources/class_stats.tres")
+#	generate(default_stats, character_class, control, level)
 	
 func get_level():
 	return level

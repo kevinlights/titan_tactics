@@ -29,7 +29,7 @@ func _ready():
 	$pause.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
 	$lose.connect("quit", get_tree(), "change_scene", [ "res://scenes/landing.tscn" ])
 	$lvlup.connect("close", self, "_close_level_up")
-	$endturn/panel/cancel.connect("cancel", get_parent().get_node("select"), "enable")
+	$endturn/panel/cancel.connect("pressed", get_parent().get_node("select"), "enable")
 
 func _close_level_up():
 	print("run turn end ui")

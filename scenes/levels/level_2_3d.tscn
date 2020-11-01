@@ -20,6 +20,7 @@
 [ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=18]
 [ext_resource path="res://resources/story/level2_recruit.dialogue" type="Resource" id=19]
 [ext_resource path="res://resources/story/level2_chest.dialogue" type="Resource" id=20]
+[ext_resource path="res://resources/cast/bowie.tres" type="Resource" id=21]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -416,22 +417,6 @@ text = ""
 branches = [  ]
 audio_theme = ""
 
-[sub_resource type="Resource" id=37]
-script = ExtResource( 5 )
-character_class = 1
-name = "Bowie"
-level = 1
-hp = 55
-max_hp = 55
-atk = 12
-def = 6
-atk_range = 9
-mov_range = 5
-heal = 0
-recruit_mode = 0
-portrait_override = ""
-control = 1
-
 [node name="level" type="Spatial"]
 script = ExtResource( 11 )
 start_dialogue = ExtResource( 12 )
@@ -556,4 +541,4 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 37 )
+stats = ExtResource( 21 )
