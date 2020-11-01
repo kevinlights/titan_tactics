@@ -288,8 +288,8 @@ func _ready():
 	gui.get_node("teamconfirm").connect("start_level", self, "_on_start_level")
 	gui.get_node("teamconfirm").connect("check_map", self, "_on_check_map")
 	gui.get_node("teamconfirm").connect("edit_team", self, "_on_edit_team")
-	gui.get_node("lvlup").connect("close", self, "check_end_turn")
-	gui.get_node("lvlup").connect("close", self, "check_end_game")
+#	gui.get_node("lvlup").connect("close", self, "check_end_turn")
+	gui.get_node("lvlup").connect("close", self, "_on_dialogue_complete")
 	gui.get_node("win").connect("next", self, "_on_next_level")
 	gui.get_node("win").connect("retry", self, "_on_replay")
 	gui.get_node("lose").connect("retry", self, "_on_replay")
@@ -504,6 +504,7 @@ func check_move_triggers(character):
 	for marker in markers:
 		if marker.dialogue and same_tile(marker.translation, character.translation): #marker.translation.is_equal_approx(character.translation):
 			if not marker.dialogue.consumed:
+				marker.dialogue.connect("completed", self, "_on_dialogue_complete")
 				gui.dialogue(marker.dialogue)
 				break
 
