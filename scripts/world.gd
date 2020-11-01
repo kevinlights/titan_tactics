@@ -71,6 +71,7 @@ func is_cover_between(character, end):
 func spawn_cover(tile):
 	var cover = load("res://scenes/cover_tile.tscn").instance()
 	cover.position = tile * Vector2(TT.cell_size, TT.cell_size)
+	print('world_map.add_child(cover)', cover)
 	world_map.add_child(cover)
 	print("Spawned cover")
 	return cover
@@ -80,6 +81,7 @@ func spawn_chest(x, y, item_spawner):
 	chest.teleport(x, y)
 	chest.item_spawner = item_spawner
 	chest.add_to_group("characters")
+	print('world_map.add_child(chest)', chest)
 	world_map.add_child(chest)
 	print("Spawned chest")
 	return chest
@@ -89,6 +91,7 @@ func spawn_character(x, y, type = TT.TYPE.MAGE, control = TT.CONTROL.PLAYER):
 	character.init(type, control)
 	character.teleport(x, y)
 	character.add_to_group("characters")
+	print('world_map.add_child(character) #1', character)
 	world_map.add_child(character)
 	return character
 
@@ -340,6 +343,7 @@ func spawn_ai_character(ai_spawn, surprise = false):
 		character.connect("attack_complete", self, "_on_attack_complete")
 		character.character.connect("level_up", self, "_on_level_up")
 		character.character.reset_turn()
+	print('world_map.add_child(character) #2', character)
 	world_map.add_child(character)
 	
 func spawn_ai_team():
@@ -510,6 +514,7 @@ func auto_deploy_only_character():
 	character.teleport(floor(spawn.x), floor(spawn.z - 1))
 	character.add_to_group("characters")
 	print("Player spawn ", spawn)
+	print('world_map.add_child(character) #3', character)
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
@@ -528,6 +533,7 @@ func _on_select_team_member(team_member):
 	character.from_library(team_member)
 	character.teleport(floor(spawn.x), floor(spawn.z - 1))	
 	character.add_to_group("characters")
+	print('world_map.add_child(character) #3', character)
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
 	character.connect("done", self, "advance_turn")
@@ -632,6 +638,7 @@ func _on_heal():
 		var feedback_position = get_node("lookat/camera").unproject_position(target.translation + Vector3(.5, .5, .5))
 		damage_feedback.position = feedback_position
 		damage_feedback.get_node("damage").text = "+" + str(healed)
+		print('add_child(damage_feedback)', damage_feedback)
 		add_child(damage_feedback)
 #
 #		var damage_feedback = load("res://scenes/damage_feedback.tscn").instance()
