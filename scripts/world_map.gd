@@ -49,6 +49,10 @@ enum DIR {
 func _input(event):
 	var lvl = Game.level
 	if event.is_pressed():
+		if event.is_action("cheat_kill_everyone"):
+			Game.unlocked_level += 1
+			make_path_visible()
+			return
 		var dir
 		if event.is_action("ui_up"):
 			dir = DIR.UP
