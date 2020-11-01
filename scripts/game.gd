@@ -6,6 +6,7 @@ signal orientation_changed_counter_clockwise
 
 var team = []
 var level = 0
+var unlocked_level = 0
 var camera_orientation = TT.CAMERA.NORTH setget set_camera_orientation, get_camera_orientation
 
 func set_camera_orientation(new_orientation):
@@ -41,6 +42,7 @@ func get_theme():
 
 func setup_new_game():
 	level = 0
+	unlocked_level = 0
 	team = []
 	var kris = load("res://resources/cast/kris.tres")
 	team.append(kris)
