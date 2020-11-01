@@ -84,6 +84,7 @@ func set_content(dialogue_content):
 		portrait.position.y = 144 - dialogue_height + offset.y
 		portrait.play(portrait_map[dialogue_content.portrait])
 		if not has_node("portrait"):
+			print('add_child(portrait)', portrait)
 			add_child(portrait)
 		portrait.show()
 	if dialogue_content.title and dialogue_content.title != "":

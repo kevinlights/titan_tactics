@@ -267,6 +267,7 @@ func attack(target):
 	var feedback_position = world.get_node("lookat/camera").unproject_position(target.translation + Vector3(.5, .5, .5))
 	damage_feedback.position = feedback_position
 	damage_feedback.get_node("damage").text = "-" + str(damage)
+	print('world.add_child(damage_feedback)', damage_feedback)
 	world.add_child(damage_feedback)
 
 	if character.character_class == TT.TYPE.MAGE:
@@ -276,6 +277,7 @@ func attack(target):
 		projectile.connect("hit", self, "attack_complete")
 		world.get_node("lookat/camera").track(projectile)
 		pick_random_sfx($sfx/magic_attack)
+		print('get_parent().add_child(projectile)', projectile)
 		get_parent().add_child(projectile)
 	elif character.character_class == TT.TYPE.ARCHER:
 		# move this to on animation complete 
@@ -475,6 +477,7 @@ func init_common(control):
 	if control == TT.CONTROL.PLAYER:
 		healthbar.get_node("level").color = Color(0.023529, 0.352941, 0.709804)
 	healthbar.hide()
+	print('add_child(healthbar)', healthbar)
 	add_child(healthbar)
 	
 func init(char_type, control = TT.CONTROL.PLAYER):	
@@ -498,6 +501,7 @@ func fire_arrow(target):
 	projectile.connect("hit", self, "attack_complete")
 	world.get_node("lookat/camera").track(projectile)
 	pick_random_sfx($sfx/arrow_attack)
+	print('get_parent().add_child(projectile)', projectile)
 	get_parent().add_child(projectile)
 	last_target = null
 	

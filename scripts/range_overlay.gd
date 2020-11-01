@@ -41,6 +41,7 @@ func set_selector(_selector):
 		if selectedCube:
 			remove_child(selectedCube)
 			if origCube:
+				print('add_child(origCube)', origCube)
 				add_child(origCube)
 				origCube = null
 			selectedCube = null
@@ -70,6 +71,7 @@ func set_selector(_selector):
 				if child.translation == selectedCube.translation:
 					origCube = child
 					remove_child(origCube)
+			print('add_child(selectedCube)', selectedCube)
 			add_child(selectedCube)
 
 func set_origin(_origin):
@@ -125,6 +127,7 @@ func drawSqaure(location, material):
 	square.set_width(0.9)
 	square.translate(Vector3(location.x + 0.05, location.y, location.z + 0.05))
 	square.set_material(material)
+	print('add_child(square)', square)
 	add_child(square)
 	return square
 
