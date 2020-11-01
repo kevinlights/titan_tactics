@@ -574,7 +574,7 @@ audio_theme = ""
 [node name="level" type="Spatial"]
 script = ExtResource( 11 )
 start_dialogue = ExtResource( 12 )
-add_character = "arath"
+add_character = "arath,bowie"
 map_node = "terrain"
 
 [node name="Spatial" type="Spatial" parent="."]
@@ -633,6 +633,8 @@ script = ExtResource( 3 )
 stats = SubResource( 6 )
 dialogue = SubResource( 7 )
 recruit_dialogue = SubResource( 8 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.347, 5 )
@@ -643,6 +645,8 @@ script = ExtResource( 3 )
 stats = SubResource( 13 )
 dialogue = SubResource( 14 )
 recruit_dialogue = SubResource( 15 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.347, 10 )
@@ -653,6 +657,8 @@ script = ExtResource( 3 )
 stats = SubResource( 20 )
 dialogue = SubResource( 21 )
 recruit_dialogue = SubResource( 22 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.347, 8 )
@@ -663,6 +669,8 @@ script = ExtResource( 3 )
 stats = SubResource( 27 )
 dialogue = SubResource( 28 )
 recruit_dialogue = SubResource( 29 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.347, 7 )
@@ -673,6 +681,8 @@ script = ExtResource( 3 )
 stats = SubResource( 34 )
 dialogue = SubResource( 35 )
 recruit_dialogue = SubResource( 36 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.347, 7 )
@@ -683,6 +693,8 @@ script = ExtResource( 3 )
 stats = SubResource( 41 )
 dialogue = SubResource( 42 )
 recruit_dialogue = SubResource( 43 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="StoryMarker2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.2, 0 )
@@ -726,6 +738,8 @@ script = ExtResource( 3 )
 stats = SubResource( 48 )
 dialogue = SubResource( 49 )
 recruit_dialogue = SubResource( 50 )
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="PlayerSpawner" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 14 )

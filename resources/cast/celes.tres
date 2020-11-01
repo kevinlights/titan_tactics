@@ -38,4 +38,4 @@ heal = 4
 item_atk = SubResource( 2 )
 recruit_mode = 0
 portrait_override = "celes"
-control = 1
+control = 0
