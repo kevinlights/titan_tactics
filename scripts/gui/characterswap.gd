@@ -23,6 +23,14 @@ onready var world = get_parent().get_parent()
 func _ready():
 	pass
 
+func init(_arg):
+	start = OS.get_ticks_msec()
+	update_view()
+	show()
+
+func out():
+	hide()
+
 func _process(delta):
 	if !visible or world.current[TT.CONTROL.PLAYER].size() == 0:
 		return

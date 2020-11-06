@@ -10,7 +10,7 @@ func get_characters_with_actions():
 	return world.current[TT.CONTROL.PLAYER].size() - num_done
 
 func _process(delta):
-	if world.current_turn == TT.CONTROL.AI or get_parent().active:
+	if world.current_turn == TT.CONTROL.AI:
 		hide()
 	else:
 		show()

@@ -28,6 +28,8 @@ var moving_back = false
 
 var start
 
+onready var world = get_tree().get_root().get_node("World")
+
 #var atlas_frames = {
 #	"up": 3,
 #	"down": 2,
@@ -206,28 +208,29 @@ func set_entities(player_entity, enemy_entity):
 	_ready()
 
 func update_stats():
-	enemyhp = enemy.character.hp
-	playerhp = player.character.hp
-	if enemyhp < 0:
-		enemyhp = 0
-	if playerhp < 0:
-		playerhp = 0
-	enemyhp = str(ceil(enemyhp))  + "/" + str(ceil(enemy.character.max_hp))
-	playerhp = str(ceil(playerhp))  + "/" + str(ceil(player.character.max_hp))
-	playerlvl = player.character.level
-	playeratk = int(round(player.character.atk + player.character.item_atk.attack))
-	playerdef = int(round(player.character.def + player.character.item_def.defense))
-	enemylvl = enemy.character.level
-	enemyatk = int(round(enemy.character.atk + enemy.character.item_atk.attack))
-	enemydef = int(round(enemy.character.def + enemy.character.item_def.defense))
-	$box_ally/playeratklevel.text = str(playeratk)
-	$box_ally/playerdeflevel.text = str(playerdef)
-	$box_ally/playerlevel.text = str(playerlvl)
-	$box_enemy/enemyatklevel.text = str(enemyatk)
-	$box_enemy/enemydeflevel.text = str(enemydef)
-	$box_enemy/enemylevel.text = str(enemylvl)
-	$box_enemy/enemyhp.text = (enemyhp)
-	$box_ally/playerhp.text = (playerhp)
+	if enemy and player:
+		enemyhp = enemy.character.hp
+		playerhp = player.character.hp
+		if enemyhp < 0:
+			enemyhp = 0
+		if playerhp < 0:
+			playerhp = 0
+		enemyhp = str(ceil(enemyhp))  + "/" + str(ceil(enemy.character.max_hp))
+		playerhp = str(ceil(playerhp))  + "/" + str(ceil(player.character.max_hp))
+		playerlvl = player.character.level
+		playeratk = int(round(player.character.atk + player.character.item_atk.attack))
+		playerdef = int(round(player.character.def + player.character.item_def.defense))
+		enemylvl = enemy.character.level
+		enemyatk = int(round(enemy.character.atk + enemy.character.item_atk.attack))
+		enemydef = int(round(enemy.character.def + enemy.character.item_def.defense))
+		$box_ally/playeratklevel.text = str(playeratk)
+		$box_ally/playerdeflevel.text = str(playerdef)
+		$box_ally/playerlevel.text = str(playerlvl)
+		$box_enemy/enemyatklevel.text = str(enemyatk)
+		$box_enemy/enemydeflevel.text = str(enemydef)
+		$box_enemy/enemylevel.text = str(enemylvl)
+		$box_enemy/enemyhp.text = (enemyhp)
+		$box_ally/playerhp.text = (playerhp)
 
 func start_hiding(player_entity = null):
 	if player_entity:
@@ -236,3 +239,12 @@ func start_hiding(player_entity = null):
 	print("moving out Battle UI")
 	moving_back = true
 	start = OS.get_ticks_msec()
+
+
+func init(target):
+	var current_character = world.get_current()
+	set_entities(current_character, target)
+	show()
+
+func out():
+	start_hiding()

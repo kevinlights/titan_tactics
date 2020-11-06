@@ -1,5 +1,7 @@
 extends Control
 
+signal closed
+
 var content
 var dialogue_height
 var portrait_offset_friendly = Vector2(18, -25)
@@ -142,16 +144,20 @@ func set_content(dialogue_content, set_index = 0):
 	if "music" in content:
 		world.play_music(content.music)
 
-func return_control():
+func out():
 	print("emit complete")
 	# attach camera to selector and return control to player
 	world.get_node("lookat/camera").track(selector)
 	selector.enable()
 	world.current_turn = TT.CONTROL.PLAYER
-	get_parent().modal = false
+	# get_parent().modal = false
 	hide()
 	skip = false
 	content.complete()
+	emit_signal("closed")
+
+func return_control():
+	get_parent().back()
 
 func advance():
 	if text_blocks.size() > 0 and !skip:
@@ -182,9 +188,9 @@ func advance():
 
 func dismiss():
 	content.complete()
-	get_parent().modal = false
 	hide()
-	world.check_end_game(true)
+#	world.check_end_game(true)
+	emit_signal("closed")
 
 func _input(event):
 	if not visible:
@@ -223,3 +229,7 @@ func _input(event):
 #				print("emit complete")
 #				content.complete()
 #				hide()
+
+func init(dialogue_content):
+	set_content(dialogue_content)
+	show()

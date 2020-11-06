@@ -2,7 +2,7 @@ extends Spatial
 
 signal win
 signal auto_deployed
-signal all_enemies_eliminated
+#signal all_enemies_eliminated
 
 onready var gui = get_tree().get_root().get_node("World/gui")
 onready var range_overlay = $range_overlay
@@ -124,7 +124,7 @@ func check_end_turn():
 	return false
 
 func advance_turn(explicit = 1, direction = 1):
-	if game_over or gui.paused:
+	if game_over:
 		return
 	if check_end_turn():
 		end_turn()
@@ -142,11 +142,11 @@ func advance_turn(explicit = 1, direction = 1):
 		$select.disable()
 		yield(get_tree().create_timer(1.0), "timeout")
 	if current_turn  == TT.CONTROL.AI:
-		gui.modal = true
+		#gui.modal = true
 		ai.play()
 	elif explicit == 1:
 		if not game_over:
-			gui.modal = false
+			#gui.modal = false
 			print("explicit enable")
 			$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
@@ -186,7 +186,7 @@ func change_character():
 	$gui.swap()
 
 func end_turn():
-	gui.back()
+#	gui.back()
 	for character in current[TT.CONTROL.PLAYER]:
 		character.is_done = false
 		character.get_node("done").hide()
@@ -195,8 +195,12 @@ func end_turn():
 	for character in current[current_turn]:
 		character.end_turn()
 	current_character = 0
-	gui.turn(current_turn)
-	$select.disable()
+	if current_turn == TT.CONTROL.AI:
+		gui.start("enemyturn")
+	else:
+		gui.start("playerturn")
+#	gui.turn(current_turn)
+#	$select.disable()
 
 func to_world_path(path):
 	var world_path = PoolVector3Array()
@@ -249,9 +253,9 @@ func action():
 		TT.CONTEXT.HEAL:
 			if get_current().character.turn_limits.actions == 0:
 #				_on_end()
-				gui.end()
+				gui.start("action_menu", "end")
 			else:
-				gui.guard(true)
+				gui.start("action_menu", "heal")
 	$range_overlay.set_origin(get_current())
 
 func _on_confirm_end_turn():
@@ -294,8 +298,9 @@ func _ready():
 	gui.get_node("win").connect("next", self, "_on_next_level")
 	gui.get_node("win").connect("retry", self, "_on_replay")
 	gui.get_node("lose").connect("retry", self, "_on_replay")
+	gui.get_node("lose").connect("quit", self, "_on_quit")
 	gui.get_node("pause").connect("resume", self, "resume")
-	gui.connect("modal_closed", self, "_on_modal_resume")
+#	gui.connect("modal_closed", self, "_on_modal_resume")
 	gui.get_node("endturn").connect("confirm_end_turn", self, "_on_confirm_end_turn")
 	$select.connect("moved", self, "_on_selector_moved")
 
@@ -362,33 +367,33 @@ func select_team():
 	$select.translation = player_spawns[0] + Vector3(0.5, 0.5, -0.5);
 	$select.translation.y = 0.2
 	if Game.team.size() > 1:
-		gui.team_select(Game.team)
+		gui.start("characterselect")
 		$gui/characterselect.set_spawn(player_spawns[0])
 	else:
 		auto_deploy_only_character()
 
 func _on_attack_complete():
+	$select.capture_camera()
 	if current_turn == TT.CONTROL.PLAYER:
 		$range_overlay.set_origin(get_current())
 
 func _on_dialogue_complete(content):
-	gui.back()
+	# gui.back()
 	print("character triggered dialogue complete")
-	if not check_end_game(true):
-		$select.enable()
+#	if not check_end_game():
+#		$select.enable()
 
 func _on_dialogue(content):
-	$select.disable()
-	content.connect("completed", self, "_on_dialogue_complete")
-	gui.dialogue(content)
+	if "messages" in content:
+		content.connect("completed", self, "_on_dialogue_complete")
+		gui.start("dialogue_box", content)
 
 func _on_team_select_done():
-	gui.back()
-	gui.team_confirm()
+	gui.start("teamconfirm")
 
 
 func _on_check_map():
-	gui.back()
+#	gui.back()
 	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.CHECK_MAP
 	print("check map enable selector")
@@ -405,12 +410,12 @@ func _on_edit_team():
 		world_map.remove_child(character)
 	current[TT.CONTROL.PLAYER].resize(0)
 	# and start over
-	gui.back()
+#	gui.back()
 	call_deferred("select_team")
 
 func _on_start_level():
-	gui.modal = false
-	gui.back()
+#	gui.modal = false
+#	gui.back()
 	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.PLAY
 	$select.set_origin(get_current())
@@ -418,31 +423,30 @@ func _on_start_level():
 	$select.call_deferred("enable")
 	$range_overlay.call_deferred("set_origin", get_current())
 
-func _on_win(ignore_dialogue = false):
-	if (!gui.get_node("dialogue_box").visible and !gui.get_node("lvlup").visible) or ignore_dialogue:
-		gui.get_node("dialogue_box").hide()
-		if Game.level + 1 < Game.get_level_count():
-			gui.call_deferred("win")
-		else:
-			get_tree().change_scene("res://scenes/landing.tscn")
-		$music/win.play()
-#		emit_signal("win")
-		print("End game: WIN")
+func _on_win():
+#	gui.get_node("dialogue_box").hide()
+	if Game.level + 1 < Game.get_level_count():
+		gui.start("win")
 	else:
-		print("Not ending level for some reason")
-		print("ignoring dialogue for end condition: ", ignore_dialogue)
+		get_tree().change_scene("res://scenes/landing.tscn")
+	$music/win.play()
+	print("End game: WIN")
+
+func _on_quit():
+	get_tree().change_scene("res://scenes/landing.tscn")
 
 func all_enemies_eliminated():
 	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
 	for spawn in ai_spawns:
 		if not spawn.has_spawned:
-			print("more surprise spawns remain")
 			return false
 	return current[TT.CONTROL.AI].size() == 0
 
-func check_end_game(ignore_dialogue = false):
-	if all_enemies_eliminated():
-		emit_signal("all_enemies_eliminated")
+func check_end_game():
+	if game_over:
+		return
+#	if all_enemies_eliminated():
+#		emit_signal("all_enemies_eliminated")
 #		var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
 #		for trigger in triggers:
 #			print("Available ", trigger.available)
@@ -458,11 +462,10 @@ func check_end_game(ignore_dialogue = false):
 			$select.disable()
 			gui.call_deferred("battle_hide")
 			if control == TT.CONTROL.AI:
-				print("try ending game, ignoring dialogue: ", ignore_dialogue)
 				emit_signal("win")
-				call_deferred("_on_win", ignore_dialogue)
+				call_deferred("_on_win")
 			else:
-				gui.lose()
+				gui.start("lose") #lose()
 				print("End game: LOSE")
 				$music/lose.play()
 			$music.get_node(Game.get_theme()).stop()
@@ -490,7 +493,7 @@ func _on_next_level():
 	else:
 		# All levels completed?
 		SaveLoadSystem.save_game()
-		gui.back()
+#		gui.back()
 		gui.credits()
 		$music.get_node(Game.get_theme()).stop()
 		$music/win.play()
@@ -506,7 +509,8 @@ func check_move_triggers(character):
 		if marker.dialogue and same_tile(marker.translation, character.translation): #marker.translation.is_equal_approx(character.translation):
 			if not marker.dialogue.consumed:
 				marker.dialogue.connect("completed", self, "_on_dialogue_complete")
-				gui.dialogue(marker.dialogue)
+				gui.start("dialogue_box", marker.dialogue)
+#				gui.dialogue(marker.dialogue)
 				break
 
 func auto_deploy_only_character():
@@ -552,7 +556,8 @@ func _on_select_team_member(team_member):
 		_on_team_select_done()
 
 func _on_level_up(diff, character):
-	gui.call_deferred("level_up", diff, character)
+#	gui.call_deferred("level_up", diff, character)
+	gui.start("lvlup", [ diff, character ])
 #	gui.level_up(diff, character)
 
 func _initiate_turn():
@@ -563,7 +568,7 @@ func _initiate_turn():
 	for character in current[current_turn]:
 		character.apply_effects()
 	print("initiate turn")
-	gui.back()
+#	gui.back()
 	$select.enable()
 	$select.set_origin(get_current())
 	$select.set_context(get_current_context($select.tile))
@@ -571,7 +576,7 @@ func _initiate_turn():
 		$range_overlay.set_origin(get_current())
 	if current_turn == TT.CONTROL.AI:
 		print("Control turned over to AI")
-		gui.modal = true
+#		gui.modal = true
 		ai.play()
 		$range_overlay.set_origin(null)
 	
@@ -580,22 +585,24 @@ func _on_attack():
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
 		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), target.translation):
-			gui.error("BLOCKED LINE OF SIGHT")
-			gui.call_deferred("back")
+#			gui.error("BLOCKED LINE OF SIGHT")
+#			gui.call_deferred("back")
 			return
 		var damage = get_current().attack(target)
 
-		gui.call_deferred("close_attack")
-		yield(get_tree().create_timer(2.0), "timeout")
-		gui.call_deferred("battle_hide")
+#		gui.call_deferred("close_attack")
+#		gui.back()
+#		yield(get_tree().create_timer(2.0), "timeout")
+#		gui.call_deferred("battle_hide")
 		
-	else:
-		gui.error("NO MORE ACTIONS")
-		gui.call_deferred("back")
+#	else:
+#		gui.back()
+#		gui.error("NO MORE ACTIONS")
+#		gui.call_deferred("back")
 
 func _on_recruit_completed(id):
 	print("recruitment completed ", id)
-	gui.back()
+#	gui.back()
 	var target = entity_at($select.tile)
 	get_current().character.turn_limits.actions -= 1
 	if id == "accepted":
@@ -627,9 +634,10 @@ func _on_recruit():
 		recruitment.connect("completed", self, "_on_recruit_completed")
 
 func _on_guard():
+#	gui.back()
 	if get_current().character.turn_limits.actions != 0:
 		get_current().guard()
-	gui.call_deferred("back")
+
 
 func _on_heal():
 	var target = entity_at($select.tile)
@@ -650,10 +658,10 @@ func _on_heal():
 #		add_child(damage_feedback)
 		target.get_node("vfx/heal").emitting = true
 		print("healed")
-	gui.call_deferred("back")
+#	gui.call_deferred("back")
 
 func _on_end():
-	gui.call_deferred("back")
+#	gui.call_deferred("back")
 	print("explicit end request, advancing turn")
 	get_current().character.turn_limits.move_distance = 0
 	get_current().character.turn_limits.actions = 0
@@ -667,12 +675,12 @@ func _accept_loot(item):
 	else:
 		get_current().character.item_def = item
 	gui.get_node("sfx/select").play()
-	gui.back()
+#	gui.back()
 	
 
 func _destroy_loot():
 	gui.get_node("sfx/close").play()
-	gui.back()
+#	gui.back()
 	
 func check_battle():
 	$gui/battle.update_stats()
@@ -685,14 +693,13 @@ func _on_selector_moved(tile):
 	if current_turn == TT.CONTROL.PLAYER:
 		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
 			print("you are pointing on " + str(target.character.name))
-			gui.battle(get_current(), target)
-		else:
-			gui.battle_hide(get_current())
-		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.GUARD and !gui.active:
+			gui.start("battle", target)
+		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and (context == TT.CONTEXT.GUARD or context == TT.CONTEXT.HEAL):
 			print("you are pointing on yourself : " + str(target.character.name))
-			gui.ally(get_current())
-		else:
-			gui.ally_hide(get_current())
+			gui.start("ally", target) #ally(get_current())
+		if context == TT.CONTEXT.MOVE or context == TT.CONTEXT.NOT_ALLOWED:
+			print("Closing ui because of context ", context)
+			gui.back()
 	$range_overlay.set_selector(tile)
 	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	$select.set_context(context)
@@ -743,8 +750,8 @@ func _input(event):
 		_on_next_level()
 	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
 		_on_replay()
-	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
-		gui.pause()
+#	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
+#		gui.pause()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
 		var additional_character = load("res://resources/cast/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER
@@ -752,6 +759,9 @@ func _input(event):
 		print("The OGRE has joined the team!")
 	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
 		for unit in current[TT.CONTROL.AI]:
+			unit.die()
+	if event.is_action("cheat_suicide") && !event.is_echo() && event.is_pressed():
+		for unit in current[TT.CONTROL.PLAYER]:
 			unit.die()
 	if event.is_action("cheat_log_stats") && !event.is_echo() && event.is_pressed():
 		print("selector ", $select.tile)
@@ -763,10 +773,10 @@ func _input(event):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
 		if get_current().character.turn_limits.actions > 0:
-			gui.guard()
+			gui.start("action_menu", "guard")
 		else:
-			gui.end()
-	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed() && !gui.active && !gui.modal:
+			gui.start("action_menu", "end")
+	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed():
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation + 1
 			if Game.camera_orientation == TT.CAMERA.WEST:
@@ -774,7 +784,7 @@ func _input(event):
 			print("Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
 		
-	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed() && !gui.active && !gui.modal:
+	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed():
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation - 1
 			if Game.camera_orientation == TT.CAMERA.NORTH:

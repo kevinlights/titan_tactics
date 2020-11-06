@@ -10,12 +10,18 @@ func display(description):
 	$margin/description.text = description
 	show()
 
-func _input(event):
-	if !visible:
-		return
-	if (event.is_action("ui_accept") or event.is_action("ui_select")) && !event.is_echo() && event.is_pressed():
-		call_deferred("hide")
-		emit_signal("closed")
+func init(arg):
+	display(arg)
+
+func out():
+	hide()
+
+#func _input(event):
+#	if !visible:
+#		return
+#	if (event.is_action("ui_accept") or event.is_action("ui_select")) && !event.is_echo() && event.is_pressed():
+#		call_deferred("hide")
+#		emit_signal("closed")
 
 func _process(delta):
 	if !visible:

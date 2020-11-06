@@ -9,6 +9,9 @@ func _ready():
 	$panel/edit_team.connect("pressed", self, "emit_signal", ["edit_team"])
 	$panel/check_map.connect("pressed", self, "emit_signal", ["check_map"])
 
-func show_dialog():
+func init(_arg):
 	$panel/start_level.grab_focus()
 	show()
+
+func out():
+	hide()

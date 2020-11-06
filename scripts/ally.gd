@@ -19,6 +19,8 @@ var moving_back = false
 
 var start
 
+onready var world = get_tree().get_root().get_node("World")
+
 var default_portraits = {
 	TT.TYPE.ARCHER: "archer",
 	TT.TYPE.MAGE: "mage",
@@ -71,12 +73,38 @@ func _process(delta):
 			$box_ally.position.x = start_x_ally
 			hide()
 
-func _ready():
-	if not player:
-		return
-	moving_back = false
-	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*bar_size, 0))
-	$box_ally/playername.text = playername
+#func _ready():
+#	if not player:
+#		return
+#	moving_back = false
+#	$box_ally/hpline.set_point_position(1, Vector2(player.character.hp/player.character.max_hp*bar_size, 0))
+#	$box_ally/playername.text = playername
+#	$box_ally/playeratklevel.text = str(playeratk)
+#	$box_ally/playerdeflevel.text = str(playerdef)
+#	$box_ally/playerlevel.text = str(playerlvl)
+#	$box_ally/playerhp.text = (playerhp)
+#	if player.character.portrait_override and player.character.portrait_override != "":
+#		$box_ally/portraits.play(player.character.portrait_override)
+#	else:
+#		$box_ally/portraits.play(default_portraits[player.character.character_class])
+#	start = OS.get_ticks_msec()
+#
+#func set_entities(player_entity):
+#	player = player_entity
+##	playername = player.character.name
+#	update_stats()
+##	_ready()
+#
+func update_stats(player):
+	self.player = player
+	playerhp = player.character.hp
+	if playerhp < 0:
+		playerhp = 0
+	playerhp = str(playerhp)  + "/" + str(player.character.max_hp)
+	playerlvl = player.character.level
+	playeratk = int(round(player.character.atk+ player.character.item_atk.attack))
+	playerdef = int(round(player.character.def + player.character.item_def.defense))
+	$box_ally/playername.text = player.character.name
 	$box_ally/playeratklevel.text = str(playeratk)
 	$box_ally/playerdeflevel.text = str(playerdef)
 	$box_ally/playerlevel.text = str(playerlvl)
@@ -85,29 +113,17 @@ func _ready():
 		$box_ally/portraits.play(player.character.portrait_override)
 	else:
 		$box_ally/portraits.play(default_portraits[player.character.character_class])
-	start = OS.get_ticks_msec()
 
-func set_entities(player_entity):
-	player = player_entity
-	playername = player.character.name
-	update_stats()
-	_ready()
-
-func update_stats():
-	playerhp = player.character.hp
-	if playerhp < 0:
-		playerhp = 0
-	playerhp = str(playerhp)  + "/" + str(player.character.max_hp)
-	playerlvl = player.character.level
-	playeratk = int(round(player.character.atk+ player.character.item_atk.attack))
-	playerdef = int(round(player.character.def + player.character.item_def.defense))
-	$box_ally/playeratklevel.text = str(playeratk)
-	$box_ally/playerdeflevel.text = str(playerdef)
-	$box_ally/playerlevel.text = str(playerlvl)
-	$box_ally/playerhp.text = (playerhp)
-
-func start_hiding(player):
-	var lvl_pos = (player.character.xp)/(player.character.xp_to_next)*28
-	$box_ally/levelline.set_point_position(1, Vector2(lvl_pos, 0))
+func start_hiding():
 	moving_back = true
 	start = OS.get_ticks_msec()
+
+func init(arg):
+	moving_back = false
+	var current_character = arg #world.get_current()
+	update_stats(current_character)
+	start = OS.get_ticks_msec()
+	show()
+
+func out():
+	start_hiding()

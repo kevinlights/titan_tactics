@@ -130,7 +130,6 @@ func from_other(other_stats):
 	character_class = other_stats.character_class
 	level = other_stats.level
 	name = other_stats.name
-	print("hp ", other_stats.hp)
 	hp = other_stats.hp
 	max_hp = other_stats.hp
 	atk = other_stats.atk
@@ -141,6 +140,9 @@ func from_other(other_stats):
 	item_def = other_stats.item_def
 	heal = other_stats.heal
 	xp_to_next = level * level
+	recruit_mode = other_stats.recruit_mode
+	portrait_override = other_stats.portrait_override
+	control = other_stats.control
 
 func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_range = 1, hp = 10):
 	character_class = request_class

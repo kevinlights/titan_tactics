@@ -39,12 +39,14 @@ func _ready():
 	$panel/action_2.connect("pressed", self, "_on_action_2")
 
 func _on_action_1():
+	get_parent().back()
 	emit_signal(signal_map[menu_type][0])
 
 func _on_action_2():
+	get_parent().back()
 	emit_signal(signal_map[menu_type][1])
 	
-func show_dialog(menu_type = "attack"):
+func init(menu_type = "attack"):
 	self.menu_type = menu_type
 	$panel/action_1.text = label_map[menu_type][0]
 	if label_map[menu_type].size() > 1:
@@ -58,9 +60,12 @@ func show_dialog(menu_type = "attack"):
 	$panel/action_1.grab_focus()
 	show()
 
-func _process(delta):
-	if !visible or done:
-		return
+func out():
+	hide()
+#
+#func _process(delta):
+#	if !visible or done:
+#		return
 #	var now = OS.get_ticks_msec()
 #	if now - start < ttl:
 #		margin_left = lerp(0, native_x, float(now - start) / float(ttl))
@@ -68,9 +73,9 @@ func _process(delta):
 #		done = true
 #		margin_left = native_x
 
-func _input(event):
-	if !visible:
-		return
-	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
-		hide()
-		get_parent().active = false
+#func _input(event):
+#	if !visible:
+#		return
+#	if event.is_action("ui_cancel") && !event.is_echo() && event.is_pressed():
+#		hide()
+#		get_parent().active = false
