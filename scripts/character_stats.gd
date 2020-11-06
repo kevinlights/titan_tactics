@@ -227,12 +227,14 @@ func to_save_data():
 		"xp": xp,
 		"personality": personality,
 		"portrait_override": portrait_override,
+		"name": name,
 	}
 	output.item_atk.effect = inst2dict(item_atk.effect)
 	output.item_def.effect = inst2dict(item_def.effect)
 	return output
 	
 func from_save_data(class_stats, data):
+	name = data.name
 	data.item_atk.level = int(data.item_atk.level)
 	data.item_atk.character_class = int(data.item_atk.character_class)
 	item_atk = dict2inst(data.item_atk)
