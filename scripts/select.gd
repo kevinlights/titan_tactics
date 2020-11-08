@@ -63,14 +63,16 @@ func get_tile():
 	return tile
 
 func disable():
-	print("disable selector")
-	disabled = true
+	pass
+#	print("disable selector")
+#	disabled = true
 
 func enable():
-	print("enable selector")
-	disabled = false
-	set_context(world.get_current_context(tile))
-	capture_camera()
+	pass
+#	print("enable selector")
+#	disabled = false
+#	set_context(world.get_current_context(tile))
+#	capture_camera()
 
 func update_context():
 	set_context(world.get_current_context(tile))
@@ -99,12 +101,35 @@ func set_context(context):
 		TT.CONTEXT.NOT_ALLOWED:
 			play("cantmove")
 
-func _input(event):
+func _ready():
+	gui.connect("selector_left", self, "_on_selector_left")
+	gui.connect("selector_right", self, "_on_selector_right")
+	gui.connect("selector_up", self, "_on_selector_up")
+	gui.connect("selector_down", self, "_on_selector_down")
+	
+func _on_selector_left():
+	self.tile = self.tile + directions[Game.camera_orientation]["left"]
+	emit_signal("moved", self.tile)
+
+func _on_selector_right():
+	self.tile = self.tile + directions[Game.camera_orientation]["right"]
+	emit_signal("moved", self.tile)
+
+func _on_selector_up():
+	self.tile = self.tile + directions[Game.camera_orientation]["up"]
+	emit_signal("moved", self.tile)
+
+func _on_selector_down():
+	self.tile = self.tile + directions[Game.camera_orientation]["down"]
+	emit_signal("moved", self.tile)
+
+func x_input(event):
 	var advance = Vector3(0, 0, 0)
 	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
 #		play("blank")
 		return
-	if gui.active or disabled or gui.modal:
+#	if gui.active or disabled or gui.modal:
+	if disabled:
 		if not world.current_turn == TT.CONTROL.AI:
 			play("attack")
 			return

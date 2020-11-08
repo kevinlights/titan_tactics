@@ -9,3 +9,9 @@ func _on_end_turn_pressed():
 func _on_cancel_pressed():
 	hide()
 	emit_signal("cancel")
+
+func init(_arg):
+	show()
+
+func out():
+	hide()

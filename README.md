@@ -26,7 +26,10 @@ Alternative Keyboard:
 * Z: Close/Cancel
 * H/J/K/L: move tile cursor
 
-# Play in browser
+# Copying
 
-https://team-potato.gitlab.io/titan_tactics/
+Titan Tactics code by Team Potato, Armen138, Simster and contributors is licensed under CC0 1.0. To view a copy of this license, visit https://creativecommons.org/publicdomain/zero/1.0 
 
+Titan Tactics assets by Team Potato, Romaselli, Federico Calchera, Ondjon, Kssio, Mr.T, Dieg Barcellos, MarcAelo Cabral, TheZakMan, Quitandeiro and contributors is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0
+
+For attribution details, see CREDITS.md

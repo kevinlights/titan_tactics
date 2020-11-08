@@ -42,14 +42,16 @@ func _ready():
 
 func _on_start_level():
 	if start_dialogue:
-		gui.dialogue(start_dialogue)
+#		gui.dialogue(start_dialogue)
+		gui.start("dialogue_box", start_dialogue)
 #	if dialogue.size() > 0 and dialogue[0].trigger == PT_Dialogue.TRIGGER.LEVEL:
 #		gui.dialogue(dialogue[0])
 
 func _on_end_level():
 	print("dialog end level check")
 	if end_dialogue and !end_dialogue.consumed:
-		gui.dialogue(end_dialogue)
+#		gui.dialogue(end_dialogue)
+		gui.start("dialogue_box", end_dialogue)
 #	if dialogue.size() > 0:
 #		for content in dialogue:
 #			if not content.consumed and content.trigger == PT_Dialogue.TRIGGER.LEVEL_COMPLETE:

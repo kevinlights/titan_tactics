@@ -2,6 +2,7 @@ extends Control
 
 signal character_selected
 signal library_exhausted
+signal closed
 
 var current_character
 
@@ -23,10 +24,19 @@ onready var world = get_parent().get_parent()
 func _ready():
 	pass
 
+func init(_arg):
+	start = OS.get_ticks_msec()
+	update_view()
+	show()
+
+func out():
+	hide()
+	emit_signal("closed")
+
 func _process(delta):
 	if !visible or world.current[TT.CONTROL.PLAYER].size() == 0:
 		return
-	get_parent().make_select_blank()
+#	get_parent().make_select_blank()
 	var now = OS.get_ticks_msec()
 	if !moving_back:
 		if $box_ally.position.x < end_x:
@@ -76,15 +86,16 @@ func _input(event):
 	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
 		check_exhausted(-1)
 	if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
-		get_parent().active = false
+#		get_parent().active = false
 		pick_random_sfx(get_parent().get_node("sfx/char_select"))
-		get_parent().arrow_hide()
-		call_deferred("hide")
+#		get_parent().arrow_hide()
+		get_parent().back()
+#		call_deferred("hide")
 		print("character select")
 		world.get_node("select").call_deferred("enable")
 	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
 		get_parent().get_parent().end_turn()
-		get_parent().arrow_hide()
+#		get_parent().arrow_hide()
 		hide()
 		return
 	update_view()

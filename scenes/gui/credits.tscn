@@ -111,7 +111,7 @@ custom_constants/line_spacing = 9
 custom_constants/shadow_offset_y = 1
 text = "Romaselli
 Dieg Barcellos
-Marcelo Cabral
+MarcAelo Cabral
 TheZakMan
 Federico Calchera
 Quitandeiro"
@@ -172,6 +172,6 @@ position = Vector2( 0, 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D"]
 position = Vector2( 137.747, 193.947 )
 frames = SubResource( 4 )
-frame = 2
+frame = 1
 playing = true
 centered = false
