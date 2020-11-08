@@ -694,7 +694,7 @@ func contextual_ui():
 	var tile = $select.tile
 	var context = get_current_context(tile)
 	print("current context = ", context, " [", TT.CONTEXT.keys()[context] ,"]")
-	var target = entity_at($select.tile)
+	var target = entity_at(tile)
 	if current_turn == TT.CONTROL.PLAYER:
 		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
 			print("you are pointing on " + str(target.character.name))
@@ -702,6 +702,7 @@ func contextual_ui():
 		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and (context == TT.CONTEXT.GUARD or context == TT.CONTEXT.HEAL):
 			print("you are pointing on yourself : " + str(target.character.name))
 			gui.start("ally", target) #ally(get_current())
+			gui.get_node("ally").update_stats(target)
 		if context == TT.CONTEXT.MOVE or context == TT.CONTEXT.NOT_ALLOWED:
 			print("Closing ui because of context ", context)
 			gui.close([ "ally", "battle" ])

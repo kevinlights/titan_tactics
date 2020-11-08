@@ -64,6 +64,8 @@ func _input(event):
 			emit_signal("selector_right")
 		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 			get_parent().action()
+		if event.is_action("character_switch") && !event.is_echo() && event.is_pressed():
+			start("characterswap")
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 		if current and !(current.name in cant_cancel):
 			back()
