@@ -96,20 +96,21 @@ func spawn_character(x, y, type = TT.TYPE.MAGE, control = TT.CONTROL.PLAYER):
 	return character
 
 func _on_modal_resume():
-	gui.paused = false
+#	gui.paused = false
 	if current_turn == TT.CONTROL.PLAYER:
 		$select.enable()
 
 func resume():
-	gui.paused = false
+#	gui.paused = false
+	gui.back()
 	if current_turn  == TT.CONTROL.AI:
 		print("resume ai turn")
-		gui.modal = true
+#		gui.modal = true
 		ai.play()
 	else:
 		if not game_over:
 			print("resume player turn")
-			gui.modal = false
+#			gui.modal = false
 			$select.enable()
 
 func check_end_turn():
@@ -230,9 +231,11 @@ func action():
 						yield(get_tree().create_timer(1.0), "timeout")
 						print("item " + str(loot.name))
 						if target.item_spawner.equipment_slot == 0:
-							gui.loot(get_current().character.item_atk, loot, 0)
+							gui.start("weaponswap", [ get_current().character.item_atk, loot, 0 ])
+#							gui.loot(get_current().character.item_atk, loot, 0)
 						if target.item_spawner.equipment_slot == 1:
-							gui.loot(get_current().character.item_def, loot, 1)
+							gui.start("weaponswap", [ get_current().character.item_def, loot, 1 ])
+#							gui.loot(get_current().character.item_def, loot, 1)
 				else:
 					if target.available == "level_complete":
 						if all_enemies_eliminated():
@@ -389,11 +392,13 @@ func _on_dialogue(content):
 		gui.start("dialogue_box", content)
 
 func _on_team_select_done():
+	print("team select confirm")
 	gui.start("teamconfirm")
-
+	gui.back()
+#	gui.get_node('characterselect').dismiss()
 
 func _on_check_map():
-#	gui.back()
+	gui.back()
 	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.CHECK_MAP
 	print("check map enable selector")
@@ -410,12 +415,12 @@ func _on_edit_team():
 		world_map.remove_child(character)
 	current[TT.CONTROL.PLAYER].resize(0)
 	# and start over
-#	gui.back()
+	gui.back()
 	call_deferred("select_team")
 
 func _on_start_level():
 #	gui.modal = false
-#	gui.back()
+	gui.back()
 	#gui.get_node("sfx/select").play()
 	$select.mode = $select.MODE.PLAY
 	$select.set_origin(get_current())
@@ -537,7 +542,7 @@ func _on_select_team_member(team_member):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
 	character.from_library(team_member)
-	character.teleport(floor(spawn.x), floor(spawn.z - 1))	
+	character.teleport(floor(spawn.x), floor(spawn.z - 1))
 	character.add_to_group("characters")
 	print('world_map.add_child(character) #3', character)
 	world_map.add_child(character)
@@ -675,12 +680,12 @@ func _accept_loot(item):
 	else:
 		get_current().character.item_def = item
 	gui.get_node("sfx/select").play()
-#	gui.back()
+	gui.back()
 	
 
 func _destroy_loot():
 	gui.get_node("sfx/close").play()
-#	gui.back()
+	gui.back()
 	
 func check_battle():
 	$gui/battle.update_stats()
@@ -750,8 +755,12 @@ func _input(event):
 		_on_next_level()
 	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
 		_on_replay()
-#	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
+	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
+		gui.start("pause")
 #		gui.pause()
+	if event.is_action("ui_page_up") && !event.is_echo() && event.is_pressed():
+		Game.level = 10
+		get_tree().reload_current_scene()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
 		var additional_character = load("res://resources/cast/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER

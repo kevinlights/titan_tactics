@@ -2,6 +2,7 @@ extends Control
 
 signal character_selected
 signal library_exhausted
+signal closed
 
 var characters = []
 var library = []
@@ -24,6 +25,10 @@ func init(_arg):
 
 func out():
 	hide()
+	emit_signal('closed')
+
+func dismiss():
+	emit_signal('closed')
 
 func set_characters(list):
 	library = list

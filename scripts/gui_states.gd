@@ -26,10 +26,13 @@ func start(name, arg=null):
 	if current:
 		print("[GUI] Current: ", current.name)
 		if !(current.name in non_blocking):
-			print("[GUI] Queueing ui state ", name)
-			queued.append(name)
-			current.connect("closed", self, "next", [], CONNECT_ONESHOT)
-			return
+			if !(name in queued) and current.name != name:
+				print("[GUI] Queueing ui state ", name)
+				queued.append(name)
+				current.connect("closed", self, "next", [], CONNECT_ONESHOT)
+				return
+			else:
+				print("[GUI] warning - requested queue for ", name, " but it is already active or queued.")
 		current.out()
 	node.call_deferred("init", arg)
 	current = node
