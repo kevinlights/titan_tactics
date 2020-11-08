@@ -179,11 +179,11 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 41 )
@@ -197,12 +197,12 @@ region = Rect2( 16, 48, 16, 16 )
 animations = [ {
 "frames": [ SubResource( 25 ) ],
 "loop": true,
-"name": "archer",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 27 ) ],
@@ -2832,10 +2832,9 @@ script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-special_names = [ "Rolf" ]
 
 [node name="box_ally" type="Sprite" parent="ally"]
-position = Vector2( 0, -7 )
+position = Vector2( -160, -7 )
 texture = ExtResource( 28 )
 centered = false
 

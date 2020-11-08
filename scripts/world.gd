@@ -690,8 +690,8 @@ func _destroy_loot():
 func check_battle():
 	$gui/battle.update_stats()
 
-func _on_selector_moved(tile):
-	print("$select moved to ", tile)
+func contextual_ui():
+	var tile = $select.tile
 	var context = get_current_context(tile)
 	print("current context = ", context, " [", TT.CONTEXT.keys()[context] ,"]")
 	var target = entity_at($select.tile)
@@ -704,9 +704,14 @@ func _on_selector_moved(tile):
 			gui.start("ally", target) #ally(get_current())
 		if context == TT.CONTEXT.MOVE or context == TT.CONTEXT.NOT_ALLOWED:
 			print("Closing ui because of context ", context)
-			gui.back()
+			gui.close([ "ally", "battle" ])
 	$range_overlay.set_selector(tile)
-	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
+
+func _on_selector_moved(tile):
+	print("$select moved to ", tile)
+	contextual_ui()
+#	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
+	var context = get_current_context(tile)
 	$select.set_context(context)
 
 func play_music(music_node):

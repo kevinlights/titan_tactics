@@ -19,6 +19,15 @@ func back():
 		self.current = null
 	else:
 		print("[GUI] Close gui - but none seems to be open")
+	# control is being returned to player - set contextual ui
+	if queued.size() == 0 and get_parent().current_turn == TT.CONTROL.PLAYER:
+		print("[GUI] queue empty, setting contextual UI, if any.")
+		get_parent().call_deferred("contextual_ui")
+
+func close(names:Array):
+	if current and current.name in names:
+		current.call_deferred("out")
+		current = null
 
 func start(name, arg=null):
 	print ("[GUI] set state ", name)
@@ -28,12 +37,12 @@ func start(name, arg=null):
 		if !(current.name in non_blocking):
 			if !(name in queued) and current.name != name:
 				print("[GUI] Queueing ui state ", name)
-				queued.append(name)
+				queued.append({ "name": name, "arg": arg })
 				current.connect("closed", self, "next", [], CONNECT_ONESHOT)
 				return
 			else:
 				print("[GUI] warning - requested queue for ", name, " but it is already active or queued.")
-		current.out()
+		current.call_deferred("out")
 	node.call_deferred("init", arg)
 	current = node
 
@@ -41,7 +50,7 @@ func next():
 	print("[GUI] start next queued")
 	if queued.size() > 0:
 		var next_ui = queued.pop_back()
-		start(next_ui)
+		start(next_ui.name, next_ui.arg)
 
 func _input(event):
 	if (!current or current.name in non_blocking) and get_parent().current_turn == TT.CONTROL.PLAYER:
