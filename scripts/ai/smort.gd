@@ -106,8 +106,8 @@ func can_attack(attacker, victim, ignore_action_limit = false):
 #		print("no cover")
 #		var int_distance = int(distance * 10)
 #		distance = float(int_distance) / 10.0
-		distance = floor(distance)
-		print(distance, " <= ", attacker.character.atk_range)
+#		distance = floor(distance)
+		print("[AI] ", distance, " <= ", attacker.character.atk_range)
 		if distance <= attacker.character.atk_range:
 #			print("in range")
 			return true
