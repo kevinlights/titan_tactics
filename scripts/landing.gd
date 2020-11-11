@@ -16,6 +16,7 @@ func _ready():
 	else:
 		$menu/continue.hide()
 		$menu/newgame.grab_focus()
+# warning-ignore:return_value_discarded
 	$menu/credits_overlay/ok.connect("pressed", self, "_on_close_credits")
 #	if is_web and $menu/margin/vbox/quit:
 #		$menu/margin/vbox/quit.hide()
@@ -43,6 +44,7 @@ func _on_newgame():
 func _start_game():
 	$sfx/select.play()
 	yield(get_tree().create_timer(0.3), "timeout")
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/world_map.tscn")
 	
 

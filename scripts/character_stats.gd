@@ -104,8 +104,8 @@ func set_character_class(new_character_class):
 	if item_atk and item_def:
 		item_atk.character_class = new_character_class
 		item_def.character_class = new_character_class
-	var default_stats = load("res://resources/class_stats.tres")
-	generate(default_stats, character_class, control, level)
+#	var default_stats = load("res://resources/class_stats.tres")
+	generate(Game.default_stats, character_class, control, level)
 	emit_signal("class_changed")
 
 func get_character_class():
@@ -144,15 +144,15 @@ func from_other(other_stats):
 	portrait_override = other_stats.portrait_override
 	control = other_stats.control
 
-func from_defaults(request_class, request_control, atk = 1, def = 1, atk_range = 1, mov_range = 1, hp = 10):
+func from_defaults(request_class, request_control, request_atk = 1, request_def = 1, request_atk_range = 1, request_mov_range = 1, request_hp = 10):
 	character_class = request_class
 	control = request_control
-	self.hp = hp
-	self.max_hp = hp
-	self.atk = atk
-	self.def = def
-	self.mov_range = mov_range
-	self.atk_range = atk_range
+	self.hp = request_hp
+	self.max_hp = request_hp
+	self.atk = request_atk
+	self.def = request_def
+	self.mov_range = request_mov_range
+	self.atk_range = request_atk_range
 	self.heal = 0
 	if !(request_class in cant_carry):
 		item_atk = Item.new()

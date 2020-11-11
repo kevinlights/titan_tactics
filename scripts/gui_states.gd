@@ -71,7 +71,7 @@ func _input(event):
 				var ability = "guard"
 				if get_parent().get_current().character.has_ability(TT.ABILITY.HEAL):
 					ability = "heal"
-				start("action_menu", "guard")
+				start("action_menu", ability)
 			else:
 				start("action_menu", "end")
 			

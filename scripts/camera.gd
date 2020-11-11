@@ -43,7 +43,9 @@ func track(item):
 func _ready():
 	# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
+# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed_clockwise", self, "_on_orientation_changed_clockwise")
+# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed_counter_clockwise", self, "_on_orientation_changed_counter_clockwise")
 #	_on_orientation_changed()
 

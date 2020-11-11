@@ -84,10 +84,10 @@ func set_origin(_origin):
 func _ready():
 	pass
 	
-func generate_data(origin):
-	var character = origin.character;
+func generate_data(new_origin):
+	var character = new_origin.character;
 	var _data = {
-		'tile': origin.tile,
+		'tile': new_origin.tile,
 		'move_distance': character.turn_limits.move_distance,
 		'actions': character.turn_limits.actions,
 		'atk_range': character.atk_range + character.item_atk.attack_range,
@@ -99,7 +99,7 @@ func generate_data(origin):
 		else:
 			hide()
 
-func _process(time):
+func _process(_time):
 	if gridmap and origin:
 		#print(self.visible, data, origin.movement.moving, origin.tile)
 		if self.visible:

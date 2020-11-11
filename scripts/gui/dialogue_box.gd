@@ -110,7 +110,7 @@ func perform_action(item):
 		world.surprise_spawn(item.target)
 	index += 1
 
-func _process(delta):
+func _process(_delta):
 	if !visible or !$text:
 		return
 	var now = OS.get_ticks_msec()

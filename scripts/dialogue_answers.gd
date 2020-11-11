@@ -7,9 +7,9 @@ var options = []
 func _ready():
 	pass # Replace with function body.
 
-func set_options(recruitment):
-	options = recruitment.options
-	self.recruitment = recruitment
+func set_options(new_recruitment):
+	options = new_recruitment.options
+	self.recruitment = new_recruitment
 	var nodes = $answers.get_children()
 	var index = 0
 	for child in nodes:

@@ -26,7 +26,7 @@ var default_portraits = {
 	TT.TYPE.FIGHTER: "swordsman"
 }
 
-func _process(delta):
+func _process(_delta):
 	if !visible:
 		return
 	var now = OS.get_ticks_msec()
@@ -56,8 +56,8 @@ func _ready():
 	$box_ally.position.x = start_x_ally
 	moving_back = false
 
-func update_stats(player):
-	self.player = player
+func update_stats(update_player):
+	self.player = update_player
 	playerhp = player.character.hp
 	if playerhp < 0:
 		playerhp = 0

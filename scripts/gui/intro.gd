@@ -23,7 +23,7 @@ func out():
 #		call_deferred("hide")
 #		emit_signal("closed")
 
-func _process(delta):
+func _process(_delta):
 	if !visible:
 		return
 	var now = OS.get_ticks_msec()

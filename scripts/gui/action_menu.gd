@@ -1,9 +1,14 @@
 extends Control
 
+# warning-ignore:unused_signal
 signal attack
+# warning-ignore:unused_signal
 signal recruit
+# warning-ignore:unused_signal
 signal guard
+# warning-ignore:unused_signal
 signal end
+# warning-ignore:unused_signal
 signal heal
 
 var start
@@ -35,7 +40,9 @@ var label_map = {
 
 func _ready():
 	$panel/action_1.grab_focus()
+# warning-ignore:return_value_discarded
 	$panel/action_1.connect("pressed", self, "_on_action_1")
+# warning-ignore:return_value_discarded
 	$panel/action_2.connect("pressed", self, "_on_action_2")
 
 func _on_action_1():
@@ -46,8 +53,8 @@ func _on_action_2():
 	get_parent().back()
 	emit_signal(signal_map[menu_type][1])
 	
-func init(menu_type = "attack"):
-	self.menu_type = menu_type
+func init(new_menu_type = "attack"):
+	menu_type = new_menu_type
 	$panel/action_1.text = label_map[menu_type][0]
 	if label_map[menu_type].size() > 1:
 		$panel/action_2.text = label_map[menu_type][1]

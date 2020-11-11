@@ -5,8 +5,8 @@ var world
 var characters
 var i_am = TT.CONTROL.AI
 
-func _init(world):
-	self.world = world
+func _init(new_world):
+	self.world = new_world
 	characters = self.world.current[TT.CONTROL.AI]
 
 func play():
@@ -76,12 +76,12 @@ func play():
 			world.advance_turn()
 			return
 		# if we reach this point, abandon turn
-		if not try_guarding(character):
-			print("AI (" + character.character.name + ") abandons turn, exhausted options")
-		character.is_done = true
-		yield(world.get_tree().create_timer(2.0), "timeout")
-		world.advance_turn()
-		return
+#		if not try_guarding(character):
+#			print("AI (" + character.character.name + ") abandons turn, exhausted options")
+#		character.is_done = true
+#		yield(world.get_tree().create_timer(2.0), "timeout")
+#		world.advance_turn()
+#		return
 	else:
 		print("AI (" + character.character.name + ") can't find anyone to attack!")
 		if not try_guarding(character):
@@ -169,13 +169,13 @@ func shorten_to_atk_range(path, character, target):
 	return path
 
 # only return weak allies with less than 10% of their HP so we don't waste heals on healthy individuals
-func get_dying_ally(i_am):
+func get_dying_ally(me):
 	var weakest
 	var lowest_hp = 999
 	for ally in characters:
-		if ally != i_am:
-			var distance = i_am.tile.distance_to(ally.tile)
-			if distance < i_am.character.atk_range:
+		if ally != me:
+			var distance = me.tile.distance_to(ally.tile)
+			if distance < me.character.atk_range:
 				if ally.can_recruit():
 					if ally.character.hp < lowest_hp and ally.character.max_hp / 10 < ally.character.hp:
 						lowest_hp = ally.character.hp

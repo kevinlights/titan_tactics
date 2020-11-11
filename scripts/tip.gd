@@ -9,7 +9,7 @@ func get_characters_with_actions():
 			num_done += 1
 	return world.current[TT.CONTROL.PLAYER].size() - num_done
 
-func _process(delta):
+func _process(_delta):
 	if world.current_turn == TT.CONTROL.AI:
 		hide()
 	else:

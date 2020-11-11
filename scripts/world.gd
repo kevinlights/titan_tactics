@@ -297,7 +297,7 @@ func _ready():
 	gui.get_node("teamconfirm").connect("check_map", self, "_on_check_map")
 	gui.get_node("teamconfirm").connect("edit_team", self, "_on_edit_team")
 #	gui.get_node("lvlup").connect("close", self, "check_end_turn")
-	gui.get_node("lvlup").connect("close", self, "_on_dialogue_complete")
+#	gui.get_node("lvlup").connect("close", self, "_on_dialogue_complete")
 	gui.get_node("win").connect("next", self, "_on_next_level")
 	gui.get_node("win").connect("retry", self, "_on_replay")
 	gui.get_node("lose").connect("retry", self, "_on_replay")
@@ -305,6 +305,7 @@ func _ready():
 	gui.get_node("pause").connect("resume", self, "resume")
 #	gui.connect("modal_closed", self, "_on_modal_resume")
 	gui.get_node("endturn").connect("confirm_end_turn", self, "_on_confirm_end_turn")
+# warning-ignore:return_value_discarded
 	$select.connect("moved", self, "_on_selector_moved")
 
 	call_deferred("select_team")
@@ -317,7 +318,8 @@ func _ready():
 func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
 	for chest_spawn in chest_spawns:
-		var chest = spawn_chest(
+#		var chest = 
+		spawn_chest(
 			floor(chest_spawn.translation.x / TT.cell_size), 
 			floor(chest_spawn.translation.z / TT.cell_size),
 			chest_spawn.item_spawner)
@@ -342,13 +344,19 @@ func spawn_ai_character(ai_spawn, surprise = false):
 #		character.character.control = TT.CONTROL.AI
 	character.add_to_group("characters")
 	current[character.character.control].append(character)
+# warning-ignore:return_value_discarded
 	character.connect("done", self, "advance_turn")
+# warning-ignore:return_value_discarded
 	character.connect("path_complete", $select, "update_context")
+# warning-ignore:return_value_discarded
 	character.connect("death", self, "_on_death")
 	if character.character.control == TT.CONTROL.AI:
+# warning-ignore:return_value_discarded
 		character.connect("dialogue", self, "_on_dialogue")
 	else:
+# warning-ignore:return_value_discarded
 		character.connect("path_complete", self, "check_move_triggers", [ character ])
+# warning-ignore:return_value_discarded
 		character.connect("attack_complete", self, "_on_attack_complete")
 		character.character.connect("level_up", self, "_on_level_up")
 		character.character.reset_turn()
@@ -380,15 +388,15 @@ func _on_attack_complete():
 	if current_turn == TT.CONTROL.PLAYER:
 		$range_overlay.set_origin(get_current())
 
-func _on_dialogue_complete(content):
-	# gui.back()
-	print("character triggered dialogue complete")
-#	if not check_end_game():
-#		$select.enable()
+#func _on_dialogue_complete(_content):
+#	# gui.back()
+#	print("character triggered dialogue complete")
+##	if not check_end_game():
+##		$select.enable()
 
 func _on_dialogue(content):
 	if "messages" in content:
-		content.connect("completed", self, "_on_dialogue_complete")
+#		content.connect("completed", self, "_on_dialogue_complete")
 		gui.start("dialogue_box", content)
 
 func _on_team_select_done():
@@ -433,11 +441,13 @@ func _on_win():
 	if Game.level + 1 < Game.get_level_count():
 		gui.start("win")
 	else:
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/landing.tscn")
 	$music/win.play()
 	print("End game: WIN")
 
 func _on_quit():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/landing.tscn")
 
 func all_enemies_eliminated():
@@ -486,6 +496,7 @@ func _on_death(character):
 
 func _on_replay():
   SaveLoadSystem.save_game()
+# warning-ignore:return_value_discarded
   get_tree().reload_current_scene()
 
 func _on_next_level():
@@ -494,6 +505,7 @@ func _on_next_level():
 		if Game.level > Game.unlocked_level:
 			Game.unlocked_level = Game.level
 		SaveLoadSystem.save_game()
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 	else:
 		# All levels completed?
@@ -513,7 +525,7 @@ func check_move_triggers(character):
 	for marker in markers:
 		if marker.dialogue and same_tile(marker.translation, character.translation): #marker.translation.is_equal_approx(character.translation):
 			if not marker.dialogue.consumed:
-				marker.dialogue.connect("completed", self, "_on_dialogue_complete")
+#				marker.dialogue.connect("completed", self, "_on_dialogue_complete")
 				gui.start("dialogue_box", marker.dialogue)
 #				gui.dialogue(marker.dialogue)
 				break
@@ -528,10 +540,15 @@ func auto_deploy_only_character():
 	print('world_map.add_child(character) #3', character)
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
+# warning-ignore:return_value_discarded
 	character.connect("done", self, "advance_turn")
+# warning-ignore:return_value_discarded
 	character.connect("death", self, "_on_death")
+# warning-ignore:return_value_discarded
 	character.connect("path_complete", self, "check_move_triggers", [ character ])
+# warning-ignore:return_value_discarded
 	character.connect("path_complete", $select, "update_context")
+# warning-ignore:return_value_discarded
 	character.connect("attack_complete", self, "_on_attack_complete")
 	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
@@ -547,10 +564,15 @@ func _on_select_team_member(team_member):
 	print('world_map.add_child(character) #3', character)
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
+# warning-ignore:return_value_discarded
 	character.connect("done", self, "advance_turn")
+# warning-ignore:return_value_discarded
 	character.connect("death", self, "_on_death")
+# warning-ignore:return_value_discarded
 	character.connect("path_complete", self, "check_move_triggers", [ character ])
+# warning-ignore:return_value_discarded
 	character.connect("path_complete", $select, "update_context")
+# warning-ignore:return_value_discarded
 	character.connect("attack_complete", self, "_on_attack_complete")
 	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
@@ -593,7 +615,8 @@ func _on_attack():
 #			gui.error("BLOCKED LINE OF SIGHT")
 #			gui.call_deferred("back")
 			return
-		var damage = get_current().attack(target)
+#		var damage = 
+		get_current().attack(target)
 
 #		gui.call_deferred("close_attack")
 #		gui.back()
@@ -766,6 +789,7 @@ func _input(event):
 #		gui.pause()
 	if event.is_action("ui_page_up") && !event.is_echo() && event.is_pressed():
 		Game.level = 10
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
 		var additional_character = load("res://resources/cast/ogre.tres")

@@ -122,54 +122,54 @@ func _on_selector_up():
 func _on_selector_down():
 	self.tile = self.tile + directions[Game.camera_orientation]["down"]
 	emit_signal("moved", self.tile)
-
-func x_input(event):
-	var advance = Vector3(0, 0, 0)
-	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
+#
+#func x_input(event):
+#	var advance = Vector3(0, 0, 0)
+#	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
+##		play("blank")
+#		return
+##	if gui.active or disabled or gui.modal:
+#	if disabled:
+#		if not world.current_turn == TT.CONTROL.AI:
+#			play("attack")
+#			return
+#	if world.current_turn == TT.CONTROL.AI:
 #		play("blank")
-		return
-#	if gui.active or disabled or gui.modal:
-	if disabled:
-		if not world.current_turn == TT.CONTROL.AI:
-			play("attack")
-			return
-	if world.current_turn == TT.CONTROL.AI:
-		play("blank")
-		return
-#	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
-#		set_origin(get_parent().get_current())
-		return
-	if event.is_action("character_switch") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
-		get_parent().change_character()
-		return
-	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
-#		advance.z = 1
-		advance = directions[Game.camera_orientation]["down"]
-	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
-#		advance.z = -1
-		advance = directions[Game.camera_orientation]["up"]
-	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
-#		advance.x = -1
-		advance = directions[Game.camera_orientation]["left"]
-	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
-#		advance.x = 1
-		advance = directions[Game.camera_orientation]["right"]
-	self.tile = self.tile + advance
-	if not advance.is_equal_approx(Vector3(0, 0, 0)):
-		print("select tile ", tile)
-		emit_signal("moved", self.tile)
-
-	if mode == MODE.PLAY:
-		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
-			world.action()
-		if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
-			gui.call_deferred("back")
-	else:
-		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
-			gui.team_confirm()
-			disable()
-		if animation != "attack":
-			play("attack")
+#		return
+##	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
+##		set_origin(get_parent().get_current())
+##		return
+#	if event.is_action("character_switch") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
+#		get_parent().change_character()
+#		return
+#	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
+##		advance.z = 1
+#		advance = directions[Game.camera_orientation]["down"]
+#	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
+##		advance.z = -1
+#		advance = directions[Game.camera_orientation]["up"]
+#	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
+##		advance.x = -1
+#		advance = directions[Game.camera_orientation]["left"]
+#	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
+##		advance.x = 1
+#		advance = directions[Game.camera_orientation]["right"]
+#	self.tile = self.tile + advance
+#	if not advance.is_equal_approx(Vector3(0, 0, 0)):
+#		print("select tile ", tile)
+#		emit_signal("moved", self.tile)
+#
+#	if mode == MODE.PLAY:
+#		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
+#			world.action()
+#		if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
+#			gui.call_deferred("back")
+#	else:
+#		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
+#			gui.team_confirm()
+#			disable()
+#		if animation != "attack":
+#			play("attack")
 
 func go_home():
 	self.tile = current_entity.tile

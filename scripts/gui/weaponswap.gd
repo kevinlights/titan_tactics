@@ -49,7 +49,7 @@ func set_weapons(current, new, type):
 #	else:
 #		$item_popup.region_rect.position.y = 0
 
-func _process(delta):
+func _process(_delta):
 	if visible == false:
 		return
 	current_stat = 1

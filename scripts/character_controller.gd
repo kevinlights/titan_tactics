@@ -232,7 +232,7 @@ func attack(target):
 	if character.turn_limits.actions < 1:
 		return 0
 	character.turn_limits.actions -= 1
-	var atk_range = character.atk_range + character.item_atk.attack_range
+#	var absolute_atk_range = character.atk_range + character.item_atk.attack_range
 	var damage = float((character.atk + character.item_atk.attack) * 3)
 	if target.character.character_class == character.weakness:
 		damage = damage * 0.7
@@ -317,9 +317,9 @@ func move(target_path:PoolVector3Array):
 	character.turn_limits.move_distance -= path.size()
 #	check_finished()
 
-func normalize_path(path):
+func normalize_path(my_path):
 	var target_path = PoolVector3Array()
-	for point in path:
+	for point in my_path:
 		target_path.append(point - Vector3(0, .25, 0))
 	return target_path
 	
@@ -387,7 +387,7 @@ func _on_frame_changed():
 		if avatar.frame == frame_count - 1:
 			_on_animation_finished()
 
-func copy_stats(spawner):
+func copy_stats(_spawner):
 	pass
 #	return CharacterStats.new(default_stats, char_type, control)
 
@@ -412,7 +412,7 @@ func from_spawner(character_spawner, surprise = false):
 	select_type()
 	init_common(character_spawner.stats.control)
 
-func _on_dialogue_completed(result):
+func _on_dialogue_completed(_result):
 	pass
 
 func from_library(team_member):
@@ -471,6 +471,7 @@ func init_common(control):
 	if initialized:
 		return
 	initialized = true
+# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
 	healthbar = load("res://scenes/healthbar.tscn").instance()
 	healthbar.set_value(character.hp, character.max_hp)
@@ -523,7 +524,7 @@ func _on_animation_finished():
 		if avatar.animation.ends_with("right"):
 			avatar.play("idle-" +  directions[Game.camera_orientation]["right"])
 
-func _process(delta):
+func _process(_delta):
 	var now = OS.get_ticks_msec()
 	_on_frame_changed()
 	if has_node("healthbar") and $healthbar.visible:

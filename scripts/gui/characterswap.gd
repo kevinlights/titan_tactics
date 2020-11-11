@@ -1,7 +1,7 @@
 extends Control
 
-signal character_selected
-signal library_exhausted
+#signal character_selected
+#signal library_exhausted
 signal closed
 
 var current_character
@@ -33,7 +33,7 @@ func out():
 	hide()
 	emit_signal("closed")
 
-func _process(delta):
+func _process(_delta):
 	if !visible or world.current[TT.CONTROL.PLAYER].size() == 0:
 		return
 #	get_parent().make_select_blank()
@@ -58,7 +58,7 @@ func pick_random_sfx(audio_path):
 func update_view():
 	if !current_character:
 		return
-	var animation = "fighter"
+#	var animation = "fighter"
 	$box_ally/name.text = current_character.name
 	if current_character.portrait_override and current_character.portrait_override != "":
 		$box_ally/portraits.play(current_character.portrait_override)

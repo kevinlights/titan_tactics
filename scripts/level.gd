@@ -10,21 +10,21 @@ onready var gui = get_tree().get_root().get_node("World/gui")
 onready var selector = get_tree().get_root().get_node("World/select")
 
 func _ready():
-	gui.get_node("teamconfirm").connect("start_level", self, "_on_start_level")
+#	gui.get_node("teamconfirm").connect("start_level", self, "_on_start_level")
 	world.connect("win", self, "_on_end_level")
-	world.connect("all_enemies_eliminated", self, "_on_end_level")
+#	world.connect("all_enemies_eliminated", self, "_on_end_level")
 	world.connect("auto_deployed", self, "_on_start_level")
 #	for content in dialogue:
-	if start_dialogue:
-		start_dialogue.connect("completed", self, "_on_dialogue_complete")
-		start_dialogue.connect("completed", world, "_on_dialogue_complete")
-	if end_dialogue:
-		end_dialogue.connect("completed", self, "_on_dialogue_complete")
-		end_dialogue.connect("completed", world, "_on_dialogue_complete")
-	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
-	print("level dialogue triggers: ", triggers.size())
-	for trigger in triggers:
-		trigger.connect("trigger", self, "_on_dialogue_complete")
+#	if start_dialogue:
+#		start_dialogue.connect("completed", self, "_on_dialogue_complete")
+#		start_dialogue.connect("completed", world, "_on_dialogue_complete")
+#	if end_dialogue:
+#		end_dialogue.connect("completed", self, "_on_dialogue_complete")
+#		end_dialogue.connect("completed", world, "_on_dialogue_complete")
+#	var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
+#	print("level dialogue triggers: ", triggers.size())
+#	for trigger in triggers:
+#		trigger.connect("trigger", self, "_on_dialogue_complete")
 	if add_character and add_character != "":
 		var characters = add_character.split(",")
 		for add_char in characters:
@@ -58,9 +58,9 @@ func _on_end_level():
 #				gui.dialogue(content)
 #				break
 
-func _on_dialogue_complete(id):
-	print("completed ", id)
-	var followup = false
+#func _on_dialogue_complete(id):
+#	print("completed ", id)
+#	var followup = false
 #	for content in dialogue:
 #		var trigger_list = content.trigger_id.split(",")
 #		if content.trigger == PT_Dialogue.TRIGGER.DIALOGUE and id in trigger_list: # content.trigger_id == id:

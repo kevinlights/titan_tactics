@@ -63,7 +63,7 @@ func _input(event):
 		elif event.is_action("ui_right"):
 			dir = DIR.RIGHT
 		if dir != null:
-			var orig_lvl = lvl + 0.0
+#			var orig_lvl = lvl + 0.0
 			var current = level_markers[Game.level]
 			if Game.level < 9:
 				var next = level_markers[Game.level + 1]
@@ -82,6 +82,7 @@ func _input(event):
 	move_selector()
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
 		yield(get_tree().create_timer(0.3), "timeout")
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/world.tscn")
 
 func get_dirs(start, end):
