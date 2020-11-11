@@ -66,7 +66,19 @@ func _input(event):
 			get_parent().action()
 		if event.is_action("character_switch") && !event.is_echo() && event.is_pressed():
 			start("characterswap")
+		if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
+			if get_parent().get_current().character.turn_limits.actions > 0:
+				var ability = "guard"
+				if get_parent().get_current().character.has_ability(TT.ABILITY.HEAL):
+					ability = "heal"
+				start("action_menu", "guard")
+			else:
+				start("action_menu", "end")
+			
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 		if current and !(current.name in cant_cancel):
 			back()
+	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
+		start("pause")
+
 

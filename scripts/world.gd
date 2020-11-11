@@ -761,8 +761,8 @@ func _input(event):
 		_on_next_level()
 	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
 		_on_replay()
-	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
-		gui.start("pause")
+#	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
+#		gui.start("pause")
 #		gui.pause()
 	if event.is_action("ui_page_up") && !event.is_echo() && event.is_pressed():
 		Game.level = 10
@@ -786,11 +786,11 @@ func _input(event):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 	if event.is_action("unmute_music") && !event.is_echo() && event.is_pressed():
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
-	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
-		if get_current().character.turn_limits.actions > 0:
-			gui.start("action_menu", "guard")
-		else:
-			gui.start("action_menu", "end")
+#	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
+#		if get_current().character.turn_limits.actions > 0:
+#			gui.start("action_menu", "guard")
+#		else:
+#			gui.start("action_menu", "end")
 	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed():
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation + 1
