@@ -106,7 +106,6 @@ custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -124,7 +123,6 @@ custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
-text = "newgame"
 
 [node name="credits" type="Button" parent="menu"]
 margin_left = 111.0
@@ -137,7 +135,6 @@ custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/focus = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
-text = "credits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
