@@ -30,15 +30,6 @@ var start
 
 onready var world = get_tree().get_root().get_node("World")
 
-#var atlas_frames = {
-#	"up": 3,
-#	"down": 2,
-#	"neutral": 128,
-#	TT.TYPE.ARCHER: 2,
-#	TT.TYPE.FIGHTER: 0,
-#	TT.TYPE.MAGE: 4
-#}
-
 var default_portraits = {
 	TT.CONTROL.AI: {
 		TT.TYPE.ARCHER: "ai_archer",
@@ -53,22 +44,6 @@ var default_portraits = {
 		TT.TYPE.FIGHTER: "swordsman"
 	}
 }
-
-#var portrait_map = {
-#	PT_Dialogue.PORTRAIT.ARCHER: "archer",
-#	PT_Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
-#	PT_Dialogue.PORTRAIT.MAGE: "mage",
-#	PT_Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
-#	PT_Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
-#	PT_Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
-#	PT_Dialogue.PORTRAIT.HERO: "hero",
-#	PT_Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
-#	PT_Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
-#	PT_Dialogue.PORTRAIT.OLD_MAN: "old_man",
-#	PT_Dialogue.PORTRAIT.CYAN: "cyan"
-#}
-
-#level line width = 28
 
 func _process(_delta):
 	if !visible or !player:

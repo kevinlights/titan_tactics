@@ -34,18 +34,19 @@ func set_hint_tile(tile):
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
-var selectedCube
-var origCube
+var selectedCube = null
+var origCube = null
 func set_selector(_selector):
 	if selector:
-		if selectedCube:
-			remove_child(selectedCube)
-			if origCube:
-				print('add_child(origCube)', origCube)
-				add_child(origCube)
-				origCube = null
-			selectedCube = null
-		elif overlayed_tiles.find(selector) > -1:
+#		if selectedCube:
+#			if has_node(selectedCube.name):
+#				remove_child(selectedCube)
+#			if origCube:
+#				print('add_child(origCube)', origCube)
+#				add_child(origCube)
+#				origCube = null
+#			selectedCube = null
+		if overlayed_tiles.find(selector) > -1:
 			var context_tile = Vector3(selector.x, 0, selector.z)
 			var context = world.get_current_context(context_tile)
 			if context == TT.CONTEXT.MOVE:

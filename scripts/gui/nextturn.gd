@@ -1,6 +1,7 @@
 extends Control
 
 signal done
+signal closed
 
 func pick_random_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -17,3 +18,4 @@ func init(_arg):
 
 func out():
 	hide()
+	emit_signal("closed")
