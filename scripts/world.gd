@@ -1,3 +1,4 @@
+class_name TacticsWorld
 extends Spatial
 
 signal win
@@ -24,6 +25,14 @@ var current = {
 	TT.CONTROL.AI: [],
 	TT.CONTROL.PLAYER: []
 }
+
+
+enum MODE {
+	PLAY,
+	CHECK_MAP
+}
+
+var mode = MODE.PLAY
 
 func load_level(level_name):
 	print("Loading level " + level_name)
@@ -408,7 +417,7 @@ func _on_team_select_done():
 func _on_check_map():
 	gui.back()
 	#gui.get_node("sfx/select").play()
-	$select.mode = $select.MODE.CHECK_MAP
+	mode = MODE.CHECK_MAP
 	print("check map enable selector")
 	$select.call_deferred("enable")
 
@@ -430,7 +439,7 @@ func _on_start_level():
 #	gui.modal = false
 	gui.back()
 	#gui.get_node("sfx/select").play()
-	$select.mode = $select.MODE.PLAY
+	mode = MODE.PLAY
 	$select.set_origin(get_current())
 	print("start level")
 	$select.call_deferred("enable")
@@ -750,7 +759,7 @@ func get_current_context(tile):
 		pass
 	if gui.get_node("dialogue_box").visible:
 		return TT.CONTEXT.NOT_PLAYABLE
-	if $select.mode == $select.MODE.CHECK_MAP:
+	if mode == MODE.CHECK_MAP:
 		return TT.CONTEXT.NEUTRAL
 	var unit = entity_at(tile)
 	if unit:

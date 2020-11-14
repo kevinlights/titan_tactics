@@ -32,14 +32,8 @@ var directions = {
 	}
 }
 
-enum MODE {
-	PLAY,
-	CHECK_MAP
-}
-
-
 var camera_captured = false
-var mode = MODE.PLAY
+#var mode = MODE.PLAY
 var tile = Vector3(0, 0, 0) setget set_tile, get_tile
 var current_entity
 var disabled = false
