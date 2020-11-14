@@ -7,7 +7,7 @@ signal level_up
 export(int, "Swordsman", "Archer", "Mage", "Boba", "Poison Boba") var character_class setget set_character_class, get_character_class
 export(String) var name
 export(int) var level = 1 setget set_level,get_level
-export(int) var hp
+export(int) var hp setget set_hp,get_hp
 export(int) var max_hp
 export(int) var atk
 export(int) var def
@@ -44,6 +44,12 @@ enum PERSONALITY {
 	NARCISSIST,
 	GREEDY
 }
+
+func set_hp(value):
+	hp = clamp(value, 0, 999)
+
+func get_hp():
+	return hp
 
 func sequence_cumulative(sequence, position):
 	var result = 0

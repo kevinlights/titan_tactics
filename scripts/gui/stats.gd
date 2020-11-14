@@ -184,14 +184,10 @@ func set_entities(player_entity, enemy_entity):
 
 func update_stats():
 	if enemy and player:
-		enemyhp = enemy.character.hp
-		playerhp = player.character.hp
-		if enemyhp < 0:
-			enemyhp = 0
-		if playerhp < 0:
-			playerhp = 0
-		enemyhp = str(ceil(enemyhp))  + "/" + str(ceil(enemy.character.max_hp))
-		playerhp = str(ceil(playerhp))  + "/" + str(ceil(player.character.max_hp))
+		enemyhp = str(ceil(clamp(enemy.character.hp, 0, 999)))
+		playerhp = str(ceil(clamp(player.character.hp, 0, 999)))
+		enemyhp = enemyhp  + "/" + str(ceil(enemy.character.max_hp))
+		playerhp = playerhp  + "/" + str(ceil(player.character.max_hp))
 		playerlvl = player.character.level
 		playeratk = int(round(player.character.atk + player.character.item_atk.attack))
 		playerdef = int(round(player.character.def + player.character.item_def.defense))
@@ -204,8 +200,8 @@ func update_stats():
 		$box_enemy/enemyatklevel.text = str(enemyatk)
 		$box_enemy/enemydeflevel.text = str(enemydef)
 		$box_enemy/enemylevel.text = str(enemylvl)
-		$box_enemy/enemyhp.text = (enemyhp)
-		$box_ally/playerhp.text = (playerhp)
+		$box_enemy/enemyhp.text = enemyhp
+		$box_ally/playerhp.text = playerhp
 
 func start_hiding(player_entity = null):
 	if player_entity:
