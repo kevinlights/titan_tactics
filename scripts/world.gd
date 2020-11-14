@@ -29,10 +29,11 @@ var current = {
 
 enum MODE {
 	PLAY,
-	CHECK_MAP
+	CHECK_MAP,
+	DEPLOY
 }
 
-var mode = MODE.PLAY
+var mode = MODE.DEPLOY
 
 func load_level(level_name):
 	print("Loading level " + level_name)

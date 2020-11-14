@@ -2356,7 +2356,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 centered = false
 
@@ -2381,7 +2380,6 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 
@@ -2804,6 +2802,7 @@ animation = "mage"
 position = Vector2( 130, -8 )
 frames = SubResource( 24 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -2815,7 +2814,6 @@ animation = "mage"
 position = Vector2( 189, -8 )
 frames = SubResource( 34 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="vs" type="Sprite" parent="battle"]
@@ -3120,6 +3118,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3144,6 +3143,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3152,7 +3152,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 103 )
-frame = 2
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -3335,6 +3334,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3373,7 +3373,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 58.1062 )
 frames = SubResource( 103 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
@@ -3447,7 +3447,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 position = Vector2( -6, -5 )
 frames = SubResource( 172 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3474,7 +3473,6 @@ __meta__ = {
 visible = false
 position = Vector2( -4, -16 )
 frames = SubResource( 172 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -3554,7 +3552,6 @@ __meta__ = {
 visible = false
 position = Vector2( -5, 4 )
 frames = SubResource( 172 )
-frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3580,7 +3577,6 @@ __meta__ = {
 visible = false
 position = Vector2( -6, 4 )
 frames = SubResource( 207 )
-frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
