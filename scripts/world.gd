@@ -566,6 +566,7 @@ func auto_deploy_only_character():
 	character.connect("attack_complete", self, "_on_attack_complete")
 	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
+	character.character.reset_turn()
 	_on_start_level()
 	emit_signal("auto_deployed")
 
@@ -590,6 +591,7 @@ func _on_select_team_member(team_member):
 	character.connect("attack_complete", self, "_on_attack_complete")
 	character.character.control = TT.CONTROL.PLAYER
 	character.character.connect("level_up", self, "_on_level_up")
+	character.character.reset_turn()
 	if player_spawns.size() > 0:
 		$select.tile = player_spawns[0]
 		$gui/characterselect.set_spawn(player_spawns[0])
