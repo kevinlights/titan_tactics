@@ -26,7 +26,7 @@ var multi_tile_objects := ['house1', 'house_02', 'house_03', 'tree', 'tree_03', 
 # Cardinals
 # nw, n, ne
 # w ,  , e
-# sw, s, se 
+# sw, s, se
 # cardinalHeights are only needed for walkable nodes that join up.
 # structures such as bridges with custom logic need to be added above and manually implemented in _connect_structures.
 var cardinalHeights := { # y_deltas
@@ -83,12 +83,12 @@ var orientationModifier := {
 # hardcode additional cardinalHeights as necessary.
 
 # Thoughts:
-# should diagonal movement have a higher 'cost' as it has a higher distance? 
+# should diagonal movement have a higher 'cost' as it has a higher distance?
 onready var ml_mapping = {}
 func _ready():
 	_init_overlayed_tiles()
 	_init_astar()
-	
+
 func _init_overlayed_tiles():
 	var item_ids = mesh_library.get_item_list()
 	var skip_overlay = ['steps']
@@ -109,7 +109,7 @@ func generate_overlay_tile(name, item_id, type):
 			var material = mesh.surface_get_material(0).duplicate()
 			material.set_next_pass(load("res://gfx/range-overlay/inset_"+ type + ".material"))
 			mesh_dup.surface_set_material (0, material)
-			
+
 			var id = mesh_library.get_last_unused_item_id() + 1
 			mesh_library.create_item(id)
 			mesh_library.set_item_mesh(id, mesh_dup)
@@ -118,7 +118,7 @@ func generate_overlay_tile(name, item_id, type):
 		return true
 	else:
 		return false
-	
+
 func world_path(path:PoolVector3Array):
 	var w_path = PoolVector3Array()
 	for point in path:
@@ -128,7 +128,9 @@ func world_path(path:PoolVector3Array):
 func point_to_world(point: Vector3, exclude_y: bool):
 	var offset = get_parent().translation + Vector3(-0.5, -1, -0.5)
 	offset.y = 0
-	var y = 0 if exclude_y else (point.y / 2)
+	var y = 0.0 if exclude_y else (point.y / 2)
+# warning-ignore:narrowing_conversion
+# warning-ignore:narrowing_conversion
 	return map_to_world(point.x, y, point.z) + offset
 
 func find_path(start, end, blocked_cells = []):
@@ -148,8 +150,8 @@ func find_path(start, end, blocked_cells = []):
 	var possible_ends = filter_tiles(end.x, end.z)
 	if possible_starts.size() == 1 and possible_ends.size() == 1:
 		var start_id = vector_to_id(possible_starts[0])
-		var end_id = vector_to_id(possible_ends[0])		
-		
+		var end_id = vector_to_id(possible_ends[0])
+
 		var blocked_tile_ids = []
 #		print(start, end, blocked_cells)
 		if(blocked_cells.size() > 0):
@@ -183,7 +185,7 @@ func get_tiles_within(_start, distance):
 		var start_id = vector_to_id(possible_starts[0])
 		var output_ids = []
 		var start_ids = [start_id]
-		for i in range(0, distance):
+		for _i in range(0, distance):
 			var next_ids = []
 			for id in start_ids:
 				for next in astar.get_point_connections(id):
@@ -215,7 +217,7 @@ func set_tile_overlay(world_point, type):
 		var name = get_cell_name(cell).replace('_move', '').replace('_attack', '').replace('_hint', '').replace('_select', '')
 		if type != '':
 			generate_overlay_tile(name, item_id, type)
-		
+
 		var type_key = '_' + type;
 		if ml_mapping.has(name) and ml_mapping[name].has(type_key):
 			var new_item_id = ml_mapping[name][type_key]
@@ -226,7 +228,7 @@ func set_tile_overlay(world_point, type):
 
 func vector_to_id(vector):
 	return tiles.find(vector)
-	
+
 func filter_tiles(x, z):
 	var output = []
 	for tile in tiles:
@@ -247,18 +249,18 @@ func _init_astar():
 		if multi_tile_objects.find(name) != -1:
 			multi_tiles.push_back(cell)
 			counts.decoration_tiles += 1
-			continue			
+			continue
 		if structures.find(name) != -1:
 			# TODO: add to array and manually connect after.
 			counts.structure_tiles += 1
 			structure_tiles.push_back(cell)
 			continue
-		
+
 		if !iterated_types.has(name):
 			iterated_types.append(name)
 #			if not cardinalHeights.has(name):
 #				print_debug("Missing cardinal heights for '", name, "' type. Excluding all occurances from walkable tiles.")
-		
+
 		if cardinalHeights.has(name):
 			var max_height = cell.y + cardinalHeights[name].max()
 			var exclude = false
@@ -358,7 +360,7 @@ func _init_astar():
 				counts.passable_tiles -= 1
 	_connect_points()
 	_connect_structures(structure_tiles)
-	
+
 	if hide_non_walkable_tiles:
 		for cell in ground_cells:
 			var cell_id = vector_to_id(cell)
@@ -412,7 +414,7 @@ func _connect_ids(a_id, b_id):
 			print("connecting cells (", a_id, ',', b_id, ')')
 		astar.connect_points(a_id, b_id)
 		counts.connections += 1
-				
+
 func _connect_structures(cells):
 	var deltaMappings = {
 		'Smallbridge': {
@@ -431,30 +433,30 @@ func _connect_structures(cells):
 	for cell in cells:
 		var name = get_cell_name(cell)
 		var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
-		
+
 		match name:
 			'Bridge':
 				var cardinalDelta = deltaMappings[name][orientation]
-				
+
 				var before_cell = null
 				for y in range(cell.y, cell.y - 3, -1):
 					before_cell = Vector3(cell.x + cardinalDelta.x * 2, y, cell.z + cardinalDelta.y * 2)
 					if (get_cell_item(before_cell.x, before_cell.y, before_cell.z) == GridMap.INVALID_CELL_ITEM):
 						before_cell = null
 					else:
-						var before_cell_name = get_cell_name(before_cell)
+#						var before_cell_name = get_cell_name(before_cell)
 						break
 				if before_cell == null:
 					print_debug("Can't find before tile of Bridge ", cell)
-					
+
 				var bridge_tile = null
-				for mult in range(1, 4):
+				for _mult in range(1, 4):
 					var prev_tile = bridge_tile
 					if prev_tile == null:
 						prev_tile = before_cell
 					bridge_tile = Vector3(prev_tile.x - cardinalDelta.x, cell.y, prev_tile.z - cardinalDelta.y)
 					_connect_cells(prev_tile, bridge_tile, true)
-					
+
 				# TODO: not working for 0 degree orientation
 				var after_cell = null
 				for y in range(cell.y, cell.y - 3, -1):
@@ -465,7 +467,7 @@ func _connect_structures(cells):
 						break
 				if after_cell == null:
 					print_debug("Can't find after tile of Bridge ", cell)
-				
+
 				if before_cell and after_cell:
 					_connect_cells(before_cell, cell, true)
 					_connect_cells(bridge_tile, after_cell, true)
@@ -480,7 +482,7 @@ func _connect_structures(cells):
 						break
 				if before_cell == null:
 					print_debug("Can't find before tile of Smallbridge ", cell)
-					
+
 				var bridge_tile = null
 				for mult in range(1, 2):
 					var prev_tile = bridge_tile
@@ -488,7 +490,7 @@ func _connect_structures(cells):
 						prev_tile = cell
 					bridge_tile = Vector3(cell.x - cardinalDelta.x * mult, cell.y, cell.z - cardinalDelta.y * mult)
 					_connect_cells(prev_tile, bridge_tile, true)
-					
+
 				# TODO: not working for 0 degree orientation
 				var after_cell = null
 				for y in range(cell.y, cell.y - 3, -1):
@@ -499,12 +501,12 @@ func _connect_structures(cells):
 						break
 				if after_cell == null:
 					print_debug("Can't find after tile of Smallbridge ", cell)
-				
+
 				if before_cell and after_cell:
 					_connect_cells(before_cell, cell, true)
 					_connect_cells(bridge_tile, after_cell, true)
 				# TODO: in between cells + after_cell
-		
+
 
 func _get_neighbors(cell):
 	if not cell:
@@ -516,7 +518,7 @@ func _get_neighbors(cell):
 		var expected_height = cell.y + get_cardinal_height(cell, idx)
 		if expected_height == null:
 			continue
-		
+
 		for level_delta in range(0, expected_height + 1):
 			var neghbour = Vector3(cell.x + deltas.x, cell.y + level_delta, cell.z + deltas.y)
 			if (get_cell_item(neghbour.x, neghbour.y, neghbour.z) == GridMap.INVALID_CELL_ITEM):
@@ -524,23 +526,23 @@ func _get_neighbors(cell):
 			var neighbour_height = get_cardinal_height(neghbour, idx + 4)
 			#print(
 			#	deltas, ' ',
-			#	mesh_library.get_item_name(get_cell_item(cell.x, cell.y, cell.z)), 
+			#	mesh_library.get_item_name(get_cell_item(cell.x, cell.y, cell.z)),
 			#	expected_height,
 			#	', ',
-			#	mesh_library.get_item_name(get_cell_item(neghbour.x, neghbour.y, neghbour.z)), 
+			#	mesh_library.get_item_name(get_cell_item(neghbour.x, neghbour.y, neghbour.z)),
 			#	neighbour_height
 			#)
 			if neighbour_height == null:
 				continue
 			var computed_height = neghbour.y + get_cardinal_height(neghbour, idx + 4)
 			if computed_height == expected_height:
-				var neighbour_name = get_cell_name(neghbour)
-				neighbours.push_back(neghbour)		
+#				var neighbour_name = get_cell_name(neghbour)
+				neighbours.push_back(neghbour)
 	return neighbours
 
 func get_cardinal_height(cell, dir_idx):
 	var name = get_cell_name(cell)
-	
+
 	if decorations.find(name) != -1 or structures.find(name) != -1 or multi_tile_objects.find(name) != -1:
 		return null
 	if not cardinalHeights.has(name):

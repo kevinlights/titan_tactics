@@ -11,6 +11,12 @@ signal done
 signal dialogue
 signal attack_complete
 
+enum AI_STATUS {
+	IDLE,
+	ALERT,
+	HOSTILE
+}
+
 var guarding = false
 var character
 var path = []
@@ -32,6 +38,8 @@ var death_dialogue
 
 var dialogue_used = false
 var status_effects = []
+
+var status = AI_STATUS.IDLE
 
 onready var world = get_parent().get_parent().get_parent()
 
