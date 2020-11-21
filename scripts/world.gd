@@ -196,8 +196,7 @@ func next_character(direction):
 func change_character():
 	$gui.swap()
 
-func end_turn():
-#	gui.back()
+func _on_end_turn_gui():
 	for character in current[TT.CONTROL.PLAYER]:
 		character.is_done = false
 		character.get_node("done").hide()
@@ -206,10 +205,15 @@ func end_turn():
 	for character in current[current_turn]:
 		character.end_turn()
 	current_character = 0
-	if current_turn == TT.CONTROL.AI:
+	
+func end_turn():
+#	gui.back()
+	if current_turn == TT.CONTROL.PLAYER:
 		gui.start("enemyturn")
+		gui.get_node("enemyturn").connect("done", self, "_on_end_turn_gui", [], CONNECT_ONESHOT)
 	else:
 		gui.start("playerturn")
+		_on_end_turn_gui()
 #	gui.turn(current_turn)
 #	$select.disable()
 

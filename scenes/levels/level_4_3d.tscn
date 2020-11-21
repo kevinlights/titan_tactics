@@ -62,7 +62,7 @@ defense = 0
 heal = 0
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=36]
 script = ExtResource( 8 )
 character_class = 0
 name = "Silva"
@@ -118,7 +118,7 @@ defense = 0
 heal = 0
 effect = SubResource( 9 )
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=37]
 script = ExtResource( 8 )
 character_class = 0
 name = "Morg"
@@ -174,7 +174,7 @@ defense = 0
 heal = 0
 effect = SubResource( 14 )
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=38]
 script = ExtResource( 8 )
 character_class = 0
 name = "Anita"
@@ -230,7 +230,7 @@ defense = 0
 heal = 0
 effect = SubResource( 19 )
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 8 )
 character_class = 1
 name = "Nord"
@@ -286,7 +286,7 @@ defense = 0
 heal = 0
 effect = SubResource( 24 )
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=40]
 script = ExtResource( 8 )
 character_class = 0
 name = "Kara"
@@ -342,7 +342,7 @@ defense = 0
 heal = 1
 effect = SubResource( 29 )
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 8 )
 character_class = 2
 name = "Yava"
@@ -398,7 +398,7 @@ defense = 0
 heal = 0
 effect = SubResource( 34 )
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=42]
 script = ExtResource( 8 )
 character_class = 1
 name = "Lota"
@@ -487,7 +487,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 6 )
+stats = SubResource( 36 )
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.347, 8 )
@@ -495,7 +495,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 11 )
+stats = SubResource( 37 )
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.347, 7 )
@@ -503,7 +503,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 16 )
+stats = SubResource( 38 )
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.347, 5 )
@@ -511,7 +511,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 5 )
 script = ExtResource( 12 )
-stats = SubResource( 21 )
+stats = SubResource( 39 )
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.347, 7 )
@@ -519,7 +519,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 26 )
+stats = SubResource( 40 )
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.347, 12 )
@@ -527,7 +527,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 12 )
-stats = SubResource( 31 )
+stats = SubResource( 41 )
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.347, 8 )
@@ -535,7 +535,7 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 5 )
 script = ExtResource( 12 )
-stats = SubResource( 36 )
+stats = SubResource( 42 )
 
 [node name="StoryMarker" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, 7 )

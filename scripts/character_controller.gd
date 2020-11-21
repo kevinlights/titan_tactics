@@ -285,6 +285,7 @@ func attack(target):
 	else:
 		attack_complete()
 		target.hit(character)
+		
 	if target.translation.x < translation.x:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
 	if target.translation.x > translation.x:
@@ -293,8 +294,6 @@ func attack(target):
 		avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
 	if target.translation.z > translation.z:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
-	world.check_battle()
-	check_finished()
 	return damage
 
 func attack_complete():
@@ -302,6 +301,9 @@ func attack_complete():
 #	print("attack complete")
 	emit_signal("idle")
 	emit_signal("attack_complete")
+	world.check_battle()
+	check_finished()
+
 
 
 func move(target_path:PoolVector3Array):

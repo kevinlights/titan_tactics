@@ -21,7 +21,7 @@ var decorations := ["Tree", "stump", "Water", "underwater", "waterside", 'wall',
 
 # structures are normally larger than a single tile and require custom logic to join tiles
 var structures := ['Smallbridge', 'Bridge']
-var multi_tile_objects := ['house1', 'house_02', 'house_03', 'tree', 'cristal005', 'Wagon']
+var multi_tile_objects := ['house1', 'house_02', 'house_03', 'tree', 'tree_03', 'cristal005', 'Wagon']
 
 # Cardinals
 # nw, n, ne
@@ -297,6 +297,12 @@ func _init_astar():
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
 				]
+			'tree_03':
+				directions = [
+					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(1 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+				]
 			'tree':
 				directions = [
 					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
@@ -330,7 +336,7 @@ func _init_astar():
 					cardinalDeltas[(5 + orientation_modifier) % cardinalDeltas.size()],
 					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
 				]
-		var cell_to_remove = Vector3(cell.x, cell.y - 1, cell.z)				
+		var cell_to_remove = Vector3(cell.x, cell.y - 1, cell.z)
 		for delta in directions:
 			cell_to_remove.x += delta.x
 			cell_to_remove.z += delta.y
