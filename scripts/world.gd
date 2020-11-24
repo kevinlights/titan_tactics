@@ -36,7 +36,7 @@ enum MODE {
 var mode = MODE.DEPLOY
 
 func load_level(level_name):
-	print("Loading level " + level_name)
+	print("[World] Loading level " + level_name)
 	var level = load("res://scenes/levels/" + level_name + ".tscn").instance()
 	add_child_below_node($map_anchor, level)
 	world_map = level.get_node("map")
@@ -74,7 +74,7 @@ func is_cover_between(character, end):
 	var ray = character.get_node("ranged_weapon")
 	ray.cast_to = character.to_local(end)
 	ray.force_raycast_update()
-	print("is cover between ", ray.is_colliding())
+	print("[World] is cover between ", ray.is_colliding())
 	return ray.is_colliding()
 	# return false
 
@@ -83,7 +83,7 @@ func spawn_cover(tile):
 	cover.position = tile * Vector2(TT.cell_size, TT.cell_size)
 	print('world_map.add_child(cover)', cover)
 	world_map.add_child(cover)
-	print("Spawned cover")
+	print("[World] Spawned cover")
 	return cover
 	
 func spawn_chest(x, y, item_spawner):
@@ -93,7 +93,7 @@ func spawn_chest(x, y, item_spawner):
 	chest.add_to_group("characters")
 	print('world_map.add_child(chest)', chest)
 	world_map.add_child(chest)
-	print("Spawned chest")
+	print("[World] Spawned chest")
 	return chest
 
 func spawn_character(x, y, type = TT.TYPE.MAGE, control = TT.CONTROL.PLAYER):
@@ -114,23 +114,23 @@ func resume():
 #	gui.paused = false
 	gui.back()
 	if current_turn  == TT.CONTROL.AI:
-		print("resume ai turn")
+		print("[World] resume ai turn")
 #		gui.modal = true
 		ai.play()
 	else:
 		if not game_over:
-			print("resume player turn")
+			print("[World] resume player turn")
 #			gui.modal = false
 			$select.enable()
 
 func check_end_turn():
-	print("check end turn")
+	print("[World] check end turn")
 	num_done = 0
 	for character_check in current[current_turn]:
 		if character_check.is_done:
 			num_done += 1
 	if num_done == current[current_turn].size():
-		print("End turn")
+		print("[World] End turn")
 		return true
 	return false
 
@@ -144,21 +144,21 @@ func advance_turn(explicit = 1, direction = 1):
 	while current[current_turn][current_character].is_done or current[current_turn][current_character].is_dead:
 		next_character(direction)
 		
-	print("Advance turn")
+	print("[World] Advance turn")
 	$select.set_origin(get_current())
 	if current_turn == TT.CONTROL.PLAYER:
 		$range_overlay.set_origin(get_current())
   
-	if explicit == 1:
-		$select.disable()
-		yield(get_tree().create_timer(1.0), "timeout")
+#	if explicit == 1:
+#		$select.disable()
+#		yield(get_tree().create_timer(1.0), "timeout")
 	if current_turn  == TT.CONTROL.AI:
 		#gui.modal = true
 		ai.play()
 	elif explicit == 1:
 		if not game_over:
 			#gui.modal = false
-			print("explicit enable")
+			print("[World] explicit enable")
 			$select.enable()
 	current_character = clamp(current_character, 0, current[current_turn].size() -1)
 
@@ -243,7 +243,7 @@ func action():
 					var loot = target.open(get_current().character.character_class)
 					if loot:
 						yield(get_tree().create_timer(1.0), "timeout")
-						print("item " + str(loot.name))
+						print("[World] item " + str(loot.name))
 						if target.item_spawner.equipment_slot == 0:
 							gui.start("weaponswap", [ get_current().character.item_atk, loot, 0 ])
 #							gui.loot(get_current().character.item_atk, loot, 0)
@@ -262,7 +262,7 @@ func action():
 		TT.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
 #		TT.CONTEXT.GUARD:
-#			print("guard action")
+#			print("[World] guard action")
 #			if get_current().character.turn_limits.actions == 0:
 #				gui.call_deferred("confirm_end_turn")
 #			else:
@@ -280,7 +280,7 @@ func _on_confirm_end_turn():
 	_on_end()
 
 func is_adjacent(one, two):
-	print("is adjacent ", one.tile, " ", two.tile)
+	print("[World] is adjacent ", one.tile, " ", two.tile)
 	return (abs(one.tile.x - two.tile.x) <= 1 and abs(one.tile.z - two.tile.z) == 0) or (abs(one.tile.x - two.tile.x) == 0 and abs(one.tile.z - two.tile.z) <= 1)
 
 func _ready():
@@ -340,11 +340,11 @@ func spawn_chests():
 		chest_spawn.hide()
 
 func surprise_spawn(spawn_trigger):
-	print("Surprise spawns! ", spawn_trigger)
+	print("[World] Surprise spawns! ", spawn_trigger)
 	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
 	for ai_spawn in ai_spawns:
 		if ai_spawn.spawn_trigger == spawn_trigger:
-			print("Spawning surprise enemy")
+			print("[World] Spawning surprise enemy")
 			spawn_ai_character(ai_spawn, true)
 			yield(get_tree().create_timer(0.5), "timeout")
 
@@ -353,7 +353,7 @@ func spawn_ai_character(ai_spawn, surprise = false):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	character.from_spawner(ai_spawn, surprise)
 	character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
-#	print("Control: ", character.character.control)
+#	print("[World] Control: ", character.character.control)
 #	if !character.character.control:
 #		character.character.control = TT.CONTROL.AI
 	character.add_to_group("characters")
@@ -404,7 +404,7 @@ func _on_attack_complete():
 
 #func _on_dialogue_complete(_content):
 #	# gui.back()
-#	print("character triggered dialogue complete")
+#	print("[World] character triggered dialogue complete")
 ##	if not check_end_game():
 ##		$select.enable()
 
@@ -414,7 +414,7 @@ func _on_dialogue(content):
 		gui.start("dialogue_box", content)
 
 func _on_team_select_done():
-	print("team select confirm")
+	print("[World] team select confirm")
 	gui.start("teamconfirm")
 	gui.back()
 #	gui.get_node('characterselect').dismiss()
@@ -423,7 +423,7 @@ func _on_check_map():
 	gui.back()
 	#gui.get_node("sfx/select").play()
 	mode = MODE.CHECK_MAP
-	print("check map enable selector")
+	print("[World] check map enable selector")
 	$select.call_deferred("enable")
 
 func _on_edit_team():
@@ -446,7 +446,7 @@ func _on_start_level():
 	#gui.get_node("sfx/select").play()
 	mode = MODE.PLAY
 	$select.set_origin(get_current())
-	print("start level")
+	print("[World] start level")
 	$select.call_deferred("enable")
 	$range_overlay.call_deferred("set_origin", get_current())
 
@@ -458,7 +458,7 @@ func _on_win():
 # warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/landing.tscn")
 	$music/win.play()
-	print("End game: WIN")
+	print("[World] End game: WIN")
 
 func _on_quit():
 # warning-ignore:return_value_discarded
@@ -478,8 +478,8 @@ func check_end_game():
 #		emit_signal("all_enemies_eliminated")
 #		var triggers = get_tree().get_nodes_in_group ("dialogue_triggers")
 #		for trigger in triggers:
-#			print("Available ", trigger.available)
-#			print("Consumed ", trigger.consumed)
+#			print("[World] Available ", trigger.available)
+#			print("[World] Consumed ", trigger.consumed)
 #			if trigger.available == "level_complete" and !trigger.consumed:
 #				return false
 
@@ -495,7 +495,7 @@ func check_end_game():
 				call_deferred("_on_win")
 			else:
 				gui.start("lose") #lose()
-				print("End game: LOSE")
+				print("[World] End game: LOSE")
 				$music/lose.play()
 			$music.get_node(Game.get_theme()).stop()
 			return true
@@ -550,7 +550,7 @@ func auto_deploy_only_character():
 	character.from_library(Game.team[0])
 	character.teleport(floor(spawn.x), floor(spawn.z - 1))
 	character.add_to_group("characters")
-	print("Player spawn ", spawn)
+	print("[World] Player spawn ", spawn)
 	print('world_map.add_child(character) #3', character)
 	world_map.add_child(character)
 	current[TT.CONTROL.PLAYER].append(character)
@@ -606,11 +606,11 @@ func _on_level_up(diff, character):
 func _initiate_turn():
 	# in case a signal triggers this after the level is won/lost
 	if current[TT.CONTROL.AI].size() == 0 or current[TT.CONTROL.PLAYER].size() == 0:
-		print("Don't initiate turn; the game is already over.")
+		print("[World] Don't initiate turn; the game is already over.")
 		return
 	for character in current[current_turn]:
 		character.apply_effects()
-	print("initiate turn")
+	print("[World] initiate turn")
 #	gui.back()
 	$select.enable()
 	$select.set_origin(get_current())
@@ -618,13 +618,13 @@ func _initiate_turn():
 	if current_turn == TT.CONTROL.PLAYER:
 		$range_overlay.set_origin(get_current())
 	if current_turn == TT.CONTROL.AI:
-		print("Control turned over to AI")
+		print("[World] Control turned over to AI")
 #		gui.modal = true
 		ai.play()
 		$range_overlay.set_origin(null)
 	
 func _on_attack():
-	print("attack option selected in menu")
+	print("[World] attack option selected in menu")
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
 		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), target.translation):
@@ -645,7 +645,7 @@ func _on_attack():
 #		gui.call_deferred("back")
 
 func _on_recruit_completed(id):
-	print("recruitment completed ", id)
+	print("[World] recruitment completed ", id)
 #	gui.back()
 	var target = entity_at($select.tile)
 	get_current().character.turn_limits.actions -= 1
@@ -662,16 +662,16 @@ func _on_recruit_completed(id):
 
 func _on_recruit_response(response):
 	response.connect("completed", self, "_on_recruit_completed")
-	print("set response dialog ", response.messages[0].message)
+	print("[World] set response dialog ", response.messages[0].message)
 	gui.dialogue(response)
 
 func _on_recruit():
-	print("recruit option selected in menu")
+	print("[World] recruit option selected in menu")
 	var target = entity_at($select.tile)
 	$select.disable()
 	if get_current().character.turn_limits.actions != 0 and is_adjacent(get_current(), target):
 		var recruitment = Recruitment.new(target.character, target.character.personality)
-		print("recruit dialog intro")
+		print("[World] recruit dialog intro")
 		gui.dialogue(recruitment.intro)
 		gui.answers(recruitment)
 		recruitment.connect("response", self, "_on_recruit_response")
@@ -701,12 +701,12 @@ func _on_heal():
 #		damage_feedback.get_node("damage").text = "+" + str(healed)
 #		add_child(damage_feedback)
 		target.get_node("vfx/heal").emitting = true
-		print("healed")
+		print("[World] healed")
 #	gui.call_deferred("back")
 
 func _on_end():
 #	gui.call_deferred("back")
-	print("explicit end request, advancing turn")
+	print("[World] explicit end request, advancing turn")
 	get_current().character.turn_limits.move_distance = 0
 	get_current().character.turn_limits.actions = 0
 	get_current().get_node("done").show()
@@ -732,23 +732,23 @@ func check_battle():
 func contextual_ui():
 	var tile = $select.tile
 	var context = get_current_context(tile)
-	print("current context = ", context, " [", TT.CONTEXT.keys()[context] ,"]")
+	print("[World] current context = ", context, " [", TT.CONTEXT.keys()[context] ,"]")
 	var target = entity_at(tile)
 	if current_turn == TT.CONTROL.PLAYER:
 		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
-			print("you are pointing on " + str(target.character.name))
+			print("[World] you are pointing on " + str(target.character.name))
 			gui.start("battle", target)
 		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and (context == TT.CONTEXT.GUARD or context == TT.CONTEXT.HEAL):
-			print("you are pointing on yourself : " + str(target.character.name))
+			print("[World] you are pointing on yourself : " + str(target.character.name))
 			gui.start("ally", target) #ally(get_current())
 			gui.get_node("ally").update_stats(target)
 		if context == TT.CONTEXT.MOVE or context == TT.CONTEXT.NOT_ALLOWED:
-			print("Closing ui because of context ", context)
+			print("[World] Closing ui because of context ", context)
 			gui.close([ "ally", "battle" ])
 	$range_overlay.set_selector(tile)
 
 func _on_selector_moved(tile):
-	print("$select moved to ", tile)
+	print("[World] $select moved to ", tile)
 	contextual_ui()
 #	var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
 	var context = get_current_context(tile)
@@ -811,7 +811,7 @@ func _input(event):
 		var additional_character = load("res://resources/cast/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER
 		Game.team.append(additional_character)
-		print("The OGRE has joined the team!")
+		print("[World] The OGRE has joined the team!")
 	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
 		for unit in current[TT.CONTROL.AI]:
 			unit.die()
@@ -819,9 +819,9 @@ func _input(event):
 		for unit in current[TT.CONTROL.PLAYER]:
 			unit.die()
 	if event.is_action("cheat_log_stats") && !event.is_echo() && event.is_pressed():
-		print("selector ", $select.tile)
-		print("current character tile ", get_current().tile)
-		print("current character translation ", get_current().translation)
+		print("[World] selector ", $select.tile)
+		print("[World] current character tile ", get_current().tile)
+		print("[World] current character translation ", get_current().translation)
 	if event.is_action("mute_music") && !event.is_echo() && event.is_pressed():
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 	if event.is_action("unmute_music") && !event.is_echo() && event.is_pressed():
@@ -836,7 +836,7 @@ func _input(event):
 			var new_orientation = Game.camera_orientation + 1
 			if Game.camera_orientation == TT.CAMERA.WEST:
 				new_orientation = TT.CAMERA.NORTH
-			print("Clockwise ", Game.camera_orientation, " ", new_orientation)
+			print("[World] Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
 		
 	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed():
@@ -844,6 +844,6 @@ func _input(event):
 			var new_orientation = Game.camera_orientation - 1
 			if Game.camera_orientation == TT.CAMERA.NORTH:
 				new_orientation = TT.CAMERA.WEST
-			print("Counter-Clockwise ", Game.camera_orientation, " ", new_orientation)
+			print("[World] Counter-Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
 			

@@ -110,7 +110,7 @@ func check_finished():
 		is_done = true
 		if character.control != TT.CONTROL.AI:
 			$done.show()
-		emit_signal("done")
+			emit_signal("done")
 
 func _ready():
 	pass
@@ -307,6 +307,7 @@ func attack(target):
 func attack_complete():
 	yield(get_tree().create_timer(1.0), "timeout")
 #	print("attack complete")
+	print("[Character Controller] (" + character.name + ") attack complete")
 	emit_signal("idle")
 	emit_signal("attack_complete")
 	world.check_battle()
@@ -582,6 +583,7 @@ func _process(_delta):
 				if movement.moving:
 					translation = movement.end_position
 #					print("path complete ", translation)
+					print("[Character Controller] (" + character.name + ") path complete")
 					emit_signal("path_complete")
 					emit_signal("idle")
 					check_finished()

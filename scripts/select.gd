@@ -181,7 +181,7 @@ func set_origin(entity):
 #	translation = entity.translation
 	self.tile = entity.tile
 	translation.y = 0.2
-	print("Set origin ", translation)
+	print("[Selector] Set origin ", translation)
 	current_entity.select()
 	current_entity.connect("idle", self, "go_home")
 	if current_entity.character.control != TT.CONTROL.AI:

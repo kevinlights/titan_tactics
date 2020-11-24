@@ -13,16 +13,16 @@ func play():
 	if world.game_over:
 		return
 	var character = world.get_current()
+	print("[AI] (" + character.character.name + ") play")
 	world.get_node("lookat/camera").track(character)
 	if character.character.control != TT.CONTROL.AI:
-		print("AI (" + character.character.name + ") says not my turn, skipping")
+		print("[AI] (" + character.character.name + ") not my turn, skipping")
 		return
-	print("AI taking turn")
 	yield(world.get_tree().create_timer(2.0), "timeout")
 	if character.character.has_ability(TT.ABILITY.HEAL):
 		var dying = get_dying_ally(character)
 		if dying:
-			print("AI (" + character.character.name + ") says heal " + dying.character.name)
+			print("[AI] (" + character.character.name + ") heal " + dying.character.name)
 			character.heal(dying)
 			character.is_done = true
 			yield(world.get_tree().create_timer(2.0), "timeout")
@@ -33,59 +33,54 @@ func play():
 		enemy = get_nearest_enemy(character.translation)
 	if enemy:
 		if character.can_recruit() and character.character.has_ability(TT.ABILITY.HEAL):
-			print("AI (" + character.character.name + ") says heal self")
+			print("[AI] (" + character.character.name + ") heal self")
 			character.heal(character)
 			character.is_done = true
 			yield(world.get_tree().create_timer(2.0), "timeout")
 			world.advance_turn()
 			return
 		if can_attack(character, enemy):
-			print("AI (" + character.character.name + ") says attack")
+			print("[AI] (" + character.character.name + ") attack")
 			world.gui.start("battle", enemy)
 			character.attack(enemy)
-#			character.is_done = true
-			if not character.is_connected("attack_complete", self, "play"):
-				character.connect("attack_complete", self, "play")
-#			if not character.is_connected("attack_complete", world.gui, "back"):
-#				character.connect("attack_complete", world.gui, "back")
+			character.connect("attack_complete", self, "play", [], CONNECT_ONESHOT)
 			return
 		else:
-			print("AI (" + character.character.name + ") can't attack")
+			print("[AI] (" + character.character.name + ") can't attack")
 		if character.character.turn_limits.move_distance > 1 and not can_attack(character, enemy):
 			var path = get_path_to(character, enemy, character.character.turn_limits.move_distance)
 			if path and path.size() > 1:
-				print("AI (" + character.character.name + ") says move")
+				print("[AI] (" + character.character.name + ") move")
 				character.move(path)
 				world.get_node("select").tile = path[path.size() - 1]
-				if not character.is_connected("path_complete", self, "play"):
-					character.connect("path_complete", self, "play")
+				character.connect("path_complete", self, "play", [], CONNECT_ONESHOT)
 				return
 			else:
-				print("AI (" + character.character.name + ") says no path")
+				print("[AI] (" + character.character.name + ") no path")
 				if not try_guarding(character):
-					print("AI (" + character.character.name + ") says wait (no path)")
+					print("[AI] (" + character.character.name + ") wait (no path)")
 				character.is_done = true
 				yield(world.get_tree().create_timer(2.0), "timeout")
 				world.advance_turn()
 				return
 		else:
 			if not try_guarding(character):
-				print("AI (" + character.character.name + ") says wait (out of moves)")
+				print("[AI] (" + character.character.name + ") wait (out of moves)")
 			character.is_done = true
 			yield(world.get_tree().create_timer(2.0), "timeout")
 			world.advance_turn()
 			return
 		# if we reach this point, abandon turn
 #		if not try_guarding(character):
-#			print("AI (" + character.character.name + ") abandons turn, exhausted options")
+#			print("[AI] (" + character.character.name + ") abandons turn, exhausted options")
 #		character.is_done = true
 #		yield(world.get_tree().create_timer(2.0), "timeout")
 #		world.advance_turn()
 #		return
 	else:
-		print("AI (" + character.character.name + ") can't find anyone to attack!")
+		print("[AI] (" + character.character.name + ") can't find anyone to attack!")
 		if not try_guarding(character):
-			print("AI (" + character.character.name + ") says wait (nothing to do)")
+			print("[AI] (" + character.character.name + ") wait (nothing to do)")
 		character.is_done = true
 		yield(world.get_tree().create_timer(2.0), "timeout")
 		world.advance_turn()
@@ -93,7 +88,7 @@ func play():
 func try_guarding(character):
 	if character.character.turn_limits.actions < 1:
 		return false
-	print("AI (" + character.character.name + ") says guard (last resort)")
+	print("[AI] (" + character.character.name + ") guard (last resort)")
 	character.guard()
 	return true
 
