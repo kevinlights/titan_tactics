@@ -317,6 +317,7 @@ func _ready():
 	gui.get_node("lose").connect("retry", self, "_on_replay")
 	gui.get_node("lose").connect("quit", self, "_on_quit")
 	gui.get_node("pause").connect("resume", self, "resume")
+	gui.get_node("pause").connect("quit", self, "_on_quit")
 #	gui.connect("modal_closed", self, "_on_modal_resume")
 	gui.get_node("endturn").connect("confirm_end_turn", self, "_on_confirm_end_turn")
 # warning-ignore:return_value_discarded
