@@ -509,9 +509,10 @@ func _on_death(character):
 		advance_turn()
 
 func _on_replay():
-  SaveLoadSystem.save_game()
+	SaveLoadSystem.save_game()
+	Game.camera_orientation = TT.CAMERA.NORTH
 # warning-ignore:return_value_discarded
-  get_tree().reload_current_scene()
+	get_tree().reload_current_scene()
 
 func _on_next_level():
 	if Game.level + 1 < Game.get_level_count():
@@ -519,6 +520,7 @@ func _on_next_level():
 		if Game.level > Game.unlocked_level:
 			Game.unlocked_level = Game.level
 		SaveLoadSystem.save_game()
+		Game.camera_orientation = TT.CAMERA.NORTH
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 	else:
@@ -805,6 +807,7 @@ func _input(event):
 #		gui.pause()
 	if event.is_action("ui_page_up") && !event.is_echo() && event.is_pressed():
 		Game.level = 10
+		Game.camera_orientation = TT.CAMERA.NORTH
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
