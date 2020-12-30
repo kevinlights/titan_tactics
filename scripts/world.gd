@@ -390,8 +390,8 @@ func select_team():
 	for member in Game.team:
 		member.hp = member.max_hp
 		member.reset_turn() # reset actions and moves
-	$select.translation = player_spawns[0] + Vector3(0.5, 0.5, -0.5);
-	$select.translation.y = 0.2
+	$select.translation = player_spawns[0] + Vector3(0.5, 1.0, -0.5);
+#	$select.translation.y = 0.2
 	if Game.team.size() > 1:
 		gui.start("characterselect")
 		$gui/characterselect.set_spawn(player_spawns[0])
@@ -596,7 +596,8 @@ func _on_select_team_member(team_member):
 	character.character.connect("level_up", self, "_on_level_up")
 	character.character.reset_turn()
 	if player_spawns.size() > 0:
-		$select.tile = player_spawns[0]
+#		$select.tile = player_spawns[0]
+		$select.translation = player_spawns[0] + Vector3(0.5, 1.0, -0.5);
 		$gui/characterselect.set_spawn(player_spawns[0])
 	else:
 		_on_team_select_done()
