@@ -301,9 +301,9 @@ func _init_astar():
 				]
 			'tree_03':
 				directions = [
-					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
-					cardinalDeltas[(1 + orientation_modifier) % cardinalDeltas.size()],
 					cardinalDeltas[(3 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(5 + orientation_modifier) % cardinalDeltas.size()],
+					cardinalDeltas[(7 + orientation_modifier) % cardinalDeltas.size()],
 				]
 			'tree':
 				directions = [
