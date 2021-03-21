@@ -807,11 +807,11 @@ func _input(event):
 #	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
 #		gui.start("pause")
 #		gui.pause()
-	if event.is_action("ui_page_up") && !event.is_echo() && event.is_pressed():
-		Game.level = 10
-		Game.camera_orientation = TT.CAMERA.NORTH
-# warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
+#	if event.is_action("ui_page_up") && !event.is_echo() && event.is_pressed():
+#		Game.level = 10
+#		Game.camera_orientation = TT.CAMERA.NORTH
+## warning-ignore:return_value_discarded
+#		get_tree().reload_current_scene()
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
 		var additional_character = load("res://resources/cast/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER

@@ -4,15 +4,26 @@ class_name SmortAI
 var world
 var characters
 var i_am = TT.CONTROL.AI
+var visual_range = 5
 
 func _init(new_world):
 	self.world = new_world
 	characters = self.world.current[TT.CONTROL.AI]
 
+func should_idle(character):
+	var enemy = get_nearest_enemy(character.translation)
+	var distance = character.translation.distance_to(enemy.translation)
+	return distance > visual_range
+		
+	
 func play():
 	if world.game_over:
 		return
 	var character = world.get_current()
+	if should_idle(character):
+		print("[AI] (" + character.character.name + ") idle")
+#		world.advance_turn()
+		return
 	print("[AI] (" + character.character.name + ") play")
 	world.get_node("lookat/camera").track(character)
 	if character.character.control != TT.CONTROL.AI:
