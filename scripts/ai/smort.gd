@@ -22,7 +22,8 @@ func play():
 	var character = world.get_current()
 	if should_idle(character):
 		print("[AI] (" + character.character.name + ") idle")
-#		world.advance_turn()
+		character.is_done = true
+		world.advance_turn()
 		return
 	print("[AI] (" + character.character.name + ") play")
 	world.get_node("lookat/camera").track(character)
