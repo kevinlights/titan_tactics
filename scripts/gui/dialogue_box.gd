@@ -87,6 +87,11 @@ func perform_action(item):
 		index += 1
 		advance()
 		return
+	if item.action == "face":
+		var name_direction = item.target.split(".")
+		var target_character = world.find_character(name_direction[0])
+		target_character.face(name_direction[1])
+		
 	if item.action == "move":
 		var target_character = world.find_character(item.target)
 		var marker = world.find_story_marker(item.target)

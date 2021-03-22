@@ -304,6 +304,17 @@ func attack(target):
 		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
 	return damage
 
+func face(direction):
+	match direction:
+		"west":
+			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["left"])
+		"east":
+			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["right"])
+		"north":
+			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["up"])
+		"south":
+			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["down"])
+
 func attack_complete():
 	yield(get_tree().create_timer(1.0), "timeout")
 #	print("attack complete")
