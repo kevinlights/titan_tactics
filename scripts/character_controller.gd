@@ -315,6 +315,17 @@ func face(direction):
 		"south":
 			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["down"])
 
+func emote(emoji):
+	match emoji:
+		"angry":
+			print("Angry!")
+		"surprised":
+			print("Surprised!")
+		"scared":
+			print("Scared")
+		"ugh":
+			print("Ugh!")
+
 func attack_complete():
 	yield(get_tree().create_timer(1.0), "timeout")
 #	print("attack complete")
