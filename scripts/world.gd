@@ -636,6 +636,9 @@ func _on_attack():
 #			gui.call_deferred("back")
 			return
 #		var damage = 
+		
+		# Enoh: Test AOE
+		#get_current().attack_new($select.tile, true)
 		get_current().attack(target)
 
 #		gui.call_deferred("close_attack")
