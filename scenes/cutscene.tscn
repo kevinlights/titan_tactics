@@ -73,6 +73,6 @@ scale = Vector2( 20, 1 )
 texture = SubResource( 1 )
 offset = Vector2( 0, 8 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="animate" type="AnimationPlayer" parent="."]
 anims/cutscene = SubResource( 2 )
 "anims/end cutscene" = SubResource( 3 )
