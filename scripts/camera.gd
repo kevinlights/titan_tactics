@@ -66,7 +66,7 @@ func _on_cutscene_start():
 	last_rotation = get_parent().rotation_degrees
 	start_rotation = get_parent().rotation_degrees
 	cutscene_rotation.y = start_rotation.y
-	end_rotation = start_rotation + Vector3(5, 0, 5)
+	end_rotation = start_rotation + Vector3(0, 0, 0)
 	rotating = true
 	
 
@@ -76,7 +76,7 @@ func _on_cutscene_end():
 	is_cutscene = true
 	start_time = now
 	start_rotation = get_parent().rotation_degrees
-	end_rotation = start_rotation + Vector3(-5, 0, -5)
+	end_rotation = start_rotation + Vector3(0, 0, 0)
 	rotating = true
 	
 	
