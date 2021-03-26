@@ -26,7 +26,7 @@ func _debug_list_cells():
 		var name = mesh_library.get_item_name(itemId)
 		var navmesh = mesh_library.get_item_navmesh(itemId)
 		var mesh = mesh_library.get_item_mesh(itemId)
-		var collisions = mesh_library.get_item_shapes(itemId)        
+		var collisions = mesh_library.get_item_shapes(itemId) 
 		print(
 			'name: ', name, ' [', itemId, '], cell: ', cell, ', worldCell: ', worldCell,
 			', collisions: ', collisions
@@ -55,6 +55,50 @@ func _populate_overlay():
 	for z in range(maxCell.z, minCell.z - 1, -1):
 		for x in range(minCell.x, maxCell.x + 1):
 			_raycast_cell_detection(x, z, maxCell.y, minCell.y)
+	
+	var cardinalDeltas := [
+		# Vector2(x_delta, z_delta)
+		Vector2(-1, -1), # NW
+		Vector2(0, -1), # N
+		Vector2(1, -1), # NE
+		Vector2(1, 0), # E
+		Vector2(1, 1), # SE
+		Vector2(0, 1), # S
+		Vector2(-1, 1), # SW
+		Vector2(-1, 0), # W
+	]
+	var deltaMappings = {
+		'Smallbridge': {
+			0: cardinalDeltas[7],
+			22: cardinalDeltas[1], # 90 deg,
+			10: cardinalDeltas[3], # 180 deg,
+			16: cardinalDeltas[5], # 270/-90 deg
+		}
+	}
+	var cells = get_used_cells()
+	for cell in cells:
+		var itemId = get_cell_item(cell.x, cell.y, cell.z)
+		var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
+		var name = mesh_library.get_item_name(itemId)
+		
+		if name == 'Smallbridge':
+			var cardinalDelta = deltaMappings[name][orientation]
+			print('smallbridge: ', cell)
+			overlay.add_flat_cell(cell + Vector3(cardinalDelta.x, 0, cardinalDelta.y))
+			if orientation == 22:
+				overlay.add_angled_cell(cell, 10)
+				overlay.add_angled_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 0)
+			elif orientation == 16:
+				overlay.add_angled_cell(cell, 0)
+				overlay.add_angled_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 10)
+			elif orientation == 10:
+				overlay.add_angled_cell(cell, 16)
+				overlay.add_angled_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 22)
+			elif orientation == 0:
+				overlay.add_angled_cell(cell, 22)
+				overlay.add_angled_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 16)
+			overlay.add_flat_cell(cell - 2 * Vector3(cardinalDelta.x, 0, cardinalDelta.y))
+		
 	overlay.init_astar()
 
 func _raycast_cell_detection(x, z, maxHeight, minHeight):
