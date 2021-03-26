@@ -37,6 +37,7 @@ func set_gridmap(_gridmap):
 var selectedCube = null
 var origCube = null
 func set_selector(_selector):
+	return
 	if selector:
 #		if selectedCube:
 #			if has_node(selectedCube.name):
@@ -137,6 +138,7 @@ func hide():
 	clear()
 
 func show():
+	return
 	if not data:
 		return
 	clear()
