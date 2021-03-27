@@ -66,7 +66,7 @@ func _on_cutscene_start():
 	last_rotation = get_parent().rotation_degrees
 	start_rotation = get_parent().rotation_degrees
 	cutscene_rotation.y = start_rotation.y
-	end_rotation = start_rotation + Vector3(10, 0, 10)
+	end_rotation = start_rotation + Vector3(0, 0, 0)
 	rotating = true
 	
 
@@ -76,7 +76,7 @@ func _on_cutscene_end():
 	is_cutscene = true
 	start_time = now
 	start_rotation = get_parent().rotation_degrees
-	end_rotation = start_rotation + Vector3(-10, 0, -10)
+	end_rotation = start_rotation + Vector3(0, 0, 0)
 	rotating = true
 	
 	
@@ -140,7 +140,7 @@ func _process(_delta):
 	else:
 		get_parent().rotation_degrees = end_rotation
 		rotating = false
-#	if is_cutscene and now - start_time < ttl:
-#		translation.y = lerp(19, 12, float(now - start_time) / float(ttl))
-#	if not is_cutscene and translation.y != 19:
-#		translation.y = lerp(12, 19, float(now - start_time) / float(ttl))
+	if is_cutscene and now - start_time < ttl:
+		translation.y = lerp(19, 20, float(now - start_time) / float(ttl))
+	if not is_cutscene and translation.y != 19:
+		translation.y = lerp(20, 19, float(now - start_time) / float(ttl))
