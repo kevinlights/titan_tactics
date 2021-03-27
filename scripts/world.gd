@@ -414,10 +414,12 @@ func _on_attack_complete():
 
 func _on_cutscene():
 	is_cutscene = true
+	$select/top.hide()
 	$cutscene_bars/animate.play("cutscene")
 
 func _on_end_cutscene():
 	is_cutscene = false
+	$select/top.show()
 	$cutscene_bars/animate.play("end cutscene")
 
 func _on_dialogue(content):

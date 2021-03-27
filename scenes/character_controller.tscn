@@ -1565,10 +1565,12 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=216]
+flags = 16
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 9, 9 )
 
 [sub_resource type="AtlasTexture" id=217]
+flags = 16
 atlas = ExtResource( 7 )
 region = Rect2( 0, 9, 9, 9 )
 
@@ -2162,6 +2164,7 @@ material_override = SubResource( 197 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 200 )
+frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -2171,6 +2174,7 @@ material_override = SubResource( 201 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 204 )
+frame = 1
 playing = true
 
 [node name="poison" type="AnimatedSprite3D" parent="."]
@@ -2180,7 +2184,6 @@ material_override = SubResource( 205 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 208 )
-frame = 1
 playing = true
 
 [node name="stun" type="AnimatedSprite3D" parent="."]
@@ -2190,6 +2193,7 @@ material_override = SubResource( 209 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 212 )
+frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -2199,6 +2203,7 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 215 )
+frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]
@@ -2207,6 +2212,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 218 )
+frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]
@@ -2400,7 +2406,6 @@ material_override = SubResource( 219 )
 pixel_size = 0.1
 axis = 0
 frames = SubResource( 271 )
-frame = 1
 playing = true
 
 [node name="background" type="Sprite3D" parent="vfx/Lightning attack/AnimationPlayer"]
