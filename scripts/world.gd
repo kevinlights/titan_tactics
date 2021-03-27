@@ -148,6 +148,7 @@ func advance_turn(explicit = 1, direction = 1):
 	print("[World] Advance turn")
 	$select.set_origin(get_current())
 	if current_turn == TT.CONTROL.PLAYER:
+		$gui/tip.show()
 		$range_overlay.set_origin(get_current())
   
 #	if explicit == 1:
@@ -155,6 +156,7 @@ func advance_turn(explicit = 1, direction = 1):
 #		yield(get_tree().create_timer(1.0), "timeout")
 	if current_turn  == TT.CONTROL.AI:
 		#gui.modal = true
+		$gui/tip.hide()
 		ai.play()
 	elif explicit == 1:
 		if not game_over:
@@ -415,11 +417,13 @@ func _on_attack_complete():
 func _on_cutscene():
 	is_cutscene = true
 	$select/top.hide()
+	$gui/tip.hide()
 	$cutscene_bars/animate.play("cutscene")
 
 func _on_end_cutscene():
 	is_cutscene = false
 	$select/top.show()
+	$gui/tip.show()
 	$cutscene_bars/animate.play("end cutscene")
 
 func _on_dialogue(content):
