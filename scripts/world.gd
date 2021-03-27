@@ -318,6 +318,8 @@ func _ready():
 	gui.get_node("lose").connect("quit", self, "_on_quit")
 	gui.get_node("pause").connect("resume", self, "resume")
 	gui.get_node("pause").connect("quit", self, "_on_quit")
+	gui.get_node("dialogue_box").connect("cutscene_start", self, "_on_cutscene")
+	gui.get_node("dialogue_box").connect("cutscene_end", self, "_on_end_cutscene")
 #	gui.connect("modal_closed", self, "_on_modal_resume")
 	gui.get_node("endturn").connect("confirm_end_turn", self, "_on_confirm_end_turn")
 # warning-ignore:return_value_discarded
@@ -408,6 +410,12 @@ func _on_attack_complete():
 #	print("[World] character triggered dialogue complete")
 ##	if not check_end_game():
 ##		$select.enable()
+
+func _on_cutscene():
+	$cutscene_bars/animate.play("cutscene")
+
+func _on_end_cutscene():
+	$cutscene_bars/animate.play("end cutscene")
 
 func _on_dialogue(content):
 	if "messages" in content:
@@ -636,6 +644,9 @@ func _on_attack():
 #			gui.call_deferred("back")
 			return
 #		var damage = 
+		
+		# Enoh: Test AOE
+		#get_current().attack_new($select.tile, true)
 		get_current().attack(target)
 
 #		gui.call_deferred("close_attack")

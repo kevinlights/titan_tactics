@@ -234,6 +234,111 @@ func can_attack(target):
 func get_def_buff(def_value):
 	return 1.0 - (log(def_value) / log(10)) * 0.3
 
+# Create formations here, taking angle (if melee) into account.
+func get_attack_offsets(attack:int, angle:int)->Array:
+	return []
+
+func damage(target):
+	#	var absolute_atk_range = character.atk_range + character.item_atk.attack_range
+	var damage = float((character.atk + character.item_atk.attack) * 3)
+	if target.character.character_class == character.weakness:
+		damage = damage * 0.7
+	if target.character.character_class == character.strength:
+		damage = damage * 1.3
+	if target.guarding:
+		damage = damage * 0.65
+	var behind_target = false
+	match target.movement.last_direction:
+		'right':
+			if tile.x < target.tile.x:
+				behind_target = true
+		'left':
+			if tile.x > target.tile.x:
+				behind_target = true
+		'up':
+			if tile.z > target.tile.z:
+				behind_target = true
+		'down':
+			if tile.z < target.tile.z:
+				behind_target = true
+	if behind_target:
+		damage = damage * 1.15
+	var target_defense = target.character.def + target.character.item_def.defense
+	var def_multiplier = get_def_buff(target_defense)
+	damage *= def_multiplier
+	damage = clamp(floor(damage), 0, 99)
+	target.character.hp -= damage
+	if target.has_node("healthbar"):
+		target.get_node("healthbar").set_value(target.character.hp, target.character.max_hp)	
+	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
+	var feedback_position = world.get_node("lookat/camera").unproject_position(target.translation + Vector3(.5, .5, .5))
+	damage_feedback.position = feedback_position
+	damage_feedback.get_node("damage").text = "-" + str(damage)
+	print('world.add_child(damage_feedback)', damage_feedback)
+	world.add_child(damage_feedback)
+
+# Enoh: can't work with arrows unless a way to feed the hit signal
+# to each target exists.
+func attack_new(tile:Vector3, AOE:bool):
+	if character.turn_limits.actions < 1:
+		return
+	character.turn_limits.actions -= 1
+	
+	var targets:Array
+	if AOE:
+		# Enoh:
+		# Use get_attack_offsets instead
+		# example: var offsets:Array = get_attack_offsets(blah, blah)
+		# for offset in offsets:
+		# target = world.entity_at(tile + offset)
+		# check for things like player team or whatever.
+		for x in [-1, 0, 1]:
+			for z in [-1, 0, 1]:
+				var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
+				var target = world.entity_at(tile + offset)
+				
+				if target == self:
+					continue
+				
+				if target:
+					targets.append(target)
+	else:
+		var target = world.entity_at(tile)
+		targets.append(target)
+	
+	last_target = targets[targets.size()-1]
+	
+	# Damage targets
+	for t in targets:
+		damage(t)
+	
+	if character.character_class == TT.TYPE.MAGE:
+		var projectile = load("res://scenes/projectile.tscn").instance()
+		projectile.fire(translation + Vector3(0, 1,  0), tile + Vector3(0, 1, 0))
+		for t in targets:
+			projectile.connect("hit", t, "hit", [character])
+		projectile.connect("hit", self, "attack_complete")
+		world.get_node("lookat/camera").track(projectile)
+		pick_random_sfx($sfx/magic_attack)
+		print('get_parent().add_child(projectile)', projectile)
+		get_parent().add_child(projectile)
+	elif character.character_class == TT.TYPE.ARCHER:
+		# move this to on animation complete 
+		pass
+	else:
+		attack_complete()
+		for t in targets:
+			t.hit(character)
+	
+	if tile.x < translation.x:
+		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
+	if tile.x > translation.x:
+		avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
+	if tile.z < translation.z:
+		avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
+	if tile.z > translation.z:
+		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
+
 func attack(target):
 	
 	last_target = target

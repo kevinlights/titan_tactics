@@ -1,6 +1,8 @@
 extends Control
 
 signal closed
+signal cutscene_start
+signal cutscene_end
 
 var content
 var dialogue_height
@@ -163,6 +165,7 @@ func out():
 	skip = false
 	content.complete()
 	emit_signal("closed")
+	emit_signal("cutscene_end")
 
 func return_control():
 	get_parent().back()
@@ -240,4 +243,5 @@ func _input(event):
 
 func init(dialogue_content):
 	set_content(dialogue_content)
+	emit_signal("cutscene_start")
 	show()
