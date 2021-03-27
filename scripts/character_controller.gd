@@ -421,15 +421,11 @@ func face(direction):
 			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["down"])
 
 func emote(emoji):
-	match emoji:
-		"angry":
-			print("Angry!")
-		"surprised":
-			print("Surprised!")
-		"scared":
-			print("Scared")
-		"ugh":
-			print("Ugh!")
+	$emotes.frame = 0
+	$emotes.show()
+	$emotes.play(emoji)
+	yield(get_tree().create_timer(2.0), "timeout")
+	$emotes.hide()
 
 func attack_complete():
 	yield(get_tree().create_timer(1.0), "timeout")
