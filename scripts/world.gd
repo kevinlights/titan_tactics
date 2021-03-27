@@ -11,6 +11,7 @@ onready var range_overlay = $range_overlay
 var tile_meta
 var world_map
 var game_over = false
+var is_cutscene = true
 var current_turn = TT.CONTROL.PLAYER
 var player_spawns = []
 var pathfinder
@@ -412,9 +413,11 @@ func _on_attack_complete():
 ##		$select.enable()
 
 func _on_cutscene():
+	is_cutscene = true
 	$cutscene_bars/animate.play("cutscene")
 
 func _on_end_cutscene():
+	is_cutscene = false
 	$cutscene_bars/animate.play("end cutscene")
 
 func _on_dialogue(content):
@@ -847,7 +850,7 @@ func _input(event):
 #			gui.start("action_menu", "guard")
 #		else:
 #			gui.start("action_menu", "end")
-	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed():
+	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed() && !is_cutscene:
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation + 1
 			if Game.camera_orientation == TT.CAMERA.WEST:
@@ -855,7 +858,7 @@ func _input(event):
 			print("[World] Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
 		
-	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed():
+	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed() && !is_cutscene:
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation - 1
 			if Game.camera_orientation == TT.CAMERA.NORTH:

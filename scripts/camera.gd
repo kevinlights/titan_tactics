@@ -66,7 +66,7 @@ func _on_cutscene_start():
 	last_rotation = get_parent().rotation_degrees
 	start_rotation = get_parent().rotation_degrees
 	cutscene_rotation.y = start_rotation.y
-	end_rotation = start_rotation + Vector3(0, 0, 0)
+	end_rotation = start_rotation + Vector3(5, 0, 5)
 	rotating = true
 	
 
@@ -76,13 +76,13 @@ func _on_cutscene_end():
 	is_cutscene = true
 	start_time = now
 	start_rotation = get_parent().rotation_degrees
-	end_rotation = start_rotation + Vector3(0, 0, 0)
+	end_rotation = start_rotation + Vector3(-5, 0, -5)
 	rotating = true
 	
 	
 func _on_orientation_changed_clockwise():
-	if is_cutscene:
-		return
+#	if is_cutscene:
+#		return
 	var now = OS.get_ticks_msec()
 #	if now - start_time < ttl:
 #		end_rotation += Vector3(0, 90, 0) 
@@ -94,8 +94,8 @@ func _on_orientation_changed_clockwise():
 	rotating = true
 
 func _on_orientation_changed_counter_clockwise():
-	if is_cutscene:
-		return
+#	if is_cutscene:
+#		return
 	var now = OS.get_ticks_msec()
 #	if now - start_time < ttl:
 #		end_rotation -= Vector3(0, 90, 0) # rotations[Game.camera_orientation]
@@ -140,7 +140,7 @@ func _process(_delta):
 	else:
 		get_parent().rotation_degrees = end_rotation
 		rotating = false
-	if is_cutscene and now - start_time < ttl:
-		translation.y = lerp(19, 20, float(now - start_time) / float(ttl))
-	if not is_cutscene and translation.y != 19:
-		translation.y = lerp(20, 19, float(now - start_time) / float(ttl))
+#	if is_cutscene and now - start_time < ttl:
+#		translation.y = lerp(19, 20, float(now - start_time) / float(ttl))
+#	if not is_cutscene and translation.y != 19:
+#		translation.y = lerp(20, 19, float(now - start_time) / float(ttl))
