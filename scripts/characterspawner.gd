@@ -14,10 +14,15 @@ var has_spawned = false
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
 	print("spawn entered tree")
-	pixel_size = 0.04
-	billboard = SpatialMaterial.BILLBOARD_ENABLED
-	translation.y = 0.347
+	pixel_size = 0.06 #0.04
+	centered = false
+	axis = 1
+	billboard = SpatialMaterial.BILLBOARD_DISABLED
+	translation.y = 0.2 #347
 	call_deferred("set_up_editor")
+	if not Engine.editor_hint:
+		translation.z -= 1
+		hide()
 
 func set_up_editor():
 	if Engine.editor_hint:
