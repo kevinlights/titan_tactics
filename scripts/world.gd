@@ -8,6 +8,7 @@ signal auto_deployed
 onready var gui = get_tree().get_root().get_node("World/gui")
 onready var range_overlay = $range_overlay
 
+var have_key = false
 var tile_meta
 var world_map
 var game_over = false
@@ -87,10 +88,11 @@ func spawn_cover(tile):
 	print("[World] Spawned cover")
 	return cover
 	
-func spawn_chest(x, y, item_spawner):
+func spawn_chest(x, y, item_spawner, dialogue):
 	var chest = load("res://scenes/chest.tscn").instance()
 	chest.teleport(x, y)
 	chest.item_spawner = item_spawner
+	chest.dialogue = dialogue
 	chest.add_to_group("characters")
 	print('world_map.add_child(chest)', chest)
 	world_map.add_child(chest)
@@ -253,6 +255,8 @@ func action():
 						if target.item_spawner.equipment_slot == 1:
 							gui.start("weaponswap", [ get_current().character.item_def, loot, 1 ])
 #							gui.loot(get_current().character.item_def, loot, 1)
+						if target.item_spawner.equipment_slot == 2:
+							have_key = true
 				else:
 					if target.available == "level_complete":
 						if all_enemies_eliminated():
@@ -342,7 +346,8 @@ func spawn_chests():
 		spawn_chest(
 			floor(chest_spawn.translation.x / TT.cell_size), 
 			floor(chest_spawn.translation.z / TT.cell_size),
-			chest_spawn.item_spawner)
+			chest_spawn.item_spawner,
+			chest_spawn.dialogue)
 		chest_spawn.hide()
 
 func surprise_spawn(spawn_trigger):

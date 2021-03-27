@@ -14,11 +14,13 @@ var start_y = 0
 var ttl = 400
 
 var item_spawner
+var dialogue
 
 var item_types = {
 	TT.TYPE.ARCHER: "archer",
 	TT.TYPE.MAGE: "mage",
-	TT.TYPE.FIGHTER: "swordsman"
+	TT.TYPE.FIGHTER: "swordsman",
+	TT.TYPE.QUEST: "key"
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
