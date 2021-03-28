@@ -23,8 +23,9 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
-equipment_slot = 0
+equipment_slot = 2
 level = 1
+quest_item = "key"
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 17 )
@@ -464,10 +465,9 @@ __meta__ = {
 [node name="map" type="Spatial" parent="."]
 
 [node name="StoryMarker" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.2, -0.85038 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.2, -1.01752 )
 centered = false
-offset = Vector2( 4, 4 )
-pixel_size = 0.08
+pixel_size = 0.06
 axis = 1
 texture = ExtResource( 14 )
 script = ExtResource( 13 )
@@ -475,15 +475,19 @@ marker_name = "confront_hero"
 dialogue = null
 
 [node name="ChestSpawner" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 4 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 1 )
 
 [node name="CharacterSpawner" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.347, 2 )
-pixel_size = 0.04
-billboard = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 2 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 6 )
@@ -493,9 +497,10 @@ death_dialogue = null
 spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.347, 5 )
-pixel_size = 0.04
-billboard = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 5 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 15 )
 script = ExtResource( 3 )
 stats = SubResource( 11 )
@@ -505,9 +510,10 @@ death_dialogue = null
 spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.347, 10 )
-pixel_size = 0.04
-billboard = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 10 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 16 )
@@ -517,9 +523,10 @@ death_dialogue = null
 spawn_trigger = "level_start"
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.347, 8 )
-pixel_size = 0.04
-billboard = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.2, 8 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 21 )
@@ -529,9 +536,10 @@ death_dialogue = null
 spawn_trigger = "level_start"
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.347, 7 )
-pixel_size = 0.04
-billboard = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 7 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 26 )
@@ -541,9 +549,10 @@ death_dialogue = null
 spawn_trigger = "level_start"
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.347, 7 )
-pixel_size = 0.04
-billboard = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.2, 7 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 31 )
@@ -553,10 +562,9 @@ death_dialogue = null
 spawn_trigger = "level_start"
 
 [node name="StoryMarker2" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0149, 0.2, 0 )
 centered = false
-offset = Vector2( 4, 4 )
-pixel_size = 0.08
+pixel_size = 0.06
 axis = 1
 texture = ExtResource( 14 )
 script = ExtResource( 13 )
@@ -566,8 +574,7 @@ dialogue = null
 [node name="StoryMarker3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.2, 0 )
 centered = false
-offset = Vector2( 4, 4 )
-pixel_size = 0.08
+pixel_size = 0.06
 axis = 1
 texture = ExtResource( 14 )
 script = ExtResource( 13 )
@@ -577,8 +584,7 @@ dialogue = null
 [node name="StoryMarker4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.2, -1 )
 centered = false
-offset = Vector2( 4, 4 )
-pixel_size = 0.08
+pixel_size = 0.06
 axis = 1
 texture = ExtResource( 14 )
 script = ExtResource( 13 )
@@ -586,9 +592,10 @@ marker_name = ""
 dialogue = null
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.347, 1 )
-pixel_size = 0.04
-billboard = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.2, 1 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 15 )
 script = ExtResource( 3 )
 stats = SubResource( 36 )

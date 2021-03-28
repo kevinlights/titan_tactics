@@ -8,9 +8,11 @@ signal auto_deployed
 onready var gui = get_tree().get_root().get_node("World/gui")
 onready var range_overlay = $range_overlay
 
+var have_key = false
 var tile_meta
 var world_map
 var game_over = false
+var is_cutscene = true
 var current_turn = TT.CONTROL.PLAYER
 var player_spawns = []
 var pathfinder
@@ -86,10 +88,11 @@ func spawn_cover(tile):
 	print("[World] Spawned cover")
 	return cover
 	
-func spawn_chest(x, y, item_spawner):
+func spawn_chest(x, y, item_spawner, dialogue):
 	var chest = load("res://scenes/chest.tscn").instance()
 	chest.teleport(x, y)
 	chest.item_spawner = item_spawner
+	chest.dialogue = dialogue
 	chest.add_to_group("characters")
 	print('world_map.add_child(chest)', chest)
 	world_map.add_child(chest)
@@ -147,6 +150,7 @@ func advance_turn(explicit = 1, direction = 1):
 	print("[World] Advance turn")
 	$select.set_origin(get_current())
 	if current_turn == TT.CONTROL.PLAYER:
+		$gui/tip.show()
 		$range_overlay.set_origin(get_current())
   
 #	if explicit == 1:
@@ -154,6 +158,7 @@ func advance_turn(explicit = 1, direction = 1):
 #		yield(get_tree().create_timer(1.0), "timeout")
 	if current_turn  == TT.CONTROL.AI:
 		#gui.modal = true
+		$gui/tip.hide()
 		ai.play()
 	elif explicit == 1:
 		if not game_over:
@@ -250,6 +255,8 @@ func action():
 						if target.item_spawner.equipment_slot == 1:
 							gui.start("weaponswap", [ get_current().character.item_def, loot, 1 ])
 #							gui.loot(get_current().character.item_def, loot, 1)
+						if target.item_spawner.equipment_slot == 2:
+							have_key = true
 				else:
 					if target.available == "level_complete":
 						if all_enemies_eliminated():
@@ -318,6 +325,8 @@ func _ready():
 	gui.get_node("lose").connect("quit", self, "_on_quit")
 	gui.get_node("pause").connect("resume", self, "resume")
 	gui.get_node("pause").connect("quit", self, "_on_quit")
+	gui.get_node("dialogue_box").connect("cutscene_start", self, "_on_cutscene")
+	gui.get_node("dialogue_box").connect("cutscene_end", self, "_on_end_cutscene")
 #	gui.connect("modal_closed", self, "_on_modal_resume")
 	gui.get_node("endturn").connect("confirm_end_turn", self, "_on_confirm_end_turn")
 # warning-ignore:return_value_discarded
@@ -337,7 +346,8 @@ func spawn_chests():
 		spawn_chest(
 			floor(chest_spawn.translation.x / TT.cell_size), 
 			floor(chest_spawn.translation.z / TT.cell_size),
-			chest_spawn.item_spawner)
+			chest_spawn.item_spawner,
+			chest_spawn.dialogue)
 		chest_spawn.hide()
 
 func surprise_spawn(spawn_trigger):
@@ -408,6 +418,18 @@ func _on_attack_complete():
 #	print("[World] character triggered dialogue complete")
 ##	if not check_end_game():
 ##		$select.enable()
+
+func _on_cutscene():
+	is_cutscene = true
+	$select/top.hide()
+	$gui/tip.hide()
+	$cutscene_bars/animate.play("cutscene")
+
+func _on_end_cutscene():
+	is_cutscene = false
+	$select/top.show()
+	$gui/tip.show()
+	$cutscene_bars/animate.play("end cutscene")
 
 func _on_dialogue(content):
 	if "messages" in content:
@@ -636,6 +658,9 @@ func _on_attack():
 #			gui.call_deferred("back")
 			return
 #		var damage = 
+		
+		# Enoh: Test AOE
+		#get_current().attack_new($select.tile, true)
 		get_current().attack(target)
 
 #		gui.call_deferred("close_attack")
@@ -836,7 +861,7 @@ func _input(event):
 #			gui.start("action_menu", "guard")
 #		else:
 #			gui.start("action_menu", "end")
-	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed():
+	if event.is_action("camera_clockwise") && !event.is_echo() && event.is_pressed() && !is_cutscene:
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation + 1
 			if Game.camera_orientation == TT.CAMERA.WEST:
@@ -844,7 +869,7 @@ func _input(event):
 			print("[World] Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
 		
-	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed():
+	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed() && !is_cutscene:
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation - 1
 			if Game.camera_orientation == TT.CAMERA.NORTH:

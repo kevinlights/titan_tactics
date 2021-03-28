@@ -4,10 +4,12 @@ Kris, you are the best scout of Haki, our small village, and you have been selec
 # kris
 I will not let you down!
 > face kris.west
+> emote kris.surprised
 
 # instructor
 But first, let’s review the basics.
 > face kris.east
+> emote kris.angry
 
 //tutorial start here
 //movement

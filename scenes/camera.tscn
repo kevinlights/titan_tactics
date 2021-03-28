@@ -6,7 +6,7 @@
 [node name="lookat" type="Spatial"]
 
 [node name="camera" type="Camera" parent="."]
-transform = Transform( 0.707107, 0.45452, -0.541675, 0, 0.766045, 0.642788, 0.707107, -0.45452, 0.541675, -15, 19, 15 )
+transform = Transform( 0.707107, 0.45452, -0.541675, 0, 0.766045, 0.642788, 0.707107, -0.45452, 0.541675, -15, 20, 15 )
 current = true
 fov = 10.0
 script = ExtResource( 1 )

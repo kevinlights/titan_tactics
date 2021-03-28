@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/types.png-1ec12719585fbcdbf55ddf3579b11b41.stex"
+path="res://.import/lightning.png-c5ec92f735bbf5a639552eb9fe0bc79e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gfx/types.png"
-dest_files=[ "res://.import/types.png-1ec12719585fbcdbf55ddf3579b11b41.stex" ]
+source_file="res://gfx/FX/lightning.png"
+dest_files=[ "res://.import/lightning.png-c5ec92f735bbf5a639552eb9fe0bc79e.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

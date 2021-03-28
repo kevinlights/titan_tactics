@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scenes/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://music/cs1_home_theme.ogg" type="AudioStream" id=22]
 [ext_resource path="res://music/cs5_sad_theme.ogg" type="AudioStream" id=23]
 [ext_resource path="res://music/cs2_caravan_theme.ogg" type="AudioStream" id=24]
+[ext_resource path="res://scenes/cutscene.tscn" type="PackedScene" id=25]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 18
@@ -200,7 +201,6 @@ axis = 1
 alpha_cut = 2
 frames = SubResource( 17 )
 animation = "attack"
-frame = 1
 playing = true
 script = ExtResource( 4 )
 
@@ -290,3 +290,5 @@ stream = ExtResource( 20 )
 
 [node name="royal" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 21 )
+
+[node name="cutscene_bars" parent="." instance=ExtResource( 25 )]

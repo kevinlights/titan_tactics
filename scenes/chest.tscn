@@ -39,7 +39,7 @@ visible = false
 pixel_size = 0.04
 billboard = 2
 frames = ExtResource( 3 )
-animation = "battery"
+animation = "key"
 
 [node name="chest_billboard" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00114679, 0.126645, -0.00570965 )

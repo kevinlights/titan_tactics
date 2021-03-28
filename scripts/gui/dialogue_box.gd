@@ -1,6 +1,8 @@
 extends Control
 
 signal closed
+signal cutscene_start
+signal cutscene_end
 
 var content
 var dialogue_height
@@ -91,7 +93,10 @@ func perform_action(item):
 		var name_direction = item.target.split(".")
 		var target_character = world.find_character(name_direction[0])
 		target_character.face(name_direction[1])
-		
+	if item.action == "emote":
+		var name_emote = item.target.split(".")
+		var target_character = world.find_character(name_emote[0])
+		target_character.emote(name_emote[1])
 	if item.action == "move":
 		var target_character = world.find_character(item.target)
 		var marker = world.find_story_marker(item.target)
@@ -160,6 +165,7 @@ func out():
 	skip = false
 	content.complete()
 	emit_signal("closed")
+	emit_signal("cutscene_end")
 
 func return_control():
 	get_parent().back()
@@ -237,4 +243,5 @@ func _input(event):
 
 func init(dialogue_content):
 	set_content(dialogue_content)
+	emit_signal("cutscene_start")
 	show()
