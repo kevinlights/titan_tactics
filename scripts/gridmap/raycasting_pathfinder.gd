@@ -21,13 +21,57 @@ func _ready():
 	if not Engine.editor_hint:
 		if overlay:
 			overlay.init_astar()
-			overlay.clear_gridmap()
+			overlay.blank_gridmap()
 
 # methods used for pathfinding
 func find_path(start, end, blocked_cells = []):
 	if !overlay:
 		return []
 	return overlay.find_path(start, end, blocked_cells)
+
+# methods used for range overlay
+func set_tile_overlay(world_point, type):
+	if not world_to_tile_map.has(world_point):
+		var local_point = world_to_map(world_point)
+		var possible_tiles = overlay.filter_tiles(local_point.x, local_point.z)
+		if possible_tiles.size() == 1:
+			var tile_id = overlay.tiles.find(possible_tiles[0])
+			world_to_tile_map[world_point] = tile_id
+	if world_to_tile_map.has(world_point):
+		var tile_id = world_to_tile_map[world_point]
+		var cell = overlay.astar.get_point_position(tile_id)
+		if type == 'hint':
+			type = null
+		overlay.change_cell_to(cell, type)
+		return true
+	return false
+
+onready var world_to_tile_map = {}
+func get_tiles_within(_start, distance):
+	var offset = get_parent().translation * -1
+	var start = world_to_map(_start + offset)
+	var possible_starts = overlay.filter_tiles(start.x, start.z)
+	if possible_starts.size() == 1:
+		var start_id = overlay.vector_to_id(possible_starts[0])
+		var output_ids = []
+		var start_ids = [start_id]
+		for _i in range(0, distance):
+			var next_ids = []
+			for id in start_ids:
+				for next in overlay.astar.get_point_connections(id):
+					if next != start_id and output_ids.find(next) == -1:
+						output_ids.push_back(next)
+						next_ids.push_back(next)
+				start_ids = next_ids
+		var output_points = []
+		for id in output_ids:
+			var world_point = overlay.point_to_world(overlay.astar.get_point_position(id), false)
+			if not world_to_tile_map.has(world_point):
+				world_to_tile_map[world_point] = id
+			output_points.push_back(world_point)
+		return output_points
+	else:
+		return []
 
 # methods used to populate overlay in the editor
 func _physics_process(delta):

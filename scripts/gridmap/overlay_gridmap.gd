@@ -6,9 +6,11 @@ onready var itemMapping := {
 	'flat': -1,
 	'flat_move': -1,
 	'flat_attack': -1,
+	'flat_placeholder': -1,
 	'angled': -1,
 	'angled_move': -1,
 	'angled_attack': -1,
+	'angled_placeholder': -1,
 }
 
 func _ready():
@@ -19,6 +21,19 @@ func _ready():
 func clear_gridmap():
 	for cell in get_used_cells():
 		set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
+		
+func blank_gridmap():
+	for cell in get_used_cells():
+		change_cell_to(cell, 'placeholder')
+
+func change_cell_to(cell, type = null):
+	var name = get_cell_name(cell)
+	var cell_type = name.replace('_move', '').replace('_attack', '').replace('_placeholder', '')
+	var new_name = cell_type
+	if type:
+		new_name += '_' + type
+	var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
+	set_cell_item(cell.x, cell.y, cell.z, itemMapping[new_name], orientation)
 
 func add_flat_cell(cell):
 	print('add_flat_cell ', cell)

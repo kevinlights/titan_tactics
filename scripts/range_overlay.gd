@@ -1,13 +1,5 @@
 extends Spatial
 
-onready var materials = {
-	"move": preload("res://gfx/range-overlay/move.material"),
-	"attack": preload("res://gfx/range-overlay/attack.material"),
-	"select": preload("res://gfx/range-overlay/select.material"),
-	"hint": preload("res://gfx/range-overlay/hint.material"),
-}
-
-
 onready var world = get_tree().get_root().get_node("World")
 var overlayed_tiles = []
 var data
@@ -34,19 +26,9 @@ func set_hint_tile(tile):
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
-var selectedCube = null
-var origCube = null
 func set_selector(_selector):
 	return
 	if selector:
-#		if selectedCube:
-#			if has_node(selectedCube.name):
-#				remove_child(selectedCube)
-#			if origCube:
-#				print('add_child(origCube)', origCube)
-#				add_child(origCube)
-#				origCube = null
-#			selectedCube = null
 		if overlayed_tiles.find(selector) > -1:
 			var context_tile = Vector3(selector.x, 0, selector.z)
 			var context = world.get_current_context(context_tile)
@@ -67,14 +49,7 @@ func set_selector(_selector):
 		selector = gridmap.point_to_world(possible_selected_tiles[0], false)
 		var tile_overlay_success = gridmap.set_tile_overlay(selector, 'select')
 		if not tile_overlay_success:
-			selectedCube = drawSqaure(selector, materials.select)
-			remove_child(selectedCube)
-			for child in get_children():
-				if child.translation == selectedCube.translation:
-					origCube = child
-					remove_child(origCube)
-			print('add_child(selectedCube)', selectedCube)
-			add_child(selectedCube)
+			print_debug ('tile_overlay failed for ', selector)
 
 func set_origin(_origin):
 	origin = _origin
@@ -117,28 +92,16 @@ func _process(_time):
 
 func clear():
 	for tile in overlayed_tiles:
-		gridmap.set_tile_overlay(tile, '')
+		gridmap.set_tile_overlay(tile, 'placeholder')
 	overlayed_tiles = []
 	for child in get_children():
 		child.queue_free()
-
-func drawSqaure(location, material):
-	var square = CSGBox.new()
-	square.set_depth(0.9)
-	square.set_height(0.9)
-	square.set_width(0.9)
-	square.translate(Vector3(location.x + 0.05, location.y, location.z + 0.05))
-	square.set_material(material)
-	print('add_child(square)', square)
-	add_child(square)
-	return square
 
 func hide():
 	self.visible = false
 	clear()
 
 func show():
-	return
 	if not data:
 		return
 	clear()
@@ -157,12 +120,7 @@ func show():
 		if tile_overlay_success == true:
 			overlayed_tiles.push_back(tile)
 		elif tile_overlay_success == false:
-			# TODO: implement fallback using previous approach to handle bridges etc
-			print ('tile_overlay failed for ', tile)
-			if context == TT.CONTEXT.ATTACK:
-				drawSqaure(tile, materials.attack)
-			elif context == TT.CONTEXT.MOVE:
-				drawSqaure(tile, materials.move)
+			print_debug ('tile_overlay failed for ', tile)
 	
 	for tile in gridmap.get_tiles_within(data.tile, data.atk_range):
 		var context_tile = Vector3(tile.x, 0, tile.z)
@@ -174,9 +132,7 @@ func show():
 		if tile_overlay_success == true:
 			overlayed_tiles.push_back(tile)
 		elif tile_overlay_success == false:
-			# TODO: implement fallback using previous approach to handle bridges etc
-			if context == TT.CONTEXT.ATTACK:
-				drawSqaure(tile, materials.attack)
+			print_debug ('tile_overlay failed for ', tile)
 	
 	if hint_tile:
 		var tile_overlay_success = gridmap.set_tile_overlay(hint_tile, 'hint')
