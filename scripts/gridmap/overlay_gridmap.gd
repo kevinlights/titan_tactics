@@ -1,4 +1,5 @@
-extends "res://scripts/gridmap/astar_pathfinding.gd"
+tool
+extends "res://scripts/gridmap/overlay_astar.gd"
 
 var overlay_meshlib := preload("res://gfx/range-overlay/overlay.meshlib")
 onready var itemMapping := {
@@ -15,10 +16,16 @@ func _ready():
 	_copy_attrs_from_parent()
 	_detect_meshlib_items()
 
+func clear_gridmap():
+	for cell in get_used_cells():
+		set_cell_item(cell.x, cell.y, cell.z, INVALID_CELL_ITEM)
+
 func add_flat_cell(cell):
+	print('add_flat_cell ', cell)
 	set_cell_item(cell.x, cell.y, cell.z, itemMapping.flat)
 
 func add_angled_cell(cell, orientation = 0):
+	print('add_angled_cell ', cell)
 	set_cell_item(cell.x, cell.y, cell.z, itemMapping.angled, orientation)
 	
 	

@@ -10,6 +10,7 @@ onready var counts := {
 }
 
 var debug := false # change to true to increase logging
+var debug_path := false # change to true to increase logging
 var hide_non_walkable_tiles := true # change to true to visually debug
 var no_diagonal_movement := true # change to false to allow diagonal movement
 
@@ -43,9 +44,6 @@ var orientationModifier := {
 	10: 4, # 180 deg,
 	16: 2, # 270/-90 deg
 }
-
-func _ready():
-	print('astar pathfinding cleared')
 
 func init_astar():
 	var ground_cells = get_used_cells()
@@ -177,3 +175,68 @@ func get_cell_name(cell):
 		return ""
 	var name = mesh_library.get_item_name(itemId)
 	return name
+	
+func find_path(start, end, blocked_cells = []):
+	var offset = get_parent().translation * -1
+	if debug_path:
+		print("end ", end)
+	var map_end = world_to_map(end)
+	if debug_path:
+		print("end map ", map_end)
+		print("back to world end ", map_to_world(map_end.x, map_end.y, map_end.z))
+		print("find_path ", start, end)
+	start = world_to_map(start + offset)
+	end = world_to_map(end + offset)
+	if debug_path:
+		print("find_path (grid coordinates) ", start, end)
+	var possible_starts = filter_tiles(start.x, start.z)
+	var possible_ends = filter_tiles(end.x, end.z)
+	if possible_starts.size() == 1 and possible_ends.size() == 1:
+		var start_id = vector_to_id(possible_starts[0])
+		var end_id = vector_to_id(possible_ends[0])
+
+		var blocked_tile_ids = []
+#		print(start, end, blocked_cells)
+		if(blocked_cells.size() > 0):
+			for blocked_cell in blocked_cells:
+				for tile in filter_tiles(blocked_cell.x, blocked_cell.z):
+					var blocked_id = vector_to_id(tile)
+					if blocked_id != start_id and blocked_id != end_id:
+						blocked_tile_ids.push_back(blocked_id)
+		for id in blocked_tile_ids:
+			astar.set_point_disabled(id, true)
+		var path = astar.get_point_path(start_id, end_id)
+		for id in blocked_tile_ids:
+			astar.set_point_disabled(id, false)
+		var w_path = world_path(path)
+		if debug_path:
+			print("found_path ", path)
+			print("found_path (world) ", w_path)
+		return w_path
+	elif possible_starts.size() == 0 or possible_ends.size() == 0:
+		print('Unable to find a possible start/end tile for pathfinding ', possible_starts, possible_ends)
+	elif possible_starts.size() > 1 or possible_ends.size() > 1:
+		print_debug("Multiple possible start/end tiles found for pathfinding")
+		print(possible_starts, ' ', possible_ends)
+	return []
+
+func filter_tiles(x, z):
+	var output = []
+	for tile in tiles:
+		if(tile and tile.x == x and tile.z == z):
+			output.push_back(tile)
+	return output
+
+func world_path(path:PoolVector3Array):
+	var w_path = PoolVector3Array()
+	for point in path:
+		w_path.append(point_to_world(point, false))
+	return w_path
+
+func point_to_world(point: Vector3, exclude_y: bool):
+	var offset = get_parent().translation + Vector3(-0.5, -1, -0.5)
+	offset.y = 0
+	var y = 0.0 if exclude_y else (point.y / 2)
+# warning-ignore:narrowing_conversion
+# warning-ignore:narrowing_conversion
+	return map_to_world(point.x, y, point.z) + offset
