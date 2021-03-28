@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://gfx/OBJS/desert.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/playerspawner.gd" type="Script" id=2]
@@ -8,15 +8,17 @@
 [ext_resource path="res://scripts/item.gd" type="Script" id=6]
 [ext_resource path="res://scripts/status_effect.gd" type="Script" id=7]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=8]
+[ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=9]
 [ext_resource path="res://gfx/swordsman.png" type="Texture" id=10]
 [ext_resource path="res://gfx/archer.png" type="Texture" id=11]
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=12]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=13]
 [ext_resource path="res://scripts/item_spawner.gd" type="Script" id=14]
 [ext_resource path="res://scripts/level.gd" type="Script" id=15]
-[ext_resource path="res://scripts/gridmap_pathfinder.gd" type="Script" id=16]
+[ext_resource path="res://gfx/range-overlay/overlay.meshlib" type="MeshLibrary" id=16]
 [ext_resource path="res://resources/story/level10_start.dialogue" type="Resource" id=17]
 [ext_resource path="res://resources/story/level10_end.dialogue" type="Resource" id=18]
+[ext_resource path="res://scripts/gridmap/overlay_gridmap.gd" type="Script" id=19]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 7 )
@@ -130,14 +132,14 @@ recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=13]
+[sub_resource type="Resource" id=11]
 script = ExtResource( 7 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=12]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 0
@@ -147,16 +149,16 @@ attack = 1
 attack_range = 0
 defense = 0
 heal = 0
-effect = SubResource( 13 )
+effect = SubResource( 11 )
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=14]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 1
@@ -166,9 +168,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 15 )
+effect = SubResource( 13 )
 
-[sub_resource type="Resource" id=17]
+[sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
 character_class = 3
 name = "Datev"
@@ -180,20 +182,20 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 14 )
-item_def = SubResource( 16 )
+item_atk = SubResource( 12 )
+item_def = SubResource( 14 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=20]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 0
@@ -203,16 +205,16 @@ attack = 1
 attack_range = 0
 defense = 0
 heal = 0
-effect = SubResource( 20 )
+effect = SubResource( 16 )
 
-[sub_resource type="Resource" id=22]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=23]
+[sub_resource type="Resource" id=19]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 1
@@ -222,9 +224,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 22 )
+effect = SubResource( 18 )
 
-[sub_resource type="Resource" id=24]
+[sub_resource type="Resource" id=20]
 script = ExtResource( 5 )
 character_class = 3
 name = "Cyndi"
@@ -236,20 +238,20 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 21 )
-item_def = SubResource( 23 )
+item_atk = SubResource( 17 )
+item_def = SubResource( 19 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=27]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=28]
+[sub_resource type="Resource" id=22]
 script = ExtResource( 6 )
 character_class = 2
 equipment_slot = 0
@@ -259,16 +261,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 1
-effect = SubResource( 27 )
+effect = SubResource( 21 )
 
-[sub_resource type="Resource" id=29]
+[sub_resource type="Resource" id=23]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=30]
+[sub_resource type="Resource" id=24]
 script = ExtResource( 6 )
 character_class = 2
 equipment_slot = 1
@@ -278,9 +280,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 1
-effect = SubResource( 29 )
+effect = SubResource( 23 )
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=25]
 script = ExtResource( 5 )
 character_class = 2
 name = "Layla"
@@ -292,20 +294,20 @@ def = 1
 atk_range = 4
 mov_range = 4
 heal = 1
-item_atk = SubResource( 28 )
-item_def = SubResource( 30 )
+item_atk = SubResource( 22 )
+item_def = SubResource( 24 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=34]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=35]
+[sub_resource type="Resource" id=27]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 0
@@ -315,16 +317,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 34 )
+effect = SubResource( 26 )
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=28]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=37]
+[sub_resource type="Resource" id=29]
 script = ExtResource( 6 )
 character_class = 0
 equipment_slot = 1
@@ -334,9 +336,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 36 )
+effect = SubResource( 28 )
 
-[sub_resource type="Resource" id=38]
+[sub_resource type="Resource" id=30]
 script = ExtResource( 5 )
 character_class = 0
 name = "Nikk"
@@ -348,8 +350,120 @@ def = 1
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 35 )
-item_def = SubResource( 37 )
+item_atk = SubResource( 27 )
+item_def = SubResource( 29 )
+recruit_mode = 0
+portrait_override = ""
+control = 1
+
+[sub_resource type="Resource" id=31]
+script = ExtResource( 7 )
+effect = 2
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=32]
+script = ExtResource( 6 )
+character_class = 2
+equipment_slot = 0
+level = 1
+name = "Minor Wand"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 1
+effect = SubResource( 31 )
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 7 )
+effect = 2
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=34]
+script = ExtResource( 6 )
+character_class = 2
+equipment_slot = 1
+level = 1
+name = "Minor Chain"
+attack = 0
+attack_range = 0
+defense = 1
+heal = 1
+effect = SubResource( 33 )
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 5 )
+character_class = 2
+name = "Nedd"
+level = 1
+hp = 55
+max_hp = 55
+atk = 5
+def = 1
+atk_range = 4
+mov_range = 4
+heal = 1
+item_atk = SubResource( 32 )
+item_def = SubResource( 34 )
+recruit_mode = 0
+portrait_override = ""
+control = 1
+
+[sub_resource type="Resource" id=36]
+script = ExtResource( 7 )
+effect = 2
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=37]
+script = ExtResource( 6 )
+character_class = 1
+equipment_slot = 0
+level = 1
+name = "Minor Bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 36 )
+
+[sub_resource type="Resource" id=38]
+script = ExtResource( 7 )
+effect = 2
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=39]
+script = ExtResource( 6 )
+character_class = 1
+equipment_slot = 1
+level = 1
+name = "Minor Vest"
+attack = 0
+attack_range = 0
+defense = 1
+heal = 0
+effect = SubResource( 38 )
+
+[sub_resource type="Resource" id=40]
+script = ExtResource( 5 )
+character_class = 1
+name = "Bram"
+level = 1
+hp = 60
+max_hp = 60
+atk = 5
+def = 1
+atk_range = 3
+mov_range = 6
+heal = 0
+item_atk = SubResource( 37 )
+item_def = SubResource( 39 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
@@ -363,14 +477,14 @@ name = ""
 
 [sub_resource type="Resource" id=42]
 script = ExtResource( 6 )
-character_class = 2
+character_class = 0
 equipment_slot = 0
 level = 1
-name = "Minor Wand"
+name = "Minor Sword"
 attack = 1
 attack_range = 1
 defense = 0
-heal = 1
+heal = 0
 effect = SubResource( 41 )
 
 [sub_resource type="Resource" id=43]
@@ -382,129 +496,17 @@ name = ""
 
 [sub_resource type="Resource" id=44]
 script = ExtResource( 6 )
-character_class = 2
+character_class = 0
 equipment_slot = 1
 level = 1
-name = "Minor Chain"
+name = "Minor Vest"
 attack = 0
 attack_range = 0
 defense = 1
-heal = 1
+heal = 0
 effect = SubResource( 43 )
 
 [sub_resource type="Resource" id=45]
-script = ExtResource( 5 )
-character_class = 2
-name = "Nedd"
-level = 1
-hp = 55
-max_hp = 55
-atk = 5
-def = 1
-atk_range = 4
-mov_range = 4
-heal = 1
-item_atk = SubResource( 42 )
-item_def = SubResource( 44 )
-recruit_mode = 0
-portrait_override = ""
-control = 1
-
-[sub_resource type="Resource" id=48]
-script = ExtResource( 7 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=49]
-script = ExtResource( 6 )
-character_class = 1
-equipment_slot = 0
-level = 1
-name = "Minor Bow"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 48 )
-
-[sub_resource type="Resource" id=50]
-script = ExtResource( 7 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=51]
-script = ExtResource( 6 )
-character_class = 1
-equipment_slot = 1
-level = 1
-name = "Minor Vest"
-attack = 0
-attack_range = 0
-defense = 1
-heal = 0
-effect = SubResource( 50 )
-
-[sub_resource type="Resource" id=52]
-script = ExtResource( 5 )
-character_class = 1
-name = "Bram"
-level = 1
-hp = 60
-max_hp = 60
-atk = 5
-def = 1
-atk_range = 3
-mov_range = 6
-heal = 0
-item_atk = SubResource( 49 )
-item_def = SubResource( 51 )
-recruit_mode = 0
-portrait_override = ""
-control = 1
-
-[sub_resource type="Resource" id=55]
-script = ExtResource( 7 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=56]
-script = ExtResource( 6 )
-character_class = 0
-equipment_slot = 0
-level = 1
-name = "Minor Sword"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 55 )
-
-[sub_resource type="Resource" id=57]
-script = ExtResource( 7 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=58]
-script = ExtResource( 6 )
-character_class = 0
-equipment_slot = 1
-level = 1
-name = "Minor Vest"
-attack = 0
-attack_range = 0
-defense = 1
-heal = 0
-effect = SubResource( 57 )
-
-[sub_resource type="Resource" id=59]
 script = ExtResource( 5 )
 character_class = 0
 name = "Jessi"
@@ -516,20 +518,20 @@ def = 1
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 56 )
-item_def = SubResource( 58 )
+item_atk = SubResource( 42 )
+item_def = SubResource( 44 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=62]
+[sub_resource type="Resource" id=46]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=63]
+[sub_resource type="Resource" id=47]
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 0
@@ -539,16 +541,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 62 )
+effect = SubResource( 46 )
 
-[sub_resource type="Resource" id=64]
+[sub_resource type="Resource" id=48]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=65]
+[sub_resource type="Resource" id=49]
 script = ExtResource( 6 )
 character_class = 1
 equipment_slot = 1
@@ -558,9 +560,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 64 )
+effect = SubResource( 48 )
 
-[sub_resource type="Resource" id=66]
+[sub_resource type="Resource" id=50]
 script = ExtResource( 5 )
 character_class = 1
 name = "Amy"
@@ -572,20 +574,20 @@ def = 1
 atk_range = 3
 mov_range = 6
 heal = 0
-item_atk = SubResource( 63 )
-item_def = SubResource( 65 )
+item_atk = SubResource( 47 )
+item_def = SubResource( 49 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=69]
+[sub_resource type="Resource" id=51]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=70]
+[sub_resource type="Resource" id=52]
 script = ExtResource( 6 )
 character_class = 2
 equipment_slot = 0
@@ -595,16 +597,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 1
-effect = SubResource( 69 )
+effect = SubResource( 51 )
 
-[sub_resource type="Resource" id=71]
+[sub_resource type="Resource" id=53]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=72]
+[sub_resource type="Resource" id=54]
 script = ExtResource( 6 )
 character_class = 2
 equipment_slot = 1
@@ -614,9 +616,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 1
-effect = SubResource( 71 )
+effect = SubResource( 53 )
 
-[sub_resource type="Resource" id=73]
+[sub_resource type="Resource" id=55]
 script = ExtResource( 5 )
 character_class = 2
 name = "Amy"
@@ -628,20 +630,20 @@ def = 1
 atk_range = 4
 mov_range = 4
 heal = 1
-item_atk = SubResource( 70 )
-item_def = SubResource( 72 )
+item_atk = SubResource( 52 )
+item_def = SubResource( 54 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=76]
+[sub_resource type="Resource" id=56]
 script = ExtResource( 7 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=77]
+[sub_resource type="Resource" id=57]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 0
@@ -651,16 +653,16 @@ attack = 1
 attack_range = 0
 defense = 0
 heal = 0
-effect = SubResource( 76 )
+effect = SubResource( 56 )
 
-[sub_resource type="Resource" id=78]
+[sub_resource type="Resource" id=58]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=79]
+[sub_resource type="Resource" id=59]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 1
@@ -670,9 +672,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 78 )
+effect = SubResource( 58 )
 
-[sub_resource type="Resource" id=80]
+[sub_resource type="Resource" id=60]
 script = ExtResource( 5 )
 character_class = 3
 name = "Kane"
@@ -684,20 +686,20 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 77 )
-item_def = SubResource( 79 )
+item_atk = SubResource( 57 )
+item_def = SubResource( 59 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=83]
+[sub_resource type="Resource" id=61]
 script = ExtResource( 7 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=84]
+[sub_resource type="Resource" id=62]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 0
@@ -707,16 +709,16 @@ attack = 1
 attack_range = 0
 defense = 0
 heal = 0
-effect = SubResource( 83 )
+effect = SubResource( 61 )
 
-[sub_resource type="Resource" id=85]
+[sub_resource type="Resource" id=63]
 script = ExtResource( 7 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=86]
+[sub_resource type="Resource" id=64]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 1
@@ -726,9 +728,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 85 )
+effect = SubResource( 63 )
 
-[sub_resource type="Resource" id=87]
+[sub_resource type="Resource" id=65]
 script = ExtResource( 5 )
 character_class = 3
 name = "Jason"
@@ -740,25 +742,25 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 84 )
-item_def = SubResource( 86 )
+item_atk = SubResource( 62 )
+item_def = SubResource( 64 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=90]
+[sub_resource type="Resource" id=66]
 script = ExtResource( 14 )
 equipment_slot = 0
 level = 1
 
-[sub_resource type="Resource" id=91]
+[sub_resource type="Resource" id=67]
 script = ExtResource( 7 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=92]
+[sub_resource type="Resource" id=68]
 script = ExtResource( 6 )
 character_class = 4
 equipment_slot = 0
@@ -768,16 +770,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 91 )
+effect = SubResource( 67 )
 
-[sub_resource type="Resource" id=93]
+[sub_resource type="Resource" id=69]
 script = ExtResource( 7 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=94]
+[sub_resource type="Resource" id=70]
 script = ExtResource( 6 )
 character_class = 4
 equipment_slot = 0
@@ -787,9 +789,9 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 93 )
+effect = SubResource( 69 )
 
-[sub_resource type="Resource" id=95]
+[sub_resource type="Resource" id=71]
 script = ExtResource( 5 )
 character_class = 4
 name = "Ani"
@@ -801,8 +803,8 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 92 )
-item_def = SubResource( 94 )
+item_atk = SubResource( 68 )
+item_def = SubResource( 70 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
@@ -821,13 +823,22 @@ mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
-"cells": PoolIntArray( 0, 0, 655363, 1, 0, 655363, 2, 0, 655363, 3, 0, 655363, 4, 0, 655363, 5, 0, 655363, 6, 0, 655363, 7, 0, 655363, 8, 0, 655363, 9, 0, 655363, 10, 0, 655363, 11, 0, 655363, 12, 0, 655363, 13, 0, 655363, 14, 0, 655363, 15, 0, 3, 16, 0, 655363, 17, 0, 655363, 18, 0, 655363, 19, 0, 3, 20, 0, 655363, 21, 0, 655363, 22, 0, 655363, 23, 0, 655363, 131072, 0, 655362, 131073, 0, 1441796, 131080, 0, 1441796, 131089, 0, 1441796, 131094, 0, 1441796, 0, 1, 655363, 1, 1, 655363, 2, 1, 655363, 3, 1, 655363, 4, 1, 655363, 5, 1, 655363, 6, 1, 655363, 7, 1, 655363, 8, 1, 655363, 9, 1, 655363, 10, 1, 655363, 11, 1, 655363, 12, 1, 655363, 13, 1, 655363, 14, 1, 655363, 15, 1, 655363, 16, 1, 655363, 17, 1, 655363, 18, 1, 655363, 19, 1, 655363, 20, 1, 655363, 21, 1, 655363, 22, 1, 3, 23, 1, 655363, 131073, 1, 1441796, 131080, 1, 1441796, 131089, 1, 1441796, 131094, 1, 1441796, 0, 2, 655363, 1, 2, 655363, 2, 2, 655363, 3, 2, 655363, 4, 2, 655363, 5, 2, 655363, 6, 2, 655363, 7, 2, 655363, 8, 2, 655363, 9, 2, 655363, 10, 2, 655363, 11, 2, 655363, 12, 2, 655363, 13, 2, 655363, 14, 2, 655363, 15, 2, 655363, 16, 2, 655363, 17, 2, 655363, 18, 2, 655363, 19, 2, 655363, 20, 2, 655363, 21, 2, 3, 22, 2, 3, 23, 2, 655363, 131073, 2, 1, 131074, 2, 4, 131079, 2, 4, 131080, 2, 1048576, 131089, 2, 1, 131090, 2, 4, 131093, 2, 4, 131094, 2, 1048576, 0, 3, 655363, 1, 3, 655363, 2, 3, 655363, 3, 3, 655363, 4, 3, 655363, 5, 3, 655363, 6, 3, 655363, 7, 3, 655363, 8, 3, 655363, 9, 3, 655363, 10, 3, 655363, 11, 3, 655363, 12, 3, 655363, 13, 3, 655363, 14, 3, 655363, 15, 3, 655363, 16, 3, 655363, 17, 3, 655363, 18, 3, 655363, 19, 3, 655363, 20, 3, 655363, 21, 3, 3, 22, 3, 3, 23, 3, 655363, 131073, 3, 655367, 0, 4, 655363, 1, 4, 655363, 2, 4, 655363, 3, 4, 655363, 4, 4, 655363, 5, 4, 655363, 6, 4, 655363, 7, 4, 655363, 8, 4, 655363, 9, 4, 655363, 10, 4, 655363, 11, 4, 655363, 12, 4, 655363, 13, 4, 655363, 14, 4, 655363, 15, 4, 655363, 16, 4, 655363, 17, 4, 655363, 18, 4, 655363, 19, 4, 655363, 20, 4, 655363, 21, 4, 3, 22, 4, 3, 23, 4, 655363, 131083, 4, 1048588, 131088, 4, 655371, 196619, 4, 655368, 0, 5, 655363, 1, 5, 655363, 2, 5, 655363, 3, 5, 655363, 4, 5, 655363, 5, 5, 655363, 6, 5, 655363, 7, 5, 655363, 8, 5, 655363, 9, 5, 655363, 10, 5, 655363, 11, 5, 655363, 12, 5, 655363, 13, 5, 655363, 14, 5, 655363, 15, 5, 655363, 16, 5, 655363, 17, 5, 655363, 18, 5, 655363, 19, 5, 655363, 20, 5, 655363, 21, 5, 3, 22, 5, 3, 23, 5, 655363, 131072, 5, 4, 131073, 5, 4, 131074, 5, 655360, 131075, 5, 655368, 131078, 5, 655371, 131083, 5, 1048588, 0, 6, 655363, 1, 6, 655363, 2, 6, 655363, 3, 6, 655363, 4, 6, 655363, 5, 6, 655363, 6, 6, 655363, 7, 6, 655363, 8, 6, 655363, 9, 6, 655363, 10, 6, 655363, 11, 6, 655363, 12, 6, 655363, 13, 6, 655363, 14, 6, 655363, 15, 6, 655363, 16, 6, 655363, 17, 6, 655363, 18, 6, 655363, 19, 6, 655363, 20, 6, 655363, 21, 6, 3, 22, 6, 3, 23, 6, 655363, 131074, 6, 1441796, 131083, 6, 1048588, 131086, 6, 655367, 0, 7, 655363, 1, 7, 655363, 2, 7, 655363, 3, 7, 655363, 4, 7, 655363, 5, 7, 655363, 6, 7, 655363, 7, 7, 655363, 8, 7, 655363, 9, 7, 655363, 10, 7, 655363, 11, 7, 655363, 12, 7, 655363, 13, 7, 655363, 14, 7, 655363, 15, 7, 655363, 16, 7, 655363, 17, 7, 655363, 18, 7, 655363, 19, 7, 655363, 20, 7, 3, 21, 7, 3, 22, 7, 3, 23, 7, 655363, 131072, 7, 655367, 131078, 7, 655362, 131081, 7, 655367, 131083, 7, 1048588, 131088, 7, 655362, 131093, 7, 1048578, 196619, 7, 655368, 0, 8, 655363, 1, 8, 655363, 2, 8, 655363, 3, 8, 655363, 4, 8, 655363, 5, 8, 655363, 6, 8, 655363, 7, 8, 655363, 8, 8, 655363, 9, 8, 655363, 10, 8, 655363, 11, 8, 655363, 12, 8, 655363, 13, 8, 655363, 14, 8, 655363, 15, 8, 655363, 16, 8, 655363, 17, 8, 655363, 18, 8, 655363, 19, 8, 655363, 20, 8, 3, 21, 8, 3, 22, 8, 3, 23, 8, 655363, 131072, 8, 4, 131073, 8, 4, 131075, 8, 1, 131076, 8, 4, 131077, 8, 4, 131078, 8, 4, 131079, 8, 655368, 131093, 8, 655367, 131094, 8, 2, 0, 9, 655363, 1, 9, 655363, 2, 9, 655363, 3, 9, 655363, 4, 9, 655363, 5, 9, 655363, 6, 9, 655363, 7, 9, 655363, 8, 9, 655363, 9, 9, 655363, 10, 9, 655363, 11, 9, 655363, 12, 9, 655363, 13, 9, 655363, 14, 9, 655363, 15, 9, 655363, 16, 9, 655363, 17, 9, 655363, 18, 9, 655363, 19, 9, 655363, 20, 9, 3, 21, 9, 3, 22, 9, 655363, 23, 9, 655363, 131073, 9, 655368, 0, 10, 655363, 1, 10, 655363, 2, 10, 655363, 3, 10, 655363, 4, 10, 655363, 5, 10, 655363, 6, 10, 655363, 7, 10, 655363, 8, 10, 655363, 9, 10, 655363, 10, 10, 655363, 11, 10, 655363, 12, 10, 655363, 13, 10, 655363, 14, 10, 655363, 15, 10, 655363, 16, 10, 655363, 17, 10, 655363, 18, 10, 655363, 19, 10, 655363, 20, 10, 3, 21, 10, 3, 22, 10, 655363, 23, 10, 655363, 131072, 10, 4, 131073, 10, 4, 131074, 10, 4, 131075, 10, 4, 131077, 10, 4, 131078, 10, 4, 131079, 10, 4, 131081, 10, 655362, 131086, 10, 1048588, 131087, 10, 1048588, 131088, 10, 1048588, 131089, 10, 1048588, 196622, 10, 655368, 196625, 10, 655368, 0, 11, 655363, 1, 11, 655363, 2, 11, 655363, 3, 11, 655363, 4, 11, 655363, 5, 11, 655363, 6, 11, 655363, 7, 11, 655363, 8, 11, 655363, 9, 11, 655363, 10, 11, 655363, 11, 11, 655363, 12, 11, 655363, 13, 11, 655363, 14, 11, 655363, 15, 11, 655363, 16, 11, 655363, 17, 11, 655363, 18, 11, 655363, 19, 11, 655363, 20, 11, 3, 21, 11, 3, 22, 11, 655363, 23, 11, 655363, 0, 12, 655363, 1, 12, 655363, 2, 12, 655363, 3, 12, 655363, 4, 12, 655363, 5, 12, 655363, 6, 12, 655363, 7, 12, 655363, 8, 12, 655363, 9, 12, 655363, 10, 12, 655363, 11, 12, 655363, 12, 12, 655363, 13, 12, 655363, 14, 12, 655363, 15, 12, 655363, 16, 12, 655363, 17, 12, 655363, 18, 12, 655363, 19, 12, 655363, 20, 12, 3, 21, 12, 3, 22, 12, 655363, 23, 12, 655363, 131078, 12, 655371, 131090, 12, 655367, 131092, 12, 655371, 0, 13, 655363, 1, 13, 655363, 2, 13, 655363, 3, 13, 655363, 4, 13, 655363, 5, 13, 655363, 6, 13, 655363, 7, 13, 655363, 8, 13, 655363, 9, 13, 655363, 10, 13, 655363, 11, 13, 655363, 12, 13, 655363, 13, 13, 655363, 14, 13, 655363, 15, 13, 655363, 16, 13, 655363, 17, 13, 655363, 18, 13, 655363, 19, 13, 655363, 20, 13, 3, 21, 13, 3, 22, 13, 655363, 23, 13, 655363, 131072, 13, 4, 131073, 13, 4, 131074, 13, 4, 131075, 13, 4, 131080, 13, 655368, 131089, 13, 655368, 0, 14, 655363, 1, 14, 655363, 2, 14, 655363, 3, 14, 655363, 4, 14, 655363, 5, 14, 655363, 6, 14, 655363, 7, 14, 655363, 8, 14, 655363, 9, 14, 655363, 10, 14, 655363, 11, 14, 655363, 12, 14, 655363, 13, 14, 655363, 14, 14, 655363, 15, 14, 655363, 16, 14, 655363, 17, 14, 655363, 18, 14, 655363, 19, 14, 3, 20, 14, 3, 21, 14, 3, 22, 14, 655363, 23, 14, 655363, 131073, 14, 655362, 131074, 14, 655367, 131091, 14, 655362, 0, 15, 655363, 1, 15, 655363, 2, 15, 655363, 3, 15, 655363, 4, 15, 655363, 5, 15, 655363, 6, 15, 655363, 7, 15, 655363, 8, 15, 655363, 9, 15, 655363, 10, 15, 655363, 11, 15, 655363, 12, 15, 655363, 13, 15, 655363, 14, 15, 655363, 15, 15, 655363, 16, 15, 655363, 17, 15, 655363, 18, 15, 655363, 19, 15, 3, 20, 15, 3, 21, 15, 3, 22, 15, 3, 23, 15, 655363, 131080, 15, 655368, 131089, 15, 655368, 131093, 15, 655362, 0, 16, 655363, 1, 16, 655363, 2, 16, 655363, 3, 16, 655363, 4, 16, 655363, 5, 16, 655363, 6, 16, 655363, 7, 16, 655363, 8, 16, 655363, 9, 16, 655363, 10, 16, 655363, 11, 16, 655363, 12, 16, 655363, 13, 16, 655363, 14, 16, 655363, 15, 16, 655363, 16, 16, 655363, 17, 16, 655363, 18, 16, 655363, 19, 16, 3, 20, 16, 3, 21, 16, 3, 22, 16, 3, 23, 16, 655363, 131073, 16, 655367, 131075, 16, 655362, 131079, 16, 655368, 131090, 16, 655368, 0, 17, 655363, 1, 17, 655363, 2, 17, 655363, 3, 17, 655363, 4, 17, 655363, 5, 17, 655363, 6, 17, 655363, 7, 17, 655363, 8, 17, 655363, 9, 17, 655363, 10, 17, 655363, 11, 17, 655363, 12, 17, 655363, 13, 17, 655363, 14, 17, 655363, 15, 17, 655363, 16, 17, 655363, 17, 17, 655363, 18, 17, 655363, 19, 17, 655363, 20, 17, 655363, 21, 17, 655363, 22, 17, 655363, 23, 17, 655363, 131080, 17, 655368, 131089, 17, 655368, 0, 65532, 655363, 1, 65532, 655363, 2, 65532, 655363, 3, 65532, 655363, 4, 65532, 655363, 5, 65532, 655363, 6, 65532, 655363, 7, 65532, 655363, 8, 65532, 655363, 9, 65532, 655363, 10, 65532, 655363, 11, 65532, 655363, 12, 65532, 655363, 13, 65532, 655363, 14, 65532, 655363, 15, 65532, 655363, 16, 65532, 655363, 17, 65532, 655363, 18, 65532, 655363, 19, 65532, 655363, 20, 65532, 655363, 21, 65532, 655363, 22, 65532, 655363, 23, 65532, 655363, 131073, 65532, 1441796, 131080, 65532, 1441796, 131089, 65532, 1441796, 131094, 65532, 1441796, 0, 65533, 655363, 1, 65533, 655363, 2, 65533, 655363, 3, 65533, 655363, 4, 65533, 655363, 5, 65533, 655363, 6, 65533, 655363, 7, 65533, 655363, 8, 65533, 655363, 9, 65533, 655363, 10, 65533, 655363, 11, 65533, 3, 12, 65533, 3, 13, 65533, 3, 14, 65533, 3, 15, 65533, 655363, 16, 65533, 655363, 17, 65533, 655363, 18, 65533, 655363, 19, 65533, 655363, 20, 65533, 3, 21, 65533, 3, 22, 65533, 655363, 23, 65533, 655363, 131073, 65533, 1441796, 131075, 65533, 5, 131079, 65533, 655362, 131080, 65533, 1441796, 131084, 65533, 5, 131089, 65533, 1441796, 131091, 65533, 5, 131093, 65533, 655362, 131094, 65533, 1441796, 327692, 65533, 5, 0, 65534, 655363, 1, 65534, 3, 2, 65534, 3, 3, 65534, 3, 4, 65534, 3, 5, 65534, 3, 6, 65534, 3, 7, 65534, 3, 8, 65534, 3, 9, 65534, 3, 10, 65534, 3, 11, 65534, 3, 12, 65534, 3, 13, 65534, 3, 14, 65534, 3, 15, 65534, 3, 16, 65534, 3, 17, 65534, 3, 18, 65534, 3, 19, 65534, 3, 20, 65534, 3, 21, 65534, 3, 22, 65534, 655363, 23, 65534, 655363, 131073, 65534, 1441796, 131074, 65534, 655367, 131077, 65534, 5, 131080, 65534, 1441796, 131086, 65534, 5, 131089, 65534, 1441796, 131090, 65534, 655367, 131094, 65534, 1441796, 327684, 65534, 655365, 327700, 65534, 655365, 0, 65535, 655363, 1, 65535, 655363, 2, 65535, 3, 3, 65535, 655363, 4, 65535, 655363, 5, 65535, 655363, 6, 65535, 655363, 7, 65535, 655363, 8, 65535, 655363, 9, 65535, 655363, 10, 65535, 655363, 11, 65535, 655363, 12, 65535, 655363, 13, 65535, 3, 14, 65535, 3, 15, 65535, 3, 16, 65535, 536870915, 17, 65535, 655363, 18, 65535, 3, 19, 65535, 3, 20, 65535, 3, 21, 65535, 3, 22, 65535, 655363, 23, 65535, 655363, 131073, 65535, 1441796, 131079, 65535, 655367, 131080, 65535, 538312708, 131083, 65535, 655365, 131089, 65535, 1441796, 131094, 65535, 1441796 )
+"cells": PoolIntArray( 0, 0, 655363, 1, 0, 655363, 2, 0, 655363, 3, 0, 655363, 4, 0, 655363, 5, 0, 655363, 6, 0, 655363, 7, 0, 655363, 8, 0, 655363, 9, 0, 655363, 10, 0, 655363, 11, 0, 655363, 12, 0, 655363, 13, 0, 655363, 14, 0, 655363, 15, 0, 3, 16, 0, 655363, 17, 0, 655363, 18, 0, 655363, 19, 0, 3, 20, 0, 655363, 21, 0, 655363, 22, 0, 655363, 23, 0, 655363, 131072, 0, 655362, 131073, 0, 1441796, 131080, 0, 1441796, 131089, 0, 1441796, 131094, 0, 1441796, 0, 1, 655363, 1, 1, 655363, 2, 1, 1611268099, 3, 1, 655363, 4, 1, 655363, 5, 1, 655363, 6, 1, 655363, 7, 1, 655363, 8, 1, 655363, 9, 1, 655363, 10, 1, 655363, 11, 1, 655363, 12, 1, 655363, 13, 1, 655363, 14, 1, 655363, 15, 1, 655363, 16, 1, 655363, 17, 1, 655363, 18, 1, 655363, 19, 1, 655363, 20, 1, 655363, 21, 1, 1611268099, 22, 1, 3, 23, 1, 1611268099, 131073, 1, 1441796, 131080, 1, 1441796, 131089, 1, 1441796, 131094, 1, 538312708, 0, 2, 655363, 1, 2, 655363, 2, 2, 655363, 3, 2, 655363, 4, 2, 655363, 5, 2, 655363, 6, 2, 1611268099, 7, 2, 655363, 8, 2, 655363, 9, 2, 655363, 10, 2, 655363, 11, 2, 655363, 12, 2, 655363, 13, 2, 1611268099, 14, 2, 655363, 15, 2, 655363, 16, 2, 655363, 17, 2, 655363, 18, 2, 655363, 19, 2, 1074397187, 20, 2, 655363, 21, 2, 3, 22, 2, 3, 23, 2, 655363, 131073, 2, 1, 131074, 2, 1073741828, 131079, 2, 4, 131080, 2, 1611661312, 131089, 2, 1, 131090, 2, 4, 131093, 2, 4, 131094, 2, 1048576, 0, 3, 655363, 1, 3, 655363, 2, 3, 655363, 3, 3, 655363, 4, 3, 655363, 5, 3, 655363, 6, 3, 655363, 7, 3, 655363, 8, 3, 655363, 9, 3, 655363, 10, 3, 655363, 11, 3, 655363, 12, 3, 655363, 13, 3, 655363, 14, 3, 655363, 15, 3, 655363, 16, 3, 655363, 17, 3, 655363, 18, 3, 655363, 19, 3, 655363, 20, 3, 655363, 21, 3, 3, 22, 3, 3, 23, 3, 655363, 131073, 3, 655367, 0, 4, 655363, 1, 4, 655363, 2, 4, 655363, 3, 4, 655363, 4, 4, 655363, 5, 4, 655363, 6, 4, 655363, 7, 4, 655363, 8, 4, 655363, 9, 4, 655363, 10, 4, 655363, 11, 4, 655363, 12, 4, 655363, 13, 4, 655363, 14, 4, 655363, 15, 4, 655363, 16, 4, 655363, 17, 4, 655363, 18, 4, 655363, 19, 4, 655363, 20, 4, 655363, 21, 4, 3, 22, 4, 3, 23, 4, 655363, 131083, 4, 1048588, 131088, 4, 655371, 196619, 4, 655368, 0, 5, 655363, 1, 5, 655363, 2, 5, 655363, 3, 5, 655363, 4, 5, 655363, 5, 5, 655363, 6, 5, 655363, 7, 5, 655363, 8, 5, 655363, 9, 5, 655363, 10, 5, 655363, 11, 5, 655363, 12, 5, 655363, 13, 5, 655363, 14, 5, 655363, 15, 5, 655363, 16, 5, 655363, 17, 5, 655363, 18, 5, 655363, 19, 5, 655363, 20, 5, 655363, 21, 5, 3, 22, 5, 3, 23, 5, 655363, 131072, 5, 4, 131073, 5, 4, 131074, 5, 655360, 131075, 5, 655368, 131078, 5, 655371, 131083, 5, 1048588, 0, 6, 655363, 1, 6, 655363, 2, 6, 655363, 3, 6, 655363, 4, 6, 655363, 5, 6, 655363, 6, 6, 655363, 7, 6, 655363, 8, 6, 655363, 9, 6, 655363, 10, 6, 655363, 11, 6, 655363, 12, 6, 655363, 13, 6, 655363, 14, 6, 655363, 15, 6, 655363, 16, 6, 655363, 17, 6, 655363, 18, 6, 655363, 19, 6, 655363, 20, 6, 655363, 21, 6, 3, 22, 6, 3, 23, 6, 655363, 131074, 6, 1441796, 131083, 6, 1048588, 131086, 6, 655367, 0, 7, 655363, 1, 7, 655363, 2, 7, 655363, 3, 7, 655363, 4, 7, 655363, 5, 7, 655363, 6, 7, 655363, 7, 7, 655363, 8, 7, 655363, 9, 7, 655363, 10, 7, 655363, 11, 7, 655363, 12, 7, 655363, 13, 7, 655363, 14, 7, 655363, 15, 7, 655363, 16, 7, 655363, 17, 7, 655363, 18, 7, 655363, 19, 7, 655363, 20, 7, 3, 21, 7, 3, 22, 7, 3, 23, 7, 655363, 131072, 7, 655367, 131078, 7, 655362, 131081, 7, 655367, 131083, 7, 1048588, 131088, 7, 655362, 131093, 7, 1048578, 196619, 7, 655368, 0, 8, 655363, 1, 8, 655363, 2, 8, 655363, 3, 8, 655363, 4, 8, 655363, 5, 8, 655363, 6, 8, 655363, 7, 8, 655363, 8, 8, 655363, 9, 8, 655363, 10, 8, 655363, 11, 8, 655363, 12, 8, 655363, 13, 8, 655363, 14, 8, 655363, 15, 8, 655363, 16, 8, 655363, 17, 8, 655363, 18, 8, 655363, 19, 8, 655363, 20, 8, 3, 21, 8, 3, 22, 8, 3, 23, 8, 655363, 131072, 8, 4, 131073, 8, 4, 131075, 8, 1, 131076, 8, 4, 131077, 8, 4, 131078, 8, 4, 131079, 8, 655368, 131093, 8, 655367, 131094, 8, 2, 0, 9, 655363, 1, 9, 655363, 2, 9, 655363, 3, 9, 655363, 4, 9, 655363, 5, 9, 655363, 6, 9, 655363, 7, 9, 655363, 8, 9, 655363, 9, 9, 655363, 10, 9, 655363, 11, 9, 655363, 12, 9, 655363, 13, 9, 655363, 14, 9, 655363, 15, 9, 655363, 16, 9, 655363, 17, 9, 655363, 18, 9, 655363, 19, 9, 655363, 20, 9, 3, 21, 9, 3, 22, 9, 655363, 23, 9, 655363, 131073, 9, 655368, 0, 10, 655363, 1, 10, 655363, 2, 10, 655363, 3, 10, 655363, 4, 10, 655363, 5, 10, 655363, 6, 10, 655363, 7, 10, 655363, 8, 10, 655363, 9, 10, 655363, 10, 10, 655363, 11, 10, 655363, 12, 10, 655363, 13, 10, 655363, 14, 10, 655363, 15, 10, 655363, 16, 10, 655363, 17, 10, 655363, 18, 10, 655363, 19, 10, 655363, 20, 10, 3, 21, 10, 3, 22, 10, 655363, 23, 10, 655363, 131072, 10, 4, 131073, 10, 4, 131074, 10, 4, 131075, 10, 4, 131077, 10, 4, 131078, 10, 4, 131079, 10, 4, 131081, 10, 655362, 131086, 10, 1048588, 131087, 10, 1048588, 131088, 10, 1048588, 131089, 10, 1048588, 196622, 10, 655368, 196625, 10, 655368, 0, 11, 655363, 1, 11, 655363, 2, 11, 655363, 3, 11, 655363, 4, 11, 655363, 5, 11, 655363, 6, 11, 655363, 7, 11, 655363, 8, 11, 655363, 9, 11, 655363, 10, 11, 655363, 11, 11, 655363, 12, 11, 655363, 13, 11, 655363, 14, 11, 655363, 15, 11, 655363, 16, 11, 655363, 17, 11, 655363, 18, 11, 655363, 19, 11, 655363, 20, 11, 3, 21, 11, 3, 22, 11, 655363, 23, 11, 655363, 0, 12, 655363, 1, 12, 655363, 2, 12, 655363, 3, 12, 655363, 4, 12, 655363, 5, 12, 655363, 6, 12, 655363, 7, 12, 655363, 8, 12, 655363, 9, 12, 655363, 10, 12, 655363, 11, 12, 655363, 12, 12, 655363, 13, 12, 655363, 14, 12, 655363, 15, 12, 655363, 16, 12, 655363, 17, 12, 655363, 18, 12, 655363, 19, 12, 655363, 20, 12, 3, 21, 12, 3, 22, 12, 655363, 23, 12, 655363, 131078, 12, 655371, 131090, 12, 655367, 131092, 12, 655371, 0, 13, 655363, 1, 13, 655363, 2, 13, 655363, 3, 13, 655363, 4, 13, 655363, 5, 13, 655363, 6, 13, 655363, 7, 13, 655363, 8, 13, 655363, 9, 13, 655363, 10, 13, 655363, 11, 13, 655363, 12, 13, 655363, 13, 13, 655363, 14, 13, 655363, 15, 13, 655363, 16, 13, 655363, 17, 13, 655363, 18, 13, 655363, 19, 13, 655363, 20, 13, 3, 21, 13, 3, 22, 13, 655363, 23, 13, 655363, 131072, 13, 4, 131073, 13, 4, 131074, 13, 4, 131075, 13, 4, 131080, 13, 655368, 131089, 13, 655368, 0, 14, 655363, 1, 14, 655363, 2, 14, 655363, 3, 14, 655363, 4, 14, 537526275, 5, 14, 655363, 6, 14, 655363, 7, 14, 655363, 8, 14, 655363, 9, 14, 655363, 10, 14, 655363, 11, 14, 655363, 12, 14, 655363, 13, 14, 655363, 14, 14, 655363, 15, 14, 655363, 16, 14, 655363, 17, 14, 655363, 18, 14, 655363, 19, 14, 3, 20, 14, 1610612739, 21, 14, 3, 22, 14, 655363, 23, 14, 655363, 131073, 14, 655362, 131074, 14, 655367, 131091, 14, 655362, 0, 15, 655363, 1, 15, 1611268099, 2, 15, 537526275, 3, 15, 655363, 4, 15, 655363, 5, 15, 655363, 6, 15, 655363, 7, 15, 655363, 8, 15, 655363, 9, 15, 655363, 10, 15, 655363, 11, 15, 655363, 12, 15, 655363, 13, 15, 655363, 14, 15, 655363, 15, 15, 655363, 16, 15, 655363, 17, 15, 655363, 18, 15, 655363, 19, 15, 3, 20, 15, 3, 21, 15, 3, 22, 15, 3, 23, 15, 655363, 131080, 15, 655368, 131089, 15, 655368, 131093, 15, -536215550, 0, 16, 655363, 1, 16, 655363, 2, 16, 655363, 3, 16, 655363, 4, 16, 655363, 5, 16, -1073086461, 6, 16, 537526275, 7, 16, 655363, 8, 16, 537526275, 9, 16, 655363, 10, 16, 655363, 11, 16, 537526275, 12, 16, 655363, 13, 16, 655363, 14, 16, 655363, 15, 16, 537526275, 16, 16, 655363, 17, 16, 655363, 18, 16, 655363, 19, 16, 3, 20, 16, 3, 21, 16, 536870915, 22, 16, 536870915, 23, 16, 655363, 131073, 16, 537526279, 131075, 16, 655362, 131079, 16, 537526280, 131090, 16, 655368, 0, 17, 655363, 1, 17, 655363, 2, 17, 537526275, 3, 17, 537526275, 4, 17, 537526275, 5, 17, 655363, 6, 17, 655363, 7, 17, 655363, 8, 17, 655363, 9, 17, 537526275, 10, 17, 537526275, 11, 17, 537526275, 12, 17, 655363, 13, 17, 655363, 14, 17, 655363, 15, 17, 655363, 16, 17, 655363, 17, 17, 537526275, 18, 17, 655363, 19, 17, 537526275, 20, 17, 537526275, 21, 17, 655363, 22, 17, 655363, 23, 17, 655363, 131080, 17, 655368, 131089, 17, 537526280, 0, 65532, 655363, 1, 65532, 655363, 2, 65532, 655363, 3, 65532, 655363, 4, 65532, 655363, 5, 65532, 537526275, 6, 65532, 655363, 7, 65532, 655363, 8, 65532, 655363, 9, 65532, 655363, 10, 65532, 655363, 11, 65532, 655363, 12, 65532, 655363, 13, 65532, 655363, 14, 65532, 655363, 15, 65532, 537526275, 16, 65532, 537526275, 17, 65532, 537526275, 18, 65532, 537526275, 19, 65532, 537526275, 20, 65532, 537526275, 21, 65532, 655363, 22, 65532, 655363, 23, 65532, 537526275, 131073, 65532, 1441796, 131080, 65532, 1441796, 131089, 65532, 1441796, 131094, 65532, 538312708, 0, 65533, 655363, 1, 65533, 655363, 2, 65533, 655363, 3, 65533, 655363, 4, 65533, 655363, 5, 65533, 655363, 6, 65533, 537526275, 7, 65533, 655363, 8, 65533, 655363, 9, 65533, 655363, 10, 65533, 655363, 11, 65533, 3, 12, 65533, 536870915, 13, 65533, 3, 14, 65533, 3, 15, 65533, 655363, 16, 65533, 655363, 17, 65533, 655363, 18, 65533, 537526275, 19, 65533, 537526275, 20, 65533, 3, 21, 65533, 3, 22, 65533, 655363, 23, 65533, 655363, 131073, 65533, 538312708, 131075, 65533, 5, 131079, 65533, 655362, 131080, 65533, 1441796, 131084, 65533, 536870917, 131089, 65533, 1441796, 131091, 65533, 5, 131093, 65533, 655362, 131094, 65533, 538312708, 327692, 65533, 5, 0, 65534, 655363, 1, 65534, 536870915, 2, 65534, 3, 3, 65534, 3, 4, 65534, 3, 5, 65534, 3, 6, 65534, 3, 7, 65534, 536870915, 8, 65534, 536870915, 9, 65534, 3, 10, 65534, 3, 11, 65534, 536870915, 12, 65534, 3, 13, 65534, 3, 14, 65534, 536870915, 15, 65534, 3, 16, 65534, 3, 17, 65534, 536870915, 18, 65534, 3, 19, 65534, 3, 20, 65534, 3, 21, 65534, 536870915, 22, 65534, 537526275, 23, 65534, 655363, 131073, 65534, 1441796, 131074, 65534, 655367, 131077, 65534, 5, 131080, 65534, 1441796, 131086, 65534, 5, 131089, 65534, 1441796, 131090, 65534, 655367, 131094, 65534, 538312708, 327684, 65534, 655365, 327700, 65534, 655365, 0, 65535, 655363, 1, 65535, 655363, 2, 65535, 3, 3, 65535, 655363, 4, 65535, 655363, 5, 65535, 537526275, 6, 65535, 655363, 7, 65535, 655363, 8, 65535, 655363, 9, 65535, 655363, 10, 65535, 537526275, 11, 65535, 655363, 12, 65535, 537526275, 13, 65535, 536870915, 14, 65535, 3, 15, 65535, 3, 16, 65535, 3, 17, 65535, 537526275, 18, 65535, 3, 19, 65535, 3, 20, 65535, 3, 21, 65535, 3, 22, 65535, 655363, 23, 65535, 655363, 131073, 65535, 1441796, 131079, 65535, 655367, 131080, 65535, 1441796, 131083, 65535, 655365, 131089, 65535, 1441796, 131094, 65535, 538312708 )
 }
-script = ExtResource( 16 )
+script = ExtResource( 9 )
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
+
+[node name="overlay" type="GridMap" parent="Spatial/terrain"]
+mesh_library = ExtResource( 16 )
+cell_size = Vector3( 1, 0.5, 1 )
+cell_scale = 0.5
+data = {
+"cells": PoolIntArray( 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131081, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131090, 0, 0, 131091, 0, 0, 131092, 0, 0, 131093, 0, 0, 131095, 0, 0, 131072, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 131090, 1, 0, 131091, 1, 0, 131092, 1, 0, 131093, 1, 0, 131095, 1, 0, 131072, 2, 0, 131075, 2, 0, 131076, 2, 0, 131077, 2, 0, 131078, 2, 0, 131081, 2, 0, 131082, 2, 0, 131083, 2, 0, 131084, 2, 0, 131085, 2, 0, 131086, 2, 0, 131087, 2, 0, 131088, 2, 0, 131091, 2, 0, 131092, 2, 0, 131095, 2, 0, 131072, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 3, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 131084, 3, 0, 131085, 3, 0, 131086, 3, 0, 131087, 3, 0, 131088, 3, 0, 131089, 3, 0, 131090, 3, 0, 131091, 3, 0, 131092, 3, 0, 131093, 3, 0, 131094, 3, 0, 131095, 3, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 4, 0, 131077, 4, 0, 131078, 4, 0, 131079, 4, 0, 131080, 4, 0, 131081, 4, 0, 131082, 4, 0, 131083, 4, 0, 131084, 4, 0, 131085, 4, 0, 131086, 4, 0, 131087, 4, 0, 131089, 4, 0, 131090, 4, 0, 131091, 4, 0, 131092, 4, 0, 131093, 4, 0, 131094, 4, 0, 131095, 4, 0, 131076, 5, 0, 131077, 5, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131084, 5, 0, 131085, 5, 0, 131086, 5, 0, 131087, 5, 0, 131088, 5, 0, 131089, 5, 0, 131090, 5, 0, 131091, 5, 0, 131092, 5, 0, 131093, 5, 0, 131094, 5, 0, 131095, 5, 0, 196619, 5, 0, 131072, 6, 0, 131073, 6, 0, 131075, 6, 0, 131076, 6, 0, 131077, 6, 0, 131078, 6, 0, 131079, 6, 0, 131080, 6, 0, 131081, 6, 0, 131082, 6, 0, 131084, 6, 0, 131085, 6, 0, 131087, 6, 0, 131088, 6, 0, 131089, 6, 0, 131090, 6, 0, 131091, 6, 0, 131092, 6, 0, 131093, 6, 0, 131094, 6, 0, 131095, 6, 0, 196619, 6, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131079, 7, 0, 131080, 7, 0, 131082, 7, 0, 131083, 7, 0, 131084, 7, 0, 131085, 7, 0, 131086, 7, 0, 131087, 7, 0, 131089, 7, 0, 131090, 7, 0, 131091, 7, 0, 131092, 7, 0, 131094, 7, 0, 131095, 7, 0, 131074, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 8, 0, 131088, 8, 0, 131089, 8, 0, 131090, 8, 0, 131091, 8, 0, 131092, 8, 0, 131095, 8, 0, 131072, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 9, 0, 131077, 9, 0, 131078, 9, 0, 131079, 9, 0, 131080, 9, 0, 131081, 9, 0, 131082, 9, 0, 131083, 9, 0, 131084, 9, 0, 131085, 9, 0, 131086, 9, 0, 131087, 9, 0, 131088, 9, 0, 131089, 9, 0, 131090, 9, 0, 131091, 9, 0, 131092, 9, 0, 131093, 9, 0, 131094, 9, 0, 131095, 9, 0, 131076, 10, 0, 131080, 10, 0, 131082, 10, 0, 131083, 10, 0, 131084, 10, 0, 131085, 10, 0, 131086, 10, 0, 131089, 10, 0, 131090, 10, 0, 131091, 10, 0, 131092, 10, 0, 131093, 10, 0, 131094, 10, 0, 131095, 10, 0, 196623, 10, 0, 196624, 10, 0, 131072, 11, 0, 131073, 11, 0, 131074, 11, 0, 131075, 11, 0, 131076, 11, 0, 131077, 11, 0, 131078, 11, 0, 131079, 11, 0, 131080, 11, 0, 131081, 11, 0, 131082, 11, 0, 131083, 11, 0, 131084, 11, 0, 131085, 11, 0, 131086, 11, 0, 131087, 11, 0, 131088, 11, 0, 131089, 11, 0, 131090, 11, 0, 131091, 11, 0, 131092, 11, 0, 131093, 11, 0, 131094, 11, 0, 131095, 11, 0, 131072, 12, 0, 131073, 12, 0, 131074, 12, 0, 131075, 12, 0, 131076, 12, 0, 131077, 12, 0, 131079, 12, 0, 131080, 12, 0, 131081, 12, 0, 131082, 12, 0, 131083, 12, 0, 131084, 12, 0, 131085, 12, 0, 131086, 12, 0, 131087, 12, 0, 131088, 12, 0, 131089, 12, 0, 131091, 12, 0, 131093, 12, 0, 131094, 12, 0, 131095, 12, 0, 131076, 13, 0, 131077, 13, 0, 131078, 13, 0, 131079, 13, 0, 131081, 13, 0, 131082, 13, 0, 131083, 13, 0, 131084, 13, 0, 131085, 13, 0, 131086, 13, 0, 131087, 13, 0, 131088, 13, 0, 131090, 13, 0, 131091, 13, 0, 131092, 13, 0, 131093, 13, 0, 131094, 13, 0, 131095, 13, 0, 131072, 14, 0, 131075, 14, 0, 131076, 14, 0, 131077, 14, 0, 131078, 14, 0, 131079, 14, 0, 131080, 14, 0, 131081, 14, 0, 131082, 14, 0, 131083, 14, 0, 131084, 14, 0, 131085, 14, 0, 131086, 14, 0, 131087, 14, 0, 131088, 14, 0, 131089, 14, 0, 131090, 14, 0, 131092, 14, 0, 131093, 14, 0, 131094, 14, 0, 131095, 14, 0, 131072, 15, 0, 131073, 15, 0, 131074, 15, 0, 131075, 15, 0, 131076, 15, 0, 131077, 15, 0, 131078, 15, 0, 131079, 15, 0, 131081, 15, 0, 131082, 15, 0, 131083, 15, 0, 131084, 15, 0, 131085, 15, 0, 131086, 15, 0, 131087, 15, 0, 131088, 15, 0, 131090, 15, 0, 131091, 15, 0, 131092, 15, 0, 131094, 15, 0, 131095, 15, 0, 131072, 16, 0, 131074, 16, 0, 131076, 16, 0, 131077, 16, 0, 131078, 16, 0, 131080, 16, 0, 131081, 16, 0, 131082, 16, 0, 131083, 16, 0, 131084, 16, 0, 131085, 16, 0, 131086, 16, 0, 131087, 16, 0, 131088, 16, 0, 131089, 16, 0, 131091, 16, 0, 131092, 16, 0, 131093, 16, 0, 131094, 16, 0, 131095, 16, 0, 131072, 17, 0, 131073, 17, 0, 131074, 17, 0, 131075, 17, 0, 131076, 17, 0, 131077, 17, 0, 131078, 17, 0, 131079, 17, 0, 131081, 17, 0, 131082, 17, 0, 131083, 17, 0, 131084, 17, 0, 131085, 17, 0, 131086, 17, 0, 131087, 17, 536870912, 131088, 17, 0, 131090, 17, 0, 131091, 17, 0, 131092, 17, 0, 131093, 17, 0, 131094, 17, 0, 131095, 17, 0, 131072, 65532, 0, 131074, 65532, 0, 131077, 65532, 0, 131078, 65532, 0, 131079, 65532, 0, 131081, 65532, 0, 131082, 65532, 0, 131083, 65532, 0, 131086, 65532, 0, 131087, 65532, 0, 131088, 65532, 0, 131090, 65532, 0, 131093, 65532, 0, 131095, 65532, 0, 131072, 65533, 0, 131074, 65533, 0, 131081, 65533, 0, 131082, 65533, 0, 131083, 65533, 0, 131088, 65533, 0, 131090, 65533, 0, 131095, 65533, 0, 524291, 65533, 0, 524292, 65533, 0, 524300, 65533, 0, 524301, 65533, 0, 524307, 65533, 0, 524308, 65533, 0, 131072, 65534, 0, 131079, 65534, 0, 131081, 65534, 0, 131088, 65534, 0, 131093, 65534, 0, 131095, 65534, 0, 327685, 65534, 0, 327686, 65534, 0, 327690, 65534, 0, 327691, 65534, 0, 327694, 65534, 0, 327695, 65534, 0, 524291, 65534, 0, 524292, 65534, 0, 524300, 65534, 0, 524301, 65534, 0, 524307, 65534, 0, 524308, 65534, 0, 131072, 65535, 0, 131074, 65535, 0, 131075, 65535, 0, 131076, 65535, 0, 131081, 65535, 0, 131084, 65535, 0, 131085, 65535, 0, 131088, 65535, 0, 131090, 65535, 0, 131091, 65535, 0, 131092, 65535, 0, 131093, 65535, 0, 131095, 65535, 0, 327685, 65535, 0, 327686, 65535, 0, 327690, 65535, 0, 327691, 65535, 0, 327694, 65535, 0, 327695, 65535, 0 )
+}
+script = ExtResource( 19 )
 
 [node name="decorative" type="GridMap" parent="Spatial"]
 mesh_library = ExtResource( 1 )
@@ -914,6 +925,10 @@ billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
 stats = SubResource( 5 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.347, 4 )
@@ -922,6 +937,10 @@ billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
 stats = SubResource( 10 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.347, 5 )
@@ -929,7 +948,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
-stats = SubResource( 17 )
+stats = SubResource( 15 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.347, 8 )
@@ -937,7 +960,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
-stats = SubResource( 24 )
+stats = SubResource( 20 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.347, 1 )
@@ -945,7 +972,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
-stats = SubResource( 31 )
+stats = SubResource( 25 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.347, 2 )
@@ -953,7 +984,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 10 )
 script = ExtResource( 8 )
-stats = SubResource( 38 )
+stats = SubResource( 30 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner8" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.347, 1 )
@@ -961,7 +996,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
-stats = SubResource( 45 )
+stats = SubResource( 35 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner9" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.347, 2 )
@@ -969,7 +1008,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 11 )
 script = ExtResource( 8 )
-stats = SubResource( 52 )
+stats = SubResource( 40 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner10" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.347, 2 )
@@ -977,7 +1020,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 10 )
 script = ExtResource( 8 )
-stats = SubResource( 59 )
+stats = SubResource( 45 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner11" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.347, 2 )
@@ -985,7 +1032,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 11 )
 script = ExtResource( 8 )
-stats = SubResource( 66 )
+stats = SubResource( 50 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner12" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 20, 0.347, 1 )
@@ -993,7 +1044,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
-stats = SubResource( 73 )
+stats = SubResource( 55 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner13" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.347, 12 )
@@ -1001,7 +1056,11 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
-stats = SubResource( 80 )
+stats = SubResource( 60 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner14" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.347, 9 )
@@ -1009,13 +1068,17 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
-stats = SubResource( 87 )
+stats = SubResource( 65 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="ChestSpawner" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 12 )
 texture = ExtResource( 12 )
 script = ExtResource( 13 )
-item_spawner = SubResource( 90 )
+item_spawner = SubResource( 66 )
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.347, 9 )
@@ -1023,4 +1086,8 @@ pixel_size = 0.04
 billboard = 1
 texture = ExtResource( 4 )
 script = ExtResource( 8 )
-stats = SubResource( 95 )
+stats = SubResource( 71 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
