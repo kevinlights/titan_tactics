@@ -234,9 +234,7 @@ func world_path(path:PoolVector3Array):
 	return w_path
 
 func point_to_world(point: Vector3, exclude_y: bool):
-	var offset = get_parent().translation + Vector3(-0.5, -1, -0.5)
+	var offset = get_parent().get_parent().translation + Vector3(-0.5, -1, -0.5)
 	offset.y = 0
-	var y = 0.0 if exclude_y else (point.y / 2)
-# warning-ignore:narrowing_conversion
-# warning-ignore:narrowing_conversion
+	var y = 0.0 if exclude_y else ((point.y - 2) / 2)
 	return map_to_world(point.x, y, point.z) + offset
