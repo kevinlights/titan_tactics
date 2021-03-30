@@ -1,13 +1,13 @@
 # instructor
-Kris, you are the best scout of Haki, our small village, and you have been selected by the council of elders to figure out what is going on in Tyrmyr. The trade caravan from Tyrmyr should have arrived a few days ago and our resources are getting low. Some new monsters have been found all over the Kingdom. It’s dangerous to go alone! Take Bowie with you. He is up North hunting rabbits.
+Kris, you are the best scout of Haki, and you've been selected by the elders' council to figure out what's going on in Tyrmyr. The caravan with the aid meant for our village from the Capital should have arrived a few days ago already... We are running out of resources. Monsters have been found all over the Kingdom, so it’s dangerous to go alone! Take Bowie with you. He is up North trying to hunt us some rabbits.
 
 # kris
-I will not let you down!
+Okay, I will not let our village down!
 > face kris.west
 > emote kris.surprised
 
 # instructor
-But first, let’s review the basics.
+Alright, but first let’s take a moment to review the basics.
 > face kris.east
 > emote kris.angry
 
@@ -16,8 +16,8 @@ But first, let’s review the basics.
 
 > select Lokum
 # ai_swordsman
-Ok so why don't you come close so you can hit me? Or at least try to?
+Hey loser, nice ponytail! Why don't you come closer so you can hit me? What's the matter, are you scared?
 
 # instructor
-Select the tile you'd like to move to and press X to walk towards it. The blue tiles are the ones that you can actually reach. Different classes have different walking ranges.
+Select the spot you'd like to move to and press X to go there. The blue tiles are the spots you can reach. Different characters have different movement ranges.
 > hint walk
