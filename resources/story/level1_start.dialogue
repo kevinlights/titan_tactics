@@ -1,23 +1,33 @@
+//Cutscene #1 Level 1
+
 # instructor
-Kris, you are the best scout of Haki, and you've been selected by the elders' council to figure out what's going on in Tyrmyr. The caravan with the aid meant for our village from the Capital should have arrived a few days ago already... We are running out of resources. Monsters have been found all over the Kingdom, so it’s dangerous to go alone! Take Bowie with you. He is up North trying to hunt us some rabbits.
+Kris, you are the best scout of Haki. You were selected by the elders' council to go see what's happening in Tyrmyr.
+The caravan with the aid meant for our village from the Capital should have long arrived already, and we're running low on resources...
+> face kris.west
 
 # kris
-Okay, I will not let our village down!
-> face kris.west
-> emote kris.surprised
+I understand and I am honored. I'll go see what happened right away!
+
+# instructor
+However, threats have been spotted all over, so it’s dangerous to go alone!
+Take Bowie with you. He's up north trying to hunt us some rabbits.
+
+# kris
+Okay, I won't let our village down!
 
 # instructor
 Alright, but first let’s take a moment to review the basics.
 > face kris.east
-> emote kris.angry
 
 //tutorial start here
 //movement
 
 > select Lokum
 # ai_swordsman
-Hey loser, nice ponytail! Why don't you come closer so you can hit me? What's the matter, are you scared?
+Hey loser, nice ponytail! Why don't you come closer so you can hit me?
+What's the matter, are you scared?
 
 # instructor
-Select the spot you'd like to move to and press X to go there. The blue tiles are the spots you can reach. Different characters have different movement ranges.
+You remember your rival Lokum, right? It seems he's quite upset he wasn't the one picked by the council, but he will serve to help us refresh your training!
+Try moving closer to Lokum. Blue tiles are the spots you can reach, but for now just go to the spot I marked for you in white!
 > hint walk
