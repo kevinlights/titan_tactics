@@ -1,0 +1,9 @@
+//Starting level 3 - the party finds Arath and the pillaged caravan. Arath tells Kris that they took Zara prisoner
+
+# kris
+The key fits! We've made it!
+> emote kris.excited
+
+# bowie
+Fantastic! Let's move on.
+> win

@@ -83,6 +83,10 @@ func perform_action(item):
 		index += 1
 		advance()
 		return
+	if item.action == "win":
+		world.game_over = true
+		world.emit_signal("win")
+		world.call_deferred("_on_win")
 	if item.action == "despawn":
 		var target_character = world.find_character(item.target)
 		target_character.despawn()
@@ -242,6 +246,7 @@ func _input(event):
 #				hide()
 
 func init(dialogue_content):
+	print("init dialogue")
 	set_content(dialogue_content)
 	emit_signal("cutscene_start")
 	show()
