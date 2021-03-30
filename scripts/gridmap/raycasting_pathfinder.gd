@@ -152,17 +152,17 @@ func manually_populate_smallbridge():
 			var cardinalDelta = deltaMappings[orientation]
 			overlay.add_flat_cell(cell + Vector3(cardinalDelta.x, 0, cardinalDelta.y))
 			if orientation == 22:
-				overlay.add_angled_cell(cell, 10)
-				overlay.add_angled_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 0)
+				overlay.add_bridge_cell(cell, 10)
+				overlay.add_bridge_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 0)
 			elif orientation == 16:
-				overlay.add_angled_cell(cell, 0)
-				overlay.add_angled_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 10)
+				overlay.add_bridge_cell(cell, 0)
+				overlay.add_bridge_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 10)
 			elif orientation == 10:
-				overlay.add_angled_cell(cell, 16)
-				overlay.add_angled_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 22)
+				overlay.add_bridge_cell(cell, 16)
+				overlay.add_bridge_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 22)
 			elif orientation == 0:
-				overlay.add_angled_cell(cell, 22)
-				overlay.add_angled_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 16)
+				overlay.add_bridge_cell(cell, 22)
+				overlay.add_bridge_cell(cell - Vector3(cardinalDelta.x, 0, cardinalDelta.y), 16)
 			overlay.add_flat_cell(cell - 2 * Vector3(cardinalDelta.x, 0, cardinalDelta.y))
 
 func _raycast_cell_detection(x, z, maxHeight, minHeight):

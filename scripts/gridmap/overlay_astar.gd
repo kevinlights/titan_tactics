@@ -22,6 +22,7 @@ var cardinalHeights := { # y_deltas
 	# tile_type: [NW, N, NE, E, SE, S, SW, W]
 	'flat': [0, 0, 0, 0, 0, 0, 0, 0],
 	'angled': [1, 1, 1, 0.5, 0, 0, 0, 0.5],
+	'bridge': [1, 1, 1, 0.5, 0, 0, 0, 0.5],
 }
 
 var cardinalDeltas := [

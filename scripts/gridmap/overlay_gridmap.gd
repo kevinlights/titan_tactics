@@ -11,6 +11,10 @@ onready var itemMapping := {
 	'angled_move': -1,
 	'angled_attack': -1,
 	'angled_placeholder': -1,
+	'bridge': -1,
+	'bridge_move': -1,
+	'bridge_attack': -1,
+	'bridge_placeholder': -1,
 }
 
 func _ready():
@@ -39,12 +43,16 @@ func change_cell_to(cell, type = null):
 		print('error ', cell, type)
 
 func add_flat_cell(cell):
-	print('add_flat_cell ', cell)
+	#print('add_flat_cell ', cell)
 	set_cell_item(cell.x, cell.y, cell.z, itemMapping.flat)
 
 func add_angled_cell(cell, orientation = 0):
-	print('add_angled_cell ', cell)
+	#print('add_angled_cell ', cell)
 	set_cell_item(cell.x, cell.y, cell.z, itemMapping.angled, orientation)
+
+func add_bridge_cell(cell, orientation = 0):
+	#print('add_bridge_cell ', cell)
+	set_cell_item(cell.x, cell.y, cell.z, itemMapping.bridge, orientation)
 	
 	
 func _copy_attrs_from_parent():
