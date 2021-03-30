@@ -33,7 +33,10 @@ func change_cell_to(cell, type = null):
 	if type:
 		new_name += '_' + type
 	var orientation = get_cell_item_orientation(cell.x, cell.y, cell.z)
-	set_cell_item(cell.x, cell.y, cell.z, itemMapping[new_name], orientation)
+	if itemMapping.has(new_name):
+		set_cell_item(cell.x, cell.y, cell.z, itemMapping[new_name], orientation)
+	else:
+		print('error ', cell, type)
 
 func add_flat_cell(cell):
 	print('add_flat_cell ', cell)
