@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.83.5 commit date:2020-08-19, commit time:06:07, hash:c2b144df395f</authoring_tool>
     </contributor>
-    <created>2021-03-30T00:06:40</created>
-    <modified>2021-03-30T00:06:40</modified>
+    <created>2021-03-30T00:39:59</created>
+    <modified>2021-03-30T00:39:59</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -50,54 +50,54 @@
     </material>
   </library_materials>
   <library_geometries>
-    <geometry id="Cube_006-mesh" name="Cube.006">
+    <geometry id="Cube_005-mesh" name="Cube.005">
       <mesh>
-        <source id="Cube_006-mesh-positions">
-          <float_array id="Cube_006-mesh-positions-array" count="18">0.6867578 0.9 1.009998 0.68 -1.3 0.1141154 -0.68 0.9 1.009998 -0.68 -1.3 0.1141154 -0.68 -0.3614009 0.7309977 0.6867578 -0.3614009 0.7309977</float_array>
+        <source id="Cube_005-mesh-positions">
+          <float_array id="Cube_005-mesh-positions-array" count="12">0.9 0.9 1.01 0.9 -0.9 0.11 -0.9 0.9 1.01 -0.9 -0.9 0.11</float_array>
           <technique_common>
-            <accessor source="#Cube_006-mesh-positions-array" count="6" stride="3">
+            <accessor source="#Cube_005-mesh-positions-array" count="4" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <source id="Cube_006-mesh-normals">
-          <float_array id="Cube_006-mesh-normals-array" count="12">0 0.5492329 -0.8356695 0 0.2159631 -0.9764015 0 0.549233 -0.8356694 0 0.2159631 -0.9764016</float_array>
+        <source id="Cube_005-mesh-normals">
+          <float_array id="Cube_005-mesh-normals-array" count="3">0 0.4472136 -0.8944272</float_array>
           <technique_common>
-            <accessor source="#Cube_006-mesh-normals-array" count="4" stride="3">
+            <accessor source="#Cube_005-mesh-normals-array" count="1" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <source id="Cube_006-mesh-map-0">
-          <float_array id="Cube_006-mesh-map-0-array" count="24">0.25 1 0.5 0 0.5 1 0 0 0.25 1 0 1 0.25 1 0.25 0 0.5 0 0 0 0.25 0 0.25 1</float_array>
+        <source id="Cube_005-mesh-map-0">
+          <float_array id="Cube_005-mesh-map-0-array" count="12">0 0 0.5 1 0 1 0 0 0.5 0 0.5 1</float_array>
           <technique_common>
-            <accessor source="#Cube_006-mesh-map-0-array" count="12" stride="2">
+            <accessor source="#Cube_005-mesh-map-0-array" count="6" stride="2">
               <param name="S" type="float"/>
               <param name="T" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <vertices id="Cube_006-mesh-vertices">
-          <input semantic="POSITION" source="#Cube_006-mesh-positions"/>
+        <vertices id="Cube_005-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_005-mesh-positions"/>
         </vertices>
-        <triangles material="movetile-material" count="4">
-          <input semantic="VERTEX" source="#Cube_006-mesh-vertices" offset="0"/>
-          <input semantic="NORMAL" source="#Cube_006-mesh-normals" offset="1"/>
-          <input semantic="TEXCOORD" source="#Cube_006-mesh-map-0" offset="2" set="0"/>
-          <p>4 0 0 1 0 1 3 0 2 0 1 3 4 1 4 2 1 5 4 2 6 5 2 7 1 2 8 0 3 9 5 3 10 4 3 11</p>
+        <triangles material="movetile-material" count="2">
+          <input semantic="VERTEX" source="#Cube_005-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_005-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_005-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 3 0 1 2 0 2 0 0 3 1 0 4 3 0 5</p>
         </triangles>
       </mesh>
     </geometry>
   </library_geometries>
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
-      <node id="movetile_bridge" name="movetile_bridge" type="NODE">
+      <node id="movetile_ramp" name="movetile_ramp" type="NODE">
         <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
-        <instance_geometry url="#Cube_006-mesh" name="movetile_bridge">
+        <instance_geometry url="#Cube_005-mesh" name="movetile_ramp">
           <bind_material>
             <technique_common>
               <instance_material symbol="movetile-material" target="#movetile-material">
