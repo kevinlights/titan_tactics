@@ -4,6 +4,7 @@ extends Sprite3D
 
 export(String) var marker_name
 export(Resource) var dialogue
+export(Resource) var quest_dialogue
 
 func _enter_tree():
 	axis = 1
@@ -15,5 +16,5 @@ func _enter_tree():
 	texture = load("res://gfx/speak_map.png")
 	add_to_group("story_markers") # so world can find it
 	if not Engine.editor_hint:
-		translation.z -= 1
+		translation.z = round(translation.z) - 1
 		hide()

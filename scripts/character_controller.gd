@@ -194,7 +194,7 @@ func teleport(x, y):
 	translation.y = 0
 
 func heal(target):
-	if character.turn_limits.actions < 1:
+	if character.turn_limits.actions < 1 or !target:
 		return 0
 	character.turn_limits.actions -= 1
 	var healed_hp = (character.atk * 3) * 0.6

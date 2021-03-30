@@ -13,7 +13,8 @@ onready var selector = get_tree().get_root().get_node("World/select")
 
 func _ready():
 	world.connect("win", self, "_on_end_level")
-	world.connect("auto_deployed", self, "_on_start_level")
+#	world.connect("auto_deployed", self, "_on_start_level")
+	world.connect("level_start", self, "_on_start_level")
 	if add_character and add_character != "":
 		var characters = add_character.split(",")
 		for add_char in characters:
