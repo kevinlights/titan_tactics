@@ -109,12 +109,11 @@ custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/line_spacing = 9
 custom_constants/shadow_offset_y = 1
-text = "Romaselli
+text = "Ro Maselli
 Dieg Barcellos
-MarcAelo Cabral
-TheZakMan
-Federico Calchera
-Quitandeiro"
+Marcelo Cabral
+Pedro Araújo
+Federico Calchera"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -172,6 +171,6 @@ position = Vector2( 0, 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D"]
 position = Vector2( 137.747, 193.947 )
 frames = SubResource( 4 )
-frame = 1
+frame = 3
 playing = true
 centered = false
