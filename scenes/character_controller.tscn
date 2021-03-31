@@ -61,218 +61,218 @@ albedo_texture = ExtResource( 43 )
 [sub_resource type="AtlasTexture" id=2]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 0, 128, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 32, 0, 32, 32 )
+region = Rect2( 32, 128, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 64, 0, 32, 32 )
+region = Rect2( 64, 128, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 96, 0, 32, 32 )
+region = Rect2( 96, 128, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 128, 0, 32, 32 )
+region = Rect2( 128, 128, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 160, 0, 32, 32 )
+region = Rect2( 160, 128, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 0, 64, 32, 32 )
+region = Rect2( 192, 128, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 32, 64, 32, 32 )
+region = Rect2( 0, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 64, 64, 32, 32 )
+region = Rect2( 32, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 96, 64, 32, 32 )
+region = Rect2( 64, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 128, 64, 32, 32 )
+region = Rect2( 96, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 160, 64, 32, 32 )
+region = Rect2( 128, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 0, 96, 32, 32 )
+region = Rect2( 160, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 32, 96, 32, 32 )
+region = Rect2( 0, 160, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 64, 96, 32, 32 )
+region = Rect2( 32, 160, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 96, 96, 32, 32 )
+region = Rect2( 64, 160, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 128, 96, 32, 32 )
+region = Rect2( 96, 160, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 160, 96, 32, 32 )
+region = Rect2( 128, 160, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=20]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 192, 96, 32, 32 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=21]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 0, 128, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=22]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 32, 128, 32, 32 )
+region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=23]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 64, 128, 32, 32 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=24]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 96, 128, 32, 32 )
+region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=25]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 128, 128, 32, 32 )
+region = Rect2( 160, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=26]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 160, 128, 32, 32 )
+region = Rect2( 0, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=27]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 192, 128, 32, 32 )
+region = Rect2( 32, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=28]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 0, 32, 32, 32 )
+region = Rect2( 64, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=29]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 32, 32, 32, 32 )
+region = Rect2( 96, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=30]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 64, 32, 32, 32 )
+region = Rect2( 128, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=31]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 96, 32, 32, 32 )
+region = Rect2( 160, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=32]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 128, 32, 32, 32 )
+region = Rect2( 0, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=33]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 160, 32, 32, 32 )
+region = Rect2( 32, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 0, 160, 32, 32 )
+region = Rect2( 64, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=35]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 32, 160, 32, 32 )
+region = Rect2( 96, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=36]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 64, 160, 32, 32 )
+region = Rect2( 128, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=37]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 96, 160, 32, 32 )
+region = Rect2( 160, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=38]
 flags = 16
 atlas = ExtResource( 43 )
-region = Rect2( 128, 160, 32, 32 )
+region = Rect2( 192, 96, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=39]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": false,
-"name": "surprise",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": false,
-"name": "scared",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 19 ), SubResource( 20 ), SubResource( 19 ) ],
-"loop": false,
-"name": "excited",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 26 ), SubResource( 27 ), SubResource( 26 ), SubResource( 27 ), SubResource( 26 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 7 ), SubResource( 8 ), SubResource( 7 ), SubResource( 8 ), SubResource( 7 ) ],
 "loop": false,
 "name": "flirt",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": false,
 "name": "ugh",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
 "loop": false,
 "name": "angry",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "surprise",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": false,
+"name": "scared",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 37 ), SubResource( 38 ), SubResource( 37 ) ],
+"loop": false,
+"name": "happy",
 "speed": 12.0
 } ]
 
@@ -2133,7 +2133,7 @@ pixel_size = 0.000781
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 39 )
-animation = "excited"
+animation = "happy"
 frame = 9
 playing = true
 
@@ -2319,7 +2319,6 @@ material_override = SubResource( 204 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 207 )
-frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -2329,7 +2328,6 @@ material_override = SubResource( 208 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 211 )
-frame = 1
 playing = true
 
 [node name="poison" type="AnimatedSprite3D" parent="."]
@@ -2339,6 +2337,7 @@ material_override = SubResource( 212 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 215 )
+frame = 1
 playing = true
 
 [node name="stun" type="AnimatedSprite3D" parent="."]
@@ -2348,7 +2347,6 @@ material_override = SubResource( 216 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 219 )
-frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -2358,7 +2356,6 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 222 )
-frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]
