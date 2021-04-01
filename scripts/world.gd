@@ -581,7 +581,7 @@ func check_move_triggers(character):
 			if marker.quest_dialogue and same_tile(marker.translation, character.translation): #marker.translation.is_equal_approx(character.translation):
 				print(marker)
 				if not marker.quest_dialogue.consumed:
-					marker.dialogue.connect("completed", self, "consume_story_markers", marker.name)
+					marker.dialogue.connect("completed", self, "consume_story_markers", [ marker.name ])
 					gui.start("dialogue_box", marker.quest_dialogue)
 	#				gui.dialogue(marker.dialogue)
 					break
@@ -705,7 +705,7 @@ func _on_recruit_completed(id):
 	if id == "accepted":
 		target.recruit(get_current())
 		target.character.control = TT.CONTROL.PLAYER
-		Game.team.append(target.character)
+		Game.add_to_team(target.character)
 		current[TT.CONTROL.AI].erase(target)
 	else:
 		target.recruit_failed(get_current())
@@ -864,7 +864,7 @@ func _input(event):
 	if event.is_action("ui_page_down") && !event.is_echo() && event.is_pressed():
 		var additional_character = load("res://resources/cast/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER
-		Game.team.append(additional_character)
+		Game.add_to_team(additional_character)
 		print("[World] The OGRE has joined the team!")
 	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
 		for unit in current[TT.CONTROL.AI]:
