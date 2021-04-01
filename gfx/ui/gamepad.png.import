@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/gamepad.png-631f3d80402ecf27ded7cb370c09a171.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://gfx/ui/pause_bg.png"
+source_file="res://gfx/ui/gamepad.png"
+dest_files=[ "res://.import/gamepad.png-631f3d80402ecf27ded7cb370c09a171.stex" ]
+
 [params]
 
 compress/mode=0
