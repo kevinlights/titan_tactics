@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TT_SFX_V_MAGE_H_03.ogg-34eef227fe56c5e1fc3ac2fd3fc78bbd.oggstr"
+
+[deps]
+
+source_file="res://VA/08-Mage/TT_SFX_V_MAGE_H_03.ogg"
+dest_files=[ "res://.import/TT_SFX_V_MAGE_H_03.ogg-34eef227fe56c5e1fc3ac2fd3fc78bbd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -56,7 +56,7 @@ defense = 0
 heal = 1
 effect = SubResource( 3 )
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=46]
 script = ExtResource( 10 )
 character_class = 2
 name = "Firas"
@@ -112,7 +112,7 @@ defense = 0
 heal = 0
 effect = SubResource( 8 )
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=47]
 script = ExtResource( 10 )
 character_class = 0
 name = "Nina"
@@ -168,7 +168,7 @@ defense = 0
 heal = 0
 effect = SubResource( 13 )
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=48]
 script = ExtResource( 10 )
 character_class = 0
 name = "Sid"
@@ -224,7 +224,7 @@ defense = 0
 heal = 0
 effect = SubResource( 18 )
 
-[sub_resource type="Resource" id=20]
+[sub_resource type="Resource" id=49]
 script = ExtResource( 10 )
 character_class = 0
 name = "Nell"
@@ -280,7 +280,7 @@ defense = 0
 heal = 0
 effect = SubResource( 23 )
 
-[sub_resource type="Resource" id=25]
+[sub_resource type="Resource" id=50]
 script = ExtResource( 10 )
 character_class = 1
 name = "Eva"
@@ -336,7 +336,7 @@ defense = 0
 heal = 0
 effect = SubResource( 28 )
 
-[sub_resource type="Resource" id=30]
+[sub_resource type="Resource" id=51]
 script = ExtResource( 10 )
 character_class = 1
 name = "Nora"
@@ -392,7 +392,7 @@ defense = 0
 heal = 0
 effect = SubResource( 33 )
 
-[sub_resource type="Resource" id=35]
+[sub_resource type="Resource" id=52]
 script = ExtResource( 10 )
 character_class = 1
 name = "Steph"
@@ -448,7 +448,7 @@ defense = 0
 heal = 1
 effect = SubResource( 38 )
 
-[sub_resource type="Resource" id=40]
+[sub_resource type="Resource" id=53]
 script = ExtResource( 10 )
 character_class = 2
 name = "Sid"
@@ -510,7 +510,7 @@ defense = 0
 heal = 0
 effect = SubResource( 44 )
 
-[sub_resource type="Resource" id=46]
+[sub_resource type="Resource" id=54]
 script = ExtResource( 10 )
 character_class = 0
 name = "Bella"
@@ -611,7 +611,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 8 )
 script = ExtResource( 15 )
-stats = SubResource( 5 )
+stats = SubResource( 46 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
@@ -624,7 +624,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 15 )
-stats = SubResource( 10 )
+stats = SubResource( 47 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
@@ -637,7 +637,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 15 )
-stats = SubResource( 15 )
+stats = SubResource( 48 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
@@ -650,7 +650,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 15 )
-stats = SubResource( 20 )
+stats = SubResource( 49 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
@@ -663,7 +663,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 9 )
 script = ExtResource( 15 )
-stats = SubResource( 25 )
+stats = SubResource( 50 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
@@ -676,7 +676,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 9 )
 script = ExtResource( 15 )
-stats = SubResource( 30 )
+stats = SubResource( 51 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
@@ -689,7 +689,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 9 )
 script = ExtResource( 15 )
-stats = SubResource( 35 )
+stats = SubResource( 52 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
@@ -702,7 +702,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 8 )
 script = ExtResource( 15 )
-stats = SubResource( 40 )
+stats = SubResource( 53 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
@@ -725,7 +725,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 15 )
-stats = SubResource( 46 )
+stats = SubResource( 54 )
 dialogue = null
 recruit_dialogue = null
 death_dialogue = null
