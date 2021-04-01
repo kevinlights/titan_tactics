@@ -2371,6 +2371,7 @@ visible = false
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 225 )
+frame = 1
 playing = true
 
 [node name="sfx" type="Node2D" parent="."]
@@ -2534,6 +2535,7 @@ frame = 6
 playing = true
 
 [node name="Thunder storm" type="Spatial" parent="vfx"]
+visible = false
 
 [node name="Spark" type="CPUParticles" parent="vfx/Thunder storm"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5 )
@@ -2557,17 +2559,14 @@ anim_speed_random = 1.0
 
 [node name="Thunder" type="AnimatedSprite3D" parent="vfx/Thunder storm"]
 transform = Transform( 1, 0, 0, 0, 0.997049, -0.0767712, 0, 0.0767712, 0.997049, 0.5, 1, 0.5 )
-visible = false
 material_override = SubResource( 279 )
 opacity = 0.79
 billboard = 1
 frames = SubResource( 284 )
-frame = 1
-playing = true
+frame = 3
 
 [node name="Flash" type="Sprite3D" parent="vfx/Thunder storm"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5 )
-visible = false
 material_override = SubResource( 285 )
 billboard = 1
 texture = ExtResource( 23 )
@@ -2576,6 +2575,7 @@ texture = ExtResource( 23 )
 "anims/Thunder storm" = SubResource( 286 )
 
 [node name="Flame shower" type="Spatial" parent="vfx"]
+visible = false
 
 [node name="Spark" type="CPUParticles" parent="vfx/Flame shower"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0.5 )
@@ -2618,10 +2618,11 @@ texture = SubResource( 297 )
 "anims/Thunder storm" = SubResource( 298 )
 
 [node name="Darken screen" type="Spatial" parent="vfx"]
+visible = false
 
 [node name="background" type="Sprite3D" parent="vfx/Darken screen"]
 modulate = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-opacity = 0.0
+opacity = 0.6
 pixel_size = 1.0
 billboard = 1
 texture = ExtResource( 42 )
