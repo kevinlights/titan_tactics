@@ -78,7 +78,7 @@ __meta__ = {
 visible = false
 position = Vector2( 124, 2 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -106,7 +106,7 @@ __meta__ = {
 visible = false
 position = Vector2( 133, 2 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -187,10 +187,10 @@ __meta__ = {
 }
 
 [node name="x" type="RichTextLabel" parent="menu"]
-margin_left = 80.4454
-margin_top = 89.4142
-margin_right = 100.445
-margin_bottom = 107.414
+margin_left = 69.4298
+margin_top = 99.1642
+margin_right = 89.4294
+margin_bottom = 117.164
 custom_colors/default_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 0
@@ -200,10 +200,10 @@ __meta__ = {
 }
 
 [node name="z" type="RichTextLabel" parent="menu"]
-margin_left = 70.4853
-margin_top = 98.7834
-margin_right = 90.4853
-margin_bottom = 116.783
+margin_left = 80.0
+margin_top = 89.0
+margin_right = 100.0
+margin_bottom = 107.0
 custom_colors/default_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 0
