@@ -3,7 +3,7 @@
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=2]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=3]
-[ext_resource path="res://gfx/mage.png" type="Texture" id=4]
+[ext_resource path="res://gfx/boba.png" type="Texture" id=4]
 [ext_resource path="res://scripts/character_stats.gd" type="Script" id=5]
 [ext_resource path="res://scripts/item.gd" type="Script" id=6]
 [ext_resource path="res://gfx/range-overlay/overlay.meshlib" type="MeshLibrary" id=7]
@@ -60,7 +60,7 @@ defense = 1
 heal = 0
 effect = SubResource( 3 )
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=20]
 script = ExtResource( 5 )
 character_class = 0
 name = "Lokum"
@@ -116,7 +116,7 @@ defense = 1
 heal = 0
 effect = SubResource( 8 )
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 5 )
 character_class = 3
 name = "Gabi"
@@ -172,7 +172,7 @@ defense = 1
 heal = 0
 effect = SubResource( 13 )
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=22]
 script = ExtResource( 5 )
 character_class = 3
 name = "Shawn"
@@ -228,7 +228,7 @@ defense = 1
 heal = 0
 effect = SubResource( 18 )
 
-[sub_resource type="Resource" id=20]
+[sub_resource type="Resource" id=23]
 script = ExtResource( 5 )
 character_class = 3
 name = "Marie"
@@ -298,7 +298,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 13 )
 script = ExtResource( 3 )
-stats = SubResource( 5 )
+stats = SubResource( 20 )
 dialogue = ExtResource( 21 )
 death_dialogue = ExtResource( 22 )
 
@@ -309,7 +309,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 10 )
+stats = SubResource( 21 )
 spawn_trigger = "surprise_bobas"
 
 [node name="Surprise Boba2" type="Sprite3D" parent="map"]
@@ -319,7 +319,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 15 )
+stats = SubResource( 22 )
 spawn_trigger = "surprise_bobas"
 
 [node name="Surprise Boba3" type="Sprite3D" parent="map"]
@@ -329,7 +329,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 20 )
+stats = SubResource( 23 )
 spawn_trigger = "surprise_bobas"
 
 [node name="PlayerSpawner" type="Sprite3D" parent="map"]

@@ -41,7 +41,7 @@ func play():
 			world.advance_turn()
 			return
 	var enemy = get_nearest_enemy_with_disadvantage(character)
-	if not enemy:
+	if not enemy or !can_attack(character, enemy):
 		enemy = get_nearest_enemy(character.translation)
 	if enemy:
 		if character.can_recruit() and character.character.has_ability(TT.ABILITY.HEAL):
