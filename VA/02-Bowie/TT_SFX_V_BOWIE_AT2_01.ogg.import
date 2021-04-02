@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TT_SFX_V_BOWIE_AT2_01.ogg-18722c724ed4a18e3303c1b69db06afb.oggstr"
+
+[deps]
+
+source_file="res://VA/02-Bowie/TT_SFX_V_BOWIE_AT2_01.ogg"
+dest_files=[ "res://.import/TT_SFX_V_BOWIE_AT2_01.ogg-18722c724ed4a18e3303c1b69db06afb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

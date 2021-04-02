@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TT_SFX_V_CELES_AT2_01.ogg-c4dacbe4588d68941a7f1f9ecf06d1dc.oggstr"
+
+[deps]
+
+source_file="res://VA/06-Celes/TT_SFX_V_CELES_AT2_01.ogg"
+dest_files=[ "res://.import/TT_SFX_V_CELES_AT2_01.ogg-c4dacbe4588d68941a7f1f9ecf06d1dc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

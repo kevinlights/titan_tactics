@@ -42,6 +42,12 @@ func get_theme():
 	return TT.levels[level].music
 #	return TT.levels[lvl]
 
+func add_to_team(character):
+	for existing in team:
+		if existing.name == character.name:
+			return
+	team.append(character)
+	
 func setup_new_game():
 	level = 0
 	unlocked_level = 0

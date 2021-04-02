@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TT_SFX_V_KRIS_AT2_02.ogg-4b2ac589c8c78673d8fad825c901f458.oggstr"
+
+[deps]
+
+source_file="res://VA/01-Kris/TT_SFX_V_KRIS_AT2_02.ogg"
+dest_files=[ "res://.import/TT_SFX_V_KRIS_AT2_02.ogg-4b2ac589c8c78673d8fad825c901f458.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

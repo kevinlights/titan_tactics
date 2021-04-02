@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TT_SFX_V_ZARA_AT1_03.ogg-42e4ea92ec9733328968a1053ea4d7a4.oggstr"
+
+[deps]
+
+source_file="res://VA/04-Zara/TT_SFX_V_ZARA_AT1_03.ogg"
+dest_files=[ "res://.import/TT_SFX_V_ZARA_AT1_03.ogg-42e4ea92ec9733328968a1053ea4d7a4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

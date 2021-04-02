@@ -124,6 +124,16 @@ func spread_icons():
 #		$guard.translation.x = 0
 #		$speak.translation.x = 7
 
+func thunderstorm():
+	$"vfx/Darken screen".show()
+	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
+#	yield(get_tree().create_timer(1.0), "timeout")
+	$"vfx/Thunder storm".show()
+	$"vfx/Thunder storm/AnimationPlayer".current_animation = "Thunder storm"
+	$"vfx/Thunder storm/Spark".emitting = true
+	$"vfx/Thunder storm/Thunder".play()
+	$"vfx/Thunder storm/Flash".show()
+	
 func hit(attacker):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
@@ -136,9 +146,10 @@ func hit(attacker):
 		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
 		TT.TYPE.MAGE:
-			$vfx/magic_hit.frame = 0
-			$vfx/magic_hit.show()
-			$vfx/magic_hit.play()
+			thunderstorm()
+#			$vfx/magic_hit.frame = 0
+#			$vfx/magic_hit.show()
+#			$vfx/magic_hit.play()
 			pick_random_sfx($sfx/magic_hit)
 		TT.TYPE.BOBA:
 			pick_random_sfx($sfx/boba_hit)

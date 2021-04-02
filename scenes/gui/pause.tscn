@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/gui/pause.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
-[ext_resource path="res://gfx/ui/pause_bg.png" type="Texture" id=3]
+[ext_resource path="res://gfx/ui/gamepad.png" type="Texture" id=3]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=4]
 [ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=5]
+[ext_resource path="res://gfx/FX/black.png" type="Texture" id=6]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -31,24 +32,29 @@ animations = [ {
 [sub_resource type="ImageTexture" id=6]
 
 [node name="pause" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 320.0
 margin_bottom = 224.0
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="menu" type="Control" parent="."]
 margin_left = 125.0
-margin_top = 100.0
+margin_top = 55.8058
 margin_right = 160.0
-margin_bottom = 112.0
+margin_bottom = 67.8058
 
 [node name="resume" type="ToolButton" parent="menu"]
 margin_left = -125.0
@@ -72,6 +78,7 @@ __meta__ = {
 visible = false
 position = Vector2( 124, 2 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
@@ -99,7 +106,108 @@ __meta__ = {
 visible = false
 position = Vector2( 133, 2 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 2 )
 script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="menu/quit"]
+position = Vector2( 162.635, 82.4648 )
+texture = ExtResource( 3 )
+
+[node name="-Pause-" type="RichTextLabel" parent="menu"]
+margin_left = -5.0
+margin_top = -34.0
+margin_right = 108.0
+margin_bottom = -13.0
+custom_colors/default_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+text = "— Pause —"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="E" type="RichTextLabel" parent="menu"]
+margin_left = 93.5
+margin_top = 50.0
+margin_right = 109.5
+margin_bottom = 71.0
+custom_colors/default_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+text = "E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Q" type="RichTextLabel" parent="menu"]
+margin_left = -30.5
+margin_top = 50.0
+margin_right = -14.5
+margin_bottom = 71.0
+custom_colors/default_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+text = "Q"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enter" type="RichTextLabel" parent="menu"]
+margin_left = 18.0
+margin_top = 124.0
+margin_right = 62.0
+margin_bottom = 141.0
+custom_colors/default_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+text = "Enter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="a" type="RichTextLabel" parent="menu"]
+margin_left = 59.0
+margin_top = 89.0
+margin_right = 79.0
+margin_bottom = 107.0
+custom_colors/default_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 0
+text = "a"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="s" type="RichTextLabel" parent="menu"]
+margin_left = 70.4298
+margin_top = 79.1612
+margin_right = 90.4298
+margin_bottom = 97.1612
+custom_colors/default_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 0
+text = "s"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x" type="RichTextLabel" parent="menu"]
+margin_left = 80.4454
+margin_top = 89.4142
+margin_right = 100.445
+margin_bottom = 107.414
+custom_colors/default_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 0
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="z" type="RichTextLabel" parent="menu"]
+margin_left = 70.4853
+margin_top = 98.7834
+margin_right = 90.4853
+margin_bottom = 116.783
+custom_colors/default_color = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 0
+text = "z"
+__meta__ = {
+"_edit_use_anchors_": false
+}

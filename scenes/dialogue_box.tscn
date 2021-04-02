@@ -30,7 +30,7 @@ tracks/0/keys = {
 [node name="dialogue_box" type="Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -224.0
+margin_top = -228.0
 margin_right = 320.0
 margin_bottom = -144.0
 script = ExtResource( 2 )

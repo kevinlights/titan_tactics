@@ -2,16 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pause_bg.png-014c913dae695ca7899e8b9956ca9ba2.stex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://gfx/ui/pause_bg.png"
-dest_files=[ "res://.import/pause_bg.png-014c913dae695ca7899e8b9956ca9ba2.stex" ]
-
 [params]
 
 compress/mode=0

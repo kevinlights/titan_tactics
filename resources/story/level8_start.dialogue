@@ -1,27 +1,17 @@
 //Starting level8 – Ceres tells the party that Elyne is evil and they need to fight her
 
-# kris
-Surrender! Why are you attacking Tyrmyr?
+#arath
+So what's with all the cheese?
 
-# celes
-It’s Elyne, she has got evil and decided to attack us and the rest of the Kingdom. She filled our Kingdom of monsters! I am at war with them to defend my people.
+#celes
+Elyne is lactose intolerant so she banned cheese!
+Hard to believe i know...
 
-# kris
-You expect us to believe you, cheese smuggler!?
+#arath
+Really!?
+> emote arath.ugh
 
-# celes
-The cheese is my guilty pleasure. Why are you attacking us?
-
-# kris
-We saw you attacking them, and after that, Elyne convinced us to fight for her.
-
-# celes
-Elyne may seem harmless but she is very powerful and she has a silver tongue.
-
-# zara
-That son of a hamster! She tricked us! She will pay!
-
-# celes
+#celes
 Elyne’s troops are already here! Please join me against her!
 
 #kris
