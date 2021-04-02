@@ -53,7 +53,10 @@ func load_level(level_name):
 
 func get_current():
 	current_character = clamp(current_character, 0, abs(current[current_turn].size()-1))
-	return current[current_turn][current_character]
+	if current[current_turn].size() > current_character:
+		return current[current_turn][current_character]
+	else:
+		return null
 
 func get_blocked_cells():
 	var blocked_cells = []
@@ -874,8 +877,12 @@ func _input(event):
 			unit.die()
 	if event.is_action("cheat_log_stats") && !event.is_echo() && event.is_pressed():
 		print("[World] selector ", $select.tile)
-		print("[World] current character tile ", get_current().tile)
-		print("[World] current character translation ", get_current().translation)
+		var currChar = get_current()
+		if currChar != null:
+			print("[World] current character tile ", currChar.tile)
+			print("[World] current character translation ", currChar.translation)
+		else:
+			print("[World] get_current returned null")
 	if event.is_action("mute_music") && !event.is_echo() && event.is_pressed():
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 	if event.is_action("unmute_music") && !event.is_echo() && event.is_pressed():
