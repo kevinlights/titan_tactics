@@ -1,7 +1,7 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
-[ext_resource path="res://scripts/gridmap_pathfinder.gd" type="Script" id=2]
+[ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=2]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=3]
 [ext_resource path="res://gfx/archer.png" type="Texture" id=4]
 [ext_resource path="res://scripts/character_stats.gd" type="Script" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=7]
 [ext_resource path="res://scripts/item_spawner.gd" type="Script" id=8]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=9]
+[ext_resource path="res://gfx/range-overlay/overlay.meshlib" type="MeshLibrary" id=10]
 [ext_resource path="res://scripts/level.gd" type="Script" id=11]
 [ext_resource path="res://resources/story/level2_start.dialogue" type="Resource" id=12]
 [ext_resource path="res://scripts/dialogue/story_marker.gd" type="Script" id=13]
@@ -19,6 +20,7 @@
 [ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=18]
 [ext_resource path="res://resources/story/level2_recruit.dialogue" type="Resource" id=19]
 [ext_resource path="res://resources/story/level2_chest.dialogue" type="Resource" id=20]
+[ext_resource path="res://scripts/gridmap/overlay_gridmap.gd" type="Script" id=21]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -343,6 +345,15 @@ __meta__ = {
 "_editor_floor_": Vector3( 6, 2, -9 )
 }
 
+[node name="overlay" type="GridMap" parent="Spatial/terrain"]
+mesh_library = ExtResource( 10 )
+cell_size = Vector3( 1, 0.5, 1 )
+cell_scale = 0.5
+data = {
+"cells": PoolIntArray( 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 1441794, 131077, 1, 1048578, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131072, 2, 655361, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 131080, 2, 0, 131081, 2, 0, 131084, 2, 0, 131085, 2, 0, 131075, 3, 0, 131080, 3, 0, 131081, 3, 0, 131084, 3, 0, 131085, 3, 0, 196608, 3, 0, 131075, 4, 0, 131078, 4, 0, 131079, 4, 0, 131080, 4, 0, 131082, 4, 0, 131083, 4, 0, 196608, 4, 0, 131072, 5, 1441793, 131075, 5, 0, 131078, 5, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 5, 0, 196609, 5, 0, 196610, 5, 0, 131072, 6, 0, 131073, 6, 0, 131074, 6, 0, 131075, 6, 0, 131078, 6, 0, 131079, 6, 0, 131080, 6, 0, 131083, 6, 0, 131072, 7, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0, 131078, 7, 0, 131082, 7, 0, 131083, 7, 0, 131084, 7, 0, 131085, 7, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131078, 8, 0, 131082, 8, 0, 131085, 8, 0, 131072, 9, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 9, 1441794, 131077, 9, 1048578, 131078, 9, 0, 131079, 9, 0, 131080, 9, 0, 131081, 9, 0, 131082, 9, 0, 131085, 9, 0, 131072, 10, 0, 131073, 10, 0, 131074, 10, 0, 131075, 10, 0, 131078, 10, 0, 131079, 10, 0, 131080, 10, 0, 131081, 10, 0, 131082, 10, 0, 131085, 10, 0, 131072, 11, 0, 131073, 11, 0, 131074, 11, 0, 131075, 11, 0, 131079, 11, 0, 131080, 11, 0, 131081, 11, 0, 131082, 11, 0, 131083, 11, 0, 131084, 11, 0, 131074, 12, 0, 131075, 12, 0, 131079, 12, 0, 131080, 12, 0, 131081, 12, 0, 131082, 12, 0, 131083, 12, 0, 131084, 12, 0, 131085, 12, 0, 131074, 13, 0, 131075, 13, 0, 131078, 13, 0, 131079, 13, 0, 131080, 13, 0, 131085, 13, 0, 131072, 14, 0, 131073, 14, 0, 131075, 14, 0, 131078, 14, 0, 131079, 14, 0, 131080, 14, 0, 131084, 14, 0, 131085, 14, 0 )
+}
+script = ExtResource( 21 )
+
 [node name="decorative" type="GridMap" parent="Spatial"]
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 0.5, 1 )
@@ -386,6 +397,10 @@ axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 6 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.2, 3 )
@@ -395,6 +410,10 @@ axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 11 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 8 )
@@ -404,6 +423,10 @@ axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 16 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 5 )
@@ -413,6 +436,10 @@ axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 21 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 10 )
@@ -422,6 +449,10 @@ axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 26 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
 
 [node name="PlayerSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 15 )
@@ -450,3 +481,7 @@ axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 27 )
+dialogue = null
+recruit_dialogue = null
+death_dialogue = null
+spawn_trigger = "level_start"
