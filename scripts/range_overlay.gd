@@ -1,6 +1,17 @@
 extends Spatial
 
 onready var world = get_tree().get_root().get_node("World")
+onready var cursorMode = 'default';
+# cursorHighlights[option] = Array[Vector2(X,Z)]
+var cursorHighlights = {
+	'default': [Vector2(0, 0)],
+	'thunder_storm': [
+		Vector2(1,0),
+		Vector2(-1,0),
+		Vector2(0,1),
+		Vector2(0,-1),
+	]
+}
 var overlayed_tiles = []
 var data
 var origin setget set_origin
@@ -26,30 +37,38 @@ func set_hint_tile(tile):
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
+var select_tiles = []
 func set_selector(_selector):
-	return
-	if selector:
-		if overlayed_tiles.find(selector) > -1:
-			var context_tile = Vector3(selector.x, 0, selector.z)
+	if select_tiles.size() > 0:
+		print('clear tiles: ', select_tiles)
+		for tile in select_tiles:
+			var context_tile = Vector3(tile.x, 0, tile.z)
 			var context = world.get_current_context(context_tile)
 			if context == TT.CONTEXT.MOVE:
-				if hint_tile and hint_tile.x == selector.x and hint_tile.z == selector.z:
-					gridmap.set_tile_overlay(selector, 'hint')
+				if hint_tile and hint_tile.x == tile.x and hint_tile.z == tile.z:
+					gridmap.set_tile_overlay(tile, 'hint')
 				else:
-					gridmap.set_tile_overlay(selector, 'move')
+					gridmap.set_tile_overlay(tile, 'move')
 			elif context == TT.CONTEXT.ATTACK:
-				gridmap.set_tile_overlay(selector, 'attack')
+				gridmap.set_tile_overlay(tile, 'attack')
 			else:
-				gridmap.set_tile_overlay(selector, '')
-		else:
-			gridmap.set_tile_overlay(selector, '')
-	var map_selector = gridmap.world_to_map(_selector)
-	var possible_selected_tiles = gridmap.filter_tiles(map_selector.x, map_selector.z)
-	if possible_selected_tiles.size() == 1:
-		selector = gridmap.point_to_world(possible_selected_tiles[0], false)
-		var tile_overlay_success = gridmap.set_tile_overlay(selector, 'select')
-		if not tile_overlay_success:
-			print_debug ('tile_overlay failed for ', selector)
+				gridmap.set_tile_overlay(tile, 'placeholder')
+	select_tiles = []
+	if _selector:
+		selector = gridmap.world_to_map(_selector)
+		var highlights = cursorHighlights[cursorMode]
+		for highlight in highlights:
+			var highlight_tile = selector + Vector3(highlight.x, 0, highlight.y)
+			var possible_tiles = gridmap.overlay.filter_tiles(highlight_tile.x, highlight_tile.z)
+			if possible_tiles.size() == 1:
+				var tile_overlay_success = gridmap.set_tile_overlay(possible_tiles[0], 'select')
+				if tile_overlay_success == true:
+					select_tiles.push_back(possible_tiles[0])
+				elif tile_overlay_success == false:
+					print_debug ('tile_overlay failed for ', possible_tiles[0])
+			else:
+				print_debug('not printing')
+	print('new tiles: ', select_tiles)
 
 func set_origin(_origin):
 	origin = _origin
@@ -65,10 +84,15 @@ func generate_data(new_origin):
 	var character = new_origin.character;
 	var _data = {
 		'tile': new_origin.tile,
+		'cursor':  null,
 		'move_distance': character.turn_limits.move_distance,
 		'actions': character.turn_limits.actions,
 		'atk_range': character.atk_range + character.item_atk.attack_range,
 	}
+	var select = world.get_node_or_null('select')
+	if select: 
+		_data.cursor = select.tile
+	print('_data', _data)
 	if data != _data:
 		data = _data
 		if data.actions > 0 or data.move_distance > 1:
@@ -78,7 +102,6 @@ func generate_data(new_origin):
 
 func _process(_time):
 	if gridmap and origin:
-		#print(self.visible, data, origin.movement.moving, origin.tile)
 		if self.visible:
 			var shouldHide = (origin.movement.moving) or (world.current_turn == TT.CONTROL.AI or world.get_current_context(origin.tile) == TT.CONTEXT.NOT_PLAYABLE)
 			if shouldHide:
@@ -91,22 +114,24 @@ func _process(_time):
 				generate_data(origin)
 
 func clear():
+	print('clearing tiles ', overlayed_tiles)
 	for tile in overlayed_tiles:
 		gridmap.set_tile_overlay(tile, 'placeholder')
+	gridmap.overlay.blank_gridmap()
 	overlayed_tiles = []
-	for child in get_children():
-		child.queue_free()
 
 func hide():
 	self.visible = false
 	clear()
 
 func show():
-	if not data:
-		return
 	clear()
 	self.visible = true
-	
+	paint()
+
+func paint():
+	if not data:
+		return
 	for tile in gridmap.get_tiles_within(data.tile, data.move_distance - 1):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context = world.get_current_context(context_tile)
@@ -121,7 +146,6 @@ func show():
 			overlayed_tiles.push_back(tile)
 		elif tile_overlay_success == false:
 			print_debug ('tile_overlay failed for ', tile)
-	
 	for tile in gridmap.get_tiles_within(data.tile, data.atk_range):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context = world.get_current_context(context_tile)
@@ -140,3 +164,4 @@ func show():
 			overlayed_tiles.push_back(hint_tile)
 		else:
 			print_debug("Failed to render hint overlay")
+	
