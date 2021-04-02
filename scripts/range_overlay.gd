@@ -47,6 +47,7 @@ func set_selector(_selector):
 					gridmap.set_tile_overlay(tile, 'select')
 				else:
 					gridmap.set_tile_overlay(tile, 'move')
+			# TODO: this doesn't consider if character is in range atm
 			elif context == TT.CONTEXT.ATTACK:
 				gridmap.set_tile_overlay(tile, 'attack')
 			else:
