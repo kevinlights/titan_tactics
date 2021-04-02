@@ -80,13 +80,16 @@ func level_up():
 	var stats_diff = {
 		"atk": atk_up[lvl_up + 1],
 		"def": def_up[lvl_up + 1],
-		"hp": hp_up[lvl_up + 1]
+		"hp": hp_up[lvl_up + 1],
+		"mov": mov_up[lvl_up + 1]
 	}
 	level += 1
 	atk += stats_diff.atk
 	def += stats_diff.def
 	max_hp += stats_diff.hp
 	hp = max_hp
+	if character_class == "Swordsman":
+		mov_range += stats_diff.mov
 	current_to_next = current_to_next - xp_to_next
 	xp_to_next = pow(level, 2)
 	print("Level up")
@@ -125,12 +128,14 @@ var items = {
 
 var turn_limits = {
 	"move_distance": mov_range,
+	"move_actions": 1,
 	"actions": 1 # attack, heal, guard
 }
 
 func reset_turn():
 	turn_limits.move_distance = mov_range
 	turn_limits.actions = 1
+	turn_limits.move_actions = 1
 
 func from_other(other_stats):
 	print("Setting stats from other stats")
@@ -208,6 +213,7 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 	mov_range = default_stats.mov_range
 	turn_limits.move_distance = default_stats.mov_range
 	turn_limits.actions = 1 # TT.class_stats.actions[type]
+	turn_limits.mov_actions = 1
 	atk_range = default_stats.atk_range
 	atk = default_stats.atk + sequence_cumulative(atk_up, level)
 	def = default_stats.def + sequence_cumulative(def_up, level)
@@ -282,6 +288,7 @@ func from_save_data(class_stats, data):
 	mov_range = default_stats.mov_range
 	turn_limits.move_distance = default_stats.mov_range
 	turn_limits.actions = 1 # TT.class_stats.actions[type]
+	turn_limits.mov_actions = 1
 	atk_range = default_stats.atk_range
 	atk = default_stats.atk + sequence_cumulative(atk_up, level)
 	def = default_stats.def + sequence_cumulative(def_up, level)
