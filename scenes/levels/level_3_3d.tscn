@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://resources/story/level3_chest.dialogue" type="Resource" id=21]
 [ext_resource path="res://gfx/range-overlay/overlay.meshlib" type="MeshLibrary" id=22]
 [ext_resource path="res://scripts/gridmap/overlay_gridmap.gd" type="Script" id=23]
+[ext_resource path="res://resources/cast/arath.tres" type="Resource" id=24]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -68,7 +69,7 @@ defense = 1
 heal = 1
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=36]
 script = ExtResource( 5 )
 character_class = 2
 name = "Petr"
@@ -124,7 +125,7 @@ defense = 1
 heal = 0
 effect = SubResource( 9 )
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=37]
 script = ExtResource( 5 )
 character_class = 1
 name = "Sage"
@@ -180,7 +181,7 @@ defense = 1
 heal = 0
 effect = SubResource( 14 )
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=38]
 script = ExtResource( 5 )
 character_class = 0
 name = "Bram"
@@ -236,7 +237,7 @@ defense = 1
 heal = 0
 effect = SubResource( 19 )
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 5 )
 character_class = 3
 name = "Flan"
@@ -292,7 +293,7 @@ defense = 1
 heal = 0
 effect = SubResource( 24 )
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=40]
 script = ExtResource( 5 )
 character_class = 3
 name = "Jason"
@@ -348,7 +349,7 @@ defense = 1
 heal = 0
 effect = SubResource( 29 )
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 5 )
 character_class = 0
 name = "Lota"
@@ -404,7 +405,7 @@ defense = 1
 heal = 0
 effect = SubResource( 34 )
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=42]
 script = ExtResource( 5 )
 character_class = 3
 name = ""
@@ -425,7 +426,7 @@ control = 1
 [node name="level" type="Spatial"]
 script = ExtResource( 11 )
 start_dialogue = ExtResource( 12 )
-add_character = "arath,bowie"
+add_character = "bowie"
 map_node = "terrain"
 
 [node name="Spatial" type="Spatial" parent="."]
@@ -495,11 +496,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 6 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
+stats = SubResource( 36 )
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 5 )
@@ -508,11 +505,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 15 )
 script = ExtResource( 3 )
-stats = SubResource( 11 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
+stats = SubResource( 37 )
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 10 )
@@ -521,11 +514,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 16 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
+stats = SubResource( 38 )
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.2, 8 )
@@ -534,11 +523,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 21 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
+stats = SubResource( 39 )
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 7 )
@@ -547,11 +532,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 26 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
+stats = SubResource( 40 )
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.2, 7 )
@@ -560,11 +541,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 31 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
+stats = SubResource( 41 )
 
 [node name="StoryMarker4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.2, 1 )
@@ -584,11 +561,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
-stats = SubResource( 36 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
+stats = SubResource( 42 )
 
 [node name="PlayerSpawner" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 14 )
@@ -599,17 +572,18 @@ texture = ExtResource( 19 )
 script = ExtResource( 18 )
 
 [node name="PlayerSpawner2" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.2, 14 )
-centered = false
-pixel_size = 0.06
-axis = 1
-texture = ExtResource( 19 )
-script = ExtResource( 18 )
-
-[node name="PlayerSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 14 )
 centered = false
 pixel_size = 0.06
 axis = 1
 texture = ExtResource( 19 )
 script = ExtResource( 18 )
+
+[node name="Arath" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 11 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 16 )
+script = ExtResource( 3 )
+stats = ExtResource( 24 )

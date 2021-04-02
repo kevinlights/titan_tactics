@@ -397,10 +397,6 @@ axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 6 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.2, 3 )
@@ -410,10 +406,6 @@ axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 11 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 8 )
@@ -423,10 +415,6 @@ axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 16 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 5 )
@@ -436,10 +424,6 @@ axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 21 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 10 )
@@ -449,10 +433,6 @@ axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 26 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
 
 [node name="PlayerSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 15 )
@@ -481,7 +461,3 @@ axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 stats = SubResource( 27 )
-dialogue = null
-recruit_dialogue = null
-death_dialogue = null
-spawn_trigger = "level_start"
