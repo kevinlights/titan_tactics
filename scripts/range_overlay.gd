@@ -29,9 +29,7 @@ func set_hint_tile(tile):
 			elif context == TT.CONTEXT.ATTACK:
 				gridmap.set_tile_overlay(hint_tile, 'attack')
 			else:
-				gridmap.set_tile_overlay(hint_tile, '')
-		else:
-			gridmap.set_tile_overlay(hint_tile, '')
+				gridmap.set_tile_overlay(hint_tile, 'placeholder')
 	hint_tile = tile
 	
 func set_gridmap(_gridmap):
@@ -46,7 +44,7 @@ func set_selector(_selector):
 			var context = world.get_current_context(context_tile)
 			if context == TT.CONTEXT.MOVE:
 				if hint_tile and hint_tile.x == tile.x and hint_tile.z == tile.z:
-					gridmap.set_tile_overlay(tile, 'hint')
+					gridmap.set_tile_overlay(tile, 'select')
 				else:
 					gridmap.set_tile_overlay(tile, 'move')
 			elif context == TT.CONTEXT.ATTACK:
@@ -159,7 +157,7 @@ func paint():
 			print_debug ('tile_overlay failed for ', tile)
 	
 	if hint_tile:
-		var tile_overlay_success = gridmap.set_tile_overlay(hint_tile, 'hint')
+		var tile_overlay_success = gridmap.set_tile_overlay(hint_tile, 'select')
 		if tile_overlay_success == true:
 			overlayed_tiles.push_back(hint_tile)
 		else:
