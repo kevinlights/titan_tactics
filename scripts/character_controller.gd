@@ -106,7 +106,7 @@ func apply_effects():
 		$healthbar.set_value(character.hp, character.max_hp)
 
 func check_finished():
-	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
+	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_actions == 0:
 		is_done = true
 		if character.control != TT.CONTROL.AI:
 			$done.show()
@@ -225,6 +225,7 @@ func guard():
 		$guard.show()
 		spread_icons()
 		character.turn_limits.actions = 0
+		character.turn_limits.move_actions = 0
 		character.turn_limits.move_distance = 0
 		guarding = true
 		check_finished()
@@ -450,7 +451,7 @@ func attack_complete():
 
 
 func move(target_path:PoolVector3Array):
-	if movement.moving or target_path.size() == 0:
+	if movement.moving or target_path.size() == 0 or character.turn_limits.move_actions == 0:
 		return
 	path = normalize_path(target_path)
 	movement.start_time = OS.get_ticks_msec()
@@ -460,6 +461,7 @@ func move(target_path:PoolVector3Array):
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
 	character.turn_limits.move_distance -= path.size()
+	character.turn_limits.move_actions = 0
 #	check_finished()
 
 func normalize_path(my_path):

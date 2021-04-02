@@ -836,7 +836,7 @@ func get_current_context(tile):
 	if not current[current_turn].empty():
 		var current_path = pathfinder.find_path(get_current().tile, tile, get_blocked_cells())
 		if current_path.size() > 0:
-			var allowed = current_path.size() <= get_current().character.turn_limits.move_distance
+			var allowed = current_path.size() <= get_current().character.turn_limits.move_distance && get_current().character.turn_limits.move_actions > 0
 			if all_enemies_eliminated():
 				allowed = true
 			if not allowed:
