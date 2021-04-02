@@ -155,6 +155,7 @@ __meta__ = {
 [node name="map_selector" type="AnimatedSprite" parent="."]
 position = Vector2( 70, 134 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 centered = false
 
@@ -167,7 +168,7 @@ frames = SubResource( 8 )
 [node name="map point2" type="AnimatedSprite" parent="." groups=[
 "map_points",
 ]]
-position = Vector2( 60.6175, 121.028 )
+position = Vector2( 59.6175, 121.028 )
 frames = SubResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="map point2"]
