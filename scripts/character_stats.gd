@@ -37,6 +37,7 @@ var fibonacci = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
 var hp_up = [ 0, 2, 3, 4, 5, 6, 7, 7, 8, 8, 10, 12, 14 ]
 var atk_up = [ 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1 ]
 var def_up = [ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ]
+var mov_up = [ 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ]
 
 var cant_carry = [ TT.TYPE.BOBA ]
 enum PERSONALITY {
