@@ -738,7 +738,7 @@ func _on_guard():
 
 func _on_heal():
 	var target = entity_at($select.tile)
-	if get_current().character.turn_limits.actions != 0:
+	if get_current().character.turn_limits.actions != 0 && target != null:
 		var healed = get_current().heal(target)
 
 		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
