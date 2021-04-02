@@ -6,14 +6,17 @@ onready var itemMapping := {
 	'flat': -1,
 	'flat_move': -1,
 	'flat_attack': -1,
+	'flat_select': -1,
 	'flat_placeholder': -1,
 	'angled': -1,
 	'angled_move': -1,
 	'angled_attack': -1,
+	'angled_select': -1,
 	'angled_placeholder': -1,
 	'bridge': -1,
 	'bridge_move': -1,
 	'bridge_attack': -1,
+	'bridge_select': -1,
 	'bridge_placeholder': -1,
 }
 
@@ -32,7 +35,7 @@ func blank_gridmap():
 
 func change_cell_to(cell, type = null):
 	var name = get_cell_name(cell)
-	var cell_type = name.replace('_move', '').replace('_attack', '').replace('_placeholder', '')
+	var cell_type = name.replace('_move', '').replace('_attack', '').replace('_placeholder', '').replace('_hint', '').replace('_select', '')
 	var new_name = cell_type
 	if type:
 		new_name += '_' + type
