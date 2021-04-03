@@ -128,6 +128,10 @@ func perform_action(item):
 		return
 	if item.action == "spawn":
 		world.surprise_spawn(item.target)
+	if item.action == "expect":
+		world.expected_target = world.find_story_marker(item.target)
+
+		pass
 	index += 1
 
 func _process(_delta):

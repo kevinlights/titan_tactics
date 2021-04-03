@@ -21,6 +21,7 @@ var ai
 var current_character = 0
 var turns = 0
 var map_size = { "width": 10, "height": 10 }
+var expected_target = null
 
 var num_done = 0
 
@@ -281,8 +282,14 @@ func action():
 					else:
 						target.use()
 		TT.CONTEXT.MOVE:
-			var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
-			get_current().move(current_path) # to_world_path(current_path))
+			print_debug(expected_target)
+			if expected_target != null and expected_target.translation.x != $select.tile.x and expected_target.translation.y != $select.tile.y:
+				$gui/sfx/denied.play()
+			else:
+				if expected_target != null:
+					expected_target = null
+				var current_path = pathfinder.find_path(get_current().tile, $select.tile, get_blocked_cells())
+				get_current().move(current_path) # to_world_path(current_path))
 		TT.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
 #		TT.CONTEXT.GUARD:
@@ -745,7 +752,7 @@ func _on_guard():
 
 func _on_heal():
 	var target = entity_at($select.tile)
-	if get_current().character.turn_limits.actions != 0 && target != null:
+	if get_current().character.turn_limits.actions != 0 && target != null && target.get("character") != null:
 		var healed = get_current().heal(target)
 
 		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
@@ -762,6 +769,8 @@ func _on_heal():
 #		add_child(damage_feedback)
 		target.get_node("vfx/heal").emitting = true
 		print("[World] healed")
+	else:
+		$gui/sfx/denied.play()
 #	gui.call_deferred("back")
 
 func _on_end():
