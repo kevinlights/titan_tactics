@@ -33,6 +33,13 @@ func dismiss():
 func set_characters(list):
 	library = list
 	characters = library.duplicate()
+	var world = get_tree().get_root().get_node("World")
+	var exclude = []
+	for character in characters:
+		if(world.find_character(character.name)):
+			exclude.append(character)
+	for character in exclude:
+		characters.remove(characters.find(character))
 	if not placeholder.get_parent():
 		print("Adding placeholder to map")
 		get_tree().get_root().get_node("World").add_child(placeholder)
