@@ -88,7 +88,7 @@ func level_up():
 	def += stats_diff.def
 	max_hp += stats_diff.hp
 	hp = max_hp
-	if character_class == "Swordsman":
+	if character_class == 0:
 		mov_range += stats_diff.mov
 	current_to_next = current_to_next - xp_to_next
 	xp_to_next = pow(level, 2)
