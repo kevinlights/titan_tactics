@@ -201,6 +201,7 @@ axis = 1
 alpha_cut = 2
 frames = SubResource( 17 )
 animation = "attack"
+frame = 1
 playing = true
 script = ExtResource( 4 )
 
