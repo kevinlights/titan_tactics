@@ -741,7 +741,7 @@ func _on_guard():
 
 func _on_heal():
 	var target = entity_at($select.tile)
-	if get_current().character.turn_limits.actions != 0 && target != null:
+	if get_current().character.turn_limits.actions != 0 && target != null && target.get("character") != null:
 		var healed = get_current().heal(target)
 
 		var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
@@ -758,6 +758,8 @@ func _on_heal():
 #		add_child(damage_feedback)
 		target.get_node("vfx/heal").emitting = true
 		print("[World] healed")
+	else:
+		$gui/sfx/denied.play()
 #	gui.call_deferred("back")
 
 func _on_end():
