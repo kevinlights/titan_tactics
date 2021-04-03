@@ -246,6 +246,10 @@ func action():
 	var context = get_current_context($select.tile)
 	var target = entity_at($select.tile)
 	match(context):
+		TT.CONTEXT.SELECT:
+			var target_index = current[current_turn].find(target)
+			if target_index != -1:
+				current_character = target_index
 		TT.CONTEXT.ATTACK:
 			if get_current().character.turn_limits.actions > 0:
 				if get_current().can_attack(target):
@@ -835,7 +839,7 @@ func get_current_context(tile):
 		elif get_current() == unit:
 			return TT.CONTEXT.GUARD
 		else:
-			return TT.CONTEXT.NEUTRAL
+			return TT.CONTEXT.SELECT
 	if not current[current_turn].empty():
 		var current_path = pathfinder.find_path(get_current().tile, tile, get_blocked_cells())
 		if current_path.size() > 0:

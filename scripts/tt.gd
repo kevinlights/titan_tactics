@@ -23,7 +23,8 @@ enum CONTEXT {
 	NEUTRAL,
 	USE,
 	NOT_ALLOWED,
-	NOT_PLAYABLE
+	NOT_PLAYABLE,
+	SELECT
 }
 
 const cell_size = 1

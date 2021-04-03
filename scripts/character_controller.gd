@@ -125,14 +125,17 @@ func spread_icons():
 #		$speak.translation.x = 7
 
 func thunderstorm():
-	$"vfx/Darken screen".show()
-	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
+#	$"vfx/Darken screen".show()
+#	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
 #	yield(get_tree().create_timer(1.0), "timeout")
 	$"vfx/Thunder storm".show()
 	$"vfx/Thunder storm/AnimationPlayer".current_animation = "Thunder storm"
 	$"vfx/Thunder storm/Spark".emitting = true
 	$"vfx/Thunder storm/Thunder".play()
 	$"vfx/Thunder storm/Flash".show()
+	yield(get_tree().create_timer(1.0), "timeout")
+	$"vfx/Thunder storm/Flash".hide()
+	$"vfx/Thunder storm".hide()
 	
 func hit(attacker):
 	match(attacker.character_class):
