@@ -53,3 +53,4 @@ func _on_credits_pressed():
 	$sfx/select.play()
 	$menu/credits_overlay.show()
 	$menu/credits_overlay/roll/ok.grab_focus()
+	$menu/credits_overlay/roll/AnimationPlayer.current_animation = "roll"

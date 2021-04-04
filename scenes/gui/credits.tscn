@@ -212,7 +212,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="roll"]
 position = Vector2( 137.747, 715.947 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 centered = false
 
