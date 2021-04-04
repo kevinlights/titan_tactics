@@ -102,26 +102,19 @@ func set_context(context):
 			play("cantmove")
 
 func _ready():
-	gui.connect("selector_left", self, "_on_selector_left")
-	gui.connect("selector_right", self, "_on_selector_right")
-	gui.connect("selector_up", self, "_on_selector_up")
-	gui.connect("selector_down", self, "_on_selector_down")
-	
-func _on_selector_left():
-	self.tile = self.tile + directions[Game.camera_orientation]["left"]
-	emit_signal("moved", self.tile)
+	gui.connect("selector_left", self, "_on_selector_move", ["left"])
+	gui.connect("selector_right", self, "_on_selector_move", ["right"])
+	gui.connect("selector_up", self, "_on_selector_move", ["up"])
+	gui.connect("selector_down", self, "_on_selector_move", ["down"])
 
-func _on_selector_right():
-	self.tile = self.tile + directions[Game.camera_orientation]["right"]
-	emit_signal("moved", self.tile)
-
-func _on_selector_up():
-	self.tile = self.tile + directions[Game.camera_orientation]["up"]
-	emit_signal("moved", self.tile)
-
-func _on_selector_down():
-	self.tile = self.tile + directions[Game.camera_orientation]["down"]
-	emit_signal("moved", self.tile)
+func _on_selector_move(dir):
+	print(dir)
+	var new_tile = self.tile + directions[Game.camera_orientation][dir]
+	if world.pathfinder and world.pathfinder.is_tile_within(new_tile.x, new_tile.z):
+		self.tile = new_tile
+		emit_signal("moved", self.tile)
+	else:
+		gui.get_node('sfx/denied').play()
 #
 #func x_input(event):
 #	var advance = Vector3(0, 0, 0)

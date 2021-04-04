@@ -22,6 +22,10 @@ func _ready():
 		if overlay:
 			overlay.init_astar()
 			overlay.blank_gridmap()
+		_compute_bounds()
+
+func is_tile_within(x, z):
+	return (minCell.x <= x and maxCell.x >= x) and (minCell.z <= z and maxCell.z >= z)
 
 # methods used for pathfinding
 func find_path(start, end, blocked_cells = []):
