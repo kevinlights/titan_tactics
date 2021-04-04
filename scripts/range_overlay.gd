@@ -35,24 +35,9 @@ func set_hint_tile(tile):
 func set_gridmap(_gridmap):
 	gridmap = _gridmap
 
-var select_tiles = []
 func set_selector(_selector):
-	if select_tiles.size() > 0:
-		print('clear tiles: ', select_tiles)
-		for tile in select_tiles:
-			var context_tile = Vector3(tile.x, 0, tile.z)
-			var context = world.get_current_context(context_tile)
-			if context == TT.CONTEXT.MOVE:
-				if hint_tile and hint_tile.x == tile.x and hint_tile.z == tile.z:
-					gridmap.set_tile_overlay(tile, 'select')
-				else:
-					gridmap.set_tile_overlay(tile, 'move')
-			# TODO: this doesn't consider if character is in range atm
-			elif context == TT.CONTEXT.ATTACK:
-				gridmap.set_tile_overlay(tile, 'attack')
-			else:
-				gridmap.set_tile_overlay(tile, 'placeholder')
-	select_tiles = []
+	clear()
+	paint()
 	if _selector:
 		selector = gridmap.world_to_map(_selector)
 		var highlights = cursorHighlights[cursorMode]
@@ -62,12 +47,9 @@ func set_selector(_selector):
 			if possible_tiles.size() == 1:
 				var tile_overlay_success = gridmap.set_tile_overlay(possible_tiles[0], 'select')
 				if tile_overlay_success == true:
-					select_tiles.push_back(possible_tiles[0])
-				elif tile_overlay_success == false:
-					print_debug ('tile_overlay failed for ', possible_tiles[0])
+					overlayed_tiles.push_back(possible_tiles[0])
 			else:
 				print_debug('not printing')
-	print('new tiles: ', select_tiles)
 
 func set_origin(_origin):
 	origin = _origin
