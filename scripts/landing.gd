@@ -17,7 +17,7 @@ func _ready():
 		$menu/continue.hide()
 		$menu/newgame.grab_focus()
 # warning-ignore:return_value_discarded
-	$menu/credits_overlay/ok.connect("pressed", self, "_on_close_credits")
+	$menu/credits_overlay/roll/ok.connect("pressed", self, "_on_close_credits")
 #	if is_web and $menu/margin/vbox/quit:
 #		$menu/margin/vbox/quit.hide()
 
@@ -52,4 +52,4 @@ func _start_game():
 func _on_credits_pressed():
 	$sfx/select.play()
 	$menu/credits_overlay.show()
-	$menu/credits_overlay/ok.grab_focus()
+	$menu/credits_overlay/roll/ok.grab_focus()

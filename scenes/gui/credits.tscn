@@ -52,10 +52,10 @@ __meta__ = {
 color = Color( 0.0627451, 0.0627451, 0.0705882, 0.921569 )
 polygon = PoolVector2Array( 0, 0, 0, 224, 160.781, 224, 320, 224, 320, 0 )
 
-[node name="Credits roll" type="Node2D" parent="."]
-position = Vector2( 0, -32.9623 )
+[node name="roll" type="Node2D" parent="."]
+position = Vector2( 0, 10 )
 
-[node name="role" type="Label" parent="Credits roll"]
+[node name="role" type="Label" parent="roll"]
 margin_left = 64.0
 margin_top = 48.0
 margin_right = 144.0
@@ -101,7 +101,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="Credits roll"]
+[node name="name" type="Label" parent="roll"]
 margin_left = 152.0
 margin_top = 48.0
 margin_right = 276.0
@@ -146,7 +146,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name3" type="Label" parent="Credits roll"]
+[node name="voices" type="Label" parent="roll"]
 margin_top = 457.0
 margin_right = 319.0
 margin_bottom = 473.0
@@ -162,7 +162,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name2" type="Label" parent="Credits roll"]
+[node name="credits" type="Label" parent="roll"]
 margin_top = 21.0
 margin_right = 321.0
 margin_bottom = 35.0
@@ -179,14 +179,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="Credits roll"]
-position = Vector2( 0, 5 )
-
-[node name="okshadow" type="ToolButton" parent="Credits roll/Node2D"]
+[node name="okshadow" type="ToolButton" parent="roll"]
 margin_left = 1.0
-margin_top = 708.0
+margin_top = 713.0
 margin_right = 321.0
-margin_bottom = 730.0
+margin_bottom = 735.0
 focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 2 )
@@ -196,10 +193,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ok" type="ToolButton" parent="Credits roll/Node2D"]
-margin_top = 707.0
+[node name="ok" type="ToolButton" parent="roll"]
+margin_top = 712.0
 margin_right = 320.0
-margin_bottom = 729.0
+margin_bottom = 734.0
 focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
 theme = ExtResource( 2 )
@@ -212,12 +209,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Credits roll/Node2D"]
-position = Vector2( 137.747, 710.947 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="roll"]
+position = Vector2( 137.747, 715.947 )
 frames = SubResource( 4 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Credits roll"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="roll"]
 anims/roll = SubResource( 5 )
