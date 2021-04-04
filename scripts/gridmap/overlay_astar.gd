@@ -22,7 +22,7 @@ var cardinalHeights := { # y_deltas
 	# tile_type: [NW, N, NE, E, SE, S, SW, W]
 	'flat': [0, 0, 0, 0, 0, 0, 0, 0],
 	'angled': [1, 1, 1, 0.5, 0, 0, 0, 0.5],
-	'bridge': [1, 1, 1, 0.5, 0, 0, 0, 0.5],
+	'bridge': [1, 1, 1, sqrt(3)/2, 0, 0, 0, sqrt(3)/2],
 }
 
 var cardinalDeltas := [
@@ -185,11 +185,17 @@ func generate_walking_path(path):
 		var middle = cell
 		if name.begins_with('angled'):
 			middle.y += 0.5
+		if name.begins_with('bridge'):
+			middle.y += sqrt(3)/2
 		if i > 0:
 			var last_move = walking_path.back()
 			var one_quarter = (middle + last_move) / 2
 			if name.begins_with('flat'):
 				one_quarter.y = middle.y
+			if name.begins_with('bridge'):
+				var diff = abs(middle.y - one_quarter.y)
+				if diff > 0.433 and diff < 0.434:
+					one_quarter.y += 0.228425126
 			walking_path.append(one_quarter)
 		walking_path.append(middle)
 		if i < path.size() - 1:
@@ -205,6 +211,10 @@ func generate_walking_path(path):
 			var three_quarters = (middle + edge) / 2
 			if name.begins_with('flat'):
 				three_quarters.y = middle.y
+			if name.begins_with('bridge'):
+				var diff = abs(middle.y - three_quarters.y)
+				if diff > 0.433 and diff < 0.434:
+					three_quarters.y += 0.228425126
 			walking_path.append(three_quarters)
 			walking_path.append(edge)
 	for i in range(walking_path.size()):
