@@ -258,6 +258,17 @@ func action():
 						gui.attack()
 					else:
 						_on_attack()
+				elif get_current().can_move_and_attack(target):
+					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
+					if attack_range == 1:
+						var path_to_target = pathfinder.find_path(get_current().tile, target.tile)
+						path_to_target.remove(path_to_target.size() - 1)
+						get_current().move(path_to_target)
+						get_current().connect("path_complete", self, "_on_attack", [], CONNECT_ONESHOT)
+					else:
+						$gui/sfx/denied.play()
+				else:
+					$gui/sfx/denied.play()
 		TT.CONTEXT.USE:
 			if is_adjacent(target, get_current()):
 				if target.is_loot:
