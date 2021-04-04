@@ -72,24 +72,30 @@ func update_context():
 	set_context(world.get_current_context(tile))
 
 func set_context(context):
+	if world.pathfinder and world.pathfinder.overlay:
+		var possible_tiles = world.pathfinder.overlay.filter_tiles(tile.x, tile.z)
+		if possible_tiles.size() == 1:
+			$top.translation.y = (possible_tiles[0].y - 2) / 2
+	else:
+		$top.translation.y = 0;
 #	if world.current_turn == TT.CONTROL.AI or context == TT.CONTEXT.NOT_PLAYABLE:
 #		print("context is not playable, hiding selector")
 #		play("blank")
 #		return
-	$top.translation.y = 0.25
+	$top.translation.y += 0.25
 	match(context):
 		TT.CONTEXT.USE:
 			play("attack")
-			$top.translation.y = 0.6
+			$top.translation.y += 0.6 - 0.25
 		TT.CONTEXT.ATTACK:
 			play("attack")
-			$top.translation.y = 1.0
+			$top.translation.y += 1.0 - 0.25
 		TT.CONTEXT.GUARD:
 			play("guard")
-			$top.translation.y = 1.0
+			$top.translation.y += 1.0 - 0.25
 		TT.CONTEXT.HEAL:
 			play("heal")
-			$top.translation.y = 1.0
+			$top.translation.y += 1.0 - 0.25
 		TT.CONTEXT.MOVE:
 			play("default")
 		TT.CONTEXT.NOT_ALLOWED:

@@ -74,7 +74,7 @@ var movement = {
 	"start_position": Vector3(0, 0, 0),
 	"end_position": Vector3(0, 0, 0),
 	"start_time": 0,
-	"speed": 400,
+	"speed": 400 / 3.25,
 	"last_direction": "down",
 	"moving": false
 }
@@ -457,22 +457,16 @@ func attack_complete():
 func move(target_path:PoolVector3Array):
 	if movement.moving or target_path.size() == 0 or character.turn_limits.move_actions == 0:
 		return
-	path = normalize_path(target_path)
+	path = world.pathfinder.generate_walking_path(target_path)
 	movement.start_time = OS.get_ticks_msec()
 #	movement.end_position = Vector3(path[0].x, 0, path[0].z)
 	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
 	movement.start_position = Vector3(translation.x, translation.y, translation.z)
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
-	character.turn_limits.move_distance -= path.size()
+	character.turn_limits.move_distance -= target_path.size()
 	character.turn_limits.move_actions = 0
 #	check_finished()
-
-func normalize_path(my_path):
-	var target_path = PoolVector3Array()
-	for point in my_path:
-		target_path.append(point - Vector3(0, .25, 0))
-	return target_path
 	
 func select_type():
 	$archer.hide()
