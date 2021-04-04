@@ -26,13 +26,13 @@ var item_types = {
 func _ready():
 	pass # Replace with function body.
 
-func teleport(x, y):
+func teleport(x, y, z):
 	tile.x = round(x)
-	tile.z = round(y)
-	tile.y = 0.1
+	tile.z = round(z)
+	tile.y = y + 0.1
 	translation.x = tile.x
 	translation.z = tile.z
-	translation.y = 0.1
+	translation.y = tile.y
 	print("Chest ", translation)
 
 func open(type):

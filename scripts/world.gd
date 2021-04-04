@@ -93,9 +93,17 @@ func spawn_cover(tile):
 	print("[World] Spawned cover")
 	return cover
 	
-func spawn_chest(x, y, item_spawner, dialogue):
+func spawn_chest(x, z, item_spawner, dialogue):
 	var chest = load("res://scenes/chest.tscn").instance()
-	chest.teleport(x, y)
+	var teleported = false
+	if pathfinder and pathfinder.overlay:
+		var possible_tiles = pathfinder.overlay.filter_tiles(x, z)
+		if possible_tiles.size() == 1:
+			var y = (possible_tiles[0].y - 2) / 2;
+			chest.teleport(x, y, z)
+			teleported = true
+	if !teleported:
+		chest.teleport(x, 0.0, z)
 	chest.item_spawner = item_spawner
 	chest.dialogue = dialogue
 	chest.add_to_group("characters")
