@@ -269,7 +269,13 @@ func action():
 				elif get_current().can_move_and_attack(target):
 					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
 					if attack_range == 1:
-						var path_to_target = pathfinder.find_path(get_current().tile, target.tile)
+						var blocked_tiles = get_blocked_cells()
+						# remove target from blocked_tiles (so pathfinder works)
+						for tile in blocked_tiles:
+							if tile.x == target.tile.x and tile.z == target.tile.z:
+								blocked_tiles.erase(tile)
+						var path_to_target = pathfinder.find_path(get_current().tile, target.tile, blocked_tiles)
+						# remove target from path
 						path_to_target.remove(path_to_target.size() - 1)
 						get_current().move(path_to_target)
 						get_current().connect("path_complete", self, "_on_attack", [], CONNECT_ONESHOT)
