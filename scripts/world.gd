@@ -473,6 +473,7 @@ func _on_end_cutscene():
 	$select/top.show()
 	$gui/tip.show()
 	$cutscene_bars/animate.play("end cutscene")
+	range_overlay.show()
 
 func _on_dialogue(content):
 	if "messages" in content:
