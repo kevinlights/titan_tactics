@@ -212,7 +212,7 @@ func heal(target):
 	if character.turn_limits.actions < 1 or !target:
 		return 0
 	character.turn_limits.actions -= 1
-	var healed_hp = (character.atk * 3) * 0.6
+	var healed_hp = round((character.atk * 3) * 0.6)
 	target.character.hp = clamp(target.character.hp + healed_hp, 0, target.character.max_hp)
 	pick_random_sfx($sfx/heal)
 	target.healthbar.set_value(target.character.hp, target.character.max_hp)
