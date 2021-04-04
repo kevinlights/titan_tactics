@@ -39,6 +39,48 @@ var atk_up = [ 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1 ]
 var def_up = [ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ]
 var mov_up = [ 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ]
 
+var defaults = {
+	TT.TYPE.ARCHER: {
+		"character_class": TT.TYPE.ARCHER,
+		"hp": 60,
+		"atk": 5,
+		"def": 1,
+		"atk_range": 3,
+		"mov_range": 6
+	},
+	TT.TYPE.FIGHTER: {
+		"character_class": TT.TYPE.FIGHTER,
+		"hp": 65,
+		"atk": 5,
+		"def": 1,
+		"atk_range": 1,
+		"mov_range": 5
+	},
+	TT.TYPE.MAGE: {
+		"character_class": TT.TYPE.MAGE,
+		"hp": 55,
+		"atk": 5,
+		"def": 1,
+		"atk_range": 4,
+		"mov_range": 4
+	},
+	TT.TYPE.BOBA: {
+		"character_class": TT.TYPE.BOBA,
+		"hp": 8,
+		"atk": 3,
+		"def": 3,
+		"atk_range": 1,
+		"mov_range": 5
+	},
+	TT.TYPE.POISON_BOBA: {
+		"character_class": TT.TYPE.POISON_BOBA,
+		"hp": 9,
+		"atk": 3,
+		"def": 3,
+		"atk_range": 1,
+		"mov_range": 5
+	}
+}
 var cant_carry = [ TT.TYPE.BOBA ]
 enum PERSONALITY {
 	AGGRESSIVE,
@@ -115,7 +157,8 @@ func set_character_class(new_character_class):
 		item_atk.character_class = new_character_class
 		item_def.character_class = new_character_class
 #	var default_stats = load("res://resources/class_stats.tres")
-	generate(Game.default_stats, character_class, control, level)
+#	generate(default_stats, character_class, control, level)
+	generate(defaults[character_class], character_class, control, level)
 	emit_signal("class_changed")
 
 func get_character_class():
@@ -174,7 +217,7 @@ func from_defaults(request_class, request_control, request_atk = 1, request_def 
 #		item_atk.generate(level, Item.SLOT.ATK, character_class)
 #		item_def.generate(level, Item.SLOT.DEF, character_class)
 
-func generate(class_stats, request_class, request_control, request_level = 1, force = false):
+func generate(default_stats, request_class, request_control, request_level = 1, force = false):
 	var rng = RandomNumberGenerator.new()
 	if !(request_class in cant_carry):
 		if !item_atk:
@@ -183,6 +226,7 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 		if !item_def:
 			item_def = Item.new()
 			item_def.create()
+	character_class = request_class
 	weakness = TT.class_stats.weakness[character_class]
 	strength = TT.class_stats.strength[character_class]
 	abilities = TT.class_stats.abilities[character_class]
@@ -194,29 +238,29 @@ func generate(class_stats, request_class, request_control, request_level = 1, fo
 	if not Engine.editor_hint and not force:
 		return
 	print("Regenerate stats")
-	var default_stats = class_stats.archer
-	default_stats = class_stats.archer
-	if request_class == TT.TYPE.FIGHTER:
-		default_stats = class_stats.swordsman
-	elif request_class == TT.TYPE.MAGE:
-		default_stats = class_stats.mage 
-		heal = level
-	elif request_class == TT.TYPE.BOBA:
-		default_stats = class_stats.boba
-	elif request_class == TT.TYPE.POISON_BOBA:
-		default_stats = class_stats.poison_boba
-	character_class = default_stats.character_class
+#	var default_stats = 
+#	default_stats = class_stats.archer
+#	if request_class == TT.TYPE.FIGHTER:
+#		default_stats = class_stats.swordsman
+#	elif request_class == TT.TYPE.MAGE:
+#		default_stats = class_stats.mage 
+#		heal = level
+#	elif request_class == TT.TYPE.BOBA:
+#		default_stats = class_stats.boba
+#	elif request_class == TT.TYPE.POISON_BOBA:
+#		default_stats = class_stats.poison_boba
+#	character_class = default_stats.character_class
 	control = request_control
 	abilities = TT.class_stats.abilities[character_class]
-	max_hp = default_stats.hp + fibonacci_cumulative(level)
+	max_hp = default_stats["hp"] + fibonacci_cumulative(level)
 	hp = max_hp # floor(default_stats.hp + rand_range((level + 1) * 4, (level + 1) * 5) - 15)
-	mov_range = default_stats.mov_range
-	turn_limits.move_distance = default_stats.mov_range
+	mov_range = default_stats["mov_range"]
+	turn_limits.move_distance = default_stats["mov_range"]
 	turn_limits.actions = 1 # TT.class_stats.actions[type]
 	turn_limits.mov_actions = 1
-	atk_range = default_stats.atk_range
-	atk = default_stats.atk + sequence_cumulative(atk_up, level)
-	def = default_stats.def + sequence_cumulative(def_up, level)
+	atk_range = default_stats["atk_range"]
+	atk = default_stats["atk"] + sequence_cumulative(atk_up, level)
+	def = default_stats["def"] + sequence_cumulative(def_up, level)
 	# don't regenerate name if this character already has one
 	if name == "":
 		name = TT.character_names[rand_range(0, TT.character_names.size() - 1)]

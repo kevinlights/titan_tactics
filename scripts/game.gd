@@ -9,7 +9,7 @@ var level = 0
 var unlocked_level = 0
 var camera_orientation = TT.CAMERA.NORTH setget set_camera_orientation, get_camera_orientation
 
-onready var default_stats = load("res://resources/class_stats.tres")
+var default_stats = load("res://resources/class_stats.tres")
 
 func set_camera_orientation(new_orientation):
 
