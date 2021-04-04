@@ -185,7 +185,10 @@ func set_origin(entity):
 	current_entity.select()
 	current_entity.connect("idle", self, "go_home")
 	if current_entity.character.control != TT.CONTROL.AI:
+		$top/selector.show()
 		capture_camera()
+	else:
+		$top/selector.hide()
 	emit_signal("moved", self.tile)	
 #
 func _process(delta):
