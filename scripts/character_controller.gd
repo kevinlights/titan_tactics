@@ -125,14 +125,15 @@ func spread_icons():
 #		$speak.translation.x = 7
 
 func thunderstorm():
-#	$"vfx/Darken screen".show()
-#	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
-#	yield(get_tree().create_timer(1.0), "timeout")
+	$"vfx/Darken screen".show()
+	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
+	yield(get_tree().create_timer(1.0), "timeout")
 	$"vfx/Thunder storm".show()
 	$"vfx/Thunder storm/AnimationPlayer".current_animation = "Thunder storm"
 	$"vfx/Thunder storm/Spark".emitting = true
 	$"vfx/Thunder storm/Thunder".play()
 	$"vfx/Thunder storm/Flash".show()
+	$"vfx/Darken screen/AnimationPlayer".play_backwards()
 	yield(get_tree().create_timer(1.0), "timeout")
 	$"vfx/Thunder storm/Flash".hide()
 	$"vfx/Thunder storm".hide()

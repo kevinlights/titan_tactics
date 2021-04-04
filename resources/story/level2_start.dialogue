@@ -1,14 +1,14 @@
 //Cutscene #1 Level 2
-
-> face bowie.south
+# start
+> face bowie.north
 
 # kris
-> face kris.west
+> face kris.north
 Hey Bowie, how's it going? I was looking for you!
 
 //(insert animation on bowie(archer) shooting arrow toward tree?)
 > emote bowie.surprise
-> face bowie.west
+> face bowie.south
 
 # bowie
 Ah dang, I just missed... Oh hey Kris, what's up?
