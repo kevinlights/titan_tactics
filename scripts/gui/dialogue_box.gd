@@ -118,7 +118,7 @@ func perform_action(item):
 		elif marker:
 			path = world.pathfinder.find_path(character.translation, marker.translation, world.get_blocked_cells())
 		character.connect("path_complete", self, "advance", [], CONNECT_ONESHOT)
-		character.move(path)
+		character.move(path, true)
 	if item.action == "focus":
 		var marker = world.find_story_marker(item.target)
 		if not marker:

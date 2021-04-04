@@ -461,7 +461,7 @@ func attack_complete():
 
 
 
-func move(target_path:PoolVector3Array):
+func move(target_path:PoolVector3Array, unlimited=false):
 	if movement.moving or target_path.size() == 0 or character.turn_limits.move_actions == 0:
 		return
 	path = world.pathfinder.generate_walking_path(target_path)
@@ -471,8 +471,9 @@ func move(target_path:PoolVector3Array):
 	movement.start_position = Vector3(translation.x, translation.y, translation.z)
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
-	character.turn_limits.move_distance -= target_path.size()
-	character.turn_limits.move_actions = 0
+	if not unlimited:
+		character.turn_limits.move_distance -= target_path.size()
+		character.turn_limits.move_actions = 0
 #	check_finished()
 	
 func select_type():
