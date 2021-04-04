@@ -131,31 +131,17 @@ func show():
 func paint():
 	if not data:
 		return
-	for tile in gridmap.get_tiles_within(data.tile, data.move_distance - 1):
+	for tile in gridmap.get_tiles_within(data.tile, data.move_distance - 1 + data.atk_range):
 		var context_tile = Vector3(tile.x, 0, tile.z)
 		var context = world.get_current_context(context_tile)
 		
 		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK and data.actions > 0:
-			pass # TODO: include if/when implementing psuedo range for melee
-			#tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
 		elif context == TT.CONTEXT.MOVE:
 			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
 		if tile_overlay_success == true:
 			overlayed_tiles.push_back(tile)
-		elif tile_overlay_success == false:
-			print_debug ('tile_overlay failed for ', tile)
-	for tile in gridmap.get_tiles_within(data.tile, data.atk_range):
-		var context_tile = Vector3(tile.x, 0, tile.z)
-		var context = world.get_current_context(context_tile)
-		
-		var tile_overlay_success;
-		if context == TT.CONTEXT.ATTACK:
-			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
-		if tile_overlay_success == true:
-			overlayed_tiles.push_back(tile)
-		elif tile_overlay_success == false:
-			print_debug ('tile_overlay failed for ', tile)
 	
 	if hint_tile:
 		var tile_overlay_success = gridmap.set_tile_overlay(hint_tile, 'select')
