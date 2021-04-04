@@ -29,6 +29,12 @@ func find_path(start, end, blocked_cells = []):
 		return []
 	return overlay.find_path(start, end, blocked_cells)
 
+func generate_walking_path(path):
+	if !overlay:
+		return []
+	return overlay.generate_walking_path(path)
+	
+
 # methods used for range overlay
 func set_tile_overlay(world_point, type):
 	if not world_to_tile_map.has(world_point):
