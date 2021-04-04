@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://gfx/boba.png" type="Texture" id=1]
+[ext_resource path="res://gfx/mage.png" type="Texture" id=1]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=3]
 [ext_resource path="res://gfx/archer.png" type="Texture" id=4]
 [ext_resource path="res://scripts/character_stats.gd" type="Script" id=5]
@@ -163,14 +163,14 @@ name = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
-character_class = 3
+character_class = 2
 equipment_slot = 0
 level = 0
-name = "Weak Nothing"
+name = "Broken Staff"
 attack = 1
 attack_range = 1
 defense = 0
-heal = 0
+heal = 1
 effect = SubResource( 10 )
 
 [sub_resource type="Resource" id=12]
@@ -182,27 +182,27 @@ name = ""
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 6 )
-character_class = 3
+character_class = 2
 equipment_slot = 0
 level = 0
-name = "Weak Nothing"
+name = "Puny Staff"
 attack = 1
 attack_range = 1
 defense = 0
-heal = 0
+heal = 1
 effect = SubResource( 12 )
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
-character_class = 3
-name = ""
+character_class = 2
+name = "Dirk"
 level = 1
-hp = 10
-max_hp = 10
-atk = 1
+hp = 55
+max_hp = 55
+atk = 5
 def = 1
-atk_range = 1
-mov_range = 1
+atk_range = 4
+mov_range = 4
 heal = 0
 item_atk = SubResource( 11 )
 item_def = SubResource( 13 )
