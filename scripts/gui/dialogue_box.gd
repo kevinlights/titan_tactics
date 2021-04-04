@@ -121,6 +121,8 @@ func perform_action(item):
 		character.move(path)
 	if item.action == "focus":
 		var marker = world.find_story_marker(item.target)
+		if not marker:
+			marker = world.find_character(item.target)
 		world.get_node("lookat/camera").track(marker)
 #		yield(get_tree().create_timer(1.0), "timeout")
 		index += 1

@@ -515,7 +515,7 @@ func _on_quit():
 func all_enemies_eliminated():
 	var ai_spawns = get_tree().get_nodes_in_group("ai_spawns")
 	for spawn in ai_spawns:
-		if not spawn.has_spawned:
+		if not spawn.has_spawned and spawn.stats.control == TT.CONTROL.AI:
 			return false
 	return current[TT.CONTROL.AI].size() == 0
 
