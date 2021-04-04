@@ -155,7 +155,7 @@ func _connect_ids(a_id, b_id):
 		counts.connections += 1
 
 func get_cardinal_height(cell, dir_idx):
-	var name = get_cell_name(cell)
+	var name = get_cell_name(cell).split('_')[0]
 	
 	if not cardinalHeights.has(name):
 #		print_debug('Unexpected cell type. Assuming not walkable.')
@@ -176,7 +176,42 @@ func get_cell_name(cell):
 		return ""
 	var name = mesh_library.get_item_name(itemId)
 	return name
-	
+
+func generate_walking_path(path):
+	var walking_path = []
+	for i in range(path.size()):
+		var cell = path[i]
+		var name = get_cell_name(cell)
+		var middle = cell
+		if name.begins_with('angled'):
+			middle.y += 0.5
+		if i > 0:
+			var last_move = walking_path.back()
+			var one_quarter = (middle + last_move) / 2
+			if name.begins_with('flat'):
+				one_quarter.y = middle.y
+			walking_path.append(one_quarter)
+		walking_path.append(middle)
+		if i < path.size() - 1:
+			var next_cell = path[i+1]
+			var edge = ((cell + next_cell) / 2)
+			
+			var expected_cardinal = Vector2(next_cell.x, next_cell.z) - Vector2(cell.x, cell.z)
+			var expected_cardinal_idx = cardinalDeltas.find(expected_cardinal)
+			var expected_edge_height = cell.y + get_cardinal_height(cell, expected_cardinal_idx)
+			var actual_edge_height = next_cell.y + get_cardinal_height(next_cell, expected_cardinal_idx + 4)
+			if expected_edge_height == actual_edge_height:
+				edge.y = expected_edge_height
+			var three_quarters = (middle + edge) / 2
+			if name.begins_with('flat'):
+				three_quarters.y = middle.y
+			walking_path.append(three_quarters)
+			walking_path.append(edge)
+	for i in range(walking_path.size()):
+		walking_path[i].y -= 2
+		walking_path[i].y /= 2
+	return walking_path
+
 func find_path(start, end, blocked_cells = []):
 	var offset = get_parent().translation * -1
 	if debug_path:
@@ -209,11 +244,7 @@ func find_path(start, end, blocked_cells = []):
 		var path = astar.get_point_path(start_id, end_id)
 		for id in blocked_tile_ids:
 			astar.set_point_disabled(id, false)
-		var w_path = world_path(path)
-		if debug_path:
-			print("found_path ", path)
-			print("found_path (world) ", w_path)
-		return w_path
+		return path
 	elif possible_starts.size() == 0 or possible_ends.size() == 0:
 		print('Unable to find a possible start/end tile for pathfinding ', possible_starts, possible_ends)
 	elif possible_starts.size() > 1 or possible_ends.size() > 1:
@@ -232,10 +263,21 @@ func world_path(path:PoolVector3Array):
 	var w_path = PoolVector3Array()
 	for point in path:
 		w_path.append(point_to_world(point, false))
+	print('w_path: ', w_path)
 	return w_path
 
 func point_to_world(point: Vector3, exclude_y: bool):
-	var offset = get_parent().get_parent().translation + Vector3(-0.5, -1, -0.5)
+	var offset = get_parent().get_parent().translation + Vector3(-0.5, 0, -0.5)
 	offset.y = 0
-	var y = 0.0 if exclude_y else ((point.y - 2) / 2)
+	var y = 0.0
+	if !exclude_y:
+		y = point.y - 1.25
+		var name = get_cell_name(point)
 	return map_to_world(point.x, y, point.z) + offset
+
+
+#	if exclude_y:
+#		offset.y = 0.0
+#	else:
+#		offset.y = point.y - 1.25
+#	return map_to_world(point.x, 0, point.z) + offset
