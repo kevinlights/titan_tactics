@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=2]
@@ -18,7 +18,6 @@
 [ext_resource path="res://gfx/boba.png" type="Texture" id=16]
 [ext_resource path="res://scripts/status_effect.gd" type="Script" id=17]
 [ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=18]
-[ext_resource path="res://resources/story/level2_recruit.dialogue" type="Resource" id=19]
 [ext_resource path="res://resources/story/level2_chest.dialogue" type="Resource" id=20]
 [ext_resource path="res://scripts/gridmap/overlay_gridmap.gd" type="Script" id=21]
 
@@ -205,12 +204,12 @@ name = ""
 
 [sub_resource type="Resource" id=18]
 script = ExtResource( 6 )
-character_class = 4
+character_class = 3
 equipment_slot = 0
 level = 1
-name = "Minor Boba Juice"
+name = "Minor Nothing"
 attack = 1
-attack_range = 0
+attack_range = 1
 defense = 0
 heal = 0
 effect = SubResource( 17 )
@@ -224,10 +223,10 @@ name = ""
 
 [sub_resource type="Resource" id=20]
 script = ExtResource( 6 )
-character_class = 4
+character_class = 3
 equipment_slot = 1
 level = 1
-name = "Minor Jacket"
+name = "Minor Mail"
 attack = 0
 attack_range = 0
 defense = 1
@@ -236,11 +235,11 @@ effect = SubResource( 19 )
 
 [sub_resource type="Resource" id=21]
 script = ExtResource( 5 )
-character_class = 4
+character_class = 3
 name = "Datev"
 level = 1
-hp = 9
-max_hp = 9
+hp = 8
+max_hp = 8
 atk = 3
 def = 3
 atk_range = 1
@@ -383,16 +382,6 @@ __meta__ = {
 
 [node name="map" type="Spatial" parent="."]
 
-[node name="StoryMarker" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 12 )
-centered = false
-pixel_size = 0.06
-axis = 1
-texture = ExtResource( 14 )
-script = ExtResource( 13 )
-marker_name = "cover"
-dialogue = ExtResource( 19 )
-
 [node name="ChestSpawner" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.2, 15 )
 centered = false
@@ -401,6 +390,7 @@ axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 1 )
+dialogue = null
 
 [node name="CharacterSpawner" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 11 )
@@ -464,6 +454,7 @@ texture = ExtResource( 14 )
 script = ExtResource( 13 )
 marker_name = "chest"
 dialogue = ExtResource( 20 )
+quest_dialogue = null
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 14 )
