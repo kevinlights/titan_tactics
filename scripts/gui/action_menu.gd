@@ -31,15 +31,15 @@ var label_map = {
 }
 
 var tooltips = {
-	"Guard": "Adapt defensive stance, reduces damage incurred this turn",
-	"Heavy Blow": "A mighty swing of the sword, not many can stand against it.",
-	"Sweeping Blow": "Hit up to three enemies in front of you with this devastating attack",
+	"Heavy Blow": "A mighty swing of the sword that targets one",
+	"Sweeping Blow": "Slash up to three enemies in front of you with this devastating attack",
 	"Sharp Shot": "Line up an arrow and let it loose with frightening accuracy",
-	"Flame Shower": "Some people just want to watch the world burn.",
-	"Heal": "Restore some health for the target",
-	"Lightning Bolt": "High precision electric attack, there is no defense against it",
-	"Thunder Storm": "Calling on the elements themselves, this is a storm you cannot hide from",
-	"End": "End turn for this character"
+	"Flame Shower": "Shoots a bundle of flaming arrows that can damage up to 5 enemies at once. May cause burn",
+	"Lightning Bolt": "High precision electric projectile that targets one",
+	"Thunder Storm": "Summons a mighty storm that can damage up to 5 enemies at once. May stun enemies",
+	"Healing Light": "Restores a little bit of health to yourself or an ally",
+	"Guard": "Adopts a defensive stance in order to reduce incoming damage",
+	"End": "Ends turn for this character"
 }
 
 func _ready():
