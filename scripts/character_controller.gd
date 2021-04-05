@@ -243,6 +243,8 @@ func end_turn():
 
 func can_attack(target):
 	var atk_range = character.atk_range + character.item_atk.attack_range
+	if target == null:
+		return false
 	var level_target = Vector2(target.translation.x, target.translation.z)
 	var level_source = Vector2(translation.x, translation.z)
 	return !(level_target.distance_to(level_source) > atk_range)
