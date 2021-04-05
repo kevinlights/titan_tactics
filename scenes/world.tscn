@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
@@ -56,6 +56,40 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0.25, 0 ), Vector3( 0, 0.325258, 0 ), Vector3( 0, 0.249938, 0 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "bounce"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("selector:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 0.25, 2, 0.25 ),
+"update": 0,
+"values": [ Vector3( 0, 0.25, 0 ), Vector3( 0, 0.325258, 0 ), Vector3( 0, 0.249938, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "bounce"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("selector:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 0.25, 2, 0.25 ),
+"update": 0,
+"values": [ Vector3( 0, 0.25, 0 ), Vector3( 0, 0.325258, 0 ), Vector3( 0, 0.249938, 0 ) ]
+}
+
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
 
@@ -89,6 +123,42 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
 [node name="DirectionalLight2" type="DirectionalLight" parent="select/top"]
 transform = Transform( -0.431999, 0.769805, -0.469869, -0.234442, 0.407228, 0.882724, 0.87087, 0.491493, 0.00455253, -0.545057, 1.0873, 0 )
 light_color = Color( 1, 0.996078, 0.894118, 1 )
+light_energy = 10.0
+
+[node name="top_select_attack" type="Spatial" parent="select"]
+visible = false
+
+[node name="Bounce" type="AnimationPlayer" parent="select/top_select_attack"]
+autoplay = "bounce"
+anims/bounce = SubResource( 4 )
+
+[node name="selector" parent="select/top_select_attack" instance=ExtResource( 18 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="select/top_select_attack"]
+light_color = Color( 0.411765, 0.192157, 0.192157, 1 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="select/top_select_attack"]
+transform = Transform( -0.431999, 0.769805, -0.469869, -0.234442, 0.407228, 0.882724, 0.87087, 0.491493, 0.00455253, -0.545057, 1.0873, 0 )
+light_color = Color( 0.796078, 0.32549, 0.0901961, 1 )
+light_energy = 10.0
+
+[node name="top_select_heal" type="Spatial" parent="select"]
+visible = false
+
+[node name="Bounce" type="AnimationPlayer" parent="select/top_select_heal"]
+autoplay = "bounce"
+anims/bounce = SubResource( 5 )
+
+[node name="selector" parent="select/top_select_heal" instance=ExtResource( 18 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="select/top_select_heal"]
+light_color = Color( 0.407843, 0.780392, 0.984314, 1 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="select/top_select_heal"]
+transform = Transform( -0.431999, 0.769805, -0.469869, -0.234442, 0.407228, 0.882724, 0.87087, 0.491493, 0.00455253, -0.545057, 1.0873, 0 )
+light_color = Color( 0.34902, 0.580392, 0.976471, 1 )
 light_energy = 10.0
 
 [node name="gui" parent="." instance=ExtResource( 6 )]

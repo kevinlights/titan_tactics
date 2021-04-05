@@ -68,20 +68,28 @@ func _input(event):
 			if event.is_action("character_switch") && !event.is_echo() && event.is_pressed():
 				start("characterswap")
 			if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
-				if get_parent().get_current().character.turn_limits.actions > 0:
-					var ability = "guard"
-					if get_parent().get_current().character.has_ability(TT.ABILITY.HEAL):
-						ability = "heal"
-					start("action_menu", ability)
-				else:
-					start("action_menu", "end")
-		else:
+				var current = get_parent().get_current()
+				if current:
+					start("action_menu", current.character.character_class)
+#				if get_parent().get_current().character.turn_limits.actions > 0:
+#					var ability = "guard"
+#					if get_parent().get_current().character.has_ability(TT.ABILITY.HEAL):
+#						ability = "heal"
+#					start("action_menu", ability)
+#				else:
+#					start("action_menu", "end")
+		elif get_parent().mode == TacticsWorld.MODE.CHECK_MAP:
 			if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 				start("teamconfirm")
 			if event.is_action("character_switch") && !event.is_echo() && event.is_pressed():
 				start("teamconfirm")
 			if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
 				start("teamconfirm")
+	if get_parent().mode == TacticsWorld.MODE.ATTACK or get_parent().mode == TacticsWorld.MODE.HEAL or get_parent().mode == TacticsWorld.MODE.SECONDARY_ATTACK:
+		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
+			get_parent().action()
+		if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
+			get_parent().set_mode(TacticsWorld.MODE.PLAY)
 	if get_parent().mode == TacticsWorld.MODE.PLAY:
 		if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 			if current and !(current.name in cant_cancel):

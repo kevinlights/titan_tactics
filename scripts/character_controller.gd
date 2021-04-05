@@ -580,11 +580,11 @@ func can_recruit():
 	if character.recruit_mode == 0:
 		return
 	return character.hp <= character.max_hp / 3
-
-func recruit_failed(source):
-	attack(source)
-	$sfx/recruit/fail.play()
-	emit_signal("recruit_failed")
+#
+#func recruit_failed(source):
+#	attack(source)
+#	$sfx/recruit/fail.play()
+#	emit_signal("recruit_failed")
 	
 func recruit(source):
 	emit_signal("recruited")

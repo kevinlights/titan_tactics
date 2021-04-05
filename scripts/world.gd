@@ -34,11 +34,27 @@ var current = {
 enum MODE {
 	PLAY,
 	CHECK_MAP,
-	DEPLOY
+	DEPLOY,
+	HEAL,
+	ATTACK,
+	SECONDARY_ATTACK
 }
 
 var mode = MODE.DEPLOY
 
+func set_mode(new_mode):
+	mode = new_mode
+	if new_mode == MODE.ATTACK or new_mode == MODE.SECONDARY_ATTACK:
+		$select/top.hide()
+		$select/top_select_attack.show()
+		return
+	if new_mode == MODE.HEAL:
+		$select/top.hide()
+		$select/top_select_heal.show()
+	$select/top.show()
+	$select/top_select_heal.hide()
+	$select/top_select_attack.hide()
+	
 func load_level(level_name):
 	print("[World] Loading level " + level_name)
 	var level = load("res://scenes/levels/" + level_name + ".tscn").instance()
@@ -261,12 +277,18 @@ func action():
 				current_character = target_index
 		TT.CONTEXT.ATTACK:
 			if get_current().character.turn_limits.actions > 0:
+				if not get_current().can_attack(target) and (mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK):
+					print("[World] Can't attack this target")
+					return $gui/sfx/denied.play()
 				if get_current().can_attack(target):
-					if target.can_recruit() and is_adjacent(get_current(), target):
-						gui.attack()
-					else:
-						_on_attack()
-				elif get_current().can_move_and_attack(target):
+					print("[World] Can and will attack")
+#					if target.can_recruit() and is_adjacent(get_current(), target):
+#						gui.attack()
+#					else:
+					_on_attack()
+					# reset to PLAY mode if we attacked from ATTACK mode
+					set_mode(MODE.PLAY)
+				elif get_current().can_move_and_attack(target) and mode != MODE.ATTACK:
 					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
 					if attack_range == 1:
 						var blocked_tiles = get_blocked_cells()
@@ -328,7 +350,11 @@ func action():
 #				_on_end()
 				gui.start("action_menu", "end")
 			else:
-				gui.start("action_menu", "heal")
+				if mode == MODE.HEAL:
+					_on_heal()
+					set_mode(MODE.PLAY)
+				else:
+					gui.start("action_menu", "heal")
 	$range_overlay.set_origin(get_current())
 
 func _on_confirm_end_turn():
@@ -351,6 +377,7 @@ func _ready():
 	var player_spawn_nodes = get_tree().get_nodes_in_group("player_spawns")
 	for player_spawn_node in player_spawn_nodes:
 		player_spawns.append(player_spawn_node.translation) # Vector(player_spawn_node.translation.x, player_spawn_node.translation.z))
+	gui.get_node("action_menu").connect("action", self, "_on_action")
 	gui.get_node("action_menu").connect("attack", self, "_on_attack")
 	gui.get_node("action_menu").connect("recruit", self, "_on_recruit")
 	gui.get_node("action_menu").connect("guard", self, "_on_guard")
@@ -712,12 +739,32 @@ func _initiate_turn():
 #		gui.modal = true
 		ai.play()
 		$range_overlay.set_origin(null)
-	
+
+func _on_action(action_name):
+	var attacks = ["Heavy Blow", "Lightning Bolt", "Sharp Shot" ]
+	var secondary_attacks = [ "Thunder Storm", "Sweeping Blow", "Flame Shower" ]
+	if action_name == "End":
+		_on_end()
+	if action_name == "Guard":
+		_on_guard()
+	if action_name == "Heal":
+#		$select/top.hide()
+#		$select/top_select_heal.show()
+		set_mode(MODE.HEAL)
+	if action_name in secondary_attacks:
+		set_mode(MODE.SECONDARY_ATTACK)
+	if action_name in attacks:
+#		$select/top.hide()
+#		$select/top_select_attack.show()
+		set_mode(MODE.ATTACK)
+#	else:
+#		_on_attack()
+
 func _on_attack():
 	print("[World] attack option selected in menu")
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
-		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), target.translation):
+		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), $select.translation):
 #			gui.error("BLOCKED LINE OF SIGHT")
 #			gui.call_deferred("back")
 			return
@@ -725,7 +772,7 @@ func _on_attack():
 		
 		# Enoh: Test AOE
 		#get_current().attack_new($select.tile, true)
-		get_current().attack(target)
+		get_current().attack_new($select.tile, mode == MODE.SECONDARY_ATTACK)
 
 #		gui.call_deferred("close_attack")
 #		gui.back()
@@ -859,6 +906,10 @@ func get_current_context(tile):
 	if Game.level == 0:
 		#return TT.CONTEXT.NOT_PLAYABLE
 		pass
+	if mode == MODE.ATTACK:
+		return TT.CONTEXT.ATTACK
+	if mode == MODE.HEAL:
+		return TT.CONTEXT.HEAL
 	if gui.get_node("dialogue_box").visible:
 		return TT.CONTEXT.NOT_PLAYABLE
 	if mode == MODE.CHECK_MAP:
