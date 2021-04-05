@@ -747,7 +747,7 @@ func _on_action(action_name):
 		_on_end()
 	if action_name == "Guard":
 		_on_guard()
-	if action_name == "Heal":
+	if action_name == "Healing Light":
 #		$select/top.hide()
 #		$select/top_select_heal.show()
 		set_mode(MODE.HEAL)

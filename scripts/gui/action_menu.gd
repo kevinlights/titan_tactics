@@ -23,9 +23,9 @@ var menu_type = "attack"
 var label_map = {
 	"attack": [ "Attack", "Speak" ],	
 	"guard": [ "Guard", "End" ],
-	"heal": [ "Heal", "End" ],
+	"heal": [ "Healing Light", "End" ],
 	"end": [ "End" ],
-	TT.TYPE.MAGE: [ "Heal", "Lightning Bolt", "Thunder Storm", "End"],
+	TT.TYPE.MAGE: [ "Healing Light", "Lightning Bolt", "Thunder Storm", "End"],
 	TT.TYPE.ARCHER: [ "Guard", "Sharp Shot", "Flame Shower", "End" ],
 	TT.TYPE.FIGHTER: [ "Guard", "Heavy Blow", "Sweeping Blow", "End" ]
 }
