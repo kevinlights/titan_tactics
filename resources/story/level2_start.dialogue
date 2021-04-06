@@ -1,5 +1,5 @@
 //Cutscene #1 Level 2
-# start
+# start 
 > face bowie.north
 
 # kris
@@ -8,6 +8,7 @@ Hey Bowie, how's it going? I was looking for you!
 
 //(insert animation on bowie(archer) shooting arrow toward tree?)
 > emote bowie.surprise
+> attack bowie.bowie_surprise_tree
 > face bowie.south
 
 # bowie

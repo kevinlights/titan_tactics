@@ -11,6 +11,10 @@ signal done
 signal dialogue
 signal attack_complete
 
+#---
+signal emote_finished
+#---
+
 enum AI_STATUS {
 	IDLE,
 	ALERT,
@@ -113,8 +117,14 @@ func check_finished():
 			emit_signal("done")
 
 func _ready():
-	pass
+	var _ret = $emotes.connect("animation_finished", self, "_emote_finished")
+	#pass
 
+func _emote_finished() -> void:
+	$emotes.stop()
+	$emotes.hide()
+	self.emit_signal("emote_finished")
+	
 func spread_icons():
 	pass
 #	if $guard.visible and $speak.visible:
@@ -137,7 +147,7 @@ func thunderstorm():
 	yield(get_tree().create_timer(1.0), "timeout")
 	$"vfx/Thunder storm/Flash".hide()
 	$"vfx/Thunder storm".hide()
-	
+
 func hit(attacker):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
@@ -446,11 +456,12 @@ func face(direction):
 			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["down"])
 
 func emote(emoji):
+	$emotes.stop()
 	$emotes.frame = 0
 	$emotes.show()
 	$emotes.play(emoji)
-	yield(get_tree().create_timer(2.0), "timeout")
-	$emotes.hide()
+	#yield(get_tree().create_timer(2.0), "timeout")
+	#$emotes.hide()
 
 func attack_complete():
 	yield(get_tree().create_timer(1.0), "timeout")

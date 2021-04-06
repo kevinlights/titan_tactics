@@ -23,17 +23,12 @@ var skip = false
 
 onready var selector = get_tree().get_root().get_node("World/select")
 onready var world = get_tree().get_root().get_node("World")
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
 func cancel_typing():
 	typing_cancelled = true
 	typing = false
-#
-#func set_text(text):
-#	$text.text = text
+
 func get_chunks(text):
 	text = text.replace("\n", " ")
 	var words = text.split(" ")
@@ -94,19 +89,29 @@ func perform_action(item):
 		advance()
 		return
 	if item.action == "face":
+		hide()
 		var name_direction = item.target.split(".")
 		var target_character = world.find_character(name_direction[0])
 		if target_character:
 			target_character.face(name_direction[1])
 		else:
 			print("[!!] invalid target character!")
+		index += 1
+		advance()
+		return
 	if item.action == "emote":
 		var name_emote = item.target.split(".")
 		var target_character = world.find_character(name_emote[0])
 		if target_character:
+			target_character.connect("emote_finished",self, "_emote_done", [target_character])
 			target_character.emote(name_emote[1])
 		else:
 			print("[!!] invalid target character!")
+			_emote_done(target_character)
+#		index += 1
+#		advance()
+#		return
+	
 	if item.action == "move":
 		var target_character = world.find_character(item.target)
 		var marker = world.find_story_marker(item.target)
@@ -128,6 +133,26 @@ func perform_action(item):
 		index += 1
 		advance()
 		return
+	if item.action == "attack":
+		var name_direction = item.target.split(".")
+		var target_character = world.find_character(name_direction[0])
+		if !target_character:
+			print("[DialogBox] cannot find character: ",name_direction[0])
+			index += 1
+			return
+		var target_target = world.find_story_marker(name_direction[1])
+		if !target_target:
+			print("[DialogBox] cannot find story marker: ",name_direction[1])
+			index += 1
+			return
+		if target_character.character.character_class == TT.TYPE.ARCHER:
+			var arrow = load("res://scenes/arrow.tscn").instance()
+			world.add_child(arrow)
+			world.get_node("lookat/camera").track(arrow)
+			#pick_random_sfx(target_character.get_node("sfx/arrow_attack"))
+			arrow.connect("hit", self, "_attack_done", [arrow, target_character])
+			arrow.fire(target_character.translation,target_target.translation)
+
 	if item.action == "spawn":
 		world.surprise_spawn(item.target)
 	if item.action == "expect":
@@ -135,6 +160,24 @@ func perform_action(item):
 
 		pass
 	index += 1
+
+
+func _attack_done(arrow, target_character):
+	# remove event
+	if arrow.is_connected("hit", self, "_attack_done"):
+		arrow.disconnect("hit", self, "_attack_done")
+	world.get_node("lookat/camera").track(target_character)
+	print("[DialogBox] Attack done - advancing.")
+	proceed()
+	
+
+func _emote_done(emote_source):
+	# remove event
+	if emote_source.is_connected("emote_finished", self, "_emote_done"):
+		emote_source.disconnect("emote_finished", self, "_emote_done")
+
+	print("[DialogBox] Emoting done - advancing.")
+	proceed()
 
 func _process(_delta):
 	if !visible or !$text:
@@ -152,6 +195,7 @@ func _process(_delta):
 				typing = false
 
 func set_content(dialogue_content, set_index = 0):
+	show()
 	selector.disable()
 	index = set_index
 	$more.hide()
@@ -187,7 +231,9 @@ func return_control():
 	get_parent().back()
 
 func advance():
+	print("[DialogBox] Advance! - index: ",index)
 	if text_blocks.size() > 0 and !skip:
+		print("[DialogBox] Still text to go!")
 		set_text(text_blocks[0])
 		text_blocks.remove(0)
 		if text_blocks.size() > 0:
@@ -195,8 +241,9 @@ func advance():
 		else:
 			$more.hide()
 	else:
-		print("dialogue completed")
+		print("[DialogBox] Current Dialog complete -> determine next")
 		if index < content.messages.size() -1:
+			print("[DialogBox] There is still stuff left - let's check")
 			if skip:
 				while "message" in content.messages[index + 1]:
 					if index == content.messages.size() - 2:
@@ -205,18 +252,18 @@ func advance():
 					else:
 						index += 1
 			if "message" in content.messages[index + 1]:
+				print("[DialogBox] Display next message ->",content.messages[index + 1])
 				set_content(content, index + 1)
 			else:
+				print("[DialogBox] Perform action")
 				perform_action(content.messages[index + 1])
-#					print(content.messages[index + 1].action, content.messages[index + 1].target)
-#					index += 1
 		else:
+			print("[DialogBox] Return control")
 			return_control()
 
 func dismiss():
 	content.complete()
 	hide()
-#	world.check_end_game(true)
 	emit_signal("closed")
 
 func _input(event):
@@ -232,33 +279,23 @@ func _input(event):
 		else:
 			advance()
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
-#		dismiss()
 		skip = true
 		hide()
 		advance()
-#		elif text_blocks.size() > 0:
-#			set_text(text_blocks[0])
-#			text_blocks.remove(0)
-#			if text_blocks.size() > 0:
-#				$more.show()
-#			else:
-#				$more.hide()
-#		else:
-#			print("dialogue completed")
-#			if index < content.messages.size() -1:
-#				if "message" in content.messages[index + 1]:
-#					set_content(content, index + 1)
-#				else:
-#					perform_action(content.messages[index + 1])
-##					print(content.messages[index + 1].action, content.messages[index + 1].target)
-##					index += 1
-#			else:
-#				print("emit complete")
-#				content.complete()
-#				hide()
+
+func proceed():
+	if "message" in content.messages[index + 1]:		
+		show()
+		set_content(content, index + 1)
+	else:
+		perform_action(content.messages[index + 1])
 
 func init(dialogue_content):
-	print("init dialogue")
-	set_content(dialogue_content)
+	print("[DialogBox] Init cutscene")
+	content = dialogue_content
+	index = 0
+	proceed()
+
+#	index = -1
+#	advance()
 	emit_signal("cutscene_start")
-	show()

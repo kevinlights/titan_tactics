@@ -212,7 +212,7 @@ func consume_story_markers(name):
 func find_character(name):
 	for team in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
 		for character in current[team]:
-			print(character.character.name)
+			#print(character.character.name)
 			if character.character.name.to_lower() == name.to_lower():
 				return character
 
