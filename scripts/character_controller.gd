@@ -242,7 +242,8 @@ func end_turn():
 	$done.hide()
 
 func can_attack(target):
-	var atk_range = character.atk_range + character.item_atk.attack_range
+	# disable item range bonus
+	var atk_range = character.atk_range # + character.item_atk.attack_range
 	if target == null:
 		return false
 	var level_target = Vector2(target.translation.x, target.translation.z)
@@ -250,7 +251,7 @@ func can_attack(target):
 	return !(level_target.distance_to(level_source) > atk_range)
 
 func can_move_and_attack(target):
-	var total_range = character.mov_range + character.atk_range + character.item_atk.attack_range
+	var total_range = character.mov_range + character.atk_range # + character.item_atk.attack_range
 	var level_target = Vector2(target.translation.x, target.translation.z)
 	var level_source = Vector2(translation.x, translation.z)
 	return !(level_target.distance_to(level_source) > total_range)
