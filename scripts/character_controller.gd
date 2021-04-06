@@ -134,20 +134,21 @@ func spread_icons():
 #		$guard.translation.x = 0
 #		$speak.translation.x = 7
 
-func thunderstorm():
+func flameshower(tile):
+	pass
+
+func aoe_vfx(name, tile):
 	$"vfx/Darken screen".show()
 	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
+	var thunder_storm = load("res://scenes/" + name + ".tscn").instance()
 	yield(get_tree().create_timer(1.0), "timeout")
-	$"vfx/Thunder storm".show()
-	$"vfx/Thunder storm/AnimationPlayer".current_animation = "Thunder storm"
-	$"vfx/Thunder storm/Spark".emitting = true
-	$"vfx/Thunder storm/Thunder".play()
-	$"vfx/Thunder storm/Flash".show()
+	get_parent().add_child(thunder_storm)
+	thunder_storm.translation = tile
+	thunder_storm.play()
 	$"vfx/Darken screen/AnimationPlayer".play_backwards()
-	yield(get_tree().create_timer(1.0), "timeout")
-	$"vfx/Thunder storm/Flash".hide()
-	$"vfx/Thunder storm".hide()
-
+	yield(get_tree().create_timer(2.0), "timeout")
+	thunder_storm.queue_free()
+	
 func hit(attacker):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
@@ -160,10 +161,10 @@ func hit(attacker):
 		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
 		TT.TYPE.MAGE:
-			thunderstorm()
-#			$vfx/magic_hit.frame = 0
-#			$vfx/magic_hit.show()
-#			$vfx/magic_hit.play()
+#			thunderstorm(tile)
+			$vfx/magic_hit.frame = 0
+			$vfx/magic_hit.show()
+			$vfx/magic_hit.play()
 			pick_random_sfx($sfx/magic_hit)
 		TT.TYPE.BOBA:
 			pick_random_sfx($sfx/boba_hit)
@@ -251,8 +252,19 @@ func end_turn():
 	$guard.hide()
 	$done.hide()
 
+
+func can_attack_tile(target):
+	# disable item range bonus
+	var atk_range = character.atk_range # + character.item_atk.attack_range
+	if target == null:
+		return false
+	var level_target = Vector2(target.x, target.z)
+	var level_source = Vector2(translation.x, translation.z)
+	return !(level_target.distance_to(level_source) > atk_range)
+
 func can_attack(target):
-	var atk_range = character.atk_range + character.item_atk.attack_range
+	# disable item range bonus
+	var atk_range = character.atk_range # + character.item_atk.attack_range
 	if target == null:
 		return false
 	var level_target = Vector2(target.translation.x, target.translation.z)
@@ -260,7 +272,7 @@ func can_attack(target):
 	return !(level_target.distance_to(level_source) > atk_range)
 
 func can_move_and_attack(target):
-	var total_range = character.mov_range + character.atk_range + character.item_atk.attack_range
+	var total_range = character.mov_range + character.atk_range # + character.item_atk.attack_range
 	var level_target = Vector2(target.translation.x, target.translation.z)
 	var level_source = Vector2(translation.x, translation.z)
 	return !(level_target.distance_to(level_source) > total_range)
@@ -318,7 +330,21 @@ func attack_new(tile:Vector3, AOE:bool):
 	if character.turn_limits.actions < 1:
 		return
 	character.turn_limits.actions -= 1
-	
+	var target_tiles = { 
+		TT.TYPE.MAGE: [
+			Vector3(-1, 0, 0 ),
+			Vector3( 1, 0, 0 ),
+			Vector3( 0, 0, 1 ),
+			Vector3( 0, 0, -1)
+		],
+		TT.TYPE.ARCHER: [
+			Vector3( 0, 0, 0 ),
+			Vector3( 1, 0, 1 ),
+			Vector3(-1, 0, 1 ),
+			Vector3(-1, 0, -1),
+			Vector3( 1, 0, -1)
+		]
+	}	
 	var targets:Array
 	if AOE:
 		# Enoh:
@@ -327,20 +353,30 @@ func attack_new(tile:Vector3, AOE:bool):
 		# for offset in offsets:
 		# target = world.entity_at(tile + offset)
 		# check for things like player team or whatever.
-		for x in [-1, 0, 1]:
-			for z in [-1, 0, 1]:
-				var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
-				var target = world.entity_at(tile + offset)
-				
-				if target == self:
-					continue
-				
-				if target:
-					targets.append(target)
+		if !(character.character_class in target_tiles):
+			target_tiles[character.character_class] = [ Vector3.ZERO ]
+		for offset in target_tiles[character.character_class]:
+#		for x in [-1, 0, 1]:
+#			for z in [-1, 0, 1]:
+#			var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
+			print(offset)
+			var target = world.entity_at(tile + offset)
+			if character.character_class == TT.TYPE.MAGE:
+				aoe_vfx("thunder_storm", tile + offset)
+			if character.character_class == TT.TYPE.ARCHER:
+				aoe_vfx("flame_shower", tile + offset)
+			if target and target.character.control == character.control:
+				continue
+			
+			if target:
+				targets.append(target)
 	else:
 		var target = world.entity_at(tile)
-		targets.append(target)
-	
+		if target.character.control != character.control:
+			targets.append(target)
+	if targets.size() == 0:
+		return
+		
 	last_target = targets[targets.size()-1]
 	
 	# Damage targets

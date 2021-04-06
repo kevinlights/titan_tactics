@@ -1,18 +1,23 @@
 //Starting level8 – Ceres tells the party that Elyne is evil and they need to fight her
 
-#arath
-So what's with all the cheese?
+# arath
+So why did Tyrmyr ever ban cheese anyway?
+
+# celes
+It's not about cheese at all. It's just an excuse to arrest whoever they want. Of course they'll turn a blind eye to rich and powerful.
+
+# kris
+How do you know that?
+
+# celes
+The royals themselves feast on our Gouda... They used to buy from us before the prohibition, but now they just have their troops rob us!
+
+# arath
+That's... That's awful!
+> emote arath.angry
 
 #celes
-Elyne is lactose intolerant so she banned cheese!
-Hard to believe i know...
-
-#arath
-Really!?
-> emote arath.ugh
-
-#celes
-Elyne’s troops are already here! Please join me against her!
+Elyne’s troops are already here! Let's join forces against them!
 
 #kris
-We will fight at your side!
+We will fight by your side!

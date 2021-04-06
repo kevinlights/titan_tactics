@@ -44,16 +44,22 @@ var mode = MODE.DEPLOY
 
 func set_mode(new_mode):
 	mode = new_mode
+	$range_overlay.cursorMode = "default"
+	if new_mode == MODE.SECONDARY_ATTACK:
+		if get_current().character.character_class == TT.TYPE.MAGE:
+			$range_overlay.cursorMode = "thunder_storm"
+		if get_current().character.character_class == TT.TYPE.ARCHER:
+			$range_overlay.cursorMode = "flame_shower"
 	if new_mode == MODE.ATTACK or new_mode == MODE.SECONDARY_ATTACK:
 		$select/top.hide()
-		$select/top_select_attack.show()
+#		$select/top_select_attack.show()
 		return
 	if new_mode == MODE.HEAL:
 		$select/top.hide()
-		$select/top_select_heal.show()
+#		$select/top_select_heal.show()
 	$select/top.show()
-	$select/top_select_heal.hide()
-	$select/top_select_attack.hide()
+#	$select/top_select_heal.hide()
+#	$select/top_select_attack.hide()
 	
 func load_level(level_name):
 	print("[World] Loading level " + level_name)
@@ -265,10 +271,10 @@ func to_world_path(path):
 	return world_path
 
 func action():
-	print ("world action")
+	var context = get_current_context($select.tile)
+	print ("world action", context)
 	if game_over:
 		return
-	var context = get_current_context($select.tile)
 	var target = entity_at($select.tile)
 	match(context):
 		TT.CONTEXT.SELECT:
@@ -277,10 +283,10 @@ func action():
 				current_character = target_index
 		TT.CONTEXT.ATTACK:
 			if get_current().character.turn_limits.actions > 0:
-				if not get_current().can_attack(target) and (mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK):
+				if not get_current().can_attack_tile($select.tile) and (mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK):
 					print("[World] Can't attack this target")
 					return $gui/sfx/denied.play()
-				if get_current().can_attack(target):
+				if get_current().can_attack_tile($select.tile):
 					print("[World] Can and will attack")
 #					if target.can_recruit() and is_adjacent(get_current(), target):
 #						gui.attack()
@@ -288,7 +294,7 @@ func action():
 					_on_attack()
 					# reset to PLAY mode if we attacked from ATTACK mode
 					set_mode(MODE.PLAY)
-				elif get_current().can_move_and_attack(target) and mode != MODE.ATTACK:
+				elif mode != MODE.SECONDARY_ATTACK and mode != MODE.ATTACK and get_current().can_move_and_attack(target):
 					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
 					if attack_range == 1:
 						var blocked_tiles = get_blocked_cells()
@@ -350,11 +356,12 @@ func action():
 #				_on_end()
 				gui.start("action_menu", "end")
 			else:
-				if mode == MODE.HEAL:
-					_on_heal()
-					set_mode(MODE.PLAY)
-				else:
-					gui.start("action_menu", "heal")
+				if get_current().can_attack(target):
+					if mode == MODE.HEAL:
+						_on_heal()
+						set_mode(MODE.PLAY)
+					else:
+						gui.start("action_menu", "heal")
 	$range_overlay.set_origin(get_current())
 
 func _on_confirm_end_turn():
@@ -906,7 +913,7 @@ func get_current_context(tile):
 	if Game.level == 0:
 		#return TT.CONTEXT.NOT_PLAYABLE
 		pass
-	if mode == MODE.ATTACK:
+	if mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK:
 		return TT.CONTEXT.ATTACK
 	if mode == MODE.HEAL:
 		return TT.CONTEXT.HEAL

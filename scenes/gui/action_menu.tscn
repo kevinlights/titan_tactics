@@ -49,22 +49,24 @@ margin_left = 90.4204
 margin_top = 40.0
 margin_right = 230.42
 margin_bottom = 104.0
-color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
+color = Color( 0.0627451, 0.0627451, 0.0705882, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="action_1" parent="panel/box" instance=ExtResource( 2 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 114.0
-margin_bottom = 21.0
+margin_left = 6.0
+margin_top = 2.0
+margin_right = 120.0
+margin_bottom = 23.0
 
 [node name="action_2" type="ToolButton" parent="panel/box" groups=[
 "button",
 ]]
-margin_right = 68.0
-margin_bottom = 21.0
+margin_left = 6.0
+margin_top = 2.0
+margin_right = 74.0
+margin_bottom = 23.0
 rect_pivot_offset = Vector2( 13.4933, 1.83694 )
 focus_neighbour_top = NodePath("../action_1")
 focus_previous = NodePath("../action_1")
@@ -84,17 +86,18 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 2 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 1, 2 )
 script = ExtResource( 4 )
 
 [node name="tip_box" type="ColorRect" parent="panel"]
-margin_left = 29.0
+margin_left = 30.0
 margin_top = 134.0
-margin_right = 279.0
+margin_right = 290.0
 margin_bottom = 196.0
-color = Color( 0.0627451, 0.0627451, 0.0705882, 0.588235 )
+color = Color( 0.0627451, 0.0627451, 0.0705882, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -102,7 +105,7 @@ __meta__ = {
 [node name="tooltip" type="RichTextLabel" parent="panel/tip_box"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 246.0
+margin_right = 257.0
 margin_bottom = 62.0
 theme = ExtResource( 6 )
 custom_colors/default_color = Color( 0.901961, 0.901961, 0.901961, 1 )

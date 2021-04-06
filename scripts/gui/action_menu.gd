@@ -25,9 +25,9 @@ var label_map = {
 	"guard": [ "Guard", "End" ],
 	"heal": [ "Healing Light", "End" ],
 	"end": [ "End" ],
-	TT.TYPE.MAGE: [ "Healing Light", "Lightning Bolt", "Thunder Storm", "End"],
-	TT.TYPE.ARCHER: [ "Guard", "Sharp Shot", "Flame Shower", "End" ],
-	TT.TYPE.FIGHTER: [ "Guard", "Heavy Blow", "Sweeping Blow", "End" ]
+	TT.TYPE.MAGE: [ "Lightning Bolt", "Thunder Storm", "Healing Light", "End" ],
+	TT.TYPE.ARCHER: [ "Sharp Shot", "Flame Shower", "Guard", "End" ],
+	TT.TYPE.FIGHTER: [ "Heavy Blow", "Sweeping Blow", "Guard", "End" ]
 }
 
 var tooltips = {
@@ -73,12 +73,12 @@ func init(new_menu_type = "attack"):
 			buttons[i - 1].focus_neighbour_bottom = "../" + buttons[i].name
 			buttons[i].focus_previous = "../" + buttons[i - 1].name
 			buttons[i].focus_neighbour_top = "../" + buttons[i - 1].name
-		buttons[i].rect_position.x = 0
+		buttons[i].rect_position.x = 6
 		buttons[i].rect_position.y = i * 16
 		buttons[i].connect("pressed", self, "_on_action", [ buttons[i].text ] )
 		buttons[i].connect("focus_entered", self, "_on_focus", [ buttons[i].text ] )
 	$panel/box.rect_size.y = buttons.size() * 16 + 4
-	$panel/tip_box.rect_position.y = $panel/box.rect_position.y + buttons.size() * 16 + 8
+	$panel/tip_box.rect_position.y = $panel/box.rect_position.y + buttons.size() * 16 + 40
 	show()
 	buttons[0].call_deferred("grab_focus")
 
