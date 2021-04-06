@@ -312,12 +312,12 @@ script = ExtResource( 5 )
 character_class = 1
 name = "Bowie"
 level = 2
-hp = 55
-max_hp = 55
-atk = 9
+hp = 62
+max_hp = 62
+atk = 6
 def = 6
-atk_range = 9
-mov_range = 5
+atk_range = 3
+mov_range = 6
 heal = 0
 recruit_mode = 0
 portrait_override = "bowie"
@@ -390,6 +390,7 @@ axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
 item_spawner = SubResource( 1 )
+dialogue = null
 
 [node name="CharacterSpawner" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 11 )
@@ -453,15 +454,18 @@ texture = ExtResource( 14 )
 script = ExtResource( 13 )
 marker_name = "chest"
 dialogue = ExtResource( 20 )
+quest_dialogue = null
 
 [node name="StoryMarker3" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.03325, 0.188781, 9.07403 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.03325, 0.2, 9.07403 )
 centered = false
 pixel_size = 0.06
 axis = 1
 texture = ExtResource( 14 )
 script = ExtResource( 13 )
 marker_name = "bowie_surprise_tree"
+dialogue = null
+quest_dialogue = null
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 14 )

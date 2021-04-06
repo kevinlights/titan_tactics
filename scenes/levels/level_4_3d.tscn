@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://gfx/OBJS/desert.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/playerspawner.gd" type="Script" id=2]
@@ -143,49 +143,29 @@ portrait_override = ""
 control = 1
 
 [sub_resource type="Resource" id=12]
-script = ExtResource( 10 )
-effect = 0
-turns = 3
-damage = 1
-name = ""
-
-[sub_resource type="Resource" id=13]
-script = ExtResource( 9 )
-character_class = 0
-equipment_slot = 0
-level = 1
-name = "Minor Knife"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 12 )
-
-[sub_resource type="Resource" id=14]
 script = ExtResource( 8 )
 character_class = 0
 name = "Zara"
 level = 4
-hp = 70
-max_hp = 70
-atk = 10
-def = 5
+hp = 74
+max_hp = 74
+atk = 9
+def = 4
 atk_range = 1
 mov_range = 4
 heal = 0
-item_atk = SubResource( 13 )
 recruit_mode = 0
 portrait_override = "zara"
 control = 0
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 10 )
 effect = 1
 turns = 3
 damage = 3
 name = ""
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=14]
 script = ExtResource( 9 )
 character_class = 4
 equipment_slot = 0
@@ -195,16 +175,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 15 )
+effect = SubResource( 13 )
 
-[sub_resource type="Resource" id=17]
+[sub_resource type="Resource" id=15]
 script = ExtResource( 10 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=18]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 9 )
 character_class = 4
 equipment_slot = 0
@@ -214,9 +194,9 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 17 )
+effect = SubResource( 15 )
 
-[sub_resource type="Resource" id=19]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 8 )
 character_class = 4
 name = "Anita"
@@ -228,11 +208,30 @@ def = 4
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 16 )
-item_def = SubResource( 18 )
+item_atk = SubResource( 14 )
+item_def = SubResource( 16 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 10 )
+effect = 2
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 9 )
+character_class = 1
+equipment_slot = 0
+level = 0
+name = "Weak Bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 18 )
 
 [sub_resource type="Resource" id=20]
 script = ExtResource( 10 )
@@ -246,7 +245,7 @@ script = ExtResource( 9 )
 character_class = 1
 equipment_slot = 0
 level = 0
-name = "Weak Bow"
+name = "Rusted Bow"
 attack = 1
 attack_range = 1
 defense = 0
@@ -254,25 +253,6 @@ heal = 0
 effect = SubResource( 20 )
 
 [sub_resource type="Resource" id=22]
-script = ExtResource( 10 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=23]
-script = ExtResource( 9 )
-character_class = 1
-equipment_slot = 0
-level = 0
-name = "Rusted Bow"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 22 )
-
-[sub_resource type="Resource" id=24]
 script = ExtResource( 8 )
 character_class = 1
 name = "Nord"
@@ -284,11 +264,30 @@ def = 2
 atk_range = 3
 mov_range = 6
 heal = 0
-item_atk = SubResource( 21 )
-item_def = SubResource( 23 )
+item_atk = SubResource( 19 )
+item_def = SubResource( 21 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 10 )
+effect = 2
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 9 )
+character_class = 0
+equipment_slot = 0
+level = 0
+name = "Weak Knife"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 23 )
 
 [sub_resource type="Resource" id=25]
 script = ExtResource( 10 )
@@ -302,7 +301,7 @@ script = ExtResource( 9 )
 character_class = 0
 equipment_slot = 0
 level = 0
-name = "Weak Knife"
+name = "Lesser Cleaver"
 attack = 1
 attack_range = 1
 defense = 0
@@ -310,25 +309,6 @@ heal = 0
 effect = SubResource( 25 )
 
 [sub_resource type="Resource" id=27]
-script = ExtResource( 10 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=28]
-script = ExtResource( 9 )
-character_class = 0
-equipment_slot = 0
-level = 0
-name = "Lesser Cleaver"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 27 )
-
-[sub_resource type="Resource" id=29]
 script = ExtResource( 8 )
 character_class = 0
 name = "Jon"
@@ -340,11 +320,30 @@ def = 2
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 26 )
-item_def = SubResource( 28 )
+item_atk = SubResource( 24 )
+item_def = SubResource( 26 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
+
+[sub_resource type="Resource" id=28]
+script = ExtResource( 10 )
+effect = 2
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=29]
+script = ExtResource( 9 )
+character_class = 2
+equipment_slot = 0
+level = 0
+name = "Lesser Wand"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 1
+effect = SubResource( 28 )
 
 [sub_resource type="Resource" id=30]
 script = ExtResource( 10 )
@@ -358,7 +357,7 @@ script = ExtResource( 9 )
 character_class = 2
 equipment_slot = 0
 level = 0
-name = "Lesser Wand"
+name = "Lesser Staff"
 attack = 1
 attack_range = 1
 defense = 0
@@ -366,25 +365,6 @@ heal = 1
 effect = SubResource( 30 )
 
 [sub_resource type="Resource" id=32]
-script = ExtResource( 10 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=33]
-script = ExtResource( 9 )
-character_class = 2
-equipment_slot = 0
-level = 0
-name = "Lesser Staff"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 1
-effect = SubResource( 32 )
-
-[sub_resource type="Resource" id=34]
 script = ExtResource( 8 )
 character_class = 2
 name = "Yava"
@@ -396,11 +376,30 @@ def = 2
 atk_range = 4
 mov_range = 4
 heal = 1
-item_atk = SubResource( 31 )
-item_def = SubResource( 33 )
+item_atk = SubResource( 29 )
+item_def = SubResource( 31 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 10 )
+effect = 2
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=34]
+script = ExtResource( 9 )
+character_class = 1
+equipment_slot = 0
+level = 0
+name = "Lesser Bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 33 )
 
 [sub_resource type="Resource" id=35]
 script = ExtResource( 10 )
@@ -414,7 +413,7 @@ script = ExtResource( 9 )
 character_class = 1
 equipment_slot = 0
 level = 0
-name = "Lesser Bow"
+name = "Puny Bow"
 attack = 1
 attack_range = 1
 defense = 0
@@ -422,25 +421,6 @@ heal = 0
 effect = SubResource( 35 )
 
 [sub_resource type="Resource" id=37]
-script = ExtResource( 10 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=38]
-script = ExtResource( 9 )
-character_class = 1
-equipment_slot = 0
-level = 0
-name = "Puny Bow"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 37 )
-
-[sub_resource type="Resource" id=39]
 script = ExtResource( 8 )
 character_class = 1
 name = "Lota"
@@ -452,20 +432,20 @@ def = 2
 atk_range = 3
 mov_range = 6
 heal = 0
-item_atk = SubResource( 36 )
-item_def = SubResource( 38 )
+item_atk = SubResource( 34 )
+item_def = SubResource( 36 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=40]
+[sub_resource type="Resource" id=38]
 script = ExtResource( 10 )
 effect = 1
 turns = 3
 damage = 3
 name = ""
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=39]
 script = ExtResource( 9 )
 character_class = 4
 equipment_slot = 0
@@ -475,16 +455,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 40 )
+effect = SubResource( 38 )
 
-[sub_resource type="Resource" id=42]
+[sub_resource type="Resource" id=40]
 script = ExtResource( 10 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=43]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 9 )
 character_class = 4
 equipment_slot = 0
@@ -494,9 +474,9 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 42 )
+effect = SubResource( 40 )
 
-[sub_resource type="Resource" id=44]
+[sub_resource type="Resource" id=42]
 script = ExtResource( 8 )
 character_class = 4
 name = "Sandi"
@@ -508,17 +488,36 @@ def = 4
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 41 )
-item_def = SubResource( 43 )
+item_atk = SubResource( 39 )
+item_def = SubResource( 41 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=45]
+[sub_resource type="Resource" id=43]
 script = ExtResource( 10 )
 effect = 1
 turns = 3
 damage = 3
+name = ""
+
+[sub_resource type="Resource" id=44]
+script = ExtResource( 9 )
+character_class = 4
+equipment_slot = 0
+level = 0
+name = "Weak Boba Juice"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 43 )
+
+[sub_resource type="Resource" id=45]
+script = ExtResource( 10 )
+effect = 3
+turns = 0
+damage = 0
 name = ""
 
 [sub_resource type="Resource" id=46]
@@ -534,25 +533,6 @@ heal = 0
 effect = SubResource( 45 )
 
 [sub_resource type="Resource" id=47]
-script = ExtResource( 10 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=48]
-script = ExtResource( 9 )
-character_class = 4
-equipment_slot = 0
-level = 0
-name = "Weak Boba Juice"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 47 )
-
-[sub_resource type="Resource" id=49]
 script = ExtResource( 8 )
 character_class = 4
 name = "Lorre"
@@ -564,11 +544,30 @@ def = 4
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 46 )
-item_def = SubResource( 48 )
+item_atk = SubResource( 44 )
+item_def = SubResource( 46 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
+
+[sub_resource type="Resource" id=48]
+script = ExtResource( 10 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=49]
+script = ExtResource( 9 )
+character_class = 0
+equipment_slot = 0
+level = 0
+name = "Rusted Cleaver"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 48 )
 
 [sub_resource type="Resource" id=50]
 script = ExtResource( 10 )
@@ -582,7 +581,7 @@ script = ExtResource( 9 )
 character_class = 0
 equipment_slot = 0
 level = 0
-name = "Rusted Cleaver"
+name = "Puny Sword"
 attack = 1
 attack_range = 1
 defense = 0
@@ -590,25 +589,6 @@ heal = 0
 effect = SubResource( 50 )
 
 [sub_resource type="Resource" id=52]
-script = ExtResource( 10 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=53]
-script = ExtResource( 9 )
-character_class = 0
-equipment_slot = 0
-level = 0
-name = "Puny Sword"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 52 )
-
-[sub_resource type="Resource" id=54]
 script = ExtResource( 8 )
 character_class = 0
 name = "Nugat"
@@ -620,19 +600,19 @@ def = 1
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 51 )
-item_def = SubResource( 53 )
+item_atk = SubResource( 49 )
+item_def = SubResource( 51 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="PanoramaSky" id=55]
+[sub_resource type="PanoramaSky" id=53]
 radiance_size = 0
 panorama = ExtResource( 22 )
 
-[sub_resource type="Environment" id=56]
+[sub_resource type="Environment" id=54]
 background_mode = 2
-background_sky = SubResource( 55 )
+background_sky = SubResource( 53 )
 background_sky_custom_fov = 100.0
 
 [node name="level" type="Spatial"]
@@ -740,7 +720,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 14 )
+stats = SubResource( 12 )
 spawn_trigger = "zara"
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
@@ -750,7 +730,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 23 )
 script = ExtResource( 12 )
-stats = SubResource( 19 )
+stats = SubResource( 17 )
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.2, 5 )
@@ -759,7 +739,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 5 )
 script = ExtResource( 12 )
-stats = SubResource( 24 )
+stats = SubResource( 22 )
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.2, 7 )
@@ -768,7 +748,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 29 )
+stats = SubResource( 27 )
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.2, 12 )
@@ -777,7 +757,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 12 )
-stats = SubResource( 34 )
+stats = SubResource( 32 )
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.2, 8 )
@@ -786,7 +766,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 5 )
 script = ExtResource( 12 )
-stats = SubResource( 39 )
+stats = SubResource( 37 )
 
 [node name="StoryMarker2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0002, 0.2, 14.9971 )
@@ -806,7 +786,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 23 )
 script = ExtResource( 12 )
-stats = SubResource( 44 )
+stats = SubResource( 42 )
 
 [node name="CharacterSpawner10" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.056, 0.2, 15 )
@@ -815,7 +795,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 23 )
 script = ExtResource( 12 )
-stats = SubResource( 49 )
+stats = SubResource( 47 )
 
 [node name="CharacterSpawner11" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 8 )
@@ -824,10 +804,10 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 54 )
+stats = SubResource( 52 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 56 )
+environment = SubResource( 54 )
 __meta__ = {
 "_editor_description_": ""
 }
