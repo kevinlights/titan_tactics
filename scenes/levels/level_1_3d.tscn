@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=2]
@@ -24,69 +24,29 @@
 [ext_resource path="res://resources/story/level1_end.dialogue" type="Resource" id=23]
 
 [sub_resource type="Resource" id=1]
-script = ExtResource( 17 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 6 )
-character_class = 0
-equipment_slot = 0
-level = 1
-name = "Minor Cleaver"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 1 )
-
-[sub_resource type="Resource" id=3]
-script = ExtResource( 17 )
-effect = 2
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 6 )
-character_class = 0
-equipment_slot = 1
-level = 1
-name = "Minor Mail"
-attack = 0
-attack_range = 0
-defense = 1
-heal = 0
-effect = SubResource( 3 )
-
-[sub_resource type="Resource" id=5]
 script = ExtResource( 5 )
 character_class = 0
-name = "Lokum"
-level = 0
+name = "Loki"
+level = 1
 hp = 24
 max_hp = 24
-atk = 1
+atk = 4
 def = 1
 atk_range = 1
 mov_range = 0
-heal = 1
-item_atk = SubResource( 2 )
-item_def = SubResource( 4 )
+heal = 0
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=2]
 script = ExtResource( 17 )
 effect = 3
 turns = 0
 damage = 0
 name = "Spider Venom"
 
-[sub_resource type="Resource" id=7]
+[sub_resource type="Resource" id=3]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 0
@@ -96,16 +56,16 @@ attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 6 )
+effect = SubResource( 2 )
 
-[sub_resource type="Resource" id=8]
+[sub_resource type="Resource" id=4]
 script = ExtResource( 17 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 1
@@ -115,9 +75,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 8 )
+effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
 character_class = 3
 name = "Gabi"
@@ -129,20 +89,20 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 1
-item_atk = SubResource( 7 )
-item_def = SubResource( 9 )
+item_atk = SubResource( 3 )
+item_def = SubResource( 5 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 17 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=12]
+[sub_resource type="Resource" id=8]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 0
@@ -152,16 +112,16 @@ attack = 1
 attack_range = 0
 defense = 0
 heal = 0
-effect = SubResource( 11 )
+effect = SubResource( 7 )
 
-[sub_resource type="Resource" id=13]
+[sub_resource type="Resource" id=9]
 script = ExtResource( 17 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=10]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 1
@@ -171,9 +131,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 13 )
+effect = SubResource( 9 )
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=11]
 script = ExtResource( 5 )
 character_class = 3
 name = "Shawn"
@@ -185,20 +145,20 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 12 )
-item_def = SubResource( 14 )
+item_atk = SubResource( 8 )
+item_def = SubResource( 10 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=12]
 script = ExtResource( 17 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=17]
+[sub_resource type="Resource" id=13]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 0
@@ -208,16 +168,16 @@ attack = 1
 attack_range = 0
 defense = 0
 heal = 0
-effect = SubResource( 16 )
+effect = SubResource( 12 )
 
-[sub_resource type="Resource" id=18]
+[sub_resource type="Resource" id=14]
 script = ExtResource( 17 )
 effect = 2
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=19]
+[sub_resource type="Resource" id=15]
 script = ExtResource( 6 )
 character_class = 3
 equipment_slot = 1
@@ -227,9 +187,9 @@ attack = 0
 attack_range = 0
 defense = 1
 heal = 0
-effect = SubResource( 18 )
+effect = SubResource( 14 )
 
-[sub_resource type="Resource" id=20]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 5 )
 character_class = 3
 name = "Marie"
@@ -241,19 +201,19 @@ def = 3
 atk_range = 1
 mov_range = 5
 heal = 1
-item_atk = SubResource( 17 )
-item_def = SubResource( 19 )
+item_atk = SubResource( 13 )
+item_def = SubResource( 15 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="PanoramaSky" id=21]
+[sub_resource type="PanoramaSky" id=17]
 radiance_size = 0
 panorama = ExtResource( 9 )
 
-[sub_resource type="Environment" id=22]
+[sub_resource type="Environment" id=18]
 background_mode = 2
-background_sky = SubResource( 21 )
+background_sky = SubResource( 17 )
 background_sky_custom_fov = 100.0
 
 [node name="level" type="Spatial"]
@@ -308,7 +268,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 13 )
 script = ExtResource( 3 )
-stats = SubResource( 5 )
+stats = SubResource( 1 )
 dialogue = ExtResource( 21 )
 death_dialogue = ExtResource( 22 )
 
@@ -319,7 +279,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 10 )
+stats = SubResource( 6 )
 spawn_trigger = "surprise_bobas"
 
 [node name="Surprise Boba2" type="Sprite3D" parent="map"]
@@ -329,7 +289,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 15 )
+stats = SubResource( 11 )
 spawn_trigger = "surprise_bobas"
 
 [node name="Surprise Boba3" type="Sprite3D" parent="map"]
@@ -339,7 +299,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
-stats = SubResource( 20 )
+stats = SubResource( 16 )
 spawn_trigger = "surprise_bobas"
 
 [node name="PlayerSpawner" type="Sprite3D" parent="map"]
@@ -384,4 +344,4 @@ dialogue = null
 quest_dialogue = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 22 )
+environment = SubResource( 18 )

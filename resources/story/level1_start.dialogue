@@ -9,26 +9,19 @@ The caravan with the aid meant for our village from the Capital should have long
 I understand and I am honored. I'll go see what happened right away!
 
 # instructor
-However, threats have been spotted all over, so it’s dangerous to go alone!
-Take Bowie with you. He's up north trying to hunt us some rabbits.
-
-# kris
-Okay, I won't let our village down!
-
-# instructor
 Alright, but first let’s take a moment to review the basics.
 > face kris.east
 
 //tutorial start here
 //movement
 
-> select Lokum
+> select Loki
 # ai_swordsman
 Hey loser, nice ponytail! Why don't you come closer so you can hit me?
 What's the matter, are you scared?
 
 # instructor
-You remember your rival Lokum, right? It seems he's quite upset he wasn't the one picked by the council, but he will serve to help us refresh your training!
-Try moving closer to Lokum. Blue tiles are the spots you can reach, but for now just go to the spot I marked for you in YELLOW!
+You remember your rival Loki, right? It seems he's quite upset he wasn't the one picked by the council, but he will serve to help us refresh your training!
+Try moving closer to Loki. Blue tiles are the spots you can reach, but for now just go to the spot I marked for you in YELLOW!
 > hint walk
 > expect walk
