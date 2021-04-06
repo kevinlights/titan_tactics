@@ -322,15 +322,18 @@ func attack_new(tile:Vector3, AOE:bool):
 				var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
 				var target = world.entity_at(tile + offset)
 				
-				if target == self:
+				if target.character.control == character.control:
 					continue
 				
 				if target:
 					targets.append(target)
 	else:
 		var target = world.entity_at(tile)
-		targets.append(target)
-	
+		if target.character.control != character.control:
+			targets.append(target)
+	if targets.size() == 0:
+		return
+		
 	last_target = targets[targets.size()-1]
 	
 	# Damage targets
