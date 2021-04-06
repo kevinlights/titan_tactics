@@ -265,10 +265,10 @@ func to_world_path(path):
 	return world_path
 
 func action():
-	print ("world action")
+	var context = get_current_context($select.tile)
+	print ("world action", context)
 	if game_over:
 		return
-	var context = get_current_context($select.tile)
 	var target = entity_at($select.tile)
 	match(context):
 		TT.CONTEXT.SELECT:
@@ -277,10 +277,10 @@ func action():
 				current_character = target_index
 		TT.CONTEXT.ATTACK:
 			if get_current().character.turn_limits.actions > 0:
-				if not get_current().can_attack(target) and (mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK):
+				if not get_current().can_attack_tile($select.tile) and (mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK):
 					print("[World] Can't attack this target")
 					return $gui/sfx/denied.play()
-				if get_current().can_attack(target):
+				if get_current().can_attack_tile($select.tile):
 					print("[World] Can and will attack")
 #					if target.can_recruit() and is_adjacent(get_current(), target):
 #						gui.attack()
@@ -288,7 +288,7 @@ func action():
 					_on_attack()
 					# reset to PLAY mode if we attacked from ATTACK mode
 					set_mode(MODE.PLAY)
-				elif get_current().can_move_and_attack(target) and mode != MODE.ATTACK:
+				elif mode != MODE.SECONDARY_ATTACK and mode != MODE.ATTACK and get_current().can_move_and_attack(target):
 					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
 					if attack_range == 1:
 						var blocked_tiles = get_blocked_cells()
@@ -907,7 +907,7 @@ func get_current_context(tile):
 	if Game.level == 0:
 		#return TT.CONTEXT.NOT_PLAYABLE
 		pass
-	if mode == MODE.ATTACK:
+	if mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK:
 		return TT.CONTEXT.ATTACK
 	if mode == MODE.HEAL:
 		return TT.CONTEXT.HEAL

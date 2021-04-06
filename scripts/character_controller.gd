@@ -136,7 +136,7 @@ func aoe_vfx(name, tile):
 	thunder_storm.translation = tile
 	thunder_storm.play()
 	$"vfx/Darken screen/AnimationPlayer".play_backwards()
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(2.0), "timeout")
 	thunder_storm.queue_free()
 	
 func hit(attacker):
@@ -242,6 +242,16 @@ func end_turn():
 	$guard.hide()
 	$done.hide()
 
+
+func can_attack_tile(target):
+	# disable item range bonus
+	var atk_range = character.atk_range # + character.item_atk.attack_range
+	if target == null:
+		return false
+	var level_target = Vector2(target.x, target.z)
+	var level_source = Vector2(translation.x, translation.z)
+	return !(level_target.distance_to(level_source) > atk_range)
+
 func can_attack(target):
 	# disable item range bonus
 	var atk_range = character.atk_range # + character.item_atk.attack_range
@@ -310,7 +320,21 @@ func attack_new(tile:Vector3, AOE:bool):
 	if character.turn_limits.actions < 1:
 		return
 	character.turn_limits.actions -= 1
-	
+	var target_tiles = { 
+		TT.TYPE.MAGE: [
+			Vector3(-1, 0, 0 ),
+			Vector3( 1, 0, 0 ),
+			Vector3( 0, 0, 1 ),
+			Vector3( 0, 0, -1)
+		],
+		TT.TYPE.ARCHER: [
+			Vector3( 0, 0, 0 ),
+			Vector3( 1, 0, 1 ),
+			Vector3(-1, 0, 1 ),
+			Vector3(-1, 0, -1),
+			Vector3( 1, 0, -1)
+		]
+	}	
 	var targets:Array
 	if AOE:
 		# Enoh:
@@ -319,19 +343,23 @@ func attack_new(tile:Vector3, AOE:bool):
 		# for offset in offsets:
 		# target = world.entity_at(tile + offset)
 		# check for things like player team or whatever.
-		for x in [-1, 0, 1]:
-			for z in [-1, 0, 1]:
-				var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
-				var target = world.entity_at(tile + offset)
-				if character.character_class == TT.TYPE.MAGE:
-					aoe_vfx("thunder_storm", tile + offset)
-				if character.character_class == TT.TYPE.ARCHER:
-					aoe_vfx("flame_shower", tile + offset)
-				if target and target.character.control == character.control:
-					continue
-				
-				if target:
-					targets.append(target)
+		if !(character.character_class in target_tiles):
+			target_tiles[character.character_class] = [ Vector3.ZERO ]
+		for offset in target_tiles[character.character_class]:
+#		for x in [-1, 0, 1]:
+#			for z in [-1, 0, 1]:
+#			var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
+			print(offset)
+			var target = world.entity_at(tile + offset)
+			if character.character_class == TT.TYPE.MAGE:
+				aoe_vfx("thunder_storm", tile + offset)
+			if character.character_class == TT.TYPE.ARCHER:
+				aoe_vfx("flame_shower", tile + offset)
+			if target and target.character.control == character.control:
+				continue
+			
+			if target:
+				targets.append(target)
 	else:
 		var target = world.entity_at(tile)
 		if target.character.control != character.control:
