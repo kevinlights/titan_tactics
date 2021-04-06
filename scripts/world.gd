@@ -44,16 +44,22 @@ var mode = MODE.DEPLOY
 
 func set_mode(new_mode):
 	mode = new_mode
+	$range_overlay.cursorMode = "default"
+	if new_mode == MODE.SECONDARY_ATTACK:
+		if get_current().character.character_class == TT.TYPE.MAGE:
+			$range_overlay.cursorMode = "thunder_storm"
+		if get_current().character.character_class == TT.TYPE.ARCHER:
+			$range_overlay.cursorMode = "flame_shower"
 	if new_mode == MODE.ATTACK or new_mode == MODE.SECONDARY_ATTACK:
 		$select/top.hide()
-		$select/top_select_attack.show()
+#		$select/top_select_attack.show()
 		return
 	if new_mode == MODE.HEAL:
 		$select/top.hide()
-		$select/top_select_heal.show()
+#		$select/top_select_heal.show()
 	$select/top.show()
-	$select/top_select_heal.hide()
-	$select/top_select_attack.hide()
+#	$select/top_select_heal.hide()
+#	$select/top_select_attack.hide()
 	
 func load_level(level_name):
 	print("[World] Loading level " + level_name)
