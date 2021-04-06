@@ -104,10 +104,15 @@ func try_guarding(character):
 	character.guard()
 	return true
 
+func distance_between(attacker, target):
+	var attacker_cell = attacker.to_global(attacker.get_node("ranged_weapon").translation)
+	var target_cell = target.translation + Vector3(0.5, 0.5, 0.5)
+	return abs(target_cell.x - attacker_cell.x) + abs(target_cell.z - attacker_cell.z)
+	
 func can_attack(attacker, victim, ignore_action_limit = false):
 	if attacker.character.turn_limits.actions < 1 and not ignore_action_limit:
 		return false
-	var distance = attacker.to_global(attacker.get_node("ranged_weapon").translation).distance_to(victim.translation)
+	var distance = distance_between(attacker, victim)
 	var cover = world.is_cover_between(attacker, victim.translation)
 	if not cover:
 #		print("no cover")
