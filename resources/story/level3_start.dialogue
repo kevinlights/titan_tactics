@@ -10,12 +10,13 @@ Oh no! The caravan is right over there... But it looks like it's been pillaged! 
 > focus enemies
 
 # bowie
-Ugh, not again! You can take care of them though... Right?
+Ugh, not again! Together we can take care of them though... Right?
 
 # kris
 I don’t think so, there are too many of them!
 
 > focus kris
+
 > face kris.east
 > emote kris.surprise
 > face bowie.east
