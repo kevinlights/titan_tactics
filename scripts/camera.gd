@@ -7,7 +7,7 @@ var start_rotation = Vector3()
 var end_offset = Vector3()
 var end_rotation = Vector3()
 var rotating = false
-var ttl = 300
+var ttl = 150
 var move_ttl = 500
 var last_rotation = Vector3()
 
