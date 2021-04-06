@@ -1,20 +1,66 @@
 # kris
-Surrender Celes! Why are you attacking Tyrmyr?
+Surrender Celes!
 
 # celes
-It’s Elyne, she has got evil and decided to attack us and the rest of the Kingdom. She filled our Kingdom of monsters! I am at war with them to defend my people.
+Alright, alright! What's the big idea? Why are you guys here anyway?
+
+# kris
+Don't play dumb, why did your troops invade Tyrmyr?
+
+# celes
+Are you serious? You don't know what Elyne has been doing to us? She's been trying to conquer us for decades! She's the one who cast a spell on the cute little bobas to become hostile! I'm just trying to defend our people!
 
 # kris
 You expect us to believe you, cheese smuggler!?
 
+> emote celes.ugh
+
 # celes
-The cheese is my guilty pleasure. Why are you attacking us?
+So what, a lady can't have a guilty pleasure? I'm 67, I'll eat what I want! Anyway. She lied to you about the Crystal, didn't she? And she probably told you some wild story about us having massive weapons too didn't she?
 
 # kris
-We saw you attacking them, and after that, Elyne convinced us to fight for her.
+Yes! I mean... No!! Wha... What is up with that giant Crystal shrine anyway? It looks really suspicious!
 
 # celes
-Elyne may seem harmless but she is very powerful and she has a silver tongue.
+Look around, this land is full of crystals, it's our thing, they just look pretty! Jeez, you think everything we do is suspicious...
+
+# kris
+We saw your troops attacking them, and after that, Elyne convinced us to fight you in the name of Tyrmyr.
+
+# celes
+We were just trying to get our stuff back after her troops robbed us yet again! You see, every month we send out caravans with basic necessities to our villagers that live in remote areas, and every month we lose at least one caravan to that wicked woman's troops!
+
+# kris
+No way, that caravan is our aid! We get it every month... Well... We get it almost every month! You're a liar, I don't believe a word you say! Elyne wouldn't do anything like that!
+
+# celes
+...
+
+> emote celes.surprise
+
+# celes
+Do you get a bag of rice every month, Kris?
+
+# kris
+Yes, why?
+
+# celes
+What does the symbol look like on the front of the bag?
+
+# kris
+That's such a dumb question, it's a giant purple cry... Oh mother#%$#!!!
+
+> emote kris.angry
+> emote bowie.ugh
 
 # zara
-That son of a hamster! She tricked us! She will pay!
+Elyne has been manipulating us all along!
+
+# bowie
+This is... Embarassing...
+
+# kris
+... Celes, we're sorry. I think it's best for us to head back and confront her.
+
+# celes
+It's fine. Come with me, I know a shortcut to lead you back.

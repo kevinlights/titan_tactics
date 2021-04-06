@@ -4,17 +4,33 @@
 > spawn elyne
 
 # elyne
-Thank you brave soldiers from Haki.
+Thank you, brave soldiers from Haki.
 
 # kris
-We came to investigate what happened to the caravan and we found out that it was pillaged by the Kingdom of Skathi.
+We came to investigate what happened to our aid, and we found out that it was pillaged by these Skathian barbars!
 
 #elyne
-Yes, they are dangerous and must be stopped. They come to attack us as you have seen. Please help us! Queen Celes of Skathi must be stopped! They have this super huge Crystal weapon in a cave near our border that they are using to create these terrible monsters that are getting out of control.
-
-# zara
-I need vengeance for what they did to me.
+Yes, they came to pillage us as you have seen with your very eyes. You've got to help us!
 
 # kris
-You can count on us! We will investigate that warehouse!
+What can we do to help?
 
+#elyne
+Queen Celes of Skathi must be stopped at all costs, she is a horrible dictator who knows no compassion, even her own people are suffering under her!
+
+# bowie
+That's horrible! We're going to do something about it, right kris?
+
+> emote bowie.flirt
+
+# kris
+Yes, we will! Just please tell us what to do, Your Majesty!
+
+#elyne
+If you keep going east, past the desert, the Skathians have built a giant Crystal shrine. Our royal research team has found that it's housing a magical weapon that they are building to destroy our entire Capital! Please, you've got to put a stop to these monsters, destroy that Crystal!
+
+# zara
+This is my chance, I'm going to get my revenge for what they did to me and Arath.
+
+# kris
+You can count on us, Your Majesty! We will destroy that crystal and anybody who tries to stop us!
