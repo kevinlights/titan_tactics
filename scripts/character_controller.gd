@@ -124,19 +124,20 @@ func spread_icons():
 #		$guard.translation.x = 0
 #		$speak.translation.x = 7
 
-func thunderstorm():
+func flameshower(tile):
+	pass
+
+func aoe_vfx(name, tile):
 	$"vfx/Darken screen".show()
 	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
+	var thunder_storm = load("res://scenes/" + name + ".tscn").instance()
 	yield(get_tree().create_timer(1.0), "timeout")
-	$"vfx/Thunder storm".show()
-	$"vfx/Thunder storm/AnimationPlayer".current_animation = "Thunder storm"
-	$"vfx/Thunder storm/Spark".emitting = true
-	$"vfx/Thunder storm/Thunder".play()
-	$"vfx/Thunder storm/Flash".show()
+	get_parent().add_child(thunder_storm)
+	thunder_storm.translation = tile
+	thunder_storm.play()
 	$"vfx/Darken screen/AnimationPlayer".play_backwards()
 	yield(get_tree().create_timer(1.0), "timeout")
-	$"vfx/Thunder storm/Flash".hide()
-	$"vfx/Thunder storm".hide()
+	thunder_storm.queue_free()
 	
 func hit(attacker):
 	match(attacker.character_class):
@@ -150,10 +151,10 @@ func hit(attacker):
 		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
 		TT.TYPE.MAGE:
-			thunderstorm()
-#			$vfx/magic_hit.frame = 0
-#			$vfx/magic_hit.show()
-#			$vfx/magic_hit.play()
+#			thunderstorm(tile)
+			$vfx/magic_hit.frame = 0
+			$vfx/magic_hit.show()
+			$vfx/magic_hit.play()
 			pick_random_sfx($sfx/magic_hit)
 		TT.TYPE.BOBA:
 			pick_random_sfx($sfx/boba_hit)
@@ -322,8 +323,8 @@ func attack_new(tile:Vector3, AOE:bool):
 			for z in [-1, 0, 1]:
 				var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
 				var target = world.entity_at(tile + offset)
-				
-				if target.character.control == character.control:
+				aoe_vfx("thunder_storm", tile + offset)
+				if target and target.character.control == character.control:
 					continue
 				
 				if target:

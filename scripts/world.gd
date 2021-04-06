@@ -350,11 +350,12 @@ func action():
 #				_on_end()
 				gui.start("action_menu", "end")
 			else:
-				if mode == MODE.HEAL:
-					_on_heal()
-					set_mode(MODE.PLAY)
-				else:
-					gui.start("action_menu", "heal")
+				if get_current().can_attack(target):
+					if mode == MODE.HEAL:
+						_on_heal()
+						set_mode(MODE.PLAY)
+					else:
+						gui.start("action_menu", "heal")
 	$range_overlay.set_origin(get_current())
 
 func _on_confirm_end_turn():
