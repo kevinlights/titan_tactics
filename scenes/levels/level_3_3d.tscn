@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=2]
@@ -459,6 +459,62 @@ recruit_mode = 0
 portrait_override = "arath"
 control = 0
 
+[sub_resource type="Resource" id=43]
+script = ExtResource( 17 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=44]
+script = ExtResource( 6 )
+character_class = 1
+equipment_slot = 0
+level = 0
+name = "Lesser Bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 43 )
+
+[sub_resource type="Resource" id=45]
+script = ExtResource( 17 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=46]
+script = ExtResource( 6 )
+character_class = 1
+equipment_slot = 0
+level = 0
+name = "Broken Bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 45 )
+
+[sub_resource type="Resource" id=47]
+script = ExtResource( 5 )
+character_class = 1
+name = "Dara"
+level = 4
+hp = 69
+max_hp = 69
+atk = 7
+def = 2
+atk_range = 3
+mov_range = 6
+heal = 0
+item_atk = SubResource( 44 )
+item_def = SubResource( 46 )
+recruit_mode = 0
+portrait_override = ""
+control = 1
+
 [sub_resource type="StreamTexture" id=40]
 load_path = "res://.import/forest.png-f0663e8e83be29137f551bdabb070d18.stex"
 
@@ -538,7 +594,7 @@ item_spawner = SubResource( 1 )
 dialogue = ExtResource( 21 )
 
 [node name="CharacterSpawner" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 3 )
 centered = false
 pixel_size = 0.06
 axis = 1
@@ -556,7 +612,7 @@ script = ExtResource( 3 )
 stats = SubResource( 11 )
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 6 )
 centered = false
 pixel_size = 0.06
 axis = 1
@@ -628,13 +684,55 @@ texture = ExtResource( 19 )
 script = ExtResource( 18 )
 
 [node name="Arath" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 13 )
 centered = false
 pixel_size = 0.06
 axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 3 )
 stats = SubResource( 39 )
+
+[node name="StoryMarker2" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.2, 10 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 14 )
+script = ExtResource( 13 )
+marker_name = "caravan"
+dialogue = null
+quest_dialogue = null
+
+[node name="StoryMarker3" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.2, 6 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 14 )
+script = ExtResource( 13 )
+marker_name = "enemies"
+dialogue = null
+quest_dialogue = null
+
+[node name="StoryMarker5" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 13 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 14 )
+script = ExtResource( 13 )
+marker_name = "overhere"
+dialogue = null
+quest_dialogue = null
+
+[node name="CharacterSpawner8" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 5 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 15 )
+script = ExtResource( 3 )
+stats = SubResource( 47 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 42 )
