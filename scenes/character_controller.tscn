@@ -1,4 +1,4 @@
-[gd_scene load_steps=348 format=2]
+[gd_scene load_steps=335 format=2]
 
 [ext_resource path="res://resources/archer_spriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/character_controller.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://sfx/gameplay/magic_shoot1.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/thunder_storm.tscn" type="PackedScene" id=21]
 [ext_resource path="res://gfx/FX/poison.png" type="Texture" id=22]
+[ext_resource path="res://scenes/flame_shower.tscn" type="PackedScene" id=23]
 [ext_resource path="res://gfx/Sprites/arath.png" type="Texture" id=24]
 [ext_resource path="res://sfx/gameplay/arrow_shoot1.wav" type="AudioStream" id=25]
 [ext_resource path="res://gfx/Sprites/poisonboba.png" type="Texture" id=26]
@@ -42,11 +43,8 @@
 [ext_resource path="res://gfx/Sprites/zara.png" type="Texture" id=41]
 [ext_resource path="res://gfx/FX/black.png" type="Texture" id=42]
 [ext_resource path="res://gfx/Sprites/emotes.png" type="Texture" id=43]
-[ext_resource path="res://gfx/FX/flame.png" type="Texture" id=44]
-[ext_resource path="res://gfx/FX/mageatk.png" type="Texture" id=45]
 [ext_resource path="res://gfx/FX/archerhit.png" type="Texture" id=46]
 [ext_resource path="res://gfx/FX/sweep.png" type="Texture" id=47]
-[ext_resource path="res://gfx/FX/fireflash.png" type="Texture" id=48]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -1902,110 +1900,6 @@ animations = [ {
 "speed": 16.0
 } ]
 
-[sub_resource type="SpatialMaterial" id=278]
-flags_unshaded = true
-params_blend_mode = 1
-params_billboard_mode = 1
-albedo_color = Color( 0.968627, 0.294118, 0.0313726, 1 )
-albedo_texture = ExtResource( 45 )
-
-[sub_resource type="QuadMesh" id=279]
-material = SubResource( 278 )
-size = Vector2( 0.1, 0.4 )
-
-[sub_resource type="Curve" id=280]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Gradient" id=281]
-colors = PoolColorArray( 0.917647, 1, 0.866667, 1, 0.917647, 1, 0.866667, 0 )
-
-[sub_resource type="SpatialMaterial" id=282]
-flags_unshaded = true
-flags_albedo_tex_force_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 1
-albedo_texture = ExtResource( 44 )
-
-[sub_resource type="AtlasTexture" id=283]
-flags = 16
-atlas = ExtResource( 44 )
-region = Rect2( 0, 0, 32, 50 )
-
-[sub_resource type="AtlasTexture" id=284]
-flags = 16
-atlas = ExtResource( 44 )
-region = Rect2( 32, 0, 32, 50 )
-
-[sub_resource type="AtlasTexture" id=285]
-flags = 16
-atlas = ExtResource( 44 )
-region = Rect2( 64, 0, 32, 50 )
-
-[sub_resource type="SpriteFrames" id=286]
-animations = [ {
-"frames": [ SubResource( 283 ), SubResource( 284 ), SubResource( 285 ), SubResource( 284 ) ],
-"loop": true,
-"name": "default",
-"speed": 8.0
-} ]
-
-[sub_resource type="SpatialMaterial" id=287]
-flags_unshaded = true
-params_blend_mode = 1
-params_billboard_mode = 1
-albedo_color = Color( 0.772549, 0.772549, 0.772549, 1 )
-albedo_texture = ExtResource( 48 )
-
-[sub_resource type="Animation" id=288]
-tracks/0/type = "value"
-tracks/0/path = NodePath("Flame:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.5, 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Flame:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.5, 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Spark:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Fireflash:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false, true, false, true, false ]
-}
-
 [sub_resource type="SpatialMaterial" id=289]
 flags_unshaded = true
 params_blend_mode = 1
@@ -2498,47 +2392,7 @@ playing = true
 
 [node name="Thunder storm" parent="vfx" instance=ExtResource( 21 )]
 
-[node name="Flame shower" type="Spatial" parent="vfx"]
-visible = false
-
-[node name="Spark" type="CPUParticles" parent="vfx/Flame shower"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0.5 )
-lod_max_hysteresis = 10000.0
-emitting = false
-amount = 6
-lifetime = 0.4
-one_shot = true
-explosiveness = 0.25
-fixed_fps = 12
-mesh = SubResource( 279 )
-direction = Vector3( 0, 100, 0 )
-spread = 2.0
-gravity = Vector3( 0, -30, 0 )
-initial_velocity = 2.0
-angular_velocity = 20.0
-scale_amount = 0.5
-scale_amount_curve = SubResource( 280 )
-color_ramp = SubResource( 281 )
-anim_speed_random = 1.0
-
-[node name="Flame" type="AnimatedSprite3D" parent="vfx/Flame shower"]
-transform = Transform( 1, 0, 0, 0, 0.997049, -0.0767712, 0, 0.0767712, 0.997049, 0.5, 0.2, 0.5 )
-visible = false
-material_override = SubResource( 282 )
-opacity = 0.79
-billboard = 1
-frames = SubResource( 286 )
-frame = 3
-
-[node name="Fireflash" type="Sprite3D" parent="vfx/Flame shower"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0, 0.5, 1, 0.5 )
-visible = false
-material_override = SubResource( 287 )
-billboard = 1
-texture = ExtResource( 48 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="vfx/Flame shower"]
-"anims/Thunder storm" = SubResource( 288 )
+[node name="Flame shower" parent="vfx" instance=ExtResource( 23 )]
 
 [node name="Sweeping blow" type="Spatial" parent="vfx"]
 visible = false

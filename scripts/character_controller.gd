@@ -323,7 +323,10 @@ func attack_new(tile:Vector3, AOE:bool):
 			for z in [-1, 0, 1]:
 				var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
 				var target = world.entity_at(tile + offset)
-				aoe_vfx("thunder_storm", tile + offset)
+				if character.character_class == TT.TYPE.MAGE:
+					aoe_vfx("thunder_storm", tile + offset)
+				if character.character_class == TT.TYPE.ARCHER:
+					aoe_vfx("flame_shower", tile + offset)
 				if target and target.character.control == character.control:
 					continue
 				
