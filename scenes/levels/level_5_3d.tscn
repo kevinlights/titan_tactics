@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://gfx/OBJS/desert.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/playerspawner.gd" type="Script" id=2]
@@ -68,7 +68,7 @@ defense = 1
 heal = 0
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=54]
 script = ExtResource( 8 )
 character_class = 0
 name = "Kelly"
@@ -124,7 +124,7 @@ defense = 1
 heal = 0
 effect = SubResource( 9 )
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=55]
 script = ExtResource( 8 )
 character_class = 1
 name = "Nina"
@@ -180,7 +180,7 @@ defense = 1
 heal = 1
 effect = SubResource( 14 )
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=56]
 script = ExtResource( 8 )
 character_class = 2
 name = "Gabi"
@@ -236,7 +236,7 @@ defense = 1
 heal = 0
 effect = SubResource( 19 )
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=57]
 script = ExtResource( 8 )
 character_class = 4
 name = "Lily"
@@ -292,7 +292,7 @@ defense = 1
 heal = 0
 effect = SubResource( 24 )
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=58]
 script = ExtResource( 8 )
 character_class = 4
 name = "Seth"
@@ -348,7 +348,7 @@ defense = 1
 heal = 0
 effect = SubResource( 29 )
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=59]
 script = ExtResource( 8 )
 character_class = 1
 name = "Sage"
@@ -404,7 +404,7 @@ defense = 1
 heal = 0
 effect = SubResource( 34 )
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=60]
 script = ExtResource( 8 )
 character_class = 1
 name = "Bram"
@@ -460,7 +460,7 @@ defense = 1
 heal = 0
 effect = SubResource( 39 )
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=61]
 script = ExtResource( 8 )
 character_class = 0
 name = "Ciara"
@@ -477,6 +477,42 @@ item_def = SubResource( 40 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
+
+[sub_resource type="Resource" id=52]
+script = ExtResource( 10 )
+effect = 0
+turns = 3
+damage = 0
+name = "Stun"
+
+[sub_resource type="Resource" id=53]
+script = ExtResource( 9 )
+character_class = 2
+equipment_slot = 0
+level = 0
+name = "Lesser Staff"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 1
+effect = SubResource( 52 )
+
+[sub_resource type="Resource" id=62]
+script = ExtResource( 8 )
+character_class = 2
+name = "Elyne"
+level = 10
+hp = 55
+max_hp = 55
+atk = 12
+def = 5
+atk_range = 5
+mov_range = 7
+heal = 4
+item_atk = SubResource( 53 )
+recruit_mode = 0
+portrait_override = "elyne"
+control = 0
 
 [sub_resource type="PanoramaSky" id=42]
 radiance_size = 0
@@ -590,7 +626,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 6 )
+stats = SubResource( 54 )
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.2, 6 )
@@ -599,7 +635,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 5 )
 script = ExtResource( 12 )
-stats = SubResource( 11 )
+stats = SubResource( 55 )
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 7 )
@@ -608,7 +644,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 4 )
 script = ExtResource( 12 )
-stats = SubResource( 16 )
+stats = SubResource( 56 )
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 12 )
@@ -617,7 +653,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 22 )
 script = ExtResource( 12 )
-stats = SubResource( 21 )
+stats = SubResource( 57 )
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 13 )
@@ -626,7 +662,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 22 )
 script = ExtResource( 12 )
-stats = SubResource( 26 )
+stats = SubResource( 58 )
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.2, 5 )
@@ -635,7 +671,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 5 )
 script = ExtResource( 12 )
-stats = SubResource( 31 )
+stats = SubResource( 59 )
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 6 )
@@ -644,7 +680,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 5 )
 script = ExtResource( 12 )
-stats = SubResource( 36 )
+stats = SubResource( 60 )
 
 [node name="CharacterSpawner8" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.2, 11 )
@@ -653,7 +689,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
-stats = SubResource( 41 )
+stats = SubResource( 61 )
 
 [node name="StoryMarker" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 6 )
@@ -665,6 +701,15 @@ script = ExtResource( 18 )
 marker_name = "elyne"
 dialogue = null
 quest_dialogue = null
+
+[node name="CharacterSpawner9" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 5 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 4 )
+script = ExtResource( 12 )
+stats = SubResource( 62 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 43 )
