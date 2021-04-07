@@ -17,6 +17,26 @@ var cursorHighlights = {
 		Vector2(-1, 1 ),
 		Vector2(-1, -1),
 		Vector2( 1, -1)
+	],
+	'sweeping_blow_north': [
+		Vector2( -1, -1),
+		Vector2( 0, -1),
+		Vector2( 1, -1)
+	],
+	'sweeping_blow_south': [
+		Vector2( -1, 1),
+		Vector2( 0, 1),
+		Vector2( 1, 1)
+	],
+	'sweeping_blow_west': [
+		Vector2( -1, -1),
+		Vector2( -1, 0),
+		Vector2( -1, 1)
+	],
+	'sweeping_blow_east': [
+		Vector2( 1, -1),
+		Vector2( 1, 0),
+		Vector2( 1, 1)
 	]
 }
 var overlayed_tiles = []

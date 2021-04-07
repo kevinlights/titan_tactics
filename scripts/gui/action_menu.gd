@@ -73,6 +73,9 @@ func init(new_menu_type = "attack"):
 			buttons[i - 1].focus_neighbour_bottom = "../" + buttons[i].name
 			buttons[i].focus_previous = "../" + buttons[i - 1].name
 			buttons[i].focus_neighbour_top = "../" + buttons[i - 1].name
+		if buttons[i].text != "End" and get_parent().get_parent().get_current().character.turn_limits.actions < 1:
+			buttons[i].disabled = true
+			print("Disable button ", buttons[i].text)
 		buttons[i].rect_position.x = 6
 		buttons[i].rect_position.y = i * 16
 		buttons[i].connect("pressed", self, "_on_action", [ buttons[i].text ] )

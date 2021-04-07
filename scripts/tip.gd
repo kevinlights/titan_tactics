@@ -1,6 +1,7 @@
 extends Control
 
 onready var world = get_parent().get_parent()
+onready var gui = get_parent()
 
 func get_characters_with_actions():
 	var num_done = 0
@@ -14,6 +15,11 @@ func _process(_delta):
 #		hide()
 #	else:
 #		show()
+	if gui.is_blocking():
+		hide()
+		return
+	else:
+		show()
 	if world.current[TT.CONTROL.PLAYER].size() == 1 or get_characters_with_actions() < 2:
 		$AnimatedSprite.hide()
 		$tip.hide()

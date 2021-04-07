@@ -4,6 +4,10 @@ signal selector_left
 signal selector_right
 signal selector_up
 signal selector_down
+signal aoe_left
+signal aoe_right
+signal aoe_up
+signal aoe_down
 
 var current
 var non_blocking = [ "battle", "ally" ]
@@ -28,6 +32,11 @@ func close(names:Array):
 	if current and current.name in names:
 		current.call_deferred("out")
 		current = null
+
+func is_blocking():
+	if !current:
+		return false
+	return !(current.name in non_blocking)
 
 func start(name, arg=null):
 	print ("[GUI] set state ", name)
@@ -54,14 +63,25 @@ func next():
 
 func _input(event):
 	if (!current or current.name in non_blocking) and get_parent().current_turn == TT.CONTROL.PLAYER:
-		if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
-			emit_signal("selector_down")
-		if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
-			emit_signal("selector_up")
-		if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
-			emit_signal("selector_left")
-		if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
-			emit_signal("selector_right")
+		var character = get_parent().get_current()
+		if character.character.character_class == TT.TYPE.FIGHTER and get_parent().mode == TacticsWorld.MODE.SECONDARY_ATTACK:
+			if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
+				emit_signal("aoe_down")
+			if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
+				emit_signal("aoe_up")
+			if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
+				emit_signal("aoe_left")
+			if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
+				emit_signal("aoe_right")
+		else:
+			if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
+				emit_signal("selector_down")
+			if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
+				emit_signal("selector_up")
+			if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
+				emit_signal("selector_left")
+			if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
+				emit_signal("selector_right")
 		if get_parent().mode == TacticsWorld.MODE.PLAY:
 			if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 				get_parent().action()

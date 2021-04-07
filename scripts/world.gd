@@ -50,6 +50,10 @@ func set_mode(new_mode):
 			$range_overlay.cursorMode = "thunder_storm"
 		if get_current().character.character_class == TT.TYPE.ARCHER:
 			$range_overlay.cursorMode = "flame_shower"
+		if get_current().character.character_class == TT.TYPE.FIGHTER:
+			var facing = get_current().is_facing()
+			$range_overlay.cursorMode = "sweeping_blow_" + facing
+			$select.set_origin(get_current())
 	if new_mode == MODE.ATTACK or new_mode == MODE.SECONDARY_ATTACK:
 		$select/top.hide()
 #		$select/top_select_attack.show()
@@ -76,7 +80,7 @@ func load_level(level_name):
 
 func get_current():
 	current_character = clamp(current_character, 0, abs(current[current_turn].size()-1))
-	if current[current_turn].size() > current_character:
+	if current[current_turn].size() > current_character :
 		return current[current_turn][current_character]
 	else:
 		return null
@@ -412,6 +416,11 @@ func _ready():
 	gui.get_node("dialogue_box").connect("cutscene_end", self, "_on_end_cutscene")
 #	gui.connect("modal_closed", self, "_on_modal_resume")
 	gui.get_node("endturn").connect("confirm_end_turn", self, "_on_confirm_end_turn")
+	gui.connect("aoe_left", self, "_on_aoe_left")
+	gui.connect("aoe_right", self, "_on_aoe_right")
+	gui.connect("aoe_up", self, "_on_aoe_up")
+	gui.connect("aoe_down", self, "_on_aoe_down")
+	
 # warning-ignore:return_value_discarded
 	$select.connect("moved", self, "_on_selector_moved")
 
@@ -421,6 +430,30 @@ func _ready():
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")
 	$lookat/camera.track($select)
+
+func _on_aoe_left():
+	get_current().face("west")
+	var facing = get_current().is_facing()
+	$range_overlay.cursorMode = "sweeping_blow_" + facing
+	$range_overlay.set_selector($range_overlay.selector)
+
+func _on_aoe_right():
+	get_current().face("east")
+	var facing = get_current().is_facing()
+	$range_overlay.cursorMode = "sweeping_blow_" + facing
+	$range_overlay.set_selector($range_overlay.selector)
+
+func _on_aoe_up():
+	get_current().face("north")
+	var facing = get_current().is_facing()
+	$range_overlay.cursorMode = "sweeping_blow_" + facing
+	$range_overlay.set_selector($range_overlay.selector)
+
+func _on_aoe_down():
+	get_current().face("south")
+	var facing = get_current().is_facing()
+	$range_overlay.cursorMode = "sweeping_blow_" + facing
+	$range_overlay.set_selector($range_overlay.selector)
 
 func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")
@@ -927,8 +960,8 @@ func get_current_context(tile):
 			return TT.CONTEXT.USE
 		elif unit.character.control == TT.CONTROL.AI:
 			return TT.CONTEXT.ATTACK
-		elif get_current().character.has_ability(TT.ABILITY.HEAL):
-			return TT.CONTEXT.HEAL
+#		elif get_current().character.has_ability(TT.ABILITY.HEAL):
+#			return TT.CONTEXT.HEAL
 		elif get_current() == unit:
 			return TT.CONTEXT.GUARD
 		else:

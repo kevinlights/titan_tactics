@@ -343,6 +343,26 @@ func attack_new(tile:Vector3, AOE:bool):
 			Vector3(-1, 0, 1 ),
 			Vector3(-1, 0, -1),
 			Vector3( 1, 0, -1)
+		],
+		"sweeping_blow_north": [
+			Vector3( -1, 0,  -1),
+			Vector3( 0, 0, -1),
+			Vector3( 1, 0, -1)
+		],
+		"sweeping_blow_south": [
+			Vector3( -1, 0, 1),
+			Vector3( 0, 0, 1),
+			Vector3( 1, 0, 1)
+		],
+		"sweeping_blow_west": [
+			Vector3( -1, 0, -1),
+			Vector3( -1, 0, 0),
+			Vector3( -1, 0, 1)
+		],
+		"sweeping_blow_east": [
+			Vector3( 1, 0, -1),
+			Vector3( 1, 0, 0),
+			Vector3( 1, 0, 1)
 		]
 	}	
 	var targets:Array
@@ -355,6 +375,8 @@ func attack_new(tile:Vector3, AOE:bool):
 		# check for things like player team or whatever.
 		if !(character.character_class in target_tiles):
 			target_tiles[character.character_class] = [ Vector3.ZERO ]
+		if character.character_class == TT.TYPE.FIGHTER:
+			target_tiles[character.character_class] = target_tiles["sweeping_blow_" + is_facing()]
 		for offset in target_tiles[character.character_class]:
 #		for x in [-1, 0, 1]:
 #			for z in [-1, 0, 1]:
@@ -365,14 +387,18 @@ func attack_new(tile:Vector3, AOE:bool):
 				aoe_vfx("thunder_storm", tile + offset)
 			if character.character_class == TT.TYPE.ARCHER:
 				aoe_vfx("flame_shower", tile + offset)
+			if character.character_class == TT.TYPE.FIGHTER:
+				$"vfx/Sweeping blow".get_node("sweep_" + is_facing()).frame = 0
+				$"vfx/Sweeping blow".show()
+				avatar.play(avatar.animation.replace("idle", "attack"))
+
 			if target and target.character.control == character.control:
 				continue
-			
 			if target:
 				targets.append(target)
 	else:
 		var target = world.entity_at(tile)
-		if target.character.control != character.control:
+		if target and target.character.control != character.control:
 			targets.append(target)
 	if targets.size() == 0:
 		return
@@ -400,7 +426,6 @@ func attack_new(tile:Vector3, AOE:bool):
 		attack_complete()
 		for t in targets:
 			t.hit(character)
-	
 	if tile.x < translation.x:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
 	if tile.x > translation.x:
@@ -491,6 +516,15 @@ func face(direction):
 		"south":
 			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["down"])
 
+func is_facing():
+	if directions[TT.CAMERA.NORTH]["left"] in avatar.animation:
+		return "west"
+	if directions[TT.CAMERA.NORTH]["right"] in avatar.animation:
+		return "east"
+	if directions[TT.CAMERA.NORTH]["down"] in avatar.animation:
+		return "south"
+	return "north"
+	
 func emote(emoji):
 	$emotes.stop()
 	$emotes.frame = 0
