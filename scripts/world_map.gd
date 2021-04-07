@@ -19,6 +19,7 @@ func _ready():
 
 func make_path_visible():
 	var map_points = get_tree().get_nodes_in_group("map_points")
+	$map_selector.visible = false
 	var final_point
 	var animated_path = []
 	for i in range(0, map_points.size()):
@@ -38,6 +39,7 @@ func make_path_visible():
 		final_point.self_modulate.a = 0.5
 		yield(get_tree().create_timer(0.1), "timeout")
 		final_point.self_modulate.a = 1
+	$map_selector.visible = true
 
 func move_selector():
 	$text.text = "Level " + str(Game.level + 1) + ": " + TT.levels[Game.level].name

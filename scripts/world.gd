@@ -299,7 +299,7 @@ func action():
 					# reset to PLAY mode if we attacked from ATTACK mode
 					set_mode(MODE.PLAY)
 				elif mode != MODE.SECONDARY_ATTACK and mode != MODE.ATTACK and get_current().can_move_and_attack(target):
-					var attack_range = get_current().character.atk_range # + get_current().character.item_atk.attack_range
+					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
 					if attack_range == 1:
 						var blocked_tiles = get_blocked_cells()
 						# remove target from blocked_tiles (so pathfinder works)
@@ -665,7 +665,7 @@ func _on_next_level():
 		SaveLoadSystem.save_game()
 		Game.camera_orientation = TT.CAMERA.NORTH
 # warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
+		get_tree().change_scene("res://scenes/world_map.tscn")
 	else:
 		# All levels completed?
 		SaveLoadSystem.save_game()
