@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/turn_alert1.ogg-41d6af65565a33a7629040fd5cd08729.oggstr"
+
+[deps]
+
+source_file="res://sfx/UI/turn_alert1.ogg"
+dest_files=[ "res://.import/turn_alert1.ogg-41d6af65565a33a7629040fd5cd08729.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

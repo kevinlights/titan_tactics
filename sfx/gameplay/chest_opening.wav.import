@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chest_opening.wav-8b0476cfe3deec1a2811af6405fdba95.sample"
+
+[deps]
+
+source_file="res://sfx/gameplay/chest_opening.wav"
+dest_files=[ "res://.import/chest_opening.wav-8b0476cfe3deec1a2811af6405fdba95.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
