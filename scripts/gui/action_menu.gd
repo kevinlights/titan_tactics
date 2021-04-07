@@ -20,6 +20,8 @@ var start
 var done = true
 var menu_type = TT.TYPE.FIGHTER
 
+var disabled = []
+
 var label_map = {
 #	"attack": [ "Attack", "Speak" ],	
 #	"guard": [ "Guard", "End" ],
@@ -46,6 +48,10 @@ func _ready():
 	pass
 
 func _on_action(item):
+	if item in disabled:
+		print("[ACTION MENU] pressed disabled item: ", item)
+		get_parent().get_node("sfx/denied").play()
+		return
 	emit_signal("action", item)
 	print("[ACTION MENU] ", item)
 	get_parent().back()
@@ -58,6 +64,7 @@ func init(new_menu_type = "attack"):
 	for child in $panel/box.get_children():
 		child.queue_free()
 
+	disabled = []
 	var action_item_scene = load("res://scenes/gui/action_menu_item.tscn")
 	for label in label_map[menu_type]:
 		var action_item = action_item_scene.instance()
@@ -74,7 +81,11 @@ func init(new_menu_type = "attack"):
 			buttons[i].focus_previous = "../" + buttons[i - 1].name
 			buttons[i].focus_neighbour_top = "../" + buttons[i - 1].name
 		if buttons[i].text != "End" and get_parent().get_parent().get_current().character.turn_limits.actions < 1:
-			buttons[i].disabled = true
+#			buttons[i].disabled = true
+			buttons[i].set("custom_colors/font_color", "#8f8f8f")
+			buttons[i].set("custom_colors/font_color_hover", "#8f8f8f")
+			buttons[i].set("custom_colors/font_color_pressed", "#8f8f8f")
+			disabled.append(buttons[i].text)
 			print("Disable button ", buttons[i].text)
 		buttons[i].rect_position.x = 6
 		buttons[i].rect_position.y = i * 16

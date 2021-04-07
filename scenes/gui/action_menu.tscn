@@ -86,7 +86,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 2 )
 frames = SubResource( 6 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( 1, 2 )
