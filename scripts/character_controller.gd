@@ -201,8 +201,49 @@ func hit(attacker):
 		spread_icons()
 
 func pick_random_sfx(audio_path):
+	var audioToPick = audio_path
+	if "name" in audioToPick:
+		audioToPick = audio_path.name
+	print("[CharController] ", self.character.name,  " (", self.character.character_class, ") - picking random SFX: ",audioToPick)
+	
+	if self.character.name.to_lower() in Game.sfx["tt"]["sfx"]["v"]:
+		print("would call other sfx")
+		var availableSnds = []
+		if audioToPick.ends_with("_hit"):
+			availableSnds = Game.sfx["tt"]["sfx"]["v"][self.character.name.to_lower()]["h"]
+		elif audioToPick.ends_with("death"):
+			pass # no sound available
+		elif audioToPick.ends_with("attack"):
+			availableSnds = Game.sfx["tt"]["sfx"]["v"][self.character.name.to_lower()]["at1"]
+		elif audioToPick.ends_with("attack2"):
+			availableSnds = Game.sfx["tt"]["sfx"]["v"][self.character.name.to_lower()]["at2"]
+		
+		if availableSnds.size() <= 0:
+			if "name" in audio_path:
+				pick_random_sfx_old(audio_path)
+			return
+		
+		var selected = availableSnds[rand_range(0,availableSnds.size()-1)]		
+		var astr = AudioStreamPlayer.new()
+		astr.stream = selected
+		astr.connect("finished", self, "_disposeObject",[astr])
+		astr.play()
+		
+		self.add_child(astr)
+		print("played audio stream: ",selected)
+		
+	elif "name" in audio_path: # fallback
+		pick_random_sfx_old(audio_path)
+		
+func pick_random_sfx_old(audio_path):
 	var effects = audio_path.get_children()
 	effects[rand_range(0, effects.size() - 1)].play()
+
+func _disposeObject(obj):
+	if "playing" in obj:
+		obj.stop()
+	print("disposing object: ",obj.name)
+	obj.queue_free()
 
 func stop_all_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -508,6 +549,8 @@ func attack(target):
 		avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
 	if target.translation.z > translation.z:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
+	
+	pick_random_sfx("attack")
 	return damage
 
 func face(direction):

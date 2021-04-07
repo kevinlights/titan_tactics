@@ -9,7 +9,47 @@ var level = 0
 var unlocked_level = 0
 var camera_orientation = TT.CAMERA.NORTH setget set_camera_orientation, get_camera_orientation
 
+var sfx = {}
+
 var default_stats = load("res://resources/class_stats.tres")
+
+func _ready() -> void:
+	loadVA()
+
+func loadVA():
+	var d = Directory.new()
+	d.change_dir("res://VA")
+	d.list_dir_begin(true,true)
+	var curD = d.get_next()
+	while (curD != null && curD != ""):
+		#print("[VAs] Checking: ",curD)
+		if d.current_is_dir():
+			var dd = Directory.new()
+			dd.change_dir("res://VA/"+curD)
+			dd.list_dir_begin(true,true)
+			var curF = dd.get_next()
+			while (curF != null && curF != ""):
+				#print("[VAs] File: ",curF)
+				var origF = curF
+				curF = curF.to_lower()
+				if curF.ends_with(".ogg"):
+					var splt = curF.split("_")
+					if not splt[0] in sfx:
+						sfx[splt[0]] = {}
+					if not splt[1] in sfx[splt[0]]:
+						sfx[splt[0]][splt[1]] = {}
+					if not splt[2] in sfx[splt[0]][splt[1]]:
+						sfx[splt[0]][splt[1]][splt[2]] = {}
+					if not splt[3] in sfx[splt[0]][splt[1]][splt[2]]:
+						sfx[splt[0]][splt[1]][splt[2]][splt[3]] = {}
+					if not splt[4] in sfx[splt[0]][splt[1]][splt[2]][splt[3]]:
+						sfx[splt[0]][splt[1]][splt[2]][splt[3]][splt[4]] = []
+					
+					sfx[splt[0]][splt[1]][splt[2]][splt[3]][splt[4]].push_back(load("res://VA/"+curD+"/"+origF))
+				curF = dd.get_next()
+		curD = d.get_next()
+	print_debug("[VAs] Loaded following VA files:", to_json(sfx))
+
 
 func set_camera_orientation(new_orientation):
 

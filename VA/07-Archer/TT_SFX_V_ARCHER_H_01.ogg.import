@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_ARCHER_H_01.ogg-23acc4c08774f5dedf4fa38e24b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

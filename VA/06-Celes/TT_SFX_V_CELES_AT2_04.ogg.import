@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_CELES_AT2_04.ogg-be70dc7565751e23179d8513d3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_MAGE_AT2_03.ogg-3f6ddbd45dee40dd3f14dde8d8e
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

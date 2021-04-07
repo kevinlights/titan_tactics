@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_KRIS_AT1_01.ogg-81f4468244e902a9d16916d9332
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

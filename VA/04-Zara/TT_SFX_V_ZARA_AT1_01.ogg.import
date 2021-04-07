@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_ZARA_AT1_01.ogg-4a828d7778dd1765195b14dd339
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

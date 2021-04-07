@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_SWORDIE_AT2_01.ogg-95a973ff80a9390ebaa7048a
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

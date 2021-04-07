@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_BOWIE_H_03.ogg-3510b75e8b0f8f5b4c8ef20529cc
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

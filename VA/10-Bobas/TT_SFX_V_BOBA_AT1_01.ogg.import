@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_BOBA_AT1_01.ogg-b9bcdb6d81d01bdb772dfe180f3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

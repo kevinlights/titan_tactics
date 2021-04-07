@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TT_SFX_V_ELYNE_AT2_01.ogg-3a99e3867bf525e7e855993ee8
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
