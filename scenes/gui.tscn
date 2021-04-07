@@ -47,8 +47,6 @@
 [ext_resource path="res://scenes/dialogue_box.tscn" type="PackedScene" id=50]
 [ext_resource path="res://scenes/dialogue_answers.tscn" type="PackedScene" id=51]
 
-
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 36, 24 )
@@ -146,22 +144,18 @@ size = 13
 font_data = ExtResource( 4 )
 
 [sub_resource type="AtlasTexture" id=20]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=21]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=22]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=23]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
@@ -184,22 +178,18 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=25]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 48, 16, 16 )
 
@@ -227,22 +217,18 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=32]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=33]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
@@ -1643,230 +1629,287 @@ WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
 [sub_resource type="AtlasTexture" id=111]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 0, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=112]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 224, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=113]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 448, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=114]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 672, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=115]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 896, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=116]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 1120, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=117]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 1344, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=118]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 1568, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=119]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 1792, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=120]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2016, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=121]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2240, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=122]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2464, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=123]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2688, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=124]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 2912, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=125]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 3136, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=126]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 3360, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=127]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 3584, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=128]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 3808, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=129]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4032, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=130]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4256, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=131]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4480, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=132]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4704, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=133]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 4928, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=134]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 5152, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=135]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 5376, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=136]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 5600, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=137]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 5824, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=138]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6048, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=139]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6272, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=140]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6496, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=141]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6720, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=142]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 6944, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=143]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 7168, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=144]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 7392, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=145]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 7616, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=146]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 7840, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=147]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8064, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=148]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8288, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=149]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8512, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=150]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8736, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=151]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 8960, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=152]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 9184, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=153]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 9408, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=154]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 9632, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=155]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 9856, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=156]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10080, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=157]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10304, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=158]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10528, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=159]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10752, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=160]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 10976, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=161]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 11200, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=162]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 11424, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=163]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 11648, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=164]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 11872, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=165]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 12096, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=166]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 12320, 320, 224 )
 
 [sub_resource type="AtlasTexture" id=167]
+flags = 16
 atlas = ExtResource( 35 )
 region = Rect2( 0, 12544, 320, 224 )
 
@@ -3130,6 +3173,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3154,6 +3198,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3162,6 +3207,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 103 )
+frame = 2
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -3344,6 +3390,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3382,7 +3429,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 58.1062 )
 frames = SubResource( 103 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
@@ -3456,6 +3503,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 position = Vector2( -6, -5 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3482,6 +3530,7 @@ __meta__ = {
 visible = false
 position = Vector2( -4, -16 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -3561,6 +3610,7 @@ __meta__ = {
 visible = false
 position = Vector2( -5, 4 )
 frames = SubResource( 172 )
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3586,6 +3636,7 @@ __meta__ = {
 visible = false
 position = Vector2( -6, 4 )
 frames = SubResource( 207 )
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3631,7 +3682,7 @@ volume_db = -3.7
 
 [node name="denied" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 7 )
-volume_db = -1.0
+volume_db = -9.0
 
 [node name="level_up" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 13 )
