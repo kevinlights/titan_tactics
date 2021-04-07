@@ -212,10 +212,12 @@ func _emote_done(_emote_source):
 
 	event_will_progress = true
 
-	### FOR GOD'S SAKE SOLVE THIS WITH A ANIMATIONCONTROLLER
-	_emote_source.get_node("emotes").show()
-	yield(get_tree().create_timer(1.0),"timeout")
-	_emote_source.get_node("emotes").hide()
+	if _emote_source != null:
+		### FOR GOD'S SAKE SOLVE THIS WITH A ANIMATIONCONTROLLER
+		_emote_source.get_node("emotes").show()
+		yield(get_tree().create_timer(1.0),"timeout")
+		_emote_source.get_node("emotes").hide()
+		
 	print("[DialogBox] Emoting done - advancing.")
 	if event_will_progress:
 		advance()
