@@ -18,13 +18,13 @@ var start
 # var native_x = -50
 # var ttl = 60
 var done = true
-var menu_type = "attack"
+var menu_type = TT.TYPE.FIGHTER
 
 var label_map = {
-	"attack": [ "Attack", "Speak" ],	
-	"guard": [ "Guard", "End" ],
-	"heal": [ "Healing Light", "End" ],
-	"end": [ "End" ],
+#	"attack": [ "Attack", "Speak" ],	
+#	"guard": [ "Guard", "End" ],
+#	"heal": [ "Healing Light", "End" ],
+#	"end": [ "End" ],
 	TT.TYPE.MAGE: [ "Lightning Bolt", "Thunder Storm", "Healing Light", "End" ],
 	TT.TYPE.ARCHER: [ "Sharp Shot", "Flame Shower", "Guard", "End" ],
 	TT.TYPE.FIGHTER: [ "Heavy Blow", "Sweeping Blow", "Guard", "End" ]
