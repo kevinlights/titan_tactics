@@ -97,13 +97,13 @@ func generate_data(new_origin):
 		'cursor':  null,
 		'move_distance': character.turn_limits.move_distance,
 		'actions': character.turn_limits.actions,
-		'atk_range': character.atk_range + character.item_atk.attack_range,
+		'atk_range': character.atk_range, # + character.item_atk.attack_range,
 	}
 	var select = world.get_node_or_null('select')
 	if select: 
 		_data.cursor = select.tile
-	print('_data', _data)
 	if data != _data:
+		print('range_overlay, data has changed ', _data)
 		data = _data
 		if data.actions > 0 or data.move_distance > 1:
 			show()
@@ -124,7 +124,6 @@ func _process(_time):
 				generate_data(origin)
 
 func clear():
-	print('clearing tiles ', overlayed_tiles)
 	for tile in overlayed_tiles:
 		gridmap.set_tile_overlay(tile, 'placeholder')
 	gridmap.overlay.blank_gridmap()
@@ -147,7 +146,7 @@ func paint():
 		var context = world.get_current_context(context_tile)
 		
 		var tile_overlay_success;
-		if context == TT.CONTEXT.ATTACK and data.actions > 0:
+		if context == TT.CONTEXT.ATTACK and data.actions > 0 and world.get_current().can_move_and_attack_tile(tile):
 			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
 		elif context == TT.CONTEXT.MOVE:
 			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')

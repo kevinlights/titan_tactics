@@ -299,7 +299,7 @@ func action():
 					# reset to PLAY mode if we attacked from ATTACK mode
 					set_mode(MODE.PLAY)
 				elif mode != MODE.SECONDARY_ATTACK and mode != MODE.ATTACK and get_current().can_move_and_attack(target):
-					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
+					var attack_range = get_current().character.atk_range # + get_current().character.item_atk.attack_range
 					if attack_range == 1:
 						var blocked_tiles = get_blocked_cells()
 						# remove target from blocked_tiles (so pathfinder works)
