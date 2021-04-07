@@ -67,6 +67,10 @@ func set_selector(_selector):
 	paint()
 	if _selector:
 		selector = gridmap.world_to_map(_selector)
+		paint_selector()
+
+func paint_selector():
+	if selector:
 		var highlights = cursorHighlights[cursorMode]
 		for highlight in highlights:
 			var highlight_tile = selector + Vector3(highlight.x, 0, highlight.y)
@@ -75,8 +79,6 @@ func set_selector(_selector):
 				var tile_overlay_success = gridmap.set_tile_overlay(possible_tiles[0], 'select')
 				if tile_overlay_success == true:
 					overlayed_tiles.push_back(possible_tiles[0])
-			else:
-				print_debug('not printing')
 
 func set_origin(_origin):
 	origin = _origin

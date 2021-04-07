@@ -16,12 +16,13 @@ Alright, but first let’s take a moment to review the basics.
 //movement
 
 > select Loki
+> face loki.west
 # ai_swordsman
 Hey loser, nice ponytail! Why don't you come closer so you can hit me?
 What's the matter, are you scared?
 
 # instructor
 You remember your rival Loki, right? It seems he's quite upset he wasn't the one picked by the council, but he will serve to help us refresh your training!
-Try moving closer to Loki. Blue tiles are the spots you can reach, but for now just go to the spot I marked for you in YELLOW!
+Try moving closer to Loki. Blue tiles are the spots you can reach, but for now just go to the spot I marked for you in Yellow!
 > hint walk
 > expect walk
