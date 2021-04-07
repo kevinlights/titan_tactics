@@ -174,15 +174,13 @@ volume_db = -2.4
 
 [node name="forest" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 7 )
-volume_db = -5.0
 
 [node name="cave" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 10 )
-volume_db = -3.8
+volume_db = 1.0
 
 [node name="city" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 9 )
-volume_db = -5.6
 
 [node name="win" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 8 )
