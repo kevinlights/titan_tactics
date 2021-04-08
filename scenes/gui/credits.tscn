@@ -218,3 +218,4 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="roll"]
 anims/roll = SubResource( 5 )
+[connection signal="pressed" from="roll/ok" to="." method="_on_ok_pressed"]

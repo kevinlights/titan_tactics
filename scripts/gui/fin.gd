@@ -18,7 +18,7 @@ func init(_arg):
 	$banner.show()
 	$banner.play()
 	$Control.show()
-	$Control/Next.grab_focus()
+	$Control/Ok.grab_focus()
 
 func out():
 	hide()

@@ -1,17 +1,20 @@
 extends Control
 
 signal closed
+signal ok
 
 var start = 0
 var ttl = 6500
 
-func display(description):
-	start = OS.get_ticks_msec()
-	$margin/description.text = description
-	show()
+#func display(description):
+#	start = OS.get_ticks_msec()
+#	$margin/description.text = description
+#	show()
 
 func init(arg):
-	display(arg)
+	$roll/AnimationPlayer.current_animation = "roll"
+	$roll/ok.grab_focus()
+	show()
 
 func out():
 	hide()
@@ -23,14 +26,18 @@ func out():
 #		call_deferred("hide")
 #		emit_signal("closed")
 
-func _process(_delta):
-	if !visible:
-		return
-	var now = OS.get_ticks_msec()
-	if now - start > ttl:
-		emit_signal("closed")
-		hide()
+#func _process(_delta):
+#	if !visible:
+#		return
+#	var now = OS.get_ticks_msec()
+#	if now - start > ttl:
+#		emit_signal("closed")
+#		hide()
 
 
 func _on_close_credits():
 	pass # Replace with function body.
+
+
+func _on_ok_pressed():
+	emit_signal("ok")

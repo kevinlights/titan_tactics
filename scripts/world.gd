@@ -411,10 +411,12 @@ func _ready():
 #	gui.get_node("lvlup").connect("close", self, "_on_dialogue_complete")
 	gui.get_node("win").connect("next", self, "_on_next_level")
 	gui.get_node("win").connect("retry", self, "_on_replay")
+	gui.get_node("fin").connect("ok", self, "_on_win_game")
 	gui.get_node("lose").connect("retry", self, "_on_replay")
 	gui.get_node("lose").connect("quit", self, "_on_quit")
 	gui.get_node("pause").connect("resume", self, "resume")
 	gui.get_node("pause").connect("quit", self, "_on_quit")
+	gui.get_node("credits").connect("ok", self, "_on_quit")
 	gui.get_node("dialogue_box").connect("cutscene_start", self, "_on_cutscene")
 	gui.get_node("dialogue_box").connect("cutscene_end", self, "_on_end_cutscene")
 #	gui.connect("modal_closed", self, "_on_modal_resume")
@@ -601,7 +603,7 @@ func _on_start_level():
 func _on_win():
 #	gui.get_node("dialogue_box").hide()
 	print(Game.level, " <= ", Game.get_level_count() - 1)
-	if Game.level <= Game.get_level_count() - 1:
+	if Game.level < Game.get_level_count() - 1:
 		gui.start("win")
 	else:
 		gui.start("fin")
@@ -663,6 +665,13 @@ func _on_replay():
 	Game.camera_orientation = TT.CAMERA.NORTH
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
+
+func _on_win_game():
+	SaveLoadSystem.save_game()
+	gui.back()
+	gui.start("credits")
+	$music.get_node(Game.get_theme()).stop()
+	$music/win.play()
 
 func _on_next_level():
 	if Game.level + 1 < Game.get_level_count():
