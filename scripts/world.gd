@@ -276,7 +276,7 @@ func to_world_path(path):
 
 func action():
 	var context = get_current_context($select.tile)
-	print ("world action", context)
+	print ("world action ", context)
 	if game_over:
 		return
 	var target = entity_at($select.tile)
@@ -357,7 +357,10 @@ func action():
 #			else:
 #				gui.guard()
 # disable "heal" context - this is now replaced by MODE.HEAL
-#		TT.CONTEXT.HEAL:
+		TT.CONTEXT.HEAL:
+			if mode == MODE.HEAL:
+				_on_heal()
+				set_mode(MODE.PLAY)
 #			if get_current().character.turn_limits.actions == 0:
 ##				_on_end()
 ##				gui.start("action_menu", "end")
