@@ -145,7 +145,8 @@ func spread_icons():
 func flameshower(tile):
 	pass
 
-func aoe_vfx(name, tile):
+func aoe_vfx(name, tile, delay):
+	yield(get_tree().create_timer(delay), "timeout")
 	$"vfx/Darken screen".show()
 	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
 	var thunder_storm = load("res://scenes/" + name + ".tscn").instance()
@@ -431,6 +432,7 @@ func attack_new(tile:Vector3, AOE:bool):
 			target_tiles[character.character_class] = [ Vector3.ZERO ]
 		if character.character_class == TT.TYPE.FIGHTER:
 			target_tiles[character.character_class] = target_tiles["sweeping_blow_" + is_facing()]
+		var delay = 0
 		for offset in target_tiles[character.character_class]:
 #		for x in [-1, 0, 1]:
 #			for z in [-1, 0, 1]:
@@ -438,14 +440,14 @@ func attack_new(tile:Vector3, AOE:bool):
 			print(offset)
 			var target = world.entity_at(tile + offset)
 			if character.character_class == TT.TYPE.MAGE:
-				aoe_vfx("thunder_storm", tile + offset)
+				aoe_vfx("thunder_storm", tile + offset, delay)
 			if character.character_class == TT.TYPE.ARCHER:
-				aoe_vfx("flame_shower", tile + offset)
+				aoe_vfx("flame_shower", tile + offset, delay)
 			if character.character_class == TT.TYPE.FIGHTER:
 				$"vfx/Sweeping blow".get_node("sweep_" + is_facing()).frame = 0
 				$"vfx/Sweeping blow".show()
 				avatar.play(avatar.animation.replace("idle", "attack"))
-
+			delay += 0.5
 			if target and target.character.control == character.control:
 				continue
 			if target:
