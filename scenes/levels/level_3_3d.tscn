@@ -619,7 +619,7 @@ script = ExtResource( 3 )
 stats = SubResource( 26 )
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.2, 7 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 7 )
 centered = false
 pixel_size = 0.06
 axis = 1
