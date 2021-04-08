@@ -185,11 +185,10 @@ stream = ExtResource( 9 )
 
 [node name="win" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 8 )
-volume_db = -6.0
 
 [node name="lose" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 5 )
-volume_db = -4.0
+volume_db = 2.0
 
 [node name="ending" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 12 )
