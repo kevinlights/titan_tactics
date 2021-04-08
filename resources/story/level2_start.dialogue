@@ -1,18 +1,24 @@
 //Cutscene #1 Level 2
-# start 
-> face bowie.north
+# start
+> face bowie.east
+> face kris.north
 
 # kris
 > face kris.north
 Hey Bowie, how's it going? I was looking for you!
 
-//(insert animation on bowie(archer) shooting arrow toward tree?)
+> focus talk
+
+> attack bowie.east
 > emote bowie.surprise
-> attack bowie.north
+
+# bowie
+Ah dang, I just missed...
+
 > face bowie.south
 
 # bowie
-Ah dang, I just missed... Oh hey Kris, what's up?
+Oh hey Kris, what's up?
 
 # kris
 The elders put us on a mission. We were told to go investigate why the aid caravan hasn't come to Haki. We need to head to Tyrmyr and see what's going on right away!
