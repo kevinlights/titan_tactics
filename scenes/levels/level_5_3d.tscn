@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://gfx/OBJS/desert.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/playerspawner.gd" type="Script" id=2]
@@ -10,14 +10,12 @@
 [ext_resource path="res://scripts/character_stats.gd" type="Script" id=8]
 [ext_resource path="res://scripts/item.gd" type="Script" id=9]
 [ext_resource path="res://scripts/status_effect.gd" type="Script" id=10]
-[ext_resource path="res://gfx/speak_map.png" type="Texture" id=11]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=12]
 [ext_resource path="res://scripts/item_spawner.gd" type="Script" id=13]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=14]
 [ext_resource path="res://scripts/level.gd" type="Script" id=15]
 [ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=16]
 [ext_resource path="res://resources/story/level5_start.dialogue" type="Resource" id=17]
-[ext_resource path="res://scripts/dialogue/story_marker.gd" type="Script" id=18]
 [ext_resource path="res://resources/story/level5_end.dialogue" type="Resource" id=19]
 [ext_resource path="res://gfx/range-overlay/overlay.meshlib" type="MeshLibrary" id=20]
 [ext_resource path="res://scripts/gridmap/overlay_gridmap.gd" type="Script" id=21]
@@ -690,17 +688,6 @@ axis = 1
 texture = ExtResource( 7 )
 script = ExtResource( 12 )
 stats = SubResource( 41 )
-
-[node name="StoryMarker" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 6 )
-centered = false
-pixel_size = 0.06
-axis = 1
-texture = ExtResource( 11 )
-script = ExtResource( 18 )
-marker_name = "elyne"
-dialogue = null
-quest_dialogue = null
 
 [node name="CharacterSpawner9" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 5 )

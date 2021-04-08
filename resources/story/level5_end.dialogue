@@ -1,4 +1,5 @@
 //Starting level6 – Elyne tells the party that Kingdom2 is trying to invade them and sends party to Kingdom2
+# start
 
 > spawn elyne
 > focus elyne
