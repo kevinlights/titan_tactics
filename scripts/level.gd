@@ -20,7 +20,7 @@ func _ready():
 		for add_char in characters:
 			var additional_character = load("res://resources/cast/" + add_char + ".tres")
 			additional_character.control = TT.CONTROL.PLAYER
-			Game.team.append(additional_character)
+			Game.add_to_team(additional_character)
 	if remove_character and remove_character != "":
 		var found = null
 		for character in Game.team:
