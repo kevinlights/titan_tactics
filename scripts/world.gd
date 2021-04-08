@@ -578,7 +578,11 @@ func _on_edit_team():
 	# clear previously selected team
 	for character in current[TT.CONTROL.PLAYER]:
 		world_map.remove_child(character)
+	for character in current[TT.CONTROL.AI]:
+		world_map.remove_child(character)
 	current[TT.CONTROL.PLAYER].resize(0)
+	current[TT.CONTROL.AI].resize(0)
+	spawn_ai_team()
 	# and start over
 	gui.back()
 	call_deferred("select_team")

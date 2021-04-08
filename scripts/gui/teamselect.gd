@@ -43,6 +43,7 @@ func set_characters(list):
 	if not placeholder.get_parent():
 		print("Adding placeholder to map")
 		get_tree().get_root().get_node("World").add_child(placeholder)
+	placeholder.show()
 	update_view()
 
 func _ready():

@@ -103,7 +103,8 @@ func generate_data(new_origin):
 	if select: 
 		_data.cursor = select.tile
 	if data != _data:
-		print('range_overlay, data has changed ', _data)
+		# this produces way too much output
+#		print('range_overlay, data has changed ', _data)
 		data = _data
 		if data.actions > 0 or data.move_distance > 1:
 			show()

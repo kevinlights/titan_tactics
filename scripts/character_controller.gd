@@ -464,32 +464,36 @@ func attack_new(tile:Vector3, AOE:bool):
 	# Damage targets
 	for t in targets:
 		damage(t)
-	
-	if character.character_class == TT.TYPE.MAGE:
-		var projectile = load("res://scenes/projectile.tscn").instance()
-		projectile.fire(translation + Vector3(0, 1,  0), tile + Vector3(0, 1, 0))
-		for t in targets:
-			projectile.connect("hit", t, "hit", [character])
-		projectile.connect("hit", self, "attack_complete")
-		world.get_node("lookat/camera").track(projectile)
-		pick_random_sfx($sfx/magic_attack)
-		print('get_parent().add_child(projectile)', projectile)
-		get_parent().add_child(projectile)
-	elif character.character_class == TT.TYPE.ARCHER:
-		# move this to on animation complete 
-		pass
+	if not AOE:
+		if character.character_class == TT.TYPE.MAGE:
+			var projectile = load("res://scenes/projectile.tscn").instance()
+			projectile.fire(translation + Vector3(0, 1,  0), tile + Vector3(0, 1, 0))
+			for t in targets:
+				projectile.connect("hit", t, "hit", [character])
+			projectile.connect("hit", self, "attack_complete")
+			world.get_node("lookat/camera").track(projectile)
+			pick_random_sfx($sfx/magic_attack)
+			print('get_parent().add_child(projectile)', projectile)
+			get_parent().add_child(projectile)
+		elif character.character_class == TT.TYPE.ARCHER:
+			# move this to on animation complete 
+			pass
+		else:
+			attack_complete()
+			for t in targets:
+				t.hit(character)
 	else:
-		attack_complete()
 		for t in targets:
 			t.hit(character)
-	if tile.x < translation.x:
-		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
-	if tile.x > translation.x:
-		avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
-	if tile.z < translation.z:
-		avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
-	if tile.z > translation.z:
-		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
+	if not AOE or character.character_class == TT.TYPE.FIGHTER:
+		if tile.x < translation.x:
+			avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
+		if tile.x > translation.x:
+			avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
+		if tile.z < translation.z:
+			avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
+		if tile.z > translation.z:
+			avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
 
 func attack(target):
 	
