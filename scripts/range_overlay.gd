@@ -148,7 +148,9 @@ func paint():
 		
 		var tile_overlay_success;
 		if context == TT.CONTEXT.ATTACK and data.actions > 0 and world.get_current().can_move_and_attack_tile(tile):
-			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			var target = world.entity_at(tile)
+			if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI:
+				tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
 		elif context == TT.CONTEXT.MOVE:
 			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
 		if tile_overlay_success == true:
