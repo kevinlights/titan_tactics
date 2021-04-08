@@ -8,7 +8,7 @@ Hey Bowie, how's it going? I was looking for you!
 
 //(insert animation on bowie(archer) shooting arrow toward tree?)
 > emote bowie.surprise
-> attack bowie.bowie_surprise_tree
+> attack bowie.north
 > face bowie.south
 
 # bowie

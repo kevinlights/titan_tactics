@@ -133,8 +133,22 @@ func action_attack(target) -> void:
 		return
 	var target_target = world.find_story_marker(name_direction[1])
 	if !target_target:
-		print("[DialogBox] cannot find story marker: ",name_direction[1])
-		return
+		print("[DialogBox] cannot find story marker: ",name_direction[1], " trying for direction")
+		# would have left this as left/right/etc but >face already uses west/east/etc
+		if name_direction[1] in [ "west", "east", "north", "south" ]:
+			var nwse = {
+				"west": "left",
+				"east": "right",
+				"north": "up",
+				"south": "down"
+			}
+			target_character.avatar.play("attack-" +  target_character.directions[Game.camera_orientation][nwse[name_direction[1]]])
+			yield(get_tree().create_timer(1.0),"timeout")
+			advance()
+			return
+		else:
+			print("[DialogBox] ", name_direction[1], " does not match east/west/north/south")
+			return
 	if target_character.character.character_class == TT.TYPE.ARCHER:
 		var arrow = load("res://scenes/arrow.tscn").instance()
 		world.add_child(arrow)
