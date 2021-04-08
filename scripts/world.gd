@@ -697,6 +697,8 @@ func same_tile(tile1, tile2):
 
 func check_move_triggers(character):
 	print("Check story markers")
+	# force redraw target overlay
+	$range_overlay.set_selector($range_overlay.selector)
 	var markers = get_tree().get_nodes_in_group("story_markers")
 	for marker in markers:
 		print(marker.translation)
