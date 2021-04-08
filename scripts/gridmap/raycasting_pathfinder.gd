@@ -212,7 +212,7 @@ func _raycast_cell_detection(x, z, maxHeight, minHeight):
 				#last_filled_height = height
 				return true
 		if (ne && e && se && s && sw && w && nw && n):
-			if _raycast_is_above_clear(worldCell):
+			if _raycast_is_above_clear(worldCell) and _raycast_is_above_clear(worldCell + Vector3(0, 0.5, 0)):
 				overlay.add_flat_cell(Vector3(x, height, z))
 				#last_filled_height = height
 				return true
