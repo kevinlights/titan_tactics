@@ -118,7 +118,15 @@ func check_finished():
 
 func _ready():
 	var _ret = $emotes.connect("animation_finished", self, "_emote_finished")
+	_ret = $emotes.connect("frame_changed", self, "_emote_check_old")
 	#pass
+
+func _emote_check_old() -> void:
+	if $emotes:
+		var frame_count = $emotes.frames.get_frame_count($emotes.animation)
+		if $emotes.frame == frame_count - 1:
+			_emote_finished()
+
 
 func _emote_finished() -> void:
 	$emotes.stop()
@@ -811,6 +819,7 @@ func _on_animation_finished():
 func _process(_delta):
 	var now = OS.get_ticks_msec()
 	_on_frame_changed()
+	_emote_check_old()
 	if has_node("healthbar") and $healthbar.visible:
 		var hp_position = world.get_node("lookat/camera").unproject_position(translation + Vector3(.5, 0, .5))
 		$healthbar.position = hp_position

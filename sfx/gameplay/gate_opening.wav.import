@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/click_open.wav-3b32343f7c2ce59fec6c1faec45cd179.sample"
+path="res://.import/gate_opening.wav-ceb49b18ab08a1b73e4bddc043d97aa6.sample"
 
 [deps]
 
-source_file="res://sfx/UI/click_open.wav"
-dest_files=[ "res://.import/click_open.wav-3b32343f7c2ce59fec6c1faec45cd179.sample" ]
+source_file="res://sfx/gameplay/gate_opening.wav"
+dest_files=[ "res://.import/gate_opening.wav-ceb49b18ab08a1b73e4bddc043d97aa6.sample" ]
 
 [params]
 

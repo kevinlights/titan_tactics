@@ -431,5 +431,5 @@ frames = SubResource( 10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
 stream = ExtResource( 6 )
-volume_db = -2.0
+volume_db = 3.0
 autoplay = true
