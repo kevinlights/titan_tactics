@@ -1,4 +1,4 @@
-[gd_scene load_steps=284 format=2]
+[gd_scene load_steps=285 format=2]
 
 [ext_resource path="res://scripts/gui_states.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://gfx/swap.png" type="Texture" id=20]
 [ext_resource path="res://scenes/gui/teamconfirm.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=22]
+[ext_resource path="res://scripts/gui/fin.gd" type="Script" id=23]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=24]
 [ext_resource path="res://scripts/gui/levelclear.gd" type="Script" id=25]
 [ext_resource path="res://gfx/box_enemy.png" type="Texture" id=26]
@@ -2216,6 +2217,7 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 centered = false
 
@@ -2239,6 +2241,7 @@ __meta__ = {
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
 frames = SubResource( 7 )
+frame = 1
 playing = true
 centered = false
 
@@ -2523,6 +2526,7 @@ position = Vector2( 25.4371, 23.9552 )
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 175, 181 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 centered = false
 
@@ -2546,7 +2550,6 @@ __meta__ = {
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 centered = false
 
@@ -2569,7 +2572,6 @@ __meta__ = {
 [node name="Tributton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 269, 181 )
 frames = SubResource( 18 )
-frame = 1
 playing = true
 centered = false
 
@@ -3130,7 +3132,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 99 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3155,7 +3156,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 99 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3164,7 +3164,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 103 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -3347,7 +3347,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 99 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3386,7 +3385,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 58.1062 )
 frames = SubResource( 103 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
@@ -3460,7 +3459,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 position = Vector2( -6, -5 )
 frames = SubResource( 172 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3487,13 +3486,67 @@ __meta__ = {
 visible = false
 position = Vector2( -4, -16 )
 frames = SubResource( 172 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
 script = ExtResource( 24 )
 
 [node name="banner" type="AnimatedSprite" parent="win"]
+visible = false
+position = Vector2( 160, 86 )
+frames = SubResource( 202 )
+frame = 22
+
+[node name="fin" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="AnimatedSprite" parent="fin"]
+frames = SubResource( 168 )
+frame = 56
+centered = false
+
+[node name="Control" type="Control" parent="fin"]
+margin_left = 60.0
+margin_right = 100.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ok" type="ToolButton" parent="fin/Control"]
+margin_left = 77.996
+margin_top = 130.782
+margin_right = 120.996
+margin_bottom = 152.782
+focus_neighbour_bottom = NodePath("../Retry")
+focus_next = NodePath("../Retry")
+theme = ExtResource( 22 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
+text = "Ok"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="fin/Control/Ok"]
+position = Vector2( -6, -5 )
+frames = SubResource( 172 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( 0, 9 )
+script = ExtResource( 24 )
+
+[node name="banner" type="AnimatedSprite" parent="fin"]
 visible = false
 position = Vector2( 160, 86 )
 frames = SubResource( 202 )
@@ -3567,7 +3620,7 @@ __meta__ = {
 visible = false
 position = Vector2( -5, 4 )
 frames = SubResource( 172 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3593,7 +3646,7 @@ __meta__ = {
 visible = false
 position = Vector2( -6, 4 )
 frames = SubResource( 207 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3650,5 +3703,6 @@ visible = false
 [connection signal="pressed" from="lvlup/Control/Ok" to="lvlup" method="_on_ok_pressed"]
 [connection signal="pressed" from="win/Control/Next" to="win" method="_on_Next_pressed"]
 [connection signal="pressed" from="win/Control/Retry" to="win" method="_on_Retry_pressed"]
+[connection signal="pressed" from="fin/Control/Ok" to="fin" method="_on_Ok_pressed"]
 [connection signal="pressed" from="lose/Control/Retry" to="lose" method="_on_Retry_pressed"]
 [connection signal="pressed" from="lose/Control/Quit" to="lose" method="_on_Quit_pressed"]

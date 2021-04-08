@@ -130,6 +130,7 @@ func _emote_check_old() -> void:
 
 func _emote_finished() -> void:
 	$emotes.stop()
+	yield(get_tree().create_timer(1.0), "timeout")
 	$emotes.hide()
 	self.emit_signal("emote_finished")
 	
@@ -590,8 +591,11 @@ func is_facing():
 func emote(emoji):
 	$emotes.stop()
 	$emotes.frame = 0
-	$emotes.show()
-	$emotes.play(emoji)
+	if $emotes.frames.has_animation(emoji):
+		$emotes.show()
+		$emotes.play(emoji)
+	else:
+		print("Emoji not supported: ", emoji)
 	#yield(get_tree().create_timer(2.0), "timeout")
 	#$emotes.hide()
 

@@ -85,13 +85,13 @@ const levels = [
 		"scene": "level_10_3d",
 		"cutscene_music": "betrayal",
 		"music": "boss" #boss
-	},
-	{
-		"name": "Test Level",
-		"scene": "level_2_3dtest",
-		"cutscene_music": "betrayal",
-		"music": "forest" #boss
-	}	
+	}
+#	{
+#		"name": "Test Level",
+#		"scene": "level_2_3dtest",
+#		"cutscene_music": "betrayal",
+#		"music": "forest" #boss
+#	}	
 ]
 #const levels = {
 #	"level_1_3dtest": "intro",

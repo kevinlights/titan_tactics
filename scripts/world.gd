@@ -600,11 +600,13 @@ func _on_start_level():
 
 func _on_win():
 #	gui.get_node("dialogue_box").hide()
-	if Game.level + 1 < Game.get_level_count():
+	print(Game.level, " <= ", Game.get_level_count() - 1)
+	if Game.level <= Game.get_level_count() - 1:
 		gui.start("win")
 	else:
+		gui.start("fin")
 # warning-ignore:return_value_discarded
-		get_tree().change_scene("res://scenes/landing.tscn")
+#		get_tree().change_scene("res://scenes/landing.tscn")
 	$music/win.play()
 	print("[World] End game: WIN")
 
