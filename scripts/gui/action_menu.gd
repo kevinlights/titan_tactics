@@ -73,6 +73,7 @@ func init(new_menu_type = "attack"):
 		$panel/box.add_child(action_item)
 
 	yield(get_tree().create_timer(0.1), "timeout")
+	var have_focus = false
 	var buttons = $panel/box.get_children()
 	for i in range(0, buttons.size()):
 		if i > 0:
@@ -91,10 +92,13 @@ func init(new_menu_type = "attack"):
 		buttons[i].rect_position.y = i * 16
 		buttons[i].connect("pressed", self, "_on_action", [ buttons[i].text ] )
 		buttons[i].connect("focus_entered", self, "_on_focus", [ buttons[i].text ] )
+		if !(buttons[i].text in disabled) and !have_focus:
+			buttons[i].call_deferred("grab_focus")
+			have_focus = true
 	$panel/box.rect_size.y = buttons.size() * 16 + 4
 	$panel/tip_box.rect_position.y = $panel/box.rect_position.y + buttons.size() * 16 + 40
 	show()
-	buttons[0].call_deferred("grab_focus")
+#	buttons[0].call_deferred("grab_focus")
 
 func out():
 	emit_signal("closed")
