@@ -567,7 +567,7 @@ heal = 4
 item_atk = SubResource( 48 )
 recruit_mode = 0
 portrait_override = "celes"
-control = 1
+control = 0
 
 [sub_resource type="PanoramaSky" id=50]
 radiance_size = 0
