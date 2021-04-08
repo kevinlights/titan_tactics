@@ -287,32 +287,33 @@ func action():
 				current_character = target_index
 		TT.CONTEXT.ATTACK:
 			if get_current().character.turn_limits.actions > 0:
-				if not get_current().can_attack_tile($select.tile) and (mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK):
-					print("[World] Can't attack this target")
-					return $gui/sfx/denied.play()
-				if get_current().can_attack_tile($select.tile):
-					print("[World] Can and will attack")
-#					if target.can_recruit() and is_adjacent(get_current(), target):
-#						gui.attack()
+				if mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK:
+					if not get_current().can_attack_tile($select.tile):
+						print("[World] Can't attack this target")
+						return $gui/sfx/denied.play()
+					if get_current().can_attack_tile($select.tile):
+						print("[World] Can and will attack")
+	#					if target.can_recruit() and is_adjacent(get_current(), target):
+	#						gui.attack()
+	#					else:
+						_on_attack()
+						# reset to PLAY mode if we attacked from ATTACK mode
+						set_mode(MODE.PLAY)
+#				elif mode != MODE.SECONDARY_ATTACK and mode != MODE.ATTACK and get_current().can_move_and_attack(target):
+#					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
+#					if attack_range == 1:
+#						var blocked_tiles = get_blocked_cells()
+#						# remove target from blocked_tiles (so pathfinder works)
+#						for tile in blocked_tiles:
+#							if tile.x == target.tile.x and tile.z == target.tile.z:
+#								blocked_tiles.erase(tile)
+#						var path_to_target = pathfinder.find_path(get_current().tile, target.tile, blocked_tiles)
+#						# remove target from path
+#						path_to_target.remove(path_to_target.size() - 1)
+#						get_current().move(path_to_target)
+#						get_current().connect("path_complete", self, "_on_attack", [], CONNECT_ONESHOT)
 #					else:
-					_on_attack()
-					# reset to PLAY mode if we attacked from ATTACK mode
-					set_mode(MODE.PLAY)
-				elif mode != MODE.SECONDARY_ATTACK and mode != MODE.ATTACK and get_current().can_move_and_attack(target):
-					var attack_range = get_current().character.atk_range + get_current().character.item_atk.attack_range
-					if attack_range == 1:
-						var blocked_tiles = get_blocked_cells()
-						# remove target from blocked_tiles (so pathfinder works)
-						for tile in blocked_tiles:
-							if tile.x == target.tile.x and tile.z == target.tile.z:
-								blocked_tiles.erase(tile)
-						var path_to_target = pathfinder.find_path(get_current().tile, target.tile, blocked_tiles)
-						# remove target from path
-						path_to_target.remove(path_to_target.size() - 1)
-						get_current().move(path_to_target)
-						get_current().connect("path_complete", self, "_on_attack", [], CONNECT_ONESHOT)
-					else:
-						$gui/sfx/denied.play()
+#						$gui/sfx/denied.play()
 				else:
 					$gui/sfx/denied.play()
 		TT.CONTEXT.USE:
