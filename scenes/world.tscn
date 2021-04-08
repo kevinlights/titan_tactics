@@ -197,9 +197,6 @@ stream = ExtResource( 12 )
 stream = ExtResource( 19 )
 volume_db = -5.2
 
-[node name="gate" type="AudioStreamPlayer" parent="music"]
-stream = ExtResource( 3 )
-
 [node name="range_overlay" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0.5 )
 script = ExtResource( 16 )
@@ -214,6 +211,9 @@ stream = ExtResource( 11 )
 
 [node name="home" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 22 )
+
+[node name="gate" type="AudioStreamPlayer" parent="cutscene_music"]
+stream = ExtResource( 3 )
 
 [node name="sad" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 23 )
