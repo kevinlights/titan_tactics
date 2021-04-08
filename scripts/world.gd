@@ -1060,4 +1060,12 @@ func _input(event):
 				new_orientation = TT.CAMERA.WEST
 			print("[World] Counter-Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
-			
+		
+	if event.is_action("context_cancel"):
+		_repaint_range_overlay()
+		
+func _repaint_range_overlay():
+	range_overlay.clear()
+	range_overlay.paint()
+	range_overlay.paint_selector()
+	
