@@ -202,6 +202,7 @@ func from_other(other_stats):
 		item_atk = Item.new()
 		item_atk.create()
 		item_atk.character_class = character_class
+		item_atk.atk = 0
 	if !item_def:
 		item_def = Item.new()
 		item_def.create()	
@@ -222,6 +223,7 @@ func from_defaults(request_class, request_control, request_atk = 1, request_def 
 		item_atk.create()
 		item_def.create()
 		item_atk.character_class = character_class
+		item_atk.atk = 0
 #		item_atk.generate(level, Item.SLOT.ATK, character_class)
 #		item_def.generate(level, Item.SLOT.DEF, character_class)
 
@@ -232,6 +234,7 @@ func generate(default_stats, request_class, request_control, request_level = 1, 
 			item_atk = Item.new()
 			item_atk.create()
 			item_atk.character_class = character_class
+			item_atk.atk = 0
 		if !item_def:
 			item_def = Item.new()
 			item_def.create()
