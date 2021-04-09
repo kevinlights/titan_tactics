@@ -79,6 +79,10 @@ func paint_selector():
 				var tile_overlay_success = gridmap.set_tile_overlay(possible_tiles[0], 'select')
 				if tile_overlay_success == true:
 					overlayed_tiles.push_back(possible_tiles[0])
+		if cursorMode == 'default' and world.mode == world.MODE.CHECK_MAP:
+			var target = world.entity_at(selector)
+			if target and !target.is_loot and !target.is_trigger and target.character:
+				highlight_target_range(target, selector)
 
 func set_origin(_origin):
 	origin = _origin
@@ -162,4 +166,19 @@ func paint():
 			overlayed_tiles.push_back(hint_tile)
 		else:
 			print_debug("Failed to render hint overlay")
-	
+
+func highlight_target_range(target, starting_tile):
+	#print(target)
+	var mov_range = target.character.mov_range
+	var atk_range = target.character.atk_range
+	#print('target ', mov_range, ' - ', atk_range)
+	for tile in gridmap.get_tiles_within(starting_tile, mov_range + atk_range - 1):
+		var distance = abs(starting_tile.x - tile.x) + abs(starting_tile.z - tile.z)
+		
+		var tile_overlay_success;
+		if distance < mov_range:
+			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
+		else:
+			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+		if tile_overlay_success == true:
+			overlayed_tiles.push_back(tile)
