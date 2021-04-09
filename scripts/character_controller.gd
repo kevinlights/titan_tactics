@@ -74,6 +74,42 @@ var directions = {
 	}
 }
 
+var target_tiles = { 
+	TT.TYPE.MAGE: [
+		Vector3(-1, 0, 0 ),
+		Vector3( 1, 0, 0 ),
+		Vector3( 0, 0, 1 ),
+		Vector3( 0, 0, -1)
+	],
+	TT.TYPE.ARCHER: [
+		Vector3( 0, 0, 0 ),
+		Vector3( 1, 0, 1 ),
+		Vector3(-1, 0, 1 ),
+		Vector3(-1, 0, -1),
+		Vector3( 1, 0, -1)
+	],
+	"sweeping_blow_north": [
+		Vector3( -1, 0,  -1),
+		Vector3( 0, 0, -1),
+		Vector3( 1, 0, -1)
+	],
+	"sweeping_blow_south": [
+		Vector3( -1, 0, 1),
+		Vector3( 0, 0, 1),
+		Vector3( 1, 0, 1)
+	],
+	"sweeping_blow_west": [
+		Vector3( -1, 0, -1),
+		Vector3( -1, 0, 0),
+		Vector3( -1, 0, 1)
+	],
+	"sweeping_blow_east": [
+		Vector3( 1, 0, -1),
+		Vector3( 1, 0, 0),
+		Vector3( 1, 0, 1)
+	]
+}	
+
 var movement = {
 	"start_position": Vector3(0, 0, 0),
 	"end_position": Vector3(0, 0, 0),
@@ -306,6 +342,13 @@ func end_turn():
 
 func can_attack_tile(target):
 	# disable item range bonus
+	var target_character = world.entity_at(target)
+	if world.mode == world.MODE.ATTACK and (!target_character or target_character.is_loot):
+		return false
+	if world.mode == world.MODE.SECONDARY_ATTACK:
+		var targets = get_aoe_targets(target)
+		if targets.size() == 0:
+			return false
 	var atk_range = character.atk_range # + character.item_atk.attack_range
 	if target == null:
 		print("[CharacterController] No target tile given")
@@ -382,49 +425,28 @@ func damage(target):
 	print('world.add_child(damage_feedback)', damage_feedback)
 	world.add_child(damage_feedback)
 
+
+func get_aoe_targets(tile:Vector3):
+	var targets:Array = []
+	for offset in target_tiles[character.character_class]:
+		var target = world.entity_at(tile + offset)
+		if target and target.character.control == character.control:
+			continue
+		if target and target.is_loot:
+			continue
+		if target:
+			targets.append(target)
+	return targets
+
 # Enoh: can't work with arrows unless a way to feed the hit signal
 # to each target exists.
 func attack_new(tile:Vector3, AOE:bool):
 	if character.turn_limits.actions < 1:
 		return
 	character.turn_limits.actions -= 1
-	var target_tiles = { 
-		TT.TYPE.MAGE: [
-			Vector3(-1, 0, 0 ),
-			Vector3( 1, 0, 0 ),
-			Vector3( 0, 0, 1 ),
-			Vector3( 0, 0, -1)
-		],
-		TT.TYPE.ARCHER: [
-			Vector3( 0, 0, 0 ),
-			Vector3( 1, 0, 1 ),
-			Vector3(-1, 0, 1 ),
-			Vector3(-1, 0, -1),
-			Vector3( 1, 0, -1)
-		],
-		"sweeping_blow_north": [
-			Vector3( -1, 0,  -1),
-			Vector3( 0, 0, -1),
-			Vector3( 1, 0, -1)
-		],
-		"sweeping_blow_south": [
-			Vector3( -1, 0, 1),
-			Vector3( 0, 0, 1),
-			Vector3( 1, 0, 1)
-		],
-		"sweeping_blow_west": [
-			Vector3( -1, 0, -1),
-			Vector3( -1, 0, 0),
-			Vector3( -1, 0, 1)
-		],
-		"sweeping_blow_east": [
-			Vector3( 1, 0, -1),
-			Vector3( 1, 0, 0),
-			Vector3( 1, 0, 1)
-		]
-	}	
-	var targets:Array
+	var targets:Array = []
 	if AOE:
+		targets = get_aoe_targets(tile)
 		# Enoh:
 		# Use get_attack_offsets instead
 		# example: var offsets:Array = get_attack_offsets(blah, blah)
@@ -437,11 +459,6 @@ func attack_new(tile:Vector3, AOE:bool):
 			target_tiles[character.character_class] = target_tiles["sweeping_blow_" + is_facing()]
 		var delay = 0
 		for offset in target_tiles[character.character_class]:
-#		for x in [-1, 0, 1]:
-#			for z in [-1, 0, 1]:
-#			var offset:Vector3 = Vector3(x, 0, z) * TT.cell_size
-			print(offset)
-			var target = world.entity_at(tile + offset)
 			if character.character_class == TT.TYPE.MAGE:
 				aoe_vfx("thunder_storm", tile + offset, delay)
 			if character.character_class == TT.TYPE.ARCHER:
@@ -451,10 +468,6 @@ func attack_new(tile:Vector3, AOE:bool):
 				$"vfx/Sweeping blow".show()
 				avatar.play(avatar.animation.replace("idle", "attack"))
 			delay += 0.5
-			if target and target.character.control == character.control:
-				continue
-			if target:
-				targets.append(target)
 	else:
 		var target = world.entity_at(tile)
 		if target and target.character.control != character.control:

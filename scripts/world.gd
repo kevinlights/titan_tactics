@@ -350,7 +350,10 @@ func action():
 				get_current().move(current_path) # to_world_path(current_path))
 		TT.CONTEXT.NOT_ALLOWED:
 			$gui/sfx/denied.play()
-#		TT.CONTEXT.GUARD:
+		TT.CONTEXT.GUARD:
+			# heal self
+			if mode == MODE.HEAL:
+				_on_heal()
 #			print("[World] guard action")
 #			if get_current().character.turn_limits.actions == 0:
 #				gui.call_deferred("confirm_end_turn")
@@ -359,19 +362,12 @@ func action():
 # disable "heal" context - this is now replaced by MODE.HEAL
 		TT.CONTEXT.HEAL:
 			if mode == MODE.HEAL:
-				_on_heal()
-				set_mode(MODE.PLAY)
-#			if get_current().character.turn_limits.actions == 0:
-##				_on_end()
-##				gui.start("action_menu", "end")
-#				pass
-#			else:
-#				if get_current().can_attack(target):
-#					if mode == MODE.HEAL:
-#						_on_heal()
-#						set_mode(MODE.PLAY)
-#					else:
-#						gui.start("action_menu", "heal")
+				if target.is_loot or target.character.control == TT.CONTROL.AI:
+					$gui/sfx/denied.play()
+					set_mode(MODE.PLAY)
+				else:
+					_on_heal()
+					set_mode(MODE.PLAY)
 	$range_overlay.set_origin(get_current())
 
 func _on_confirm_end_turn():
