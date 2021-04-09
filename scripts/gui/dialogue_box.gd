@@ -9,7 +9,7 @@ var event_will_progress = true
 # typing flag
 var typing: bool = false
 # typing speed
-var typingSpeed: float = 0.1
+var typingSpeed: float = 0.07
 
 onready var selector = get_tree().get_root().get_node("World/select")
 onready var world = get_tree().get_root().get_node("World")
