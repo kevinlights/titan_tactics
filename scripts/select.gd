@@ -108,8 +108,8 @@ func _ready():
 	gui.connect("selector_down", self, "_on_selector_move", ["down"])
 
 func _on_selector_move(dir):
-	print(dir)
 	var new_tile = self.tile + directions[Game.camera_orientation][dir]
+	print(dir, new_tile)
 	if world.pathfinder and world.pathfinder.is_tile_within(new_tile.x, new_tile.z):
 		self.tile = new_tile
 		emit_signal("moved", self.tile)

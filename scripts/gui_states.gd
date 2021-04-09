@@ -67,12 +67,16 @@ func _input(event):
 		if character.character.character_class == TT.TYPE.FIGHTER and get_parent().mode == TacticsWorld.MODE.SECONDARY_ATTACK:
 			if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
 				emit_signal("aoe_down")
+				print("[INPUT] aoe_down")
 			if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
 				emit_signal("aoe_up")
+				print("[INPUT] aoe_up")
 			if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
 				emit_signal("aoe_left")
+				print("[INPUT] aoe_left")
 			if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
 				emit_signal("aoe_right")
+				print("[INPUT] aoe_right")
 		else:
 			if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
 				emit_signal("selector_down")

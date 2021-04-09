@@ -442,6 +442,7 @@ func _on_aoe_left():
 	$range_overlay.set_selector($range_overlay.selector)
 
 func _on_aoe_right():
+	print("aoe_right")
 	get_current().face("east")
 	var facing = get_current().is_facing()
 	$range_overlay.cursorMode = "sweeping_blow_" + facing
