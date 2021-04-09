@@ -940,7 +940,7 @@ func contextual_ui():
 		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
 			print("[World] you are pointing on " + str(target.character.name))
 			gui.start("battle", target)
-		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and (context == TT.CONTEXT.GUARD or context == TT.CONTEXT.HEAL):
+		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and (context == TT.CONTEXT.SELECT or context == TT.CONTEXT.GUARD or context == TT.CONTEXT.HEAL):
 			print("[World] you are pointing on yourself : " + str(target.character.name))
 			gui.start("ally", target) #ally(get_current())
 			gui.get_node("ally").update_stats(target)
