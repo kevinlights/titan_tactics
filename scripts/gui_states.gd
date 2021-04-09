@@ -86,7 +86,8 @@ func _input(event):
 			if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 				get_parent().action()
 			if event.is_action("character_switch") && !event.is_echo() && event.is_pressed():
-				start("characterswap")
+				if get_parent().current[TT.CONTROL.PLAYER].size() > 1:
+					start("characterswap")
 			if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
 				var current = get_parent().get_current()
 				if current:
