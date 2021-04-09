@@ -39,15 +39,16 @@ Arath! Over here!
 
 > select arath
 > move overhere
-> face kris.north
-> face bowie.north
-> face arath.south
 
 # kris
 Arath, what is going on here?
 
+> face kris.north
+> face bowie.north
+> face arath.south
+
 # arath
-Guys! I'm so relieved you came! I was just with Zara collecting some herbs, and we...
+Guys! I'm so relieved you came! I was just with Zara collecting some herbs...
 
 # kris
 But we have a herb patch right in our village...
