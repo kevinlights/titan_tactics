@@ -272,7 +272,7 @@ control = 1
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 10 )
-effect = 2
+effect = 3
 turns = 0
 damage = 0
 name = ""

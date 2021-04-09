@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://gfx/OBJS/test.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://gfx/boba.png" type="Texture" id=16]
 [ext_resource path="res://scripts/status_effect.gd" type="Script" id=17]
 [ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=18]
+[ext_resource path="res://resources/story/level2_end.dialogue" type="Resource" id=19]
 [ext_resource path="res://resources/story/level2_chest.dialogue" type="Resource" id=20]
 [ext_resource path="res://scripts/gridmap/overlay_gridmap.gd" type="Script" id=21]
 
@@ -338,6 +339,7 @@ background_sky_custom_fov = 100.0
 [node name="level" type="Spatial"]
 script = ExtResource( 11 )
 start_dialogue = ExtResource( 12 )
+end_dialogue = ExtResource( 19 )
 map_node = "terrain"
 
 [node name="Spatial" type="Spatial" parent="."]
