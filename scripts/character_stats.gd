@@ -198,6 +198,13 @@ func from_other(other_stats):
 	recruit_mode = other_stats.recruit_mode
 	portrait_override = other_stats.portrait_override
 	control = other_stats.control
+	if !item_atk:
+		item_atk = Item.new()
+		item_atk.create()
+		item_atk.character_class = character_class
+	if !item_def:
+		item_def = Item.new()
+		item_def.create()	
 
 func from_defaults(request_class, request_control, request_atk = 1, request_def = 1, request_atk_range = 1, request_mov_range = 1, request_hp = 10):
 	character_class = request_class
@@ -214,6 +221,7 @@ func from_defaults(request_class, request_control, request_atk = 1, request_def 
 		item_def = Item.new()
 		item_atk.create()
 		item_def.create()
+		item_atk.character_class = character_class
 #		item_atk.generate(level, Item.SLOT.ATK, character_class)
 #		item_def.generate(level, Item.SLOT.DEF, character_class)
 
@@ -223,6 +231,7 @@ func generate(default_stats, request_class, request_control, request_level = 1, 
 		if !item_atk:
 			item_atk = Item.new()
 			item_atk.create()
+			item_atk.character_class = character_class
 		if !item_def:
 			item_def = Item.new()
 			item_def.create()
