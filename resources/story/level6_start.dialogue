@@ -1,7 +1,7 @@
 #kris
 There's the giant Crystal shrine! Queen Elyne was telling us the truth, Celes really is evil!
 
-//go to crystal marker
+> focus crystal
 
 #zara
 Let's destroy that thing! Celes must pay for capturing me!
@@ -12,11 +12,13 @@ It just looks like a regular Crystal though...
 #arath
 That... That is just a regular crystal. But look over there!
 
-//go to warehouse
+> focus warehouse
 
 #arath
 That warehouse over there, doesn't it look suspicious? They are probably hiding their weapons there!
 
+> focus zara
 > emote zara.angry
+
 #zara
 Alright guys, let's make them pay!

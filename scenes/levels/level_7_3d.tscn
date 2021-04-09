@@ -775,6 +775,17 @@ marker_name = "overhere"
 dialogue = null
 quest_dialogue = null
 
+[node name="StoryMarker2" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, 10 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 21 )
+script = ExtResource( 22 )
+marker_name = "troops"
+dialogue = null
+quest_dialogue = null
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 51 )
 __meta__ = {

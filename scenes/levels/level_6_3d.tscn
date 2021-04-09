@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level.gd" type="Script" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://gfx/sky/snow.png" type="Texture" id=19]
 [ext_resource path="res://gfx/swordsman.png" type="Texture" id=20]
 [ext_resource path="res://gfx/mage.png" type="Texture" id=21]
+[ext_resource path="res://gfx/speak_map.png" type="Texture" id=22]
+[ext_resource path="res://scripts/dialogue/story_marker.gd" type="Script" id=23]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 13 )
@@ -781,6 +783,28 @@ axis = 1
 texture = ExtResource( 20 )
 script = ExtResource( 12 )
 stats = SubResource( 51 )
+
+[node name="StoryMarker" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.2, 8 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 22 )
+script = ExtResource( 23 )
+marker_name = "crystal"
+dialogue = null
+quest_dialogue = null
+
+[node name="StoryMarker2" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 4 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 22 )
+script = ExtResource( 23 )
+marker_name = "warehouse"
+dialogue = null
+quest_dialogue = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 53 )

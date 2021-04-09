@@ -2,16 +2,19 @@
 # start
 
 > spawn elyne
+
+> emote bowie.surprise
+> emote kris.surprise
+
 > focus elyne
 
 # elyne
 Thank you, brave soldiers from Haki.
 
-> emote bowie.surprise
-> emote kris.surprise
-
 # bowie
 Oh my god it's Queen Elyne herself! Your Highness! I bow to thee!
+
+> emote zara.ugh
 
 # kris
 Uh... Your Highness! We came to investigate what happened to our aid, and we found out that it was pillaged by these Skathian barbars!
@@ -29,7 +32,7 @@ We would be more than honored! What can we do to help?
 These troops have been sent by Queen Celes of Skathi. She must be stopped at all costs, she is a horrible dictator who knows no compassion, even her own people are suffering under her!
 
 # bowie
-That's horrible! We're going to do something about it, right kris?
+That's horrible! We're going to do something about it, right Kris?
 
 > emote bowie.flirt
 
@@ -37,7 +40,7 @@ That's horrible! We're going to do something about it, right kris?
 Yes, we will! Just please tell us what to do, Your Majesty!
 
 #elyne
-If you keep going east, past the desert, the Skathians have built a giant Crystal shrine. Our royal research team has found that it's housing a magical weapon that they are building to destroy our entire Capital! Please, you've got to put a stop to these monsters, destroy that Crystal!
+Eastward, past the desert, the Skathians have built a giant Crystal shrine. Our royal research team has found that this crystal is housing a magical weapon, designed to destroy our entire Capital! Please, you've got to put a stop to these monsters, break that Crystal!
 
 # zara
 This is my chance, I'm going to get my revenge for what they did to me.
