@@ -76,6 +76,8 @@ func import(source_file, save_path, options, r_platform_variants, r_gen_files):
 				lines.remove(0)
 				if line.begins_with(options.music_prefix):
 					message.music = line.substr(1).lstrip(" ").rstrip(" ");
+					print("found a music line -> ",message.music)
+					print("message: ",message.message)
 				elif not line.begins_with(options.action_prefix):
 					if line != "":
 						message.message += line + "\n"

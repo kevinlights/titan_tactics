@@ -167,7 +167,7 @@ func action_spawn(target) -> void:
 # ~~~ 
 
 func perform_action(item):
-	print("[DialogBox] Perform action ",item.action, " ", item.target)
+	print("[DialogBox] Perform action ",item.action, " ", item.target," ")
 	
 	# what does this do?
 	# selector.camera_captured = false
@@ -286,15 +286,18 @@ func advance():
 
 	print("[DialogBox] There is still stuff left - let's check")
 	var currentMessage = scriptContent.pop_front()
+
+	if "music" in currentMessage and currentMessage.music != null and currentMessage.music != '':
+		print("music in message - playing: ",currentMessage.music)
+		world.play_music(currentMessage.music)
+
 	if "message" in currentMessage:
 		print("[DialogBox] Display next message -> ",currentMessage.title," ",currentMessage.message)
 		showMessageDialog(currentMessage)
 	else:
-		print("[DialogBox] Perform action")
+		print("[DialogBox] Want to perform action...")
 		perform_action(currentMessage)
 
-	if "music" in currentMessage and currentMessage.music != null:
-		world.play_music(currentMessage.music)
 	
 
 func _input(event):
@@ -334,15 +337,32 @@ func init(dialogue_content):
 	hide()
 	# split messages
 	scriptContent = []
+	var putMusicAlready: bool
+	var storeMusic = ""
 	for content in dialogue_content.messages:
+		putMusicAlready = false
 		if "message" in content:
 			if content.message != "":
 				for chunk in splitMessageIntoChunks(content.message):
 					var r = DialogueMessage.new()
 					r.title = content.title
 					r.message = chunk				
+					if not putMusicAlready and "music" in content and content.music != "":
+						r.music = content.music
+						putMusicAlready = true
+					if storeMusic != "" and not putMusicAlready and "music" in content and content.music == "":
+						r.music = storeMusic
+						storeMusic = ""
+						putMusicAlready = true
+					
 					scriptContent.push_back(r)
+			elif "music" in content and content.music != "":
+				storeMusic = content.music
 		else:
+			if storeMusic != "" and not putMusicAlready:
+				content.music = storeMusic
+				storeMusic = ""
+				putMusicAlready = true
 			scriptContent.push_back(content)
 	
 	_textNode.text = ""
