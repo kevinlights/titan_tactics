@@ -228,7 +228,7 @@ func hit(attacker):
 			print("No tag for ", hit_effect.effect)
 	if guarding:
 		pick_random_sfx($sfx/defend)
-	if character.hp <= 0:
+	if floor(character.hp) <= 0:
 		if character.recruit_mode == 2:
 			recruit(attacker)
 		else:
