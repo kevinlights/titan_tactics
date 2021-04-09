@@ -47,13 +47,21 @@ Arath! Over here!
 Arath, what is going on here?
 
 # arath
-Guys! I'm so relieved you came! I was just with Zara collecting some herbs, and then we saw them robbing the caravan!
+Guys! I'm so relieved you came! I was just with Zara collecting some herbs, and we...
+
+# kris
+But we have a herb patch right in our village...
+
+> emote arath.angry
+
+# arath
+Who the hell are you, CSI? Anyway! Zara and I saw Skathian troops robbing our caravan!
 
 # bowie
 I knew it! These Skathians are always up to no good!
 
 # arath
-Zara tried to stop them, but there were too many of them! They took Zara hostage and went up north towards the Capital, but they still left troops behind to scout the area.
+Zara tried to stop them, but they were too many! They took Zara hostage and went up north towards the Capital, but they still left troops behind to scout the area.
 
 # kris
 We need to get out of the forest without them spotting us, otherwise we are dead meat!
