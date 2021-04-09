@@ -1,0 +1,17 @@
+[remap]
+
+importer="dialogue"
+type="Dialogue"
+path="res://.import/level2_end.dialogue-c5ec0b188743a34e010a1ebed6fae572.tres"
+
+[deps]
+
+source_file="res://resources/story/level2_end.dialogue"
+dest_files=[ "res://.import/level2_end.dialogue-c5ec0b188743a34e010a1ebed6fae572.tres" ]
+
+[params]
+
+title_prefix="#"
+action_prefix=">"
+music_prefix="$"
+comment_prefix="//"
