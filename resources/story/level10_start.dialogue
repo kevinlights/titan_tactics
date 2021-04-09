@@ -1,8 +1,11 @@
 //Starting level10 – Elyne tells the party to surrender and explains evil motives
 //Party comes to confront Elyne
+# start
+
+> face elyne.south
 
 # celes
-Elyne, enough! You made a big mistake sending these nice people from Haki to fight us! We told them everything, how you've been manipulating them in order to keep them under your thumb all these years! This needs to stop!
+Elyne, enough! You made a big mistake sending these nice kids from Haki to fight us! We told them everything, how you've been manipulating them in order to keep them under your thumb all these years! This needs to stop!
 
 > focus elyne
 

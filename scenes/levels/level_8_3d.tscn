@@ -65,7 +65,7 @@ defense = 0
 heal = 1
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=54]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 11 )
 character_class = 2
 name = "Nora"
@@ -121,7 +121,7 @@ defense = 0
 heal = 1
 effect = SubResource( 9 )
 
-[sub_resource type="Resource" id=55]
+[sub_resource type="Resource" id=11]
 script = ExtResource( 11 )
 character_class = 2
 name = "Nord"
@@ -177,7 +177,7 @@ defense = 0
 heal = 0
 effect = SubResource( 14 )
 
-[sub_resource type="Resource" id=56]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 11 )
 character_class = 1
 name = "Kira"
@@ -233,7 +233,7 @@ defense = 0
 heal = 0
 effect = SubResource( 19 )
 
-[sub_resource type="Resource" id=57]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 11 )
 character_class = 0
 name = "Rash"
@@ -289,7 +289,7 @@ defense = 0
 heal = 0
 effect = SubResource( 24 )
 
-[sub_resource type="Resource" id=58]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 11 )
 character_class = 3
 name = "Lota"
@@ -345,7 +345,7 @@ defense = 0
 heal = 0
 effect = SubResource( 29 )
 
-[sub_resource type="Resource" id=59]
+[sub_resource type="Resource" id=31]
 script = ExtResource( 11 )
 character_class = 3
 name = "Pop"
@@ -401,7 +401,7 @@ defense = 0
 heal = 0
 effect = SubResource( 34 )
 
-[sub_resource type="Resource" id=60]
+[sub_resource type="Resource" id=36]
 script = ExtResource( 11 )
 character_class = 3
 name = "Kara"
@@ -457,7 +457,7 @@ defense = 0
 heal = 0
 effect = SubResource( 39 )
 
-[sub_resource type="Resource" id=61]
+[sub_resource type="Resource" id=41]
 script = ExtResource( 11 )
 character_class = 1
 name = "Shawn"
@@ -513,7 +513,7 @@ defense = 0
 heal = 0
 effect = SubResource( 44 )
 
-[sub_resource type="Resource" id=62]
+[sub_resource type="Resource" id=46]
 script = ExtResource( 11 )
 character_class = 0
 name = "Morg"
@@ -569,7 +569,7 @@ defense = 0
 heal = 0
 effect = SubResource( 49 )
 
-[sub_resource type="Resource" id=63]
+[sub_resource type="Resource" id=51]
 script = ExtResource( 11 )
 character_class = 0
 name = "Kara"
@@ -709,7 +709,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 17 )
 script = ExtResource( 10 )
-stats = SubResource( 54 )
+stats = SubResource( 6 )
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.2, 6 )
@@ -718,7 +718,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 17 )
 script = ExtResource( 10 )
-stats = SubResource( 55 )
+stats = SubResource( 11 )
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 9 )
@@ -727,7 +727,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 56 )
+stats = SubResource( 16 )
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.2, 10 )
@@ -736,7 +736,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 10 )
-stats = SubResource( 57 )
+stats = SubResource( 21 )
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.2, 6 )
@@ -745,7 +745,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 19 )
 script = ExtResource( 10 )
-stats = SubResource( 58 )
+stats = SubResource( 26 )
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.2, 7 )
@@ -754,7 +754,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 19 )
 script = ExtResource( 10 )
-stats = SubResource( 59 )
+stats = SubResource( 31 )
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.2, 5 )
@@ -763,7 +763,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 19 )
 script = ExtResource( 10 )
-stats = SubResource( 60 )
+stats = SubResource( 36 )
 
 [node name="CharacterSpawner8" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.2, 14 )
@@ -772,7 +772,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-stats = SubResource( 61 )
+stats = SubResource( 41 )
 
 [node name="CharacterSpawner9" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.2, 13 )
@@ -781,7 +781,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 10 )
-stats = SubResource( 62 )
+stats = SubResource( 46 )
 
 [node name="CharacterSpawner10" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.2, 10 )
@@ -790,7 +790,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 16 )
 script = ExtResource( 10 )
-stats = SubResource( 63 )
+stats = SubResource( 51 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 53 )
