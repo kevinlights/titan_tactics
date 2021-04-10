@@ -357,7 +357,10 @@ func action():
 		TT.CONTEXT.GUARD:
 			# heal self
 			if mode == MODE.HEAL:
-				_on_heal()
+				if get_current().can_heal(target):
+					_on_heal()
+				else:
+					$gui/sfx/denied.play()
 #			print("[World] guard action")
 #			if get_current().character.turn_limits.actions == 0:
 #				gui.call_deferred("confirm_end_turn")
@@ -366,7 +369,7 @@ func action():
 # disable "heal" context - this is now replaced by MODE.HEAL
 		TT.CONTEXT.HEAL:
 			if mode == MODE.HEAL:
-				if target.is_loot or target.character.control == TT.CONTROL.AI:
+				if !get_current().can_heal(target) or target.is_loot or target.character.control == TT.CONTROL.AI:
 					$gui/sfx/denied.play()
 					set_mode(MODE.PLAY)
 				else:
