@@ -17,6 +17,7 @@ var atlas = {
 }
 
 func on_level_up(diff, character):
+	get_tree().get_root().get_node("World/gui/sfx/level_up").play()
 	$char_sprite.play(atlas[character.character_class])
 	$new_lvl.text = "%02d" % (character.level)
 	$current_hp.text = "%02d" % (character.max_hp - diff.hp)

@@ -84,7 +84,8 @@ func get_current():
 	if current[current_turn].size() > current_character :
 		return current[current_turn][current_character]
 	else:
-		return null
+		#return null
+		return current[current_turn][0]
 
 func get_blocked_cells():
 	var blocked_cells = []
@@ -784,7 +785,6 @@ func _on_select_team_member(team_member):
 func _on_level_up(diff, character):
 #	gui.call_deferred("level_up", diff, character)
 	gui.start("lvlup", [ diff, character ])
-	gui.get_node("sfx/level_up").play()
 #	gui.level_up(diff, character)
 
 func _initiate_turn():

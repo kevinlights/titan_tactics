@@ -4,7 +4,10 @@ signal closed
 signal cutscene_start
 signal cutscene_end
 
+# event progression flag
 var event_will_progress = true
+# skip flag
+var skip_events = false
 
 # typing flag
 var typing: bool = false
@@ -17,6 +20,7 @@ var _textNode: Label
 var _timer: Timer
 var _moreNode: Control
 var scriptContent: Array
+
 
 # Setting up timer node
 func _ready() -> void:
@@ -95,6 +99,9 @@ func action_face(target) -> void:
 		print("[!!] invalid target character!")
 
 func action_emote(target) -> void:
+	if skip_events:
+		_emote_done(null)
+		return
 	var name_emote = target.split(".")
 	var target_character = world.find_character(name_emote[0])
 	if target_character:
@@ -117,7 +124,10 @@ func action_move(target) -> void:
 		path = world.pathfinder.find_path(character.translation, marker.translation, world.get_blocked_cells())
 	#character.connect("path_complete", self, "advance", [], CONNECT_ONESHOT)
 	character.connect("path_complete", self, "_move_done", [], CONNECT_ONESHOT)
-	character.move(path, true)
+	var instant = false
+	if skip_events == true:
+		instant = true
+	character.move(path, true, instant)
 
 func action_focus(target) -> void:
 	var marker = world.find_story_marker(target)
@@ -126,6 +136,10 @@ func action_focus(target) -> void:
 	world.get_node("lookat/camera").track(marker)
 
 func action_attack(target) -> void:
+	if skip_events:
+		_attack_done(null,null)
+		return
+	
 	var name_direction = target.split(".")
 	var target_character = world.find_character(name_direction[0])
 	if !target_character:
@@ -223,8 +237,8 @@ func _emote_done(_emote_source):
 	# remove event, solved by CONNECT_ONESHOT
 	#if emote_source.is_connected("emote_finished", self, "_emote_done"):
 	#	emote_source.disconnect("emote_finished", self, "_emote_done")
-
-	event_will_progress = true
+	
+	# event_will_progress = true
 
 	#if _emote_source != null:
 		### FOR GOD'S SAKE SOLVE THIS WITH A ANIMATIONCONTROLLER
@@ -276,10 +290,10 @@ func dismiss():
 func return_control():
 	get_parent().back()
 
-func advance():
+func advance():	
 	print("[DialogBox] Advance!")
 	event_will_progress = false	
-	if scriptContent.size() <= 0:	
+	if scriptContent.size() <= 0 and not skip_events:	
 		print("[DialogBox] done.")
 		return_control()
 		return
@@ -310,6 +324,7 @@ func _input(event):
 			advance()
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
 		#skip = true
+		skip_events = true
 		hide()
 		advance()
 
@@ -333,7 +348,7 @@ func splitMessageIntoChunks(text) -> Array:
 	
 func init(dialogue_content):
 	print("[DialogBox] Init cutscene")
-
+	skip_events = false
 	hide()
 	# split messages
 	scriptContent = []
