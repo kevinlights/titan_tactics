@@ -11,13 +11,16 @@ signal aoe_down
 
 var current
 var non_blocking = [ "battle", "ally" ]
-var cant_cancel = [ "win", "fin", "lose", "lvlup", "credits" ]
+var cant_cancel = [ "win", "fin", "lose", "lvlup", "credits", "dialogue_box" ]
 
 var queued = []
 
 func back():
-	print("[GUI] unset gui")
 	if current:
+		if "name" in current:
+			print("[GUI] unset gui (currently: ", current.name,")")
+		else:
+			print("[GUI] unset gui (but it hat no name.)")
 		# deferred because 'out' may trigger a gui change
 		current.call_deferred("out")
 		self.current = null

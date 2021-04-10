@@ -250,7 +250,8 @@ func change_character():
 	$gui.swap()
 
 func _on_end_turn_gui():
-	print("Ending turn")
+	var x = "Player" if current_turn == TT.CONTROL.PLAYER else "AI"
+	print("end_turn is called! - is before changing state: ",x)
 	for character in current[TT.CONTROL.PLAYER]:
 		character.is_done = false
 		character.get_node("done").hide()
@@ -800,6 +801,7 @@ func _initiate_turn():
 	$select.set_origin(get_current())
 	$select.set_context(get_current_context($select.tile))
 	if current_turn == TT.CONTROL.PLAYER:
+		print("[World] Control to player")
 		$range_overlay.set_origin(get_current())
 	if current_turn == TT.CONTROL.AI:
 		print("[World] Control turned over to AI")
