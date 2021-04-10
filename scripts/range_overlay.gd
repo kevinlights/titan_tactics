@@ -176,19 +176,41 @@ func highlight_target_range(target, starting_tile):
 		mov_range -= 1
 	var atk_range = target.character.atk_range
 	print('target ', mov_range, ' - ', atk_range)
+	var blocked_cells = world.get_blocked_cells()
+	if world.mode == world.MODE.CHECK_MAP or world.current_turn != target.character.control:
+		mov_range = max(target.character.mov_range - 1, 0)
 	for tile in gridmap.get_tiles_within(starting_tile, mov_range + atk_range * 2):
-		var distance = abs(starting_tile.x - tile.x) + abs(starting_tile.z - tile.z)
-		
+		var mov_distance = abs(starting_tile.x - tile.x) + abs(starting_tile.z - tile.z)
+		var path_to_tile = world.pathfinder.find_path(starting_tile, tile, blocked_cells)
+		if path_to_tile.size() == 0:
+			continue
 		var tile_overlay_success;
-		if distance <= mov_range:
+		if mov_distance <= mov_range:
 			var cell_target = world.entity_at(tile)
-			if cell_target and !cell_target.is_loot and !cell_target.is_trigger and cell_target.character and cell_target.character.control != target.character.control:
-				tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
-			else:
-				tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
+			# path to walk is longer than expected due to unpassable tiles
+			if path_to_tile.size() > mov_range + 1:
+				# as movement is not diagonal but attacks can be, need to compute atk_distance
+				# from the edge of mov_range
+				var potential_atk_start = path_to_tile[mov_range]
+				var atk_distance = Vector2(potential_atk_start.x, potential_atk_start.z).distance_to(Vector2(tile.x, tile.z))
+				
+				if atk_range == 1:
+					if atk_distance <= atk_range:
+						tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+				elif floor(atk_distance) <= atk_range:
+					tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			else: 
+				if cell_target and !cell_target.is_loot and !cell_target.is_trigger and cell_target.character and cell_target.character.control != target.character.control:
+					tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+				elif cell_target and !cell_target.is_loot and !cell_target.is_trigger and cell_target.character and cell_target.character.control == target.character.control:
+					continue
+				else:
+					tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
 		else:
-			var atk_distance = Vector2(starting_tile.x, starting_tile.z).distance_to(Vector2(tile.x, tile.z)) - mov_range
-			# Potential future boolean logic depending on if melee can still attack diagonal
+			# as movement is not diagonal but attacks can be, need to compute atk_distance
+			# from the edge of mov_range
+			var potential_atk_start = path_to_tile[mov_range]
+			var atk_distance = Vector2(potential_atk_start.x, potential_atk_start.z).distance_to(Vector2(tile.x, tile.z))
 			if atk_range == 1:
 				if atk_distance <= atk_range:
 					tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
