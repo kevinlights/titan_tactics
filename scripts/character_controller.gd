@@ -453,9 +453,9 @@ func get_aoe_targets(tile:Vector3):
 		target_tiles[character.character_class] = target_tiles["sweeping_blow_" + is_facing()]	
 	for offset in target_tiles[character.character_class]:
 		var target = world.entity_at(tile + offset)
-		if target and target.character.control == character.control:
-			continue
 		if target and target.is_loot:
+			continue
+		if target and target.character.control == character.control:
 			continue
 		if target:
 			targets.append(target)

@@ -838,10 +838,7 @@ func _on_attack():
 	if get_current().character.turn_limits.actions != 0:
 		var target = entity_at($select.tile)
 		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), $select.translation):
-#			gui.error("BLOCKED LINE OF SIGHT")
-#			gui.call_deferred("back")
-			return
-#		var damage = 
+			return $gui/sfx/denied.play()
 		
 		# Enoh: Test AOE
 		#get_current().attack_new($select.tile, true)
