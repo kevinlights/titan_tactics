@@ -181,7 +181,7 @@ func action_spawn(target) -> void:
 # ~~~ 
 
 func perform_action(item):
-	print("[DialogBox] Perform action ",item.action, " ", item.target," ")
+	#print("[DialogBox] Perform action ",item.action, " ", item.target," ")
 	
 	# what does this do?
 	# selector.camera_captured = false
@@ -229,7 +229,7 @@ func _attack_done(_arrow, target_character):
 	#	arrow.disconnect("hit", self, "_attack_done")
 	world.get_node("lookat/camera").track(target_character)
 	print("[DialogBox] Attack done - advancing.")
-	if event_will_progress:
+	if event_will_progress or skip_events:
 		advance()
 	
 
@@ -246,8 +246,8 @@ func _emote_done(_emote_source):
 		#yield(get_tree().create_timer(1.0),"timeout")
 		#_emote_source.get_node("emotes").hide()
 		
-	print("[DialogBox] Emoting done - advancing.")
-	if event_will_progress:
+	#print("[DialogBox] Emoting done - advancing.")
+	if event_will_progress or skip_events:
 		advance()
 
 func _move_done():
@@ -256,10 +256,14 @@ func _move_done():
 
 
 func showMessageDialog(content):
+	if skip_events:
+		advance()
+		return
+	
 	selector.disable()
 	_moreNode.hide()
 	set_textbox_content(content.message)
-	print("[DialogBox] Printing message - face? ", content.title)
+	#print("[DialogBox] Printing message - face? ", content.title)
 	if content.title:
 		$portrait/portraits.play(content.title.lstrip(" ").rstrip(" "))
 
@@ -291,25 +295,25 @@ func return_control():
 	get_parent().back()
 
 func advance():	
-	print("[DialogBox] Advance!")
+	#print("[DialogBox] Advance!")
 	event_will_progress = false	
-	if scriptContent.size() <= 0 and not skip_events:	
-		print("[DialogBox] done.")
+	if scriptContent.size() <= 0:	
+		#print("[DialogBox] done.")
 		return_control()
 		return
 
-	print("[DialogBox] There is still stuff left - let's check")
+	#print("[DialogBox] There is still stuff left - let's check")
 	var currentMessage = scriptContent.pop_front()
 
 	if "music" in currentMessage and currentMessage.music != null and currentMessage.music != '':
-		print("music in message - playing: ",currentMessage.music)
+		#print("music in message - playing: ",currentMessage.music)
 		world.play_music(currentMessage.music)
 
 	if "message" in currentMessage:
-		print("[DialogBox] Display next message -> ",currentMessage.title," ",currentMessage.message)
+		#print("[DialogBox] Display next message -> ",currentMessage.title," ",currentMessage.message)
 		showMessageDialog(currentMessage)
 	else:
-		print("[DialogBox] Want to perform action...")
+		#print("[DialogBox] Want to perform action...")
 		perform_action(currentMessage)
 
 	

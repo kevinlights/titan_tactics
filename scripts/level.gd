@@ -29,6 +29,22 @@ func _ready():
 				break
 		if found:
 			Game.team.erase(found)
+	_collect_materials()	
+
+func _collect_materials():
+	#var ml = $Spatial/terrain.mesh_library
+	#for i in ml.get_item_list():
+	#	ml.get_item_mesh(i).surface_get_material(0).set("albedo_color","#ff00ff")
+	#save material
+	pass
+	
+func _overlay(progress, color):
+	var ml = $Spatial/terrain.mesh_library
+	var targetColor = color
+	var colorval = 1 - (((200 / 100) * progress) / 255) #0..1
+	for i in ml.get_item_list():
+		ml.get_item_mesh(i).surface_get_material(0).set("albedo_color",Color(colorval,colorval,colorval))
+	
 
 func _on_start_level():
 	print("start level")

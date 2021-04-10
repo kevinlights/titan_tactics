@@ -639,10 +639,6 @@ func move(target_path:PoolVector3Array, unlimited=false, instant=false):
 		return
 	path = world.pathfinder.generate_walking_path(target_path)
 	movement.start_time = OS.get_ticks_msec()
-	if instant:
-		movement.start_time = 1
-		_process(0)
-		return
 		
 #	movement.end_position = Vector3(path[0].x, 0, path[0].z)
 	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
@@ -652,6 +648,23 @@ func move(target_path:PoolVector3Array, unlimited=false, instant=false):
 	if not unlimited:
 		character.turn_limits.move_distance -= target_path.size()
 		character.turn_limits.move_actions = 0
+	
+	if instant:
+		movement.start_time = 1
+		var pathObj = path.pop_back()
+		path.clear()
+		path.push_back(pathObj)
+		movement.start_position = Vector3(pathObj.x, pathObj.y, pathObj.z)
+		movement.end_position = Vector3(pathObj.x, pathObj.y, pathObj.z)
+		
+		#translation = movement.end_position
+		#emit_signal("path_complete")
+		#emit_signal("idle")
+		##check_finished()
+		#movement.moving = false
+		_process(0)
+		return
+
 #	check_finished()
 	
 func select_type():
