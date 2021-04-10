@@ -322,6 +322,8 @@ func heal(target):
 	var healed_hp = round((character.atk * 3) * 0.6)
 	target.character.hp = clamp(target.character.hp + healed_hp, 0, target.character.max_hp)
 	pick_random_sfx($sfx/heal)
+	target.get_node("vfx/heal").show()
+	target.get_node("vfx/heal").emitting = true
 	target.healthbar.set_value(target.character.hp, target.character.max_hp)
 	if target.character.control == TT.CONTROL.AI and !target.can_recruit():
 		target.get_node("speak").hide()
