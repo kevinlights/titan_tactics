@@ -119,12 +119,13 @@ var movement = {
 	"moving": false
 }
 
-func apply_effects():
+func apply_effects(free=false):
 	for effect in status_effects:
-		if effect.turns_left > 0:
+		if effect.turns_left > 0 or free:
 			character.hp -= effect.damage
 			if effect.effect == StatusEffect.EFFECT.STUN:
 				character.turn_limits.actions = 0
+				character.turn_limits.move_actions = 0
 				$vfx/stun.show()
 				$vfx/stun.play()
 				pick_random_sfx($sfx/stun_hit)
@@ -136,7 +137,8 @@ func apply_effects():
 				$vfx/poison.show()
 				$vfx/poison.play()
 				pick_random_sfx($sfx/polymorph_hit)
-			effect.turns_left -= 1
+			if not free:
+				effect.turns_left -= 1
 		else:
 			var tag = effect.tag()
 			if tag:
@@ -230,6 +232,7 @@ func hit(attacker):
 		var tag = hit_effect.tag()
 		if tag:
 			get_node(tag).show()
+			apply_effects(true)
 		else:
 			print("No tag for ", hit_effect.effect)
 	if guarding:
