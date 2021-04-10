@@ -343,7 +343,7 @@ func _input(event):
 		else:
 			advance()
 			
-	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
+	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
 		#skip_events = true
 		#advance()
 		#get_parent().start("skipconfirm")
