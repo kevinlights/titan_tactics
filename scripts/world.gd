@@ -295,7 +295,7 @@ func action():
 					if not get_current().can_attack_tile($select.tile):
 						print("[World] Can't attack this target")
 						return $gui/sfx/denied.play()
-					if get_current().can_attack_tile($select.tile):
+					else:
 						print("[World] Can and will attack")
 	#					if target.can_recruit() and is_adjacent(get_current(), target):
 	#						gui.attack()

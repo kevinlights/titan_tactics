@@ -455,8 +455,7 @@ func get_aoe_targets(tile:Vector3):
 func attack_new(tile:Vector3, AOE:bool):
 	print("[Enoh's Attack] Attack with AoE support")
 	if character.turn_limits.actions < 1:
-		return
-	character.turn_limits.actions -= 1
+		return	
 	var targets:Array = []
 	if AOE:
 		targets = get_aoe_targets(tile)
@@ -487,7 +486,7 @@ func attack_new(tile:Vector3, AOE:bool):
 			targets.append(target)
 	if targets.size() == 0:
 		return
-		
+	character.turn_limits.actions -= 1
 	last_target = targets[targets.size()-1]
 	
 	# Damage targets
