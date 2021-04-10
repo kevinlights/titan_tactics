@@ -21,6 +21,7 @@ windows:
       - ${EXPORT_NAME}_windows
   only: 
     - master
+    - staging
 
 windows_debug:
   stage: export
@@ -45,6 +46,7 @@ linux:
       - ${EXPORT_NAME}_linux
   only: 
     - master
+    - staging
 
 linux_debug:
   stage: export
@@ -69,6 +71,7 @@ mac:
       - ${EXPORT_NAME}_mac
   only: 
     - master
+    - staging
 
 mac_debug:
   stage: export
