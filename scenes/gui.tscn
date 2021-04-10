@@ -1,4 +1,4 @@
-[gd_scene load_steps=318 format=2]
+[gd_scene load_steps=319 format=2]
 
 [ext_resource path="res://scripts/gui_states.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -39,6 +39,7 @@
 [ext_resource path="res://sfx/UI/click_close.ogg" type="AudioStream" id=37]
 [ext_resource path="res://scenes/gui/endturnconfirm.tscn" type="PackedScene" id=38]
 [ext_resource path="res://scripts/gui/lvlup.gd" type="Script" id=39]
+[ext_resource path="res://scenes/gui/skipconfirm.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gfx/types.png" type="Texture" id=41]
 [ext_resource path="res://gfx/place.png" type="Texture" id=43]
 [ext_resource path="res://scripts/gui/characterswap.gd" type="Script" id=44]
@@ -2331,6 +2332,9 @@ margin_bottom = 224.0
 visible = false
 
 [node name="credits" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="skipconfirm" parent="." instance=ExtResource( 40 )]
 visible = false
 
 [node name="characterselect" type="Control" parent="."]

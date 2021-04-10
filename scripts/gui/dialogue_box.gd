@@ -9,6 +9,9 @@ var event_will_progress = true
 # skip flag
 var skip_events = false
 
+# gui flag
+var waiting_for_skip_confirm = false
+
 # typing flag
 var typing: bool = false
 # typing speed
@@ -319,18 +322,39 @@ func advance():
 	
 
 func _input(event):
+	if waiting_for_skip_confirm:
+		return
 	if not self.visible:
 		return
+	if skip_events:
+		return
+		
 	if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 		if typing:
 			self.typingDone()
 		else:
 			advance()
+			
 	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
-		#skip = true
-		skip_events = true
+		#skip_events = true
+		#advance()
+		#get_parent().start("skipconfirm")
 		hide()
-		advance()
+		get_parent().get_node("skipconfirm").show()
+		get_parent().get_node("skipconfirm").connect("confirm_skip", self, "skip_confirmed")
+		get_parent().get_node("skipconfirm").connect("cancel", self, "skip_cancelled")
+		waiting_for_skip_confirm = true
+
+func skip_confirmed():
+	skip_events = true
+	waiting_for_skip_confirm = false
+	hide()
+	advance()
+
+func skip_cancelled():
+	waiting_for_skip_confirm = false
+	skip_events = false
+	show()
 
 func splitMessageIntoChunks(text) -> Array:
 	text = text.replace("\n", " ")
