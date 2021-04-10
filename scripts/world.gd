@@ -260,6 +260,7 @@ func _on_end_turn_gui():
 	for character in current[current_turn]:
 		character.end_turn()
 	current_character = 0
+	advance_turn()
 	
 func end_turn():
 #	gui.back()
@@ -1037,6 +1038,7 @@ func _input(event):
 		Game.add_to_team(additional_character)
 		for unit in current[TT.CONTROL.PLAYER]:
 			unit.character.atk = 50
+			unit.character.def = 50
 			unit.character.mov_range = 50
 		print("[World] The OGRE has joined the team!")
 	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
@@ -1069,7 +1071,7 @@ func _input(event):
 				new_orientation = TT.CAMERA.NORTH
 			print("[World] Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
-		
+
 	if event.is_action("camera_counter_clockwise") && !event.is_echo() && event.is_pressed() && !is_cutscene:
 		if not $lookat/camera.is_rotating():
 			var new_orientation = Game.camera_orientation - 1
@@ -1077,12 +1079,11 @@ func _input(event):
 				new_orientation = TT.CAMERA.WEST
 			print("[World] Counter-Clockwise ", Game.camera_orientation, " ", new_orientation)
 			Game.camera_orientation = new_orientation
-		
+
 	if event.is_action("context_cancel"):
 		_repaint_range_overlay()
-		
+
 func _repaint_range_overlay():
 	range_overlay.clear()
 	range_overlay.paint()
 	range_overlay.paint_selector()
-	
