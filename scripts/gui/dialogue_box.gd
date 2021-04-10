@@ -297,7 +297,8 @@ func dismiss():
 func return_control():
 	get_parent().back()
 
-func advance():	
+func advance():
+	world.range_overlay.hide()
 	#print("[DialogBox] Advance!")
 	event_will_progress = false	
 	if scriptContent.size() <= 0:	
