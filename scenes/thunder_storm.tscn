@@ -138,7 +138,7 @@ material_override = SubResource( 5 )
 opacity = 0.79
 billboard = 1
 frames = SubResource( 9 )
-frame = 2
+frame = 1
 
 [node name="Flash" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.4, 0.5 )
