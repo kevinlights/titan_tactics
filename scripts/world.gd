@@ -249,6 +249,7 @@ func change_character():
 	$gui.swap()
 
 func _on_end_turn_gui():
+	print("Ending turn")
 	for character in current[TT.CONTROL.PLAYER]:
 		character.is_done = false
 		character.get_node("done").hide()
