@@ -153,8 +153,11 @@ func check_finished():
 			emit_signal("done")
 
 func _ready():
-	var _ret = $emotes.connect("animation_finished", self, "_emote_finished")
-	_ret = $emotes.connect("frame_changed", self, "_emote_check_old")
+	var _ret
+	if $emotes.has_signal("animation_finished"):
+		_ret = $emotes.connect("animation_finished", self, "_emote_finished")
+	else:
+		_ret = $emotes.connect("frame_changed", self, "_emote_check_old")
 	#pass
 
 func _emote_check_old() -> void:
