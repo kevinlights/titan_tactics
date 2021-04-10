@@ -282,6 +282,11 @@ func out():
 	# attach camera to selector and return control to player
 	world.get_node("lookat/camera").track(selector)
 	selector.enable()
+
+	var world = get_tree().get_root().get_node("World")
+	if world.pathfinder != null && world.pathfinder.overlay != null:
+		world.pathfinder.overlay.visible = true
+
 	world.current_turn = TT.CONTROL.PLAYER
 	self.hide()
 	emit_signal("closed")
@@ -378,6 +383,10 @@ func init(dialogue_content):
 	print("[DialogBox] Init cutscene")
 	skip_events = false
 	hide()
+	var world = get_tree().get_root().get_node("World")
+	if world.pathfinder != null && world.pathfinder.overlay != null:
+		world.pathfinder.overlay.visible = false
+	
 	# split messages
 	scriptContent = []
 	var putMusicAlready: bool
