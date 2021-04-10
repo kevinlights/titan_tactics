@@ -24,6 +24,7 @@ var map_size = { "width": 10, "height": 10 }
 var expected_target = null
 
 var num_done = 0
+var cutscene_changed_music: bool = false
 
 var current = {
 	TT.CONTROL.AI: [],
@@ -542,16 +543,20 @@ func _on_attack_complete():
 
 func _on_cutscene():
 	is_cutscene = true
+	cutscene_changed_music = false
 	$select/top.hide()
 	$gui/tip.hide()
 	$cutscene_bars/animate.play("cutscene")
 
 func _on_end_cutscene():
 	is_cutscene = false
+	if cutscene_changed_music:
+		play_theme_music()
 	$select/top.show()
 	$gui/tip.show()
 	$cutscene_bars/animate.play("end cutscene")
 	range_overlay.show()
+	
 
 func _on_dialogue(content):
 	if "messages" in content:
@@ -961,6 +966,13 @@ func play_music(music_node):
 	$music.get_node(Game.get_theme()).stop()
 	var music = $cutscene_music.get_node(music_node)
 	music.play()
+	if is_cutscene:
+		cutscene_changed_music = true
+
+func play_theme_music():
+	for m in $cutscene_music.get_children():
+		m.stop()
+	$music.get_node(Game.get_theme()).play()
 
 func get_current_context(tile):
 #	print(Game.level, ", ",  gui.get_node("dialogue").visible)
