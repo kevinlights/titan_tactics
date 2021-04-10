@@ -2,11 +2,13 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-valid=false
+path="res://.import/mage_atk2.ogg-57e3fe059157f2d769696876dd0b3f46.oggstr"
 
 [deps]
 
 source_file="res://sfx/gameplay/mage_atk2.ogg"
+dest_files=[ "res://.import/mage_atk2.ogg-57e3fe059157f2d769696876dd0b3f46.oggstr" ]
+
 [params]
 
 loop=false
