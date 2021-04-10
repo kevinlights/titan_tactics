@@ -185,9 +185,10 @@ func highlight_target_range(target, starting_tile, cant_move = false):
 		else:
 			var atk_distance = Vector2(starting_tile.x, starting_tile.z).distance_to(Vector2(tile.x, tile.z)) - mov_range
 			# Potential future boolean logic depending on if melee can still attack diagonal
-			# atk_range == 1 and atk_distance > atk_range
-			# Current logic as players can attack diagonal atm
-			if floor(atk_distance) <= atk_range:
+			if atk_range == 1:
+				if atk_distance <= atk_range:
+					tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			elif floor(atk_distance) <= atk_range:
 				tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
 		if tile_overlay_success == true:
 			overlayed_tiles.push_back(tile)

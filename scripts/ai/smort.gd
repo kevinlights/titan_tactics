@@ -112,7 +112,11 @@ func distance_between(attacker, target):
 	# improved logic, matching character controller's can_attack_tile	
 	var from_tile = Vector2(attacker_cell.x, attacker_cell.z)
 	var to_tile = Vector2(target_cell.x, target_cell.z)
-	return floor(from_tile.distance_to(to_tile))
+	var distance = from_tile.distance_to(to_tile)
+	if attacker.character.atk_range == 1:
+		return distance
+	else:
+		return floor(distance)
 	
 func can_attack(attacker, victim, ignore_action_limit = false):
 	if attacker.character.turn_limits.actions < 1 and not ignore_action_limit:

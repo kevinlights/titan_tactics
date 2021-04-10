@@ -355,8 +355,12 @@ func can_attack_tile(target):
 		return false
 	var level_target = Vector2(target.x, target.z)
 	var level_source = Vector2(translation.x, translation.z)
-	print("[CharacterController] ", floor(level_target.distance_to(level_source)), " > ", atk_range)
-	return !(floor(level_target.distance_to(level_source)) > atk_range)
+	var distance = level_target.distance_to(level_source)
+	print("[CharacterController] ", distance, " <= ", atk_range)
+	if atk_range == 1:
+		return distance <= atk_range
+	else:
+		return floor(level_target.distance_to(level_source)) <= atk_range
 
 func can_attack(target):
 	# disable item range bonus
