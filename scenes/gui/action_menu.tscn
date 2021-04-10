@@ -1,34 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=1]
-[ext_resource path="res://scenes/gui/action_menu_item.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/gui/action_menu.gd" type="Script" id=3]
-[ext_resource path="res://scripts/focus.gd" type="Script" id=4]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="ImageTexture" id=2]
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 10, 10 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 10, 10, 10 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 20, 10, 10 )
-
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 4 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
 
 [node name="attack" type="Control"]
 script = ExtResource( 3 )
@@ -53,43 +26,6 @@ color = Color( 0.0627451, 0.0627451, 0.0705882, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="action_1" parent="panel/box" instance=ExtResource( 2 )]
-margin_left = 6.0
-margin_top = 2.0
-margin_right = 120.0
-margin_bottom = 23.0
-
-[node name="action_2" type="ToolButton" parent="panel/box" groups=[
-"button",
-]]
-margin_left = 6.0
-margin_top = 2.0
-margin_right = 74.0
-margin_bottom = 23.0
-rect_pivot_offset = Vector2( 13.4933, 1.83694 )
-focus_neighbour_top = NodePath("../action_1")
-focus_previous = NodePath("../action_1")
-theme = ExtResource( 6 )
-custom_styles/focus = SubResource( 1 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_hover = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
-text = "Speak"
-icon = SubResource( 2 )
-align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="focus" type="AnimatedSprite" parent="panel/box/action_2"]
-visible = false
-position = Vector2( -3, 2 )
-frames = SubResource( 6 )
-playing = true
-centered = false
-offset = Vector2( 1, 2 )
-script = ExtResource( 4 )
 
 [node name="tip_box" type="ColorRect" parent="panel"]
 margin_left = 30.0
