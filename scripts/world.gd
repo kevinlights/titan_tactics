@@ -84,7 +84,8 @@ func get_current():
 	if current[current_turn].size() > current_character :
 		return current[current_turn][current_character]
 	else:
-		return null
+		#return null
+		return current[current_turn][0]
 
 func get_blocked_cells():
 	var blocked_cells = []
