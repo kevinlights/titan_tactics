@@ -634,11 +634,16 @@ func attack_complete():
 
 
 
-func move(target_path:PoolVector3Array, unlimited=false):
+func move(target_path:PoolVector3Array, unlimited=false, instant=false):
 	if movement.moving or target_path.size() == 0 or character.turn_limits.move_actions == 0:
 		return
 	path = world.pathfinder.generate_walking_path(target_path)
 	movement.start_time = OS.get_ticks_msec()
+	if instant:
+		movement.start_time = 1
+		_process(0)
+		return
+		
 #	movement.end_position = Vector3(path[0].x, 0, path[0].z)
 	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
 	movement.start_position = Vector3(translation.x, translation.y, translation.z)
