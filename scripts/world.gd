@@ -1035,6 +1035,9 @@ func _input(event):
 		var additional_character = load("res://resources/cast/ogre.tres")
 		additional_character.control = TT.CONTROL.PLAYER
 		Game.add_to_team(additional_character)
+		for unit in current[TT.CONTROL.PLAYER]:
+			unit.character.atk = 50
+			unit.character.mov_range = 50
 		print("[World] The OGRE has joined the team!")
 	if event.is_action("cheat_kill_everyone") && !event.is_echo() && event.is_pressed():
 		for unit in current[TT.CONTROL.AI]:
