@@ -778,6 +778,7 @@ func _on_select_team_member(team_member):
 func _on_level_up(diff, character):
 #	gui.call_deferred("level_up", diff, character)
 	gui.start("lvlup", [ diff, character ])
+	gui.get_node("sfx/level_up").play()
 #	gui.level_up(diff, character)
 
 func _initiate_turn():
