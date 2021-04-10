@@ -159,7 +159,7 @@ func paint():
 	if not data or not origin:
 		return
 	print(origin.character.turn_limits)
-	highlight_target_range(origin, data.tile, origin.character.turn_limits.move_actions == 0)
+	highlight_target_range(origin, data.tile)
 	if hint_tile:
 		var tile_overlay_success = gridmap.set_tile_overlay(hint_tile, 'select')
 		if tile_overlay_success == true:
@@ -167,20 +167,32 @@ func paint():
 		else:
 			print_debug("Failed to render hint overlay")
 
-func highlight_target_range(target, starting_tile, cant_move = false):
+func highlight_target_range(target, starting_tile):
 	#print(target)
-	var mov_range = target.character.mov_range
-	if cant_move or mov_range == 0:
-		mov_range = 1
+	var mov_range = target.character.turn_limits.move_distance
+	if target.character.turn_limits.move_actions == 0:
+		mov_range = 0
+	elif mov_range > 0:
+		mov_range -= 1
 	var atk_range = target.character.atk_range
-	#print('target ', mov_range, ' - ', atk_range)
-	for tile in gridmap.get_tiles_within(starting_tile, mov_range + atk_range - 1):
+	print('target ', mov_range, ' - ', atk_range)
+	for tile in gridmap.get_tiles_within(starting_tile, mov_range + atk_range * 2):
 		var distance = abs(starting_tile.x - tile.x) + abs(starting_tile.z - tile.z)
 		
 		var tile_overlay_success;
-		if distance < mov_range:
-			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
+		if distance <= mov_range:
+			var cell_target = world.entity_at(tile)
+			if cell_target and !cell_target.is_loot and !cell_target.is_trigger and cell_target.character and cell_target.character.control != target.character.control:
+				tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			else:
+				tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
 		else:
-			tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			var atk_distance = Vector2(starting_tile.x, starting_tile.z).distance_to(Vector2(tile.x, tile.z)) - mov_range
+			# Potential future boolean logic depending on if melee can still attack diagonal
+			if atk_range == 1:
+				if atk_distance <= atk_range:
+					tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			elif floor(atk_distance) <= atk_range:
+				tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
 		if tile_overlay_success == true:
 			overlayed_tiles.push_back(tile)

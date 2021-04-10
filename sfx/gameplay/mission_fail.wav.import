@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mission_fail.wav-7d9ae725770b261e02d3e41cbac1ee12.sample"
+
+[deps]
+
+source_file="res://sfx/gameplay/mission_fail.wav"
+dest_files=[ "res://.import/mission_fail.wav-7d9ae725770b261e02d3e41cbac1ee12.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

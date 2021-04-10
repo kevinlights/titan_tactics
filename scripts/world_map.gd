@@ -51,6 +51,16 @@ func move_selector():
 enum DIR {
 	UP, RIGHT, DOWN, LEFT
 }
+var lvl_dir_override = {
+	4: {
+		DIR.DOWN: -1,
+		DIR.RIGHT: 1,
+	},
+	7: {
+		DIR.LEFT: -1,
+		DIR.DOWN: 1,
+	}
+}
 func _input(event):
 	var lvl = Game.level
 	if event.is_pressed():
@@ -68,21 +78,27 @@ func _input(event):
 		elif event.is_action("ui_right"):
 			dir = DIR.RIGHT
 		if dir != null:
-#			var orig_lvl = lvl + 0.0
-			var current = level_markers[Game.level]
-			if Game.level < 9:
-				var next = level_markers[Game.level + 1]
-				var matching_dirs = get_dirs(current, next)
-				if matching_dirs.find(dir) > -1:
-					lvl += 1
-			if Game.level > 0:
-				print('prev')
-				var prev = level_markers[Game.level - 1]
-				var matching_dirs = get_dirs(current, prev)
-				if matching_dirs.find(dir) > -1:
-					lvl -= 1
+			if lvl_dir_override.has(Game.level + 1):
+				var current_override = lvl_dir_override[Game.level + 1]
+				if current_override.has(dir):
+					lvl += current_override[dir]
+			else:
+				var current = level_markers[Game.level]
+				if Game.level < 9:
+					var next = level_markers[Game.level + 1]
+					var matching_dirs = get_dirs(current, next)
+					if matching_dirs.find(dir) > -1:
+						lvl += 1
+				if Game.level > 0:
+					var prev = level_markers[Game.level - 1]
+					var matching_dirs = get_dirs(current, prev)
+					if matching_dirs.find(dir) > -1:
+						lvl -= 1
+			if lvl == Game.level:
+				get_node('sfx/denied').play()
 	Game.level = clamp(lvl, 0, TT.levels.size() -1)
 	if Game.level > Game.unlocked_level:
+		get_node('sfx/denied').play()
 		Game.level = Game.unlocked_level
 	move_selector()
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
