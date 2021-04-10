@@ -1,0 +1,13 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+valid=false
+
+[deps]
+
+source_file="res://sfx/gameplay/mage_atk2.ogg"
+[params]
+
+loop=false
+loop_offset=0
