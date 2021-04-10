@@ -548,6 +548,7 @@ func _on_attack_complete():
 ##		$select.enable()
 
 func _on_cutscene():
+	$range_overlay.hide()
 	is_cutscene = true
 	cutscene_changed_music = false
 	$select/top.hide()
