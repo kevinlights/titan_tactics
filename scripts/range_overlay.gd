@@ -181,7 +181,11 @@ func highlight_target_range(target, starting_tile, cant_move = false):
 		
 		var tile_overlay_success;
 		if distance <= mov_range:
-			tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
+			var cell_target = world.entity_at(tile)
+			if cell_target and !cell_target.is_loot and !cell_target.is_trigger and cell_target.character and cell_target.character.control != target.character.control:
+				tile_overlay_success = gridmap.set_tile_overlay(tile, 'attack')
+			else:
+				tile_overlay_success = gridmap.set_tile_overlay(tile, 'move')
 		else:
 			var atk_distance = Vector2(starting_tile.x, starting_tile.z).distance_to(Vector2(tile.x, tile.z)) - mov_range
 			# Potential future boolean logic depending on if melee can still attack diagonal
