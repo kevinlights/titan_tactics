@@ -289,6 +289,8 @@ func out():
 
 	world.current_turn = TT.CONTROL.PLAYER
 	self.hide()
+	
+	world.get_node("gui/skiptip").visible = false
 	emit_signal("closed")
 	emit_signal("cutscene_end")
 
@@ -349,6 +351,7 @@ func _input(event):
 		get_parent().get_node("skipconfirm").show()
 		get_parent().get_node("skipconfirm").connect("confirm_skip", self, "skip_confirmed")
 		get_parent().get_node("skipconfirm").connect("cancel", self, "skip_cancelled")
+		world.get_node("gui/skiptip").visible = false
 		waiting_for_skip_confirm = true
 
 func skip_confirmed():
@@ -360,6 +363,7 @@ func skip_confirmed():
 func skip_cancelled():
 	waiting_for_skip_confirm = false
 	skip_events = false
+	world.get_node("gui/skiptip").visible = true
 	show()
 
 func splitMessageIntoChunks(text) -> Array:
@@ -383,10 +387,12 @@ func splitMessageIntoChunks(text) -> Array:
 func init(dialogue_content):
 	print("[DialogBox] Init cutscene")
 	skip_events = false
+	
 	hide()
-	var world = get_tree().get_root().get_node("World")
+	world = get_tree().get_root().get_node("World")
 	if world.pathfinder != null && world.pathfinder.overlay != null:
 		world.pathfinder.overlay.visible = false
+	world.get_node("gui/skiptip").visible = true
 	
 	# split messages
 	scriptContent = []

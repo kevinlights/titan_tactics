@@ -2551,6 +2551,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="skiptip" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="skiptip"]
+position = Vector2( 269, 181 )
+frames = SubResource( 14 )
+frame = 1
+playing = true
+centered = false
+
+[node name="tip2" type="Label" parent="skiptip"]
+margin_left = 269.0
+margin_top = 203.0
+margin_right = 305.0
+margin_bottom = 235.0
+rect_pivot_offset = Vector2( 19.45, -11.25 )
+theme = ExtResource( 22 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "Skip
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="characterswap" type="Control" parent="."]
 visible = false
 margin_right = 40.0
