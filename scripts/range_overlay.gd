@@ -159,7 +159,7 @@ func paint():
 	if not data or not origin:
 		return
 	print(origin.character.turn_limits)
-	highlight_target_range(origin, data.tile, origin.character.turn_limits.move_actions == 0)
+	highlight_target_range(origin, data.tile)
 	if hint_tile:
 		var tile_overlay_success = gridmap.set_tile_overlay(hint_tile, 'select')
 		if tile_overlay_success == true:
@@ -167,12 +167,12 @@ func paint():
 		else:
 			print_debug("Failed to render hint overlay")
 
-func highlight_target_range(target, starting_tile, cant_move = false):
+func highlight_target_range(target, starting_tile):
 	#print(target)
-	var mov_range = target.character.mov_range
-	if cant_move or mov_range == 0:
+	var mov_range = target.character.turn_limits.move_distance
+	if target.character.turn_limits.move_actions == 0:
 		mov_range = 0
-	else:
+	elif mov_range > 0:
 		mov_range -= 1
 	var atk_range = target.character.atk_range
 	print('target ', mov_range, ' - ', atk_range)
