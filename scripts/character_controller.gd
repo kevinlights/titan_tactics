@@ -524,6 +524,7 @@ func attack_new(tile:Vector3, AOE:bool):
 	else:
 		for t in targets:
 			t.hit(character)
+		attack_complete()
 	if not AOE or character.character_class == TT.TYPE.FIGHTER:
 		if tile.x < translation.x:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
