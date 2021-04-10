@@ -295,7 +295,7 @@ func action():
 					if not get_current().can_attack_tile($select.tile):
 						print("[World] Can't attack this target")
 						return $gui/sfx/denied.play()
-					if get_current().can_attack_tile($select.tile):
+					else:
 						print("[World] Can and will attack")
 	#					if target.can_recruit() and is_adjacent(get_current(), target):
 	#						gui.attack()
@@ -357,7 +357,10 @@ func action():
 		TT.CONTEXT.GUARD:
 			# heal self
 			if mode == MODE.HEAL:
-				_on_heal()
+				if get_current().can_heal(target):
+					_on_heal()
+				else:
+					$gui/sfx/denied.play()
 #			print("[World] guard action")
 #			if get_current().character.turn_limits.actions == 0:
 #				gui.call_deferred("confirm_end_turn")
@@ -366,7 +369,7 @@ func action():
 # disable "heal" context - this is now replaced by MODE.HEAL
 		TT.CONTEXT.HEAL:
 			if mode == MODE.HEAL:
-				if target.is_loot or target.character.control == TT.CONTROL.AI:
+				if !get_current().can_heal(target) or target.is_loot or target.character.control == TT.CONTROL.AI:
 					$gui/sfx/denied.play()
 					set_mode(MODE.PLAY)
 				else:
@@ -545,6 +548,7 @@ func _on_attack_complete():
 ##		$select.enable()
 
 func _on_cutscene():
+	$range_overlay.hide()
 	is_cutscene = true
 	cutscene_changed_music = false
 	$select/top.hide()

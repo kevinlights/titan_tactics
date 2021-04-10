@@ -2054,6 +2054,7 @@ material_override = SubResource( 198 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 201 )
+frame = 1
 playing = true
 
 [node name="done" type="AnimatedSprite3D" parent="."]
@@ -2063,6 +2064,7 @@ material_override = SubResource( 202 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 205 )
+frame = 1
 playing = true
 
 [node name="poison" type="AnimatedSprite3D" parent="."]
@@ -2072,7 +2074,6 @@ material_override = SubResource( 206 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 209 )
-frame = 1
 playing = true
 
 [node name="stun" type="AnimatedSprite3D" parent="."]
@@ -2082,6 +2083,7 @@ material_override = SubResource( 210 )
 pixel_size = 0.000781
 billboard = 1
 frames = SubResource( 213 )
+frame = 1
 playing = true
 
 [node name="select" type="AnimatedSprite3D" parent="."]
@@ -2091,6 +2093,7 @@ flip_v = true
 pixel_size = 0.04
 billboard = 1
 frames = SubResource( 216 )
+frame = 1
 playing = true
 
 [node name="speak" type="AnimatedSprite3D" parent="."]

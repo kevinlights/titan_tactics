@@ -186,11 +186,12 @@ func flameshower(tile):
 	pass
 
 func aoe_vfx(name, tile, delay):
+	print("AoE VFX ", name)
 	yield(get_tree().create_timer(delay), "timeout")
 	$"vfx/Darken screen".show()
 	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
 	var thunder_storm = load("res://scenes/" + name + ".tscn").instance()
-	yield(get_tree().create_timer(1.0), "timeout")
+#	yield(get_tree().create_timer(1.0), "timeout")
 	get_parent().add_child(thunder_storm)
 	thunder_storm.translation = tile
 	thunder_storm.play()
@@ -201,20 +202,22 @@ func aoe_vfx(name, tile, delay):
 func hit(attacker):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
-#			print("arrow hit!")
-#			$vfx/arrow_hit.emitting = true
-			$vfx/arrow_hit.frame = 0
-			$vfx/arrow_hit.show()
-			$vfx/arrow_hit.play()
-			pick_random_sfx($sfx/arrow_hit)
+			if world.mode != world.MODE.SECONDARY_ATTACK:
+	#			print("arrow hit!")
+	#			$vfx/arrow_hit.emitting = true
+				$vfx/arrow_hit.frame = 0
+				$vfx/arrow_hit.show()
+				$vfx/arrow_hit.play()
+				pick_random_sfx($sfx/arrow_hit)
 		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
 		TT.TYPE.MAGE:
-#			thunderstorm(tile)
-			$vfx/magic_hit.frame = 0
-			$vfx/magic_hit.show()
-			$vfx/magic_hit.play()
-			pick_random_sfx($sfx/magic_hit)
+			if world.mode != world.MODE.SECONDARY_ATTACK:
+	#			thunderstorm(tile)
+				$vfx/magic_hit.frame = 0
+				$vfx/magic_hit.show()
+				$vfx/magic_hit.play()
+				pick_random_sfx($sfx/magic_hit)
 		TT.TYPE.BOBA:
 			pick_random_sfx($sfx/boba_hit)
 		TT.TYPE.POISON_BOBA:
@@ -365,6 +368,17 @@ func can_attack_tile(target):
 	else:
 		return floor(level_target.distance_to(level_source)) <= atk_range
 
+func can_heal(target):
+	# disable item range bonus
+	var atk_range = character.atk_range # + character.item_atk.attack_range
+	if target == null:
+		return false
+	if target.character.control != character.control:
+		return false
+	var level_target = Vector2(target.translation.x, target.translation.z)
+	var level_source = Vector2(translation.x, translation.z)
+	return !(level_target.distance_to(level_source) > atk_range)
+	
 func can_attack(target):
 	# disable item range bonus
 	var atk_range = character.atk_range # + character.item_atk.attack_range
@@ -450,9 +464,9 @@ func get_aoe_targets(tile:Vector3):
 # Enoh: can't work with arrows unless a way to feed the hit signal
 # to each target exists.
 func attack_new(tile:Vector3, AOE:bool):
+	print("[Enoh's Attack] Attack with AoE support")
 	if character.turn_limits.actions < 1:
-		return
-	character.turn_limits.actions -= 1
+		return	
 	var targets:Array = []
 	if AOE:
 		targets = get_aoe_targets(tile)
@@ -483,7 +497,7 @@ func attack_new(tile:Vector3, AOE:bool):
 			targets.append(target)
 	if targets.size() == 0:
 		return
-		
+	character.turn_limits.actions -= 1
 	last_target = targets[targets.size()-1]
 	
 	# Damage targets

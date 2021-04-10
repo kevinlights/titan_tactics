@@ -12,6 +12,7 @@ func _ready():
 
 func play():
 	show()
-	$AnimationPlayer.current_animation = "Thunder storm"
+	$AnimationPlayer.seek(0)
+	$AnimationPlayer.play("Thunder storm")
 	yield(get_tree().create_timer(1.0), "timeout")
 	hide()
