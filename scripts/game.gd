@@ -32,7 +32,10 @@ func loadVA():
 				#print("[VAs] File: ",curF)
 				var origF = curF
 				curF = curF.to_lower()
-				if curF.ends_with(".ogg"):
+				
+				if curF.ends_with(".ogg.import"):
+					curF = curF.replace('.import','')
+					origF = origF.replace('.import','')
 					var splt = curF.split("_")
 					if not splt[0] in sfx:
 						sfx[splt[0]] = {}
@@ -45,7 +48,7 @@ func loadVA():
 					if not splt[4] in sfx[splt[0]][splt[1]][splt[2]][splt[3]]:
 						sfx[splt[0]][splt[1]][splt[2]][splt[3]][splt[4]] = []
 					
-					sfx[splt[0]][splt[1]][splt[2]][splt[3]][splt[4]].push_back(load("res://VA/"+curD+"/"+origF))
+					sfx[splt[0]][splt[1]][splt[2]][splt[3]][splt[4]].push_back(ResourceLoader.load("res://VA/"+curD+"/"+origF))
 				curF = dd.get_next()
 		curD = d.get_next()
 	print_debug("[VAs] Loaded following VA files:", to_json(sfx))
