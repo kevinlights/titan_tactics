@@ -17,7 +17,7 @@ var portraits = {
 }
 
 func set_spawn(where):
-	placeholder.teleport(where.x, where.z - 1)
+	placeholder.teleport(where.x, 0, where.z - 1)
 
 func init(_arg):
 	set_characters(Game.team)
