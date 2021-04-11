@@ -1,6 +1,7 @@
 //Starting level10 – Elyne tells the party to surrender and explains evil motives
 //Party comes to confront Elyne
 # start
+$ betrayal
 
 > face elyne.south
 

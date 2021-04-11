@@ -217,14 +217,17 @@ stream = ExtResource( 3 )
 
 [node name="sad" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 23 )
+volume_db = 6.0
 
 [node name="caravan" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 24 )
+volume_db = 6.0
 
 [node name="betrayal" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 20 )
 
 [node name="royal" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 21 )
+volume_db = 6.0
 
 [node name="cutscene_bars" parent="." instance=ExtResource( 25 )]

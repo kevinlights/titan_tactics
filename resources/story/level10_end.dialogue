@@ -1,4 +1,7 @@
 //Outro scene – Elyne is defeated. The party rescues the good prince of Tyrmyr that was kept in the dungeon and peace is restored.
+# start
+
+$calm
 
 # bowie
 We did it!
@@ -43,8 +46,11 @@ Aw you guys... Zara, you would have done the same for me!
 # bowie
 Kris, you're the best! We couldn't have done it without you!
 
+# kris
+This is so surreal... A world without Tyrmyr... I can't even imagine it!
+
 # celes
-Also... From this day onward, I proclaim the end of the Great Cheese Prohibition!
+Well, I can tell you one thing that's going to change! From this day onward, I proclaim the end of the Great Cheese Prohibition!
 
 > emote kris.ugh
 > emote bowie.ugh
@@ -56,4 +62,10 @@ Also... From this day onward, I proclaim the end of the Great Cheese Prohibition
 Nothing! You're 67, you will eat what you want!
 
 # celes
-You're right! Come on, let's go celebrate!
+You're right about that! And without Tyrmyr, will all be in charge of our own destiny now.
+
+# bowie
+That sounds kind of scary... But also exciting!
+
+# arath
+I wonder what our lives are going to be like...
