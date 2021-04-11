@@ -33,7 +33,7 @@ func loadVA():
 				var origF = curF
 				curF = curF.to_lower()
 				
-				if curF.ends_with(".ogg.import"):
+				if curF.ends_with(".wav.import"):
 					curF = curF.replace('.import','')
 					origF = origF.replace('.import','')
 					var splt = curF.split("_")
