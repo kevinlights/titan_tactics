@@ -168,6 +168,8 @@ func _ready():
 		$PlayerAdvantage.play("down")
 	elif enemy.character.character_class == player.character.strength:
 		$PlayerAdvantage.play("up")
+	if enemy.character.character_class == TT.TYPE.BOBA or enemy.character.character_class == TT.TYPE.POISON_BOBA:
+		$EnemyAdvantage.play("boba")
 	start = OS.get_ticks_msec()
 #big code like way too much code
 #shrunk code by 50% ;)
