@@ -1,11 +1,20 @@
 # bowie
-It’s hard to believe that Celes from Skathi would attack Tyrmyr. They were always so peaceful.
+It makes me so mad that Skathians would go and attack Tyrmyr out of nowhere. They're really such barbarians!
 
 # kris
-It seems that it’s no longer true. We saw it ourselves. Now we need to save the day.
+It must have been orders from Celes, she rules them with an iron first, they always say.
+
+> focus troops
 
 # arath
-I am so scared, but now I have Zara to defend me! I think I can see Celes ahead with their army ahead.
+Guys, watch out! There are Skathian troops all over the place here! Zara... What are we going to do?
+
+> focus zara
 
 # zara
-Yes, it’s them! They will pay! We will destroy them!
+Arath, stay close to me. We will make them pay!
+
+> emote zara.angry
+
+# bowie
+With this much security, we must be close to Celes! Let's be careful, guys!

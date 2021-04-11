@@ -2,6 +2,7 @@ extends Control
 
 signal character_selected
 signal library_exhausted
+signal closed
 
 var characters = []
 var library = []
@@ -16,21 +17,40 @@ var portraits = {
 }
 
 func set_spawn(where):
-	placeholder.teleport(where.x, where.z - 1)
-		
+	placeholder.teleport(where.x, 0, where.z - 1)
+
+func init(_arg):
+	set_characters(Game.team)
+	show()
+
+func out():
+	hide()
+	emit_signal('closed')
+
+func dismiss():
+	emit_signal('closed')
+
 func set_characters(list):
 	library = list
 	characters = library.duplicate()
+	var world = get_tree().get_root().get_node("World")
+	var exclude = []
+	for character in characters:
+		if(world.find_character(character.name)):
+			exclude.append(character)
+	for character in exclude:
+		characters.remove(characters.find(character))
 	if not placeholder.get_parent():
 		print("Adding placeholder to map")
 		get_tree().get_root().get_node("World").add_child(placeholder)
+	placeholder.show()
 	update_view()
 
 func _ready():
 	pass
 #	get_tree().get_root().get_node("World").world_map.append_child(placeholder)
 
-func _process(delta):
+func _process(_delta):
 	if !visible:
 		if placeholder.visible:
 			placeholder.hide()
@@ -49,7 +69,7 @@ func pick_random_sfx(audio_path):
 	effects[rand_range(0, effects.size() - 1)].play()
 	
 func update_view():
-	var animation = "fighter"
+#	var animation = "fighter"
 	$name.text = characters[selected].name
 	$portraits.show()
 	if characters[selected].portrait_override and characters[selected].portrait_override != "":
@@ -91,8 +111,8 @@ func _input(event):
 		selected = 0
 		if characters.size() == 0:
 			emit_signal("library_exhausted")
-			get_parent().arrow_hide()
-			get_parent().active = false
+#			get_parent().arrow_hide()
+#			get_parent().active = false
 			placeholder.hide()
 			return
 		else:

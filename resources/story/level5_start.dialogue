@@ -1,16 +1,24 @@
 //Starting level5 – Zara joins the party. Kingdom2 warriors are in Kingdom1.(Kingdom2 warriors already knew Kingdom1 was evil). Party to defeat kingdom2 troops in kingdom1
 
-# arath
-Zara, you are safe! I was so worried!
-
-# zara
-Thank you. It seems that the Kingdom of Skathi is attacking Tyrmyr and they mistook me for one of them.
 
 # bowie
-So the troops from Skathi were the ones that pillaged the caravan.
+So these are those  troops from Skathi that pillaged our caravan. Are they... Are they attacking Tyrmyr?
 
 # kris
-It’s time to stop them!
+Looks like it! It’s time to put a stop to them! Maybe if we help the Capital we will be thanked by Queen Elyne herself!
+
+> emote bowie.excited
+
+# bowie
+Wow, do you think we could actually see her in person?
+
+# kris
+If we save the day, we just might!
+
+# bowie
+That would be so exciting! I've always dreamed of meeting a Royal!
+
+> emote zara.angry
 
 # zara
-Let’s go!
+...Whatever guys, let’s go kick some Skathian ass!

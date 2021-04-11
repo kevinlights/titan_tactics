@@ -2,6 +2,7 @@ extends Control
 
 signal swap
 signal dont_swap
+signal closed
 #
 #var text_color = Color(0.219608, 0.596078, 0.454902)
 #var selected_color = Color(0.917647, 1, 0.866667)
@@ -25,6 +26,14 @@ var atlas = {
 func _ready():
 	pass
 
+func out():
+	hide()
+	emit_signal("closed")
+
+func init(weapons):
+	set_weapons(weapons[0], weapons[1], weapons[2])
+	show()
+	
 func set_weapons(current, new, type):
 	#i'm getting type varible to control if item is atk or def
 	current_gear = current
@@ -40,7 +49,7 @@ func set_weapons(current, new, type):
 #	else:
 #		$item_popup.region_rect.position.y = 0
 
-func _process(delta):
+func _process(_delta):
 	if visible == false:
 		return
 	current_stat = 1

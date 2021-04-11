@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/enemy_defeat1.ogg-de053059df8b2010aa358d66761a842e.oggstr"
+
+[deps]
+
+source_file="res://sfx/gameplay/enemy_defeat1.ogg"
+dest_files=[ "res://.import/enemy_defeat1.ogg-de053059df8b2010aa358d66761a842e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

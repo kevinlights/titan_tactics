@@ -1,17 +1,22 @@
 extends Camera
 
+var is_cutscene = false
 var start_time = 0
 var start_offset = Vector3()
 var start_rotation = Vector3()
 var end_offset = Vector3()
 var end_rotation = Vector3()
 var rotating = false
-var ttl = 300
+var ttl = 150
 var move_ttl = 500
+var last_rotation = Vector3()
 
 var target_position = Vector3()
 var move_time = 0
 var move_start = Vector3()
+
+var cutscene_offset = Vector3(-15, 12, 15)
+var cutscene_rotation = Vector3(-20, -45, 0)
 
 var offsets = {
 	TT.CAMERA.SOUTH: Vector3(15, 19, -15),
@@ -33,7 +38,10 @@ var offset = offsets[Game.camera_orientation]
 
 func track(item):
 	if item:
-		print("Camera now tracks ", item.name)
+		if "character" in item:
+			print("[Camera] now tracking ", item.character.name)
+		else:
+			print("[Camera] now tracking ", item.name)
 		var now = OS.get_ticks_msec()
 		if tracked_item:
 			move_time = now
@@ -41,13 +49,40 @@ func track(item):
 		tracked_item = item
 
 func _ready():
+	get_tree().get_root().get_node("World/gui/dialogue_box").connect("cutscene_start", self, "_on_cutscene_start")
+	get_tree().get_root().get_node("World/gui/dialogue_box").connect("cutscene_end", self, "_on_cutscene_end")
 	# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
+# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed_clockwise", self, "_on_orientation_changed_clockwise")
+# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed_counter_clockwise", self, "_on_orientation_changed_counter_clockwise")
 #	_on_orientation_changed()
 
+func _on_cutscene_start():
+	var now = OS.get_ticks_msec()
+	is_cutscene = true
+	start_time = now
+	last_rotation = get_parent().rotation_degrees
+	start_rotation = get_parent().rotation_degrees
+	cutscene_rotation.y = start_rotation.y
+	end_rotation = start_rotation + Vector3(5, 0, 5)
+	rotating = true
+	
+
+func _on_cutscene_end():
+	is_cutscene = false
+	var now = OS.get_ticks_msec()
+	is_cutscene = true
+	start_time = now
+	start_rotation = get_parent().rotation_degrees
+	end_rotation = start_rotation + Vector3(-5, 0, -5)
+	rotating = true
+	
+	
 func _on_orientation_changed_clockwise():
+#	if is_cutscene:
+#		return
 	var now = OS.get_ticks_msec()
 #	if now - start_time < ttl:
 #		end_rotation += Vector3(0, 90, 0) 
@@ -59,6 +94,8 @@ func _on_orientation_changed_clockwise():
 	rotating = true
 
 func _on_orientation_changed_counter_clockwise():
+#	if is_cutscene:
+#		return
 	var now = OS.get_ticks_msec()
 #	if now - start_time < ttl:
 #		end_rotation -= Vector3(0, 90, 0) # rotations[Game.camera_orientation]
@@ -103,3 +140,7 @@ func _process(_delta):
 	else:
 		get_parent().rotation_degrees = end_rotation
 		rotating = false
+#	if is_cutscene and now - start_time < ttl:
+#		translation.y = lerp(19, 20, float(now - start_time) / float(ttl))
+#	if not is_cutscene and translation.y != 19:
+#		translation.y = lerp(20, 19, float(now - start_time) / float(ttl))

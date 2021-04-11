@@ -71,87 +71,87 @@ func _input(event):
 	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
 		if selected > 1:
 			select_menu_item(selected + 1)
-
-func _process(delta):
-	return
-	if player_data.music > 5:
-		player_data.music = 1
-	if player_data.music == 5:
-		get_node("musicBars/bar1").frame = 168
-		get_node("musicBars/bar2").frame = 169
-		get_node("musicBars/bar3").frame = 170
-		get_node("musicBars/bar4").frame = 171
-		get_node("musicBars/bar5").frame = 172
-	elif player_data.music == 4:
-		get_node("musicBars/bar1").frame = 168
-		get_node("musicBars/bar2").frame = 169
-		get_node("musicBars/bar3").frame = 170
-		get_node("musicBars/bar4").frame = 171
-		get_node("musicBars/bar5").frame = 140
-	elif player_data.music == 3:
-		get_node("musicBars/bar1").frame = 168
-		get_node("musicBars/bar2").frame = 169
-		get_node("musicBars/bar3").frame = 170
-		get_node("musicBars/bar4").frame = 139
-		get_node("musicBars/bar5").frame = 140
-	elif player_data.music == 2:
-		get_node("musicBars/bar1").frame = 168
-		get_node("musicBars/bar2").frame = 169
-		get_node("musicBars/bar3").frame = 138
-		get_node("musicBars/bar4").frame = 139
-		get_node("musicBars/bar5").frame = 140
-	elif player_data.music == 1:
-		get_node("musicBars/bar1").frame = 168
-		get_node("musicBars/bar2").frame = 137
-		get_node("musicBars/bar3").frame = 138
-		get_node("musicBars/bar4").frame = 139
-		get_node("musicBars/bar5").frame = 140
-	if player_data.sfx > 5:
-		player_data.sfx = 1
-	if player_data.sfx == 5:
-		get_node("SFXBars/bar1").frame = 168
-		get_node("SFXBars/bar2").frame = 169
-		get_node("SFXBars/bar3").frame = 170
-		get_node("SFXBars/bar4").frame = 171
-		get_node("SFXBars/bar5").frame = 172
-	elif player_data.sfx == 4:
-		get_node("SFXBars/bar1").frame = 168
-		get_node("SFXBars/bar2").frame = 169
-		get_node("SFXBars/bar3").frame = 170
-		get_node("SFXBars/bar4").frame = 171
-		get_node("SFXBars/bar5").frame = 140
-	elif player_data.sfx == 3:
-		get_node("SFXBars/bar1").frame = 168
-		get_node("SFXBars/bar2").frame = 169
-		get_node("SFXBars/bar3").frame = 170
-		get_node("SFXBars/bar4").frame = 139
-		get_node("SFXBars/bar5").frame = 140
-	elif player_data.sfx == 2:
-		get_node("SFXBars/bar1").frame = 168
-		get_node("SFXBars/bar2").frame = 169
-		get_node("SFXBars/bar3").frame = 138
-		get_node("SFXBars/bar4").frame = 139
-		get_node("SFXBars/bar5").frame = 140
-	elif player_data.sfx == 1:
-		get_node("SFXBars/bar1").frame = 168
-		get_node("SFXBars/bar2").frame = 137
-		get_node("SFXBars/bar3").frame = 138
-		get_node("SFXBars/bar4").frame = 139
-		get_node("SFXBars/bar5").frame = 140
-	if selected == 0:
-		get_node("SelectArrow").position.x = 9
-		get_node("SelectArrow").position.y = 32
-		get_node("SelectArrow").frame = 0
-	elif selected == 1:
-		get_node("SelectArrow").position.x = 9
-		get_node("SelectArrow").position.y = 42
-		get_node("SelectArrow").frame = 0
-	elif selected == 2:
-		get_node("SelectArrow").position.x = 7
-		get_node("SelectArrow").position.y = 56
-		get_node("SelectArrow").frame = 0
-	elif selected == 3:
-		get_node("SelectArrow").position.x = 31
-		get_node("SelectArrow").position.y = 56
-		get_node("SelectArrow").frame = 0
+#
+#func _process(_delta):
+#	return
+#	if player_data.music > 5:
+#		player_data.music = 1
+#	if player_data.music == 5:
+#		get_node("musicBars/bar1").frame = 168
+#		get_node("musicBars/bar2").frame = 169
+#		get_node("musicBars/bar3").frame = 170
+#		get_node("musicBars/bar4").frame = 171
+#		get_node("musicBars/bar5").frame = 172
+#	elif player_data.music == 4:
+#		get_node("musicBars/bar1").frame = 168
+#		get_node("musicBars/bar2").frame = 169
+#		get_node("musicBars/bar3").frame = 170
+#		get_node("musicBars/bar4").frame = 171
+#		get_node("musicBars/bar5").frame = 140
+#	elif player_data.music == 3:
+#		get_node("musicBars/bar1").frame = 168
+#		get_node("musicBars/bar2").frame = 169
+#		get_node("musicBars/bar3").frame = 170
+#		get_node("musicBars/bar4").frame = 139
+#		get_node("musicBars/bar5").frame = 140
+#	elif player_data.music == 2:
+#		get_node("musicBars/bar1").frame = 168
+#		get_node("musicBars/bar2").frame = 169
+#		get_node("musicBars/bar3").frame = 138
+#		get_node("musicBars/bar4").frame = 139
+#		get_node("musicBars/bar5").frame = 140
+#	elif player_data.music == 1:
+#		get_node("musicBars/bar1").frame = 168
+#		get_node("musicBars/bar2").frame = 137
+#		get_node("musicBars/bar3").frame = 138
+#		get_node("musicBars/bar4").frame = 139
+#		get_node("musicBars/bar5").frame = 140
+#	if player_data.sfx > 5:
+#		player_data.sfx = 1
+#	if player_data.sfx == 5:
+#		get_node("SFXBars/bar1").frame = 168
+#		get_node("SFXBars/bar2").frame = 169
+#		get_node("SFXBars/bar3").frame = 170
+#		get_node("SFXBars/bar4").frame = 171
+#		get_node("SFXBars/bar5").frame = 172
+#	elif player_data.sfx == 4:
+#		get_node("SFXBars/bar1").frame = 168
+#		get_node("SFXBars/bar2").frame = 169
+#		get_node("SFXBars/bar3").frame = 170
+#		get_node("SFXBars/bar4").frame = 171
+#		get_node("SFXBars/bar5").frame = 140
+#	elif player_data.sfx == 3:
+#		get_node("SFXBars/bar1").frame = 168
+#		get_node("SFXBars/bar2").frame = 169
+#		get_node("SFXBars/bar3").frame = 170
+#		get_node("SFXBars/bar4").frame = 139
+#		get_node("SFXBars/bar5").frame = 140
+#	elif player_data.sfx == 2:
+#		get_node("SFXBars/bar1").frame = 168
+#		get_node("SFXBars/bar2").frame = 169
+#		get_node("SFXBars/bar3").frame = 138
+#		get_node("SFXBars/bar4").frame = 139
+#		get_node("SFXBars/bar5").frame = 140
+#	elif player_data.sfx == 1:
+#		get_node("SFXBars/bar1").frame = 168
+#		get_node("SFXBars/bar2").frame = 137
+#		get_node("SFXBars/bar3").frame = 138
+#		get_node("SFXBars/bar4").frame = 139
+#		get_node("SFXBars/bar5").frame = 140
+#	if selected == 0:
+#		get_node("SelectArrow").position.x = 9
+#		get_node("SelectArrow").position.y = 32
+#		get_node("SelectArrow").frame = 0
+#	elif selected == 1:
+#		get_node("SelectArrow").position.x = 9
+#		get_node("SelectArrow").position.y = 42
+#		get_node("SelectArrow").frame = 0
+#	elif selected == 2:
+#		get_node("SelectArrow").position.x = 7
+#		get_node("SelectArrow").position.y = 56
+#		get_node("SelectArrow").frame = 0
+#	elif selected == 3:
+#		get_node("SelectArrow").position.x = 31
+#		get_node("SelectArrow").position.y = 56
+#		get_node("SelectArrow").frame = 0
 

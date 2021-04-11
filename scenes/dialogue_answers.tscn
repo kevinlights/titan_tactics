@@ -9,12 +9,12 @@ size = 13
 font_data = ExtResource( 1 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 23
+flags = 2
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 23
+flags = 2
 atlas = ExtResource( 2 )
 region = Rect2( 0, 8, 8, 8 )
 
@@ -141,4 +141,5 @@ autowrap = true
 position = Vector2( 43.507, -100 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 4 )
+frame = 1
 playing = true

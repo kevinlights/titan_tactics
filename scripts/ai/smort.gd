@@ -4,88 +4,95 @@ class_name SmortAI
 var world
 var characters
 var i_am = TT.CONTROL.AI
+var visual_range = 5
 
-func _init(world):
-	self.world = world
+func _init(new_world):
+	self.world = new_world
 	characters = self.world.current[TT.CONTROL.AI]
 
+func should_idle(character):
+	var enemy = get_nearest_enemy(character.translation)
+	var distance = character.translation.distance_to(enemy.translation)
+	return distance > visual_range
+		
+	
 func play():
 	if world.game_over:
 		return
 	var character = world.get_current()
+	if should_idle(character):
+		print("[AI] (" + character.character.name + ") idle")
+		character.is_done = true
+		world.advance_turn()
+		return
+	print("[AI] (" + character.character.name + ") play")
 	world.get_node("lookat/camera").track(character)
 	if character.character.control != TT.CONTROL.AI:
-		print("AI (" + character.character.name + ") says not my turn, skipping")
+		print("[AI] (" + character.character.name + ") not my turn, skipping")
 		return
-	print("AI taking turn")
 	yield(world.get_tree().create_timer(2.0), "timeout")
 	if character.character.has_ability(TT.ABILITY.HEAL):
 		var dying = get_dying_ally(character)
 		if dying:
-			print("AI (" + character.character.name + ") says heal " + dying.character.name)
+			print("[AI] (" + character.character.name + ") heal " + dying.character.name)
 			character.heal(dying)
 			character.is_done = true
 			yield(world.get_tree().create_timer(2.0), "timeout")
 			world.advance_turn()
 			return
 	var enemy = get_nearest_enemy_with_disadvantage(character)
-	if not enemy:
+	if not enemy or !can_attack(character, enemy):
 		enemy = get_nearest_enemy(character.translation)
 	if enemy:
 		if character.can_recruit() and character.character.has_ability(TT.ABILITY.HEAL):
-			print("AI (" + character.character.name + ") says heal self")
+			print("[AI] (" + character.character.name + ") heal self")
 			character.heal(character)
 			character.is_done = true
 			yield(world.get_tree().create_timer(2.0), "timeout")
 			world.advance_turn()
 			return
 		if can_attack(character, enemy):
-			print("AI (" + character.character.name + ") says attack")
-			world.gui.battle(character, enemy)
+			print("[AI] (" + character.character.name + ") attack")
+			world.gui.start("battle", enemy)
 			character.attack(enemy)
-#			character.is_done = true
-			if not character.is_connected("attack_complete", self, "play"):
-				character.connect("attack_complete", self, "play")
-			if not character.is_connected("attack_complete", world.gui, "battle_hide"):
-				character.connect("attack_complete", world.gui, "battle_hide")
+			character.connect("attack_complete", self, "play", [], CONNECT_ONESHOT)
 			return
 		else:
-			print("AI (" + character.character.name + ") can't attack")
+			print("[AI] (" + character.character.name + ") can't attack")
 		if character.character.turn_limits.move_distance > 1 and not can_attack(character, enemy):
 			var path = get_path_to(character, enemy, character.character.turn_limits.move_distance)
 			if path and path.size() > 1:
-				print("AI (" + character.character.name + ") says move")
+				print("[AI] (" + character.character.name + ") move")
 				character.move(path)
 				world.get_node("select").tile = path[path.size() - 1]
-				if not character.is_connected("path_complete", self, "play"):
-					character.connect("path_complete", self, "play")
+				character.connect("path_complete", self, "play", [], CONNECT_ONESHOT)
 				return
 			else:
-				print("AI (" + character.character.name + ") says no path")
+				print("[AI] (" + character.character.name + ") no path")
 				if not try_guarding(character):
-					print("AI (" + character.character.name + ") says wait (no path)")
+					print("[AI] (" + character.character.name + ") wait (no path)")
 				character.is_done = true
 				yield(world.get_tree().create_timer(2.0), "timeout")
 				world.advance_turn()
 				return
 		else:
 			if not try_guarding(character):
-				print("AI (" + character.character.name + ") says wait (out of moves)")
+				print("[AI] (" + character.character.name + ") wait (out of moves)")
 			character.is_done = true
 			yield(world.get_tree().create_timer(2.0), "timeout")
 			world.advance_turn()
 			return
 		# if we reach this point, abandon turn
-		if not try_guarding(character):
-			print("AI (" + character.character.name + ") abandons turn, exhausted options")
-		character.is_done = true
-		yield(world.get_tree().create_timer(2.0), "timeout")
-		world.advance_turn()
-		return
+#		if not try_guarding(character):
+#			print("[AI] (" + character.character.name + ") abandons turn, exhausted options")
+#		character.is_done = true
+#		yield(world.get_tree().create_timer(2.0), "timeout")
+#		world.advance_turn()
+#		return
 	else:
-		print("AI (" + character.character.name + ") can't find anyone to attack!")
+		print("[AI] (" + character.character.name + ") can't find anyone to attack!")
 		if not try_guarding(character):
-			print("AI (" + character.character.name + ") says wait (nothing to do)")
+			print("[AI] (" + character.character.name + ") wait (nothing to do)")
 		character.is_done = true
 		yield(world.get_tree().create_timer(2.0), "timeout")
 		world.advance_turn()
@@ -93,21 +100,35 @@ func play():
 func try_guarding(character):
 	if character.character.turn_limits.actions < 1:
 		return false
-	print("AI (" + character.character.name + ") says guard (last resort)")
+	print("[AI] (" + character.character.name + ") guard (last resort)")
 	character.guard()
 	return true
 
+func distance_between(attacker, target):
+	var attacker_cell = attacker.to_global(attacker.get_node("ranged_weapon").translation)
+	var target_cell = target.translation + Vector3(0.5, 0.5, 0.5)
+	# logic for disallowing diagonal attacks
+	# return abs(target_cell.x - attacker_cell.x) + abs(target_cell.z - attacker_cell.z)
+	# improved logic, matching character controller's can_attack_tile	
+	var from_tile = Vector2(attacker_cell.x, attacker_cell.z)
+	var to_tile = Vector2(target_cell.x, target_cell.z)
+	var distance = from_tile.distance_to(to_tile)
+	if attacker.character.atk_range == 1:
+		return distance
+	else:
+		return floor(distance)
+	
 func can_attack(attacker, victim, ignore_action_limit = false):
 	if attacker.character.turn_limits.actions < 1 and not ignore_action_limit:
 		return false
-	var distance = attacker.to_global(attacker.get_node("ranged_weapon").translation).distance_to(victim.translation)
+	var distance = distance_between(attacker, victim)
 	var cover = world.is_cover_between(attacker, victim.translation)
 	if not cover:
 #		print("no cover")
 #		var int_distance = int(distance * 10)
 #		distance = float(int_distance) / 10.0
-		distance = floor(distance)
-		print(distance, " <= ", attacker.character.atk_range)
+#		distance = floor(distance)
+		print("[AI] ", distance, " <= ", attacker.character.atk_range)
 		if distance <= attacker.character.atk_range:
 #			print("in range")
 			return true
@@ -169,13 +190,13 @@ func shorten_to_atk_range(path, character, target):
 	return path
 
 # only return weak allies with less than 10% of their HP so we don't waste heals on healthy individuals
-func get_dying_ally(i_am):
+func get_dying_ally(me):
 	var weakest
 	var lowest_hp = 999
 	for ally in characters:
-		if ally != i_am:
-			var distance = i_am.tile.distance_to(ally.tile)
-			if distance < i_am.character.atk_range:
+		if ally != me:
+			var distance = me.tile.distance_to(ally.tile)
+			if distance < me.character.atk_range:
 				if ally.can_recruit():
 					if ally.character.hp < lowest_hp and ally.character.max_hp / 10 < ally.character.hp:
 						lowest_hp = ally.character.hp

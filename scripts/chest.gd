@@ -14,23 +14,25 @@ var start_y = 0
 var ttl = 400
 
 var item_spawner
+var dialogue
 
 var item_types = {
 	TT.TYPE.ARCHER: "archer",
 	TT.TYPE.MAGE: "mage",
-	TT.TYPE.FIGHTER: "swordsman"
+	TT.TYPE.FIGHTER: "swordsman",
+	TT.TYPE.QUEST: "key"
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func teleport(x, y):
+func teleport(x, y, z):
 	tile.x = round(x)
-	tile.z = round(y)
-	tile.y = 0.1
+	tile.z = round(z)
+	tile.y = y + 0.1
 	translation.x = tile.x
 	translation.z = tile.z
-	translation.y = 0.1
+	translation.y = tile.y
 	print("Chest ", translation)
 
 func open(type):

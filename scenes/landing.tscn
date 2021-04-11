@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scripts/landing.gd" type="Script" id=1]
 [ext_resource path="res://music/menu_theme.ogg" type="AudioStream" id=2]
-[ext_resource path="res://sfx/UI/click_open.wav" type="AudioStream" id=3]
-[ext_resource path="res://sfx/UI/click_close.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/UI/click_open.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sfx/UI/click_close.ogg" type="AudioStream" id=4]
 [ext_resource path="res://sfx/UI/select.wav" type="AudioStream" id=5]
 [ext_resource path="res://gfx/ui/bg.png" type="Texture" id=6]
 [ext_resource path="res://gfx/ui/new_on.png" type="Texture" id=7]
@@ -123,6 +123,9 @@ custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="credits" type="Button" parent="menu"]
 margin_left = 111.0

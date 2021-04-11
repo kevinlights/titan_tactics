@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TT_SFX_V_ELYNE_AT1_01.ogg-ba496806845ae7217f56126f3b3f37ef.oggstr"
+
+[deps]
+
+source_file="res://VA/05-Elyne/TT_SFX_V_ELYNE_AT1_01.ogg"
+dest_files=[ "res://.import/TT_SFX_V_ELYNE_AT1_01.ogg-ba496806845ae7217f56126f3b3f37ef.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,24 +1,47 @@
-# kris
-Bowie, I was looking for you!
-
-//(insert animation on bowie(archer) shooting arrow toward tree?)
-
-# bowie
-Damn Kris, you made me miss the shot on that rabbit. This better be good.
+//Cutscene #1 Level 2
+# start
+> face bowie.east
+> face kris.north
 
 # kris
-The elders gave us a mission. We need to investigate why the caravan has not been seen in ages near our village. Let’s head North until Tyrmyr.
+> face kris.north
+Hey Bowie, how's it going? I was looking for you!
+
+> focus bowie
+
+> attack bowie.east
+> emote bowie.surprise
 
 # bowie
-All right! Adventure time with my buddy Kris!
+Ah dang, I just missed...
+
+> face bowie.south
+
+# bowie
+Oh hey Kris, what's up?
+
+# kris
+The elders put us on a mission. We were told to go investigate why the aid caravan hasn't come to Haki. We need to head to Tyrmyr and see what's going on right away!
+
+# bowie
+> emote bowie.happy
+Oh wow! We're going on an adventure together, that's so awesome!
 
 //tutorial2 starts here
 
 # bowie
-Let me just remind you of some stuff. Human enemies can use ether swords, bows or magic wands. You have a sword and I have a bow. Humans with bows can hit you from far away. Each type of unit has its own advantages against the others, causing you to deal or receive more damage to them. Sword beats bow, bow beats magic, and magic beats sword.
+Let me just see if I remember my training... Besides swordsmen like you and archers like myself, there are also mages who wield staffs, right? And just like me, mages can also attack from afar, can't they?
 
-> focus cover
-//animation enemy archer shooting arrow near our characters
+# kris
+Yes, they can. Only other swordsmen like myself need to be in close contact. Also remember each type of unit has its own strengths and weaknesses. Swordsmen are effective against archers, archers are effective against mages, and mages are effective against swordsmen.
 
 # bowie
-You can take cover behind that wall. Long range attacks will be blocked by the object you are hiding behind.
+Right, I almost forgot about that! I better watch out for enemy swordsmen the most then! By the way, take a look over there!
+
+> focus chest
+
+# bowie
+Notice that chest? I stashed some gear there in case we needed it, seems like now's the perfect time. You can press L1 or R1 in order to spin the camera to get a better view.
+
+# kris
+Nice, Let's go get it!

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TT_SFX_V_SWORDIE_H_01.ogg-42485c1f6ad23ee93089c3af8ac8bf92.oggstr"
+
+[deps]
+
+source_file="res://VA/09-Swordie/TT_SFX_V_SWORDIE_H_01.ogg"
+dest_files=[ "res://.import/TT_SFX_V_SWORDIE_H_01.ogg-42485c1f6ad23ee93089c3af8ac8bf92.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
