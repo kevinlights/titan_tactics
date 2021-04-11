@@ -7,5 +7,6 @@ func _ready():
 func play():
 	show()
 	$AnimationPlayer.current_animation = "Thunder storm"
+	$RainOfDeath.play()
 	yield(get_tree().create_timer(1.0), "timeout")
 	hide()

@@ -14,5 +14,6 @@ func play():
 	show()
 	$AnimationPlayer.seek(0)
 	$AnimationPlayer.play("Thunder storm")
+	$ThunderClap.play()
 	yield(get_tree().create_timer(1.0), "timeout")
 	hide()
