@@ -308,12 +308,14 @@ func stop_all_sfx(audio_path):
 func select():
 	pick_random_sfx($sfx/selected)
 
-func teleport(x, y):
+func teleport(x, y, z):
 	tile.x = floor(x)
-	tile.z = floor(y)
+	tile.y = y
+	tile.z = floor(z)
 	translation.x = floor(x)
-	translation.z = floor(y)
-	translation.y = 0
+	translation.y = y
+	translation.z = floor(z)
+	print('teleport', x, y, z)
 
 func heal(target):
 	if character.turn_limits.actions < 1 or !target:

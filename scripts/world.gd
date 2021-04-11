@@ -123,15 +123,7 @@ func spawn_cover(tile):
 	
 func spawn_chest(x, z, item_spawner, dialogue):
 	var chest = load("res://scenes/chest.tscn").instance()
-	var teleported = false
-	if pathfinder and pathfinder.overlay:
-		var possible_tiles = pathfinder.overlay.filter_tiles(x, z)
-		if possible_tiles.size() == 1:
-			var y = (possible_tiles[0].y - 2) / 2;
-			chest.teleport(x, y, z)
-			teleported = true
-	if !teleported:
-		chest.teleport(x, 0.0, z)
+	telport_spawn(chest, x, z)
 	chest.item_spawner = item_spawner
 	chest.dialogue = dialogue
 	chest.add_to_group("characters")
@@ -143,7 +135,7 @@ func spawn_chest(x, z, item_spawner, dialogue):
 func spawn_character(x, y, type = TT.TYPE.MAGE, control = TT.CONTROL.PLAYER):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	character.init(type, control)
-	character.teleport(x, y)
+	telport_spawn(character, x, y)
 	character.add_to_group("characters")
 	print('world_map.add_child(character) #1', character)
 	world_map.add_child(character)
@@ -492,7 +484,7 @@ func spawn_ai_character(ai_spawn, surprise = false):
 	ai_spawn.has_spawned = true
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	character.from_spawner(ai_spawn, surprise)
-	character.teleport(ai_spawn.translation.x, ai_spawn.translation.z)
+	telport_spawn(character, ai_spawn.translation.x, ai_spawn.translation.z)
 #	print("[World] Control: ", character.character.control)
 #	if !character.character.control:
 #		character.character.control = TT.CONTROL.AI
@@ -732,12 +724,12 @@ func check_move_triggers(character):
 					gui.start("dialogue_box", marker.dialogue)
 	#				gui.dialogue(marker.dialogue)
 					break
-
+	
 func auto_deploy_only_character():
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
 	character.from_library(Game.team[0])
-	character.teleport(floor(spawn.x), floor(spawn.z - 1))
+	telport_spawn(character, floor(spawn.x), floor(spawn.z - 1))
 	character.add_to_group("characters")
 	print("[World] Player spawn ", spawn)
 	print('world_map.add_child(character) #3', character)
@@ -763,7 +755,7 @@ func _on_select_team_member(team_member):
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
 	var spawn = player_spawns.pop_front()
 	character.from_library(team_member)
-	character.teleport(floor(spawn.x), floor(spawn.z - 1))
+	telport_spawn(character, floor(spawn.x), floor(spawn.z - 1))
 	character.add_to_group("characters")
 	print('world_map.add_child(character) #3', character)
 	world_map.add_child(character)
@@ -1082,6 +1074,17 @@ func _input(event):
 
 	if event.is_action("context_cancel"):
 		_repaint_range_overlay()
+
+func telport_spawn(object, x, z):
+	var teleported = false
+	if pathfinder and pathfinder.overlay:
+		var possible_tiles = pathfinder.overlay.filter_tiles(x, z)
+		if possible_tiles.size() == 1:
+			var y = (possible_tiles[0].y - 2) / 2;
+			object.teleport(x, y, z)
+			teleported = true
+	if !teleported:
+		object.teleport(x, 0.0, z)
 
 func _repaint_range_overlay():
 	range_overlay.clear()
