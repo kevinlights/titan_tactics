@@ -43,7 +43,9 @@ func _overlay(progress, color):
 	var targetColor = color
 	var colorval = 1 - (((200 / 100) * progress) / 255) #0..1
 	for i in ml.get_item_list():
-		ml.get_item_mesh(i).surface_get_material(0).set("albedo_color",Color(colorval,colorval,colorval))
+		var name = ml.get_item_name(i)
+		if name != 'Water':
+			ml.get_item_mesh(i).surface_get_material(0).set("albedo_color",Color(colorval,colorval,colorval))
 	
 
 func _on_start_level():
