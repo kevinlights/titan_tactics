@@ -1,0 +1,35 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://scripts/dialogue/dialogue_message.gd" type="Script" id=1]
+[ext_resource path="res://scripts/dialogue/dialogue_action.gd" type="Script" id=2]
+[ext_resource path="res://scripts/dialogue/dialogue.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+title = " start"
+message = ""
+music = "gate"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+title = " kris"
+message = "The key fits! We've made it!
+"
+music = ""
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 1 )
+title = " bowie"
+message = "Yay! Let's get inside, quickly!
+"
+music = ""
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 2 )
+action = "win"
+target = ""
+music = ""
+
+[resource]
+script = ExtResource( 3 )
+messages = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
