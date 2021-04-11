@@ -91,7 +91,7 @@ itchio:linux:
   script:
     - butler push ./${EXPORT_NAME}_linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
   dependencies:
-    - linux_debug
+    - linux
   only: 
     - master
 
@@ -100,7 +100,7 @@ itchio:windows:
   script:
     - butler push ./${EXPORT_NAME}_windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
   dependencies:
-    - windows_debug
+    - windows
   only: 
     - master
 
@@ -109,6 +109,6 @@ itchio:macosx:
   script:
     - butler push ./${EXPORT_NAME}_mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
   dependencies:
-    - mac_debug
+    - mac
   only: 
     - master
