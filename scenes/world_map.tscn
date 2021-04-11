@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/world_map.gd" type="Script" id=2]
@@ -6,24 +6,29 @@
 [ext_resource path="res://gfx/map_select.png" type="Texture" id=4]
 [ext_resource path="res://gfx/mapdots.png" type="Texture" id=5]
 [ext_resource path="res://music/map_theme.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sfx/gameplay/cant_do.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
 font_data = ExtResource( 1 )
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 12, 13 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 12, 0, 12, 13 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 24, 0, 12, 13 )
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 36, 0, 12, 13 )
 
@@ -155,6 +160,7 @@ __meta__ = {
 [node name="map_selector" type="AnimatedSprite" parent="."]
 position = Vector2( 70, 134 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 centered = false
 
@@ -167,7 +173,7 @@ frames = SubResource( 8 )
 [node name="map point2" type="AnimatedSprite" parent="." groups=[
 "map_points",
 ]]
-position = Vector2( 60.6175, 121.028 )
+position = Vector2( 59.6175, 121.028 )
 frames = SubResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="map point2"]
@@ -430,5 +436,11 @@ frames = SubResource( 10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
 stream = ExtResource( 6 )
-volume_db = -2.0
+volume_db = 3.0
 autoplay = true
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="denied" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 7 )
+volume_db = -9.0

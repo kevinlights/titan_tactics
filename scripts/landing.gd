@@ -2,7 +2,7 @@ extends Node2D
 
 var is_web = OS.get_name() == "HTML5"
 
-func _input(event):	
+func _input(event):
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
 		$sfx/open.play()
 	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
@@ -16,7 +16,8 @@ func _ready():
 	else:
 		$menu/continue.hide()
 		$menu/newgame.grab_focus()
-	$menu/credits_overlay/ok.connect("pressed", self, "_on_close_credits")
+# warning-ignore:return_value_discarded
+	$menu/credits_overlay/roll/ok.connect("pressed", self, "_on_close_credits")
 #	if is_web and $menu/margin/vbox/quit:
 #		$menu/margin/vbox/quit.hide()
 
@@ -43,6 +44,7 @@ func _on_newgame():
 func _start_game():
 	$sfx/select.play()
 	yield(get_tree().create_timer(0.3), "timeout")
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/world_map.tscn")
 	
 
@@ -50,4 +52,5 @@ func _start_game():
 func _on_credits_pressed():
 	$sfx/select.play()
 	$menu/credits_overlay.show()
-	$menu/credits_overlay/ok.grab_focus()
+	$menu/credits_overlay/roll/ok.grab_focus()
+	$menu/credits_overlay/roll/AnimationPlayer.current_animation = "roll"

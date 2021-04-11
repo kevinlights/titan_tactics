@@ -13,3 +13,5 @@ dest_files=[ "res://.import/test.dlg-8c2c4c55cb81fcd669ba49a30a44e857.tres" ]
 
 title_prefix="#"
 action_prefix="$"
+music_prefix="$"
+comment_prefix="//"

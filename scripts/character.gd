@@ -27,12 +27,14 @@ enum PERSONALITY {
 
 var turn_limits = {
 	"move_distance": 64,
+	"move_actions": 1, # can move only once per turn
 	"actions": 1 # attack, heal, guard
 }
 
 func end_turn():
 	turn_limits.move_distance = default_stats.mov_range
 	turn_limits.actions = 1 # TT.class_stats.actions[type]
+	turn_limits.move_actions = 1
 
 func _init(request_type, request_control):
 	default_stats = class_stats.archer
@@ -54,6 +56,7 @@ func _init(request_type, request_control):
 	hp = floor(default_stats.hp + rand_range((Game.level + 1) * 4, (Game.level + 1) * 5) - 15)
 	turn_limits.move_distance = default_stats.mov_range
 	turn_limits.actions = 1 # TT.class_stats.actions[type]
+	turn_limits.move_actions = 1
 	attack_range = default_stats.atk_range
 	#attack_damage = TT.class_stats.damage[type]	
 	

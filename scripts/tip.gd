@@ -1,6 +1,7 @@
 extends Control
 
 onready var world = get_parent().get_parent()
+onready var gui = get_parent()
 
 func get_characters_with_actions():
 	var num_done = 0
@@ -8,10 +9,15 @@ func get_characters_with_actions():
 		if character_check.is_done:
 			num_done += 1
 	return world.current[TT.CONTROL.PLAYER].size() - num_done
-
-func _process(delta):
-	if world.current_turn == TT.CONTROL.AI or get_parent().active:
+#
+func _process(_delta):
+#	if world.current_turn == TT.CONTROL.AI:
+#		hide()
+#	else:
+#		show()
+	if gui.is_blocking():
 		hide()
+		return
 	else:
 		show()
 	if world.current[TT.CONTROL.PLAYER].size() == 1 or get_characters_with_actions() < 2:

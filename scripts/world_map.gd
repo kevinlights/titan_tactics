@@ -19,6 +19,7 @@ func _ready():
 
 func make_path_visible():
 	var map_points = get_tree().get_nodes_in_group("map_points")
+	$map_selector.visible = false
 	var final_point
 	var animated_path = []
 	for i in range(0, map_points.size()):
@@ -38,13 +39,27 @@ func make_path_visible():
 		final_point.self_modulate.a = 0.5
 		yield(get_tree().create_timer(0.1), "timeout")
 		final_point.self_modulate.a = 1
+	$map_selector.visible = true
 
 func move_selector():
+	var level_count = Game.get_level_count()
+	if(Game.level >= Game.get_level_count()):
+		Game.level = Game.get_level_count() - 1
 	$text.text = "Level " + str(Game.level + 1) + ": " + TT.levels[Game.level].name
 	$map_selector.position = level_markers[Game.level]
 
 enum DIR {
 	UP, RIGHT, DOWN, LEFT
+}
+var lvl_dir_override = {
+	4: {
+		DIR.DOWN: -1,
+		DIR.RIGHT: 1,
+	},
+	7: {
+		DIR.LEFT: -1,
+		DIR.DOWN: 1,
+	}
 }
 func _input(event):
 	var lvl = Game.level
@@ -63,25 +78,32 @@ func _input(event):
 		elif event.is_action("ui_right"):
 			dir = DIR.RIGHT
 		if dir != null:
-			var orig_lvl = lvl + 0.0
-			var current = level_markers[Game.level]
-			if Game.level < 9:
-				var next = level_markers[Game.level + 1]
-				var matching_dirs = get_dirs(current, next)
-				if matching_dirs.find(dir) > -1:
-					lvl += 1
-			if Game.level > 0:
-				print('prev')
-				var prev = level_markers[Game.level - 1]
-				var matching_dirs = get_dirs(current, prev)
-				if matching_dirs.find(dir) > -1:
-					lvl -= 1
+			if lvl_dir_override.has(Game.level + 1):
+				var current_override = lvl_dir_override[Game.level + 1]
+				if current_override.has(dir):
+					lvl += current_override[dir]
+			else:
+				var current = level_markers[Game.level]
+				if Game.level < 9:
+					var next = level_markers[Game.level + 1]
+					var matching_dirs = get_dirs(current, next)
+					if matching_dirs.find(dir) > -1:
+						lvl += 1
+				if Game.level > 0:
+					var prev = level_markers[Game.level - 1]
+					var matching_dirs = get_dirs(current, prev)
+					if matching_dirs.find(dir) > -1:
+						lvl -= 1
+			if lvl == Game.level:
+				get_node('sfx/denied').play()
 	Game.level = clamp(lvl, 0, TT.levels.size() -1)
 	if Game.level > Game.unlocked_level:
+		get_node('sfx/denied').play()
 		Game.level = Game.unlocked_level
 	move_selector()
 	if event.is_action("ui_accept") && !event.is_echo() && event.is_pressed():
 		yield(get_tree().create_timer(0.3), "timeout")
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/world.tscn")
 
 func get_dirs(start, end):

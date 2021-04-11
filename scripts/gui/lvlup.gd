@@ -1,6 +1,6 @@
 extends Control
 
-signal close
+signal closed
 
 var current_atk
 var current_def
@@ -16,8 +16,8 @@ var atlas = {
 	TT.TYPE.MAGE: "mage"
 }
 
-#should be called after the level and stats are increased
 func on_level_up(diff, character):
+	get_tree().get_root().get_node("World/gui/sfx/level_up").play()
 	$char_sprite.play(atlas[character.character_class])
 	$new_lvl.text = "%02d" % (character.level)
 	$current_hp.text = "%02d" % (character.max_hp - diff.hp)
@@ -30,9 +30,14 @@ func on_level_up(diff, character):
 	show()
 	$Control/Ok.grab_focus()
 
+func init(args):
+	on_level_up(args[0], args[1])
+
+func out():
+	hide()
 
 func _on_ok_pressed():
 	if !visible:
 		return
-	hide()
-	emit_signal("close")
+	get_parent().back()
+	emit_signal("closed")

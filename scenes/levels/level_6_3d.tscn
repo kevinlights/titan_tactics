@@ -2,26 +2,33 @@
 
 [ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=1]
 [ext_resource path="res://scripts/level.gd" type="Script" id=2]
-[ext_resource path="res://scripts/gridmap_pathfinder.gd" type="Script" id=3]
+[ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=3]
 [ext_resource path="res://gfx/OBJS/snow.meshlib" type="MeshLibrary" id=4]
 [ext_resource path="res://scripts/playerspawner.gd" type="Script" id=5]
 [ext_resource path="res://scripts/character_stats.gd" type="Script" id=6]
 [ext_resource path="res://scripts/item.gd" type="Script" id=7]
 [ext_resource path="res://scripts/status_effect.gd" type="Script" id=8]
-[ext_resource path="res://scripts/pt_dialogue.gd" type="Script" id=9]
+[ext_resource path="res://gfx/range-overlay/overlay.meshlib" type="MeshLibrary" id=9]
 [ext_resource path="res://gfx/chest_icon.png" type="Texture" id=10]
-[ext_resource path="res://gfx/mage.png" type="Texture" id=11]
+[ext_resource path="res://gfx/archer.png" type="Texture" id=11]
 [ext_resource path="res://scripts/characterspawner.gd" type="Script" id=12]
 [ext_resource path="res://scripts/item_spawner.gd" type="Script" id=13]
 [ext_resource path="res://scripts/chestspawner.gd" type="Script" id=14]
 [ext_resource path="res://resources/story/level6_start.dialogue" type="Resource" id=15]
 [ext_resource path="res://resources/story/level6_end.dialogue" type="Resource" id=16]
-[ext_resource path="res://resources/cast/elyne.tres" type="Resource" id=17]
+[ext_resource path="res://scripts/gridmap/overlay_gridmap.gd" type="Script" id=17]
+[ext_resource path="res://gfx/boba.png" type="Texture" id=18]
+[ext_resource path="res://gfx/sky/snow.png" type="Texture" id=19]
+[ext_resource path="res://gfx/swordsman.png" type="Texture" id=20]
+[ext_resource path="res://gfx/mage.png" type="Texture" id=21]
+[ext_resource path="res://gfx/speak_map.png" type="Texture" id=22]
+[ext_resource path="res://scripts/dialogue/story_marker.gd" type="Script" id=23]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 13 )
 equipment_slot = 0
-level = 1
+level = 2
+quest_item = "key"
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 8 )
@@ -65,11 +72,11 @@ effect = SubResource( 4 )
 script = ExtResource( 6 )
 character_class = 3
 name = "Ward"
-level = 1
-hp = 8
-max_hp = 8
-atk = 3
-def = 3
+level = 6
+hp = 28
+max_hp = 28
+atk = 6
+def = 5
 atk_range = 1
 mov_range = 5
 heal = 0
@@ -80,26 +87,23 @@ portrait_override = ""
 control = 1
 
 [sub_resource type="Resource" id=7]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
 
 [sub_resource type="Resource" id=8]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
+script = ExtResource( 7 )
+character_class = 3
+equipment_slot = 0
+level = 0
+name = "Small Nothing"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 7 )
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 8 )
@@ -110,183 +114,98 @@ name = ""
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 7 )
-character_class = 4
+character_class = 3
 equipment_slot = 0
 level = 0
-name = "Small Boba Juice"
+name = "Small Nothing"
 attack = 1
-attack_range = 0
+attack_range = 1
 defense = 0
 heal = 0
 effect = SubResource( 9 )
 
 [sub_resource type="Resource" id=11]
-script = ExtResource( 8 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=12]
-script = ExtResource( 7 )
-character_class = 4
-equipment_slot = 0
-level = 0
-name = "Weak Boba Juice"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 11 )
-
-[sub_resource type="Resource" id=13]
 script = ExtResource( 6 )
-character_class = 4
+character_class = 3
 name = "Horm"
-level = 1
-hp = 9
-max_hp = 9
-atk = 3
-def = 3
+level = 4
+hp = 17
+max_hp = 17
+atk = 5
+def = 4
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 10 )
-item_def = SubResource( 12 )
+item_atk = SubResource( 8 )
+item_def = SubResource( 10 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=14]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=15]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=18]
+[sub_resource type="Resource" id=12]
 script = ExtResource( 8 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=19]
+[sub_resource type="Resource" id=13]
+script = ExtResource( 7 )
+character_class = 3
+equipment_slot = 0
+level = 0
+name = "Small Nothing"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 12 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=15]
 script = ExtResource( 7 )
 character_class = 3
 equipment_slot = 0
 level = 0
 name = "Weak Nothing"
 attack = 1
-attack_range = 0
-defense = 0
-heal = 0
-effect = SubResource( 18 )
-
-[sub_resource type="Resource" id=20]
-script = ExtResource( 8 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=21]
-script = ExtResource( 7 )
-character_class = 3
-equipment_slot = 0
-level = 0
-name = "Lesser Nothing"
-attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 20 )
+effect = SubResource( 14 )
 
-[sub_resource type="Resource" id=22]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 6 )
 character_class = 3
 name = "Tarek"
-level = 1
-hp = 8
-max_hp = 8
-atk = 3
-def = 3
+level = 4
+hp = 17
+max_hp = 17
+atk = 5
+def = 4
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 19 )
-item_def = SubResource( 21 )
+item_atk = SubResource( 13 )
+item_def = SubResource( 15 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=23]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=24]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=25]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 8 )
 effect = 3
 turns = 0
 damage = 0
 name = ""
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 7 )
 character_class = 3
 equipment_slot = 0
@@ -296,7 +215,100 @@ attack = 1
 attack_range = 0
 defense = 0
 heal = 0
-effect = SubResource( 25 )
+effect = SubResource( 17 )
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 7 )
+character_class = 3
+equipment_slot = 0
+level = 0
+name = "Broken Nothing"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 19 )
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 6 )
+character_class = 3
+name = "Yava"
+level = 6
+hp = 28
+max_hp = 28
+atk = 6
+def = 5
+atk_range = 1
+mov_range = 5
+heal = 0
+item_atk = SubResource( 18 )
+item_def = SubResource( 20 )
+recruit_mode = 0
+portrait_override = ""
+control = 1
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 7 )
+character_class = 3
+equipment_slot = 0
+level = 0
+name = "Broken Nothing"
+attack = 1
+attack_range = 0
+defense = 0
+heal = 0
+effect = SubResource( 22 )
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 7 )
+character_class = 3
+equipment_slot = 0
+level = 0
+name = "Broken Nothing"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 24 )
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 6 )
+character_class = 3
+name = "Bram"
+level = 5
+hp = 22
+max_hp = 22
+atk = 5
+def = 5
+atk_range = 1
+mov_range = 5
+heal = 0
+item_atk = SubResource( 23 )
+item_def = SubResource( 25 )
+recruit_mode = 0
+portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=27]
 script = ExtResource( 8 )
@@ -312,50 +324,47 @@ equipment_slot = 0
 level = 0
 name = "Broken Nothing"
 attack = 1
-attack_range = 1
+attack_range = 0
 defense = 0
 heal = 0
 effect = SubResource( 27 )
 
 [sub_resource type="Resource" id=29]
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
+
+[sub_resource type="Resource" id=30]
+script = ExtResource( 7 )
+character_class = 3
+equipment_slot = 0
+level = 0
+name = "Small Nothing"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 29 )
+
+[sub_resource type="Resource" id=31]
 script = ExtResource( 6 )
 character_class = 3
-name = "Yava"
-level = 1
-hp = 8
-max_hp = 8
-atk = 3
-def = 3
+name = "Laura"
+level = 4
+hp = 17
+max_hp = 17
+atk = 5
+def = 4
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 26 )
-item_def = SubResource( 28 )
+item_atk = SubResource( 28 )
+item_def = SubResource( 30 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
-
-[sub_resource type="Resource" id=30]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=31]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
 
 [sub_resource type="Resource" id=32]
 script = ExtResource( 8 )
@@ -366,12 +375,12 @@ name = ""
 
 [sub_resource type="Resource" id=33]
 script = ExtResource( 7 )
-character_class = 3
+character_class = 0
 equipment_slot = 0
 level = 0
-name = "Broken Nothing"
+name = "Weak Sword"
 attack = 1
-attack_range = 0
+attack_range = 1
 defense = 0
 heal = 0
 effect = SubResource( 32 )
@@ -385,10 +394,10 @@ name = ""
 
 [sub_resource type="Resource" id=35]
 script = ExtResource( 7 )
-character_class = 3
+character_class = 0
 equipment_slot = 0
 level = 0
-name = "Broken Nothing"
+name = "Small Knife"
 attack = 1
 attack_range = 1
 defense = 0
@@ -397,12 +406,12 @@ effect = SubResource( 34 )
 
 [sub_resource type="Resource" id=36]
 script = ExtResource( 6 )
-character_class = 3
-name = "Bram"
-level = 1
-hp = 8
-max_hp = 8
-atk = 3
+character_class = 0
+name = "Sonn"
+level = 6
+hp = 85
+max_hp = 85
+atk = 8
 def = 3
 atk_range = 1
 mov_range = 5
@@ -414,26 +423,23 @@ portrait_override = ""
 control = 1
 
 [sub_resource type="Resource" id=37]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
 
 [sub_resource type="Resource" id=38]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
+script = ExtResource( 7 )
+character_class = 1
+equipment_slot = 0
+level = 0
+name = "Lesser Bow"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 37 )
 
 [sub_resource type="Resource" id=39]
 script = ExtResource( 8 )
@@ -444,230 +450,154 @@ name = ""
 
 [sub_resource type="Resource" id=40]
 script = ExtResource( 7 )
-character_class = 3
+character_class = 1
 equipment_slot = 0
 level = 0
-name = "Rusted Nothing"
+name = "Puny Bow"
 attack = 1
-attack_range = 0
+attack_range = 1
 defense = 0
 heal = 0
 effect = SubResource( 39 )
 
 [sub_resource type="Resource" id=41]
-script = ExtResource( 8 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
+script = ExtResource( 6 )
+character_class = 1
+name = "Toni"
+level = 6
+hp = 80
+max_hp = 80
+atk = 8
+def = 3
+atk_range = 3
+mov_range = 6
+heal = 0
+item_atk = SubResource( 38 )
+item_def = SubResource( 40 )
+recruit_mode = 0
+portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=42]
-script = ExtResource( 7 )
-character_class = 3
-equipment_slot = 0
-level = 0
-name = "Weak Nothing"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 41 )
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
 
 [sub_resource type="Resource" id=43]
-script = ExtResource( 6 )
-character_class = 3
-name = "Ruth"
-level = 1
-hp = 8
-max_hp = 8
-atk = 3
-def = 3
-atk_range = 1
-mov_range = 5
-heal = 0
-item_atk = SubResource( 40 )
-item_def = SubResource( 42 )
-recruit_mode = 0
-portrait_override = ""
-control = 1
+script = ExtResource( 7 )
+character_class = 2
+equipment_slot = 0
+level = 0
+name = "Broken Wand"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 1
+effect = SubResource( 42 )
 
 [sub_resource type="Resource" id=44]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
 
 [sub_resource type="Resource" id=45]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
+script = ExtResource( 7 )
+character_class = 2
+equipment_slot = 0
+level = 0
+name = "Lesser Wand"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 1
+effect = SubResource( 44 )
 
 [sub_resource type="Resource" id=46]
-script = ExtResource( 8 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
+script = ExtResource( 6 )
+character_class = 2
+name = "Rory"
+level = 6
+hp = 75
+max_hp = 75
+atk = 8
+def = 3
+atk_range = 4
+mov_range = 4
+heal = 0
+item_atk = SubResource( 43 )
+item_def = SubResource( 45 )
+recruit_mode = 0
+portrait_override = ""
+control = 1
 
 [sub_resource type="Resource" id=47]
-script = ExtResource( 7 )
-character_class = 3
-equipment_slot = 0
-level = 0
-name = "Broken Nothing"
-attack = 1
-attack_range = 0
-defense = 0
-heal = 0
-effect = SubResource( 46 )
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
 
 [sub_resource type="Resource" id=48]
-script = ExtResource( 8 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
+script = ExtResource( 7 )
+character_class = 0
+equipment_slot = 0
+level = 0
+name = "Weak Knife"
+attack = 1
+attack_range = 1
+defense = 0
+heal = 0
+effect = SubResource( 47 )
 
 [sub_resource type="Resource" id=49]
-script = ExtResource( 7 )
-character_class = 3
-equipment_slot = 0
-level = 0
-name = "Small Nothing"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 0
-effect = SubResource( 48 )
+script = ExtResource( 8 )
+effect = 3
+turns = 0
+damage = 0
+name = ""
 
 [sub_resource type="Resource" id=50]
-script = ExtResource( 6 )
-character_class = 3
-name = "Laura"
-level = 1
-hp = 8
-max_hp = 8
-atk = 3
-def = 3
-atk_range = 1
-mov_range = 5
-heal = 0
-item_atk = SubResource( 47 )
-item_def = SubResource( 49 )
-recruit_mode = 0
-portrait_override = ""
-control = 1
-
-[sub_resource type="Resource" id=51]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=52]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
-
-[sub_resource type="Resource" id=53]
-script = ExtResource( 8 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=54]
 script = ExtResource( 7 )
-character_class = 4
+character_class = 0
 equipment_slot = 0
 level = 0
-name = "Small Boba Juice"
-attack = 1
-attack_range = 0
-defense = 0
-heal = 0
-effect = SubResource( 53 )
-
-[sub_resource type="Resource" id=55]
-script = ExtResource( 8 )
-effect = 3
-turns = 0
-damage = 0
-name = ""
-
-[sub_resource type="Resource" id=56]
-script = ExtResource( 7 )
-character_class = 4
-equipment_slot = 0
-level = 0
-name = "Broken Boba Juice"
+name = "Rusted Cleaver"
 attack = 1
 attack_range = 1
 defense = 0
 heal = 0
-effect = SubResource( 55 )
+effect = SubResource( 49 )
 
-[sub_resource type="Resource" id=57]
+[sub_resource type="Resource" id=51]
 script = ExtResource( 6 )
-character_class = 4
-name = "Ruth"
-level = 1
-hp = 9
-max_hp = 9
-atk = 3
+character_class = 0
+name = "Diego"
+level = 6
+hp = 85
+max_hp = 85
+atk = 8
 def = 3
 atk_range = 1
 mov_range = 5
 heal = 0
-item_atk = SubResource( 54 )
-item_def = SubResource( 56 )
+item_atk = SubResource( 48 )
+item_def = SubResource( 50 )
 recruit_mode = 0
 portrait_override = ""
 control = 1
 
-[sub_resource type="Resource" id=58]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
+[sub_resource type="PanoramaSky" id=52]
+radiance_size = 0
+panorama = ExtResource( 19 )
 
-[sub_resource type="Resource" id=59]
-script = ExtResource( 9 )
-dialogue_id = ""
-portrait = 0
-trigger = 0
-trigger_id = ""
-title = ""
-text = ""
-branches = [  ]
-audio_theme = ""
+[sub_resource type="Environment" id=53]
+background_mode = 2
+background_sky = SubResource( 52 )
+background_sky_custom_fov = 100.0
 
 [node name="level" type="Spatial"]
 script = ExtResource( 2 )
@@ -683,13 +613,22 @@ mesh_library = ExtResource( 4 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
-"cells": PoolIntArray( 0, 0, 655363, 1, 0, 655363, 2, 0, 655363, 3, 0, 655363, 4, 0, 655363, 5, 0, 655363, 6, 0, 1441805, 7, 0, 1441805, 8, 0, 655363, 9, 0, 655363, 10, 0, 655363, 11, 0, 655363, 12, 0, 655363, 13, 0, 655363, 14, 0, 655363, 15, 0, 655363, 16, 0, 655363, 65535, 0, 655363, 131080, 0, 1048578, -131066, 0, 12, -131065, 0, 12, 0, 1, 3, 1, 1, 3, 2, 1, 3, 3, 1, 3, 4, 1, 3, 5, 1, 655363, 6, 1, 1441805, 7, 1, 1441805, 8, 1, 655363, 9, 1, 655363, 10, 1, 3, 11, 1, 3, 12, 1, 3, 13, 1, 3, 14, 1, 3, 15, 1, 3, 16, 1, 655363, 17, 1, 655363, 18, 1, 655363, 65533, 1, 655363, 65534, 1, 655363, 65535, 1, 655363, 131072, 1, 5, 131075, 1, 5, 131081, 1, 1441801, 131084, 1, 1441797, 131086, 1, 1441797, 196605, 1, 1048580, -131066, 1, 12, -131065, 1, 12, 0, 2, 3, 1, 2, 3, 2, 2, 3, 3, 2, 3, 4, 2, 3, 5, 2, 655363, 6, 2, 1441805, 7, 2, 1441805, 8, 2, 655363, 9, 2, 3, 10, 2, 3, 11, 2, 3, 12, 2, 3, 13, 2, 3, 14, 2, 3, 15, 2, 3, 16, 2, 3, 17, 2, 3, 18, 2, 655363, 65532, 2, 655363, 65533, 2, 655363, 65534, 2, 3, 65535, 2, 3, 131084, 2, 5, 131088, 2, 1048583, 131090, 2, 655369, 196605, 2, 1048580, -131066, 2, 12, -131065, 2, 12, 0, 3, 3, 1, 3, 3, 2, 3, 3, 3, 3, 3, 4, 3, 3, 5, 3, 655363, 6, 3, 1441805, 7, 3, 1441805, 8, 3, 655363, 9, 3, 3, 10, 3, 3, 11, 3, 3, 12, 3, 3, 13, 3, 3, 14, 3, 3, 15, 3, 3, 16, 3, 3, 17, 3, 3, 18, 3, 655363, 65530, 3, 655363, 65531, 3, 655363, 65532, 3, 655363, 65533, 3, 3, 65534, 3, 3, 65535, 3, 3, 131088, 3, 10, 131089, 3, 1048586, 196605, 3, 1048580, 196606, 3, 1048583, -131066, 3, 12, -131065, 3, 12, 0, 4, 3, 1, 4, 3, 2, 4, 3, 3, 4, 3, 4, 4, 3, 5, 4, 655363, 6, 4, 1441805, 7, 4, 1441805, 8, 4, 655363, 9, 4, 3, 10, 4, 3, 11, 4, 3, 12, 4, 3, 13, 4, 3, 14, 4, 3, 15, 4, 3, 16, 4, 3, 17, 4, 3, 18, 4, 655363, 65530, 4, 655363, 65531, 4, 3, 65532, 4, 3, 65533, 4, 3, 65534, 4, 3, 65535, 4, 3, 131082, 4, 1048580, 131087, 4, 655364, 131088, 4, 655364, 131089, 4, 655364, 196602, 4, 1441801, 196604, 4, 655367, 196605, 4, 1048580, 196607, 4, 655370, -131066, 4, 12, -131065, 4, 12, 0, 5, 3, 1, 5, 3, 2, 5, 3, 3, 5, 3, 4, 5, 3, 5, 5, 655363, 6, 5, 1441805, 7, 5, 1441805, 8, 5, 655363, 9, 5, 3, 10, 5, 3, 11, 5, 3, 12, 5, 3, 13, 5, 3, 14, 5, 3, 15, 5, 3, 16, 5, 3, 17, 5, 3, 18, 5, 655363, 65530, 5, 655363, 65531, 5, 3, 65532, 5, 3, 65533, 5, 3, 65534, 5, 3, 65535, 5, 3, 131075, 5, 1048580, 131084, 5, 1048580, 131086, 5, 655369, 131087, 5, 1048591, 131088, 5, 1048591, 131089, 5, 1048591, 131090, 5, 1048591, 196603, 5, 1048585, 196604, 5, 1441801, 196623, 5, 1048594, 196626, 5, 1048594, -131066, 5, 12, -131065, 5, 12, 0, 6, 3, 1, 6, 3, 2, 6, 3, 3, 6, 3, 4, 6, 3, 5, 6, 655363, 6, 6, 1441805, 7, 6, 1441805, 8, 6, 655363, 9, 6, 3, 10, 6, 3, 11, 6, 3, 12, 6, 3, 13, 6, 3, 14, 6, 3, 15, 6, 3, 16, 6, 3, 17, 6, 3, 18, 6, 655363, 65530, 6, 655363, 65531, 6, 3, 65532, 6, 3, 65533, 6, 3, 65534, 6, 3, 65535, 6, 3, 131075, 6, 1048580, 131077, 6, 655367, 131082, 6, 1048580, 131084, 6, 0, 131085, 6, 655364, 131087, 6, 15, 131088, 6, 15, 131089, 6, 15, 131090, 6, 15, 196604, 6, 655370, -131066, 6, 12, -131065, 6, 12, 0, 7, 3, 1, 7, 3, 2, 7, 3, 3, 7, 3, 4, 7, 3, 5, 7, 655363, 6, 7, 1441805, 7, 7, 1441805, 8, 7, 655363, 9, 7, 3, 10, 7, 3, 11, 7, 3, 12, 7, 3, 13, 7, 3, 14, 7, 3, 15, 7, 3, 16, 7, 3, 17, 7, 3, 18, 7, 655363, 65530, 7, 655363, 65531, 7, 3, 65532, 7, 3, 65533, 7, 3, 65534, 7, 3, 65535, 7, 3, 131079, 7, 655371, 131082, 7, 1048580, 131087, 7, 1441809, 131088, 7, 15, 131089, 7, 15, 131090, 7, 15, 196625, 7, 1048592, 196626, 7, 1048592, 262162, 7, 1048584, -131066, 7, 12, -131065, 7, 12, 0, 8, 3, 1, 8, 3, 2, 8, 3, 3, 8, 3, 4, 8, 3, 5, 8, 655363, 6, 8, 1441805, 7, 8, 1441805, 8, 8, 655363, 9, 8, 3, 10, 8, 3, 11, 8, 3, 12, 8, 3, 13, 8, 3, 14, 8, 3, 15, 8, 3, 16, 8, 3, 17, 8, 3, 18, 8, 655363, 65530, 8, 655363, 65531, 8, 655363, 65532, 8, 3, 65533, 8, 3, 65534, 8, 3, 65535, 8, 3, 131082, 8, 1048580, 131087, 8, 1441809, 131088, 8, 15, 131089, 8, 15, 131090, 8, 15, 196625, 8, 1048592, 196626, 8, 1048592, -131066, 8, 12, -131065, 8, 12, 0, 9, 3, 1, 9, 3, 2, 9, 3, 3, 9, 3, 4, 9, 3, 5, 9, 655363, 6, 9, 1441805, 7, 9, 1441805, 8, 9, 655363, 9, 9, 3, 10, 9, 3, 11, 9, 3, 12, 9, 3, 13, 9, 3, 14, 9, 3, 15, 9, 3, 16, 9, 3, 17, 9, 3, 18, 9, 655363, 65530, 9, 655363, 65531, 9, 655363, 65532, 9, 3, 65533, 9, 3, 65534, 9, 3, 65535, 9, 3, 131082, 9, 1048580, 131084, 9, 1048580, 131087, 9, 15, 131088, 9, 15, 131089, 9, 15, 131090, 9, 15, 196603, 9, 655367, -131066, 9, 12, -131065, 9, 12, 0, 10, 3, 1, 10, 3, 2, 10, 3, 3, 10, 3, 4, 10, 3, 5, 10, 655363, 6, 10, 1441805, 7, 10, 1441805, 8, 10, 655363, 9, 10, 3, 10, 10, 3, 11, 10, 3, 12, 10, 3, 13, 10, 3, 14, 10, 3, 15, 10, 3, 16, 10, 3, 17, 10, 3, 18, 10, 655363, 65530, 10, 655363, 65531, 10, 655363, 65532, 10, 3, 65533, 10, 3, 65534, 10, 3, 65535, 10, 3, 131072, 10, 655367, 131074, 10, 1048578, 131075, 10, 655370, 131081, 10, 655369, 131087, 10, 15, 131088, 10, 15, 131089, 10, 15, 131090, 10, 15, 196602, 10, 655364, 196603, 10, 655364, 196604, 10, 655364, 196623, 10, 1441810, 196626, 10, 1441810, -131066, 10, 12, -131065, 10, 12, 0, 11, 3, 1, 11, 3, 2, 11, 3, 3, 11, 3, 4, 11, 3, 5, 11, 655363, 6, 11, 1441805, 7, 11, 1441805, 8, 11, 655363, 9, 11, 3, 10, 11, 3, 11, 11, 3, 12, 11, 3, 13, 11, 3, 14, 11, 3, 15, 11, 3, 16, 11, 3, 17, 11, 3, 18, 11, 655363, 65530, 11, 655363, 65531, 11, 655363, 65532, 11, 655363, 65533, 11, 3, 65534, 11, 3, 65535, 11, 3, 131075, 11, 655362, 131084, 11, 1048580, 131088, 11, 655369, -131066, 11, 12, -131065, 11, 12, 0, 12, 3, 1, 12, 3, 2, 12, 3, 3, 12, 3, 4, 12, 3, 5, 12, 655363, 6, 12, 1441805, 7, 12, 1441805, 8, 12, 655363, 9, 12, 3, 10, 12, 3, 11, 12, 3, 12, 12, 3, 13, 12, 3, 14, 12, 3, 15, 12, 3, 16, 12, 3, 17, 12, 3, 18, 12, 655363, 65530, 12, 655363, 65531, 12, 655363, 65532, 12, 655363, 65533, 12, 3, 65534, 12, 3, 65535, 12, 3, 131079, 12, 655371, 131084, 12, 1048580, 131086, 12, 1048580, 131089, 12, 655364, 131090, 12, 655364, -131066, 12, 12, -131065, 12, 12, 0, 13, 3, 1, 13, 1441795, 2, 13, 655363, 3, 13, 655363, 4, 13, 3, 5, 13, 655363, 6, 13, 1441805, 7, 13, 1441805, 8, 13, 655363, 9, 13, 3, 10, 13, 3, 11, 13, 3, 12, 13, 3, 13, 13, 3, 14, 13, 3, 15, 13, 3, 16, 13, 3, 17, 13, 655363, 18, 13, 655363, 65532, 13, 655363, 65533, 13, 655363, 65534, 13, 655363, 65535, 13, 3, 131075, 13, 1048580, 131084, 13, 1048580, 131086, 13, 0, 131087, 13, 7, -131066, 13, 12, -131065, 13, 12, 0, 14, 655363, 1, 14, 1441795, 2, 14, 655363, 3, 14, 655363, 4, 14, 655363, 5, 14, 1611268099, 6, 14, 1441805, 7, 14, 1441805, 8, 14, 655363, 9, 14, 3, 10, 14, 3, 11, 14, 3, 12, 14, 3, 13, 14, 1611268099, 14, 14, 655363, 15, 14, 655363, 16, 14, 655363, 17, 14, 1611268099, 65532, 14, 655363, 65533, 14, 655363, 65534, 14, 655363, 65535, 14, 655363, 131075, 14, 1048580, 131080, 14, 655370, 131086, 14, 655369, -131066, 14, 12, -131065, 14, 12, 4, 15, 655363, 5, 15, 655363, 6, 15, 1441805, 7, 15, 1441805, 8, 15, 655363, 9, 15, 538312707, 10, 15, 655363, 11, 15, 655363, 12, 15, 655363, 13, 15, 655363, 14, 15, 537526275, 15, 15, 537526275, 16, 15, 655363, 131081, 15, 1048585, -131066, 15, 12, -131065, 15, 536870924 )
+"cells": PoolIntArray( 0, 0, 655363, 1, 0, 655363, 2, 0, 655363, 3, 0, 655363, 4, 0, 655363, 5, 0, 655363, 6, 0, 1441805, 7, 0, 1441805, 8, 0, 655363, 9, 0, 655363, 10, 0, 655363, 11, 0, 655363, 12, 0, 655363, 13, 0, 655363, 14, 0, 655363, 15, 0, 655363, 16, 0, 655363, 65535, 0, 655363, 131080, 0, 1048578, -131066, 0, 12, -131065, 0, 12, 0, 1, 3, 1, 1, 3, 2, 1, 3, 3, 1, 3, 4, 1, 3, 5, 1, 655363, 6, 1, 1441805, 7, 1, 1441805, 8, 1, 655363, 9, 1, 655363, 10, 1, 3, 11, 1, 3, 12, 1, 3, 13, 1, 3, 14, 1, 3, 15, 1, 3, 16, 1, 655363, 17, 1, 655363, 18, 1, 655363, 65533, 1, 655363, 65534, 1, 655363, 65535, 1, 655363, 131072, 1, 5, 131075, 1, 5, 131081, 1, 1441801, 131084, 1, 1441797, 131086, 1, 1441797, 196605, 1, 1048580, -131066, 1, 12, -131065, 1, 12, 0, 2, 3, 1, 2, 3, 2, 2, 3, 3, 2, 3, 4, 2, 3, 5, 2, 655363, 6, 2, 1441805, 7, 2, 1441805, 8, 2, 655363, 9, 2, 3, 10, 2, 3, 11, 2, 3, 12, 2, 3, 13, 2, 3, 14, 2, 3, 15, 2, 3, 16, 2, 3, 17, 2, 3, 18, 2, 655363, 65532, 2, 655363, 65533, 2, 655363, 65534, 2, 3, 65535, 2, 3, 131084, 2, 5, 131088, 2, 1048583, 131090, 2, 655369, 196605, 2, 1048580, -131066, 2, 12, -131065, 2, 12, 0, 3, 3, 1, 3, 3, 2, 3, 3, 3, 3, 3, 4, 3, 3, 5, 3, 655363, 6, 3, 1441805, 7, 3, 1441805, 8, 3, 655363, 9, 3, 3, 10, 3, 3, 11, 3, 3, 12, 3, 3, 13, 3, 3, 14, 3, 3, 15, 3, 3, 16, 3, 3, 17, 3, 3, 18, 3, 655363, 65530, 3, 655363, 65531, 3, 655363, 65532, 3, 655363, 65533, 3, 3, 65534, 3, 3, 65535, 3, 3, 131088, 3, 10, 131089, 3, 1048586, 196605, 3, 1048580, 196606, 3, 1048583, -131066, 3, 12, -131065, 3, 12, 0, 4, 3, 1, 4, 3, 2, 4, 3, 3, 4, 3, 4, 4, 3, 5, 4, 655363, 6, 4, 1441805, 7, 4, 1441805, 8, 4, 655363, 9, 4, 3, 10, 4, 3, 11, 4, 3, 12, 4, 3, 13, 4, 3, 14, 4, 3, 15, 4, 3, 16, 4, 3, 17, 4, 3, 18, 4, 655363, 65530, 4, 655363, 65531, 4, 3, 65532, 4, 3, 65533, 4, 3, 65534, 4, 3, 65535, 4, 3, 131082, 4, 1048580, 131087, 4, 655364, 131088, 4, 655364, 131089, 4, 655364, 196602, 4, 1441801, 196604, 4, 655367, 196605, 4, 1048580, 196607, 4, 655370, -131066, 4, 12, -131065, 4, 12, 0, 5, 3, 1, 5, 3, 2, 5, 3, 3, 5, 3, 4, 5, 3, 5, 5, 655363, 6, 5, 1441805, 7, 5, 1441805, 8, 5, 655363, 9, 5, 3, 10, 5, 3, 11, 5, 3, 12, 5, 3, 13, 5, 3, 14, 5, 3, 15, 5, 3, 16, 5, 3, 17, 5, 3, 18, 5, 655363, 65530, 5, 655363, 65531, 5, 3, 65532, 5, 3, 65533, 5, 3, 65534, 5, 3, 65535, 5, 3, 131075, 5, 1048580, 131084, 5, 1048580, 131086, 5, 655369, 131087, 5, 1048591, 131088, 5, 1048591, 131089, 5, 1048591, 131090, 5, 1048591, 196603, 5, 1048585, 196604, 5, 1441801, 196623, 5, 1048594, 196626, 5, 1048594, -131066, 5, 12, -131065, 5, 12, 0, 6, 3, 1, 6, 3, 2, 6, 3, 3, 6, 3, 4, 6, 3, 5, 6, 655363, 6, 6, 1441805, 7, 6, 1441805, 8, 6, 655363, 9, 6, 3, 10, 6, 3, 11, 6, 3, 12, 6, 3, 13, 6, 3, 14, 6, 3, 15, 6, 3, 16, 6, 3, 17, 6, 3, 18, 6, 655363, 65530, 6, 655363, 65531, 6, 3, 65532, 6, 3, 65533, 6, 3, 65534, 6, 3, 65535, 6, 3, 131075, 6, 1048580, 131077, 6, 655367, 131082, 6, 1048580, 131084, 6, 0, 131085, 6, 655364, 131087, 6, 15, 131088, 6, 15, 131089, 6, 15, 131090, 6, 15, 196604, 6, 655370, -131066, 6, 12, -131065, 6, 12, 0, 7, 3, 1, 7, 3, 2, 7, 3, 3, 7, 3, 4, 7, 3, 5, 7, 655363, 6, 7, 1441805, 7, 7, 1441805, 8, 7, 655363, 9, 7, 3, 10, 7, 3, 11, 7, 3, 12, 7, 3, 13, 7, 3, 14, 7, 3, 15, 7, 3, 16, 7, 3, 17, 7, 3, 18, 7, 655363, 65530, 7, 655363, 65531, 7, 3, 65532, 7, 3, 65533, 7, 3, 65534, 7, 3, 65535, 7, 3, 131079, 7, 655371, 131082, 7, 1048580, 131087, 7, 1441809, 131088, 7, 15, 131089, 7, 15, 131090, 7, 15, 196625, 7, 1048592, 196626, 7, 1048592, 262162, 7, 1048584, -131066, 7, 12, -131065, 7, 12, 0, 8, 3, 1, 8, 3, 2, 8, 3, 3, 8, 3, 4, 8, 3, 5, 8, 655363, 6, 8, 1441805, 7, 8, 1441805, 8, 8, 655363, 9, 8, 3, 10, 8, 3, 11, 8, 3, 12, 8, 3, 13, 8, 3, 14, 8, 3, 15, 8, 3, 16, 8, 3, 17, 8, 3, 18, 8, 655363, 65530, 8, 655363, 65531, 8, 655363, 65532, 8, 3, 65533, 8, 3, 65534, 8, 3, 65535, 8, 3, 131082, 8, 1048580, 131087, 8, 1441809, 131088, 8, 15, 131089, 8, 15, 131090, 8, 15, 196625, 8, 1048592, 196626, 8, 1048592, -131066, 8, 12, -131065, 8, 12, 0, 9, 3, 1, 9, 3, 2, 9, 3, 3, 9, 3, 4, 9, 3, 5, 9, 655363, 6, 9, 1441805, 7, 9, 1441805, 8, 9, 655363, 9, 9, 3, 10, 9, 3, 11, 9, 3, 12, 9, 3, 13, 9, 3, 14, 9, 3, 15, 9, 3, 16, 9, 3, 17, 9, 3, 18, 9, 655363, 65530, 9, 655363, 65531, 9, 655363, 65532, 9, 3, 65533, 9, 3, 65534, 9, 3, 65535, 9, 3, 131082, 9, 1048580, 131084, 9, 1048580, 131087, 9, 15, 131088, 9, 15, 131089, 9, 15, 131090, 9, 15, 196603, 9, 655367, -131066, 9, 12, -131065, 9, 12, 0, 10, 3, 1, 10, 3, 2, 10, 3, 3, 10, 3, 4, 10, 3, 5, 10, 655363, 6, 10, 1441805, 7, 10, 1441805, 8, 10, 655363, 9, 10, 3, 10, 10, 3, 11, 10, 3, 12, 10, 3, 13, 10, 3, 14, 10, 3, 15, 10, 3, 16, 10, 3, 17, 10, 3, 18, 10, 655363, 65530, 10, 655363, 65531, 10, 655363, 65532, 10, 3, 65533, 10, 3, 65534, 10, 3, 65535, 10, 3, 131072, 10, 655367, 131074, 10, 1048578, 131075, 10, 655370, 131081, 10, 655369, 131087, 10, 15, 131088, 10, 15, 131089, 10, 15, 131090, 10, 15, 196602, 10, 655364, 196603, 10, 655364, 196604, 10, 655364, 196623, 10, 1441810, 196626, 10, 1441810, -131066, 10, 12, -131065, 10, 12, 0, 11, 3, 1, 11, 3, 2, 11, 3, 3, 11, 3, 4, 11, 3, 5, 11, 655363, 6, 11, 1441805, 7, 11, 1441805, 8, 11, 655363, 9, 11, 3, 10, 11, 3, 11, 11, 3, 12, 11, 3, 13, 11, 3, 14, 11, 3, 15, 11, 3, 16, 11, 3, 17, 11, 3, 18, 11, 655363, 65530, 11, 655363, 65531, 11, 655363, 65532, 11, 655363, 65533, 11, 3, 65534, 11, 3, 65535, 11, 3, 131075, 11, 655362, 131084, 11, 1048580, 131088, 11, 655369, -131066, 11, 12, -131065, 11, 12, 0, 12, 3, 1, 12, 3, 2, 12, 3, 3, 12, 3, 4, 12, 3, 5, 12, 655363, 6, 12, 1441805, 7, 12, 1441805, 8, 12, 655363, 9, 12, 3, 10, 12, 3, 11, 12, 3, 12, 12, 3, 13, 12, 3, 14, 12, 3, 15, 12, 3, 16, 12, 3, 17, 12, 3, 18, 12, 655363, 65530, 12, 655363, 65531, 12, 655363, 65532, 12, 655363, 65533, 12, 3, 65534, 12, 3, 65535, 12, 3, 131079, 12, 655371, 131084, 12, 1048580, 131086, 12, 1048580, 131089, 12, 655364, 131090, 12, 655364, -131066, 12, 12, -131065, 12, 12, 0, 13, 3, 1, 13, 1441795, 2, 13, 655363, 3, 13, 655363, 4, 13, 3, 5, 13, 655363, 6, 13, 1441805, 7, 13, 1441805, 8, 13, 655363, 9, 13, 3, 10, 13, 3, 11, 13, 3, 12, 13, 3, 13, 13, 3, 14, 13, 3, 15, 13, 3, 16, 13, 3, 17, 13, 655363, 18, 13, 655363, 65532, 13, 655363, 65533, 13, 655363, 65534, 13, 655363, 65535, 13, 3, 131075, 13, 1048580, 131084, 13, 1048580, 131086, 13, 0, 131087, 13, 7, -131066, 13, 12, -131065, 13, 12, 0, 14, 655363, 1, 14, 1441795, 2, 14, 655363, 3, 14, 655363, 4, 14, 655363, 5, 14, 655363, 6, 14, 1441805, 7, 14, 1441805, 8, 14, 655363, 9, 14, 3, 10, 14, 3, 11, 14, 3, 12, 14, 3, 13, 14, 655363, 14, 14, 655363, 15, 14, 655363, 16, 14, 655363, 17, 14, 655363, 65532, 14, 655363, 65533, 14, 655363, 65534, 14, 655363, 65535, 14, 655363, 131075, 14, 1048580, 131080, 14, 655370, 131086, 14, 655369, -131066, 14, 12, -131065, 14, 12, 4, 15, 655363, 5, 15, 655363, 6, 15, 1441805, 7, 15, 1441805, 8, 15, 655363, 9, 15, 1441795, 10, 15, 655363, 11, 15, 655363, 12, 15, 655363, 13, 15, 655363, 14, 15, 655363, 15, 15, 655363, 16, 15, 655363, 131081, 15, 1048585, -131066, 15, 12, -131065, 15, 12 )
 }
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
+
+[node name="overlay" type="GridMap" parent="Spatial/terrain"]
+mesh_library = ExtResource( 9 )
+cell_size = Vector3( 1, 0.5, 1 )
+cell_scale = 0.5
+data = {
+"cells": PoolIntArray( 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 196607, 0, 0, 131074, 1, 0, 131077, 1, 0, 131080, 1, 0, 131082, 1, 0, 131087, 1, 0, 131090, 1, 0, 196606, 1, 0, 196607, 1, 0, 131074, 2, 0, 131077, 2, 0, 131080, 2, 0, 131081, 2, 0, 131082, 2, 0, 131087, 2, 0, 196604, 2, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131080, 3, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 131086, 3, 0, 131087, 3, 0, 131090, 3, 0, 196602, 3, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 4, 0, 131077, 4, 0, 131080, 4, 0, 131081, 4, 0, 131083, 4, 0, 131084, 4, 0, 131085, 4, 0, 131086, 4, 0, 131090, 4, 0, 196606, 4, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 5, 0, 131085, 5, 0, 131087, 5, 0, 131090, 5, 0, 196602, 5, 0, 196605, 5, 0, 196606, 5, 0, 196607, 5, 0, 196624, 5, 0, 196625, 5, 0, 131072, 6, 0, 131073, 6, 0, 131074, 6, 0, 131080, 6, 0, 131081, 6, 0, 131083, 6, 0, 131086, 6, 0, 196602, 6, 0, 196603, 6, 0, 196605, 6, 0, 196606, 6, 0, 196607, 6, 0, 196623, 6, 0, 196624, 6, 0, 196625, 6, 0, 196626, 6, 0, 131072, 7, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131078, 7, 1441794, 131079, 7, 1048578, 131080, 7, 0, 131081, 7, 0, 131083, 7, 0, 131084, 7, 0, 131085, 7, 0, 131086, 7, 0, 131087, 7, 1441793, 131089, 7, 0, 196602, 7, 0, 196603, 7, 0, 196604, 7, 0, 196605, 7, 0, 196606, 7, 0, 196607, 7, 0, 196624, 7, 0, 196626, 7, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131080, 8, 0, 131081, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 8, 1441793, 131089, 8, 0, 131090, 8, 0, 196604, 8, 0, 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 196624, 8, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 9, 0, 131077, 9, 0, 131080, 9, 0, 131081, 9, 0, 131083, 9, 0, 131085, 9, 0, 131086, 9, 0, 196604, 9, 0, 196605, 9, 0, 196606, 9, 0, 196623, 9, 0, 196624, 9, 0, 196625, 9, 0, 196626, 9, 0, 131073, 10, 0, 131076, 10, 0, 131077, 10, 0, 131080, 10, 0, 131082, 10, 0, 131083, 10, 0, 131084, 10, 0, 131085, 10, 0, 131086, 10, 0, 131087, 10, 0, 131090, 10, 0, 196605, 10, 0, 196606, 10, 0, 196624, 10, 0, 196625, 10, 0, 131072, 11, 0, 131073, 11, 0, 131074, 11, 0, 131076, 11, 0, 131077, 11, 0, 131080, 11, 0, 131081, 11, 0, 131082, 11, 0, 131083, 11, 0, 131085, 11, 0, 131086, 11, 0, 131087, 11, 0, 131089, 11, 0, 131090, 11, 0, 196602, 11, 0, 196603, 11, 0, 196604, 11, 0, 196605, 11, 0, 196606, 11, 0, 196607, 11, 0, 131072, 12, 0, 131073, 12, 0, 131074, 12, 0, 131075, 12, 0, 131076, 12, 0, 131077, 12, 0, 131078, 12, 1441794, 131079, 12, 1048578, 131080, 12, 0, 131081, 12, 0, 131082, 12, 0, 131083, 12, 0, 131085, 12, 0, 131087, 12, 0, 131088, 12, 0, 196602, 12, 0, 196603, 12, 0, 196604, 12, 0, 196605, 12, 0, 196606, 12, 0, 196607, 12, 0, 131072, 13, 0, 131073, 13, 0, 131074, 13, 0, 131076, 13, 0, 131077, 13, 0, 131080, 13, 0, 131081, 13, 0, 131082, 13, 0, 131083, 13, 0, 131085, 13, 0, 131089, 13, 0, 131090, 13, 0, 196604, 13, 0, 196605, 13, 0, 196606, 13, 0, 196607, 13, 0, 131072, 14, 0, 131073, 14, 0, 131074, 14, 0, 131076, 14, 0, 131077, 14, 0, 131081, 14, 0, 131082, 14, 0, 131083, 14, 0, 131084, 14, 0, 131085, 14, 0, 131089, 14, 0, 196604, 14, 0, 196605, 14, 0, 196606, 14, 0, 196607, 14, 0, 131076, 15, 0, 131077, 15, 0, 131080, 15, 0, 131082, 15, 0, 131083, 15, 0, 131084, 15, 0, 131085, 15, 0, 131086, 15, 0, 131087, 15, 0, 131088, 15, 0 )
+}
+script = ExtResource( 17 )
 
 [node name="decorative" type="GridMap" parent="Spatial"]
 mesh_library = ExtResource( 4 )
@@ -746,97 +685,129 @@ texture = ExtResource( 1 )
 script = ExtResource( 5 )
 
 [node name="ChestSpawner" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.2, 15 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 10 )
 script = ExtResource( 14 )
 item_spawner = SubResource( 1 )
+dialogue = null
 
 [node name="CharacterSpawner" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.347, 7 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 7 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 18 )
 script = ExtResource( 12 )
 stats = SubResource( 6 )
-dialogue = SubResource( 7 )
-recruit_dialogue = SubResource( 8 )
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.347, 8 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 8 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 13 )
-dialogue = SubResource( 14 )
-recruit_dialogue = SubResource( 15 )
-
-[node name="CharacterSpawner3" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.347, 9 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 11 )
-script = ExtResource( 12 )
-stats = ExtResource( 17 )
-dialogue = SubResource( 16 )
-recruit_dialogue = SubResource( 17 )
+stats = SubResource( 11 )
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.347, 5 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 5 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 22 )
-dialogue = SubResource( 23 )
-recruit_dialogue = SubResource( 24 )
+stats = SubResource( 16 )
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.347, 8 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.2, 8 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 29 )
-dialogue = SubResource( 30 )
-recruit_dialogue = SubResource( 31 )
+stats = SubResource( 21 )
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.347, 10 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.071, 0.2, 4 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 36 )
-dialogue = SubResource( 37 )
-recruit_dialogue = SubResource( 38 )
-
-[node name="CharacterSpawner7" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.347, 13 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 11 )
-script = ExtResource( 12 )
-stats = SubResource( 43 )
-dialogue = SubResource( 44 )
-recruit_dialogue = SubResource( 45 )
+stats = SubResource( 26 )
 
 [node name="CharacterSpawner8" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.347, 12 )
-pixel_size = 0.04
-billboard = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.099, 0.2, 15 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 18 )
+script = ExtResource( 12 )
+stats = SubResource( 31 )
+
+[node name="CharacterSpawner3" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 9 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 20 )
+script = ExtResource( 12 )
+stats = SubResource( 36 )
+
+[node name="CharacterSpawner7" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.2, 10 )
+centered = false
+pixel_size = 0.06
+axis = 1
 texture = ExtResource( 11 )
 script = ExtResource( 12 )
-stats = SubResource( 50 )
-dialogue = SubResource( 51 )
-recruit_dialogue = SubResource( 52 )
+stats = SubResource( 41 )
 
 [node name="CharacterSpawner9" type="Sprite3D" parent="map"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.347, 4 )
-pixel_size = 0.04
-billboard = 1
-texture = ExtResource( 11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.2, 8 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 21 )
 script = ExtResource( 12 )
-stats = SubResource( 57 )
-dialogue = SubResource( 58 )
-recruit_dialogue = SubResource( 59 )
+stats = SubResource( 46 )
+
+[node name="CharacterSpawner10" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 11 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 20 )
+script = ExtResource( 12 )
+stats = SubResource( 51 )
+
+[node name="StoryMarker" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.2, 8 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 22 )
+script = ExtResource( 23 )
+marker_name = "crystal"
+dialogue = null
+quest_dialogue = null
+
+[node name="StoryMarker2" type="Sprite3D" parent="map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 4 )
+centered = false
+pixel_size = 0.06
+axis = 1
+texture = ExtResource( 22 )
+script = ExtResource( 23 )
+marker_name = "warehouse"
+dialogue = null
+quest_dialogue = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 53 )
+__meta__ = {
+"_editor_description_": ""
+}

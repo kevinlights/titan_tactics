@@ -32,14 +32,8 @@ var directions = {
 	}
 }
 
-enum MODE {
-	PLAY,
-	CHECK_MAP
-}
-
-
 var camera_captured = false
-var mode = MODE.PLAY
+#var mode = MODE.PLAY
 var tile = Vector3(0, 0, 0) setget set_tile, get_tile
 var current_entity
 var disabled = false
@@ -63,88 +57,112 @@ func get_tile():
 	return tile
 
 func disable():
-	print("disable selector")
-	disabled = true
+	pass
+#	print("disable selector")
+#	disabled = true
 
 func enable():
-	print("enable selector")
-	disabled = false
-	set_context(world.get_current_context(tile))
-	capture_camera()
+	pass
+#	print("enable selector")
+#	disabled = false
+#	set_context(world.get_current_context(tile))
+#	capture_camera()
 
 func update_context():
 	set_context(world.get_current_context(tile))
 
 func set_context(context):
+	if world.pathfinder and world.pathfinder.overlay:
+		var possible_tiles = world.pathfinder.overlay.filter_tiles(tile.x, tile.z)
+		if possible_tiles.size() == 1:
+			$top.translation.y = (possible_tiles[0].y - 2) / 2
+	else:
+		$top.translation.y = 0;
 #	if world.current_turn == TT.CONTROL.AI or context == TT.CONTEXT.NOT_PLAYABLE:
 #		print("context is not playable, hiding selector")
 #		play("blank")
 #		return
-	$top.translation.y = 0.25
+	$top.translation.y += 0.25
 	match(context):
 		TT.CONTEXT.USE:
 			play("attack")
-			$top.translation.y = 0.6
+			$top.translation.y += 0.6 - 0.25
 		TT.CONTEXT.ATTACK:
 			play("attack")
-			$top.translation.y = 1.0
+			$top.translation.y += 1.0 - 0.25
 		TT.CONTEXT.GUARD:
 			play("guard")
-			$top.translation.y = 1.0
+			$top.translation.y += 1.0 - 0.25
 		TT.CONTEXT.HEAL:
 			play("heal")
-			$top.translation.y = 1.0
+			$top.translation.y += 1.0 - 0.25
 		TT.CONTEXT.MOVE:
 			play("default")
 		TT.CONTEXT.NOT_ALLOWED:
 			play("cantmove")
 
-func _input(event):
-	var advance = Vector3(0, 0, 0)
-	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
-#		play("blank")
-		return
-	if gui.active or disabled or gui.modal:
-		if not world.current_turn == TT.CONTROL.AI:
-			play("attack")
-			return
-	if world.current_turn == TT.CONTROL.AI:
-		play("blank")
-		return
-#	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
-#		set_origin(get_parent().get_current())
-		return
-	if event.is_action("character_switch") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
-		get_parent().change_character()
-		return
-	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
-#		advance.z = 1
-		advance = directions[Game.camera_orientation]["down"]
-	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
-#		advance.z = -1
-		advance = directions[Game.camera_orientation]["up"]
-	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
-#		advance.x = -1
-		advance = directions[Game.camera_orientation]["left"]
-	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
-#		advance.x = 1
-		advance = directions[Game.camera_orientation]["right"]
-	self.tile = self.tile + advance
-	if not advance.is_equal_approx(Vector3(0, 0, 0)):
-		print("select tile ", tile)
-		emit_signal("moved", self.tile)
+func _ready():
+	gui.connect("selector_left", self, "_on_selector_move", ["left"])
+	gui.connect("selector_right", self, "_on_selector_move", ["right"])
+	gui.connect("selector_up", self, "_on_selector_move", ["up"])
+	gui.connect("selector_down", self, "_on_selector_move", ["down"])
 
-	if mode == MODE.PLAY:
-		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
-			world.action()
-		if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
-			gui.call_deferred("back")
+func _on_selector_move(dir):
+	var new_tile = self.tile + directions[Game.camera_orientation][dir]
+	print(dir, new_tile)
+	if world.pathfinder and world.pathfinder.is_tile_within(new_tile.x, new_tile.z):
+		self.tile = new_tile
+		emit_signal("moved", self.tile)
 	else:
-		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
-			gui.team_confirm()
-			disable()
-		if animation != "attack":
-			play("attack")
+		gui.get_node('sfx/denied').play()
+#
+#func x_input(event):
+#	var advance = Vector3(0, 0, 0)
+#	if world.get_current_context(tile) == TT.CONTEXT.NOT_PLAYABLE:
+##		play("blank")
+#		return
+##	if gui.active or disabled or gui.modal:
+#	if disabled:
+#		if not world.current_turn == TT.CONTROL.AI:
+#			play("attack")
+#			return
+#	if world.current_turn == TT.CONTROL.AI:
+#		play("blank")
+#		return
+##	if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
+##		set_origin(get_parent().get_current())
+##		return
+#	if event.is_action("character_switch") && !event.is_echo() && event.is_pressed() and !get_parent().get_node("gui").active:
+#		get_parent().change_character()
+#		return
+#	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
+##		advance.z = 1
+#		advance = directions[Game.camera_orientation]["down"]
+#	if event.is_action("ui_up") && !event.is_echo() && event.is_pressed():
+##		advance.z = -1
+#		advance = directions[Game.camera_orientation]["up"]
+#	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
+##		advance.x = -1
+#		advance = directions[Game.camera_orientation]["left"]
+#	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
+##		advance.x = 1
+#		advance = directions[Game.camera_orientation]["right"]
+#	self.tile = self.tile + advance
+#	if not advance.is_equal_approx(Vector3(0, 0, 0)):
+#		print("select tile ", tile)
+#		emit_signal("moved", self.tile)
+#
+#	if mode == MODE.PLAY:
+#		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
+#			world.action()
+#		if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
+#			gui.call_deferred("back")
+#	else:
+#		if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
+#			gui.team_confirm()
+#			disable()
+#		if animation != "attack":
+#			play("attack")
 
 func go_home():
 	self.tile = current_entity.tile
@@ -162,11 +180,14 @@ func set_origin(entity):
 #	translation = entity.translation
 	self.tile = entity.tile
 	translation.y = 0.2
-	print("Set origin ", translation)
+	print("[Selector] Set origin ", translation)
 	current_entity.select()
 	current_entity.connect("idle", self, "go_home")
 	if current_entity.character.control != TT.CONTROL.AI:
+		$top/selector.show()
 		capture_camera()
+	else:
+		$top/selector.hide()
 	emit_signal("moved", self.tile)	
 #
 func _process(delta):

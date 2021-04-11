@@ -95,14 +95,15 @@ var portrait_map = {
 	TT.TYPE.BOBA: "ai_boba",
 }
 
-func _init(character, personality = null):
+func _init(init_character, new_personality = null):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	if personality == null:
-		personality = rng.randi_range(0, 2)
+	if new_personality == null:
+		self.personality = rng.randi_range(0, 2)
+	else:
 	#it's 3 for some reason
-	self.personality = personality
-	self.character = character
+		self.personality = new_personality
+	self.character = init_character
 	var num_intros = introductions[personality].size()
 	intro = Dialogue.new()
 	var message = DialogueMessage.new()
@@ -131,11 +132,11 @@ func _on_branch(id):
 	else:
 		emit_signal("response", generate_response(false))
 
-func generate_branch(personality):
+func generate_branch(new_personality):
 	var branch = {}
 	var num_responses = persuasion[personality].size()
-	branch.text = persuasion[personality][rand_range(0, num_responses)]
-	branch.id = personality
+	branch.text = persuasion[new_personality][rand_range(0, num_responses)]
+	branch.id = new_personality
 	return branch
 	
 func generate_response(accepted):

@@ -14,7 +14,8 @@ export(Resource) var effect = StatusEffect.new()
 
 enum SLOT {
 	ATK = 0,
-	DEF
+	DEF,
+	QUEST
 }
 
 var up = {
@@ -61,7 +62,8 @@ var item_names = {
 	TT.TYPE.MAGE: [ "Wand", "Staff", "Scepter" ],
 	TT.TYPE.BOBA: [ "Nothing" ],
 	TT.TYPE.POISON_BOBA: [ "Boba Juice" ],
-	TT.TYPE.OTHER: [ "Plate", "Helm", "Tunic", "Jacket", "Chain", "Mail", "Boots", "Vest", "Suit", "Shirt"]
+	TT.TYPE.OTHER: [ "Plate", "Helm", "Tunic", "Jacket", "Chain", "Mail", "Boots", "Vest", "Suit", "Shirt"],
+	TT.TYPE.QUEST: [ "Key" ]
 }
 
 func sequence_cumulative(sequence, position):
@@ -82,6 +84,9 @@ func generate(item_level, slot, item_class):
 	character_class = item_class
 	level = clamp(item_level, 0, 5)
 	equipment_slot = slot
+	if equipment_slot == SLOT.QUEST:
+		name = item_names[character_class][rand_range(0, item_names[character_class].size() - 1)]
+		return
 	var prefix = item_prefix[level][rand_range(0, item_prefix[level].size() - 1)]
 	var suffix = item_names[TT.TYPE.OTHER][rand_range(0, item_names[character_class].size() - 1)]
 	if character_class in item_names:

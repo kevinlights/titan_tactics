@@ -1,21 +1,24 @@
-//Starting level6 – Elyne tells the party that Kingdom2 is trying to invade them and sends party to Kingdom2
+#kris
+There's the giant Crystal shrine! Queen Elyne was telling us the truth, Celes really is evil!
 
-# elyne
-Thank you brave soldiers from Haki.
+> focus crystal
 
-> select elyne
-> move kris
+#zara
+Let's destroy that thing! Celes must pay for capturing me!
 
-# kris
-We came to investigate what happened to the caravan and we found out that it was pillaged by the Kingdom of Skathi.
+#bowie
+It just looks like a regular Crystal though...
 
-#elyne
-Yes, they are dangerous and must be stopped. They come to attack us as you have seen. Please help us! Queen Celes of Skathi must be stopped! They have this super huge Crystal weapon in a cave near our border that they are using to create these terrible monsters that are getting out of control.
+#arath
+That... That is just a regular crystal. But look over there!
 
-# zara
-I need vengeance for what they did to me.
+> focus warehouse
 
-# kris
-You can count on us! We will investigate that warehouse!
+#arath
+That warehouse over there, doesn't it look suspicious? They are probably hiding their weapons there!
 
-> despawn elyne
+> focus zara
+> emote zara.angry
+
+#zara
+Alright guys, let's make them pay!

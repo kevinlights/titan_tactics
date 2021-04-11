@@ -28,14 +28,7 @@ var moving_back = false
 
 var start
 
-#var atlas_frames = {
-#	"up": 3,
-#	"down": 2,
-#	"neutral": 128,
-#	TT.TYPE.ARCHER: 2,
-#	TT.TYPE.FIGHTER: 0,
-#	TT.TYPE.MAGE: 4
-#}
+onready var world = get_tree().get_root().get_node("World")
 
 var default_portraits = {
 	TT.CONTROL.AI: {
@@ -52,56 +45,52 @@ var default_portraits = {
 	}
 }
 
-#var portrait_map = {
-#	PT_Dialogue.PORTRAIT.ARCHER: "archer",
-#	PT_Dialogue.PORTRAIT.SWORDSMAN: "swordsman",
-#	PT_Dialogue.PORTRAIT.MAGE: "mage",
-#	PT_Dialogue.PORTRAIT.AI_ARCHER: "ai_archer",
-#	PT_Dialogue.PORTRAIT.AI_SWORDSMAN: "ai_swordsman",
-#	PT_Dialogue.PORTRAIT.AI_MAGE: "ai_mage",
-#	PT_Dialogue.PORTRAIT.HERO: "hero",
-#	PT_Dialogue.PORTRAIT.ANTAGONIST: "antagonist",
-#	PT_Dialogue.PORTRAIT.ANTAGONIST_REVEALED: "antagonist_revealed",
-#	PT_Dialogue.PORTRAIT.OLD_MAN: "old_man",
-#	PT_Dialogue.PORTRAIT.CYAN: "cyan"
-#}
-
-#level line width = 28
-
 func _process(_delta):
 	if !visible or !player:
 		return
 	var now = OS.get_ticks_msec()
 	
-	#move level line to the current exp
-	if $box_ally/levelline.get_point_position(1).x > (player.character.xp/player.character.xp_to_next)*xp_bar_size:
-		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x - 0.5, 0)
-		$box_ally/levelline.set_point_position(1, new_lvl_pos)
-	if $box_ally/levelline.get_point_position(1).x < (player.character.xp/player.character.xp_to_next)*xp_bar_size:
-		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x + 0.5, 0)
-		$box_ally/levelline.set_point_position(1, new_lvl_pos)
-		
-	if $box_enemy/enemylevelline.get_point_position(1).x > (enemy.character.xp/enemy.character.xp_to_next)*xp_bar_size:
-		var new_lvl_pos = Vector2($box_enemy/enemylevelline.get_point_position(1).x - 0.5, 0)
-		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
-	if $box_enemy/enemylevelline.get_point_position(1).x < (enemy.character.xp/enemy.character.xp_to_next)*xp_bar_size:
-		var new_lvl_pos = Vector2($box_enemy/enemylevelline.get_point_position(1).x + 0.5, 0)
-		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
-		
-	#move hp line
-	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*bar_size:
-		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x - 0.5, 0)
-		$box_ally/hpline.set_point_position(1, new_hp_pos)
-	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*bar_size:
-		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x + 0.5, 0)
-		$box_ally/hpline.set_point_position(1, new_hp_pos)
 	
-	if $box_enemy/hpline.get_point_position(1).x > (enemy.character.hp/enemy.character.max_hp)*bar_size:
-		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x - 0.5, 0)
-		$box_enemy/hpline.set_point_position(1, new_hp_pos)
-	if $box_enemy/hpline.get_point_position(1).x < (enemy.character.hp/enemy.character.max_hp)*bar_size:
-		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x + 0.5, 0)
-		$box_enemy/hpline.set_point_position(1, new_hp_pos)
+	# KuhnC 9/Apr/21
+	# whatever this is doing: no, doing it the fixed way for now.
+	$box_ally/levelline.get_point_position(1).x = (player.character.xp/player.character.xp_to_next)*xp_bar_size
+	$box_ally/hpline.get_point_position(1).x = (player.character.hp/player.character.max_hp)*bar_size
+	$box_enemy/enemylevelline.get_point_position(1).x = (enemy.character.xp/enemy.character.xp_to_next)*xp_bar_size
+	$box_enemy/hpline.get_point_position(1).x = (enemy.character.hp/enemy.character.max_hp)*bar_size
+	
+	# I do get why you'd do *this*, but
+	# why not use an animationcontroller for appear/disappear ?
+	
+
+#	#move level line to the current exp
+#	if $box_ally/levelline.get_point_position(1).x > (player.character.xp/player.character.xp_to_next)*xp_bar_size:
+#		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x - 0.5, 0)
+#		$box_ally/levelline.set_point_position(1, new_lvl_pos)
+#	if $box_ally/levelline.get_point_position(1).x < (player.character.xp/player.character.xp_to_next)*xp_bar_size:
+#		var new_lvl_pos = Vector2($box_ally/levelline.get_point_position(1).x + 0.5, 0)
+#		$box_ally/levelline.set_point_position(1, new_lvl_pos)
+#		
+#	if $box_enemy/enemylevelline.get_point_position(1).x > (enemy.character.xp/enemy.character.xp_to_next)*xp_bar_size:
+#		var new_lvl_pos = Vector2($box_enemy/enemylevelline.get_point_position(1).x - 0.5, 0)
+#		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
+#	if $box_enemy/enemylevelline.get_point_position(1).x < (enemy.character.xp/enemy.character.xp_to_next)*xp_bar_size:
+#		var new_lvl_pos = Vector2($box_enemy/enemylevelline.get_point_position(1).x + 0.5, 0)
+#		$box_enemy/enemylevelline.set_point_position(1, new_lvl_pos)
+#		
+#	#move hp line
+#	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*bar_size:
+#		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x - 0.5, 0)
+#		$box_ally/hpline.set_point_position(1, new_hp_pos)
+#	if $box_ally/hpline.get_point_position(1).x < (player.character.hp/player.character.max_hp)*bar_size:
+#		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x + 0.5, 0)
+#		$box_ally/hpline.set_point_position(1, new_hp_pos)
+#	
+#	if $box_enemy/hpline.get_point_position(1).x > (enemy.character.hp/enemy.character.max_hp)*bar_size:
+#		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x - 0.5, 0)
+#		$box_enemy/hpline.set_point_position(1, new_hp_pos)
+#	if $box_enemy/hpline.get_point_position(1).x < (enemy.character.hp/enemy.character.max_hp)*bar_size:
+#		var new_hp_pos = Vector2($box_enemy/hpline.get_point_position(1).x + 0.5, 0)
+#		$box_enemy/hpline.set_point_position(1, new_hp_pos)
 	
 	if !moving_back:
 		if now - start < ttl:
@@ -179,6 +168,8 @@ func _ready():
 		$PlayerAdvantage.play("down")
 	elif enemy.character.character_class == player.character.strength:
 		$PlayerAdvantage.play("up")
+	if enemy.character.character_class == TT.TYPE.BOBA or enemy.character.character_class == TT.TYPE.POISON_BOBA:
+		$EnemyAdvantage.play("boba")
 	start = OS.get_ticks_msec()
 #big code like way too much code
 #shrunk code by 50% ;)
@@ -206,28 +197,25 @@ func set_entities(player_entity, enemy_entity):
 	_ready()
 
 func update_stats():
-	enemyhp = enemy.character.hp
-	playerhp = player.character.hp
-	if enemyhp < 0:
-		enemyhp = 0
-	if playerhp < 0:
-		playerhp = 0
-	enemyhp = str(ceil(enemyhp))  + "/" + str(ceil(enemy.character.max_hp))
-	playerhp = str(ceil(playerhp))  + "/" + str(ceil(player.character.max_hp))
-	playerlvl = player.character.level
-	playeratk = int(round(player.character.atk + player.character.item_atk.attack))
-	playerdef = int(round(player.character.def + player.character.item_def.defense))
-	enemylvl = enemy.character.level
-	enemyatk = int(round(enemy.character.atk + enemy.character.item_atk.attack))
-	enemydef = int(round(enemy.character.def + enemy.character.item_def.defense))
-	$box_ally/playeratklevel.text = str(playeratk)
-	$box_ally/playerdeflevel.text = str(playerdef)
-	$box_ally/playerlevel.text = str(playerlvl)
-	$box_enemy/enemyatklevel.text = str(enemyatk)
-	$box_enemy/enemydeflevel.text = str(enemydef)
-	$box_enemy/enemylevel.text = str(enemylvl)
-	$box_enemy/enemyhp.text = (enemyhp)
-	$box_ally/playerhp.text = (playerhp)
+	if enemy and player:
+		enemyhp = str(ceil(clamp(enemy.character.hp, 0, 999)))
+		playerhp = str(ceil(clamp(player.character.hp, 0, 999)))
+		enemyhp = enemyhp  + "/" + str(ceil(enemy.character.max_hp))
+		playerhp = playerhp  + "/" + str(ceil(player.character.max_hp))
+		playerlvl = player.character.level
+		playeratk = int(round(player.character.atk + player.character.item_atk.attack))
+		playerdef = int(round(player.character.def + player.character.item_def.defense))
+		enemylvl = enemy.character.level
+		enemyatk = int(round(enemy.character.atk + enemy.character.item_atk.attack))
+		enemydef = int(round(enemy.character.def + enemy.character.item_def.defense))
+		$box_ally/playeratklevel.text = str(playeratk)
+		$box_ally/playerdeflevel.text = str(playerdef)
+		$box_ally/playerlevel.text = str(playerlvl)
+		$box_enemy/enemyatklevel.text = str(enemyatk)
+		$box_enemy/enemydeflevel.text = str(enemydef)
+		$box_enemy/enemylevel.text = str(enemylvl)
+		$box_enemy/enemyhp.text = enemyhp
+		$box_ally/playerhp.text = playerhp
 
 func start_hiding(player_entity = null):
 	if player_entity:
@@ -236,3 +224,12 @@ func start_hiding(player_entity = null):
 	print("moving out Battle UI")
 	moving_back = true
 	start = OS.get_ticks_msec()
+
+
+func init(target):
+	var current_character = world.get_current()
+	set_entities(current_character, target)
+	show()
+
+func out():
+	start_hiding()

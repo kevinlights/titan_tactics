@@ -11,6 +11,16 @@ signal done
 signal dialogue
 signal attack_complete
 
+#---
+signal emote_finished
+#---
+
+enum AI_STATUS {
+	IDLE,
+	ALERT,
+	HOSTILE
+}
+
 var guarding = false
 var character
 var path = []
@@ -32,6 +42,8 @@ var death_dialogue
 
 var dialogue_used = false
 var status_effects = []
+
+var status = AI_STATUS.IDLE
 
 onready var world = get_parent().get_parent().get_parent()
 
@@ -62,21 +74,58 @@ var directions = {
 	}
 }
 
+var target_tiles = { 
+	TT.TYPE.MAGE: [
+		Vector3(-1, 0, 0 ),
+		Vector3( 1, 0, 0 ),
+		Vector3( 0, 0, 1 ),
+		Vector3( 0, 0, -1)
+	],
+	TT.TYPE.ARCHER: [
+		Vector3( 0, 0, 0 ),
+		Vector3( 1, 0, 1 ),
+		Vector3(-1, 0, 1 ),
+		Vector3(-1, 0, -1),
+		Vector3( 1, 0, -1)
+	],
+	"sweeping_blow_north": [
+		Vector3( -1, 0,  -1),
+		Vector3( 0, 0, -1),
+		Vector3( 1, 0, -1)
+	],
+	"sweeping_blow_south": [
+		Vector3( -1, 0, 1),
+		Vector3( 0, 0, 1),
+		Vector3( 1, 0, 1)
+	],
+	"sweeping_blow_west": [
+		Vector3( -1, 0, -1),
+		Vector3( -1, 0, 0),
+		Vector3( -1, 0, 1)
+	],
+	"sweeping_blow_east": [
+		Vector3( 1, 0, -1),
+		Vector3( 1, 0, 0),
+		Vector3( 1, 0, 1)
+	]
+}	
+
 var movement = {
 	"start_position": Vector3(0, 0, 0),
 	"end_position": Vector3(0, 0, 0),
 	"start_time": 0,
-	"speed": 400,
+	"speed": 400 / 3.25,
 	"last_direction": "down",
 	"moving": false
 }
 
-func apply_effects():
+func apply_effects(free=false):
 	for effect in status_effects:
-		if effect.turns_left > 0:
+		if effect.turns_left > 0 or free:
 			character.hp -= effect.damage
 			if effect.effect == StatusEffect.EFFECT.STUN:
 				character.turn_limits.actions = 0
+				character.turn_limits.move_actions = 0
 				$vfx/stun.show()
 				$vfx/stun.play()
 				pick_random_sfx($sfx/stun_hit)
@@ -88,7 +137,8 @@ func apply_effects():
 				$vfx/poison.show()
 				$vfx/poison.play()
 				pick_random_sfx($sfx/polymorph_hit)
-			effect.turns_left -= 1
+			if not free:
+				effect.turns_left -= 1
 		else:
 			var tag = effect.tag()
 			if tag:
@@ -98,15 +148,33 @@ func apply_effects():
 		$healthbar.set_value(character.hp, character.max_hp)
 
 func check_finished():
-	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_distance == 0:
+	if not is_done and character.turn_limits.actions == 0 and character.turn_limits.move_actions == 0:
 		is_done = true
 		if character.control != TT.CONTROL.AI:
 			$done.show()
-		emit_signal("done")
+			emit_signal("done")
 
 func _ready():
-	pass
+	var _ret
+	if $emotes.has_signal("animation_finished"):
+		_ret = $emotes.connect("animation_finished", self, "_emote_finished")
+	else:
+		_ret = $emotes.connect("frame_changed", self, "_emote_check_old")
+	#pass
 
+func _emote_check_old() -> void:
+	if $emotes:
+		var frame_count = $emotes.frames.get_frame_count($emotes.animation)
+		if $emotes.frame == frame_count - 1:
+			_emote_finished()
+
+
+func _emote_finished() -> void:
+	$emotes.stop()
+	yield(get_tree().create_timer(1.0), "timeout")
+	$emotes.hide()
+	self.emit_signal("emote_finished")
+	
 func spread_icons():
 	pass
 #	if $guard.visible and $speak.visible:
@@ -116,22 +184,42 @@ func spread_icons():
 #		$guard.translation.x = 0
 #		$speak.translation.x = 7
 
+func flameshower(tile):
+	pass
+
+func aoe_vfx(name, tile, delay):
+	print("AoE VFX ", name)
+	yield(get_tree().create_timer(delay), "timeout")
+	$"vfx/Darken screen".show()
+	$"vfx/Darken screen/AnimationPlayer".current_animation = "Darken screen"
+	var thunder_storm = load("res://scenes/" + name + ".tscn").instance()
+#	yield(get_tree().create_timer(1.0), "timeout")
+	get_parent().add_child(thunder_storm)
+	thunder_storm.translation = tile
+	thunder_storm.play()
+	$"vfx/Darken screen/AnimationPlayer".play_backwards()
+	yield(get_tree().create_timer(2.0), "timeout")
+	thunder_storm.queue_free()
+	
 func hit(attacker):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
-#			print("arrow hit!")
-#			$vfx/arrow_hit.emitting = true
-			$vfx/arrow_hit.frame = 0
-			$vfx/arrow_hit.show()
-			$vfx/arrow_hit.play()
-			pick_random_sfx($sfx/arrow_hit)
+			if world.mode != world.MODE.SECONDARY_ATTACK:
+	#			print("arrow hit!")
+	#			$vfx/arrow_hit.emitting = true
+				$vfx/arrow_hit.frame = 0
+				$vfx/arrow_hit.show()
+				$vfx/arrow_hit.play()
+				pick_random_sfx($sfx/arrow_hit)
 		TT.TYPE.FIGHTER:
 			pick_random_sfx($sfx/sword_hit)
 		TT.TYPE.MAGE:
-			$vfx/magic_hit.frame = 0
-			$vfx/magic_hit.show()
-			$vfx/magic_hit.play()
-			pick_random_sfx($sfx/magic_hit)
+			if world.mode != world.MODE.SECONDARY_ATTACK:
+	#			thunderstorm(tile)
+				$vfx/magic_hit.frame = 0
+				$vfx/magic_hit.show()
+				$vfx/magic_hit.play()
+				pick_random_sfx($sfx/magic_hit)
 		TT.TYPE.BOBA:
 			pick_random_sfx($sfx/boba_hit)
 		TT.TYPE.POISON_BOBA:
@@ -144,11 +232,12 @@ func hit(attacker):
 		var tag = hit_effect.tag()
 		if tag:
 			get_node(tag).show()
+			apply_effects(true)
 		else:
 			print("No tag for ", hit_effect.effect)
 	if guarding:
 		pick_random_sfx($sfx/defend)
-	if character.hp <= 0:
+	if floor(character.hp) <= 0:
 		if character.recruit_mode == 2:
 			recruit(attacker)
 		else:
@@ -167,8 +256,49 @@ func hit(attacker):
 		spread_icons()
 
 func pick_random_sfx(audio_path):
+	var audioToPick = audio_path
+	if "name" in audioToPick:
+		audioToPick = audio_path.name
+	print("[CharController] ", self.character.name,  " (", self.character.character_class, ") - picking random SFX: ",audioToPick)
+	
+	if self.character.name.to_lower() in Game.sfx["tt"]["sfx"]["v"]:
+		print("would call other sfx")
+		var availableSnds = []
+		if audioToPick.ends_with("_hit"):
+			availableSnds = Game.sfx["tt"]["sfx"]["v"][self.character.name.to_lower()]["h"]
+		elif audioToPick.ends_with("death"):
+			pass # no sound available
+		elif audioToPick.ends_with("attack"):
+			availableSnds = Game.sfx["tt"]["sfx"]["v"][self.character.name.to_lower()]["at1"]
+		elif audioToPick.ends_with("attack2"):
+			availableSnds = Game.sfx["tt"]["sfx"]["v"][self.character.name.to_lower()]["at2"]
+		
+		if availableSnds.size() <= 0:
+			if "name" in audio_path:
+				pick_random_sfx_old(audio_path)
+			return
+		
+		var selected = availableSnds[rand_range(0,availableSnds.size()-1)]		
+		var astr = AudioStreamPlayer.new()
+		astr.stream = selected
+		astr.connect("finished", self, "_disposeObject",[astr])
+		astr.play()
+		
+		self.add_child(astr)
+		print("played audio stream: ",selected)
+		
+	elif "name" in audio_path: # fallback
+		pick_random_sfx_old(audio_path)
+		
+func pick_random_sfx_old(audio_path):
 	var effects = audio_path.get_children()
 	effects[rand_range(0, effects.size() - 1)].play()
+
+func _disposeObject(obj):
+	if "playing" in obj:
+		obj.stop()
+	print("disposing object: ",obj.name)
+	obj.queue_free()
 
 func stop_all_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -178,20 +308,24 @@ func stop_all_sfx(audio_path):
 func select():
 	pick_random_sfx($sfx/selected)
 
-func teleport(x, y):
+func teleport(x, y, z):
 	tile.x = floor(x)
-	tile.z = floor(y)
+	tile.y = y
+	tile.z = floor(z)
 	translation.x = floor(x)
-	translation.z = floor(y)
-	translation.y = 0
+	translation.y = y
+	translation.z = floor(z)
+	print('teleport', x, y, z)
 
 func heal(target):
-	if character.turn_limits.actions < 1:
+	if character.turn_limits.actions < 1 or !target:
 		return 0
 	character.turn_limits.actions -= 1
-	var healed_hp = (character.atk * 3) * 0.6
+	var healed_hp = round((character.atk * 3) * 0.6)
 	target.character.hp = clamp(target.character.hp + healed_hp, 0, target.character.max_hp)
 	pick_random_sfx($sfx/heal)
+	target.get_node("vfx/heal").show()
+	target.get_node("vfx/heal").emitting = true
 	target.healthbar.set_value(target.character.hp, target.character.max_hp)
 	if target.character.control == TT.CONTROL.AI and !target.can_recruit():
 		target.get_node("speak").hide()
@@ -206,6 +340,7 @@ func guard():
 		$guard.show()
 		spread_icons()
 		character.turn_limits.actions = 0
+		character.turn_limits.move_actions = 0
 		character.turn_limits.move_distance = 0
 		guarding = true
 		check_finished()
@@ -217,14 +352,204 @@ func end_turn():
 	$guard.hide()
 	$done.hide()
 
+
+func can_attack_tile(target):
+	# disable item range bonus
+	var target_character = world.entity_at(target)
+	if world.mode == world.MODE.ATTACK and (!target_character or target_character.is_loot):
+		return false
+	if world.mode == world.MODE.SECONDARY_ATTACK:
+		var targets = get_aoe_targets(target)
+		if targets.size() == 0:
+			return false
+	var atk_range = character.atk_range # + character.item_atk.attack_range
+	if target == null:
+		print("[CharacterController] No target tile given")
+		return false
+	var level_target = Vector2(target.x, target.z)
+	var level_source = Vector2(translation.x, translation.z)
+	var distance = level_target.distance_to(level_source)
+	print("[CharacterController] ", distance, " <= ", atk_range)
+	if atk_range == 1:
+		return distance <= atk_range
+	else:
+		return floor(level_target.distance_to(level_source)) <= atk_range
+
+func can_heal(target):
+	# disable item range bonus
+	var atk_range = character.atk_range # + character.item_atk.attack_range
+	if target == null:
+		return false
+	if target.character.control != character.control:
+		return false
+	var level_target = Vector2(target.translation.x, target.translation.z)
+	var level_source = Vector2(translation.x, translation.z)
+	return !(level_target.distance_to(level_source) > atk_range)
+	
 func can_attack(target):
-	var atk_range = character.atk_range + character.item_atk.attack_range
+	# disable item range bonus
+	var atk_range = character.atk_range # + character.item_atk.attack_range
+	if target == null:
+		return false
 	var level_target = Vector2(target.translation.x, target.translation.z)
 	var level_source = Vector2(translation.x, translation.z)
 	return !(level_target.distance_to(level_source) > atk_range)
 
+func can_move_and_attack(target):
+	if target == null:
+		return false
+	return can_move_and_attack_tile(target.translation)
+	
+func can_move_and_attack_tile(t):
+	var total_range = character.mov_range + character.atk_range # + character.item_atk.attack_range
+	var level_target = Vector2(t.x, t.z)
+	var level_source = Vector2(translation.x, translation.z)
+	return !(level_target.distance_to(level_source) > total_range)
+	
+
 func get_def_buff(def_value):
 	return 1.0 - (log(def_value) / log(10)) * 0.3
+
+# Create formations here, taking angle (if melee) into account.
+func get_attack_offsets(attack:int, angle:int)->Array:
+	return []
+
+func damage(target):
+	var modifier = 1.0
+	if world.mode == world.MODE.SECONDARY_ATTACK:
+		if character.character_class == TT.TYPE.FIGHTER:
+			modifier = 0.6
+		if character.character_class == TT.TYPE.ARCHER:
+			modifier = 0.35
+		if character.character_class == TT.TYPE.MAGE:
+			modifier = 0.45
+	#	var absolute_atk_range = character.atk_range + character.item_atk.attack_range
+	var damage = float((character.atk + character.item_atk.attack) * 3)
+	if target.character.character_class == character.weakness:
+		damage = damage * 0.7 * modifier
+	if target.character.character_class == character.strength:
+		damage = damage * 1.3 * modifier
+	if target.guarding:
+		damage = damage * 0.65 * modifier
+	var behind_target = false
+	match target.movement.last_direction:
+		'right':
+			if tile.x < target.tile.x:
+				behind_target = true
+		'left':
+			if tile.x > target.tile.x:
+				behind_target = true
+		'up':
+			if tile.z > target.tile.z:
+				behind_target = true
+		'down':
+			if tile.z < target.tile.z:
+				behind_target = true
+	if behind_target:
+		damage = damage * 1.15
+	var target_defense = target.character.def + target.character.item_def.defense
+	var def_multiplier = get_def_buff(target_defense)
+	damage *= def_multiplier
+	damage = clamp(floor(damage), 0, 99)
+	target.character.hp -= damage
+	if target.has_node("healthbar"):
+		target.get_node("healthbar").set_value(target.character.hp, target.character.max_hp)	
+	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
+	var feedback_position = world.get_node("lookat/camera").unproject_position(target.translation + Vector3(.5, .5, .5))
+	damage_feedback.position = feedback_position
+	damage_feedback.get_node("damage").text = "-" + str(damage)
+	print('world.add_child(damage_feedback)', damage_feedback)
+	world.add_child(damage_feedback)
+
+
+func get_aoe_targets(tile:Vector3):
+	var targets:Array = []
+	if character.character_class == TT.TYPE.FIGHTER:
+		target_tiles[character.character_class] = target_tiles["sweeping_blow_" + is_facing()]	
+	for offset in target_tiles[character.character_class]:
+		var target = world.entity_at(tile + offset)
+		if target and target.is_loot:
+			continue
+		if target and target.character.control == character.control:
+			continue
+		if target:
+			targets.append(target)
+	return targets
+
+# Enoh: can't work with arrows unless a way to feed the hit signal
+# to each target exists.
+func attack_new(tile:Vector3, AOE:bool):
+	print("[Enoh's Attack] Attack with AoE support")
+	if character.turn_limits.actions < 1:
+		return	
+	var delay = 0
+	var targets:Array = []
+	if AOE:
+		targets = get_aoe_targets(tile)
+		# Enoh:
+		# Use get_attack_offsets instead
+		# example: var offsets:Array = get_attack_offsets(blah, blah)
+		# for offset in offsets:
+		# target = world.entity_at(tile + offset)
+		# check for things like player team or whatever.
+		if !(character.character_class in target_tiles):
+			target_tiles[character.character_class] = [ Vector3.ZERO ]
+		if character.character_class == TT.TYPE.FIGHTER:
+			target_tiles[character.character_class] = target_tiles["sweeping_blow_" + is_facing()]
+
+		for offset in target_tiles[character.character_class]:
+			if character.character_class == TT.TYPE.MAGE:
+				aoe_vfx("thunder_storm", tile + offset, delay)
+			if character.character_class == TT.TYPE.ARCHER:
+				aoe_vfx("flame_shower", tile + offset, delay)
+			if character.character_class == TT.TYPE.FIGHTER:
+				$"vfx/Sweeping blow".get_node("sweep_" + is_facing()).frame = 0
+				$"vfx/Sweeping blow".show()
+				avatar.play(avatar.animation.replace("idle", "attack"))
+			delay += 0.5
+	else:
+		var target = world.entity_at(tile)
+		if target and target.character.control != character.control:
+			targets.append(target)
+	if targets.size() == 0:
+		return
+	character.turn_limits.actions -= 1
+	last_target = targets[targets.size()-1]
+	
+	# Damage targets
+	for t in targets:
+		damage(t)
+	if not AOE:
+		if character.character_class == TT.TYPE.MAGE:
+			var projectile = load("res://scenes/projectile.tscn").instance()
+			projectile.fire(translation + Vector3(0, 1,  0), tile + Vector3(0, 1, 0))
+			for t in targets:
+				projectile.connect("hit", t, "hit", [character])
+			projectile.connect("hit", self, "attack_complete")
+			world.get_node("lookat/camera").track(projectile)
+			pick_random_sfx($sfx/magic_attack)
+			print('get_parent().add_child(projectile)', projectile)
+			get_parent().add_child(projectile)
+		elif character.character_class == TT.TYPE.ARCHER:
+			# move this to on animation complete 
+			pass
+		else:
+			attack_complete()
+			for t in targets:
+				t.hit(character)
+	else:
+		for t in targets:
+			t.hit(character)
+		attack_complete(delay + 1.0)
+	if not AOE or character.character_class == TT.TYPE.FIGHTER:
+		if tile.x < translation.x:
+			avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
+		if tile.x > translation.x:
+			avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
+		if tile.z < translation.z:
+			avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
+		if tile.z > translation.z:
+			avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
 
 func attack(target):
 	
@@ -232,7 +557,7 @@ func attack(target):
 	if character.turn_limits.actions < 1:
 		return 0
 	character.turn_limits.actions -= 1
-	var atk_range = character.atk_range + character.item_atk.attack_range
+#	var absolute_atk_range = character.atk_range + character.item_atk.attack_range
 	var damage = float((character.atk + character.item_atk.attack) * 3)
 	if target.character.character_class == character.weakness:
 		damage = damage * 0.7
@@ -285,6 +610,7 @@ func attack(target):
 	else:
 		attack_complete()
 		target.hit(character)
+		
 	if target.translation.x < translation.x:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
 	if target.translation.x > translation.x:
@@ -293,35 +619,84 @@ func attack(target):
 		avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
 	if target.translation.z > translation.z:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
-	world.check_battle()
-	check_finished()
+	
+	pick_random_sfx("attack")
 	return damage
 
-func attack_complete():
-	yield(get_tree().create_timer(1.0), "timeout")
+func face(direction):
+	match direction:
+		"west":
+			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["left"])
+		"east":
+			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["right"])
+		"north":
+			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["up"])
+		"south":
+			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["down"])
+
+func is_facing():
+	if directions[TT.CAMERA.NORTH]["left"] in avatar.animation:
+		return "west"
+	if directions[TT.CAMERA.NORTH]["right"] in avatar.animation:
+		return "east"
+	if directions[TT.CAMERA.NORTH]["down"] in avatar.animation:
+		return "south"
+	return "north"
+	
+func emote(emoji):
+	$emotes.stop()
+	$emotes.frame = 0
+	if $emotes.frames.has_animation(emoji):
+		$emotes.show()
+		$emotes.play(emoji)
+	else:
+		print("Emoji not supported: ", emoji)
+	#yield(get_tree().create_timer(2.0), "timeout")
+	#$emotes.hide()
+
+func attack_complete(delay=1.0):
+	yield(get_tree().create_timer(delay), "timeout")
 #	print("attack complete")
+	print("[Character Controller] (" + character.name + ") attack complete")
 	emit_signal("idle")
 	emit_signal("attack_complete")
+	world.check_battle()
+	check_finished()
 
 
-func move(target_path:PoolVector3Array):
-	if movement.moving or target_path.size() == 0:
+
+func move(target_path:PoolVector3Array, unlimited=false, instant=false):
+	if movement.moving or target_path.size() == 0 or character.turn_limits.move_actions == 0:
 		return
-	path = normalize_path(target_path)
+	path = world.pathfinder.generate_walking_path(target_path)
 	movement.start_time = OS.get_ticks_msec()
+		
 #	movement.end_position = Vector3(path[0].x, 0, path[0].z)
 	movement.end_position = Vector3(path[0].x, path[0].y, path[0].z)
 	movement.start_position = Vector3(translation.x, translation.y, translation.z)
 	movement.moving = true
 	pick_random_sfx($sfx/walk)
-	character.turn_limits.move_distance -= path.size()
-#	check_finished()
+	if not unlimited:
+		character.turn_limits.move_distance -= target_path.size()
+		character.turn_limits.move_actions = 0
+	
+	if instant:
+		movement.start_time = 1
+		var pathObj = path.pop_back()
+		path.clear()
+		path.push_back(pathObj)
+		movement.start_position = Vector3(pathObj.x, pathObj.y, pathObj.z)
+		movement.end_position = Vector3(pathObj.x, pathObj.y, pathObj.z)
+		
+		#translation = movement.end_position
+		#emit_signal("path_complete")
+		#emit_signal("idle")
+		##check_finished()
+		#movement.moving = false
+		_process(0)
+		return
 
-func normalize_path(path):
-	var target_path = PoolVector3Array()
-	for point in path:
-		target_path.append(point - Vector3(0, .25, 0))
-	return target_path
+#	check_finished()
 	
 func select_type():
 	$archer.hide()
@@ -387,7 +762,7 @@ func _on_frame_changed():
 		if avatar.frame == frame_count - 1:
 			_on_animation_finished()
 
-func copy_stats(spawner):
+func copy_stats(_spawner):
 	pass
 #	return CharacterStats.new(default_stats, char_type, control)
 
@@ -412,7 +787,7 @@ func from_spawner(character_spawner, surprise = false):
 	select_type()
 	init_common(character_spawner.stats.control)
 
-func _on_dialogue_completed(result):
+func _on_dialogue_completed(_result):
 	pass
 
 func from_library(team_member):
@@ -427,11 +802,11 @@ func can_recruit():
 	if character.recruit_mode == 0:
 		return
 	return character.hp <= character.max_hp / 3
-
-func recruit_failed(source):
-	attack(source)
-	$sfx/recruit/fail.play()
-	emit_signal("recruit_failed")
+#
+#func recruit_failed(source):
+#	attack(source)
+#	$sfx/recruit/fail.play()
+#	emit_signal("recruit_failed")
 	
 func recruit(source):
 	emit_signal("recruited")
@@ -471,6 +846,7 @@ func init_common(control):
 	if initialized:
 		return
 	initialized = true
+# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
 	healthbar = load("res://scenes/healthbar.tscn").instance()
 	healthbar.set_value(character.hp, character.max_hp)
@@ -523,9 +899,10 @@ func _on_animation_finished():
 		if avatar.animation.ends_with("right"):
 			avatar.play("idle-" +  directions[Game.camera_orientation]["right"])
 
-func _process(delta):
+func _process(_delta):
 	var now = OS.get_ticks_msec()
 	_on_frame_changed()
+	_emote_check_old()
 	if has_node("healthbar") and $healthbar.visible:
 		var hp_position = world.get_node("lookat/camera").unproject_position(translation + Vector3(.5, 0, .5))
 		$healthbar.position = hp_position
@@ -571,6 +948,7 @@ func _process(delta):
 				if movement.moving:
 					translation = movement.end_position
 #					print("path complete ", translation)
+					print("[Character Controller] (" + character.name + ") path complete")
 					emit_signal("path_complete")
 					emit_signal("idle")
 					check_finished()

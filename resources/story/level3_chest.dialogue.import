@@ -1,0 +1,17 @@
+[remap]
+
+importer="dialogue"
+type="Dialogue"
+path="res://.import/level3_chest.dialogue-bb048945fdb0bcac6de968575f54e577.tres"
+
+[deps]
+
+source_file="res://resources/story/level3_chest.dialogue"
+dest_files=[ "res://.import/level3_chest.dialogue-bb048945fdb0bcac6de968575f54e577.tres" ]
+
+[params]
+
+title_prefix="#"
+action_prefix=">"
+music_prefix="$"
+comment_prefix="//"

@@ -15,18 +15,18 @@ export(String) var name
 
 var turns_left = 0
 
-func stun(turns):
-	self.turns = turns
+func stun(effect_turns):
+	turns = effect_turns
 	turns_left = turns
 	effect = EFFECT.STUN
 
-func poison(turns, damage):
-	self.turns = turns
-	self.damage = damage
+func poison(effect_turns, effect_damage):
+	self.turns = effect_turns
+	self.damage = effect_damage
 	effect = EFFECT.POISON
 
-func polymorph(turns):
-	self.turns = turns
+func polymorph(effect_turns):
+	self.turns = effect_turns
 	effect = EFFECT.POLYMORPH
 
 func tag():

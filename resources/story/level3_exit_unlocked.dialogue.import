@@ -1,0 +1,17 @@
+[remap]
+
+importer="dialogue"
+type="Dialogue"
+path="res://.import/level3_exit_unlocked.dialogue-ff528897b4cd1eb6a0c865cf50f859c5.tres"
+
+[deps]
+
+source_file="res://resources/story/level3_exit_unlocked.dialogue"
+dest_files=[ "res://.import/level3_exit_unlocked.dialogue-ff528897b4cd1eb6a0c865cf50f859c5.tres" ]
+
+[params]
+
+title_prefix="#"
+action_prefix=">"
+music_prefix="$"
+comment_prefix="//"
