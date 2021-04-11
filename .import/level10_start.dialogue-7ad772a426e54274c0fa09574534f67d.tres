@@ -1,0 +1,101 @@
+[gd_resource type="Resource" load_steps=18 format=2]
+
+[ext_resource path="res://scripts/dialogue/dialogue_message.gd" type="Script" id=1]
+[ext_resource path="res://scripts/dialogue/dialogue_action.gd" type="Script" id=2]
+[ext_resource path="res://scripts/dialogue/dialogue.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+title = " start"
+message = ""
+music = "betrayal"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+action = "face"
+target = "elyne.south"
+music = ""
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 1 )
+title = " celes"
+message = "Elyne, enough! You made a big mistake sending these nice kids from Haki to fight us! We told them everything, how you've been manipulating them in order to keep them under your thumb all these years! This needs to stop!
+"
+music = ""
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 2 )
+action = "focus"
+target = "elyne"
+music = ""
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 1 )
+title = " elyne"
+message = "Very well... You think you can defeat us? A cheese dealer and some smelly commoners from Haki? You are nothing! You're not worthy of your lands! We are the mightiest Kingdom that has ever existed! We will crush you and conquer your Kingdom!
+"
+music = ""
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+title = " kris"
+message = "We are not afraid. We are here to fight for what’s right.
+"
+music = ""
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+action = "focus"
+target = "bowie"
+music = ""
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 1 )
+title = " bowie"
+message = "Wow Kris, how are you so brave?
+"
+music = ""
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 2 )
+action = "emote"
+target = "bowie.flirt"
+music = ""
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 1 )
+title = " elyne"
+message = "So you Hakians joined these filthy animals? Traitors! Skathians will not conquer the world, because we will not let them!
+"
+music = ""
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 1 )
+title = " celes"
+message = "Why are you so threatened by the thought of us Skathians prospering? You think we would treat you the same way you've treated us? We're not interested in that! We just want to be left alone!
+"
+music = ""
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 1 )
+title = " elyne"
+message = "You stupid fool! There is no place in this world for two great kingdoms. Tyrmyr shall reign supreme above all! I will kill you all!
+"
+music = ""
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 2 )
+action = "emote"
+target = "zara.angry"
+music = ""
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 1 )
+title = " zara"
+message = "Enough! If it’s war you want, it is war you'll get!
+"
+music = ""
+
+[resource]
+script = ExtResource( 3 )
+messages = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ]

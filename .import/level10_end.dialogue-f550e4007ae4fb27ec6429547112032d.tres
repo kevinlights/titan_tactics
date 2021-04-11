@@ -1,0 +1,179 @@
+[gd_resource type="Resource" load_steps=29 format=2]
+
+[ext_resource path="res://scripts/dialogue/dialogue_message.gd" type="Script" id=1]
+[ext_resource path="res://scripts/dialogue/dialogue_action.gd" type="Script" id=2]
+[ext_resource path="res://scripts/dialogue/dialogue.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+title = " start"
+message = ""
+music = "calm"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+title = " bowie"
+message = "We did it!
+"
+music = ""
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 2 )
+action = "emote"
+target = "bowie.excited"
+music = ""
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+title = " kris"
+message = "I don’t know how you thought you could beat all of us united, Elyne.
+"
+music = ""
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 1 )
+title = " zara"
+message = "Yeah! We whooped their butts!
+"
+music = ""
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+title = " elyne"
+message = "I feel so humiliated. I shall have my revenge!
+"
+music = ""
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 1 )
+title = " celes"
+message = "Just go, and leave us alone. These young Hakians are coming with me.
+"
+music = ""
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 1 )
+title = " kris"
+message = "Wait, we are?
+"
+music = ""
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 1 )
+title = " celes"
+message = "My children, you have a noble heart and a fighting spirit. We will provide you with all the necessary resources for your village to actually prosper!
+"
+music = ""
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 1 )
+title = " arath"
+message = "Thank you so much Celes. We are so grateful for this.
+"
+music = ""
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 1 )
+title = " celes"
+message = "No, I am the one who is grateful to you all.
+"
+music = ""
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 1 )
+title = " kris"
+message = "Zara, Arath, Bowie... Thank you so much!
+"
+music = ""
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 1 )
+title = " zara"
+message = "We make a great team, don't we? Arath, you saved my skin!
+"
+music = ""
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 1 )
+title = " arath"
+message = "Aw you guys... Zara, you would have done the same for me!
+"
+music = ""
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 2 )
+action = "emote"
+target = "arath.flirt"
+music = ""
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 1 )
+title = " bowie"
+message = "Kris, you're the best! We couldn't have done it without you!
+"
+music = ""
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 1 )
+title = " kris"
+message = "This is so surreal... A world without Tyrmyr... I can't even imagine it!
+"
+music = ""
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 1 )
+title = " celes"
+message = "Well, I can tell you one thing that's going to change! From this day onward, I proclaim the end of the Great Cheese Prohibition!
+"
+music = ""
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 2 )
+action = "emote"
+target = "kris.ugh"
+music = ""
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 2 )
+action = "emote"
+target = "bowie.ugh"
+music = ""
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 1 )
+title = " celes"
+message = "...What?
+"
+music = ""
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 1 )
+title = " kris"
+message = "Nothing! You're 67, you will eat what you want!
+"
+music = ""
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 1 )
+title = " celes"
+message = "You're right about that! And without Tyrmyr, will all be in charge of our own destiny now.
+"
+music = ""
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 1 )
+title = " bowie"
+message = "That sounds kind of scary... But also exciting!
+"
+music = ""
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 1 )
+title = " arath"
+message = "I wonder what our lives are going to be like...
+"
+music = ""
+
+[resource]
+script = ExtResource( 3 )
+messages = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ]
