@@ -415,7 +415,12 @@ func get_attack_offsets(attack:int, angle:int)->Array:
 func damage(target):
 	var modifier = 1.0
 	if world.mode == world.MODE.SECONDARY_ATTACK:
-		modifier = 0.6
+		if character.character_class == TT.TYPE.FIGHTER:
+			modifier = 0.6
+		if character.character_class == TT.TYPE.ARCHER:
+			modifier = 0.35
+		if character.character_class == TT.TYPE.MAGE:
+			modifier = 0.45
 	#	var absolute_atk_range = character.atk_range + character.item_atk.attack_range
 	var damage = float((character.atk + character.item_atk.attack) * 3)
 	if target.character.character_class == character.weakness:
