@@ -1,0 +1,62 @@
+[gd_resource type="Resource" load_steps=12 format=2]
+
+[ext_resource path="res://scripts/dialogue/dialogue_message.gd" type="Script" id=1]
+[ext_resource path="res://scripts/dialogue/dialogue_action.gd" type="Script" id=2]
+[ext_resource path="res://scripts/dialogue/dialogue.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+title = " bowie"
+message = "It makes me so mad that Skathians would go and attack Tyrmyr out of nowhere. They're really such barbarians!
+"
+music = ""
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+title = " kris"
+message = "It must have been orders from Celes, she rules them with an iron first, they always say.
+"
+music = ""
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 2 )
+action = "focus"
+target = "troops"
+music = ""
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+title = " arath"
+message = "Guys, watch out! There are Skathian troops all over the place here! Zara... What are we going to do?
+"
+music = ""
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 2 )
+action = "focus"
+target = "zara"
+music = ""
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+title = " zara"
+message = "Arath, stay close to me. We will make them pay!
+"
+music = ""
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+action = "emote"
+target = "zara.angry"
+music = ""
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 1 )
+title = " bowie"
+message = "With this much security, we must be close to Celes! Let's be careful, guys!
+"
+music = ""
+
+[resource]
+script = ExtResource( 3 )
+messages = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ]

@@ -5,7 +5,8 @@
 ### Godot ###
 
 # Godot-specific ignores
-.import/
+# .import/
+
 export.cfg
 # need this file for CI
 # export_presets.cfg
