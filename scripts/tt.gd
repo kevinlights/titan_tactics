@@ -12,7 +12,7 @@ enum CAMERA {
 	WEST 
 }
 
-enum TYPE { FIGHTER, ARCHER, MAGE, BOBA, POISON_BOBA, OTHER }
+enum TYPE { FIGHTER, ARCHER, MAGE, BOBA, POISON_BOBA, OTHER, QUEST }
 enum ABILITY { MOVE, ATTACK, GUARD, HEAL }
 enum CONTROL { PLAYER, AI }
 enum CONTEXT {
@@ -23,7 +23,8 @@ enum CONTEXT {
 	NEUTRAL,
 	USE,
 	NOT_ALLOWED,
-	NOT_PLAYABLE
+	NOT_PLAYABLE,
+	SELECT
 }
 
 const cell_size = 1
@@ -85,6 +86,12 @@ const levels = [
 		"cutscene_music": "betrayal",
 		"music": "boss" #boss
 	}
+#	{
+#		"name": "Test Level",
+#		"scene": "level_2_3dtest",
+#		"cutscene_music": "betrayal",
+#		"music": "forest" #boss
+#	}	
 ]
 #const levels = {
 #	"level_1_3dtest": "intro",

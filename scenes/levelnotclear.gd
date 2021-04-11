@@ -2,6 +2,7 @@ extends Control
 
 signal retry
 signal quit
+signal closed
 
 func pick_random_sfx(audio_path):
 	var effects = audio_path.get_children()
@@ -18,9 +19,19 @@ func reset():
 	$banner.show()
 	$banner.play()
 	$Control.show()
-	
+	$Control/Retry.grab_focus()
+
+func init(_arg):
+	reset()
+	show()
+
+func out():
+	hide()
+
 func _on_Retry_pressed():
 	emit_signal("retry")
+	emit_signal("closed")
 
 func _on_Quit_pressed():
 	emit_signal("quit")
+	emit_signal("closed")

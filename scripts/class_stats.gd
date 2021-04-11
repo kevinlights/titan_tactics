@@ -5,6 +5,3 @@ export(Resource) var swordsman
 export(Resource) var mage
 export(Resource) var boba
 export(Resource) var poison_boba
-
-func _init():
-	pass

@@ -1,2 +1,36 @@
-> focus zara
+# arath
+Zara is over there!
+> emote arath.surprise
 > spawn zara
+> focus zara
+
+# arath
+Zara, you are safe!
+
+# zara
+I'm fine. I was so worried about you being left alone in the forest with those ogres! I'm so sorry I couldn't hold them off... Thank you Kris and Bowie for taking care of Arath while I was gone!
+
+# arath
+I'm just happy you're alright, Zara!
+
+> emote arath.happy
+
+# kris
+No problem Zara, Arath's been a great help! So... Why did those goons take you prisoner?
+
+# zara
+It appears that the Kingdom of Skathi is attacking the Capital, and they mistook me for a Tyrmian soldier.
+
+# bowie
+So the Skathi troops were the ones that pillaged the caravan with our aid?!
+
+# zara
+Yup, it was them...
+
+# kris
+Let's go after them then! Zara, do you want to join us?
+
+> emote zara.angry
+
+# zara
+Are you kidding me? Of course I do, I can't wait to let them have a piece of my blade!

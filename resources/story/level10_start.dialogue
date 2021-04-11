@@ -1,18 +1,38 @@
 //Starting level10 – Elyne tells the party to surrender and explains evil motives
-//Animation:
 //Party comes to confront Elyne
+# start
+$ betrayal
 
-# ceres
-Elyne, surrender! Your plan has been exposed! This needs to stop!
+> face elyne.south
+
+# celes
+Elyne, enough! You made a big mistake sending these nice kids from Haki to fight us! We told them everything, how you've been manipulating them in order to keep them under your thumb all these years! This needs to stop!
+
+> focus elyne
 
 # elyne
-You think you can defeat me? A cheese smuggler and some peasants? You are not worthy of your lands! I will crush you now and then I will conquer your territories! I will rule the world!
+Very well... You think you can defeat us? A cheese dealer and some smelly commoners from Haki? You are nothing! You're not worthy of your lands! We are the mightiest Kingdom that has ever existed! We will crush you and conquer your Kingdom!
 
 # kris
-We are not afraid. We are here to fight for what’s right. Surrender and let the prince be free!
+We are not afraid. We are here to fight for what’s right.
+
+> focus bowie
+
+# bowie
+Wow Kris, how are you so brave?
+
+> emote bowie.flirt
 
 # elyne
-He was weak. He doesn’t have what it takes to govern our Kingdom!
+So you Hakians joined these filthy animals? Traitors! Skathians will not conquer the world, because we will not let them!
+
+# celes
+Why are you so threatened by the thought of us Skathians prospering? You think we would treat you the same way you've treated us? We're not interested in that! We just want to be left alone!
+
+# elyne
+You stupid fool! There is no place in this world for two great kingdoms. Tyrmyr shall reign supreme above all! I will kill you all!
+
+> emote zara.angry
 
 # zara
-Enough! If it’s war you want, it is war we deliver!
+Enough! If it’s war you want, it is war you'll get!

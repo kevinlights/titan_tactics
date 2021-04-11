@@ -1,8 +1,8 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/world.gd" type="Script" id=2]
-[ext_resource path="res://gfx/select.png" type="Texture" id=3]
+[ext_resource path="res://sfx/gameplay/gate_opening.wav" type="AudioStream" id=3]
 [ext_resource path="res://scripts/select.gd" type="Script" id=4]
 [ext_resource path="res://music/loss_fanfare.wav" type="AudioStream" id=5]
 [ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=6]
@@ -13,8 +13,6 @@
 [ext_resource path="res://music/cs4_calm_theme.ogg" type="AudioStream" id=11]
 [ext_resource path="res://music/cs3_melanco_theme.ogg" type="AudioStream" id=12]
 [ext_resource path="res://music/oldman_theme.ogg" type="AudioStream" id=13]
-[ext_resource path="res://gfx/player.png" type="Texture" id=14]
-[ext_resource path="res://gfx/menu_select.png" type="Texture" id=15]
 [ext_resource path="res://scripts/range_overlay.gd" type="Script" id=16]
 [ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=17]
 [ext_resource path="res://gfx/OBJS/selector.dae" type="PackedScene" id=18]
@@ -24,154 +22,59 @@
 [ext_resource path="res://music/cs1_home_theme.ogg" type="AudioStream" id=22]
 [ext_resource path="res://music/cs5_sad_theme.ogg" type="AudioStream" id=23]
 [ext_resource path="res://music/cs2_caravan_theme.ogg" type="AudioStream" id=24]
+[ext_resource path="res://scenes/cutscene.tscn" type="PackedScene" id=25]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 0, 20, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 80, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 80, 20, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 19
-atlas = ExtResource( 14 )
-region = Rect2( 90, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 19
-atlas = ExtResource( 14 )
-region = Rect2( 90, 18, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 19
-atlas = ExtResource( 14 )
-region = Rect2( 54, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 19
-atlas = ExtResource( 14 )
-region = Rect2( 54, 18, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 40, 20, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 40, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 60, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 60, 20, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 19
-atlas = ExtResource( 14 )
-region = Rect2( 18, 0, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 19
-atlas = ExtResource( 14 )
-region = Rect2( 18, 18, 18, 18 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 20, 0, 20, 20 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 18
-atlas = ExtResource( 3 )
-region = Rect2( 20, 20, 20, 20 )
-
-[sub_resource type="SpriteFrames" id=17]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "heal",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "archer",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "mage",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
-"name": "guard",
-"speed": 3.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ) ],
-"loop": true,
-"name": "fighter",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 15 ), SubResource( 16 ) ],
-"loop": true,
-"name": "cantmove",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
-"name": "blank",
+"name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=18]
-flags = 2
-atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=19]
-flags = 2
-atlas = ExtResource( 15 )
-region = Rect2( 0, 8, 8, 8 )
-
-[sub_resource type="SpriteFrames" id=20]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"frames": [  ],
 "loop": true,
 "name": "default",
-"speed": 3.0
+"speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=3]
+resource_name = "bounce"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("selector:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 0.25, 2, 0.25 ),
+"update": 0,
+"values": [ Vector3( 0, 0.25, 0 ), Vector3( 0, 0.325258, 0 ), Vector3( 0, 0.249938, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "bounce"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("selector:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 0.25, 2, 0.25 ),
+"update": 0,
+"values": [ Vector3( 0, 0.25, 0 ), Vector3( 0, 0.325258, 0 ), Vector3( 0, 0.249938, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 resource_name = "bounce"
 length = 0.6
 loop = true
@@ -198,23 +101,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
 pixel_size = 0.04
 axis = 1
 alpha_cut = 2
-frames = SubResource( 17 )
+frames = SubResource( 1 )
 animation = "attack"
-frame = 1
 playing = true
 script = ExtResource( 4 )
 
 [node name="select" type="AnimatedSprite3D" parent="select"]
 flip_v = true
-frames = SubResource( 20 )
-frame = 1
-playing = true
+frames = SubResource( 2 )
 
 [node name="top" type="Spatial" parent="select"]
 
 [node name="Bounce" type="AnimationPlayer" parent="select/top"]
 autoplay = "bounce"
-anims/bounce = SubResource( 21 )
+anims/bounce = SubResource( 3 )
 
 [node name="selector" parent="select/top" instance=ExtResource( 18 )]
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
@@ -224,6 +124,42 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
 [node name="DirectionalLight2" type="DirectionalLight" parent="select/top"]
 transform = Transform( -0.431999, 0.769805, -0.469869, -0.234442, 0.407228, 0.882724, 0.87087, 0.491493, 0.00455253, -0.545057, 1.0873, 0 )
 light_color = Color( 1, 0.996078, 0.894118, 1 )
+light_energy = 10.0
+
+[node name="top_select_attack" type="Spatial" parent="select"]
+visible = false
+
+[node name="Bounce" type="AnimationPlayer" parent="select/top_select_attack"]
+autoplay = "bounce"
+anims/bounce = SubResource( 4 )
+
+[node name="selector" parent="select/top_select_attack" instance=ExtResource( 18 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="select/top_select_attack"]
+light_color = Color( 0.411765, 0.192157, 0.192157, 1 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="select/top_select_attack"]
+transform = Transform( -0.431999, 0.769805, -0.469869, -0.234442, 0.407228, 0.882724, 0.87087, 0.491493, 0.00455253, -0.545057, 1.0873, 0 )
+light_color = Color( 0.796078, 0.32549, 0.0901961, 1 )
+light_energy = 10.0
+
+[node name="top_select_heal" type="Spatial" parent="select"]
+visible = false
+
+[node name="Bounce" type="AnimationPlayer" parent="select/top_select_heal"]
+autoplay = "bounce"
+anims/bounce = SubResource( 5 )
+
+[node name="selector" parent="select/top_select_heal" instance=ExtResource( 18 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="select/top_select_heal"]
+light_color = Color( 0.407843, 0.780392, 0.984314, 1 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="select/top_select_heal"]
+transform = Transform( -0.431999, 0.769805, -0.469869, -0.234442, 0.407228, 0.882724, 0.87087, 0.491493, 0.00455253, -0.545057, 1.0873, 0 )
+light_color = Color( 0.34902, 0.580392, 0.976471, 1 )
 light_energy = 10.0
 
 [node name="gui" parent="." instance=ExtResource( 6 )]
@@ -239,23 +175,20 @@ volume_db = -2.4
 
 [node name="forest" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 7 )
-volume_db = -5.0
 
 [node name="cave" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 10 )
-volume_db = -3.8
+volume_db = 1.0
 
 [node name="city" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 9 )
-volume_db = -5.6
 
 [node name="win" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 8 )
-volume_db = -6.0
 
 [node name="lose" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 5 )
-volume_db = -4.0
+volume_db = 2.0
 
 [node name="ending" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 12 )
@@ -279,14 +212,22 @@ stream = ExtResource( 11 )
 [node name="home" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 22 )
 
+[node name="gate" type="AudioStreamPlayer" parent="cutscene_music"]
+stream = ExtResource( 3 )
+
 [node name="sad" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 23 )
+volume_db = 6.0
 
 [node name="caravan" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 24 )
+volume_db = 6.0
 
 [node name="betrayal" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 20 )
 
 [node name="royal" type="AudioStreamPlayer" parent="cutscene_music"]
 stream = ExtResource( 21 )
+volume_db = 6.0
+
+[node name="cutscene_bars" parent="." instance=ExtResource( 25 )]
