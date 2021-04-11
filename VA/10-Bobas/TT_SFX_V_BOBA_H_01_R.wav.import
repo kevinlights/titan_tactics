@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_SFX_V_BOBA_H_01_R.wav-2903608c9283501c21dd91de9af4dfb5.sample"
+
+[deps]
+
+source_file="res://VA/10-Bobas/TT_SFX_V_BOBA_H_01_R.wav"
+dest_files=[ "res://.import/TT_SFX_V_BOBA_H_01_R.wav-2903608c9283501c21dd91de9af4dfb5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

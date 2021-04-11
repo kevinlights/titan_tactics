@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_SFX_V_ELYNE_AT2_01.wav-4c7ce4bb8a3df89debadea6ee70b79d9.sample"
+
+[deps]
+
+source_file="res://VA/05-Elyne/TT_SFX_V_ELYNE_AT2_01.wav"
+dest_files=[ "res://.import/TT_SFX_V_ELYNE_AT2_01.wav-4c7ce4bb8a3df89debadea6ee70b79d9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

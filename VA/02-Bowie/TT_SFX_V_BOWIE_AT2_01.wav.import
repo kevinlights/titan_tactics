@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_SFX_V_BOWIE_AT2_01.wav-8701c896b8b8cb6951647d271f1e62f0.sample"
+
+[deps]
+
+source_file="res://VA/02-Bowie/TT_SFX_V_BOWIE_AT2_01.wav"
+dest_files=[ "res://.import/TT_SFX_V_BOWIE_AT2_01.wav-8701c896b8b8cb6951647d271f1e62f0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

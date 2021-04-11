@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_SFX_V_ZARA_AT2_03.wav-f5d76f9deb88d7fddee468363392c079.sample"
+
+[deps]
+
+source_file="res://VA/04-Zara/TT_SFX_V_ZARA_AT2_03.wav"
+dest_files=[ "res://.import/TT_SFX_V_ZARA_AT2_03.wav-f5d76f9deb88d7fddee468363392c079.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

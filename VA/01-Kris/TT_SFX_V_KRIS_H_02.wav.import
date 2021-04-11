@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_SFX_V_KRIS_H_02.wav-1e4bcec8641915f2b8d8f38e245eda2d.sample"
+
+[deps]
+
+source_file="res://VA/01-Kris/TT_SFX_V_KRIS_H_02.wav"
+dest_files=[ "res://.import/TT_SFX_V_KRIS_H_02.wav-1e4bcec8641915f2b8d8f38e245eda2d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
