@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_SFX_V_CELES_AT2_04.wav-e805a7b25dfbab6122655ef5cb005c63.sample"
+
+[deps]
+
+source_file="res://VA/06-Celes/TT_SFX_V_CELES_AT2_04.wav"
+dest_files=[ "res://.import/TT_SFX_V_CELES_AT2_04.wav-e805a7b25dfbab6122655ef5cb005c63.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

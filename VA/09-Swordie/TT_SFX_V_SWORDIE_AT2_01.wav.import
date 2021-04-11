@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_SFX_V_SWORDIE_AT2_01.wav-72f18e78f6183ee2b247dae5968bc7c5.sample"
+
+[deps]
+
+source_file="res://VA/09-Swordie/TT_SFX_V_SWORDIE_AT2_01.wav"
+dest_files=[ "res://.import/TT_SFX_V_SWORDIE_AT2_01.wav-72f18e78f6183ee2b247dae5968bc7c5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
