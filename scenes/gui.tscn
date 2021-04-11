@@ -1,4 +1,4 @@
-[gd_scene load_steps=321 format=2]
+[gd_scene load_steps=320 format=2]
 
 [ext_resource path="res://scripts/gui_states.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -41,7 +41,6 @@
 [ext_resource path="res://scripts/gui/lvlup.gd" type="Script" id=39]
 [ext_resource path="res://scenes/gui/skipconfirm.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gfx/types.png" type="Texture" id=41]
-[ext_resource path="res://gfx/boba.png" type="Texture" id=42]
 [ext_resource path="res://gfx/place.png" type="Texture" id=43]
 [ext_resource path="res://scripts/gui/characterswap.gd" type="Script" id=44]
 [ext_resource path="res://gfx/change.png" type="Texture" id=45]
@@ -238,10 +237,10 @@ flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=271]
 flags = 16
-atlas = ExtResource( 42 )
-region = Rect2( 0, 0, 16, 18 )
+atlas = ExtResource( 41 )
+region = Rect2( 16, 48, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=33]
 flags = 16
@@ -260,7 +259,7 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 32 ) ],
+"frames": [ SubResource( 271 ) ],
 "loop": true,
 "name": "boba",
 "speed": 5.0
@@ -2365,6 +2364,7 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 centered = false
 
@@ -2388,6 +2388,7 @@ __meta__ = {
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
 frames = SubResource( 7 )
+frame = 1
 playing = true
 centered = false
 
@@ -2704,6 +2705,7 @@ position = Vector2( 25.4371, 23.9552 )
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 centered = false
 
@@ -2727,7 +2729,6 @@ __meta__ = {
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 269, 181 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 centered = false
 
@@ -2751,7 +2752,6 @@ __meta__ = {
 visible = false
 position = Vector2( 269, 181 )
 frames = SubResource( 18 )
-frame = 1
 playing = true
 centered = false
 
@@ -3311,7 +3311,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 100 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3336,7 +3335,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 100 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3345,7 +3343,7 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 104 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -3528,7 +3526,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 100 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3567,7 +3564,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 58.1062 )
 frames = SubResource( 104 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
@@ -3641,7 +3638,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 position = Vector2( -6, -5 )
 frames = SubResource( 173 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3668,7 +3665,7 @@ __meta__ = {
 visible = false
 position = Vector2( -4, -16 )
 frames = SubResource( 173 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -3720,7 +3717,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="fin/Control/Ok"]
 position = Vector2( -6, -5 )
 frames = SubResource( 173 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3798,7 +3795,7 @@ __meta__ = {
 visible = false
 position = Vector2( -5, 4 )
 frames = SubResource( 173 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3824,7 +3821,7 @@ __meta__ = {
 visible = false
 position = Vector2( -6, 4 )
 frames = SubResource( 240 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 script = ExtResource( 24 )
