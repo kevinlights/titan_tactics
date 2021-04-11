@@ -480,6 +480,7 @@ func attack_new(tile:Vector3, AOE:bool):
 	print("[Enoh's Attack] Attack with AoE support")
 	if character.turn_limits.actions < 1:
 		return	
+	var delay = 0
 	var targets:Array = []
 	if AOE:
 		targets = get_aoe_targets(tile)
@@ -493,7 +494,7 @@ func attack_new(tile:Vector3, AOE:bool):
 			target_tiles[character.character_class] = [ Vector3.ZERO ]
 		if character.character_class == TT.TYPE.FIGHTER:
 			target_tiles[character.character_class] = target_tiles["sweeping_blow_" + is_facing()]
-		var delay = 0
+
 		for offset in target_tiles[character.character_class]:
 			if character.character_class == TT.TYPE.MAGE:
 				aoe_vfx("thunder_storm", tile + offset, delay)
@@ -537,7 +538,7 @@ func attack_new(tile:Vector3, AOE:bool):
 	else:
 		for t in targets:
 			t.hit(character)
-		attack_complete()
+		attack_complete(delay + 1.0)
 	if not AOE or character.character_class == TT.TYPE.FIGHTER:
 		if tile.x < translation.x:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
@@ -651,8 +652,8 @@ func emote(emoji):
 	#yield(get_tree().create_timer(2.0), "timeout")
 	#$emotes.hide()
 
-func attack_complete():
-	yield(get_tree().create_timer(1.0), "timeout")
+func attack_complete(delay=1.0):
+	yield(get_tree().create_timer(delay), "timeout")
 #	print("attack complete")
 	print("[Character Controller] (" + character.name + ") attack complete")
 	emit_signal("idle")
