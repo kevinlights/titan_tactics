@@ -1,0 +1,230 @@
+[
+  {
+    "trigger": "end",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "music",
+        "target": "calm"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "We did it!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "bowie.excited"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "I don’t know how you thought you could beat all of us united, Elyne."
+        ]
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "Yeah! We whooped their butts!"
+        ]
+      },
+      {
+        "avatar": "elyne",
+        "text": [
+          "I feel so humiliated. I shall have my revenge!"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "Just go, and leave us alone. These young Hakians are coming with me."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Wait, we are?"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "My children, you have a noble heart and a fighting spirit. We will provide you with all the necessary resources for your village to actually prosper!"
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "Thank you so much Celes. We are so grateful for this."
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "No, I am the one who is grateful to you all."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Zara, Arath, Bowie... Thank you so much!"
+        ]
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "We make a great team, don't we? Arath, you saved my skin!"
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "Aw you guys... Zara, you would have done the same for me!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "arath.flirt"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Kris, you're the best! We couldn't have done it without you!"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "This is so surreal... A world without Tyrmyr... I can't even imagine it!"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "Well, I can tell you one thing that's going to change! From this day onward, I proclaim the end of the Great Cheese Prohibition!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "kris.ugh"
+      },
+      {
+        "type": "emote",
+        "target": "bowie.ugh"
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "...What?"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Nothing! You're 67, you will eat what you want!"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "You're right about that! And without Tyrmyr, will all be in charge of our own destiny now."
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "That sounds kind of scary... But also exciting!"
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "I wonder what our lives are going to be like..."
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "music",
+        "target": "betrayal"
+      },
+      {
+        "type": "face",
+        "target": "elyne.south"
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "Elyne, enough! You made a big mistake sending these nice kids from Haki to fight us! We told them everything, how you've been manipulating them in order to keep them under your thumb all these years! This needs to stop!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "elyne"
+      },
+      {
+        "avatar": "elyne",
+        "text": [
+          "Very well... You think you can defeat us? A cheese dealer and some smelly commoners from Haki? You are nothing! You're not worthy of your lands! We are the mightiest Kingdom that has ever existed! We will crush you and conquer your Kingdom!"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "We are not afraid. We are here to fight for what’s right."
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "bowie"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Wow Kris, how are you so brave?"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "bowie.flirt"
+      },
+      {
+        "avatar": "elyne",
+        "text": [
+          "So you Hakians joined these filthy animals? Traitors! Skathians will not conquer the world, because we will not let them!"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "Why are you so threatened by the thought of us Skathians prospering? You think we would treat you the same way you've treated us? We're not interested in that! We just want to be left alone!"
+        ]
+      },
+      {
+        "avatar": "elyne",
+        "text": [
+          "You stupid fool! There is no place in this world for two great kingdoms. Tyrmyr shall reign supreme above all! I will kill you all!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "zara.angry"
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "Enough! If it’s war you want, it is war you'll get!"
+        ]
+      }
+    ]
+  }
+]

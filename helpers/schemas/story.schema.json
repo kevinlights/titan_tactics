@@ -1,0 +1,43 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://armen138.com/story.schema.json",
+    "title": "Story",
+    "description": "A story definition",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+        "trigger": {
+            "description": "A trigger name. One of 'level_start', 'level_end', or a named marker known to the engine.",
+            "type": "string"
+        },
+        "story": {
+            "description": "A list of actions taking place on this cut scene",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "target": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [ "type", "target" ]
+            },
+            "minItems": 1
+        }
+        },
+        "required": [ "trigger", "story" ]
+    }
+}

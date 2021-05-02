@@ -1,0 +1,16 @@
+{
+  "script": "res://scripts/character_stats.gd",
+  "character_class": 2,
+  "name": "Arath",
+  "level": 3,
+  "hp": 60,
+  "max_hp": 60,
+  "atk": 10,
+  "def": 4,
+  "atk_range": 4,
+  "mov_range": 4,
+  "heal": 3,
+  "recruit_mode": 0,
+  "portrait_override": "arath",
+  "control": 0
+}

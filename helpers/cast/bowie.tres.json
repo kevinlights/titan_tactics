@@ -1,0 +1,16 @@
+{
+  "script": "res://scripts/character_stats.gd",
+  "character_class": 1,
+  "name": "Bowie",
+  "level": 2,
+  "hp": 62,
+  "max_hp": 62,
+  "atk": 6,
+  "def": 6,
+  "atk_range": 3,
+  "mov_range": 6,
+  "heal": 0,
+  "recruit_mode": 0,
+  "portrait_override": "bowie",
+  "control": 0
+}

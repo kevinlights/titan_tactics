@@ -1,0 +1,16 @@
+{
+  "script": "res://scripts/character_stats.gd",
+  "character_class": 0,
+  "name": "Kris",
+  "level": 1,
+  "hp": 60,
+  "max_hp": 60,
+  "atk": 7,
+  "def": 3,
+  "atk_range": 1,
+  "mov_range": 4,
+  "heal": 0,
+  "recruit_mode": 0,
+  "portrait_override": "kris",
+  "control": 0
+}
