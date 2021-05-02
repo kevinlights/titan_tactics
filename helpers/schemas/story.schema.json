@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://armen138.com/story.schema.json",
+    "$id": "https://gitlab.com/team-potato/titan_tactics/-/raw/staging/helpers/schemas/story.schema.json",
     "title": "Story",
     "description": "A story definition",
     "type": "array",
