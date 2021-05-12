@@ -1,0 +1,170 @@
+[
+  {
+    "trigger": "end",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "music",
+        "target": "royal"
+      },
+      {
+        "avatar": "elyne",
+        "text": [
+          "Thank you, brave soldiers from Haki."
+        ]
+      },
+      {
+        "type": "spawn",
+        "target": "elyne"
+      },
+      {
+        "type": "emote",
+        "target": "bowie.surprise"
+      },
+      {
+        "type": "emote",
+        "target": "kris.surprise"
+      },
+      {
+        "type": "focus",
+        "target": "elyne"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Oh my god it's Queen Elyne herself! Your Highness! I bow to thee!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "zara.ugh"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Uh... Your Highness! We came to investigate what happened to our aid, and we found out that it was pillaged by these Skathian barbars!"
+        ]
+      },
+      {
+        "avatar": "elyne",
+        "text": [
+          "Yes, they came to pillage us as you have seen with your very eyes. You've got to help us!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Yes, Your Highness! Anything for you!"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "We would be more than honored! What can we do to help?"
+        ]
+      },
+      {
+        "avatar": "elyne",
+        "text": [
+          "These troops have been sent by Queen Celes of Skathi. She must be stopped at all costs, she is a horrible dictator who knows no compassion, even her own people are suffering under her!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "That's horrible! We're going to do something about it, right Kris?"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "bowie.flirt"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Yes, we will! Just please tell us what to do, Your Majesty!"
+        ]
+      },
+      {
+        "avatar": "elyne",
+        "text": [
+          "Eastward, past the desert, the Skathians have built a giant Crystal shrine. Our royal research team has found that this crystal is housing a magical weapon, designed to destroy our entire Capital! Please, you've got to put a stop to these monsters, break that Crystal!"
+        ]
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "This is my chance, I'm going to get my revenge for what they did to me."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "You can count on us, Your Majesty! We will destroy that crystal and anybody who tries to stop us!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "focus",
+        "target": "bowie"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "So these are those troops from Skathi that pillaged our caravan. Are they... Are they attacking Tyrmyr?"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Looks like it! It’s time to put a stop to them! Maybe if we help the Capital we will be thanked by Queen Elyne herself!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "bowie.excited"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Wow, do you think we could actually see her in person?"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "If we save the day, we just might!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "That would be so exciting! I've always dreamed of meeting a Royal!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "zara"
+      },
+      {
+        "type": "emote",
+        "target": "zara.angry"
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "...Whatever guys, let’s go kick some Skathian ass!"
+        ]
+      }
+    ]
+  }
+]

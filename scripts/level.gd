@@ -11,10 +11,13 @@ onready var world = get_tree().get_root().get_node("World")
 onready var gui = get_tree().get_root().get_node("World/gui")
 onready var selector = get_tree().get_root().get_node("World/select")
 
+var story = {}
+
 func _ready():
 	world.connect("win", self, "_on_end_level")
 #	world.connect("auto_deployed", self, "_on_start_level")
 	world.connect("level_start", self, "_on_start_level")
+
 	if add_character and add_character != "":
 		var characters = add_character.split(",")
 		for add_char in characters:
@@ -29,8 +32,24 @@ func _ready():
 				break
 		if found:
 			Game.team.erase(found)
-	_collect_materials()	
+	_attach_story()
+	_collect_materials()
 
+func _attach_story():
+	var story_filename = "res://resources/story/level" + str(Game.level + 1) + ".json";
+	var file = File.new()
+	if file.file_exists(story_filename):
+		file.open(story_filename, File.READ)
+		var data = parse_json(file.get_as_text())
+		for item in data:
+			print(item.trigger)
+			print(item.story.size())
+			story[item.trigger] = Dialogue.new(item.story)
+			story[item.trigger].id = item.trigger
+		world.connect("story", self, "_on_story")
+	else:
+		print("Can't find story file for level: ", story_filename)
+	
 func _collect_materials():
 	#var ml = $Spatial/terrain.mesh_library
 	#for i in ml.get_item_list():
@@ -47,16 +66,24 @@ func _overlay(progress, color):
 		if name != 'Water':
 			ml.get_item_mesh(i).surface_get_material(0).set("albedo_color",Color(colorval,colorval,colorval))
 	
+func _on_story(trigger):
+	print("_on_story ", trigger)
+	if trigger in story and !story[trigger].consumed:
+		gui.start("dialogue_box", story[trigger])
 
 func _on_start_level():
 	print("start level")
-	if start_dialogue:
-		gui.start("dialogue_box", start_dialogue)
+	if "start" in story:
+		print_debug(story.start.id, story.start.messages.size())
+		gui.start("dialogue_box", story.start)
+#	if start_dialogue:
+#		gui.start("dialogue_box", start_dialogue)
 
 func _on_end_level():
 	print("dialog end level check")
-	if end_dialogue and !end_dialogue.consumed:
-		gui.start("dialogue_box", end_dialogue)
+	if "end" in story and !story.end.consumed:
+#	if end_dialogue and !end_dialogue.consumed:
+		gui.start("dialogue_box", story.end)
 
 #func _on_dialogue_complete(id):
 #	print("completed ", id)

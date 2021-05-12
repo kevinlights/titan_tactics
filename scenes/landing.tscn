@@ -145,6 +145,7 @@ __meta__ = {
 [node name="credits_overlay" parent="menu" instance=ExtResource( 8 )]
 visible = false
 script = null
+
 [connection signal="pressed" from="menu/continue" to="." method="_on_continue"]
 [connection signal="pressed" from="menu/newgame" to="." method="_on_newgame"]
 [connection signal="pressed" from="menu/credits" to="." method="_on_credits_pressed"]

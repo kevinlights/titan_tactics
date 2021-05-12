@@ -51,7 +51,7 @@ func loadVA():
 					sfx[splt[0]][splt[1]][splt[2]][splt[3]][splt[4]].push_back(ResourceLoader.load("res://VA/"+curD+"/"+origF))
 				curF = dd.get_next()
 		curD = d.get_next()
-	print_debug("[VAs] Loaded following VA files:", to_json(sfx))
+#	print_debug("[VAs] Loaded following VA files:", to_json(sfx))
 
 
 func set_camera_orientation(new_orientation):

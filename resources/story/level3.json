@@ -1,0 +1,267 @@
+[
+  {
+    "trigger": "chest",
+    "story": [
+      {
+        "avatar": "kris",
+        "text": [
+          "It's a key! I bet it will open that gate!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "kris.surprise"
+      },
+      {
+        "type": "emote",
+        "target": "bowie.happy"
+      }
+    ]
+  },
+  {
+    "trigger": "exit_locked",
+    "story": [
+      {
+        "avatar": "kris",
+        "text": [
+          "Ugh... It won't open..."
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "kris.angry"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "It's locked! We need to find a key to get inside!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "exit_unlocked",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "music",
+        "target": "gate"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "The key fits! We've made it!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Yay! Let's get inside, quickly!"
+        ]
+      },
+      {
+        "type": "win"
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "focus",
+        "target": "kris"
+      },
+      {
+        "type": "music",
+        "target": "caravan"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "What's going on here?"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "caravan"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Oh no! The caravan is right over there... But it looks like it's been pillaged! And... Look over there!"
+        ]
+      },
+      {
+        "type": "face",
+        "target": "kris.north"
+      },
+      {
+        "type": "face",
+        "target": "bowie.north"
+      },
+      {
+        "type": "focus",
+        "target": "enemies"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Ugh, not again! Together we can take care of them though... Right?"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "I don’t think so, there are too many of them!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "kris"
+      },
+      {
+        "type": "face",
+        "target": "kris.east"
+      },
+      {
+        "type": "emote",
+        "target": "kris.surprise"
+      },
+      {
+        "type": "face",
+        "target": "bowie.east"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Wait a minute... isn't that Arath over there?"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "arath"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Yes, that's her!"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Arath! Over here!"
+        ]
+      },
+      {
+        "type": "select",
+        "target": "arath"
+      },
+      {
+        "type": "move",
+        "target": "overhere"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Arath, what is going on here?"
+        ]
+      },
+      {
+        "type": "face",
+        "target": "kris.north"
+      },
+      {
+        "type": "face",
+        "target": "bowie.north"
+      },
+      {
+        "type": "face",
+        "target": "arath.south"
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "Guys! I'm so relieved you came! I was just with Zara collecting some herbs..."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "But we have a herb patch right in our village..."
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "arath.angry"
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "Who the hell are you, CSI? Anyway! Zara and I saw Skathian troops robbing our caravan!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "I knew it! These Skathians are always up to no good!"
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "Zara tried to stop them, but they were too many! They took Zara hostage and went up north towards the Capital, but they still left troops behind to scout the area."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "We need to get out of the forest without them spotting us, otherwise we are dead meat!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "bowie.scared"
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "Alright I'll join you, let's try to sneak out of here together and not cause too much trouble. If we can get past that gate up north, we'll be clear!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "exit"
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "If it comes down to it though, you know how to fight with Mages, right?"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Yes, you use ranged attacks just like myself!"
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "Yes, but Mages like me can also heal in addition to attacking. We cannot heal and attack on the same turn though, so keep that in mind and always think on your feet!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Alright, let's do this!"
+        ]
+      }
+    ]
+  }
+]

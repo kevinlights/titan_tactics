@@ -1,0 +1,185 @@
+[
+  {
+    "trigger": "attack",
+    "story": [
+      {
+        "avatar": "instructor",
+        "text": [
+          "Now's your chance to attack, Kris! Press the menu button and hit Loki with a Heavy Blow!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "attack2",
+    "story": [
+      {
+        "avatar": "ai_swordsman",
+        "text": [
+          "Ow, that really hurts!"
+        ]
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Nice! The damage you dealt will lower your enemies' HP.",
+          "If you're in a situation where attacking is unwise, you can guard instead. By doing so you will adopt a defensive stance and reduce any incoming damage in the following turn. But for now, just finish Loki off! End your turn first, and attack him with a Heavy Blow again on your next one!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "end",
+    "story": [
+      {
+        "avatar": "instructor",
+        "text": [
+          "Perfect! It looks like you're ready to start your adventure, Kris."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "That was actually pretty easy!"
+        ]
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Well... Skathian troops have been spotted all over, so it’s dangerous to go alone!",
+          "Take Bowie with you. He's up north trying to hunt us some rabbits. Go ahead!"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Okay! I won't let our village down!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "moveUp",
+    "story": [
+      {
+        "avatar": "instructor",
+        "text": [
+          "That's it Kris, you're getting the hang of it! Now... See those pesky Bobas coming our way? Try to get rid of them too."
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "surprise_bobas"
+      },
+      {
+        "type": "spawn",
+        "target": "surprise_bobas"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "I'm on it!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "instructor",
+        "text": [
+          "Kris, you are the best scout of Haki. You were selected by the elders' council to go see what's happening in Tyrmyr.",
+          "The caravan with the aid meant for our village from the Capital should have arrived already, and we're running low on resources..."
+        ]
+      },
+      {
+        "type": "face",
+        "target": "kris.west"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "I understand and I am honored. I'll go see what happened right away!"
+        ]
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Alright, but first let’s take a moment to review the basics."
+        ]
+      },
+      {
+        "type": "face",
+        "target": "kris.east"
+      },
+      {
+        "type": "select",
+        "target": "Loki"
+      },
+      {
+        "type": "face",
+        "target": "loki.west"
+      },
+      {
+        "avatar": "ai_swordsman",
+        "text": [
+          "Hey loser, nice ponytail! Why don't you come closer so you can hit me?",
+          "What's the matter, are you scared?"
+        ]
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "You remember your rival Loki, right? It seems he's quite upset he wasn't the one picked by the council, but he will serve to help us refresh your training!",
+          "Try moving closer to Loki. Blue tiles are the spots you can reach, but for now just go to the spot I marked for you in Yellow!"
+        ]
+      },
+      {
+        "type": "hint",
+        "target": "walk"
+      },
+      {
+        "type": "expect",
+        "target": "walk"
+      }
+    ]
+  },
+  {
+    "trigger": "walk",
+    "story": [
+      {
+        "avatar": "ai_swordsman",
+        "text": [
+          "Is that all? With that dinky sword you gotta come closer to me, right?"
+        ]
+      },
+      {
+        "type": "hint"
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Characters with different weapon types can attack within different ranges, but as a Swordsman, you need to move really close in order to land a hit."
+        ]
+      },
+      {
+        "avatar": "ai_swordsman",
+        "text": [
+          "If I were you, I would just give up. Go home and bleach your roots, creep! I'll be the hero instead!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "kris.angry"
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "I think Loki deserves to be taught a lesson, Kris...",
+          "You couldn't make it all the way to him on a single turn. Press the menu button and end your turn, then when it's your turn again, move right in front of him!"
+        ]
+      }
+    ]
+  }
+]

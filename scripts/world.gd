@@ -4,6 +4,7 @@ extends Spatial
 signal win
 signal auto_deployed
 signal level_start
+signal story
 #signal all_enemies_eliminated
 
 onready var gui = get_tree().get_root().get_node("World/gui")
@@ -328,8 +329,12 @@ func action():
 #							gui.loot(get_current().character.item_def, loot, 1)
 						if target.item_spawner.equipment_slot == 2:
 							have_key = true
-							if target.dialogue:
-								gui.start("dialogue_box", target.dialogue)
+							if target.is_loot:
+								emit_signal("story", "chest")
+							else:
+								emit_signal("story", target.character.name)
+#							if target.dialogue:
+#								gui.start("dialogue_box", target.dialogue)
 				else:
 					if target.available == "level_complete":
 						if all_enemies_eliminated():
@@ -711,19 +716,22 @@ func check_move_triggers(character):
 		print(same_tile(marker.translation, character.translation))
 		if have_key:
 			if marker.quest_dialogue and same_tile(marker.translation, character.translation): #marker.translation.is_equal_approx(character.translation):
-				print(marker)
-				if not marker.quest_dialogue.consumed:
-					marker.dialogue.connect("completed", self, "consume_story_markers", [ marker.name ])
-					gui.start("dialogue_box", marker.quest_dialogue)
-	#				gui.dialogue(marker.dialogue)
-					break
+				emit_signal("story", marker.marker_name + "-quest")
+#				print(marker)
+#				if not marker.quest_dialogue.consumed:
+#					marker.dialogue.connect("completed", self, "consume_story_markers", [ marker.name ])
+#					gui.start("dialogue_box", marker.quest_dialogue)
+#					break
 		else:
-			if marker.dialogue and same_tile(marker.translation, character.translation): #marker.translation.is_equal_approx(character.translation):
-				if not marker.dialogue.consumed:
-	#				marker.dialogue.connect("completed", self, "_on_dialogue_complete")
-					gui.start("dialogue_box", marker.dialogue)
-	#				gui.dialogue(marker.dialogue)
-					break
+			if same_tile(marker.translation, character.translation): 
+				print("Trigger story marker ", marker.marker_name)
+				emit_signal("story", marker.marker_name)
+#			if marker.dialogue and same_tile(marker.translation, character.translation): #marker.translation.is_equal_approx(character.translation):
+#				if not marker.dialogue.consumed:
+#	#				marker.dialogue.connect("completed", self, "_on_dialogue_complete")
+#					gui.start("dialogue_box", marker.dialogue)
+#	#				gui.dialogue(marker.dialogue)
+#					break
 	
 func auto_deploy_only_character():
 	var character:Node = load("res://scenes/character_controller.tscn").instance()
