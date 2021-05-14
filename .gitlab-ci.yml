@@ -53,6 +53,7 @@ stories_preview:
   script:
     - apt-get -y update
     - apt-get -y install curl
+    - apt-get -y install build-essential
     - curl -sL https://deb.nodesource.com/setup_16.x | bash
     - apt-get -y install nodejs
     - npm install -g -s --no-progress yarn
