@@ -67,6 +67,7 @@ stories_preview:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - ${EXPORT_NAME}_stories_preview
+      - helpers/titan_stories/dist
   only:
     - staging
 
