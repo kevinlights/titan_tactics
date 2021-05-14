@@ -51,6 +51,7 @@ linux:
 stories_preview:
   stage: export
   script:
+    - apt-get update
     - apt-get install curl
     - curl -sL https://deb.nodesource.com/setup_16.x | bash
     - apt-get install nodejs
