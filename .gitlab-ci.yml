@@ -79,7 +79,7 @@ pages:
   script:
     - mkdir -p public/game
     - mkdir -p public/levels
-    - mv helpers/titan_stories/dist/** ./public
+    - mv helpers/titan_stories/dist/* ./public
     - mv ${EXPORT_NAME}_stories_preview/** ./public/game
     - cp resources/story/level*.json ./public/levels
   artifacts:
