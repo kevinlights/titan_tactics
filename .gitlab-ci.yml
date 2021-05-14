@@ -55,9 +55,10 @@ stories_preview:
     - apt-get -y install curl
     - curl -sL https://deb.nodesource.com/setup_16.x | bash
     - apt-get -y install nodejs
+    - npm install -g -s --no-progress yarn
     - cd helpers/titan_stories
-    - npm install
-    - npm run build
+    - yarn install
+    - yarn build
     - cd ../..
     - mkdir -v -p ${EXPORT_NAME}_stories_preview
     - godot -v --export "HTML5_Stories_Preview" ${EXPORT_NAME}_stories_preview/$EXPORT_NAME.html
