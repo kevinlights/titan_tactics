@@ -19,7 +19,7 @@ windows:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - ${EXPORT_NAME}_windows
-  only: 
+  only:
     - master
     - staging
 
@@ -32,7 +32,7 @@ windows_debug:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - ${EXPORT_NAME}_windows_debug
-  only: 
+  only:
   - staging
 
 linux:
@@ -44,8 +44,44 @@ linux:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - ${EXPORT_NAME}_linux
-  only: 
+  only:
     - master
+    - staging
+
+stories_preview:
+  stage: export
+  script:
+    - apt-get install curl
+    - curl -sL https://deb.nodesource.com/setup_16.x | bash
+    - apt-get install nodejs
+    - cd helpers/titan_stories
+    - npm install
+    - npm run build
+    - cd ../..
+    - mkdir -v -p ${EXPORT_NAME}_stories_preview
+    - godot -v --export "HTML5_Stories_Preview" ${EXPORT_NAME}_stories_preview/$EXPORT_NAME.html
+  artifacts:
+    name: $EXPORT_NAME-$CI_JOB_NAME
+    paths:
+      - ${EXPORT_NAME}_stories_preview
+  only:
+    - staging
+
+# GitLab Pages Deploy
+pages:
+  stage: deploy
+  dependencies:
+    - stories_preview
+  script:
+    - mkdir -p public/game
+    - mkdir -p public/levels
+    - mv helpers/titan_stories/dist/** ./public
+    - mv ${EXPORT_NAME}_stories_preview/** ./public/game
+    - cp resources/story/level*.json ./public/levels
+  artifacts:
+    paths:
+      - public
+  only:
     - staging
 
 linux_debug:
@@ -57,7 +93,7 @@ linux_debug:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - ${EXPORT_NAME}_linux_debug
-  only: 
+  only:
   - staging
 
 mac:
@@ -69,7 +105,7 @@ mac:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - ${EXPORT_NAME}_mac
-  only: 
+  only:
     - master
     - staging
 
@@ -82,7 +118,7 @@ mac_debug:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - ${EXPORT_NAME}_mac_debug
-  only: 
+  only:
   - staging
 
 # Itch.io Deploy
@@ -92,7 +128,7 @@ itchio:linux:
     - butler push ./${EXPORT_NAME}_linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
   dependencies:
     - linux
-  only: 
+  only:
     - master
 
 itchio:windows:
@@ -101,7 +137,7 @@ itchio:windows:
     - butler push ./${EXPORT_NAME}_windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
   dependencies:
     - windows
-  only: 
+  only:
     - master
 
 itchio:macosx:
@@ -110,5 +146,5 @@ itchio:macosx:
     - butler push ./${EXPORT_NAME}_mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
   dependencies:
     - mac
-  only: 
+  only:
     - master

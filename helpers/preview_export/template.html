@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Template</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script src="$GODOT_URL"></script>
+        <script>
+            var enc = new TextEncoder();
+            var engine = new Engine($GODOT_CONFIG);
+            if(localStorage.startup && localStorage.level && localStorage.stories) {
+                engine.preloadFile(enc.encode(localStorage.startup), "/resources/startup.json").then(() => {
+                    engine.preloadFile(enc.encode(localStorage.stories),`/resources/story/level${localStorage.level}.json`).then(() => {
+                        engine.startGame();
+                    });
+                });
+            } else {
+                engine.startGame();
+            }
+        </script>
+    </body>
+</html>
