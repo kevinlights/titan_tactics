@@ -329,7 +329,7 @@ cheat_suicide={
 [locale]
 
 fallback="fr"
-translations=PoolStringArray( "res://resources/translations.en.translation", "res://resources/translations.fr.translation", "res://resources/translations.nl.translation" )
+translations=PoolStringArray(  )
 locale_filter=[ 0, [ "en_US", "fr", "nl" ] ]
 
 [rendering]
