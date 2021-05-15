@@ -80,11 +80,6 @@ _global_script_classes=[ {
 "path": "res://scripts/playerspawner.gd"
 }, {
 "base": "Object",
-"class": "Recruitment",
-"language": "GDScript",
-"path": "res://scripts/recruitment.gd"
-}, {
-"base": "Object",
 "class": "SmortAI",
 "language": "GDScript",
 "path": "res://scripts/ai/smort.gd"
@@ -124,7 +119,6 @@ _global_script_class_icons={
 "NaiveAI": "",
 "PathFinder": "",
 "PlayerSpawner": "",
-"Recruitment": "",
 "SmortAI": "",
 "StatusEffect": "",
 "StoryMarker": "",
