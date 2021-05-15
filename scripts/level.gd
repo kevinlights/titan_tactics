@@ -1,8 +1,6 @@
 class_name Level
 extends Node
 
-export(Resource) var start_dialogue
-export(Resource) var end_dialogue
 export(String) var add_character
 export(String) var remove_character
 export(String) var map_node = "SINGLE"

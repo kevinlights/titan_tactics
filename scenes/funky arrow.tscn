@@ -35,5 +35,4 @@ animations = [ {
 position = Vector2( 64, 64 )
 frames = SubResource( 5 )
 animation = "down"
-frame = 1
 playing = true

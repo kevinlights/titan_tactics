@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Object",
-"class": "Character",
-"language": "GDScript",
-"path": "res://scripts/character.gd"
-}, {
 "base": "Spatial",
 "class": "CharacterController",
 "language": "GDScript",
@@ -115,7 +110,6 @@ _global_script_classes=[ {
 "path": "res://scripts/world.gd"
 } ]
 _global_script_class_icons={
-"Character": "",
 "CharacterController": "",
 "CharacterSpawner": "",
 "CharacterStats": "",

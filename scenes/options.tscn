@@ -85,8 +85,8 @@ __meta__ = {
 [node name="SelectArrow" type="Sprite" parent="."]
 position = Vector2( 31, 56 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 16
+vframes = 16
 
 [node name="Optionslabel" type="Label" parent="."]
 margin_left = 18.0
@@ -113,36 +113,36 @@ __meta__ = {
 [node name="bar1" type="Sprite" parent="musicBars"]
 position = Vector2( 2, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 168
 
 [node name="bar2" type="Sprite" parent="musicBars"]
 position = Vector2( 6, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 137
 
 [node name="bar3" type="Sprite" parent="musicBars"]
 position = Vector2( 10, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 138
 
 [node name="bar4" type="Sprite" parent="musicBars"]
 position = Vector2( 14, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 139
 
 [node name="bar5" type="Sprite" parent="musicBars"]
 position = Vector2( 18, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 140
 
 [node name="SFXBars" type="Control" parent="."]
@@ -158,34 +158,34 @@ __meta__ = {
 [node name="bar1" type="Sprite" parent="SFXBars"]
 position = Vector2( 2, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 136
 
 [node name="bar2" type="Sprite" parent="SFXBars"]
 position = Vector2( 6, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 137
 
 [node name="bar3" type="Sprite" parent="SFXBars"]
 position = Vector2( 10, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 138
 
 [node name="bar4" type="Sprite" parent="SFXBars"]
 position = Vector2( 14, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 139
 
 [node name="bar5" type="Sprite" parent="SFXBars"]
 position = Vector2( 18, 4 )
 texture = ExtResource( 3 )
-vframes = 16
 hframes = 32
+vframes = 16
 frame = 140

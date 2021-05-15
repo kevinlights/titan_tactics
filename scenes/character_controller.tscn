@@ -42,7 +42,7 @@
 [ext_resource path="res://gfx/Sprites/swman.png" type="Texture" id=40]
 [ext_resource path="res://gfx/Sprites/zara.png" type="Texture" id=41]
 [ext_resource path="res://gfx/Sprites/emotes.png" type="Texture" id=43]
-[ext_resource path="res://scenes/Darken screen.gd" type="Script" id=44]
+[ext_resource path="res://scripts/Darken screen.gd" type="Script" id=44]
 [ext_resource path="res://gfx/FX/archerhit.png" type="Texture" id=46]
 [ext_resource path="res://gfx/FX/sweep.png" type="Texture" id=47]
 

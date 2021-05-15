@@ -52,6 +52,6 @@ shape = SubResource( 2 )
 [node name="UI" type="Sprite" parent="."]
 position = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-vframes = 16
 hframes = 16
+vframes = 16
 frame = 16

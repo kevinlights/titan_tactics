@@ -1,10 +1,9 @@
-[gd_scene load_steps=320 format=2]
+[gd_scene load_steps=319 format=2]
 
 [ext_resource path="res://scripts/gui_states.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/gui/pause.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/Lora-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://scenes/gui/intro.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/gui/credits.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sfx/gameplay/cant_do.wav" type="AudioStream" id=7]
 [ext_resource path="res://scripts/gui/stats.gd" type="Script" id=8]
@@ -26,7 +25,7 @@
 [ext_resource path="res://scripts/focus.gd" type="Script" id=24]
 [ext_resource path="res://scripts/gui/levelclear.gd" type="Script" id=25]
 [ext_resource path="res://gfx/box_enemy.png" type="Texture" id=26]
-[ext_resource path="res://scenes/levelnotclear.gd" type="Script" id=27]
+[ext_resource path="res://scripts/levelnotclear.gd" type="Script" id=27]
 [ext_resource path="res://gfx/box_ally.png" type="Texture" id=28]
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=29]
 [ext_resource path="res://gfx/ui/clear.png" type="Texture" id=30]
@@ -48,7 +47,7 @@
 [ext_resource path="res://scripts/ally.gd" type="Script" id=48]
 [ext_resource path="res://scenes/portraits.tscn" type="PackedScene" id=49]
 [ext_resource path="res://scenes/dialogue_box.tscn" type="PackedScene" id=50]
-[ext_resource path="res://scenes/dialogue_answers.tscn" type="PackedScene" id=51]
+[ext_resource path="res://scenes/gui/intro.tscn" type="PackedScene" id=51]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 20 )
@@ -147,22 +146,18 @@ size = 13
 font_data = ExtResource( 4 )
 
 [sub_resource type="AtlasTexture" id=20]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=21]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=22]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=23]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
@@ -185,22 +180,18 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=25]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=27]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=28]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 16, 48, 16, 16 )
 
@@ -228,27 +219,22 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=271]
-flags = 16
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 41 )
 region = Rect2( 16, 48, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=33]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=34]
-flags = 16
 atlas = ExtResource( 41 )
 region = Rect2( 32, 48, 16, 16 )
 
@@ -259,7 +245,7 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 271 ) ],
+"frames": [ SubResource( 32 ) ],
 "loop": true,
 "name": "boba",
 "speed": 5.0
@@ -550,17 +536,17 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=101]
-flags = 19
+flags = 3
 atlas = ExtResource( 9 )
 region = Rect2( 0, 24, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=102]
-flags = 19
+flags = 3
 atlas = ExtResource( 9 )
 region = Rect2( 0, 32, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=103]
-flags = 19
+flags = 3
 atlas = ExtResource( 9 )
 region = Rect2( 0, 40, 8, 8 )
 
@@ -2338,7 +2324,7 @@ visible = false
 margin_right = 320.0
 margin_bottom = 224.0
 
-[node name="intro" parent="." instance=ExtResource( 5 )]
+[node name="intro" parent="." instance=ExtResource( 51 )]
 visible = false
 
 [node name="credits" parent="." instance=ExtResource( 6 )]
@@ -2364,7 +2350,6 @@ centered = false
 [node name="Arrows" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 centered = false
 
@@ -2388,7 +2373,6 @@ __meta__ = {
 [node name="Abutton" type="AnimatedSprite" parent="characterselect"]
 position = Vector2( 269, 181 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 centered = false
 
@@ -2708,7 +2692,6 @@ position = Vector2( 25.4371, 23.9552 )
 [node name="Arrows" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 221, 181 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 centered = false
 
@@ -2732,6 +2715,7 @@ __meta__ = {
 [node name="Xbutton" type="AnimatedSprite" parent="characterswap"]
 position = Vector2( 269, 181 )
 frames = SubResource( 7 )
+frame = 1
 playing = true
 centered = false
 
@@ -2755,6 +2739,7 @@ __meta__ = {
 visible = false
 position = Vector2( 269, 181 )
 frames = SubResource( 18 )
+frame = 1
 playing = true
 centered = false
 
@@ -3347,7 +3332,6 @@ script = ExtResource( 24 )
 [node name="arrow" type="AnimatedSprite" parent="weaponswap"]
 position = Vector2( 129.681, 65.1062 )
 frames = SubResource( 104 )
-frame = 1
 playing = true
 
 [node name="lvlup" type="Control" parent="."]
@@ -3569,7 +3553,7 @@ __meta__ = {
 [node name="arrow" type="AnimatedSprite" parent="lvlup"]
 position = Vector2( 46.6813, 58.1062 )
 frames = SubResource( 104 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="char_sprite" type="AnimatedSprite" parent="lvlup"]
@@ -3643,7 +3627,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="win/Control/Next"]
 position = Vector2( -6, -5 )
 frames = SubResource( 173 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3670,7 +3653,6 @@ __meta__ = {
 visible = false
 position = Vector2( -4, -16 )
 frames = SubResource( 173 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -1, 20 )
@@ -3722,7 +3704,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="fin/Control/Ok"]
 position = Vector2( -6, -5 )
 frames = SubResource( 173 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 9 )
@@ -3800,7 +3781,6 @@ __meta__ = {
 visible = false
 position = Vector2( -5, 4 )
 frames = SubResource( 173 )
-frame = 1
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3826,7 +3806,6 @@ __meta__ = {
 visible = false
 position = Vector2( -6, 4 )
 frames = SubResource( 240 )
-frame = 1
 playing = true
 centered = false
 script = ExtResource( 24 )
@@ -3877,8 +3856,6 @@ volume_db = -9.0
 stream = ExtResource( 13 )
 volume_db = -2.5
 
-[node name="dialogue_questions" parent="." instance=ExtResource( 51 )]
-visible = false
 [connection signal="pressed" from="lvlup/Control/Ok" to="lvlup" method="_on_ok_pressed"]
 [connection signal="pressed" from="win/Control/Next" to="win" method="_on_Next_pressed"]
 [connection signal="pressed" from="win/Control/Retry" to="win" method="_on_Retry_pressed"]
