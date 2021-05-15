@@ -59,7 +59,7 @@
     ]
   },
   {
-    "trigger": "moveUp",
+    "trigger": "Loki",
     "story": [
       {
         "avatar": "instructor",

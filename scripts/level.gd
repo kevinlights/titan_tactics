@@ -67,6 +67,7 @@ func _overlay(progress, color):
 func _on_story(trigger):
 	print("_on_story ", trigger)
 	if trigger in story and !story[trigger].consumed:
+		print("have trigger ", trigger)
 		gui.start("dialogue_box", story[trigger])
 
 func _on_start_level():

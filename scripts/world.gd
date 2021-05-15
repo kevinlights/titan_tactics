@@ -666,7 +666,10 @@ func check_end_game():
 func _on_death(character):
 	character.hide()
 	var control = character.character.control
+	var name = character.character.name
 	current[control].erase(character)
+	emit_signal("story", name)
+	print("story", name)
 	if not check_end_game():
 		advance_turn()
 
