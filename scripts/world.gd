@@ -881,12 +881,12 @@ func _on_recruit():
 	var target = entity_at($select.tile)
 	$select.disable()
 	if get_current().character.turn_limits.actions != 0 and is_adjacent(get_current(), target):
-		var recruitment = Recruitment.new(target.character, target.character.personality)
+#		var recruitment = Recruitment.new(target.character, target.character.personality)
 		print("[World] recruit dialog intro")
-		gui.dialogue(recruitment.intro)
-		gui.answers(recruitment)
-		recruitment.connect("response", self, "_on_recruit_response")
-		recruitment.connect("completed", self, "_on_recruit_completed")
+#		gui.dialogue(recruitment.intro)
+#		gui.answers(recruitment)
+#		recruitment.connect("response", self, "_on_recruit_response")
+#		recruitment.connect("completed", self, "_on_recruit_completed")
 
 func _on_guard():
 #	gui.back()
