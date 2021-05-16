@@ -332,8 +332,9 @@ func advance():
 func _input(event):
 	if waiting_for_skip_confirm:
 		return
-	if not self.visible:
-		return
+	# TEMP: comment out to fix stuck after emote on level 2/3
+	#if not self.visible:
+	#	return
 	if skip_events:
 		return
 		
