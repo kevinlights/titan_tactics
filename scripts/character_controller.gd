@@ -44,6 +44,7 @@ var dialogue_used = false
 var status_effects = []
 
 var status = AI_STATUS.IDLE
+var behind_dmg_mult = 1.3
 
 onready var world = get_parent().get_parent().get_parent()
 
@@ -446,7 +447,7 @@ func damage(target):
 			if tile.z < target.tile.z:
 				behind_target = true
 	if behind_target:
-		damage = damage * 1.15
+		damage = damage * behind_dmg_mult
 	var target_defense = target.character.def + target.character.item_def.defense
 	var def_multiplier = get_def_buff(target_defense)
 	damage *= def_multiplier
@@ -552,7 +553,6 @@ func attack_new(tile:Vector3, AOE:bool):
 			avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
 
 func attack(target):
-	
 	last_target = target
 	if character.turn_limits.actions < 1:
 		return 0
@@ -580,7 +580,7 @@ func attack(target):
 			if tile.z < target.tile.z:
 				behind_target = true
 	if behind_target:
-		damage = damage * 1.15
+		damage = damage * behind_dmg_mult
 	var target_defense = target.character.def + target.character.item_def.defense
 	var def_multiplier = get_def_buff(target_defense)
 	damage *= def_multiplier
