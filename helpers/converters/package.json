@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "story": "ts-node convert_story.ts",
-    "cast": "ts-node convert_cast.ts"
+    "cast": "ts-node convert_cast.ts",
+    "triggers": "ts-node extract_trigger_names.ts"
   },
   "dependencies": {
     "@ltd/j-toml": "^1.12.2",

@@ -40,7 +40,7 @@ function parse_resource(tres:string): any {
                     let key_value = item.split("=");
                     let value = JSON.parse(key_value[1]);
                     resource[section_name][key_value[0]] = value;
-                }    
+                }
             }
         } else {
             if(line.trim() !== "") {
@@ -63,9 +63,9 @@ function parse_resource(tres:string): any {
                     if(sub_resource) {
                         value = sub_resource;
                     }
-                } 
+                }
                 resource.properties = resource.properties || {} as any;
-                resource.properties[key_value[0]] = value;    
+                resource.properties[key_value[0]] = value;
             }
         }
     }

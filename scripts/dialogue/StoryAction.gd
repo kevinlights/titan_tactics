@@ -1,4 +1,4 @@
-class_name DialogueAction
+class_name StoryAction
 extends Resource
 
 signal completed

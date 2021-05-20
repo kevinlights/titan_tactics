@@ -19,7 +19,7 @@
 [ext_resource path="res://scripts/gridmap/overlay_gridmap.gd" type="Script" id=19]
 [ext_resource path="res://gfx/sky/snow.png" type="Texture" id=20]
 [ext_resource path="res://gfx/speak_map.png" type="Texture" id=21]
-[ext_resource path="res://scripts/dialogue/story_marker.gd" type="Script" id=22]
+[ext_resource path="res://scripts/dialogue/StoryMarker.gd" type="Script" id=22]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 12 )

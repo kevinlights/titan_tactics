@@ -20,7 +20,7 @@
 [ext_resource path="res://gfx/swordsman.png" type="Texture" id=20]
 [ext_resource path="res://gfx/mage.png" type="Texture" id=21]
 [ext_resource path="res://gfx/speak_map.png" type="Texture" id=22]
-[ext_resource path="res://scripts/dialogue/story_marker.gd" type="Script" id=23]
+[ext_resource path="res://scripts/dialogue/StoryMarker.gd" type="Script" id=23]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 13 )

@@ -1,4 +1,4 @@
-class_name DialogueMessage
+class_name StoryMessage
 extends Resource
 
 export(String) var title

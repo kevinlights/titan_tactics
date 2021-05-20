@@ -42,7 +42,7 @@ func _attach_story():
 		for item in data:
 			print(item.trigger)
 			print(item.story.size())
-			story[item.trigger] = Dialogue.new(item.story)
+			story[item.trigger] = Story.new(item.story)
 			story[item.trigger].id = item.trigger
 		world.connect("story", self, "_on_story")
 	else:

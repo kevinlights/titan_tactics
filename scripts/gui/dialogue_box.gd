@@ -227,9 +227,6 @@ func perform_action(item):
 
 
 func _attack_done(_arrow, target_character):
-	# remove event, solved by CONNECT_ONESHOT
-	#if arrow.is_connected("hit", self, "_attack_done"):
-	#	arrow.disconnect("hit", self, "_attack_done")
 	world.get_node("lookat/camera").track(target_character)
 	print("[DialogBox] Attack done - advancing.")
 	if event_will_progress or skip_events:
@@ -237,19 +234,6 @@ func _attack_done(_arrow, target_character):
 	
 
 func _emote_done(_emote_source):
-	# remove event, solved by CONNECT_ONESHOT
-	#if emote_source.is_connected("emote_finished", self, "_emote_done"):
-	#	emote_source.disconnect("emote_finished", self, "_emote_done")
-	
-	# event_will_progress = true
-
-	#if _emote_source != null:
-		### FOR GOD'S SAKE SOLVE THIS WITH A ANIMATIONCONTROLLER
-		#_emote_source.get_node("emotes").show()
-		#yield(get_tree().create_timer(1.0),"timeout")
-		#_emote_source.get_node("emotes").hide()
-		
-	#print("[DialogBox] Emoting done - advancing.")
 	if event_will_progress or skip_events:
 		advance()
 
@@ -367,22 +351,23 @@ func skip_cancelled():
 	show()
 
 func splitMessageIntoChunks(text) -> Array:
-	text = text.replace("\n", " ")
-	var words = text.split(" ")
-	var chunks = []
-	_textNode.text = ""
-	var chunk = PoolStringArray()
-	for word in words:
-		chunk.append(word)
-		_textNode.text = chunk.join(" ")
-		if _textNode.get_line_count() > 3:
-			chunk.resize(chunk.size() - 1)
-			chunks.append(chunk.join(" "))
-			chunk = PoolStringArray()
-			chunk.append(word)
-	if chunk.size() > 0:
-		chunks.append(chunk.join(" "))
-	return chunks
+#	text = text.replace("\n", " ")
+	return text.split("\n")
+#	var words = text.split(" ")
+#	var chunks = []
+#	_textNode.text = ""
+#	var chunk = PoolStringArray()
+#	for word in words:
+#		chunk.append(word)
+#		_textNode.text = chunk.join(" ")
+#		if _textNode.get_line_count() > 3:
+#			chunk.resize(chunk.size() - 1)
+#			chunks.append(chunk.join(" "))
+#			chunk = PoolStringArray()
+#			chunk.append(word)
+#	if chunk.size() > 0:
+#		chunks.append(chunk.join(" "))
+#	return chunks
 	
 func init(dialogue_content):
 	print("[DialogBox] Init cutscene")
@@ -403,7 +388,7 @@ func init(dialogue_content):
 		if "message" in content:
 			if content.message != "":
 				for chunk in splitMessageIntoChunks(content.message):
-					var r = DialogueMessage.new()
+					var r = StoryMessage.new()
 					r.title = content.title
 					r.message = chunk				
 					if not putMusicAlready and "music" in content and content.music != "":

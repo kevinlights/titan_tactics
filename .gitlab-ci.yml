@@ -57,7 +57,10 @@ stories_preview:
     - curl -sL https://deb.nodesource.com/setup_16.x | bash
     - apt-get -y install nodejs
     - npm install -g -s --no-progress yarn
-    - cd helpers/titan_stories
+    - cd helpers/converters
+    - yarn install
+    - yarn triggers ../../scenes/levels
+    - cd ../titan_stories
     - yarn install
     - yarn build
     - cd ../..
@@ -82,6 +85,7 @@ pages:
     - mv helpers/titan_stories/dist/* ./public
     - mv ${EXPORT_NAME}_stories_preview/** ./public/game
     - cp resources/story/level*.json ./public/levels
+    - cp helpers/converters/triggers.json ./public
   artifacts:
     paths:
       - public

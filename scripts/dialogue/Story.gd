@@ -1,4 +1,4 @@
-class_name Dialogue
+class_name Story
 extends Resource
 
 signal completed
@@ -19,12 +19,12 @@ func from_json(json_data):
 	messages = []
 	for message in json_data:
 		if "avatar" in message and "text" in message:
-			var msg = DialogueMessage.new()
+			var msg = StoryMessage.new()
 			msg.message = PoolStringArray(message.text).join("\n")
 			msg.title = message.avatar
 			messages.append(msg)
 		if "type" in message and "target" in message:
-			var action = DialogueAction.new()
+			var action = StoryAction.new()
 			action.action = message.type
 			action.target = message.target
 			messages.append(action)
