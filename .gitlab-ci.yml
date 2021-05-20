@@ -71,6 +71,7 @@ stories_preview:
     paths:
       - ${EXPORT_NAME}_stories_preview
       - helpers/titan_stories/dist
+      - helpers/converters/triggers.json
   only:
     - staging
 
