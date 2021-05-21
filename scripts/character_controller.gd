@@ -555,12 +555,16 @@ func attack_new(tile:Vector3, AOE:bool):
 	if not AOE or character.character_class == TT.TYPE.FIGHTER:
 		if tile.x < translation.x:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
+			movement.last_direction = "left"
 		if tile.x > translation.x:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
+			movement.last_direction = "right"
 		if tile.z < translation.z:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
+			movement.last_direction = "up"
 		if tile.z > translation.z:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
+			movement.last_direction = "down"
 
 func attack(target):
 	last_target = target
@@ -906,12 +910,16 @@ func _on_animation_finished():
 		if attacker_pos != null:
 			if attacker_pos.x < translation.x:
 				avatar.play("idle-" +  directions[Game.camera_orientation]["left"])
+				movement.last_direction = "left"
 			if attacker_pos.x > translation.x:
 				avatar.play("idle-" +  directions[Game.camera_orientation]["right"])
+				movement.last_direction = "right"
 			if attacker_pos.z < translation.z:
 				avatar.play("idle-" +  directions[Game.camera_orientation]["up"])
+				movement.last_direction = "up"
 			if attacker_pos.z > translation.z:
 				avatar.play("idle-" +  directions[Game.camera_orientation]["down"])
+				movement.last_direction = "down"
 			attacker_pos = null
 		else:
 			avatar.play(avatar.animation.replace("hit", "idle"))
