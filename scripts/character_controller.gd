@@ -46,6 +46,8 @@ var status_effects = []
 var status = AI_STATUS.IDLE
 var behind_dmg_mult = 1.3
 
+var attacker_pos = null
+
 onready var world = get_parent().get_parent().get_parent()
 
 var directions = {
@@ -202,7 +204,7 @@ func aoe_vfx(name, tile, delay):
 	yield(get_tree().create_timer(2.0), "timeout")
 	thunder_storm.queue_free()
 	
-func hit(attacker):
+func hit(attacker, attacker_translation):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
 			if world.mode != world.MODE.SECONDARY_ATTACK:
@@ -225,7 +227,7 @@ func hit(attacker):
 			pick_random_sfx($sfx/boba_hit)
 		TT.TYPE.POISON_BOBA:
 			pick_random_sfx($sfx/poison_hit)
-	avatar.play("hit-" + movement.last_direction)
+	avatar.play(avatar.animation.replace("idle", "hit"))
 	if attacker.item_atk.effect:
 		var hit_effect = StatusEffect.new()
 		hit_effect.copy(attacker.item_atk.effect)
@@ -236,6 +238,14 @@ func hit(attacker):
 			apply_effects(true)
 		else:
 			print("No tag for ", hit_effect.effect)
+	if (
+		world.MODE.SECONDARY_ATTACK and attacker.character_class == TT.TYPE.FIGHTER
+	) or (
+		!world.MODE.SECONDARY_ATTACK
+	):
+		attacker_pos = attacker_translation
+	else:
+		attacker_pos = null
 	if guarding:
 		pick_random_sfx($sfx/defend)
 	if floor(character.hp) <= 0:
@@ -537,10 +547,10 @@ func attack_new(tile:Vector3, AOE:bool):
 		else:
 			attack_complete()
 			for t in targets:
-				t.hit(character)
+				t.hit(character, translation)
 	else:
 		for t in targets:
-			t.hit(character)
+			t.hit(character, translation)
 		attack_complete(delay + 1.0)
 	if not AOE or character.character_class == TT.TYPE.FIGHTER:
 		if tile.x < translation.x:
@@ -609,7 +619,7 @@ func attack(target):
 		pass
 	else:
 		attack_complete()
-		target.hit(character)
+		target.hit(character, translation)
 		
 	if target.translation.x < translation.x:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
@@ -889,15 +899,22 @@ func _on_animation_finished():
 		$vfx/arrow_hit.hide()
 		$healthbar.hide()
 		avatar.stop()
-	if avatar.animation.begins_with("attack") or avatar.animation.begins_with("hit") :
-		if avatar.animation.ends_with("up"):
-			avatar.play("idle-" +  directions[Game.camera_orientation]["up"])
-		if avatar.animation.ends_with("down"):
-			avatar.play("idle-" +  directions[Game.camera_orientation]["down"])
-		if avatar.animation.ends_with("left"):
-			avatar.play("idle-" +  directions[Game.camera_orientation]["left"])
-		if avatar.animation.ends_with("right"):
-			avatar.play("idle-" +  directions[Game.camera_orientation]["right"])
+	#print("animation_finished for ", character.name, ' [', avatar.animation,']')
+	if avatar.animation.begins_with("attack"):
+		avatar.play(avatar.animation.replace("attack", "idle"))
+	if avatar.animation.begins_with("hit"):
+		if attacker_pos != null:
+			if attacker_pos.x < translation.x:
+				avatar.play("idle-" +  directions[Game.camera_orientation]["left"])
+			if attacker_pos.x > translation.x:
+				avatar.play("idle-" +  directions[Game.camera_orientation]["right"])
+			if attacker_pos.z < translation.z:
+				avatar.play("idle-" +  directions[Game.camera_orientation]["up"])
+			if attacker_pos.z > translation.z:
+				avatar.play("idle-" +  directions[Game.camera_orientation]["down"])
+			attacker_pos = null
+		else:
+			avatar.play(avatar.animation.replace("hit", "idle"))
 
 func _process(_delta):
 	var now = OS.get_ticks_msec()
