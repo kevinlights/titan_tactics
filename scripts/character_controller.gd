@@ -627,12 +627,16 @@ func attack(target):
 		
 	if target.translation.x < translation.x:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
+		movement.last_direction = "left"
 	if target.translation.x > translation.x:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
+		movement.last_direction = "right"
 	if target.translation.z < translation.z:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
+		movement.last_direction = "up"
 	if target.translation.z > translation.z:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
+		movement.last_direction = "down"
 	
 	pick_random_sfx("attack")
 	return damage
