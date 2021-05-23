@@ -535,7 +535,7 @@ func attack_new(tile:Vector3, AOE:bool):
 			var projectile = load("res://scenes/projectile.tscn").instance()
 			projectile.fire(translation + Vector3(0, 1,  0), tile + Vector3(0, 1, 0))
 			for t in targets:
-				projectile.connect("hit", t, "hit", [character])
+				projectile.connect("hit", t, "hit", [character, translation])
 			projectile.connect("hit", self, "attack_complete")
 			world.get_node("lookat/camera").track(projectile)
 			pick_random_sfx($sfx/magic_attack)
@@ -612,7 +612,7 @@ func attack(target):
 	if character.character_class == TT.TYPE.MAGE:
 		var projectile = load("res://scenes/projectile.tscn").instance()
 		projectile.fire(translation + Vector3(0, 1,  0), target.translation + Vector3(0, 1, 0))
-		projectile.connect("hit", target, "hit", [character])
+		projectile.connect("hit", target, "hit", [character, translation])
 		projectile.connect("hit", self, "attack_complete")
 		world.get_node("lookat/camera").track(projectile)
 		pick_random_sfx($sfx/magic_attack)
@@ -895,7 +895,7 @@ func init(char_type, control = TT.CONTROL.PLAYER):
 func fire_arrow(target):
 	var projectile = load("res://scenes/arrow.tscn").instance()
 	projectile.fire(translation + Vector3(0, 1,  0), target.translation + Vector3(0, 1, 0))
-	projectile.connect("hit", target, "hit", [character])
+	projectile.connect("hit", target, "hit", [character, translation])
 	projectile.connect("hit", self, "attack_complete")
 	world.get_node("lookat/camera").track(projectile)
 	pick_random_sfx($sfx/arrow_attack)
