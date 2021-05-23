@@ -425,10 +425,10 @@ func _ready():
 	gui.get_node("dialogue_box").connect("cutscene_end", self, "_on_end_cutscene")
 #	gui.connect("modal_closed", self, "_on_modal_resume")
 	gui.get_node("endturn").connect("confirm_end_turn", self, "_on_confirm_end_turn")
-	gui.connect("aoe_left", self, "_on_aoe_left")
-	gui.connect("aoe_right", self, "_on_aoe_right")
-	gui.connect("aoe_up", self, "_on_aoe_up")
-	gui.connect("aoe_down", self, "_on_aoe_down")
+	gui.connect("aoe_left", self, "_on_aoe_move", ["left"])
+	gui.connect("aoe_right", self, "_on_aoe_move", ["right"])
+	gui.connect("aoe_up", self, "_on_aoe_move", ["up"])
+	gui.connect("aoe_down", self, "_on_aoe_move", ["down"])
 	
 # warning-ignore:return_value_discarded
 	$select.connect("moved", self, "_on_selector_moved")
@@ -440,30 +440,39 @@ func _ready():
 	call_deferred("spawn_chests")
 	$lookat/camera.track($select)
 
-func _on_aoe_left():
-	get_current().face("west")
-	var facing = get_current().is_facing()
-	$range_overlay.cursorMode = "sweeping_blow_" + facing
-	$range_overlay.set_selector($range_overlay.selector)
-
-func _on_aoe_right():
-	print("aoe_right")
-	get_current().face("east")
-	var facing = get_current().is_facing()
-	$range_overlay.cursorMode = "sweeping_blow_" + facing
-	$range_overlay.set_selector($range_overlay.selector)
-
-func _on_aoe_up():
-	get_current().face("north")
-	var facing = get_current().is_facing()
-	$range_overlay.cursorMode = "sweeping_blow_" + facing
-	$range_overlay.set_selector($range_overlay.selector)
-
-func _on_aoe_down():
-	get_current().face("south")
-	var facing = get_current().is_facing()
-	$range_overlay.cursorMode = "sweeping_blow_" + facing
-	$range_overlay.set_selector($range_overlay.selector)
+var cardinals = {
+	TT.CAMERA.NORTH: {
+		"left": "west",
+		"right": "east",
+		"up": "north",
+		"down": "south"
+	},
+	TT.CAMERA.SOUTH: {
+		"left": "east",
+		"right": "west",
+		"up": "south",
+		"down": "north"
+	},
+	TT.CAMERA.EAST: {
+		"left": "south",
+		"right": "north",
+		"up": "west",
+		"down": "east"
+	},
+	TT.CAMERA.WEST: {
+		"left": "north",
+		"right": "south",
+		"up": "east",
+		"down": "west"
+	}
+}
+func _on_aoe_move(dir):
+	var cardinal = cardinals[Game.camera_orientation][dir]
+	if cardinal:
+		get_current().face(cardinal)
+		var facing = get_current().is_facing()
+		$range_overlay.cursorMode = "sweeping_blow_" + facing
+		$range_overlay.set_selector($range_overlay.selector)
 
 func spawn_chests():
 	var chest_spawns = get_tree().get_nodes_in_group("chest_spawns")

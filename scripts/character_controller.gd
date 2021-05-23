@@ -644,20 +644,24 @@ func attack(target):
 func face(direction):
 	match direction:
 		"west":
-			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["left"])
+			avatar.play("idle-" + directions[Game.camera_orientation]["left"])
+			movement.last_direction = "left"
 		"east":
-			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["right"])
+			avatar.play("idle-" + directions[Game.camera_orientation]["right"])
+			movement.last_direction = "right"
 		"north":
-			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["up"])
+			avatar.play("idle-" + directions[Game.camera_orientation]["up"])
+			movement.last_direction = "up"
 		"south":
-			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["down"])
+			avatar.play("idle-" + directions[Game.camera_orientation]["down"])
+			movement.last_direction = "down"
 
 func is_facing():
-	if directions[TT.CAMERA.NORTH]["left"] in avatar.animation:
+	if directions[Game.camera_orientation]["left"] in avatar.animation:
 		return "west"
-	if directions[TT.CAMERA.NORTH]["right"] in avatar.animation:
+	if directions[Game.camera_orientation]["right"] in avatar.animation:
 		return "east"
-	if directions[TT.CAMERA.NORTH]["down"] in avatar.animation:
+	if directions[Game.camera_orientation]["down"] in avatar.animation:
 		return "south"
 	return "north"
 	
