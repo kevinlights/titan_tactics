@@ -27,6 +27,7 @@ var path = []
 var avatar
 # var item = Item.new(0, 0, 0) # dummy item, no buffs
 var tile = Vector3(0, 0, 0)
+onready var last_path = PoolVector3Array([tile])
 var is_loot = false
 var is_dead = false
 var is_trigger = false
@@ -691,6 +692,7 @@ func move(target_path:PoolVector3Array, unlimited=false, instant=false):
 	if movement.moving or target_path.size() == 0 or character.turn_limits.move_actions == 0:
 		return
 	path = world.pathfinder.generate_walking_path(target_path)
+	last_path = target_path
 	movement.start_time = OS.get_ticks_msec()
 		
 #	movement.end_position = Vector3(path[0].x, 0, path[0].z)
@@ -717,6 +719,17 @@ func move(target_path:PoolVector3Array, unlimited=false, instant=false):
 		#movement.moving = false
 		_process(0)
 		return
+
+func undo_walk():
+	#TODO : not after attacked
+	if last_path[0] == tile:
+		return
+	print("Undoing movement: ", last_path)
+	character.turn_limits.move_distance += last_path.size()
+	character.turn_limits.move_actions = 1
+	teleport(last_path[0].x, last_path[0].y, last_path[0].z)
+	
+	
 
 #	check_finished()
 	
@@ -984,9 +997,10 @@ func _process(_delta):
 					print("[Character Controller] (" + character.name + ") path complete")
 					emit_signal("path_complete")
 					emit_signal("idle")
-					check_finished()
 					if character.control == TT.CONTROL.PLAYER:
 						world.gui.start("action_menu", character.character_class)
+					else:
+						check_finished()
 					movement.moving = false
 				stop_all_sfx($sfx/walk)
 		else:

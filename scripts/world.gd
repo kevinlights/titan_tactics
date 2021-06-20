@@ -1093,6 +1093,8 @@ func _input(event):
 			Game.camera_orientation = new_orientation
 
 	if event.is_action("context_cancel"):
+		#if !gui.current:
+			#get_current().undo_walk()
 		_repaint_range_overlay()
 
 func telport_spawn(object, x, z):
