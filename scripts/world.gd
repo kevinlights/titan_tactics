@@ -587,6 +587,7 @@ func _on_check_map():
 	gui.back()
 	#gui.get_node("sfx/select").play()
 	mode = MODE.CHECK_MAP
+	is_cutscene = false
 	print("[World] check map enable selector")
 	$select.call_deferred("enable")
 
@@ -1035,7 +1036,7 @@ func _input(event):
 	if event.is_action("ui_focus_next") && !event.is_echo() && event.is_pressed():
 		_on_next_level()
 	if event.is_action("ui_home") && !event.is_echo() && event.is_pressed():
-		_on_replay()
+		_on_replay() 	
 #	if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():
 #		gui.start("pause")
 #		gui.pause()
