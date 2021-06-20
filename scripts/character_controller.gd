@@ -985,6 +985,8 @@ func _process(_delta):
 					emit_signal("path_complete")
 					emit_signal("idle")
 					check_finished()
+					if character.control == TT.CONTROL.PLAYER:
+						world.gui.start("action_menu", character.character_class)
 					movement.moving = false
 				stop_all_sfx($sfx/walk)
 		else:
