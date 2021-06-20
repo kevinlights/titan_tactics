@@ -75,6 +75,10 @@ func init(new_menu_type = "attack"):
 	yield(get_tree().create_timer(0.1), "timeout")
 	var have_focus = false
 	var buttons = $panel/box.get_children()
+	buttons[0].focus_previous = "../" + buttons[buttons.size() - 1].name
+	buttons[0].focus_neighbour_top = "../" + buttons[buttons.size() - 1].name
+	buttons[buttons.size() - 1].focus_next = "../" + buttons[0].name
+	buttons[buttons.size() - 1].focus_neighbour_bottom = "../" + buttons[0].name
 	for i in range(0, buttons.size()):
 		if i > 0:
 			buttons[i - 1].focus_next = "../" + buttons[i].name
