@@ -727,8 +727,7 @@ func undo_walk():
 	print("Undoing movement: ", last_path)
 	character.turn_limits.move_distance += last_path.size()
 	character.turn_limits.move_actions = 1
-	teleport(last_path[0].x, last_path[0].y, last_path[0].z)
-	
+	world.telport_spawn(self, last_path[0].x, last_path[0].z)
 	
 
 #	check_finished()
