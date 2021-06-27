@@ -10,10 +10,11 @@ export(Resource) var death_dialogue
 export(String) var spawn_trigger = "level_start"
 
 var has_spawned = false
+var logger = Logger.new("CharacterSpawner")
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
-	print("spawn entered tree")
+	logger.info("spawn entered tree")
 	pixel_size = 0.06 #0.04
 	centered = false
 	axis = 1
@@ -28,7 +29,7 @@ func set_up_editor():
 	if Engine.editor_hint:
 		if !stats:
 			var default_stats = load("res://resources/class_stats.tres")
-			print("create stats object")
+			logger.info("create stats object")
 			stats = CharacterStats.new()
 			stats.from_defaults(default_stats, TT.TYPE.ARCHER, TT.CONTROL.AI)
 		else:
@@ -38,18 +39,18 @@ func set_up_editor():
 			property_list_changed_notify()
 		if stats.is_connected("class_changed", self, "set_sprite"):
 			stats.disconnect("class_changed", self, "set_sprite")
-		print("connect class_changed signal")
+		logger.info("connect class_changed signal")
 		stats.connect("class_changed", self, "set_sprite")
 		call_deferred("set_sprite")
 
 func _ready():
-	print("spawn ready")
+	logger.info("spawn ready")
 	add_to_group("ai_spawns")
 	set_up_editor()
 
 func set_sprite():
 	if Engine.editor_hint:
-		print("setting sprite")
+		logger.info("setting sprite")
 		match stats.character_class:
 			TT.TYPE.ARCHER:
 				texture = load("res://gfx/archer.png")

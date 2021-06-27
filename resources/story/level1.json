@@ -11,7 +11,7 @@
     ]
   },
   {
-    "trigger": "attack2",
+    "trigger": "Loki-hit",
     "story": [
       {
         "avatar": "ai_swordsman",
