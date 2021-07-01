@@ -1,0 +1,29 @@
+{
+    "character_class_display": "Boba",
+    "character_class": "Boba",
+    "base": {
+        "hp": 8,
+        "atk": 3,
+        "def": 3,
+        "atk_range": 1,
+        "mov_range": 5
+    },
+    "stats": {
+        "min": {
+            "hp": 150,
+            "atk": 50,
+            "def": 10,
+            "hit": 90,
+            "agi": 10,
+            "max_shards": 0
+        },
+        "max": {
+            "hp": 300,
+            "atk": 150,
+            "def": 30,
+            "hit": 98,
+            "agi": 15,
+            "max_shards": 0
+        }
+    }
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=325 format=2]
+[gd_scene load_steps=326 format=2]
 
 [ext_resource path="res://scripts/gui_states.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/action_menu.tscn" type="PackedScene" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://scripts/gui/characterswap.gd" type="Script" id=44]
 [ext_resource path="res://gfx/change.png" type="Texture" id=45]
 [ext_resource path="res://scripts/tip.gd" type="Script" id=46]
+[ext_resource path="res://scenes/gui/lvup.tscn" type="PackedScene" id=47]
 [ext_resource path="res://scripts/ally.gd" type="Script" id=48]
 [ext_resource path="res://scenes/portraits.tscn" type="PackedScene" id=49]
 [ext_resource path="res://scenes/dialogue_box.tscn" type="PackedScene" id=50]
@@ -149,22 +150,22 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 42 )
-region = Rect2( 0, 80, 32, 16 )
+region = Rect2( 0, 48, 32, 16 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 42 )
-region = Rect2( 0, 48, 32, 16 )
+region = Rect2( 0, 80, 32, 16 )
 
 [sub_resource type="SpriteFrames" id=22]
 animations = [ {
 "frames": [ SubResource( 20 ) ],
 "loop": true,
-"name": "dmg",
+"name": "hit",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 21 ) ],
 "loop": true,
-"name": "hit",
+"name": "dmg",
 "speed": 5.0
 } ]
 
@@ -172,12 +173,12 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 20 ) ],
 "loop": true,
-"name": "dmg",
+"name": "hit",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 21 ) ],
 "loop": true,
-"name": "hit",
+"name": "dmg",
 "speed": 5.0
 } ]
 
@@ -204,14 +205,14 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 26 ), SubResource( 27 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -286,14 +287,14 @@ animations = [ {
 "name": "boba",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 37 ), SubResource( 38 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 37 ), SubResource( 38 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
@@ -3123,7 +3124,6 @@ custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 text = "000"
-percent_visible = -0.333333
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -3505,6 +3505,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 104 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3529,6 +3530,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 104 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3719,6 +3721,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 104 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
@@ -3764,6 +3767,9 @@ playing = true
 position = Vector2( 4.5798, 24.1412 )
 frames = ExtResource( 14 )
 animation = "swordsman"
+
+[node name="lvup_overlay" parent="." instance=ExtResource( 47 )]
+visible = false
 
 [node name="win" type="Control" parent="."]
 visible = false

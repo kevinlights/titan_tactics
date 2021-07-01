@@ -1,0 +1,887 @@
+[gd_scene load_steps=56 format=2]
+
+[ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=1]
+[ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
+[ext_resource path="res://scenes/gui/lvup.gd" type="Script" id=3]
+[ext_resource path="res://gfx/level_up/pentagram.png" type="Texture" id=4]
+[ext_resource path="res://scenes/portraits.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gfx/elderSpritesheet_50x60px.png" type="Texture" id=6]
+[ext_resource path="res://gfx/krisSpritesheet_50x60px.png" type="Texture" id=7]
+[ext_resource path="res://gfx/bowieSpritesheet_50x60px.png" type="Texture" id=8]
+[ext_resource path="res://gfx/swordsmenSpritesheet_50x60px.png" type="Texture" id=9]
+[ext_resource path="res://gfx/elyneSpritesheet_50x60px.png" type="Texture" id=10]
+[ext_resource path="res://gfx/archerSpritesheet_50x60px.png" type="Texture" id=11]
+[ext_resource path="res://gfx/poisonbobaSpritesheet_50x60px.png" type="Texture" id=12]
+[ext_resource path="res://gfx/bobaSpritesheet_50x60px.png" type="Texture" id=13]
+[ext_resource path="res://gfx/arathSpritesheet_50x60px.png" type="Texture" id=14]
+[ext_resource path="res://gfx/celesSpritesheet_50x60px.png" type="Texture" id=15]
+[ext_resource path="res://gfx/mageSpritesheet_50x60px.png" type="Texture" id=16]
+[ext_resource path="res://gfx/zaraSpritesheet_50x60px.png" type="Texture" id=17]
+[ext_resource path="res://gfx/swap.png" type="Texture" id=18]
+[ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=19]
+[ext_resource path="res://gfx/place.png" type="Texture" id=20]
+[ext_resource path="res://scripts/focus.gd" type="Script" id=21]
+[ext_resource path="res://gfx/level_up/lvupbg.png" type="Texture" id=22]
+[ext_resource path="res://scenes/gui/numberFontOverride.tres" type="DynamicFont" id=23]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 11 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 16 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 10 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 14 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 15 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 9 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 17 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "swordsman",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "mage",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "boba",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "poison_boba",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "ai_archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "ai_mage",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "kris",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "elyne",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "arath",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "celes",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ) ],
+"loop": true,
+"name": "bowie",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ) ],
+"loop": true,
+"name": "ai_swordsman",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "zara",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 19 ) ],
+"loop": true,
+"name": "instructor",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 10, 10 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 10, 10, 10 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 20, 10, 10 )
+
+[sub_resource type="SpriteFrames" id=24]
+animations = [ {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+content_margin_bottom = 1.0
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 36, 24 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 24, 36, 24 )
+
+[sub_resource type="SpriteFrames" id=28]
+animations = [ {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=29]
+size = 11
+font_data = ExtResource( 19 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 36, 24 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 20 )
+region = Rect2( 0, 24, 36, 24 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="lvup_overlay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.0627451, 0.0627451, 0.0705882, 0.921569 )
+polygon = PoolVector2Array( 0, 0, 0, 224, 160.781, 224, 320, 224, 320, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lvupbg" type="Sprite" parent="Polygon2D"]
+position = Vector2( 160, 112 )
+texture = ExtResource( 22 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 322, 224 )
+region_filter_clip = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pentagram" type="Sprite" parent="Polygon2D"]
+position = Vector2( 204, 124 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="backgroundTop" type="Polygon2D" parent="Polygon2D"]
+position = Vector2( 202.488, 44 )
+scale = Vector2( 1.20096, 0.16 )
+color = Color( 0.278431, 0.282353, 0.290196, 1 )
+polygon = PoolVector2Array( -92, 0, 100, 0, 100, 100, 4, 100, -92, 100 )
+
+[node name="backgroundLeft" type="Polygon2D" parent="Polygon2D"]
+position = Vector2( 44, 60 )
+scale = Vector2( 0.481771, 1.64 )
+color = Color( 0.278431, 0.282353, 0.290196, 1 )
+polygon = PoolVector2Array( -92, 0, 100, 0, 100, 100, 4, 100, -92, 100 )
+
+[node name="title_2" type="Label" parent="Polygon2D"]
+margin_left = 94.0
+margin_top = 48.0
+margin_right = 286.0
+margin_bottom = 61.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "Distribute status points"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_lv" type="Label" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 64.0
+margin_right = 87.0
+margin_bottom = 77.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "Lv."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lv" type="Label" parent="Polygon2D"]
+margin_left = 28.0
+margin_top = 61.0
+margin_right = 92.0
+margin_bottom = 79.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "99 > 99"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_hp" type="Label" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 80.0
+margin_right = 196.0
+margin_bottom = 93.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "HP"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="RichTextLabel" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 91.0
+margin_right = 88.0
+margin_bottom = 107.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/bold_font = ExtResource( 23 )
+custom_fonts/normal_font = ExtResource( 23 )
+custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+bbcode_enabled = true
+bbcode_text = "[b]9999 > 9999[/b]"
+text = "9999 > 9999"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_atk" type="Label" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 110.0
+margin_right = 196.0
+margin_bottom = 123.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "ATK"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="atk" type="RichTextLabel" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 120.0
+margin_right = 92.0
+margin_bottom = 136.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/bold_font = ExtResource( 23 )
+custom_fonts/normal_font = ExtResource( 23 )
+custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+bbcode_enabled = true
+bbcode_text = "[b]9999 > 9999[/b]"
+text = "9999 > 9999"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_def" type="Label" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 138.0
+margin_right = 88.0
+margin_bottom = 151.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "DEF"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="def" type="RichTextLabel" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 148.0
+margin_right = 92.0
+margin_bottom = 164.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/bold_font = ExtResource( 23 )
+custom_fonts/normal_font = ExtResource( 23 )
+custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+bbcode_enabled = true
+bbcode_text = "[b]9999 > 9999[/b]"
+text = "9999 > 9999"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_hit" type="Label" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 166.0
+margin_right = 196.0
+margin_bottom = 179.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "HIT"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hit" type="RichTextLabel" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 176.0
+margin_right = 92.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/bold_font = ExtResource( 23 )
+custom_fonts/normal_font = ExtResource( 23 )
+custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+bbcode_enabled = true
+bbcode_text = "[b]9999 > 9999[/b]"
+text = "9999 > 9999"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_agi" type="Label" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 194.0
+margin_right = 196.0
+margin_bottom = 207.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "AGI"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="agi" type="RichTextLabel" parent="Polygon2D"]
+margin_left = 4.0
+margin_top = 204.0
+margin_right = 92.0
+margin_bottom = 220.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/bold_font = ExtResource( 23 )
+custom_fonts/normal_font = ExtResource( 23 )
+custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+bbcode_enabled = true
+bbcode_text = "[b]9999 > 9999[/b]"
+text = "9999 > 9999"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portrait" type="ColorRect" parent="Polygon2D"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 70.0
+margin_bottom = 70.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portraits" parent="Polygon2D/portrait" instance=ExtResource( 5 )]
+position = Vector2( -20, -10 )
+frames = SubResource( 20 )
+animation = "bowie"
+centered = false
+
+[node name="title" type="Label" parent="Polygon2D"]
+margin_left = 95.0
+margin_top = 28.0
+margin_right = 287.0
+margin_bottom = 41.0
+rect_pivot_offset = Vector2( 152, 6.5 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "XXX leveled up!"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="penta" type="Polygon2D" parent="Polygon2D"]
+color = Color( 0.0823529, 0.458824, 0.556863, 1 )
+polygon = PoolVector2Array( 204, 88, 172, 112, 184, 152, 224, 152, 236, 112 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="hb_hp_penta" type="HBoxContainer" parent="Polygon2D/penta"]
+margin_left = 172.0
+margin_top = 68.0
+margin_right = 236.0
+margin_bottom = 87.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_hp_penta"]
+position = Vector2( -3, -1 )
+frames = SubResource( 24 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( 0, 4 )
+script = ExtResource( 21 )
+
+[node name="lbl_hp_penta" type="Label" parent="Polygon2D/penta/hb_hp_penta"]
+margin_left = 9.0
+margin_top = 3.0
+margin_right = 29.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "HP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp_penta" type="Label" parent="Polygon2D/penta/hb_hp_penta"]
+margin_left = 33.0
+margin_right = 54.0
+margin_bottom = 19.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "+99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hb_atk_penta" type="HBoxContainer" parent="Polygon2D/penta"]
+margin_left = 104.0
+margin_top = 100.0
+margin_right = 172.0
+margin_bottom = 119.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_atk_penta"]
+visible = false
+position = Vector2( -3, -1 )
+frames = SubResource( 24 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( 0, 4 )
+script = ExtResource( 21 )
+
+[node name="lbl_atk_penta" type="Label" parent="Polygon2D/penta/hb_atk_penta"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 36.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "ATK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="atk_penta" type="Label" parent="Polygon2D/penta/hb_atk_penta"]
+margin_left = 40.0
+margin_right = 61.0
+margin_bottom = 19.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "+99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hb_hit_penta" type="HBoxContainer" parent="Polygon2D/penta"]
+margin_left = 112.0
+margin_top = 148.0
+margin_right = 180.0
+margin_bottom = 167.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_hit_penta"]
+visible = false
+position = Vector2( -3, -1 )
+frames = SubResource( 24 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( 0, 4 )
+script = ExtResource( 21 )
+
+[node name="lbl_hit_penta" type="Label" parent="Polygon2D/penta/hb_hit_penta"]
+margin_left = 8.0
+margin_top = 3.0
+margin_right = 34.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "HIT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hit_penta" type="Label" parent="Polygon2D/penta/hb_hit_penta"]
+margin_left = 38.0
+margin_right = 59.0
+margin_bottom = 19.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "+99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hb_agi_penta" type="HBoxContainer" parent="Polygon2D/penta"]
+margin_left = 236.0
+margin_top = 148.0
+margin_right = 304.0
+margin_bottom = 167.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_agi_penta"]
+visible = false
+position = Vector2( -3, -1 )
+frames = SubResource( 24 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( 0, 4 )
+script = ExtResource( 21 )
+
+[node name="lbl_agi_penta" type="Label" parent="Polygon2D/penta/hb_agi_penta"]
+margin_left = 9.0
+margin_top = 3.0
+margin_right = 34.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "AGI"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="agi_penta" type="Label" parent="Polygon2D/penta/hb_agi_penta"]
+margin_left = 38.0
+margin_right = 59.0
+margin_bottom = 19.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "+99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hb_def_penta" type="HBoxContainer" parent="Polygon2D/penta"]
+margin_left = 244.0
+margin_top = 100.0
+margin_right = 312.0
+margin_bottom = 119.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_def_penta"]
+visible = false
+position = Vector2( -3, -1 )
+frames = SubResource( 24 )
+playing = true
+centered = false
+offset = Vector2( 0, 4 )
+script = ExtResource( 21 )
+
+[node name="lbl_def_penta" type="Label" parent="Polygon2D/penta/hb_def_penta"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 36.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "DEF"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="def_penta" type="Label" parent="Polygon2D/penta/hb_def_penta"]
+margin_left = 40.0
+margin_right = 61.0
+margin_bottom = 19.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_styles/normal = SubResource( 25 )
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "+99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrows" type="AnimatedSprite" parent="Polygon2D"]
+position = Vector2( 221, 181 )
+frames = SubResource( 28 )
+playing = true
+centered = false
+
+[node name="tip2" type="Label" parent="Polygon2D/Arrows"]
+margin_left = -1.75
+margin_top = 22.0
+margin_right = 39.25
+margin_bottom = 54.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 29 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "change"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Abutton" type="AnimatedSprite" parent="Polygon2D"]
+position = Vector2( 269, 181 )
+frames = SubResource( 32 )
+playing = true
+centered = false
+
+[node name="tip1" type="Label" parent="Polygon2D/Abutton"]
+margin_top = 22.0
+margin_right = 38.0
+margin_bottom = 54.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 29 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "accept"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
