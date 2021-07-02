@@ -461,8 +461,7 @@ func damage(target):
 		damage = damage * behind_dmg_mult
 		# Froggy :
 		# it may be an inappropriate place for crit detection
-		$crit.show()
-		$crit/AnimationPlayer.play("crit")
+		target.battle_effect("crit")
 	var target_defense = target.character.def + target.character.item_def.defense
 	var def_multiplier = get_def_buff(target_defense)
 	damage *= def_multiplier
@@ -680,6 +679,11 @@ func emote(emoji):
 		print("Emoji not supported: ", emoji)
 	#yield(get_tree().create_timer(2.0), "timeout")
 	#$emotes.hide()
+
+func battle_effect(name : String):
+	get_node(name).show()
+	get_node(name).get_node("AnimationPlayer").play(name)
+	
 
 func attack_complete(delay=1.0):
 	yield(get_tree().create_timer(delay), "timeout")
