@@ -459,6 +459,10 @@ func damage(target):
 				behind_target = true
 	if behind_target:
 		damage = damage * behind_dmg_mult
+		# Froggy :
+		# it may be an inappropriate place for crit detection
+		$crit.show()
+		$crit/AnimationPlayer.play("crit")
 	var target_defense = target.character.def + target.character.item_def.defense
 	var def_multiplier = get_def_buff(target_defense)
 	damage *= def_multiplier
@@ -472,7 +476,7 @@ func damage(target):
 	damage_feedback.get_node("damage").text = "-" + str(damage)
 	print('world.add_child(damage_feedback)', damage_feedback)
 	world.add_child(damage_feedback)
-
+	
 
 func get_aoe_targets(tile:Vector3):
 	var targets:Array = []
