@@ -725,8 +725,7 @@ func move(target_path:PoolVector3Array, unlimited=false, instant=false):
 		return
 
 func undo_walk():
-	#TODO : not after attacked
-	if last_path[0] == tile:
+	if last_path[0] == tile or movement.moving:
 		return
 	print("Undoing movement: ", last_path)
 	character.turn_limits.move_distance += last_path.size()
