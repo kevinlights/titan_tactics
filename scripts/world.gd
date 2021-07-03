@@ -803,7 +803,7 @@ func _on_select_team_member(team_member):
 
 func _on_level_up(diff, character):
 #	gui.call_deferred("level_up", diff, character)
-	gui.start("lvlup", [ diff, character ])
+	gui.start("lvup_overlay", [ diff, character ])
 #	gui.level_up(diff, character)
 
 func _initiate_turn():

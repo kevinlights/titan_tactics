@@ -143,7 +143,9 @@ func level_up():
 	current_to_next = current_to_next - xp_to_next
 	xp_to_next = pow(level, 2)
 	print("Level up")
+	print(get_signal_connection_list("level_up"))
 	emit_signal("level_up", stats_diff, self)
+	
 
 func set_level(lvl):
 	level = lvl
