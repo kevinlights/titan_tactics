@@ -471,7 +471,7 @@ frames = SubResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_lv"]
 position = Vector2( 29.4004, 0.0468369 )
 frames = SubResource( 59 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="lbl_lv" type="AnimatedSprite" parent="Polygon2D/lbl_lv"]
@@ -503,6 +503,7 @@ frames = SubResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_hp"]
 position = Vector2( 26.3415, 12.0975 )
 frames = SubResource( 59 )
+frame = 1
 playing = true
 
 [node name="hp" type="RichTextLabel" parent="Polygon2D"]
@@ -532,7 +533,6 @@ frames = SubResource( 40 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_atk"]
 position = Vector2( 20.2113, 11.9834 )
 frames = SubResource( 59 )
-frame = 3
 playing = true
 
 [node name="atk" type="RichTextLabel" parent="Polygon2D"]
@@ -593,7 +593,7 @@ frames = SubResource( 44 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_hit"]
 position = Vector2( 20.7893, 19.7661 )
 frames = SubResource( 59 )
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( 8.37548, -7.8902 )
 
@@ -624,6 +624,7 @@ frames = SubResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_agi"]
 position = Vector2( 21.6587, 19.7813 )
 frames = SubResource( 59 )
+frame = 1
 playing = true
 offset = Vector2( 8.37548, -7.8902 )
 
@@ -690,7 +691,7 @@ polygon = PoolVector2Array( 204.125, 87, 169.375, 112.875, 182.675, 153.8, 225.6
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_hp_penta"]
 position = Vector2( 179.5, 67.5 )
 frames = SubResource( 29 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
@@ -702,9 +703,9 @@ frames = SubResource( 47 )
 
 [node name="hp_penta" type="Label" parent="Polygon2D/penta/hb_hp_penta"]
 margin_left = 204.5
-margin_top = 68.5
+margin_top = 67.5
 margin_right = 222.5
-margin_bottom = 85.5
+margin_bottom = 84.5
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_styles/normal = SubResource( 30 )
@@ -725,7 +726,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_atk_penta"]
 position = Vector2( 116, 101.5 )
 frames = SubResource( 29 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
@@ -737,9 +738,9 @@ frames = SubResource( 49 )
 
 [node name="atk_penta" type="Label" parent="Polygon2D/penta/hb_atk_penta"]
 margin_left = 146.0
-margin_top = 102.5
+margin_top = 101.5
 margin_right = 164.0
-margin_bottom = 119.5
+margin_bottom = 118.5
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_styles/normal = SubResource( 30 )
@@ -760,7 +761,7 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_hit_penta"]
 position = Vector2( 133.986, 150.614 )
 frames = SubResource( 29 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
@@ -772,9 +773,9 @@ frames = SubResource( 51 )
 
 [node name="hit_penta" type="Label" parent="Polygon2D/penta/hb_hit_penta"]
 margin_left = 160.986
-margin_top = 151.614
+margin_top = 150.614
 margin_right = 178.986
-margin_bottom = 168.614
+margin_bottom = 167.614
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_styles/normal = SubResource( 30 )
@@ -793,22 +794,23 @@ __meta__ = {
 [node name="hb_agi_penta" type="Node2D" parent="Polygon2D/penta"]
 
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_agi_penta"]
-position = Vector2( 226.103, 147.846 )
+position = Vector2( 226.103, 150.614 )
 frames = SubResource( 29 )
+frame = 3
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
 script = ExtResource( 21 )
 
 [node name="lbl_agi_penta" type="AnimatedSprite" parent="Polygon2D/penta/hb_agi_penta"]
-position = Vector2( 243, 158 )
+position = Vector2( 243, 160.5 )
 frames = SubResource( 53 )
 
 [node name="agi_penta" type="Label" parent="Polygon2D/penta/hb_agi_penta"]
 margin_left = 252.853
-margin_top = 149.379
+margin_top = 151.379
 margin_right = 270.853
-margin_bottom = 166.379
+margin_bottom = 168.379
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_styles/normal = SubResource( 30 )
@@ -829,7 +831,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_def_penta"]
 position = Vector2( 240.72, 101.409 )
 frames = SubResource( 29 )
-frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
@@ -841,9 +842,9 @@ frames = SubResource( 55 )
 
 [node name="def_penta" type="Label" parent="Polygon2D/penta/hb_def_penta"]
 margin_left = 269.72
-margin_top = 103.409
+margin_top = 102.409
 margin_right = 287.72
-margin_bottom = 120.409
+margin_bottom = 119.409
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_styles/normal = SubResource( 30 )
@@ -862,6 +863,7 @@ __meta__ = {
 [node name="Arrows" type="AnimatedSprite" parent="Polygon2D"]
 position = Vector2( 221, 181 )
 frames = SubResource( 33 )
+frame = 1
 playing = true
 centered = false
 
@@ -885,6 +887,7 @@ __meta__ = {
 [node name="Abutton" type="AnimatedSprite" parent="Polygon2D"]
 position = Vector2( 269, 181 )
 frames = SubResource( 37 )
+frame = 1
 playing = true
 centered = false
 
