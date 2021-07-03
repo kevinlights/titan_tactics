@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=1]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
@@ -23,221 +23,378 @@
 [ext_resource path="res://scripts/focus.gd" type="Script" id=21]
 [ext_resource path="res://gfx/level_up/lvupbg.png" type="Texture" id=22]
 [ext_resource path="res://scenes/gui/numberFontOverride.tres" type="DynamicFont" id=23]
+[ext_resource path="res://gfx/ui/stats.png" type="Texture" id=24]
+[ext_resource path="res://gfx/UI.png" type="Texture" id=25]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 50, 60 )
+atlas = ExtResource( 24 )
+region = Rect2( 0, 96, 32, 16 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 16 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 11 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 16 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 10 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 14 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 17 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 17 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 9 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 15 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="SpriteFrames" id=20]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "default",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 2 ) ],
+} ]
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 3
+atlas = ExtResource( 25 )
+region = Rect2( 0, 24, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 3
+atlas = ExtResource( 25 )
+region = Rect2( 0, 32, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 3
+atlas = ExtResource( 25 )
+region = Rect2( 0, 40, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=59]
+animations = [ {
+"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 57 ) ],
 "loop": true,
-"name": "boba",
+"name": "default",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "archer",
+"name": "default",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 4 ) ],
+} ]
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 16, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=40]
+animations = [ {
+"frames": [ SubResource( 39 ) ],
 "loop": true,
-"name": "mage",
+"name": "default",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 5 ) ],
+} ]
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 32, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=42]
+animations = [ {
+"frames": [ SubResource( 41 ) ],
 "loop": true,
-"name": "ai_archer",
+"name": "default",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 48, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=44]
+animations = [ {
+"frames": [ SubResource( 43 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 64, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 45 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 9 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 14 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 10 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 17 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 11 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 16 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 15 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="SpriteFrames" id=25]
+animations = [ {
 "frames": [ SubResource( 6 ) ],
-"loop": true,
-"name": "ai_mage",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ) ],
-"loop": true,
-"name": "kris",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "elyne",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 10 ), SubResource( 11 ) ],
-"loop": true,
-"name": "arath",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 12 ) ],
-"loop": true,
-"name": "poison_boba",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 13 ) ],
-"loop": true,
-"name": "instructor",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "zara",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 16 ) ],
-"loop": true,
-"name": "bowie",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 17 ) ],
 "loop": true,
 "name": "ai_swordsman",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "instructor",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "kris",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "swordsman",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "mage",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "boba",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "arath",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "elyne",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "zara",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 19 ) ],
+"loop": true,
+"name": "bowie",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 20 ) ],
+"loop": true,
+"name": "ai_archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ) ],
+"loop": true,
+"name": "ai_mage",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 22 ) ],
+"loop": true,
+"name": "poison_boba",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "celes",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 10, 10, 10 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 20, 10, 10 )
 
-[sub_resource type="SpriteFrames" id=24]
+[sub_resource type="SpriteFrames" id=29]
 animations = [ {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 22 ) ],
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 27 ) ],
 "loop": true,
 "name": "default",
 "speed": 8.0
 } ]
 
-[sub_resource type="StyleBoxEmpty" id=25]
-content_margin_bottom = 1.0
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 32, 16 )
 
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 0, 36, 24 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 24, 36, 24 )
-
-[sub_resource type="SpriteFrames" id=28]
+[sub_resource type="SpriteFrames" id=47]
 animations = [ {
-"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"frames": [ SubResource( 46 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=29]
+[sub_resource type="StyleBoxEmpty" id=30]
+content_margin_bottom = 1.0
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 16, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=49]
+animations = [ {
+"frames": [ SubResource( 48 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 48, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=51]
+animations = [ {
+"frames": [ SubResource( 50 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 64, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=53]
+animations = [ {
+"frames": [ SubResource( 52 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 32, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=55]
+animations = [ {
+"frames": [ SubResource( 54 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 36, 24 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 24, 36, 24 )
+
+[sub_resource type="SpriteFrames" id=33]
+animations = [ {
+"frames": [ SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=34]
 size = 11
 font_data = ExtResource( 19 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 0, 36, 24 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 20 )
 region = Rect2( 0, 24, 36, 24 )
 
-[sub_resource type="SpriteFrames" id=32]
+[sub_resource type="SpriteFrames" id=37]
 animations = [ {
-"frames": [ SubResource( 30 ), SubResource( 31 ) ],
+"frames": [ SubResource( 35 ), SubResource( 36 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=33]
+[sub_resource type="DynamicFont" id=38]
 size = 11
 font_data = ExtResource( 19 )
 
@@ -246,277 +403,245 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.0627451, 0.0627451, 0.0705882, 0.921569 )
+color = Color( 0.137255, 0.141176, 0.145098, 1 )
 polygon = PoolVector2Array( 0, 0, 0, 224, 160.781, 224, 320, 224, 320, 0 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="lvupbg" type="Sprite" parent="Polygon2D"]
-position = Vector2( 160, 112 )
+position = Vector2( 204, 132 )
 texture = ExtResource( 22 )
-region_enabled = true
 region_rect = Rect2( 0, 0, 322, 224 )
 region_filter_clip = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="pentagram" type="Sprite" parent="Polygon2D"]
-position = Vector2( 204, 124 )
+position = Vector2( 204, 132 )
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
+
+[node name="backgroundTopSH" type="Polygon2D" parent="Polygon2D"]
+position = Vector2( 8.5, 73.9 )
+scale = Vector2( 1.201, 0.18 )
+color = Color( 0.0745098, 0.0745098, 0.0784314, 0.431373 )
+offset = Vector2( 163.193, -124.375 )
+polygon = PoolVector2Array( -92, 0, 100, 0, 100, 100, 4, 100, -92, 100 )
+
+[node name="backgroundLeftSH" type="Polygon2D" parent="Polygon2D"]
+position = Vector2( 8.5, 73.9 )
+scale = Vector2( 0.482, 1.64 )
+color = Color( 0.0745098, 0.0745098, 0.0784314, 0.431373 )
+offset = Vector2( 77.838, -2.378 )
+polygon = PoolVector2Array( -92, 0, 100, 0, 100, 100, 4, 100, -92, 100 )
 
 [node name="backgroundTop" type="Polygon2D" parent="Polygon2D"]
-position = Vector2( 202.488, 44 )
-scale = Vector2( 1.20096, 0.16 )
-color = Color( 0.278431, 0.282353, 0.290196, 1 )
+position = Vector2( 6.50002, 71.9 )
+scale = Vector2( 1.201, 0.18 )
+color = Color( 0.223529, 0.227451, 0.286275, 0.54902 )
+offset = Vector2( 163.193, -124.375 )
 polygon = PoolVector2Array( -92, 0, 100, 0, 100, 100, 4, 100, -92, 100 )
 
 [node name="backgroundLeft" type="Polygon2D" parent="Polygon2D"]
-position = Vector2( 44, 60 )
+position = Vector2( 6.50001, 71.9 )
 scale = Vector2( 0.481771, 1.64 )
-color = Color( 0.278431, 0.282353, 0.290196, 1 )
-polygon = PoolVector2Array( -92, 0, 100, 0, 100, 100, 4, 100, -92, 100 )
+color = Color( 0.223529, 0.227451, 0.286275, 0.54902 )
+offset = Vector2( 77.8378, -2.37804 )
+polygon = PoolVector2Array( -92, 0, 100, 0, 100, 21.8293, 100, 100, 4, 100, -92, 100 )
 
 [node name="title_2" type="Label" parent="Polygon2D"]
 margin_left = 94.0
-margin_top = 48.0
+margin_top = 53.0
 margin_right = 286.0
-margin_bottom = 61.0
+margin_bottom = 66.0
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "Distribute status points"
+text = "Upgrade skill"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lbl_lv" type="Label" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 64.0
-margin_right = 87.0
-margin_bottom = 77.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "Lv."
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_lv" type="AnimatedSprite" parent="Polygon2D"]
+position = Vector2( 7.875, 78.8961 )
+frames = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_lv"]
+position = Vector2( 29.4004, 0.0468369 )
+frames = SubResource( 59 )
+frame = 2
+playing = true
+
+[node name="lbl_lv" type="AnimatedSprite" parent="Polygon2D/lbl_lv"]
+position = Vector2( 38.875, -0.103851 )
+frames = SubResource( 2 )
 
 [node name="lv" type="Label" parent="Polygon2D"]
-margin_left = 28.0
-margin_top = 61.0
-margin_right = 92.0
-margin_bottom = 79.0
+margin_left = 19.0
+margin_top = 69.0
+margin_right = 83.0
+margin_bottom = 87.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "99 > 99"
+text = "99         99"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lbl_hp" type="Label" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 80.0
-margin_right = 196.0
-margin_bottom = 93.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "HP"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_hp" type="AnimatedSprite" parent="Polygon2D"]
+position = Vector2( 8.69121, 93.9391 )
+frames = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_hp"]
+position = Vector2( 26.3415, 12.0975 )
+frames = SubResource( 59 )
+playing = true
 
 [node name="hp" type="RichTextLabel" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 91.0
-margin_right = 88.0
-margin_bottom = 107.0
+margin_left = 4.85104
+margin_top = 94.6837
+margin_right = 88.851
+margin_bottom = 110.684
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_fonts/bold_font = ExtResource( 23 )
 custom_fonts/normal_font = ExtResource( 23 )
-custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_colors/default_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 bbcode_enabled = true
 bbcode_text = "[b]9999 > 9999[/b]"
-text = "9999 > 9999"
+text = "9999    9999"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lbl_atk" type="Label" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 110.0
-margin_right = 196.0
-margin_bottom = 123.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "ATK"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_atk" type="AnimatedSprite" parent="Polygon2D"]
+position = Vector2( 15, 121 )
+frames = SubResource( 40 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_atk"]
+position = Vector2( 20.2113, 11.9834 )
+frames = SubResource( 59 )
+frame = 3
+playing = true
 
 [node name="atk" type="RichTextLabel" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 120.0
-margin_right = 92.0
-margin_bottom = 136.0
+margin_left = 5.0
+margin_top = 122.0
+margin_right = 93.0
+margin_bottom = 138.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_fonts/bold_font = ExtResource( 23 )
 custom_fonts/normal_font = ExtResource( 23 )
-custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_colors/default_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 bbcode_enabled = true
 bbcode_text = "[b]9999 > 9999[/b]"
-text = "9999 > 9999"
+text = "9999    9999"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lbl_def" type="Label" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 138.0
-margin_right = 88.0
-margin_bottom = 151.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "DEF"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_def" type="AnimatedSprite" parent="Polygon2D"]
+position = Vector2( 15, 148 )
+frames = SubResource( 42 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_def"]
+position = Vector2( 11.8946, 19.8831 )
+frames = SubResource( 59 )
+frame = 2
+playing = true
+offset = Vector2( 8.37548, -7.8902 )
 
 [node name="def" type="RichTextLabel" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 148.0
-margin_right = 92.0
-margin_bottom = 164.0
+margin_left = 5.0
+margin_top = 149.0
+margin_right = 93.0
+margin_bottom = 165.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_fonts/bold_font = ExtResource( 23 )
 custom_fonts/normal_font = ExtResource( 23 )
-custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_colors/default_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 bbcode_enabled = true
 bbcode_text = "[b]9999 > 9999[/b]"
-text = "9999 > 9999"
+text = "9999    9999"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lbl_hit" type="Label" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 166.0
-margin_right = 196.0
-margin_bottom = 179.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "HIT"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_hit" type="AnimatedSprite" parent="Polygon2D"]
+position = Vector2( 13, 175 )
+frames = SubResource( 44 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_hit"]
+position = Vector2( 20.7893, 19.7661 )
+frames = SubResource( 59 )
+frame = 1
+playing = true
+offset = Vector2( 8.37548, -7.8902 )
 
 [node name="hit" type="RichTextLabel" parent="Polygon2D"]
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 176.0
-margin_right = 92.0
+margin_right = 93.0
 margin_bottom = 192.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_fonts/bold_font = ExtResource( 23 )
 custom_fonts/normal_font = ExtResource( 23 )
-custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_colors/default_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 bbcode_enabled = true
 bbcode_text = "[b]9999 > 9999[/b]"
-text = "9999 > 9999"
+text = "99.9%    99.9%"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lbl_agi" type="Label" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 194.0
-margin_right = 196.0
-margin_bottom = 207.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "AGI"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_agi" type="AnimatedSprite" parent="Polygon2D"]
+position = Vector2( 12, 202 )
+frames = SubResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Polygon2D/lbl_agi"]
+position = Vector2( 21.6587, 19.7813 )
+frames = SubResource( 59 )
+playing = true
+offset = Vector2( 8.37548, -7.8902 )
 
 [node name="agi" type="RichTextLabel" parent="Polygon2D"]
-margin_left = 4.0
-margin_top = 204.0
-margin_right = 92.0
-margin_bottom = 220.0
+margin_left = 5.0
+margin_top = 203.0
+margin_right = 93.0
+margin_bottom = 219.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_fonts/bold_font = ExtResource( 23 )
 custom_fonts/normal_font = ExtResource( 23 )
-custom_colors/default_color = Color( 0.917647, 0.913725, 0.870588, 1 )
+custom_colors/default_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 bbcode_enabled = true
 bbcode_text = "[b]9999 > 9999[/b]"
-text = "9999 > 9999"
+text = "99.9%    99.9%"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -524,9 +649,9 @@ __meta__ = {
 
 [node name="portrait" type="ColorRect" parent="Polygon2D"]
 margin_left = 20.0
-margin_top = 10.0
+margin_top = 18.0
 margin_right = 70.0
-margin_bottom = 70.0
+margin_bottom = 78.0
 color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -534,79 +659,57 @@ __meta__ = {
 
 [node name="portraits" parent="Polygon2D/portrait" instance=ExtResource( 5 )]
 position = Vector2( -20, -10 )
-frames = SubResource( 20 )
+frames = SubResource( 25 )
 animation = "bowie"
 centered = false
 
 [node name="title" type="Label" parent="Polygon2D"]
 margin_left = 95.0
-margin_top = 28.0
+margin_top = 34.0
 margin_right = 287.0
-margin_bottom = 41.0
+margin_bottom = 47.0
 rect_pivot_offset = Vector2( 152, 6.5 )
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "XXX leveled up!"
+text = "XXX level up!"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="penta" type="Polygon2D" parent="Polygon2D"]
-color = Color( 0.0823529, 0.458824, 0.556863, 1 )
-polygon = PoolVector2Array( 204, 88, 172, 112, 184, 152, 224, 152, 236, 112 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 0, 8 )
+color = Color( 0.0823529, 0.458824, 0.556863, 0.823529 )
+polygon = PoolVector2Array( 204.125, 87, 169.375, 112.875, 182.675, 153.8, 225.675, 153.8, 239.5, 112.875 )
 
-[node name="hb_hp_penta" type="HBoxContainer" parent="Polygon2D/penta"]
-margin_left = 172.0
-margin_top = 68.0
-margin_right = 236.0
-margin_bottom = 87.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="hb_hp_penta" type="Node2D" parent="Polygon2D/penta"]
 
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_hp_penta"]
-position = Vector2( -3, -1 )
-frames = SubResource( 24 )
+position = Vector2( 179.5, 67.5 )
+frames = SubResource( 29 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
 script = ExtResource( 21 )
 
-[node name="lbl_hp_penta" type="Label" parent="Polygon2D/penta/hb_hp_penta"]
-margin_left = 9.0
-margin_top = 3.0
-margin_right = 29.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "HP"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_hp_penta" type="AnimatedSprite" parent="Polygon2D/penta/hb_hp_penta"]
+position = Vector2( 193.5, 77.5 )
+frames = SubResource( 47 )
 
 [node name="hp_penta" type="Label" parent="Polygon2D/penta/hb_hp_penta"]
-margin_left = 33.0
-margin_right = 54.0
-margin_bottom = 19.0
+margin_left = 204.5
+margin_top = 68.5
+margin_right = 222.5
+margin_bottom = 85.5
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
-custom_styles/normal = SubResource( 25 )
+custom_styles/normal = SubResource( 30 )
 custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -617,53 +720,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hb_atk_penta" type="HBoxContainer" parent="Polygon2D/penta"]
-margin_left = 104.0
-margin_top = 100.0
-margin_right = 172.0
-margin_bottom = 119.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="hb_atk_penta" type="Node2D" parent="Polygon2D/penta"]
 
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_atk_penta"]
-visible = false
-position = Vector2( -3, -1 )
-frames = SubResource( 24 )
+position = Vector2( 116, 101.5 )
+frames = SubResource( 29 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
 script = ExtResource( 21 )
 
-[node name="lbl_atk_penta" type="Label" parent="Polygon2D/penta/hb_atk_penta"]
-margin_left = 7.0
-margin_top = 3.0
-margin_right = 36.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "ATK"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_atk_penta" type="AnimatedSprite" parent="Polygon2D/penta/hb_atk_penta"]
+position = Vector2( 135.5, 111.5 )
+frames = SubResource( 49 )
 
 [node name="atk_penta" type="Label" parent="Polygon2D/penta/hb_atk_penta"]
-margin_left = 40.0
-margin_right = 61.0
-margin_bottom = 19.0
+margin_left = 146.0
+margin_top = 102.5
+margin_right = 164.0
+margin_bottom = 119.5
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
-custom_styles/normal = SubResource( 25 )
+custom_styles/normal = SubResource( 30 )
 custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color = Color( 0.596078, 0.619608, 0.611765, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 text = "+99"
@@ -673,53 +755,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hb_hit_penta" type="HBoxContainer" parent="Polygon2D/penta"]
-margin_left = 112.0
-margin_top = 148.0
-margin_right = 180.0
-margin_bottom = 167.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="hb_hit_penta" type="Node2D" parent="Polygon2D/penta"]
 
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_hit_penta"]
-visible = false
-position = Vector2( -3, -1 )
-frames = SubResource( 24 )
+position = Vector2( 133.986, 150.614 )
+frames = SubResource( 29 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
 script = ExtResource( 21 )
 
-[node name="lbl_hit_penta" type="Label" parent="Polygon2D/penta/hb_hit_penta"]
-margin_left = 8.0
-margin_top = 3.0
-margin_right = 34.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "HIT"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_hit_penta" type="AnimatedSprite" parent="Polygon2D/penta/hb_hit_penta"]
+position = Vector2( 151, 160.5 )
+frames = SubResource( 51 )
 
 [node name="hit_penta" type="Label" parent="Polygon2D/penta/hb_hit_penta"]
-margin_left = 38.0
-margin_right = 59.0
-margin_bottom = 19.0
+margin_left = 160.986
+margin_top = 151.614
+margin_right = 178.986
+margin_bottom = 168.614
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
-custom_styles/normal = SubResource( 25 )
+custom_styles/normal = SubResource( 30 )
 custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color = Color( 0.596078, 0.619608, 0.611765, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 text = "+99"
@@ -729,53 +790,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hb_agi_penta" type="HBoxContainer" parent="Polygon2D/penta"]
-margin_left = 236.0
-margin_top = 148.0
-margin_right = 304.0
-margin_bottom = 167.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="hb_agi_penta" type="Node2D" parent="Polygon2D/penta"]
 
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_agi_penta"]
-visible = false
-position = Vector2( -3, -1 )
-frames = SubResource( 24 )
+position = Vector2( 226.103, 147.846 )
+frames = SubResource( 29 )
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
 script = ExtResource( 21 )
 
-[node name="lbl_agi_penta" type="Label" parent="Polygon2D/penta/hb_agi_penta"]
-margin_left = 9.0
-margin_top = 3.0
-margin_right = 34.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "AGI"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_agi_penta" type="AnimatedSprite" parent="Polygon2D/penta/hb_agi_penta"]
+position = Vector2( 243, 158 )
+frames = SubResource( 53 )
 
 [node name="agi_penta" type="Label" parent="Polygon2D/penta/hb_agi_penta"]
-margin_left = 38.0
-margin_right = 59.0
-margin_bottom = 19.0
+margin_left = 252.853
+margin_top = 149.379
+margin_right = 270.853
+margin_bottom = 166.379
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
-custom_styles/normal = SubResource( 25 )
+custom_styles/normal = SubResource( 30 )
 custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color = Color( 0.596078, 0.619608, 0.611765, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 text = "+99"
@@ -785,54 +824,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hb_def_penta" type="HBoxContainer" parent="Polygon2D/penta"]
-margin_left = 244.0
-margin_top = 100.0
-margin_right = 312.0
-margin_bottom = 119.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="hb_def_penta" type="Node2D" parent="Polygon2D/penta"]
 
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_def_penta"]
-visible = false
-position = Vector2( -3, -1 )
-frames = SubResource( 24 )
-frame = 3
+position = Vector2( 240.72, 101.409 )
+frames = SubResource( 29 )
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
 script = ExtResource( 21 )
 
-[node name="lbl_def_penta" type="Label" parent="Polygon2D/penta/hb_def_penta"]
-margin_left = 7.0
-margin_top = 3.0
-margin_right = 36.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( 72, 8 )
-theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-text = "DEF"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="lbl_def_penta" type="AnimatedSprite" parent="Polygon2D/penta/hb_def_penta"]
+position = Vector2( 259.5, 111.5 )
+frames = SubResource( 55 )
 
 [node name="def_penta" type="Label" parent="Polygon2D/penta/hb_def_penta"]
-margin_left = 40.0
-margin_right = 61.0
-margin_bottom = 19.0
+margin_left = 269.72
+margin_top = 103.409
+margin_right = 287.72
+margin_bottom = 120.409
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
-custom_styles/normal = SubResource( 25 )
+custom_styles/normal = SubResource( 30 )
 custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
-custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_colors/font_color = Color( 0.596078, 0.619608, 0.611765, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 text = "+99"
@@ -844,7 +861,7 @@ __meta__ = {
 
 [node name="Arrows" type="AnimatedSprite" parent="Polygon2D"]
 position = Vector2( 221, 181 )
-frames = SubResource( 28 )
+frames = SubResource( 33 )
 playing = true
 centered = false
 
@@ -854,12 +871,12 @@ margin_top = 22.0
 margin_right = 39.25
 margin_bottom = 54.0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "change"
+text = "Change"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -867,7 +884,7 @@ __meta__ = {
 
 [node name="Abutton" type="AnimatedSprite" parent="Polygon2D"]
 position = Vector2( 269, 181 )
-frames = SubResource( 32 )
+frames = SubResource( 37 )
 playing = true
 centered = false
 
@@ -877,7 +894,7 @@ margin_top = 22.0
 margin_right = 38.0
 margin_bottom = 54.0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
@@ -895,10 +912,10 @@ margin_right = 14.0
 margin_bottom = 41.0
 mouse_filter = 2
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 33 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 button_mask = 0
-text = "accept"
+text = "Skl up"
 __meta__ = {
 "_edit_use_anchors_": false
 }
