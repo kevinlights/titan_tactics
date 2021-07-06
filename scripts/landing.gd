@@ -48,8 +48,6 @@ func _on_quit():
 	yield(get_tree().create_timer(0.25), "timeout")
 	get_tree().quit()
 
-
-
 func _on_newgame():
 	Game.setup_new_game()
 	_start_game()

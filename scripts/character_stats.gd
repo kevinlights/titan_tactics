@@ -13,6 +13,14 @@ export(int) var atk
 export(int) var def
 export(int) var atk_range
 export(int) var mov_range
+export(int) var hit
+export(int) var agi
+export(int) var bonus_hp
+export(int) var bonus_atk
+export(int) var bonus_def
+export(int) var bonus_hit
+export(int) var bonus_agi
+
 export(int) var heal
 export(Resource) var item_atk
 export(Resource) var item_def
@@ -135,13 +143,9 @@ func level_up():
 	current_to_next = current_to_next - xp_to_next
 	xp_to_next = pow(level, 2)
 	print("Level up")
+	print(get_signal_connection_list("level_up"))
 	emit_signal("level_up", stats_diff, self)
-
-#func set_xp(more_xp):
-#	xp = more_xp
-#
-#func get_xp():
-#	return xp
+	
 
 func set_level(lvl):
 	level = lvl
@@ -156,8 +160,6 @@ func set_character_class(new_character_class):
 	if item_atk and item_def:
 		item_atk.character_class = new_character_class
 		item_def.character_class = new_character_class
-#	var default_stats = load("res://resources/class_stats.tres")
-#	generate(default_stats, character_class, control, level)
 	generate(defaults[character_class], character_class, control, level)
 	emit_signal("class_changed")
 
@@ -205,7 +207,7 @@ func from_other(other_stats):
 		item_atk.attack = 0
 	if !item_def:
 		item_def = Item.new()
-		item_def.create()	
+		item_def.create()
 
 func from_defaults(request_class, request_control, request_atk = 1, request_def = 1, request_atk_range = 1, request_mov_range = 1, request_hp = 10):
 	character_class = request_class
@@ -224,9 +226,7 @@ func from_defaults(request_class, request_control, request_atk = 1, request_def 
 		item_def.create()
 		item_atk.character_class = character_class
 		item_atk.attack = 0
-#		item_atk.generate(level, Item.SLOT.ATK, character_class)
-#		item_def.generate(level, Item.SLOT.DEF, character_class)
-
+		
 func generate(default_stats, request_class, request_control, request_level = 1, force = false):
 	var rng = RandomNumberGenerator.new()
 	if !(request_class in cant_carry):
@@ -250,18 +250,6 @@ func generate(default_stats, request_class, request_control, request_level = 1, 
 	if not Engine.editor_hint and not force:
 		return
 	print("Regenerate stats")
-#	var default_stats = 
-#	default_stats = class_stats.archer
-#	if request_class == TT.TYPE.FIGHTER:
-#		default_stats = class_stats.swordsman
-#	elif request_class == TT.TYPE.MAGE:
-#		default_stats = class_stats.mage 
-#		heal = level
-#	elif request_class == TT.TYPE.BOBA:
-#		default_stats = class_stats.boba
-#	elif request_class == TT.TYPE.POISON_BOBA:
-#		default_stats = class_stats.poison_boba
-#	character_class = default_stats.character_class
 	control = request_control
 	abilities = TT.class_stats.abilities[character_class]
 	max_hp = default_stats["hp"] + fibonacci_cumulative(level)
@@ -335,7 +323,7 @@ func from_save_data(class_stats, data):
 	if character_class == TT.TYPE.FIGHTER:
 		default_stats = class_stats.swordsman
 	elif character_class == TT.TYPE.MAGE:
-		default_stats = class_stats.mage 
+		default_stats = class_stats.mage
 		heal = level
 	elif character_class == TT.TYPE.BOBA:
 		default_stats = class_stats.boba

@@ -121,6 +121,8 @@ func _input(event):
 			get_parent().set_mode(TacticsWorld.MODE.PLAY)
 	if get_parent().mode == TacticsWorld.MODE.PLAY:
 		if event.is_action("context_cancel") && !event.is_echo() && event.is_pressed():
+			if !current or (current.name in non_blocking):
+				get_parent().get_current().undo_walk()
 			if current and !(current.name in cant_cancel):
 				back()
 		if event.is_action("pause_game") && !event.is_echo() && event.is_pressed():

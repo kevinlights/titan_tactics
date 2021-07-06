@@ -1,7 +1,7 @@
 [gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://gfx/playerspawn_map.png" type="Texture" id=1]
-[ext_resource path="res://scripts/Level/Level.gd" type="Script" id=2]
+[ext_resource path="res://scripts/level.gd" type="Script" id=2]
 [ext_resource path="res://scripts/gridmap/raycasting_pathfinder.gd" type="Script" id=3]
 [ext_resource path="res://gfx/OBJS/snow.meshlib" type="MeshLibrary" id=4]
 [ext_resource path="res://scripts/playerspawner.gd" type="Script" id=5]
@@ -20,7 +20,7 @@
 [ext_resource path="res://gfx/swordsman.png" type="Texture" id=20]
 [ext_resource path="res://gfx/mage.png" type="Texture" id=21]
 [ext_resource path="res://gfx/speak_map.png" type="Texture" id=22]
-[ext_resource path="res://scripts/Story/StoryMarker.gd" type="Script" id=23]
+[ext_resource path="res://scripts/dialogue/StoryMarker.gd" type="Script" id=23]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 13 )
@@ -66,7 +66,7 @@ defense = 0
 heal = 0
 effect = SubResource( 4 )
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=54]
 script = ExtResource( 6 )
 character_class = 3
 name = "Ward"
@@ -122,7 +122,7 @@ defense = 0
 heal = 0
 effect = SubResource( 9 )
 
-[sub_resource type="Resource" id=11]
+[sub_resource type="Resource" id=55]
 script = ExtResource( 6 )
 character_class = 3
 name = "Horm"
@@ -178,7 +178,7 @@ defense = 0
 heal = 0
 effect = SubResource( 14 )
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=56]
 script = ExtResource( 6 )
 character_class = 3
 name = "Tarek"
@@ -234,7 +234,7 @@ defense = 0
 heal = 0
 effect = SubResource( 19 )
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=57]
 script = ExtResource( 6 )
 character_class = 3
 name = "Yava"
@@ -290,7 +290,7 @@ defense = 0
 heal = 0
 effect = SubResource( 24 )
 
-[sub_resource type="Resource" id=26]
+[sub_resource type="Resource" id=58]
 script = ExtResource( 6 )
 character_class = 3
 name = "Bram"
@@ -346,7 +346,7 @@ defense = 0
 heal = 0
 effect = SubResource( 29 )
 
-[sub_resource type="Resource" id=31]
+[sub_resource type="Resource" id=59]
 script = ExtResource( 6 )
 character_class = 3
 name = "Laura"
@@ -402,7 +402,7 @@ defense = 0
 heal = 0
 effect = SubResource( 34 )
 
-[sub_resource type="Resource" id=36]
+[sub_resource type="Resource" id=60]
 script = ExtResource( 6 )
 character_class = 0
 name = "Sonn"
@@ -458,7 +458,7 @@ defense = 0
 heal = 0
 effect = SubResource( 39 )
 
-[sub_resource type="Resource" id=41]
+[sub_resource type="Resource" id=61]
 script = ExtResource( 6 )
 character_class = 1
 name = "Toni"
@@ -514,7 +514,7 @@ defense = 0
 heal = 1
 effect = SubResource( 44 )
 
-[sub_resource type="Resource" id=46]
+[sub_resource type="Resource" id=62]
 script = ExtResource( 6 )
 character_class = 2
 name = "Rory"
@@ -570,7 +570,7 @@ defense = 0
 heal = 0
 effect = SubResource( 49 )
 
-[sub_resource type="Resource" id=51]
+[sub_resource type="Resource" id=63]
 script = ExtResource( 6 )
 character_class = 0
 name = "Diego"
@@ -622,7 +622,7 @@ mesh_library = ExtResource( 9 )
 cell_size = Vector3( 1, 0.5, 1 )
 cell_scale = 0.5
 data = {
-"cells": PoolIntArray( 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 196607, 0, 0, 131074, 1, 0, 131077, 1, 0, 131080, 1, 0, 131082, 1, 0, 131087, 1, 0, 131090, 1, 0, 196606, 1, 0, 196607, 1, 536870912, 131074, 2, 0, 131077, 2, 0, 131080, 2, 0, 131081, 2, 0, 131082, 2, 0, 131087, 2, 0, 196604, 2, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 536870912, 131077, 3, 0, 131080, 3, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 131086, 3, 0, 131087, 3, 0, 131090, 3, 0, 196602, 3, 536870912, 131072, 4, 0, 131073, 4, 0, 131074, 4, 536870912, 131075, 4, 0, 131076, 4, 0, 131077, 4, 0, 131080, 4, 536870912, 131081, 4, 0, 131083, 4, 0, 131084, 4, 0, 131085, 4, 536870912, 131086, 4, 0, 131090, 4, 0, 196606, 4, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 5, 0, 131085, 5, 0, 131087, 5, 536870912, 131090, 5, 0, 196602, 5, 0, 196605, 5, 0, 196606, 5, 0, 196607, 5, 0, 196624, 5, 0, 196625, 5, 0, 131072, 6, 0, 131073, 6, 0, 131074, 6, 0, 131080, 6, 0, 131081, 6, 0, 131083, 6, 0, 131086, 6, 0, 196602, 6, 0, 196603, 6, 0, 196605, 6, 0, 196606, 6, 536870912, 196607, 6, 0, 196623, 6, 0, 196624, 6, 0, 196625, 6, 1073741824, 196626, 6, 0, 131072, 7, 0, 131073, 7, 536870912, 131074, 7, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131078, 7, 1441794, 131079, 7, 1048578, 131080, 7, 0, 131081, 7, 0, 131083, 7, 0, 131084, 7, 0, 131085, 7, 0, 131086, 7, 0, 131087, 7, 1441793, 131089, 7, 0, 196602, 7, 0, 196603, 7, 0, 196604, 7, 536870912, 196605, 7, 0, 196606, 7, 0, 196607, 7, 0, 196624, 7, 0, 196626, 7, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131080, 8, 0, 131081, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 8, 538312705, 131089, 8, 0, 131090, 8, 0, 196604, 8, 0, 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 196624, 8, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 9, 0, 131077, 9, 0, 131080, 9, 0, 131081, 9, 0, 131083, 9, 0, 131085, 9, 0, 131086, 9, 0, 196604, 9, 0, 196605, 9, 0, 196606, 9, 0, 196623, 9, 0, 196624, 9, 0, 196625, 9, 0, 196626, 9, 0, 131073, 10, 0, 131076, 10, 0, 131077, 10, 536870912, 131080, 10, 0, 131082, 10, 0, 131083, 10, 0, 131084, 10, 0, 131085, 10, 0, 131086, 10, 0, 131087, 10, 0, 131090, 10, 0, 196605, 10, 0, 196606, 10, 0, 196624, 10, 536870912, 196625, 10, 0, 131072, 11, 0, 131073, 11, 536870912, 131074, 11, 0, 131076, 11, 0, 131077, 11, 0, 131080, 11, 0, 131081, 11, 0, 131082, 11, 0, 131083, 11, 0, 131085, 11, 0, 131086, 11, 0, 131087, 11, 0, 131089, 11, 0, 131090, 11, 0, 196602, 11, 0, 196603, 11, 0, 196604, 11, 0, 196605, 11, 0, 196606, 11, 0, 196607, 11, 0, 131072, 12, 0, 131073, 12, 0, 131074, 12, 0, 131075, 12, 0, 131076, 12, 0, 131077, 12, 0, 131078, 12, 1441794, 131079, 12, 1048578, 131080, 12, 0, 131081, 12, 0, 131082, 12, 0, 131083, 12, 536870912, 131085, 12, 0, 131087, 12, 0, 131088, 12, 0, 196602, 12, 0, 196603, 12, 0, 196604, 12, 0, 196605, 12, 0, 196606, 12, 0, 196607, 12, 0, 131072, 13, 0, 131073, 13, 0, 131074, 13, 0, 131076, 13, 0, 131077, 13, 0, 131080, 13, 0, 131081, 13, 0, 131082, 13, 0, 131083, 13, 0, 131085, 13, 0, 131089, 13, 0, 131090, 13, 0, 196604, 13, 0, 196605, 13, 0, 196606, 13, 0, 196607, 13, 0, 131072, 14, 0, 131073, 14, 0, 131074, 14, 0, 131076, 14, 0, 131077, 14, 0, 131081, 14, 0, 131082, 14, 0, 131083, 14, 0, 131084, 14, 0, 131085, 14, 0, 131089, 14, 0, 196604, 14, 0, 196605, 14, 0, 196606, 14, 0, 196607, 14, 0, 131076, 15, 0, 131077, 15, 0, 131080, 15, 0, 131082, 15, 0, 131083, 15, 0, 131084, 15, 0, 131085, 15, 0, 131086, 15, 0, 131087, 15, 0, 131088, 15, 0 )
+"cells": PoolIntArray( 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 196607, 0, 0, 131074, 1, 0, 131077, 1, 0, 131080, 1, 0, 131082, 1, 0, 131087, 1, 0, 131090, 1, 0, 196606, 1, 0, 196607, 1, 0, 131074, 2, 0, 131077, 2, 0, 131080, 2, 0, 131081, 2, 0, 131082, 2, 0, 131087, 2, 0, 196604, 2, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 536870912, 131077, 3, 0, 131080, 3, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 131086, 3, 0, 131087, 3, 0, 131090, 3, 0, 196602, 3, 1073741824, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 4, 0, 131077, 4, 0, 131080, 4, 0, 131081, 4, 0, 131083, 4, 0, 131084, 4, 0, 131085, 4, 0, 131086, 4, 536870912, 131090, 4, 0, 196606, 4, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 5, 0, 131085, 5, 0, 131087, 5, 0, 131090, 5, 0, 196602, 5, 0, 196605, 5, 0, 196606, 5, 0, 196607, 5, 0, 196624, 5, 0, 196625, 5, 0, 131072, 6, 0, 131073, 6, 0, 131074, 6, 0, 131080, 6, 0, 131081, 6, 0, 131083, 6, 0, 131086, 6, 0, 196602, 6, 0, 196603, 6, 0, 196605, 6, 0, 196606, 6, 0, 196607, 6, 0, 196623, 6, 0, 196624, 6, 0, 196625, 6, 0, 196626, 6, 0, 131072, 7, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131078, 7, 1441794, 131079, 7, 1048578, 131080, 7, 0, 131081, 7, 0, 131083, 7, 0, 131084, 7, 0, 131085, 7, 0, 131086, 7, 0, 131087, 7, 1441793, 131089, 7, 0, 196602, 7, 0, 196603, 7, 0, 196604, 7, 0, 196605, 7, 0, 196606, 7, 0, 196607, 7, 0, 196624, 7, 0, 196626, 7, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131080, 8, 0, 131081, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 8, 1441793, 131089, 8, 0, 131090, 8, 0, 196604, 8, 0, 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 196624, 8, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 9, 0, 131077, 9, 0, 131080, 9, 0, 131081, 9, 0, 131083, 9, 0, 131085, 9, 0, 131086, 9, 0, 196604, 9, 0, 196605, 9, 0, 196606, 9, 0, 196623, 9, 0, 196624, 9, 0, 196625, 9, 0, 196626, 9, 536870912, 131073, 10, 0, 131076, 10, 0, 131077, 10, 0, 131080, 10, 0, 131082, 10, 0, 131083, 10, 0, 131084, 10, 0, 131085, 10, 0, 131086, 10, 0, 131087, 10, 0, 131090, 10, 0, 196605, 10, 0, 196606, 10, 0, 196624, 10, 0, 196625, 10, 0, 131072, 11, 0, 131073, 11, 0, 131074, 11, 0, 131076, 11, 0, 131077, 11, 0, 131080, 11, 0, 131081, 11, 0, 131082, 11, 0, 131083, 11, 0, 131085, 11, 0, 131086, 11, 0, 131087, 11, 0, 131089, 11, 0, 131090, 11, 0, 196602, 11, 0, 196603, 11, 0, 196604, 11, 536870912, 196605, 11, 0, 196606, 11, 0, 196607, 11, 0, 131072, 12, 0, 131073, 12, 0, 131074, 12, 0, 131075, 12, 0, 131076, 12, 0, 131077, 12, 0, 131078, 12, 1441794, 131079, 12, 1048578, 131080, 12, 0, 131081, 12, 0, 131082, 12, 0, 131083, 12, 536870912, 131085, 12, 0, 131087, 12, 0, 131088, 12, 0, 196602, 12, 0, 196603, 12, 0, 196604, 12, 0, 196605, 12, 0, 196606, 12, 0, 196607, 12, 0, 131072, 13, 0, 131073, 13, 0, 131074, 13, 536870912, 131076, 13, 0, 131077, 13, 536870912, 131080, 13, 0, 131081, 13, 0, 131082, 13, 0, 131083, 13, 0, 131085, 13, 0, 131089, 13, 0, 131090, 13, 0, 196604, 13, 0, 196605, 13, 0, 196606, 13, 0, 196607, 13, 0, 131072, 14, 0, 131073, 14, 0, 131074, 14, 0, 131076, 14, 0, 131077, 14, 0, 131081, 14, 0, 131082, 14, 0, 131083, 14, 0, 131084, 14, 0, 131085, 14, 0, 131089, 14, 0, 196604, 14, 0, 196605, 14, 0, 196606, 14, 0, 196607, 14, 0, 131076, 15, 0, 131077, 15, 0, 131080, 15, 0, 131082, 15, 0, 131083, 15, 0, 131084, 15, 0, 131085, 15, 0, 131086, 15, 0, 131087, 15, 0, 131088, 15, 0 )
 }
 script = ExtResource( 17 )
 
@@ -696,7 +696,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 6 )
+stats = SubResource( 54 )
 
 [node name="CharacterSpawner2" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 8 )
@@ -705,7 +705,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 11 )
+stats = SubResource( 55 )
 
 [node name="CharacterSpawner4" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 5 )
@@ -714,7 +714,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 16 )
+stats = SubResource( 56 )
 
 [node name="CharacterSpawner5" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.2, 8 )
@@ -723,7 +723,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 21 )
+stats = SubResource( 57 )
 
 [node name="CharacterSpawner6" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.071, 0.2, 4 )
@@ -732,7 +732,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 26 )
+stats = SubResource( 58 )
 
 [node name="CharacterSpawner8" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.099, 0.2, 15 )
@@ -741,7 +741,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 18 )
 script = ExtResource( 12 )
-stats = SubResource( 31 )
+stats = SubResource( 59 )
 
 [node name="CharacterSpawner3" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 9 )
@@ -750,7 +750,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 20 )
 script = ExtResource( 12 )
-stats = SubResource( 36 )
+stats = SubResource( 60 )
 
 [node name="CharacterSpawner7" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.2, 10 )
@@ -759,7 +759,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 11 )
 script = ExtResource( 12 )
-stats = SubResource( 41 )
+stats = SubResource( 61 )
 
 [node name="CharacterSpawner9" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.2, 8 )
@@ -768,7 +768,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 21 )
 script = ExtResource( 12 )
-stats = SubResource( 46 )
+stats = SubResource( 62 )
 
 [node name="CharacterSpawner10" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.2, 11 )
@@ -777,7 +777,7 @@ pixel_size = 0.06
 axis = 1
 texture = ExtResource( 20 )
 script = ExtResource( 12 )
-stats = SubResource( 51 )
+stats = SubResource( 63 )
 
 [node name="StoryMarker" type="Sprite3D" parent="map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.2, 8 )

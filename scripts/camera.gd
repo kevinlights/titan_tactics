@@ -18,8 +18,6 @@ var move_start = Vector3()
 var cutscene_offset = Vector3(-15, 12, 15)
 var cutscene_rotation = Vector3(-20, -45, 0)
 
-var logger = Logger.new("Camera")
-
 var offsets = {
 	TT.CAMERA.SOUTH: Vector3(15, 19, -15),
 	TT.CAMERA.NORTH: Vector3(-15, 19, 15),
@@ -41,9 +39,9 @@ var offset = offsets[Game.camera_orientation]
 func track(item):
 	if item:
 		if "character" in item:
-			logger.info("now tracking ", item.character.name)
+			print("[Camera] now tracking ", item.character.name)
 		else:
-			logger.info("now tracking ", item.name)
+			print("[Camera] now tracking ", item.name)
 		var now = OS.get_ticks_msec()
 		if tracked_item:
 			move_time = now
@@ -51,8 +49,8 @@ func track(item):
 		tracked_item = item
 
 func _ready():
-	# get_tree().get_root().get_node("World/gui/dialogue_box").connect("cutscene_start", self, "_on_cutscene_start")
-	# get_tree().get_root().get_node("World/gui/dialogue_box").connect("cutscene_end", self, "_on_cutscene_end")
+	get_tree().get_root().get_node("World/gui/dialogue_box").connect("cutscene_start", self, "_on_cutscene_start")
+	get_tree().get_root().get_node("World/gui/dialogue_box").connect("cutscene_end", self, "_on_cutscene_end")
 	# warning-ignore:return_value_discarded
 	Game.connect("orientation_changed", self, "_on_orientation_changed")
 # warning-ignore:return_value_discarded
@@ -119,8 +117,8 @@ func _on_orientation_changed():
 ##		end_rotation.y = 225
 ##	if start_rotation.y == -135 and end_rotation.y == 135:
 ##		end_rotation.y = -225
-#	logger.info(Game.camera_orientation)
-#	logger.info(start_rotation)
+#	print(Game.camera_orientation)
+#	print(start_rotation)
 
 func is_rotating():
 	return rotating

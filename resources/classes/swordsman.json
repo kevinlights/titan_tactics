@@ -1,0 +1,29 @@
+{
+    "character_class_display": "Swordsman",
+    "character_class": "Swordsman",
+    "base": {
+        "hp": 65,
+        "atk": 5,
+        "def": 1,
+        "atk_range": 1,
+        "mov_range": 5
+    },
+    "stats": {
+        "min": {
+            "hp": 380,
+            "atk": 85,
+            "def": 18,
+            "hit": 90,
+            "agi": 6,
+            "max_shards": 3
+        },
+        "max": {
+            "hp": 1140,
+            "atk": 255,
+            "def": 54,
+            "hit": 98,
+            "agi": 11,
+            "max_shards": 3
+        }
+    }
+}

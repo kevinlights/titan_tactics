@@ -1,0 +1,29 @@
+{
+    "character_class_display": "Archer",
+    "character_class": "Archer",
+    "base": {
+        "hp": 60,
+        "atk": 5,
+        "def": 1,
+        "atk_range": 3,
+        "mov_range": 6
+    },
+    "stats": {
+        "min": {
+            "hp": 340,
+            "atk": 100,
+            "def": 15,
+            "hit": 84,
+            "agi": 10,
+            "max_shards": 3
+        },
+        "max": {
+            "hp": 1020,
+            "atk": 300,
+            "def": 45,
+            "hit": 92,
+            "agi": 15,
+            "max_shards": 3
+        }
+    }
+}

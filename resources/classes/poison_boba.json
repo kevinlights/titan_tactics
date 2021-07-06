@@ -1,0 +1,7 @@
+{
+    "inherits": "Boba",
+    "character_class_display": "Poison Boba",
+    "character_class": "Poison Boba",
+    "attack_effect": "Poison",
+    "attack_effect_chance": "50%"
+}

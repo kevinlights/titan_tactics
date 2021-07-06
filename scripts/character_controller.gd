@@ -28,6 +28,7 @@ var path = []
 var avatar
 # var item = Item.new(0, 0, 0) # dummy item, no buffs
 var tile = Vector3(0, 0, 0)
+onready var last_path = PoolVector3Array([tile])
 var is_loot = false
 var is_dead = false
 var is_trigger = false
@@ -46,6 +47,8 @@ var status_effects = []
 
 var status = AI_STATUS.IDLE
 var behind_dmg_mult = 1.3
+
+var attacker_pos = null
 
 onready var world = get_parent().get_parent().get_parent()
 
@@ -204,7 +207,7 @@ func aoe_vfx(name, tile, delay):
 	yield(get_tree().create_timer(2.0), "timeout")
 	thunder_storm.queue_free()
 
-func hit(attacker):
+func hit(attacker, attacker_translation):
 	match(attacker.character_class):
 		TT.TYPE.ARCHER:
 			if world.mode != world.MODE.SECONDARY_ATTACK:
@@ -227,7 +230,7 @@ func hit(attacker):
 			pick_random_sfx($sfx/boba_hit)
 		TT.TYPE.POISON_BOBA:
 			pick_random_sfx($sfx/poison_hit)
-	avatar.play("hit-" + movement.last_direction)
+	avatar.play(avatar.animation.replace("idle", "hit"))
 	if attacker.item_atk.effect:
 		var hit_effect = StatusEffect.new()
 		hit_effect.copy(attacker.item_atk.effect)
@@ -236,8 +239,16 @@ func hit(attacker):
 		if tag:
 			get_node(tag).show()
 			apply_effects(true)
-		# else:
-			# logger.info("No tag for ", hit_effect.effect)
+		else:
+			print("No tag for ", hit_effect.effect)
+	if (
+		world.MODE.SECONDARY_ATTACK and attacker.character_class == TT.TYPE.FIGHTER
+	) or (
+		!world.MODE.SECONDARY_ATTACK
+	):
+		attacker_pos = attacker_translation
+	else:
+		attacker_pos = null
 	if guarding:
 		pick_random_sfx($sfx/defend)
 	if floor(character.hp) <= 0:
@@ -451,6 +462,9 @@ func damage(target):
 				behind_target = true
 	if behind_target:
 		damage = damage * behind_dmg_mult
+		# Froggy :
+		# it may be an inappropriate place for crit detection
+		target.battle_effect("crit")
 	var target_defense = target.character.def + target.character.item_def.defense
 	var def_multiplier = get_def_buff(target_defense)
 	damage *= def_multiplier
@@ -528,7 +542,7 @@ func attack_new(tile:Vector3, AOE:bool):
 			var projectile = load("res://scenes/projectile.tscn").instance()
 			projectile.fire(translation + Vector3(0, 1,  0), tile + Vector3(0, 1, 0))
 			for t in targets:
-				projectile.connect("hit", t, "hit", [character])
+				projectile.connect("hit", t, "hit", [character, translation])
 			projectile.connect("hit", self, "attack_complete")
 			world.get_node("lookat/camera").track(projectile)
 			pick_random_sfx($sfx/magic_attack)
@@ -540,20 +554,24 @@ func attack_new(tile:Vector3, AOE:bool):
 		else:
 			attack_complete()
 			for t in targets:
-				t.hit(character)
+				t.hit(character, translation)
 	else:
 		for t in targets:
-			t.hit(character)
+			t.hit(character, translation)
 		attack_complete(delay + 1.0)
 	if not AOE or character.character_class == TT.TYPE.FIGHTER:
 		if tile.x < translation.x:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
+			movement.last_direction = "left"
 		if tile.x > translation.x:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
+			movement.last_direction = "right"
 		if tile.z < translation.z:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
+			movement.last_direction = "up"
 		if tile.z > translation.z:
 			avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
+			movement.last_direction = "down"
 
 func attack(target):
 	last_target = target
@@ -601,7 +619,7 @@ func attack(target):
 	if character.character_class == TT.TYPE.MAGE:
 		var projectile = load("res://scenes/projectile.tscn").instance()
 		projectile.fire(translation + Vector3(0, 1,  0), target.translation + Vector3(0, 1, 0))
-		projectile.connect("hit", target, "hit", [character])
+		projectile.connect("hit", target, "hit", [character, translation])
 		projectile.connect("hit", self, "attack_complete")
 		world.get_node("lookat/camera").track(projectile)
 		pick_random_sfx($sfx/magic_attack)
@@ -612,16 +630,20 @@ func attack(target):
 		pass
 	else:
 		attack_complete()
-		target.hit(character)
+		target.hit(character, translation)
 
 	if target.translation.x < translation.x:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["left"])
+		movement.last_direction = "left"
 	if target.translation.x > translation.x:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["right"])
+		movement.last_direction = "right"
 	if target.translation.z < translation.z:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["up"])
+		movement.last_direction = "up"
 	if target.translation.z > translation.z:
 		avatar.play("attack-" +  directions[Game.camera_orientation]["down"])
+		movement.last_direction = "down"
 
 	pick_random_sfx("attack")
 	return damage
@@ -629,20 +651,24 @@ func attack(target):
 func face(direction):
 	match direction:
 		"west":
-			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["left"])
+			avatar.play("idle-" + directions[Game.camera_orientation]["left"])
+			movement.last_direction = "left"
 		"east":
-			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["right"])
+			avatar.play("idle-" + directions[Game.camera_orientation]["right"])
+			movement.last_direction = "right"
 		"north":
-			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["up"])
+			avatar.play("idle-" + directions[Game.camera_orientation]["up"])
+			movement.last_direction = "up"
 		"south":
-			avatar.play("idle-" + directions[TT.CAMERA.NORTH]["down"])
+			avatar.play("idle-" + directions[Game.camera_orientation]["down"])
+			movement.last_direction = "down"
 
 func is_facing():
-	if directions[TT.CAMERA.NORTH]["left"] in avatar.animation:
+	if directions[Game.camera_orientation]["left"] in avatar.animation:
 		return "west"
-	if directions[TT.CAMERA.NORTH]["right"] in avatar.animation:
+	if directions[Game.camera_orientation]["right"] in avatar.animation:
 		return "east"
-	if directions[TT.CAMERA.NORTH]["down"] in avatar.animation:
+	if directions[Game.camera_orientation]["down"] in avatar.animation:
 		return "south"
 	return "north"
 
@@ -656,6 +682,16 @@ func emote(emoji):
 		# logger.info("Emoji not supported: ", emoji)
 	#yield(get_tree().create_timer(2.0), "timeout")
 	#$emotes.hide()
+
+func battle_effect(name : String):
+	get_node(name).show()
+	get_node(name).get_node("AnimationPlayer").play(name)
+	get_node(name).get_node("AnimationPlayer").connect("animation_finished", self, "hide_effect")
+
+
+func hide_effect(name : String):
+	get_node(name).hide()
+
 
 func attack_complete(delay=1.0):
 	yield(get_tree().create_timer(delay), "timeout")
@@ -672,6 +708,7 @@ func move(target_path:PoolVector3Array, unlimited=false, instant=false):
 	if movement.moving or target_path.size() == 0 or character.turn_limits.move_actions == 0:
 		return
 	path = world.pathfinder.generate_walking_path(target_path)
+	last_path = target_path
 	movement.start_time = OS.get_ticks_msec()
 
 #	movement.end_position = Vector3(path[0].x, 0, path[0].z)
@@ -698,6 +735,15 @@ func move(target_path:PoolVector3Array, unlimited=false, instant=false):
 		#movement.moving = false
 		_process(0)
 		return
+
+func undo_walk():
+	if last_path[0] == tile or movement.moving:
+		return
+	print("Undoing movement: ", last_path)
+	character.turn_limits.move_distance += last_path.size()
+	character.turn_limits.move_actions = 1
+	world.telport_spawn(self, last_path[0].x, last_path[0].z)
+
 
 #	check_finished()
 
@@ -876,7 +922,7 @@ func init(char_type, control = TT.CONTROL.PLAYER):
 func fire_arrow(target):
 	var projectile = load("res://scenes/arrow.tscn").instance()
 	projectile.fire(translation + Vector3(0, 1,  0), target.translation + Vector3(0, 1, 0))
-	projectile.connect("hit", target, "hit", [character])
+	projectile.connect("hit", target, "hit", [character, translation])
 	projectile.connect("hit", self, "attack_complete")
 	world.get_node("lookat/camera").track(projectile)
 	pick_random_sfx($sfx/arrow_attack)
@@ -892,15 +938,26 @@ func _on_animation_finished():
 		$vfx/arrow_hit.hide()
 		$healthbar.hide()
 		avatar.stop()
-	if avatar.animation.begins_with("attack") or avatar.animation.begins_with("hit") :
-		if avatar.animation.ends_with("up"):
-			avatar.play("idle-" +  directions[Game.camera_orientation]["up"])
-		if avatar.animation.ends_with("down"):
-			avatar.play("idle-" +  directions[Game.camera_orientation]["down"])
-		if avatar.animation.ends_with("left"):
-			avatar.play("idle-" +  directions[Game.camera_orientation]["left"])
-		if avatar.animation.ends_with("right"):
-			avatar.play("idle-" +  directions[Game.camera_orientation]["right"])
+	#print("animation_finished for ", character.name, ' [', avatar.animation,']')
+	if avatar.animation.begins_with("attack"):
+		avatar.play(avatar.animation.replace("attack", "idle"))
+	if avatar.animation.begins_with("hit"):
+		if attacker_pos != null:
+			if attacker_pos.x < translation.x:
+				avatar.play("idle-" +  directions[Game.camera_orientation]["left"])
+				movement.last_direction = "left"
+			if attacker_pos.x > translation.x:
+				avatar.play("idle-" +  directions[Game.camera_orientation]["right"])
+				movement.last_direction = "right"
+			if attacker_pos.z < translation.z:
+				avatar.play("idle-" +  directions[Game.camera_orientation]["up"])
+				movement.last_direction = "up"
+			if attacker_pos.z > translation.z:
+				avatar.play("idle-" +  directions[Game.camera_orientation]["down"])
+				movement.last_direction = "down"
+			attacker_pos = null
+		else:
+			avatar.play(avatar.animation.replace("hit", "idle"))
 
 func _process(_delta):
 	var now = OS.get_ticks_msec()
@@ -954,8 +1011,13 @@ func _process(_delta):
 					# logger.info("[Character Controller] (" + character.name + ") path complete")
 					emit_signal("path_complete")
 					emit_signal("idle")
-					check_finished()
+					if character.control == TT.CONTROL.PLAYER:
+						world.gui.start("action_menu", character.character_class)
+					else:
+						check_finished()
 					movement.moving = false
 				stop_all_sfx($sfx/walk)
 		else:
 			translation = lerp(movement.start_position, movement.end_position, progress)
+
+
