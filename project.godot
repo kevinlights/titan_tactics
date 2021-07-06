@@ -79,11 +79,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/playerspawner.gd"
 }, {
-"base": "AnimatedSprite3D",
-"class": "Selector",
-"language": "GDScript",
-"path": "res://scripts/select.gd"
-}, {
 "base": "Object",
 "class": "SmortAI",
 "language": "GDScript",
@@ -144,7 +139,6 @@ _global_script_class_icons={
 "NaiveAI": "",
 "PathFinder": "",
 "PlayerSpawner": "",
-"Selector": "",
 "SmortAI": "",
 "StatusEffect": "",
 "Story": "",
