@@ -511,6 +511,7 @@ func spawn_ai_character(ai_spawn, surprise = false):
 	character.connect("path_complete", $select, "update_context")
 # warning-ignore:return_value_discarded
 	character.connect("death", self, "_on_death")
+# warning-ignore:return_value_discarded
 	character.connect("hit", self, "_on_hit")
 	if character.character.control == TT.CONTROL.AI:
 # warning-ignore:return_value_discarded
@@ -859,7 +860,7 @@ func _on_action(action_name):
 func _on_attack():
 	logger.info("[World] attack option selected in menu")
 	if get_current().character.turn_limits.actions != 0:
-		var target = entity_at($select.tile)
+		# var target = entity_at($select.tile)
 		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), $select.translation):
 			return $gui/sfx/denied.play()
 

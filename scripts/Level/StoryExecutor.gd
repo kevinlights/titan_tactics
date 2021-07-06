@@ -126,6 +126,8 @@ func _on_story_end():
 		world.pathfinder.overlay.visible = true
 	world.current_turn = TT.CONTROL.PLAYER
 	selector.enable()
+	# try triggering queued ui
+	gui.next()
 
 func _on_attack_done(_arrow, target_character):
 	world.get_node("lookat/camera").track(target_character)
