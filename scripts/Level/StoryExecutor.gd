@@ -158,7 +158,7 @@ func _on_attack(target) -> void:
 				"south": "down"
 			}
 			target_character.avatar.play("attack-" +  target_character.directions[Game.camera_orientation][nwse[name_direction[1]]])
-			yield(get_tree().create_timer(1.0),"timeout")
+			yield(world.get_tree().create_timer(1.0),"timeout")
 			advance()
 			return
 		else:
