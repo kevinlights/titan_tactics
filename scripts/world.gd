@@ -218,7 +218,7 @@ func consume_story_markers(name):
 func find_character(name):
 	for team in [ TT.CONTROL.AI, TT.CONTROL.PLAYER ]:
 		for character in current[team]:
-			#logger.info(character.character.name)
+			# logger.info(character.character.name)
 			if character.character.name.to_lower() == name.to_lower():
 				return character
 
@@ -434,11 +434,11 @@ func _ready():
 # warning-ignore:return_value_discarded
 	$select.connect("moved", self, "_on_selector_moved")
 
-	call_deferred("select_team")
 	#$cutscene_music.get_node(Game.get_theme()).play()
 	$music.get_node(Game.get_theme()).play()
 	call_deferred("spawn_ai_team")
 	call_deferred("spawn_chests")
+	call_deferred("select_team")
 	$lookat/camera.track($select)
 
 var cardinals = {
@@ -523,7 +523,7 @@ func spawn_ai_character(ai_spawn, surprise = false):
 		character.connect("attack_complete", self, "_on_attack_complete")
 		character.character.connect("level_up", self, "_on_level_up")
 		character.character.reset_turn()
-	logger.info('world_map.add_child(character) #2', character)
+	logger.info('world_map.add_child(character) ', character.character.name)
 	world_map.add_child(character)
 
 func spawn_ai_team():

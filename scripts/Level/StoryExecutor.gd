@@ -7,12 +7,13 @@ var selector # = get_tree().get_root().get_node("World/select")
 
 var story = {}
 var logger
-var current
+var current = null
 var skip_events = false
 var event_will_progress = true
 
 func _init(story_world, story_gui, story_selector):
 	logger = Logger.new("StoryExecutor")
+	logger.info("Initialize")
 	world = story_world
 	gui = story_gui
 	selector = story_selector
@@ -55,7 +56,7 @@ func load_story(story_filename:String):
 		logger.info("Failed to load story file")
 
 func advance():
-	if current:
+	if current != null:
 		logger.info("Advance")
 		current.advance()
 	else:
@@ -68,8 +69,8 @@ func _on_dialogue(story_message):
 func _on_story(trigger):
 	logger.info("_on_story ", trigger)
 	if trigger in story and !story[trigger].consumed:
-		story[trigger].play()
 		current = story[trigger]
+		story[trigger].play()
 
 func _on_focus(target) -> void:
 	var marker = world.find_story_marker(target)
@@ -203,7 +204,7 @@ func _on_emote(target):
 		target_character.connect("emote_finished",self, "_emote_done", [target_character], CONNECT_ONESHOT)
 		target_character.emote(name_emote[1])
 	else:
-		print("[!!] invalid target character!")
+		logger.error("invalid target character: " + name_emote[0])
 		_emote_done(target_character)
 
 func _on_face(target) -> void:
@@ -212,7 +213,7 @@ func _on_face(target) -> void:
 	if target_character:
 		target_character.face(name_direction[1])
 	else:
-		print("[!!] invalid target character!")
+		logger.error("invalid target character: " + name_direction[0])
 	advance()
 
 func _on_expect(target) -> void:
