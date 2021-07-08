@@ -72,6 +72,9 @@ func _on_story(trigger):
 
 func _on_start_level():
 	print("start level")
+###########
+# Froggy: cutscenes are disabled. also check world.gd
+###########
 	return
 	if "start" in story:
 		print_debug(story.start.id, story.start.messages.size())

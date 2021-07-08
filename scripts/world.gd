@@ -14,7 +14,11 @@ var have_key = false
 var tile_meta
 var world_map
 var game_over = false
-var is_cutscene = true
+############
+# Froggy: made is_cutscene false for testing other levels. also check level.gd
+###########
+#var is_cutscene = true
+var is_cutscene = false
 var current_turn = TT.CONTROL.PLAYER
 var player_spawns = []
 var pathfinder
