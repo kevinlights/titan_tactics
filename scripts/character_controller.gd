@@ -361,8 +361,10 @@ func end_turn():
 	guarding = false
 	is_done = false
 	character.reset_turn()
+	last_path = PoolVector3Array([tile])
 	$guard.hide()
 	$done.hide()
+	
 
 
 func can_attack_tile(target):
@@ -740,6 +742,7 @@ func undo_walk():
 	character.turn_limits.move_distance += last_path.size()
 	character.turn_limits.move_actions = 1
 	world.telport_spawn(self, last_path[0].x, last_path[0].z)
+	last_path = PoolVector3Array([tile])
 	
 
 #	check_finished()

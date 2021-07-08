@@ -72,6 +72,7 @@ func _on_story(trigger):
 
 func _on_start_level():
 	print("start level")
+	return
 	if "start" in story:
 		print_debug(story.start.id, story.start.messages.size())
 		gui.start("dialogue_box", story.start)

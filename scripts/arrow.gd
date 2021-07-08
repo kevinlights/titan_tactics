@@ -17,6 +17,7 @@ func fire(from, to):
 	start_position = from
 	end_position = to
 	$stick.look_at(end_position, Vector3.UP)
+	pass
 #	var angle = from.angle_to(to)
 #	$stick.rotate(angle, Vector3(0, 1, 0))
 

@@ -13,22 +13,18 @@ size = 13
 font_data = ExtResource( 1 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 12, 13 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 12, 0, 12, 13 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 24, 0, 12, 13 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 16
 atlas = ExtResource( 4 )
 region = Rect2( 36, 0, 12, 13 )
 
