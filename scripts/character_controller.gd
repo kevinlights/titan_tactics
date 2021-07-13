@@ -683,13 +683,15 @@ func emote(emoji):
 	#$emotes.hide()
 
 func battle_effect(name : String):
-	get_node(name).show()
-	get_node(name).get_node("AnimationPlayer").play(name)
-	get_node(name).get_node("AnimationPlayer").connect("animation_finished", self, "hide_effect")
+	var effect = $battle_effects.get_node(name)
+	$battle_effects.rotation.y = world.get_node("lookat").rotation.y - PI/2
+	effect.show()
+	effect.get_node("AnimationPlayer").play(name)
+	effect.get_node("AnimationPlayer").connect("animation_finished", self, "hide_effect")
 	
 
 func hide_effect(name : String):
-	get_node(name).hide()
+	$battle_effects.get_node(name).hide()
 	
 
 func attack_complete(delay=1.0):

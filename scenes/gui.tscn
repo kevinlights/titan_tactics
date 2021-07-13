@@ -205,24 +205,24 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 26 ), SubResource( 27 ) ],
-"loop": true,
-"name": "down",
-"speed": 3.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "neutral",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "down",
 "speed": 3.0
 } ]
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 41 )
@@ -236,12 +236,12 @@ region = Rect2( 16, 48, 16, 16 )
 animations = [ {
 "frames": [ SubResource( 29 ) ],
 "loop": true,
-"name": "swordsman",
+"name": "archer",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 30 ) ],
 "loop": true,
-"name": "archer",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 31 ) ],
@@ -282,6 +282,11 @@ animations = [ {
 "name": "up",
 "speed": 3.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "neutral",
+"speed": 3.0
+}, {
 "frames": [ SubResource( 36 ) ],
 "loop": true,
 "name": "boba",
@@ -290,11 +295,6 @@ animations = [ {
 "frames": [ SubResource( 37 ), SubResource( 38 ) ],
 "loop": true,
 "name": "down",
-"speed": 3.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "neutral",
 "speed": 3.0
 } ]
 
@@ -2539,7 +2539,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="tip"]
 position = Vector2( 221, 181 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 centered = false
 
@@ -2564,7 +2563,6 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="tip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 
@@ -2597,7 +2595,6 @@ __meta__ = {
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="skiptip"]
 position = Vector2( 269, 181 )
 frames = SubResource( 14 )
-frame = 1
 playing = true
 centered = false
 
@@ -2959,7 +2956,6 @@ offset = Vector2( 50.6153, 13.424 )
 position = Vector2( 186, 13 )
 frames = SubResource( 28 )
 animation = "down"
-frame = 1
 playing = true
 
 [node name="battle" type="Control" parent="."]
@@ -3188,6 +3184,7 @@ visible = false
 position = Vector2( 130, -8 )
 frames = SubResource( 28 )
 animation = "down"
+frame = 1
 playing = true
 
 [node name="EnemyType" type="AnimatedSprite" parent="battle"]
@@ -3505,7 +3502,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 104 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3530,7 +3526,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 104 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3722,7 +3717,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 104 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( -2, 8 )
