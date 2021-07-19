@@ -967,7 +967,7 @@ func contextual_ui():
 	if current_turn == TT.CONTROL.PLAYER:
 		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
 			print("[World] you are pointing on " + str(target.character.name))
-			if mode == MODE.ATTACK:
+			if mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK:
 				gui.start("attack", target)
 			else:
 				gui.start("battle", target)

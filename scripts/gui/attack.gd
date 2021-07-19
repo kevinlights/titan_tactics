@@ -20,8 +20,8 @@ var ttl = 100
 
 var bar_size = 133
 var xp_bar_size = 35
-var start_x_ally = -160
-var end_x_ally = 0
+var start_x = -320
+var end_x = 0
 
 var start_x_enemy = 320
 var end_x_enemy = 160
@@ -51,30 +51,18 @@ func _process(_delta):
 	if !visible or !player:
 		return
 	var now = OS.get_ticks_msec()
-	var hp_amount = clamp((enemy.character.hp - final_damage)/enemy.character.max_hp, 0, 1.0)
-	$hp.points[1].x = (hp_amount)*bar_size
-	return
 	
 	if !moving_back:
 		#update_stats()
-		if $box_ally.position.x < end_x_ally:
-			$box_ally.position.x = lerp(start_x_ally, end_x_ally, float(now - start) / float(ttl))
+		if $Container.position.x < end_x:
+			$Container.position.x = lerp(start_x, end_x, float(now - start) / float(ttl))
 		else:
-			$box_ally.position.x = end_x_ally
-		if $box_enemy.position.x > end_x_enemy:
-			$box_enemy.position.x = lerp(start_x_enemy, end_x_enemy, float(now - start) / float(ttl))
-		else:
-			$box_enemy.position.x = end_x_enemy
+			$Container.position.x = end_x
 	else:
-		if $box_ally.position.x > start_x_ally:
-			$box_ally.position.x = lerp(end_x_ally, start_x_ally, float(now - start) / float(ttl))
+		if $Container.position.x > start_x:
+			$Container.position.x = lerp(end_x, start_x, float(now - start) / float(ttl))
 		else:
-			$box_ally.position.x = start_x_ally
-			hide()
-		if $box_enemy.position.x < start_x_enemy:
-			$box_enemy.position.x = lerp(end_x_enemy, start_x_enemy, float(now - start) / float(ttl))
-		else:
-			$box_enemy.position.x = start_x_enemy
+			$Container.position.x = start_x
 			hide()
 
 func _ready():
@@ -83,28 +71,31 @@ func _ready():
 	print("resetting attack UI")
 	moving_back = false
 	
-	$dmgprediction.set_point_position(1, Vector2(enemy.character.hp/enemy.character.max_hp*bar_size, 0))
+	$Container/dmgprediction.set_point_position(1, Vector2(enemy.character.hp/enemy.character.max_hp*bar_size, 0))
+	
+	var hp_amount = clamp((enemy.character.hp - final_damage)/enemy.character.max_hp, 0, 1.0)
+	$Container/hp.points[1].x = (hp_amount)*bar_size + 71.483
 	
 	if player.character.character_class in default_portraits[TT.CONTROL.PLAYER]:
-		$PlayerType.play(default_portraits[TT.CONTROL.PLAYER][player.character.character_class])
+		$Container/PlayerType.play(default_portraits[TT.CONTROL.PLAYER][player.character.character_class])
 
 	if player.character.portrait_override:
 		var portrait = player.character.portrait_override
-		$portraits.play(portrait)
+		$Container/portraits.play(portrait)
 	else:
-		$portraits.play(default_portraits[player.character.control][player.character.character_class])
+		$Container/portraits.play(default_portraits[player.character.control][player.character.character_class])
 	
 	if enemy.character.portrait_override:
 		var portrait = enemy.character.portrait_override
-		$portraits2.play(portrait)
+		$Container/portraits2.play(portrait)
 	else:
-		$portraits2.play(default_portraits[enemy.character.control][enemy.character.character_class])
+		$Container/portraits2.play(default_portraits[enemy.character.control][enemy.character.character_class])
 
-	$PlayerAdvantage.play("neutral")
+	$Container/PlayerAdvantage.play("neutral")
 	if enemy.character.character_class == player.character.weakness:
-		$PlayerAdvantage.play("down")
+		$Container/PlayerAdvantage.play("down")
 	elif enemy.character.character_class == player.character.strength:
-		$PlayerAdvantage.play("up")
+		$Container/PlayerAdvantage.play("up")
 	start = OS.get_ticks_msec()
 
 func set_entities(player_entity, enemy_entity):
@@ -123,9 +114,9 @@ func update_stats():
 		enemyhp = enemyhp  + "/" + str(ceil(enemy.character.max_hp))
 		hit_chance = str(ceil(clamp(player.character.hit - enemy.character.agi, 0, 100)))
 		hit_chance += "%"
-		$percentage.text = hit_chance
+		$Container/percentage.text = hit_chance
 		final_damage = ceil(get_damage())
-		$damage.text = str(enemy.character.hp - final_damage) + '/' + str(enemy.character.max_hp)
+		$Container/damage.text = str(clamp(enemy.character.hp - final_damage, 0, 999)) + '/' + str(enemy.character.max_hp)
 		
 
 func get_damage():
@@ -169,8 +160,6 @@ func get_damage():
 
 func start_hiding(player_entity = null):
 	print("moving out Attack UI")
-	hide()
-	return
 	moving_back = true
 	start = OS.get_ticks_msec()
 
