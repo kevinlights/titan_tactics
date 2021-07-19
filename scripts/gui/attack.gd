@@ -51,7 +51,8 @@ func _process(_delta):
 	if !visible or !player:
 		return
 	var now = OS.get_ticks_msec()
-	$hp.points[1].x = ((enemy.character.hp - final_damage)/enemy.character.max_hp)*bar_size
+	var hp_amount = clamp((enemy.character.hp - final_damage)/enemy.character.max_hp, 0, 1.0)
+	$hp.points[1].x = (hp_amount)*bar_size
 	return
 	
 	if !moving_back:
