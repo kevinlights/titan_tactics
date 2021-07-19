@@ -967,14 +967,17 @@ func contextual_ui():
 	if current_turn == TT.CONTROL.PLAYER:
 		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
 			print("[World] you are pointing on " + str(target.character.name))
-			gui.start("battle", target)
+			if mode == MODE.ATTACK:
+				gui.start("attack", target)
+			else:
+				gui.start("battle", target)
 		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and (context == TT.CONTEXT.SELECT or context == TT.CONTEXT.GUARD or context == TT.CONTEXT.HEAL):
 			print("[World] you are pointing on yourself : " + str(target.character.name))
 			gui.start("ally", target) #ally(get_current())
 			gui.get_node("ally").update_stats(target)
 		if context == TT.CONTEXT.MOVE or context == TT.CONTEXT.NOT_ALLOWED:
 			print("[World] Closing ui because of context ", context)
-			gui.close([ "ally", "battle" ])
+			gui.close([ "attack", "ally", "battle" ])
 	$range_overlay.set_selector(tile)
 
 func _on_selector_moved(tile):

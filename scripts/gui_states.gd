@@ -10,7 +10,7 @@ signal aoe_up
 signal aoe_down
 
 var current
-var non_blocking = [ "battle", "ally" ]
+var non_blocking = ["attack", "battle", "ally" ]
 var cant_cancel = [ "win", "fin", "lose", "lvlup", "credits", "dialogue_box" ]
 
 var queued = []
