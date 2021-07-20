@@ -971,6 +971,9 @@ func contextual_ui():
 				gui.start("attack", target)
 			else:
 				gui.start("battle", target)
+		else:
+			if mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK:
+				gui.close(["attack"])
 		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and (context == TT.CONTEXT.SELECT or context == TT.CONTEXT.GUARD or context == TT.CONTEXT.HEAL):
 			print("[World] you are pointing on yourself : " + str(target.character.name))
 			gui.start("ally", target) #ally(get_current())
