@@ -1,3 +1,4 @@
+class_name GuiStates
 extends CanvasLayer
 
 signal selector_left

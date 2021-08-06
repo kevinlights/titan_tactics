@@ -1,6 +1,7 @@
 extends Node2D
 
 var is_web = OS.get_name() == "HTML5"
+var logger = Logger.new("Landing")
 
 func _input(event):
 	if event.is_action("ui_down") && !event.is_echo() && event.is_pressed():
@@ -27,16 +28,18 @@ func _ready():
 		var data = parse_json(file.get_as_text())
 		Game.setup_new_game()
 		Game.level = data.level
-		get_tree().change_scene("res://scenes/world.tscn")
+		var err = get_tree().change_scene("res://scenes/world.tscn")
+		if err:
+			logger.error("Failed to load world")
 	else:
-		print("No startup file, continuing normally")
+		logger.info("No startup file, continuing normally")
 
 func _on_continue():
 	SaveLoadSystem.load_game()
 	_start_game()
 
 func _on_close_credits():
-	$sfx/select.play()	
+	$sfx/select.play()
 	$menu/credits_overlay.hide()
 	$menu/credits.grab_focus()
 
@@ -54,7 +57,7 @@ func _start_game():
 	yield(get_tree().create_timer(0.3), "timeout")
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/world_map.tscn")
-	
+
 
 
 func _on_credits_pressed():

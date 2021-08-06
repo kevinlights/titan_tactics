@@ -68,9 +68,6 @@
     "trigger": "start",
     "story": [
       {
-        "avatar": "start"
-      },
-      {
         "type": "face",
         "target": "bowie.east"
       },
@@ -79,11 +76,7 @@
         "target": "kris.north"
       },
       {
-        "avatar": "kris"
-      },
-      {
-        "type": "face",
-        "target": "kris.north",
+        "avatar": "kris",
         "text": [
           "Hey Bowie, how's it going? I was looking for you!"
         ]
@@ -123,11 +116,11 @@
         ]
       },
       {
-        "avatar": "bowie"
+        "type": "emote",
+        "target": "bowie.happy"
       },
       {
-        "type": "emote",
-        "target": "bowie.happy",
+        "avatar": "bowie",
         "text": [
           "Oh wow! We're going on an adventure together, that's so awesome!"
         ]

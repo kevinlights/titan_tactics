@@ -68,7 +68,7 @@ func _on_cutscene_start():
 	cutscene_rotation.y = start_rotation.y
 	end_rotation = start_rotation + Vector3(5, 0, 5)
 	rotating = true
-	
+
 
 func _on_cutscene_end():
 	is_cutscene = false
@@ -78,15 +78,15 @@ func _on_cutscene_end():
 	start_rotation = get_parent().rotation_degrees
 	end_rotation = start_rotation + Vector3(-5, 0, -5)
 	rotating = true
-	
-	
+
+
 func _on_orientation_changed_clockwise():
 #	if is_cutscene:
 #		return
 	var now = OS.get_ticks_msec()
 #	if now - start_time < ttl:
-#		end_rotation += Vector3(0, 90, 0) 
-#		start_time += ttl #(now - start_time) 
+#		end_rotation += Vector3(0, 90, 0)
+#		start_time += ttl #(now - start_time)
 #		return
 	start_time = now
 	start_rotation = get_parent().rotation_degrees
@@ -99,13 +99,13 @@ func _on_orientation_changed_counter_clockwise():
 	var now = OS.get_ticks_msec()
 #	if now - start_time < ttl:
 #		end_rotation -= Vector3(0, 90, 0) # rotations[Game.camera_orientation]
-#		start_time += ttl 
+#		start_time += ttl
 #		return
 	start_time = now
 	start_rotation = get_parent().rotation_degrees
 	end_rotation = start_rotation - Vector3(0, 90, 0) # rotations[Game.camera_orientation]
 	rotating = true
-	
+
 func _on_orientation_changed():
 	pass
 #	start_time = OS.get_ticks_msec()
