@@ -223,7 +223,7 @@ region = Rect2( 16, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 41 )
-region = Rect2( 16, 16, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 41 )
@@ -242,7 +242,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 30 ) ],
 "loop": true,
-"name": "archer",
+"name": "swordsman",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 31 ) ],

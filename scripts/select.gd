@@ -188,7 +188,7 @@ func set_origin(entity):
 		capture_camera()
 	else:
 		$top/selector.hide()
-	emit_signal("moved", self.tile)	
+	emit_signal("moved", self.tile)
 #
 func _process(delta):
 	$top/selector.rotation.y += delta * -3;

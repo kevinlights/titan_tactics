@@ -29,15 +29,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/chestspawner.gd"
 }, {
-"base": "Node",
-"class": "CutScene",
-"language": "GDScript",
-"path": "res://scripts/dialogue/CutScene.gd"
-}, {
 "base": "Resource",
 "class": "DefaultClassStats",
 "language": "GDScript",
 "path": "res://scripts/class_default_stats.gd"
+}, {
+"base": "Control",
+"class": "Dialogue",
+"language": "GDScript",
+"path": "res://scripts/gui/Dialogue/Dialogue.gd"
+}, {
+"base": "CanvasLayer",
+"class": "GuiStates",
+"language": "GDScript",
+"path": "res://scripts/gui_states.gd"
 }, {
 "base": "Resource",
 "class": "Item",
@@ -52,7 +57,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Level",
 "language": "GDScript",
-"path": "res://scripts/level.gd"
+"path": "res://scripts/Level/Level.gd"
+}, {
+"base": "Resource",
+"class": "Logger",
+"language": "GDScript",
+"path": "res://scripts/Logger/Logger.gd"
 }, {
 "base": "Object",
 "class": "NaiveAI",
@@ -82,22 +92,27 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Story",
 "language": "GDScript",
-"path": "res://scripts/dialogue/Story.gd"
+"path": "res://scripts/Story/Story.gd"
 }, {
 "base": "Resource",
 "class": "StoryAction",
 "language": "GDScript",
-"path": "res://scripts/dialogue/StoryAction.gd"
+"path": "res://scripts/Story/StoryAction.gd"
+}, {
+"base": "Node",
+"class": "StoryExecutor",
+"language": "GDScript",
+"path": "res://scripts/Level/StoryExecutor.gd"
 }, {
 "base": "Sprite3D",
 "class": "StoryMarker",
 "language": "GDScript",
-"path": "res://scripts/dialogue/StoryMarker.gd"
+"path": "res://scripts/Story/StoryMarker.gd"
 }, {
 "base": "Resource",
 "class": "StoryMessage",
 "language": "GDScript",
-"path": "res://scripts/dialogue/StoryMessage.gd"
+"path": "res://scripts/Story/StoryMessage.gd"
 }, {
 "base": "Node",
 "class": "TT",
@@ -114,11 +129,13 @@ _global_script_class_icons={
 "CharacterSpawner": "",
 "CharacterStats": "",
 "ChestSpawner": "",
-"CutScene": "",
 "DefaultClassStats": "",
+"Dialogue": "",
+"GuiStates": "",
 "Item": "",
 "ItemSpawner": "",
 "Level": "",
+"Logger": "",
 "NaiveAI": "",
 "PathFinder": "",
 "PlayerSpawner": "",
@@ -126,6 +143,7 @@ _global_script_class_icons={
 "StatusEffect": "",
 "Story": "",
 "StoryAction": "",
+"StoryExecutor": "",
 "StoryMarker": "",
 "StoryMessage": "",
 "TT": "",
@@ -159,7 +177,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "." )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
