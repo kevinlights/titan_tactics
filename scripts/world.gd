@@ -14,7 +14,11 @@ var have_key = false
 var tile_meta
 var world_map
 var game_over = false
-var is_cutscene = true
+############
+# Froggy: made is_cutscene false for testing other levels. also check level.gd
+###########
+#var is_cutscene = true
+var is_cutscene = false
 var current_turn = TT.CONTROL.PLAYER
 var player_spawns = []
 var pathfinder
@@ -972,15 +976,21 @@ func contextual_ui():
 	var target = entity_at(tile)
 	if current_turn == TT.CONTROL.PLAYER:
 		if target and !target.is_loot and !target.is_trigger and target.character.control == TT.CONTROL.AI and context == TT.CONTEXT.ATTACK:
-			logger.info("[World] you are pointing on " + str(target.character.name))
-			gui.start("battle", target)
+			print("[World] you are pointing on " + str(target.character.name))
+			if mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK:
+				gui.start("attack", target)
+			else:
+				gui.start("battle", target)
+		else:
+			if mode == MODE.ATTACK or mode == MODE.SECONDARY_ATTACK:
+				gui.close(["attack"])
 		if target and !target.is_loot and !target.is_trigger and !target.character.control == TT.CONTROL.AI and (context == TT.CONTEXT.SELECT or context == TT.CONTEXT.GUARD or context == TT.CONTEXT.HEAL):
 			logger.info("[World] you are pointing on yourself : " + str(target.character.name))
 			gui.start("ally", target) #ally(get_current())
 			gui.get_node("ally").update_stats(target)
 		if context == TT.CONTEXT.MOVE or context == TT.CONTEXT.NOT_ALLOWED:
-			logger.info("[World] Closing ui because of context ", context)
-			gui.close([ "ally", "battle" ])
+			print("[World] Closing ui because of context ", context)
+			gui.close([ "attack", "ally", "battle" ])
 	$range_overlay.set_selector(tile)
 
 func _on_selector_moved(tile):

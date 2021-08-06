@@ -16,9 +16,9 @@ func fire(from, to):
 	start = OS.get_ticks_msec()
 	start_position = from
 	end_position = to
-	$stick.look_at(end_position, Vector3.UP)
-#	var angle = from.angle_to(to)
-#	$stick.rotate(angle, Vector3(0, 1, 0))
+	#$stick.look_at(end_position, Vector3.UP)
+	var angle = from.angle_to(to)
+	$stick.rotate(Vector3(0, 1, 0), angle)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
