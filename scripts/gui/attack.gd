@@ -116,7 +116,7 @@ func update_stats():
 		hit_chance += "%"
 		$Container/percentage.text = hit_chance
 		final_damage = ceil(get_damage())
-		$Container/damage.text = str(clamp(enemy.character.hp - final_damage, 0, 999)) + '/' + str(enemy.character.max_hp)
+		$Container/damage.text = str(clamp(final_damage, 0, 999)) + '/' + str(enemy.character.max_hp)
 		
 
 func get_damage():
