@@ -698,6 +698,7 @@ func hide_effect(name : String):
 
 
 func attack_complete(delay=1.0):
+	last_path = PoolVector3Array([tile])
 	yield(get_tree().create_timer(delay), "timeout")
 #	# logger.info("attack complete")
 	# logger.info("[Character Controller] (" + character.name + ") attack complete")
