@@ -5,6 +5,7 @@ signal win
 signal auto_deployed
 signal level_start
 signal story
+signal trigger_skip_story
 #signal all_enemies_eliminated
 
 onready var gui = get_tree().get_root().get_node("World/gui")

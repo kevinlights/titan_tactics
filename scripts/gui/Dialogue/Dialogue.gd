@@ -7,7 +7,7 @@ signal closed
 # event progression flag
 var event_will_progress = true
 # skip flag
-var skip_events = false
+# var skip_events = false
 
 # gui flag
 var waiting_for_skip_confirm = false
@@ -110,3 +110,19 @@ func _input(event):
 		else:
 			get_parent().back()
 			emit_signal("completed")
+			
+	if event.is_action("context_menu") && !event.is_echo() && event.is_pressed():
+		hide()
+		get_parent().get_node("skipconfirm").show()
+		get_parent().get_node("skipconfirm").connect("confirm_skip", self, "skip_confirmed")
+		get_parent().get_node("skipconfirm").connect("cancel", self, "skip_cancelled")
+
+func skip_cancelled():
+	get_parent().get_node("skipconfirm").disconnect("confirm_skip", self, "skip_confirmed")
+	get_parent().get_node("skipconfirm").disconnect("cancel", self, "skip_cancelled")
+	show()
+
+func skip_confirmed():
+	get_parent().get_node("skipconfirm").disconnect("confirm_skip", self, "skip_confirmed")
+	get_parent().get_node("skipconfirm").disconnect("cancel", self, "skip_cancelled")
+	get_tree().get_root().get_node("World").emit_signal("trigger_skip_story")
