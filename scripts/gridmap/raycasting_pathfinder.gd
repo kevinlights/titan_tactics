@@ -88,8 +88,8 @@ func _physics_process(delta):
 	if Engine.editor_hint:
 		var new_tile_count = len(get_used_cells())
 		if tile_count != new_tile_count:
-			if OS.get_name() == 'OSX':
-				return
+			#if OS.get_name() == 'OSX':
+			#	return
 			tile_count = new_tile_count
 			#_debug_list_cells()
 			_compute_bounds()
