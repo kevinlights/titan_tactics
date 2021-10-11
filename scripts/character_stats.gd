@@ -114,9 +114,13 @@ func fibonacci_cumulative(position):
 		result += fibonacci[x]
 	return result
 
-func add_xp(more_xp):
+func add_xp(enemy_lvl):
+	# TODO: rename function to make it clearer that it adds based on computed lvl
 	if level == 0:
 		return
+	# below is enemy death exponential xp curve
+	# 50 * lvl ^ 0.36673ish
+	var more_xp = round(50 * pow(enemy_lvl, log(3) / log(20)))
 	xp += more_xp
 	current_to_next += more_xp
 	print("xp gained ", more_xp)
@@ -141,7 +145,7 @@ func level_up():
 	if character_class == 0:
 		mov_range += stats_diff.mov
 	current_to_next = current_to_next - xp_to_next
-	xp_to_next = pow(level, 2)
+	xp_to_next = get_xp_to_next_lvl()
 	print("Level up")
 	print(get_signal_connection_list("level_up"))
 	emit_signal("level_up", stats_diff, self)
@@ -154,6 +158,12 @@ func set_level(lvl):
 	
 func get_level():
 	return level
+	
+func get_xp_to_next_lvl():
+	# exponential xp curve
+	# 100 * current_lvl * 1
+	return 100 * pow(level, 1)
+	
 
 func set_character_class(new_character_class):
 	character_class = new_character_class
@@ -196,7 +206,7 @@ func from_other(other_stats):
 	item_atk = other_stats.item_atk
 	item_def = other_stats.item_def
 	heal = other_stats.heal
-	xp_to_next = level * level
+	xp_to_next = get_xp_to_next_lvl()
 	recruit_mode = other_stats.recruit_mode
 	portrait_override = other_stats.portrait_override
 	control = other_stats.control
@@ -243,7 +253,7 @@ func generate(default_stats, request_class, request_control, request_level = 1, 
 	strength = TT.class_stats.strength[character_class]
 	abilities = TT.class_stats.abilities[character_class]
 	level = request_level
-	xp_to_next = level * level
+	xp_to_next = get_xp_to_next_lvl()
 	rng.randomize()
 	personality = rng.randi_range(0, 2)
 	# prevent re-generating character on spawn
@@ -314,7 +324,7 @@ func from_save_data(class_stats, data):
 	weakness = TT.class_stats.weakness[character_class]
 	strength = TT.class_stats.strength[character_class]
 	abilities = TT.class_stats.abilities[character_class]
-	xp_to_next = pow(level, 2)
+	xp_to_next = get_xp_to_next_lvl()
 	heal = level
 	if level > 1:
 		current_to_next = xp - pow(level - 1, 2)
