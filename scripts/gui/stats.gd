@@ -53,9 +53,9 @@ func _process(_delta):
 	
 	# KuhnC 9/Apr/21
 	# whatever this is doing: no, doing it the fixed way for now.
-	$box_ally/levelline.get_point_position(1).x = (player.character.xp/player.character.xp_to_next)*xp_bar_size
+	$box_ally/levelline.set_point_position(1, Vector2((player.character.current_to_next/player.character.xp_to_next)*xp_bar_size, 0))
 	$box_ally/hpline.get_point_position(1).x = (player.character.hp/player.character.max_hp)*bar_size
-	$box_enemy/enemylevelline.get_point_position(1).x = (enemy.character.xp/enemy.character.xp_to_next)*xp_bar_size
+	$box_enemy/enemylevelline.set_point_position(1, Vector2((enemy.character.current_to_next/enemy.character.xp_to_next)*xp_bar_size, 0))
 	$box_enemy/hpline.get_point_position(1).x = (enemy.character.hp/enemy.character.max_hp)*bar_size
 	
 	# I do get why you'd do *this*, but
@@ -219,7 +219,7 @@ func update_stats():
 
 func start_hiding(player_entity = null):
 	if player_entity:
-		var lvl_pos = (player_entity.character.xp)/(player_entity.character.xp_to_next)*28
+		var lvl_pos = (player_entity.character.current_to_next)/(player_entity.character.xp_to_next)*28
 		$box_ally/levelline.set_point_position(1, Vector2(lvl_pos, 0))
 	print("moving out Battle UI")
 	moving_back = true

@@ -31,7 +31,7 @@ func _process(_delta):
 		return
 	var now = OS.get_ticks_msec()
 	if player:
-		$box_ally/levelline.set_point_position(1, Vector2((player.character.xp/player.character.xp_to_next)*xp_bar_size, 0))
+		$box_ally/levelline.set_point_position(1, Vector2((player.character.current_to_next/player.character.xp_to_next)*xp_bar_size, 0))
 	#move hp line
 	if $box_ally/hpline.get_point_position(1).x > (player.character.hp/player.character.max_hp)*bar_size:
 		var new_hp_pos = Vector2($box_ally/hpline.get_point_position(1).x - 0.5, 0)
