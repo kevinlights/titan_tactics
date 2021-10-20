@@ -1,0 +1,7 @@
+{
+  "name": "Kris",
+  "class": "swordsman",
+  "base": {
+    "atk": 10
+  }
+}
