@@ -1080,6 +1080,9 @@ func _input(event):
 	if event.is_action("cheat_suicide") && !event.is_echo() && event.is_pressed():
 		for unit in current[TT.CONTROL.PLAYER]:
 			unit.die()
+	if event.is_action("cheat_level_up") && !event.is_echo() && event.is_pressed():
+		var currentCharacter = get_current()
+		currentCharacter.character.level_up()
 	if event.is_action("cheat_log_stats") && !event.is_echo() && event.is_pressed():
 		logger.info("[World] selector ", $select.tile)
 		var currChar = get_current()

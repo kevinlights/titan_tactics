@@ -207,35 +207,35 @@ atlas = ExtResource( 14 )
 region = Rect2( 50, 0, 50, 60 )
 
 [sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 15 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 50, 60 )
 
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 15 )
-region = Rect2( 50, 0, 50, 60 )
+region = Rect2( 0, 0, 50, 60 )
 
 [sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 15 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 50, 60 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 9 )
 region = Rect2( 50, 0, 50, 60 )
 
-[sub_resource type="AtlasTexture" id=39]
+[sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 17 )
 region = Rect2( 0, 0, 50, 60 )
 
-[sub_resource type="AtlasTexture" id=40]
+[sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 17 )
 region = Rect2( 50, 0, 50, 60 )
 
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 50, 60 )
-
 [sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 50, 60 )
 
 [sub_resource type="SpriteFrames" id=43]
@@ -285,34 +285,34 @@ animations = [ {
 "name": "arath",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 35 ), SubResource( 36 ) ],
+"frames": [ SubResource( 35 ) ],
+"loop": true,
+"name": "poison_boba",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ) ],
 "loop": true,
 "name": "celes",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 37 ) ],
+"frames": [ SubResource( 38 ) ],
 "loop": true,
 "name": "bowie",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 38 ) ],
+"frames": [ SubResource( 39 ) ],
 "loop": true,
 "name": "ai_swordsman",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 39 ), SubResource( 40 ) ],
+"frames": [ SubResource( 40 ), SubResource( 41 ) ],
 "loop": true,
 "name": "zara",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 41 ) ],
-"loop": true,
-"name": "instructor",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 42 ) ],
 "loop": true,
-"name": "poison_boba",
+"name": "instructor",
 "speed": 5.0
 } ]
 
@@ -535,7 +535,7 @@ frames = SubResource( 3 )
 [node name="lv" type="Label" parent="Polygon2D"]
 margin_left = 22.0
 margin_top = 69.0
-margin_right = 86.0
+margin_right = 33.0
 margin_bottom = 87.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
@@ -544,7 +544,26 @@ custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "99         99"
+text = "1"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lv2" type="Label" parent="Polygon2D"]
+margin_left = 60.7541
+margin_top = 69.0
+margin_right = 111.754
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "2"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -561,17 +580,34 @@ frame = 3
 playing = true
 
 [node name="hp" type="Label" parent="Polygon2D"]
-margin_left = 7.85104
-margin_top = 96.6837
-margin_right = 91.851
-margin_bottom = 112.684
+margin_left = 8.0
+margin_top = 97.0
+margin_right = 32.0
+margin_bottom = 113.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "9999    9999"
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp2" type="Label" parent="Polygon2D"]
+margin_left = 44.0
+margin_top = 97.0
+margin_right = 86.0
+margin_bottom = 113.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -589,7 +625,7 @@ playing = true
 [node name="atk" type="Label" parent="Polygon2D"]
 margin_left = 8.0
 margin_top = 124.0
-margin_right = 96.0
+margin_right = 32.0
 margin_bottom = 140.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
@@ -597,7 +633,24 @@ custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "9999    9999"
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="atk2" type="Label" parent="Polygon2D"]
+margin_left = 44.0
+margin_top = 124.0
+margin_right = 88.0
+margin_bottom = 140.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -615,7 +668,7 @@ offset = Vector2( 8.37548, -7.8902 )
 [node name="def" type="Label" parent="Polygon2D"]
 margin_left = 8.0
 margin_top = 151.0
-margin_right = 96.0
+margin_right = 32.0
 margin_bottom = 167.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
@@ -623,7 +676,24 @@ custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "9999    9999"
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="def2" type="Label" parent="Polygon2D"]
+margin_left = 44.0
+margin_top = 151.0
+margin_right = 91.0
+margin_bottom = 167.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -642,7 +712,7 @@ offset = Vector2( 8.37548, -7.8902 )
 [node name="hit" type="Label" parent="Polygon2D"]
 margin_left = 8.0
 margin_top = 178.0
-margin_right = 96.0
+margin_right = 40.0
 margin_bottom = 194.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
@@ -650,7 +720,24 @@ custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "99.9%    99.9%"
+text = "2%"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hit2" type="Label" parent="Polygon2D"]
+margin_left = 51.0
+margin_top = 178.0
+margin_right = 90.0
+margin_bottom = 194.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "2%"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -669,7 +756,7 @@ offset = Vector2( 8.37548, -7.8902 )
 [node name="agi" type="Label" parent="Polygon2D"]
 margin_left = 8.0
 margin_top = 205.0
-margin_right = 96.0
+margin_right = 39.0
 margin_bottom = 221.0
 rect_pivot_offset = Vector2( 72, 8 )
 theme = ExtResource( 2 )
@@ -677,7 +764,24 @@ custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
-text = "99.9%    99.9%"
+text = "1%"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="agi2" type="Label" parent="Polygon2D"]
+margin_left = 51.0
+margin_top = 205.0
+margin_right = 91.0
+margin_bottom = 221.0
+rect_pivot_offset = Vector2( 72, 8 )
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0.917647, 0.964706, 0.956863, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "2%"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -729,7 +833,7 @@ vertex_colors = PoolColorArray( 0.215686, 0.623529, 0.54902, 1, 0.0823529, 0.458
 [node name="focus" type="AnimatedSprite" parent="Polygon2D/penta/hb_hp_penta"]
 position = Vector2( 179.5, 67.5 )
 frames = SubResource( 49 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
@@ -765,7 +869,7 @@ __meta__ = {
 visible = false
 position = Vector2( 116, 101.5 )
 frames = SubResource( 49 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
@@ -801,7 +905,7 @@ __meta__ = {
 visible = false
 position = Vector2( 133.986, 150.614 )
 frames = SubResource( 49 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
@@ -837,6 +941,7 @@ __meta__ = {
 visible = false
 position = Vector2( 226.103, 150.614 )
 frames = SubResource( 49 )
+frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
@@ -872,7 +977,6 @@ __meta__ = {
 visible = false
 position = Vector2( 240.72, 101.409 )
 frames = SubResource( 49 )
-frame = 2
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
