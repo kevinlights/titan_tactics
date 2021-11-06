@@ -22,11 +22,11 @@ func load_game():
 	Game.level = save_data.level
 	Game.unlocked_level = save_data.unlocked_level
 	Game.team = []
-	
-	var default_stats = load("res://resources/class_stats.tres")
+
 	for character_dict in save_data.team:
-		var character = CharacterStats.new()
-		character.from_save_data(default_stats, character_dict)
+		# TODO: switch to json (or make conditional)
+		var character = CharacterStatsOrig.new()
+		character.from_save_data(character_dict)
 		Game.team.push_back(character)
 	
 func save_dict():

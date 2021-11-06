@@ -921,7 +921,7 @@ func init_common(control):
 
 func init(char_type, control = TT.CONTROL.PLAYER):
 	var default_stats = load("res://resources/class_stats.tres") # [class_map[char_type]]
-	character = CharacterStats.new()
+	character = CharacterStatsOrig.new()
 #	character.from_defaults(char_type, control)
 #	var class_map = {
 #		TT.TYPE.FIGHTER: "swordsman",

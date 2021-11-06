@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=6 format=2]
 
-[ext_resource path="res://scripts/character_stats.gd" type="Script" id=1]
+[ext_resource path="res://scripts/character_stats_orig.gd" type="Script" id=1]
 [ext_resource path="res://scripts/status_effect.gd" type="Script" id=2]
 [ext_resource path="res://scripts/item.gd" type="Script" id=3]
 

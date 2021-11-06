@@ -29,10 +29,10 @@ func set_up_editor():
 		if !stats:
 			var default_stats = load("res://resources/class_stats.tres")
 			print("create stats object")
-			stats = CharacterStats.new()
+			stats = CharacterStatsOrig.new()
 			stats.from_defaults(default_stats, TT.TYPE.ARCHER, TT.CONTROL.AI)
 		else:
-			var force_reinit_stats = CharacterStats.new()
+			var force_reinit_stats = CharacterStatsOrig.new()
 			force_reinit_stats.from_other(stats)
 			stats = force_reinit_stats
 			property_list_changed_notify()

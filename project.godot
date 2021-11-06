@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/character_stats.gd"
 }, {
+"base": "CharacterStats",
+"class": "CharacterStatsJson",
+"language": "GDScript",
+"path": "res://scripts/character_stats_json.gd"
+}, {
+"base": "CharacterStats",
+"class": "CharacterStatsOrig",
+"language": "GDScript",
+"path": "res://scripts/character_stats_orig.gd"
+}, {
 "base": "Sprite3D",
 "class": "ChestSpawner",
 "language": "GDScript",
@@ -128,6 +138,8 @@ _global_script_class_icons={
 "CharacterController": "",
 "CharacterSpawner": "",
 "CharacterStats": "",
+"CharacterStatsJson": "",
+"CharacterStatsOrig": "",
 "ChestSpawner": "",
 "DefaultClassStats": "",
 "Dialogue": "",
