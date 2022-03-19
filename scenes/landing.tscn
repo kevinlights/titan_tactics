@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/landing.gd" type="Script" id=1]
 [ext_resource path="res://music/menu_theme.ogg" type="AudioStream" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://gfx/ui/new_off.png" type="Texture" id=11]
 [ext_resource path="res://gfx/ui/credits-off.png" type="Texture" id=12]
 [ext_resource path="res://gfx/ui/credits-on.png" type="Texture" id=13]
+[ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 10 )
@@ -61,6 +62,11 @@ region_rect = Rect2( 0, 0, 107, 26 )
 [sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 107, 26 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 14
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
 
 [node name="landing" type="Node2D"]
 script = ExtResource( 1 )
@@ -150,6 +156,30 @@ __meta__ = {
 visible = false
 script = null
 
+[node name="Locale" type="OptionButton" parent="."]
+margin_left = 218.464
+margin_top = 199.528
+margin_right = 312.464
+margin_bottom = 220.528
+focus_neighbour_left = NodePath("../menu/newgame")
+focus_neighbour_top = NodePath("../menu/newgame")
+focus_neighbour_right = NodePath("../menu/newgame")
+focus_neighbour_bottom = NodePath("../menu/newgame")
+focus_next = NodePath("../menu/newgame")
+focus_previous = NodePath("../menu/newgame")
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color_disabled = Color( 0.580392, 0.580392, 0.580392, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.282353, 0.282353, 0.282353, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "English"
+flat = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="menu/continue" to="." method="_on_continue"]
 [connection signal="pressed" from="menu/newgame" to="." method="_on_newgame"]
 [connection signal="pressed" from="menu/credits" to="." method="_on_credits_pressed"]
+[connection signal="item_selected" from="Locale" to="." method="_on_Locale_item_selected"]

@@ -346,7 +346,7 @@ cheat_level_up={
 [locale]
 
 fallback="fr"
-translations=PoolStringArray(  )
+translations=PoolStringArray( "res://resources/translations.en.translation", "res://resources/translations.nl.translation", "res://resources/translations.es.translation" )
 locale_filter=[ 0, [ "en_US", "fr", "nl" ] ]
 
 [rendering]

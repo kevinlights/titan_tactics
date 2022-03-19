@@ -1,0 +1,53 @@
+[
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "arath",
+        "text": [
+          "So why did Tyrmyr ever ban cheese anyway?"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "It's not about cheese at all. It's just an excuse to arrest whoever they want. Of course they'll turn a blind eye to the rich and powerful."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "How do you know that?"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "The royals themselves feast on our Gouda... They used to buy from us before the prohibition, but now they just have their troops rob us!"
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "That's... That's awful!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "arath.angry"
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "Elyne’s troops are already here! Let's join forces against them!"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "We will fight by your side!"
+        ]
+      }
+    ]
+  }
+]

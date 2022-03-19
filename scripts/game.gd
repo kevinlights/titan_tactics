@@ -4,6 +4,8 @@ signal orientation_changed
 signal orientation_changed_clockwise
 signal orientation_changed_counter_clockwise
 
+var language = "en_US"
+
 var team = []
 var level = 0
 var unlocked_level = 0
@@ -14,8 +16,13 @@ var sfx = {}
 var default_stats = load("res://resources/class_stats.tres")
 
 func _ready() -> void:
+	TranslationServer.set_locale(language)
 	loadVA()
 
+func set_language(lang):
+	language = lang
+	TranslationServer.set_locale(lang)
+	
 func loadVA():
 	var d = Directory.new()
 	d.change_dir("res://VA")
