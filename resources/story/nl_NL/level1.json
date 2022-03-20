@@ -66,7 +66,7 @@
       {
         "avatar": "instructor",
         "text": [
-          "Gaat goed, Kris, nu heb je het door! Maar... zie je die vervelende Bobas onze kant op komen?"
+          "Gaat goed, Kris, nu heb je het door! Maar... zie je die vervelende Bobas daar?"
         ]
       },
       {
@@ -80,7 +80,7 @@
       {
         "avatar": "kris",
         "text": [
-          "I'm on it!"
+          "Ik maak er korte metten mee!"
         ]
       }
     ]
@@ -136,8 +136,8 @@
         "avatar": "instructor",
         "text": [
           "Je kent je rivaal Loki nog. Hij is er niet blij mee dat hij niet gekozen is voor deze missie,", 
-          "maar hij kan ons nog helpen met een korte training! Probeer dichter bij Loki te komen.",
-          "Blauwe velden kun je deze beurt bereiken.", 
+          "maar hij kan ons nog helpen met een korte training!",
+          "Probeer dichter bij Loki te komen, blauwe velden kun je deze beurt bereiken.", 
           "Voor deze beurt kun je naar het veld dat ik voor je in het geel heb aangemerkt!"
         ]
       },
@@ -173,7 +173,8 @@
       {
         "avatar": "ai_swordsman",
         "text": [
-          "Als ik jou was, zou ik opgeven. Ga naar huis en kam je haar, slons! Laat het aan een echte held over!"
+          "Als ik jou was, zou ik opgeven. Ga naar huis en kam je haar, slons!",
+          "Laat het aan een echte held over!"
         ]
       },
       {
