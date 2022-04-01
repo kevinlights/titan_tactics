@@ -8,13 +8,13 @@ export(int, "Swordsman", "Archer", "Mage", "Boba", "Poison Boba") var character_
 export(String) var name
 export(int) var level = 1 setget set_level,get_level
 export(int) var hp setget set_hp,get_hp
-export(int) var max_hp setget set_max_hp, get_max_hp
-export(int) var atk setget set_atk, get_atk
-export(int) var def setget set_def, get_def
+export(int) var max_hp setget set_max_hp,get_max_hp
+export(int) var atk setget set_atk,get_atk
+export(int) var def setget set_def,get_def
 export(int) var atk_range
 export(int) var mov_range
-export(int) var hit setget set_hit, get_hit
-export(int) var agi setget set_agi, get_agi
+export(int) var hit setget set_hit,get_hit
+export(int) var agi setget set_agi,get_agi
 export(int) var bonus_hp
 export(int) var bonus_atk
 export(int) var bonus_def
