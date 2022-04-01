@@ -8,13 +8,13 @@ export(int, "Swordsman", "Archer", "Mage", "Boba", "Poison Boba") var character_
 export(String) var name
 export(int) var level = 1 setget set_level,get_level
 export(int) var hp setget set_hp,get_hp
-export(int) var max_hp
-export(int) var atk
-export(int) var def
+export(int) var max_hp setget set_max_hp,get_max_hp
+export(int) var atk setget set_atk,get_atk
+export(int) var def setget set_def,get_def
 export(int) var atk_range
 export(int) var mov_range
-export(int) var hit
-export(int) var agi
+export(int) var hit setget set_hit,get_hit
+export(int) var agi setget set_agi,get_agi
 export(int) var bonus_hp
 export(int) var bonus_atk
 export(int) var bonus_def
@@ -96,11 +96,47 @@ enum PERSONALITY {
 	GREEDY
 }
 
+func set_max_hp(value):
+	max_hp = value
+
+func get_max_hp():
+	return max_hp + bonus_hp
+
+func add_hp(value):
+	hp = clamp(hp + value, 0, max_hp)
+
+func remove_hp(value):
+	hp = clamp(hp - value, 0, max_hp)
+
 func set_hp(value):
-	hp = clamp(value, 0, 999)
+	hp = clamp(value, 0, max_hp)
 
 func get_hp():
-	return hp
+	return hp + bonus_hp
+
+func set_atk(value):
+	atk = value
+
+func get_atk():
+	return atk + bonus_atk
+
+func set_def(value):
+	def = value
+
+func get_def():
+	return def + bonus_def
+
+func set_agi(value):
+	agi = value
+
+func get_agi():
+	return agi + bonus_agi
+
+func set_hit(value):
+	hit = value
+
+func get_hit():
+	return hit + bonus_hit
 
 func sequence_cumulative(sequence, position):
 	var result = 0
@@ -124,7 +160,7 @@ func add_xp(more_xp):
 	print("progress to next level ", current_to_next)
 	if current_to_next >= xp_to_next:
 		level_up()
-
+	
 func level_up():
 	var lvl_up = clamp(level, 0, atk_up.size() - 2)
 	var stats_diff = {

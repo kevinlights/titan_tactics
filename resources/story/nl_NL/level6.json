@@ -1,0 +1,105 @@
+[
+  {
+    "trigger": "end",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "focus",
+        "target": "bowie"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "So where are all those weapons supposed to be? Kris and I looked in the warehouse but all we saw were cheese wheels… Smells kind of funky. Cheddar?"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Gouda."
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "zara.ugh"
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "This must have been where they hide their cheese, you know, because of the Great Cheese Prohibition."
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "So on top of being a horrible dictator, Celes is also a cheese dealer?"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "I wouldn't put anything past her. Anyway, let's keep search a bit further. Celes can't be far!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "kris",
+        "text": [
+          "There's the giant Crystal shrine! Queen Elyne was telling us the truth, Celes really is evil!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "crystal"
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "Let's destroy that thing! Celes must pay for capturing me!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "It just looks like a regular Crystal though..."
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "That... That is just a regular crystal. But look over there!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "warehouse"
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "That warehouse over there, doesn't it look suspicious? They are probably hiding their weapons there!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "zara"
+      },
+      {
+        "type": "emote",
+        "target": "zara.angry"
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "Alright guys, let's make them pay!"
+        ]
+      }
+    ]
+  }
+]

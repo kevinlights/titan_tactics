@@ -32,7 +32,7 @@ func _ready():
 	_attach_story()
 
 func _attach_story():
-	var story_filename = "res://resources/story/level" + str(Game.level + 1) + ".json";
+	var story_filename = "res://resources/story/" + Game.language + "/level" + str(Game.level + 1) + ".json";
 	story_executor = StoryExecutor.new(world, gui, selector)
 	story_executor.load_story(story_filename)
 

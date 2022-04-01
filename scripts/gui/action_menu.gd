@@ -23,26 +23,28 @@ var menu_type = TT.TYPE.FIGHTER
 var disabled = []
 
 var label_map = {
-#	"attack": [ "Attack", "Speak" ],	
-#	"guard": [ "Guard", "End" ],
-#	"heal": [ "Healing Light", "End" ],
-#	"end": [ "End" ],
-	TT.TYPE.MAGE: [ "Lightning Bolt", "Thunder Storm", "Healing Light", "End" ],
-	TT.TYPE.ARCHER: [ "Sharp Shot", "Flame Shower", "Guard", "End" ],
-	TT.TYPE.FIGHTER: [ "Heavy Blow", "Sweeping Blow", "Guard", "End" ]
+		TT.TYPE.MAGE: [ "Lightning Bolt", "Thunder Storm", "Healing Light", "End" ],
+		TT.TYPE.ARCHER: [ "Sharp Shot", "Flame Shower", "Guard", "End" ],
+		TT.TYPE.FIGHTER: [ "Heavy Blow", "Sweeping Blow", "Guard", "End" ]
 }
+#	"nl-nl": {
+#		TT.TYPE.MAGE: [ "Bliksem Schicht", "Donder", "Helend Licht", "Beurt Beeindigen" ],
+#		TT.TYPE.ARCHER: [ "Scherp Schot", "Vlammen Regen", "Verdedigen", "End" ],
+#		TT.TYPE.FIGHTER: [ "Heavy Blow", "Sweeping Blow", "Guard", "End" ]		
+#	}
+#}
 
-var tooltips = {
-	"Heavy Blow": "A mighty swing of the sword that targets one",
-	"Sweeping Blow": "Slash up to three enemies in front of you with this devastating attack",
-	"Sharp Shot": "Line up an arrow and let it loose with frightening accuracy",
-	"Flame Shower": "Shoots a bundle of flaming arrows that can damage up to 5 enemies at once. May cause burn",
-	"Lightning Bolt": "High precision electric projectile that targets one",
-	"Thunder Storm": "Summons a mighty storm that can damage up to 4 enemies at once. May stun enemies",
-	"Healing Light": "Restores a little bit of health to yourself or an ally",
-	"Guard": "Adopts a defensive stance in order to reduce incoming damage",
-	"End": "Ends turn for this character"
-}
+#var tooltips = {
+#	"Heavy Blow": "A mighty swing of the sword that targets one",
+#	"Sweeping Blow": "Slash up to three enemies in front of you with this devastating attack",
+#	"Sharp Shot": "Line up an arrow and let it loose with frightening accuracy",
+#	"Flame Shower": "Shoots a bundle of flaming arrows that can damage up to 5 enemies at once. May cause burn",
+#	"Lightning Bolt": "High precision electric projectile that targets one",
+#	"Thunder Storm": "Summons a mighty storm that can damage up to 4 enemies at once. May stun enemies",
+#	"Healing Light": "Restores a little bit of health to yourself or an ally",
+#	"Guard": "Adopts a defensive stance in order to reduce incoming damage",
+#	"End": "Ends turn for this character"
+#}
 
 func _ready():
 	pass
@@ -57,7 +59,7 @@ func _on_action(item):
 	get_parent().back()
 
 func _on_focus(item):
-	$panel/tip_box/tooltip.text = tooltips[item]
+	$panel/tip_box/tooltip.text = tr("TOOLTIP " + item) #tooltips[item]
 
 func init(new_menu_type = "attack"):
 	menu_type = new_menu_type
@@ -68,7 +70,7 @@ func init(new_menu_type = "attack"):
 	var action_item_scene = load("res://scenes/gui/action_menu_item.tscn")
 	for label in label_map[menu_type]:
 		var action_item = action_item_scene.instance()
-		action_item.text = label
+		action_item.text = tr(label)
 		action_item.name = label
 		$panel/box.add_child(action_item)
 
@@ -94,8 +96,8 @@ func init(new_menu_type = "attack"):
 			print("Disable button ", buttons[i].text)
 		buttons[i].rect_position.x = 6
 		buttons[i].rect_position.y = i * 16
-		buttons[i].connect("pressed", self, "_on_action", [ buttons[i].text ] )
-		buttons[i].connect("focus_entered", self, "_on_focus", [ buttons[i].text ] )
+		buttons[i].connect("pressed", self, "_on_action", [ buttons[i].name ] )
+		buttons[i].connect("focus_entered", self, "_on_focus", [ buttons[i].name ] )
 		if !(buttons[i].text in disabled) and !have_focus:
 			buttons[i].call_deferred("grab_focus")
 			have_focus = true

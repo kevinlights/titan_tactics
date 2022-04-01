@@ -1,0 +1,122 @@
+[
+  {
+    "trigger": "end",
+    "story": [
+      {
+        "avatar": "arath",
+        "text": [
+          "Zara is over there!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "arath.surprise"
+      },
+      {
+        "type": "spawn",
+        "target": "zara"
+      },
+      {
+        "type": "focus",
+        "target": "zara"
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "Zara, you are safe!"
+        ]
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "I'm fine. I was so worried about you being left alone in the forest with those ogres! I'm so sorry I couldn't hold them off... Thank you Kris and Bowie for taking care of Arath while I was gone!"
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "I'm just happy you're alright, Zara!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "arath.happy"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "No problem Zara, Arath's been a great help! So... Why did those goons take you prisoner?"
+        ]
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "It appears that Skathian troops were sent here to cause all sorts of trouble, and they mistook me for a Tyrmian soldier."
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "We really need to watch out for those freaks, they are dangerous!"
+        ]
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "We definitely do. I saw more of them heading for the Capital as well! Maybe if we team up..."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "...We can go after them and help Tyrmyr! Zara, are you sure you want to join us? It won't be easy!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "zara.angry"
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "Are you kidding me? Of course I do, I can't wait to let them have a piece of my blade!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "arath"
+      },
+      {
+        "type": "focus",
+        "target": "zara",
+        "text": [
+          "There they are! They are the Sakthians who took away Zara! She's probably being held in one of those houses!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "kris"
+      },
+      {
+        "type": "emote",
+        "target": "bowie.angry"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Savages! I hope Zara is alright... Those creeps better not have done anything to her! Come on guys, if we join forces, we might be able to take them on and get her back!"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Ok Bowie, Arath... Back me up! Let's go teach them a lesson!"
+        ]
+      }
+    ]
+  }
+]
