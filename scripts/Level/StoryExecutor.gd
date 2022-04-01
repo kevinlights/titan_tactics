@@ -52,6 +52,7 @@ func load_story(story_filename:String):
 			story[item.trigger].connect("move", self, "_on_move")
 			story[item.trigger].connect("focus", self, "_on_focus")
 			story[item.trigger].connect("music", self, "_on_music")
+			story[item.trigger].connect("end", self, "_on_end")
 
 		logger.info("Story attached")
 	else:
