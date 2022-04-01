@@ -125,6 +125,10 @@ var movement = {
 	"moving": false
 }
 
+func get_hit_chance():
+	# TODO: read/compute hit chance from json stats + lvl upgrades
+	return 0.90
+
 func apply_effects(free=false):
 	for effect in status_effects:
 		if effect.turns_left > 0 or free:
@@ -499,7 +503,7 @@ func get_aoe_targets(tile:Vector3):
 
 # Enoh: can't work with arrows unless a way to feed the hit signal
 # to each target exists.
-func attack_new(tile:Vector3, AOE:bool):
+func attack_new(tile:Vector3, AOE:bool, attack_hits):
 	# logger.info("[Enoh's Attack] Attack with AoE support")
 	if character.turn_limits.actions < 1:
 		return
@@ -539,7 +543,11 @@ func attack_new(tile:Vector3, AOE:bool):
 
 	# Damage targets
 	for t in targets:
-		damage(t)
+		if attack_hits:
+			damage(t)
+		else:
+			print("Attack missed target")
+			# TODO/Idea: move target and show 'missed'?
 	if not AOE:
 		if character.character_class == TT.TYPE.MAGE:
 			var projectile = load("res://scenes/projectile.tscn").instance()
@@ -699,6 +707,7 @@ func hide_effect(name : String):
 
 
 func attack_complete(delay=1.0):
+	last_path = PoolVector3Array([tile])
 	yield(get_tree().create_timer(delay), "timeout")
 #	# logger.info("attack complete")
 	# logger.info("[Character Controller] (" + character.name + ") attack complete")

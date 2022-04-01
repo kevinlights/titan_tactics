@@ -5,6 +5,7 @@ signal win
 signal auto_deployed
 signal level_start
 signal story
+signal trigger_skip_story
 #signal all_enemies_eliminated
 
 onready var gui = get_tree().get_root().get_node("World/gui")
@@ -867,11 +868,14 @@ func _on_attack():
 		# var target = entity_at($select.tile)
 		if get_current().character.character_class != TT.TYPE.FIGHTER and is_cover_between(get_current(), $select.translation):
 			return $gui/sfx/denied.play()
-
+		
+		var hit_chance = get_current().get_hit_chance()
+		var attack_hits = randf() <= hit_chance;
+		print("[World] hit chance = ", hit_chance, ". Attack ", ('was successful' if attack_hits else 'failed.'))
+		
 		# Enoh: Test AOE
 		#get_current().attack_new($select.tile, true)
-		get_current().attack_new($select.tile, mode == MODE.SECONDARY_ATTACK)
-
+		get_current().attack_new($select.tile, mode == MODE.SECONDARY_ATTACK, attack_hits)
 #		gui.call_deferred("close_attack")
 #		gui.back()
 #		yield(get_tree().create_timer(2.0), "timeout")

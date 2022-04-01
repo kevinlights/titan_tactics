@@ -27,7 +27,8 @@ func _init(story_world, story_gui, story_selector):
 	if err:
 		logger.error(err)
 	gui.get_node("dialogue_box").connect("completed", self, "advance")
-
+	world.connect("trigger_skip_story", self, "_on_skip")
+	
 func load_story(story_filename:String):
 	var file = File.new()
 	if file.file_exists(story_filename):
@@ -63,9 +64,22 @@ func advance():
 	else:
 		logger.info("No story to advance")
 
+func _on_skip():	
+	print("skip triggered")
+	skip_events = true
+	gui.back()
+	advance()
+
+func _on_end():
+	skip_events = false
+	
 func _on_dialogue(story_message):
-	logger.info("Dialogue event ", story_message)
-	gui.start("dialogue_box", story_message)
+	if skip_events == true:
+		print("Skipping dialogue")
+		advance()
+	else:
+		logger.info("Dialogue event ", story_message)
+		gui.start("dialogue_box", story_message)
 
 func _on_story(trigger):
 	logger.info("_on_story ", trigger)
