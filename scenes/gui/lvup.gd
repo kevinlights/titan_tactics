@@ -5,6 +5,23 @@ signal closed
 var affectedPlayer: CharacterStats
 var stats_diff
 
+onready var pentapoly = $Polygon2D/penta
+onready var initial_shape = PoolVector2Array()
+
+var bonus_hp = 0
+var bonus_hit = 0
+var bonus_agi = 0
+var bonus_def = 0
+var bonus_atk = 0
+
+var pentanormals = [
+	Vector2(0, -5),
+	Vector2(-5, -5),
+	Vector2(-5, 5),
+	Vector2(5, 5),
+	Vector2(5, -5)
+]
+
 var default_portraits = {
 	TT.CONTROL.AI: {
 		TT.TYPE.ARCHER: "ai_archer",
@@ -22,49 +39,66 @@ var default_portraits = {
 
 var selected = "hp"
 var options = [ "hp", "def", "agi", "hit", "atk" ]
+var max_polygon
 
 func reset():
-	affectedPlayer.bonus_hp = 0
-	affectedPlayer.bonus_hit = 0
-	affectedPlayer.bonus_agi = 0
-	affectedPlayer.bonus_def = 0
-	affectedPlayer.bonus_atk = 0
+	bonus_hp = 0
+	bonus_hit = 0
+	bonus_agi = 0
+	bonus_def = 0
+	bonus_atk = 0
 
 	if selected == "hp":
-		affectedPlayer.bonus_hp = 1
+		bonus_hp = 1
 	if selected == "hit":
-		affectedPlayer.bonus_hit = 1
+		bonus_hit = 1
 	if selected == "atk":
-		affectedPlayer.bonus_atk = 1
+		bonus_atk = 1
 	if selected == "def":
-		affectedPlayer.bonus_def = 1
+		bonus_def = 1
 	if selected == "agi":
-		affectedPlayer.bonus_agi = 1
-		
+		bonus_agi = 1
+	var values = [ 
+		bonus_hp,
+		bonus_atk,
+		bonus_hit,
+		bonus_agi,
+		bonus_def
+	]
+	var big = values.max()
+	for i in range(0, 5):
+		$Polygon2D/penta.polygon[i] = (initial_shape[i] / 2).linear_interpolate(initial_shape[i], float(values[i]) / float(big))
+
 	$Polygon2D/lv.text = str(affectedPlayer.level-1)
 	$Polygon2D/lv2.text = str(affectedPlayer.level)
 	$Polygon2D/hp.text = str(affectedPlayer.max_hp)
-	$Polygon2D/hp2.text = str(affectedPlayer.max_hp + stats_diff.hp + affectedPlayer.bonus_hp)
+	$Polygon2D/hp2.text = str(affectedPlayer.max_hp + stats_diff.hp + affectedPlayer.bonus_hp + bonus_hp)
 	$Polygon2D/atk.text = str(affectedPlayer.atk)
-	$Polygon2D/atk2.text = str(affectedPlayer.atk + stats_diff.atk + affectedPlayer.bonus_atk)
+	$Polygon2D/atk2.text = str(affectedPlayer.atk + stats_diff.atk + affectedPlayer.bonus_atk + bonus_atk)
 	$Polygon2D/def.text = str(affectedPlayer.def)
-	$Polygon2D/def2.text = str(affectedPlayer.def + stats_diff.def + affectedPlayer.bonus_def)
+	$Polygon2D/def2.text = str(affectedPlayer.def + stats_diff.def + affectedPlayer.bonus_def + bonus_def)
 	$Polygon2D/hit.text = str(affectedPlayer.hit) + "%"
-	$Polygon2D/hit2.text = str(affectedPlayer.hit + affectedPlayer.bonus_hit) + "%"
+	$Polygon2D/hit2.text = str(affectedPlayer.hit + affectedPlayer.bonus_hit + bonus_hit) + "%"
 	$Polygon2D/agi.text = str(affectedPlayer.agi) + "%"
-	$Polygon2D/agi2.text = str(affectedPlayer.agi + affectedPlayer.bonus_agi) + "%"
+	$Polygon2D/agi2.text = str(affectedPlayer.agi + affectedPlayer.bonus_agi + bonus_agi) + "%"
 	$Polygon2D/title.text = affectedPlayer.name + " leveled up"
-	$Polygon2D/penta/hb_agi_penta/agi_penta.text = "+" + str(affectedPlayer.bonus_agi)
-	$Polygon2D/penta/hb_hit_penta/hit_penta.text = "+" + str(affectedPlayer.bonus_hit)
-	$Polygon2D/penta/hb_atk_penta/atk_penta.text = "+" + str(affectedPlayer.bonus_atk)
-	$Polygon2D/penta/hb_def_penta/def_penta.text = "+" + str(affectedPlayer.bonus_def)
-	$Polygon2D/penta/hb_hp_penta/hp_penta.text = "+" + str(affectedPlayer.bonus_hp)
-
+	$Polygon2D/penta/hb_agi_penta/agi_penta.text = "+" + str(bonus_agi)
+	$Polygon2D/penta/hb_hit_penta/hit_penta.text = "+" + str(bonus_hit)
+	$Polygon2D/penta/hb_atk_penta/atk_penta.text = "+" + str(bonus_atk)
+	$Polygon2D/penta/hb_def_penta/def_penta.text = "+" + str(bonus_def)
+	$Polygon2D/penta/hb_hp_penta/hp_penta.text = "+" + str(bonus_hp)
+#
 #func _ready():
+#	nrmlz()
 #	pass # Replace with function body.
-
+#
+#func nrmlz():
+#	var pent = $Polygon2D/penta2
+#	max_polygon = PoolVector2Array(pent.polygon)
+#
 # func init(stats_diff, player):
 func init(arg):
+	initial_shape = PoolVector2Array(pentapoly.polygon)
 	affectedPlayer = arg[1]
 	stats_diff = arg[0]
 	reset()
@@ -74,7 +108,7 @@ func init(arg):
 		var portrait = affectedPlayer.portrait_override
 		$Polygon2D/portrait/portraits.play(portrait)
 	else:
-		$Polygon2D/portrait/portraits.play(default_portraits[affectedPlayer.control][affectedPlayer.character_class])	
+		$Polygon2D/portrait/portraits.play(default_portraits[affectedPlayer.control][affectedPlayer.character_class])
 	$Polygon2D/Abutton/tip2.grab_focus()
 	
 func out():
@@ -112,10 +146,10 @@ func _input(event):
 		node_for_stat(selected).get_node("focus").show()
 		reset()
 	if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
-		affectedPlayer.hp += affectedPlayer.bonus_hp
-		affectedPlayer.agi += affectedPlayer.bonus_agi
-		affectedPlayer.def += affectedPlayer.bonus_def
-		affectedPlayer.hit += affectedPlayer.bonus_hit
-		affectedPlayer.atk += affectedPlayer.bonus_atk
+		affectedPlayer.bonus_hp += bonus_hp
+		affectedPlayer.bonus_agi += bonus_agi
+		affectedPlayer.bonus_def += bonus_def
+		affectedPlayer.bonus_hit += bonus_hit
+		affectedPlayer.bonus_atk += bonus_atk
 		_on_tip2_pressed()
 
