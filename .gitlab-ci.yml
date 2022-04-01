@@ -82,10 +82,12 @@ pages:
     - stories_preview
   script:
     - mkdir -p public/game
-    - mkdir -p public/levels
+    - mkdir -p public/levels/en_US
+    - mkdir -p public/levels/nl_NL
     - mv helpers/titan_stories/dist/* ./public
     - mv ${EXPORT_NAME}_stories_preview/** ./public/game
-    - cp resources/story/level*.json ./public/levels
+    - cp resources/story/en_US/level*.json ./public/levels/en_US
+    - cp resources/story/nl_NL/level*.json ./public/levels/nl_NL
     - cp helpers/converters/triggers.json ./public
   artifacts:
     paths:
