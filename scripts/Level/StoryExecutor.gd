@@ -51,7 +51,7 @@ func load_story(story_filename:String):
 			story[item.trigger].connect("win", self, "_on_win")
 			story[item.trigger].connect("move", self, "_on_move")
 			story[item.trigger].connect("focus", self, "_on_focus")
-			story[item.trigger].connect("end", self, "_on_end")
+			story[item.trigger].connect("music", self, "_on_music")
 
 		logger.info("Story attached")
 	else:
@@ -92,6 +92,15 @@ func _on_focus(target) -> void:
 	if not marker:
 		marker = world.find_character(target)
 	world.get_node("lookat/camera").track(marker)
+	advance()
+
+func _on_music(target) -> void:
+	var music = world.get_node("cutscene_music/" + target)
+	music.play()
+#	var marker = world.find_story_marker(target)
+#	if not marker:
+#		marker = world.find_character(target)
+#	world.get_node("lookat/camera").track(marker)
 	advance()
 
 func _on_move(target) -> void:

@@ -132,7 +132,7 @@ func get_hit_chance():
 func apply_effects(free=false):
 	for effect in status_effects:
 		if effect.turns_left > 0 or free:
-			character.hp -= effect.damage
+			character.remove_hp(effect.damage)
 			if effect.effect == StatusEffect.EFFECT.STUN:
 				character.turn_limits.actions = 0
 				character.turn_limits.move_actions = 0
@@ -341,7 +341,8 @@ func heal(target):
 		return 0
 	character.turn_limits.actions -= 1
 	var healed_hp = round((character.atk * 3) * 0.6)
-	target.character.hp = clamp(target.character.hp + healed_hp, 0, target.character.max_hp)
+#	target.character.hp = clamp(target.character.hp + healed_hp, 0, target.character.max_hp)
+	target.character.add_hp(healed_hp)
 	pick_random_sfx($sfx/heal)
 	target.get_node("vfx/heal").show()
 	target.get_node("vfx/heal").emitting = true
@@ -475,7 +476,7 @@ func damage(target):
 	var def_multiplier = get_def_buff(target_defense)
 	damage *= def_multiplier
 	damage = clamp(floor(damage), 0, 99)
-	target.character.hp -= damage
+	target.character.remove_hp(damage)
 	if target.has_node("healthbar"):
 		target.get_node("healthbar").set_value(target.character.hp, target.character.max_hp)
 	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()
@@ -616,7 +617,7 @@ func attack(target):
 	var def_multiplier = get_def_buff(target_defense)
 	damage *= def_multiplier
 	damage = clamp(floor(damage), 0, 99)
-	target.character.hp -= damage
+	target.character.remove_hp(damage)
 	if target.has_node("healthbar"):
 		target.get_node("healthbar").set_value(target.character.hp, target.character.max_hp)
 	var damage_feedback:Node = load("res://scenes/damage_feedback.tscn").instance()

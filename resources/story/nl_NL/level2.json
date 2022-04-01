@@ -1,0 +1,164 @@
+[
+  {
+    "trigger": "chest",
+    "story": [
+      {
+        "avatar": "bowie",
+        "text": [
+          "To open a chest, select it and press X. Inside it you'll find items that will make our journey easier. Whoever opens the chest, gets to use the item inside!"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Alright!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "end",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "focus",
+        "target": "bowie"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "We got 'em! By the way, what if we asked Zara to help us out? She is so cool, one of Haki's best fighters... After you of course!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "bowie.flirt"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "You always have the best ideas, Bowie! But... She's always wandering off with Arath though, so who knows where she is..."
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "kris"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "They're gal pals! Kind of like us!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "kris.ugh"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Anyway, I did see them passing by earlier this morning when I came here to hunt. They should be up ahead, let's go!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "type": "face",
+        "target": "bowie.east"
+      },
+      {
+        "type": "face",
+        "target": "kris.north"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Hey Bowie, how's it going? I was looking for you!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "bowie"
+      },
+      {
+        "type": "attack",
+        "target": "bowie.east"
+      },
+      {
+        "type": "emote",
+        "target": "bowie.surprise"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Ah dang, I just missed..."
+        ]
+      },
+      {
+        "type": "face",
+        "target": "bowie.south"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Oh hey Kris, what's up?"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "The elders put us on a mission. We were told to go investigate why the aid caravan hasn't come to Haki. We need to head to Tyrmyr and see what's going on right away!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "bowie.happy"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Oh wow! We're going on an adventure together, that's so awesome!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Let me just see if I remember my training... Besides swordsmen like you and archers like myself, there are also mages who wield staffs, right? And just like me, mages can also attack from afar, can't they?"
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Yes, they can. Only other swordsmen like myself need to be in close contact. Also remember each type of unit has its own strengths and weaknesses. Swordsmen are effective against archers, archers are effective against mages, and mages are effective against swordsmen."
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Right, I almost forgot about that! I better watch out for enemy swordsmen the most then! By the way, take a look over there!"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "chest"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "Notice that chest? I stashed some gear there in case we needed it, seems like now's the perfect time. You can press L1 or R1 in order to spin the camera to get a better view."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Nice, Let's go get it!"
+        ]
+      }
+    ]
+  }
+]

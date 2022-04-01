@@ -10,6 +10,9 @@ func _input(event):
 		$sfx/open.play()
 
 func _ready():
+	$Locale.add_item("English")
+	$Locale.add_item("Nederlands")
+	$Locale.add_item("es_ES")
 	$music/theme.play()
 	if SaveLoadSystem.has_save_file:
 		$menu/continue.show()
@@ -65,3 +68,8 @@ func _on_credits_pressed():
 	$menu/credits_overlay.show()
 	$menu/credits_overlay/roll/ok.grab_focus()
 	$menu/credits_overlay/roll/AnimationPlayer.current_animation = "roll"
+
+
+func _on_Locale_item_selected(index):
+	var items = [ "en_US", "nl_NL", "es_ES" ]
+	Game.set_language(items[index])

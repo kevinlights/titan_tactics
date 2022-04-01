@@ -337,11 +337,16 @@ cheat_suicide={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":92,"unicode":0,"echo":false,"script":null)
  ]
 }
+cheat_level_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":93,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [locale]
 
 fallback="fr"
-translations=PoolStringArray(  )
+translations=PoolStringArray( "res://resources/translations.nl_NL.translation", "res://resources/translations.es_ES.translation", "res://resources/translations.en_US.translation" )
 locale_filter=[ 0, [ "en_US", "fr", "nl" ] ]
 
 [rendering]

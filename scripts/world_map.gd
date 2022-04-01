@@ -45,7 +45,7 @@ func move_selector():
 	var level_count = Game.get_level_count()
 	if(Game.level >= Game.get_level_count()):
 		Game.level = Game.get_level_count() - 1
-	$text.text = "Level " + str(Game.level + 1) + ": " + TT.levels[Game.level].name
+	$text.text = "Level " + str(Game.level + 1) + ": " + tr(TT.levels[Game.level].name)
 	$map_selector.position = level_markers[Game.level]
 
 enum DIR {

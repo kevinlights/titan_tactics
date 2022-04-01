@@ -1,0 +1,113 @@
+[
+  {
+    "trigger": "end",
+    "story": [
+      {
+        "avatar": "kris",
+        "text": [
+          "We got them! Elyne and her henchmen are just up ahead! It'll be our final battle, we better prepare!"
+        ]
+      },
+      {
+        "avatar": "zara",
+        "text": [
+          "We can do this! Arath, you ok?"
+        ]
+      },
+      {
+        "avatar": "arath",
+        "text": [
+          "I'm fine! Let's go get them, Zara!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "I can't believe we are doing this..."
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "Together we are strong. But Elyne will not go down easily. Come on, let's go!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "start"
+      },
+      {
+        "type": "music",
+        "target": "sad"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "So Celes, why do you think Elyne is lying to us?"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "It's not just Elyne. It's Tyrmyr. They lie, they cheat, they steal... They have entire training courses on this stuff, they have been doing this for centuries!"
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "I mean we know they have done some bad stuff in the past, but isn't that taking it a bit too far Celes? They take care of our village, Haki. That doesn't sound like them!"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "These are not my words Bowie, this is what their officials have said themselves. The little aid they give you is nothing compared to what they have taken from your lands in the past..."
+        ]
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "But that was such a long time ago, I mean, none of us were even alive! We can't hold it against them still!"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "Why not? Why do you think they are still so rich to this day, while they barely lift a finger for it compared to commoners like you?"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "bowie.ugh"
+      },
+      {
+        "avatar": "bowie",
+        "text": [
+          "... I don't know, it's just the way things... are. I sometimes just think they are... Better..."
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "Don't say that! The only thing they are better at is pillaging! This is why they have so many troops. But united, maybe we can stand a chance against them."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Do you really think so?"
+        ]
+      },
+      {
+        "avatar": "celes",
+        "text": [
+          "There's only one way to find out!"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,194 @@
+[
+  {
+    "trigger": "attack",
+    "story": [
+      {
+        "avatar": "instructor",
+        "text": [
+          "Nu is je kans om aan te vallen, Kris! Druk om de menu knop en dien Loki een Zware Slag toe!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "attack2",
+    "story": [
+      {
+        "avatar": "ai_swordsman",
+        "text": [
+          "Au, dat doet echt pijn!"
+        ]
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Prima! De schade gaat van de vijand zijn HP af.",
+          "Als een aanval overstanding lijkt, kun je ook kiezen om de verdedigen.",
+          "Als je dit doet, kunnen inkomende aanvallen minder schade aanrichten. Deze beurt is dat niet nodig.",
+          "Je kunt Loki makkelijk aan! Beeindig de beurt, en val hem daarna aan met een Zware Slag!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "end",
+    "story": [
+      {
+        "avatar": "instructor",
+        "text": [
+          "Uitstekend! Je bent klaar voor je avontuur, Kris."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Dat was eigenlijk best makkelijk!"
+        ]
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Nou, er zijn Skathiaanse soldaten in de buurt gezien, dus het is gevaarlijk om alleen te gaan!",
+          "Neem Bowie mee. Hij is in het noorden op konijnen aan het jagen."
+        ]
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Okee! Ik zal het dorp niet teleurstellen!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "Loki",
+    "story": [
+      {
+        "avatar": "instructor",
+        "text": [
+          "Gaat goed, Kris, nu heb je het door! Maar... zie je die vervelende Bobas daar?"
+        ]
+      },
+      {
+        "type": "focus",
+        "target": "surprise_bobas"
+      },
+      {
+        "type": "spawn",
+        "target": "surprise_bobas"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Ik maak er korte metten mee!"
+        ]
+      }
+    ]
+  },
+  {
+    "trigger": "start",
+    "story": [
+      {
+        "avatar": "instructor",
+        "text": [
+          "Kris, je bent de beste scout van Haki. Je bent gekozen door de dorpsouderen om te",
+          "onderzoeken wat er aan de hand is in Tyrmyr.",
+          "De caravaan met de hulp goederen uit de hoofdstad had al hier moeten zijn,",
+          "en onze middellen raken op..."
+        ]
+      },
+      {
+        "type": "face",
+        "target": "kris.west"
+      },
+      {
+        "avatar": "kris",
+        "text": [
+          "Het is mij een eer. Ik ga direct kijken wat er is gebeurd!"
+        ]
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Uitstekend, maar laten we eerst nog even de basis technieken oefenen."
+        ]
+      },
+      {
+        "type": "face",
+        "target": "kris.east"
+      },
+      {
+        "type": "select",
+        "target": "Loki"
+      },
+      {
+        "type": "face",
+        "target": "loki.west"
+      },
+      {
+        "avatar": "ai_swordsman",
+        "text": [
+          "Hey loser, slechte haar dag? Waarom kom je niet even hier?",
+          "Wat, ben je bang, zielepiet?"
+        ]
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Je kent je rivaal Loki nog. Hij is er niet blij mee dat hij niet gekozen is voor deze missie,", 
+          "maar hij kan ons nog helpen met een korte training!",
+          "Probeer dichter bij Loki te komen, blauwe velden kun je deze beurt bereiken.", 
+          "Voor deze beurt kun je naar het veld dat ik voor je in het geel heb aangemerkt!"
+        ]
+      },
+      {
+        "type": "hint",
+        "target": "walk"
+      },
+      {
+        "type": "expect",
+        "target": "walk"
+      }
+    ]
+  },
+  {
+    "trigger": "walk",
+    "story": [
+      {
+        "avatar": "ai_swordsman",
+        "text": [
+          "Is dat alles? Met dat slappe zwaardje zul je toch iets dichter bij moeten komen!"
+        ]
+      },
+      {
+        "type": "hint"
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Karakters met verschillende wapens kunnen aanvallen van verschillende afstanden,",
+          "maar als zwaardvechter moet je heel dichtbij staan om schade aan te richten."
+        ]
+      },
+      {
+        "avatar": "ai_swordsman",
+        "text": [
+          "Als ik jou was, zou ik opgeven. Ga naar huis en kam je haar, slons!",
+          "Laat het aan een echte held over!"
+        ]
+      },
+      {
+        "type": "emote",
+        "target": "kris.angry"
+      },
+      {
+        "avatar": "instructor",
+        "text": [
+          "Ik denk dat je Loki een lesje moet leren, Kris...",
+          "Je kunt hem niet in een beurt bereiken. Druk op de menu knop om je beurt te beeindingen,",
+          "en de volgende beurt kun je de rest lopen."
+        ]
+      }
+    ]
+  }
+]
