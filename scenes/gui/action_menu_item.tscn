@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/focus.gd" type="Script" id=2]
 [ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=3]
+[ext_resource path="res://scripts/gui/action_menu_item.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -44,6 +45,7 @@ custom_colors/font_color_pressed = Color( 0.929412, 0.92549, 0.878431, 1 )
 text = "Thunder Storm"
 icon = SubResource( 2 )
 align = 0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,7 +54,7 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 2 )
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 offset = Vector2( 1, 2 )

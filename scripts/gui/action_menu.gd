@@ -71,16 +71,17 @@ func init(new_menu_type = "attack"):
 	for label in label_map[menu_type]:
 		var action_item = action_item_scene.instance()
 		action_item.text = tr(label)
+		action_item.action_name = label
 		action_item.name = label
 		$panel/box.add_child(action_item)
 
 	yield(get_tree().create_timer(0.1), "timeout")
 	var have_focus = false
 	var buttons = $panel/box.get_children()
-	buttons[0].focus_previous = "../" + buttons[buttons.size() - 1].name
-	buttons[0].focus_neighbour_top = "../" + buttons[buttons.size() - 1].name
-	buttons[buttons.size() - 1].focus_next = "../" + buttons[0].name
-	buttons[buttons.size() - 1].focus_neighbour_bottom = "../" + buttons[0].name
+	buttons[0].focus_previous = "../" + buttons[buttons.size() - 1].action_name
+	buttons[0].focus_neighbour_top = "../" + buttons[buttons.size() - 1].action_name
+	buttons[buttons.size() - 1].focus_next = "../" + buttons[0].action_name
+	buttons[buttons.size() - 1].focus_neighbour_bottom = "../" + buttons[0].action_name
 	for i in range(0, buttons.size()):
 		if i > 0:
 			buttons[i - 1].focus_next = "../" + buttons[i].name
@@ -96,8 +97,8 @@ func init(new_menu_type = "attack"):
 			print("Disable button ", buttons[i].text)
 		buttons[i].rect_position.x = 6
 		buttons[i].rect_position.y = i * 16
-		buttons[i].connect("pressed", self, "_on_action", [ buttons[i].name ] )
-		buttons[i].connect("focus_entered", self, "_on_focus", [ buttons[i].name ] )
+		buttons[i].connect("pressed", self, "_on_action", [ buttons[i].action_name ] )
+		buttons[i].connect("focus_entered", self, "_on_focus", [ buttons[i].action_name ] )
 		if !(buttons[i].text in disabled) and !have_focus:
 			buttons[i].call_deferred("grab_focus")
 			have_focus = true

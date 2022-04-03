@@ -87,6 +87,7 @@ func _on_story(trigger):
 	if trigger in story and !story[trigger].consumed:
 		current = story[trigger]
 		story[trigger].play()
+		world.range_overlay.set_hint_tile(null)
 
 func _on_focus(target) -> void:
 	var marker = world.find_story_marker(target)
