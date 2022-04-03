@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://fonts/Eyad Al-Samman - Ghibli.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/gui/Dialogue/Dialogue.gd" type="Script" id=2]
 [ext_resource path="res://scenes/portraits.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/gui/RichTextEffects/RichTextAlly.gd" type="Script" id=4]
+[ext_resource path="res://scripts/gui/RichTextEffects/RichTextEnemy.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -10,8 +12,29 @@ extra_spacing_char = 1
 extra_spacing_space = 2
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "textbounce"
+[sub_resource type="DynamicFont" id=4]
+size = 13
+outline_size = 1
+outline_color = Color( 0.85098, 0.529412, 0.529412, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 13
+outline_size = 1
+outline_color = Color( 0.866667, 0.701961, 0.239216, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="RichTextEffect" id=5]
+script = ExtResource( 4 )
+
+[sub_resource type="RichTextEffect" id=6]
+script = ExtResource( 5 )
+
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -103,7 +126,8 @@ position = Vector2( -0.0879359, -0.281067 )
 animation = "ai_swordsman"
 centered = false
 
-[node name="text" type="Label" parent="."]
+[node name="text_old" type="Label" parent="."]
+visible = false
 margin_left = 76.0
 margin_top = 23.0
 margin_right = 293.0
@@ -118,6 +142,28 @@ clip_text = true
 max_lines_visible = 3
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="text" type="RichTextLabel" parent="."]
+margin_left = 76.0
+margin_top = 23.0
+margin_right = 293.0
+margin_bottom = 67.0
+mouse_filter = 2
+size_flags_vertical = 4
+custom_fonts/italics_font = SubResource( 4 )
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.929412, 0.92549, 0.878431, 1 )
+bbcode_enabled = true
+bbcode_text = "Cyan! [wave]Ulrich![/wave] Do you know there's a [ally]shrine[/ally] outside the eastern [enemy]edge[/enemy]?... "
+text = "Cyan! Ulrich! Do you know there's a shrine outside the eastern edge?... "
+scroll_active = false
+custom_effects = [ SubResource( 5 ), SubResource( 6 ) ]
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="more" type="Control" parent="."]
@@ -142,4 +188,4 @@ polygon = PoolVector2Array( 198.958, 89.7838, 210.786, 89.7838, 222.614, 89.7838
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="more"]
 autoplay = "textbounce"
-anims/textbounce = SubResource( 2 )
+anims/textbounce = SubResource( 3 )

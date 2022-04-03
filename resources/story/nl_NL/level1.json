@@ -5,7 +5,8 @@
       {
         "avatar": "instructor",
         "text": [
-          "Nu is je kans om aan te vallen, Kris! Druk om de menu knop en dien Loki een Zware Slag toe!"
+          "Nu is je kans om aan te vallen, [b][b]Rolf[/b][/b]!",
+          "Druk op de menu knop en dien [i]Loki[/i] een Zware Slag toe!"
         ]
       }
     ]
@@ -25,7 +26,7 @@
           "Prima! De schade gaat van de vijand zijn HP af.",
           "Als een aanval overstanding lijkt, kun je ook kiezen om de verdedigen.",
           "Als je dit doet, kunnen inkomende aanvallen minder schade aanrichten. Deze beurt is dat niet nodig.",
-          "Je kunt Loki makkelijk aan! Beeindig de beurt, en val hem daarna aan met een Zware Slag!"
+          "Je kunt [i]Loki[/i] makkelijk aan! Beeindig de beurt, en val hem daarna aan met een Zware Slag!"
         ]
       }
     ]
@@ -36,7 +37,7 @@
       {
         "avatar": "instructor",
         "text": [
-          "Uitstekend! Je bent klaar voor je avontuur, Kris."
+          "Uitstekend! Je bent klaar voor je avontuur, [b]Rolf[/b]."
         ]
       },
       {
@@ -66,7 +67,7 @@
       {
         "avatar": "instructor",
         "text": [
-          "Gaat goed, Kris, nu heb je het door! Maar... zie je die vervelende Bobas daar?"
+          "Gaat goed, [b]Rolf[/b], nu heb je het door! Maar... zie je die vervelende Bobas daar?"
         ]
       },
       {
@@ -91,7 +92,7 @@
       {
         "avatar": "instructor",
         "text": [
-          "Kris, je bent de beste scout van Haki. Je bent gekozen door de dorpsouderen om te",
+          "[b]Rolf[/b], je bent de beste scout van Haki. Je bent gekozen door de dorpsouderen om te",
           "onderzoeken wat er aan de hand is in Tyrmyr.",
           "De caravaan met de hulp goederen uit de hoofdstad had al hier moeten zijn,",
           "en onze middellen raken op..."
@@ -135,9 +136,9 @@
       {
         "avatar": "instructor",
         "text": [
-          "Je kent je rivaal Loki nog. Hij is er niet blij mee dat hij niet gekozen is voor deze missie,", 
+          "Je kent je rivaal [i]Loki[/i] nog. Hij is er niet blij mee dat hij niet gekozen is voor deze missie,", 
           "maar hij kan ons nog helpen met een korte training!",
-          "Probeer dichter bij Loki te komen, blauwe velden kun je deze beurt bereiken.", 
+          "Probeer dichter bij [i]Loki[/i] te komen, blauwe velden kun je deze beurt bereiken.", 
           "Voor deze beurt kun je naar het veld dat ik voor je in het geel heb aangemerkt!"
         ]
       },
@@ -173,7 +174,7 @@
       {
         "avatar": "ai_swordsman",
         "text": [
-          "Als ik jou was, zou ik opgeven. Ga naar huis en kam je haar, slons!",
+          "Als ik jou was, zou ik opgeven. Ga naar huis en [wave]kam je haar[/wave], slons!",
           "Laat het aan een echte held over!"
         ]
       },
@@ -184,9 +185,9 @@
       {
         "avatar": "instructor",
         "text": [
-          "Ik denk dat je Loki een lesje moet leren, Kris...",
-          "Je kunt hem niet in een beurt bereiken. Druk op de menu knop om je beurt te beeindingen,",
-          "en de volgende beurt kun je de rest lopen."
+          "Ik denk dat je [i]Loki[/i] een lesje moet leren, [b]Rolf[/b]...",
+          "Je kunt hem niet in een beurt bereiken. Druk op de menu knop om je beurt",
+          "te beeindingen, en de volgende beurt kun je de rest lopen."
         ]
       }
     ]

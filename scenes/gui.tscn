@@ -2790,7 +2790,6 @@ __meta__ = {
 }
 
 [node name="attack" type="Control" parent="."]
-visible = false
 margin_top = 171.0
 margin_right = 40.0
 margin_bottom = 211.0
@@ -3499,7 +3498,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, -13 )
 frames = SubResource( 103 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, -2 )
@@ -3524,7 +3522,6 @@ __meta__ = {
 visible = false
 position = Vector2( -3, 7 )
 frames = SubResource( 103 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -8, 8 )
@@ -3716,7 +3713,6 @@ __meta__ = {
 [node name="focus" type="AnimatedSprite" parent="lvlup/Control/Ok"]
 position = Vector2( -3, -3.99999 )
 frames = SubResource( 103 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -2, 8 )

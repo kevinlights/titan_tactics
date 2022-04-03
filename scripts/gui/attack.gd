@@ -67,6 +67,7 @@ func _process(_delta):
 
 func _ready():
 	if not player or not enemy:
+		print("no attack ui")
 		return
 	print("resetting attack UI")
 	moving_back = false

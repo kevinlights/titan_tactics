@@ -5,7 +5,8 @@
       {
         "avatar": "instructor",
         "text": [
-          "Now's your chance to attack, Kris! Press the menu button and hit Loki with a Heavy Blow!"
+          "Now's your chance to attack, [ally]Rolf[/ally]!",
+          "Press the menu button and hit [enemy]Loki[/enemy] with a Heavy Blow!"
         ]
       }
     ]
@@ -23,7 +24,10 @@
         "avatar": "instructor",
         "text": [
           "Nice! The damage you dealt will lower your enemies' HP.",
-          "If you're in a situation where attacking is unwise, you can guard instead. By doing so you will adopt a defensive stance and reduce any incoming damage in the following turn. But for now, just finish Loki off! End your turn first, and attack him with a Heavy Blow again on your next one!"
+          "If you're in a situation where attacking is unwise, you can guard instead.",
+          "By doing so you will adopt a defensive stance and reduce any incoming damage in the following turn.",
+          "But for now, just finish [enemy]Loki[/enemy] off!",
+          "End your turn first, and attack him with a Heavy Blow again on your next one!"
         ]
       }
     ]
@@ -34,7 +38,7 @@
       {
         "avatar": "instructor",
         "text": [
-          "Perfect! It looks like you're ready to start your adventure, Kris."
+          "Perfect! It looks like you're ready to start your adventure, [ally]Rolf[/ally]."
         ]
       },
       {
@@ -47,7 +51,7 @@
         "avatar": "instructor",
         "text": [
           "Well... Skathian troops have been spotted all over, so it’s dangerous to go alone!",
-          "Take Bowie with you. He's up north trying to hunt us some rabbits. Go ahead!"
+          "Take [ally]Bowie[/ally] with you. He's up north trying to hunt us some rabbits. Go ahead!"
         ]
       },
       {
@@ -64,7 +68,8 @@
       {
         "avatar": "instructor",
         "text": [
-          "That's it Kris, you're getting the hang of it! Now... See those pesky Bobas coming our way? Try to get rid of them too."
+          "That's it [ally]Rolf[/ally], you're getting the hang of it!",
+          "Now... See those pesky [enemy]Bobas[/enemy] coming our way? Try to get rid of them too."
         ]
       },
       {
@@ -89,8 +94,9 @@
       {
         "avatar": "instructor",
         "text": [
-          "Kris, you are the best scout of Haki. You were selected by the elders' council to go see what's happening in Tyrmyr.",
-          "The caravan with the aid meant for our village from the Capital should have arrived already, and we're running low on resources..."
+          "[ally]Rolf[/ally], you are the best scout of Haki. You were selected by the elders' council",
+          "to go see what's happening in Tyrmyr. The caravan with the aid meant for our village",
+          "from the Capital should have arrived already, and we're running low on resources..."
         ]
       },
       {
@@ -124,15 +130,17 @@
       {
         "avatar": "ai_swordsman",
         "text": [
-          "Hey loser, nice ponytail! Why don't you come closer so you can hit me?",
+          "Hey loser, [wave]nice ponytail![/wave] Why don't you come closer so you can hit me?",
           "What's the matter, are you scared?"
         ]
       },
       {
         "avatar": "instructor",
         "text": [
-          "You remember your rival Loki, right? It seems he's quite upset he wasn't the one picked by the council, but he will serve to help us refresh your training!",
-          "Try moving closer to Loki. Blue tiles are the spots you can reach, but for now just go to the spot I marked for you in Yellow!"
+          "You remember your rival [enemy]Loki[/enemy], right? It seems he's quite upset he wasn't the one",
+          "picked by the council, but he will serve to help us refresh your training!",
+          "Try moving closer to [enemy]Loki[/enemy]. Blue tiles are the spots you can reach",
+          "but for now just go to the spot I marked for you in Yellow!"
         ]
       },
       {
@@ -160,13 +168,15 @@
       {
         "avatar": "instructor",
         "text": [
-          "Characters with different weapon types can attack within different ranges, but as a Swordsman, you need to move really close in order to land a hit."
+          "Characters with different weapon types can attack within different ranges",
+          "but as a Swordsman, you need to move really close in order to land a hit."
         ]
       },
       {
         "avatar": "ai_swordsman",
         "text": [
-          "If I were you, I would just give up. Go home and bleach your roots, creep! I'll be the hero instead!"
+          "If I were you, I would just give up. Go home and bleach your roots, creep!",
+          "I'll be the hero instead!"
         ]
       },
       {
@@ -176,8 +186,10 @@
       {
         "avatar": "instructor",
         "text": [
-          "I think Loki deserves to be taught a lesson, Kris...",
-          "You couldn't make it all the way to him on a single turn. Press the menu button and end your turn, then when it's your turn again, move right in front of him!"
+          "I think [enemy]Loki[/enemy] deserves to be taught a lesson, [ally]Rolf[/ally]...",
+          "You couldn't make it all the way to him on a single turn.",
+          "Press the menu button and end your turn, then when it's your turn again,",
+          "move right in front of him!"
         ]
       }
     ]

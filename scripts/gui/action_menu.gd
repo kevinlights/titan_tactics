@@ -87,7 +87,7 @@ func init(new_menu_type = "attack"):
 			buttons[i - 1].focus_neighbour_bottom = "../" + buttons[i].name
 			buttons[i].focus_previous = "../" + buttons[i - 1].name
 			buttons[i].focus_neighbour_top = "../" + buttons[i - 1].name
-		if buttons[i].text != "End" and get_parent().get_parent().get_current().character.turn_limits.actions < 1:
+		if buttons[i].text != tr("End") and get_parent().get_parent().get_current().character.turn_limits.actions < 1:
 #			buttons[i].disabled = true
 			buttons[i].set("custom_colors/font_color", "#8f8f8f")
 			buttons[i].set("custom_colors/font_color_hover", "#8f8f8f")

@@ -17,7 +17,7 @@ var typing: bool = false
 # typing speed
 var typingSpeed: float = 0.07
 
-var _textNode: Label
+var _textNode: RichTextLabel
 var _timer: Timer
 var _moreNode: Control
 
@@ -56,7 +56,8 @@ func _onTextTimerTick() -> void:
 # setting text
 func set_textbox_content(text) -> void:
 	$text.set_visible_characters(0)
-	$text.text = text
+	$text.bbcode_enabled = true
+	$text.bbcode_text = text
 	typing = true
 	logger.info("Start printing text...")
 	_timer.start()

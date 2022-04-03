@@ -1,7 +1,7 @@
 {
   "script": "res://scripts/character_stats.gd",
   "character_class": 0,
-  "name": "Kris",
+  "name": "Rolf",
   "level": 1,
   "hp": 60,
   "max_hp": 60,
