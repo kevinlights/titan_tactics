@@ -68,10 +68,10 @@ polygon = PoolVector2Array( 0, 0, 0, 224, 160.781, 224, 320, 224, 320, 0 )
 position = Vector2( 0, 220 )
 
 [node name="role" type="Label" parent="names"]
-margin_left = 47.0
+margin_left = 31.0
 margin_top = 48.0
-margin_right = 127.0
-margin_bottom = 699.0
+margin_right = 124.0
+margin_bottom = 721.0
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
@@ -97,6 +97,10 @@ Sound:
 
 Script:
 
+
+
+Spanish:
+Dutch:
 
 
 Kris:
@@ -146,6 +150,10 @@ Tiago Coelho
 Ro Maselli
 
 
+Eliezer Santana Casimiro
+Armen Nieuwenhuizen
+
+
 Michael Schiciano
 Travis Roig
 Cindy Perez
@@ -160,10 +168,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="voices" type="Label" parent="names"]
+[node name="locaiization" type="Label" parent="names"]
 margin_top = 482.0
 margin_right = 319.0
 margin_bottom = 498.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 9
+custom_constants/shadow_offset_y = 1
+text = "Localization"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="voices" type="Label" parent="names"]
+margin_top = 571.677
+margin_right = 319.0
+margin_bottom = 587.677
 theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.929412, 0.92549, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0.0627451, 0.0627451, 0.0705882, 1 )
@@ -229,7 +253,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="roll"]
 position = Vector2( 137.747, 743.947 )
 frames = SubResource( 4 )
-frame = 1
+frame = 2
 playing = true
 centered = false
 
