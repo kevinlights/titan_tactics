@@ -39,6 +39,31 @@ var default_portraits = {
 
 var selected = "hp"
 var options = [ "hp", "def", "agi", "hit", "atk" ]
+var paths = {
+	"atk": {
+		"ui_right": "hp",
+		"ui_up": "hp",
+		"ui_down": "hit"
+	},
+	"hp": {
+		"ui_left": "atk",
+		"ui_down": "atk",
+		"ui_right": "def"
+	},
+	"def": {
+		"ui_down": "agi",
+		"ui_up": "hp",
+		"ui_left": "hp"
+	},
+	"agi": {
+		"ui_left": "hit",
+		"ui_up": "def"
+	},
+	"hit": {
+		"ui_up": "atk",
+		"ui_right": "agi"
+	}
+}
 var max_polygon
 
 func reset():
@@ -127,24 +152,31 @@ func node_for_stat(stat):
 func _input(event):
 	if !visible:
 		return
-	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
-		node_for_stat(selected).get_node("focus").hide()
-		var idx = options.find(selected)
-		if idx == options.size() - 1:
-			selected = options[0]
-		else:
-			selected = options[idx + 1]
-		node_for_stat(selected).get_node("focus").show()
-		reset()
-	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
-		node_for_stat(selected).get_node("focus").hide()
-		var idx = options.find(selected)
-		if idx == 0:
-			selected = options[options.size() - 1]
-		else:
-			selected = options[idx - 1]
-		node_for_stat(selected).get_node("focus").show()
-		reset()
+	for key in paths[selected]:
+		print(key)
+		if event.is_action(key) && !event.is_echo() && event.is_pressed():
+			selected = paths[selected][key]
+			node_for_stat(selected).get_node("focus").show()
+			reset()
+
+#	if event.is_action("ui_right") && !event.is_echo() && event.is_pressed():
+#		node_for_stat(selected).get_node("focus").hide()
+#		var idx = options.find(selected)
+#		if idx == options.size() - 1:
+#			selected = options[0]
+#		else:
+#			selected = options[idx + 1]
+#		node_for_stat(selected).get_node("focus").show()
+#		reset()
+#	if event.is_action("ui_left") && !event.is_echo() && event.is_pressed():
+#		node_for_stat(selected).get_node("focus").hide()
+#		var idx = options.find(selected)
+#		if idx == 0:
+#			selected = options[options.size() - 1]
+#		else:
+#			selected = options[idx - 1]
+#		node_for_stat(selected).get_node("focus").show()
+#		reset()
 	if event.is_action("context_action") && !event.is_echo() && event.is_pressed():
 		affectedPlayer.bonus_hp += bonus_hp
 		affectedPlayer.bonus_agi += bonus_agi

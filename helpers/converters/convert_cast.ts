@@ -80,7 +80,7 @@ glob((args._[0] as string) + "/*.tres", (error, input_files) => {
         for(let input_file of input_files) {
             let content = fs.readFileSync(input_file).toString();
             let resource = parse_resource(content);
-            fs.writeFileSync(input_file + ".json", JSON.stringify(resource, null, 2));
+            fs.writeFileSync(input_file.replace("tres", "json"), JSON.stringify(resource, null, 2));
         }
     }
 });

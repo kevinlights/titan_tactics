@@ -1,10 +1,10 @@
-extends Resource
 class_name CharacterStats
 
 signal class_changed
 signal level_up
 
-export(int, "Swordsman", "Archer", "Mage", "Boba", "Poison Boba") var character_class setget set_character_class, get_character_class
+#export(int, "Swordsman", "Archer", "Mage", "Boba", "Poison Boba") var character_class setget set_character_class, get_character_class
+export(TT.TYPE) var character_class setget set_character_class, get_character_class
 export(String) var name
 export(int) var level = 1 setget set_level,get_level
 export(int) var hp setget set_hp,get_hp
@@ -95,6 +95,33 @@ enum PERSONALITY {
 	NARCISSIST,
 	GREEDY
 }
+
+func from_json(filename):
+	var file = File.new()
+	if file.file_exists(filename):
+		file.open(filename, File.READ)
+		var data = parse_json(file.get_as_text())
+#		print(data.hp)
+		character_class = data.character_class
+		name = data.name
+		level = data.level
+		hp = data.hp
+		max_hp = data.max_hp
+		atk = data.atk
+		def = data.def
+		atk_range = data.atk_range
+		mov_range = data.mov_range
+		hit = data.hit
+		agi = data.agi
+		bonus_hp = data.bonus_hp
+		bonus_atk = data.bonus_atk
+		bonus_def = data.bonus_def
+		bonus_hit = data.bonus_hit
+		bonus_agi = data.bonus_agi
+		heal = data.heal
+		recruit_mode = data.recruit_mode
+		portrait_override = data.portrait_override
+		control = data.control
 
 func set_max_hp(value):
 	max_hp = value
@@ -311,8 +338,33 @@ func generate(default_stats, request_class, request_control, request_level = 1, 
 	
 func has_ability(ability):
 	return abilities.has(ability)
-	
+
 func to_save_data():
+	var output = {
+		"character_class": character_class,
+		"name": name,
+		"level": level,
+		"hp": hp,
+		"max_hp": max_hp,
+		"atk": atk,
+		"def": def,
+		"atk_range": atk_range,
+		"mov_range": mov_range,
+		"hit": hit,
+		"agi": agi,
+		"bonus_hp": bonus_hp,
+		"bonus_atk": bonus_atk,
+		"bonus_def": bonus_def,
+		"bonus_hit": bonus_hit,
+		"bonus_agi": bonus_agi,
+		"heal": heal,
+		"recruit_mode": recruit_mode,
+		"portrait_override": portrait_override,
+		"control": control
+	}
+	return output
+
+func to_save_data_o():
 	var output = {
 		"item_atk": inst2dict(item_atk),
 		"item_def": inst2dict(item_def),

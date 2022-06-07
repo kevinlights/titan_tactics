@@ -21,15 +21,18 @@ var done = true
 var menu_type = TT.TYPE.FIGHTER
 
 var disabled = []
-
+# FIGHTER, ARCHER, MAGE, BOBA, POISON_BOBA, OTHER, QUEST
 var label_map = {
-		TT.TYPE.MAGE: [ "Lightning Bolt", "Thunder Storm", "Healing Light", "End" ],
-		TT.TYPE.ARCHER: [ "Sharp Shot", "Flame Shower", "Guard", "End" ],
-		TT.TYPE.FIGHTER: [ "Heavy Blow", "Sweeping Blow", "Guard", "End" ]
+	TT.TYPE.MAGE: [ "Lightning Bolt", "Thunder Storm", "Healing Light", "End" ],
+	TT.TYPE.ARCHER: [ "Sharp Shot", "Flame Shower", "Guard", "End" ],
+	TT.TYPE.FIGHTER: [ "Heavy Blow", "Sweeping Blow", "Guard", "End" ]
 }
 
+
 func _ready():
-	pass
+	label_map[0] = label_map[TT.TYPE.FIGHTER]
+	label_map[1] = label_map[TT.TYPE.ARCHER]
+	label_map[2] = label_map[TT.TYPE.MAGE]
 
 func _on_action(item):
 	if item in disabled:
@@ -43,14 +46,22 @@ func _on_action(item):
 func _on_focus(item):
 	$panel/tip_box/tooltip.text = tr("TOOLTIP " + item) #tooltips[item]
 
-func init(new_menu_type = "attack"):
+func init(new_menu_type = TT.TYPE.FIGHTER):
 	menu_type = new_menu_type
 	for child in $panel/box.get_children():
 		child.queue_free()
-
+	var charclasses = [ TT.TYPE.FIGHTER, TT.TYPE.ARCHER, TT.TYPE.MAGE ]
 	disabled = []
 	var action_item_scene = load("res://scenes/gui/action_menu_item.tscn")
-	for label in label_map[menu_type]:
+	print(menu_type == TT.TYPE.FIGHTER)
+	print(TT.TYPE.FIGHTER in label_map)
+	print(menu_type in label_map)
+	var labels = []
+	if menu_type in label_map:
+		labels = label_map[menu_type]
+	else:
+		labels = label_map[charclasses[menu_type]]
+	for label in labels: # label_map[menu_type]:
 		var action_item = action_item_scene.instance()
 		action_item.text = tr(label)
 		action_item.action_name = label

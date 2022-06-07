@@ -1,27 +1,6 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
 
 [ext_resource path="res://scripts/character_stats.gd" type="Script" id=1]
-[ext_resource path="res://scripts/item.gd" type="Script" id=2]
-[ext_resource path="res://scripts/status_effect.gd" type="Script" id=3]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 3 )
-effect = 2
-turns = 1
-damage = 1
-name = ""
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 2 )
-character_class = 2
-equipment_slot = 0
-level = 0
-name = "Weak Wand"
-attack = 1
-attack_range = 1
-defense = 0
-heal = 2
-effect = SubResource( 1 )
 
 [resource]
 script = ExtResource( 1 )
@@ -34,8 +13,14 @@ atk = 10
 def = 4
 atk_range = 4
 mov_range = 5
+hit = 0
+agi = 0
+bonus_hp = 0
+bonus_atk = 0
+bonus_def = 0
+bonus_hit = 0
+bonus_agi = 0
 heal = 4
-item_atk = SubResource( 2 )
 recruit_mode = 0
 portrait_override = "celes"
 control = 0

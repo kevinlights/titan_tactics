@@ -103,4 +103,5 @@ func setup_new_game():
 	unlocked_level = 6
 	team = []
 	var kris = load("res://resources/cast/kris.tres")
+	kris.from_json("res://resources/cast/kris.json")
 	add_to_team(kris)

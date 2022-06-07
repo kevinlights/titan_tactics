@@ -1,4 +1,3 @@
-class_name Level
 extends Node
 
 export(String) var add_character

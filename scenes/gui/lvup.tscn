@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://gfx/menu_select_white.png" type="Texture" id=1]
 [ext_resource path="res://scenes/gui/pocket_tactics.tres" type="Theme" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://fonts/Lora-Bold.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://gfx/ui/stats.png" type="Texture" id=24]
 [ext_resource path="res://gfx/UI.png" type="Texture" id=25]
+[ext_resource path="res://scenes/gui/focus_penta.gd" type="Script" id=26]
 
 [sub_resource type="Animation" id=1]
 resource_name = "spin"
@@ -179,63 +180,63 @@ atlas = ExtResource( 13 )
 region = Rect2( 0, 0, 50, 60 )
 
 [sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 15 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 17 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 17 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 11 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 16 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 50, 60 )
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 16 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 11 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 10 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 14 )
+region = Rect2( 50, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 50, 60 )
 
 [sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 15 )
 region = Rect2( 50, 0, 50, 60 )
 
 [sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 14 )
-region = Rect2( 50, 0, 50, 60 )
-
-[sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 50, 60 )
 
-[sub_resource type="AtlasTexture" id=41]
+[sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 9 )
 region = Rect2( 50, 0, 50, 60 )
 
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 50, 60 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 17 )
+region = Rect2( 50, 0, 50, 60 )
+
 [sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 50, 60 )
 
 [sub_resource type="SpriteFrames" id=43]
@@ -260,59 +261,59 @@ animations = [ {
 "name": "boba",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 28 ), SubResource( 29 ) ],
-"loop": true,
-"name": "celes",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 30 ), SubResource( 31 ) ],
-"loop": true,
-"name": "zara",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 32 ) ],
-"loop": true,
-"name": "instructor",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 33 ) ],
-"loop": true,
-"name": "ai_archer",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 34 ) ],
-"loop": true,
-"name": "ai_mage",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 35 ) ],
+"frames": [ SubResource( 28 ) ],
 "loop": true,
 "name": "kris",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 36 ), SubResource( 37 ) ],
+"frames": [ SubResource( 29 ) ],
+"loop": true,
+"name": "ai_mage",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 30 ) ],
+"loop": true,
+"name": "ai_archer",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 31 ), SubResource( 32 ) ],
 "loop": true,
 "name": "elyne",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 38 ), SubResource( 39 ) ],
+"frames": [ SubResource( 33 ), SubResource( 34 ) ],
 "loop": true,
 "name": "arath",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 40 ) ],
+"frames": [ SubResource( 35 ) ],
+"loop": true,
+"name": "poison_boba",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ) ],
+"loop": true,
+"name": "celes",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 38 ) ],
 "loop": true,
 "name": "bowie",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 41 ) ],
+"frames": [ SubResource( 39 ) ],
 "loop": true,
 "name": "ai_swordsman",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 40 ), SubResource( 41 ) ],
+"loop": true,
+"name": "zara",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 42 ) ],
 "loop": true,
-"name": "poison_boba",
+"name": "instructor",
 "speed": 5.0
 } ]
 
@@ -842,7 +843,7 @@ frame = 3
 playing = true
 centered = false
 offset = Vector2( 0, 4 )
-script = ExtResource( 21 )
+script = ExtResource( 26 )
 
 [node name="lbl_hp_penta" type="AnimatedSprite" parent="Polygon2D/penta/hb_hp_penta"]
 position = Vector2( 193.5, 76.7929 )

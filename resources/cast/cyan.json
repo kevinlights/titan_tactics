@@ -1,0 +1,23 @@
+{
+  "script": "res://scripts/character_stats.gd",
+  "character_class": 1,
+  "name": "Cyan",
+  "level": 4,
+  "hp": 90,
+  "max_hp": 90,
+  "atk": 9,
+  "def": 4,
+  "atk_range": 7,
+  "mov_range": 6,
+  "hit": 0,
+  "agi": 0,
+  "bonus_hp": 0,
+  "bonus_atk": 0,
+  "bonus_def": 0,
+  "bonus_hit": 0,
+  "bonus_agi": 0,
+  "heal": 0,
+  "recruit_mode": 0,
+  "portrait_override": "",
+  "control": 1
+}
