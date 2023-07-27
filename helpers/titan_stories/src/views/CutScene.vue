@@ -301,7 +301,7 @@ export default Vue.extend({
     },
     getLevel() {
       this.loading = true;
-      fetch(`levels/level${this.level}.json`)
+      fetch(`levels/en_US/level${this.level}.json`)
         .then((data) => data.json())
         .then((data) => {
           this.stories = data as Array<IStory>;
