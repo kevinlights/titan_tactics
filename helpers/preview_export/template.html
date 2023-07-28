@@ -12,7 +12,7 @@
             var engine = new Engine($GODOT_CONFIG);
             if(localStorage.startup && localStorage.level && localStorage.stories) {
                 engine.preloadFile(enc.encode(localStorage.startup), "/resources/startup.json").then(() => {
-                    engine.preloadFile(enc.encode(localStorage.stories),`/resources/story/level${localStorage.level}.json`).then(() => {
+                    engine.preloadFile(enc.encode(localStorage.stories),`/resources/story/en_US/level${localStorage.level}.json`).then(() => {
                         engine.startGame();
                     });
                 });
