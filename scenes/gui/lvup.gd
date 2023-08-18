@@ -103,7 +103,7 @@ func reset():
 	
 	for i in range(0, 5):
 		$Polygon2D/penta.polygon[i] = (initial_shape[i] / 2).linear_interpolate(initial_shape[i], float(values[i]) / float(big))
-	
+
 	$Polygon2D/lv.text = str(affectedPlayer.level-1)
 	$Polygon2D/lv2.text = str(affectedPlayer.level)
 	$Polygon2D/hp.text = str(affectedPlayer.max_hp)
