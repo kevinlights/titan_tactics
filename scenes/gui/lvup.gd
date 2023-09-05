@@ -66,6 +66,12 @@ var paths = {
 }
 var max_polygon
 
+func _ready():
+	if !affectedPlayer:
+		affectedPlayer = CharacterStats.new()
+		stats_diff = affectedPlayer
+		reset()
+
 func reset():
 	bonus_hp = 0
 	bonus_hit = 0
@@ -91,9 +97,13 @@ func reset():
 		bonus_def
 	]
 	var big = values.max()
+	
+	if initial_shape.empty():
+		initial_shape = PoolVector2Array(pentapoly.polygon)
+	
 	for i in range(0, 5):
 		$Polygon2D/penta.polygon[i] = (initial_shape[i] / 2).linear_interpolate(initial_shape[i], float(values[i]) / float(big))
-
+	
 	$Polygon2D/lv.text = str(affectedPlayer.level-1)
 	$Polygon2D/lv2.text = str(affectedPlayer.level)
 	$Polygon2D/hp.text = str(affectedPlayer.max_hp)
@@ -112,6 +122,11 @@ func reset():
 	$Polygon2D/penta/hb_atk_penta/atk_penta.text = "+" + str(bonus_atk)
 	$Polygon2D/penta/hb_def_penta/def_penta.text = "+" + str(bonus_def)
 	$Polygon2D/penta/hb_hp_penta/hp_penta.text = "+" + str(bonus_hp)
+	
+	var selected_color = Color(0.9647058823529412, 0.9647058823529412, 0.9568627450980393)
+	var unselected_color = Color(0.596078431372549, 0.6196078431372549, 0.611764705882353)
+	for opt in options:
+		node_for_stat(opt).modulate = selected_color if opt == selected else unselected_color
 #
 #func _ready():
 #	nrmlz()
